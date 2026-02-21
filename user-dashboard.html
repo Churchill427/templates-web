@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaFlow — My Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="rtl-toggle.js"></script>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <span class="nav-logo-dot"></span>NexaFlow
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section">Main</div>
+    <a href="user-dashboard.html" class="active">
+      <span class="nav-icon">📊</span> Dashboard
+    </a>
+    <a href="#">
+      <span class="nav-icon">⚡</span> Workflows
+    </a>
+    <a href="#">
+      <span class="nav-icon">📈</span> Analytics
+    </a>
+    <a href="#">
+      <span class="nav-icon">🔗</span> Integrations
+    </a>
+    <div class="sidebar-section">Team</div>
+    <a href="#">
+      <span class="nav-icon">👥</span> Members
+    </a>
+    <a href="#">
+      <span class="nav-icon">💬</span> Messages <span class="badge badge-purple" style="margin-left:auto; font-size:10px; padding:2px 8px;">3</span>
+    </a>
+    <a href="#">
+      <span class="nav-icon">📁</span> Projects
+    </a>
+    <div class="sidebar-section">Account</div>
+    <a href="#">
+      <span class="nav-icon">⚙️</span> Settings
+    </a>
+    <a href="#">
+      <span class="nav-icon">💳</span> Billing
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="flex gap-12" style="align-items:center;">
+      <div style="width:36px; height:36px; border-radius:50%; background:var(--clr-accent-glow); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">👤</div>
+      <div style="flex:1; min-width:0;">
+        <div style="font-size:13px; font-weight:600; color:var(--clr-white);">Alex Rivera</div>
+        <div style="font-size:11px; color:var(--clr-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">alex@company.com</div>
+      </div>
+    </div>
+    <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%; margin-top:12px; color:var(--clr-muted); justify-content:flex-start;">← Back to Site</a>
+  </div>
+</aside>
+
+<!-- ─── MAIN ─── -->
+<main class="dashboard-main">
+
+  <!-- TOP BAR -->
+  <div class="dashboard-topbar">
+    <div class="flex gap-12" style="align-items:center;">
+      <button id="sidebarToggle" class="nav-rtl-btn" style="display:none;">☰</button>
+      <div>
+        <h4 style="margin-bottom:2px;">My Dashboard</h4>
+        <p class="text-xs">Saturday, Feb 21, 2025</p>
+      </div>
+    </div>
+    <div class="flex gap-12" style="align-items:center;">
+      <button id="rtlToggle" class="nav-rtl-btn">🌐</button>
+      <button class="btn btn-primary btn-sm">+ New Workflow</button>
+      <div style="width:36px; height:36px; border-radius:50%; background:var(--clr-accent); display:flex; align-items:center; justify-content:center; font-size:16px; cursor:pointer;">👤</div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="dashboard-content">
+
+    <!-- WELCOME BANNER -->
+    <div class="card mb-32" style="background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(34,211,165,0.1)); border-color: var(--clr-accent); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+      <div>
+        <h3>Good morning, Alex! 👋</h3>
+        <p class="mt-8">You have 3 workflows running and 12 tasks completed today.</p>
+      </div>
+      <a href="#" class="btn btn-primary">View All Workflows</a>
+    </div>
+
+    <!-- METRICS -->
+    <div class="grid-4 mb-32">
+      <div class="card metric-card">
+        <div class="metric-label">Tasks Today</div>
+        <div class="metric-value">12</div>
+        <div class="metric-change metric-up">↑ +4 from yesterday</div>
+      </div>
+      <div class="card metric-card">
+        <div class="metric-label">Active Workflows</div>
+        <div class="metric-value">3</div>
+        <div class="metric-change metric-up">↑ 1 new this week</div>
+      </div>
+      <div class="card metric-card">
+        <div class="metric-label">Integrations</div>
+        <div class="metric-value">8</div>
+        <div class="metric-change" style="color:var(--clr-muted);">→ Unchanged</div>
+      </div>
+      <div class="card metric-card">
+        <div class="metric-label">Time Saved</div>
+        <div class="metric-value">14h</div>
+        <div class="metric-change metric-up">↑ This month</div>
+      </div>
+    </div>
+
+    <div class="grid-2 mb-32">
+      <!-- RECENT WORKFLOWS -->
+      <div class="card">
+        <div class="flex-between mb-20">
+          <h4>Recent Workflows</h4>
+          <a href="#" style="font-size:13px; color:var(--clr-accent);">View all →</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="flex-between" style="padding:12px; background:var(--clr-surface-2); border-radius:var(--radius-sm);">
+            <div class="flex gap-12" style="align-items:center;">
+              <span style="font-size:20px;">⚡</span>
+              <div>
+                <div style="font-size:13px; font-weight:600; color:var(--clr-white);">Slack → Jira Auto-ticket</div>
+                <div class="text-xs" style="color:var(--clr-muted);">Ran 48 times today</div>
+              </div>
+            </div>
+            <span class="badge badge-green">Active</span>
+          </div>
+          <div class="flex-between" style="padding:12px; background:var(--clr-surface-2); border-radius:var(--radius-sm);">
+            <div class="flex gap-12" style="align-items:center;">
+              <span style="font-size:20px;">📧</span>
+              <div>
+                <div style="font-size:13px; font-weight:600; color:var(--clr-white);">Welcome Email Sequence</div>
+                <div class="text-xs" style="color:var(--clr-muted);">Ran 12 times today</div>
+              </div>
+            </div>
+            <span class="badge badge-green">Active</span>
+          </div>
+          <div class="flex-between" style="padding:12px; background:var(--clr-surface-2); border-radius:var(--radius-sm);">
+            <div class="flex gap-12" style="align-items:center;">
+              <span style="font-size:20px;">📊</span>
+              <div>
+                <div style="font-size:13px; font-weight:600; color:var(--clr-white);">Weekly Report Generator</div>
+                <div class="text-xs" style="color:var(--clr-muted);">Next run: Friday 9am</div>
+              </div>
+            </div>
+            <span class="badge badge-yellow">Scheduled</span>
+          </div>
+          <div class="flex-between" style="padding:12px; background:var(--clr-surface-2); border-radius:var(--radius-sm);">
+            <div class="flex gap-12" style="align-items:center;">
+              <span style="font-size:20px;">🔔</span>
+              <div>
+                <div style="font-size:13px; font-weight:600; color:var(--clr-white);">Uptime Monitor Alert</div>
+                <div class="text-xs" style="color:var(--clr-muted);">Paused by you</div>
+              </div>
+            </div>
+            <span class="badge badge-gray">Paused</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK STATS + ACTIVITY -->
+      <div class="card">
+        <div class="flex-between mb-20">
+          <h4>Recent Activity</h4>
+          <span class="text-xs" style="color:var(--clr-muted);">Last 7 days</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="flex gap-12" style="align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--clr-green); margin-top:5px; flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px; color:var(--clr-text);">Workflow <b>Slack → Jira</b> ran successfully</div>
+              <div class="text-xs" style="color:var(--clr-muted);">2 minutes ago</div>
+            </div>
+          </div>
+          <div class="flex gap-12" style="align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--clr-accent); margin-top:5px; flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px; color:var(--clr-text);">New integration: <b>Stripe connected</b></div>
+              <div class="text-xs" style="color:var(--clr-muted);">1 hour ago</div>
+            </div>
+          </div>
+          <div class="flex gap-12" style="align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--clr-yellow); margin-top:5px; flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px; color:var(--clr-text);">Team member <b>Jordan Lee</b> added</div>
+              <div class="text-xs" style="color:var(--clr-muted);">Yesterday</div>
+            </div>
+          </div>
+          <div class="flex gap-12" style="align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--clr-red); margin-top:5px; flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px; color:var(--clr-text);">Workflow <b>Uptime Alert</b> paused</div>
+              <div class="text-xs" style="color:var(--clr-muted);">2 days ago</div>
+            </div>
+          </div>
+          <div class="flex gap-12" style="align-items:flex-start;">
+            <div style="width:8px; height:8px; border-radius:50%; background:var(--clr-green); margin-top:5px; flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:13px; color:var(--clr-text);">Weekly Report generated & sent</div>
+              <div class="text-xs" style="color:var(--clr-muted);">3 days ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- USAGE -->
+    <div class="card">
+      <div class="flex-between mb-24">
+        <h4>Plan Usage</h4>
+        <span class="badge badge-purple">Pro Plan</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div>
+          <div class="flex-between mb-8">
+            <span class="text-sm">Workflows (3 / 25 used)</span>
+            <span class="text-sm" style="color:var(--clr-accent);">12%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:12%"></div></div>
+        </div>
+        <div>
+          <div class="flex-between mb-8">
+            <span class="text-sm">API Calls (8,400 / 50,000)</span>
+            <span class="text-sm" style="color:var(--clr-green);">17%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:17%; background:var(--clr-green)"></div></div>
+        </div>
+        <div>
+          <div class="flex-between mb-8">
+            <span class="text-sm">Team Members (4 / 25)</span>
+            <span class="text-sm" style="color:var(--clr-yellow);">16%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:16%; background:var(--clr-yellow)"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<style>
+  @media (max-width: 1024px) {
+    #sidebarToggle { display: flex !important; }
+    [dir="rtl"] .dashboard-main { margin-right: 0; }
+  }
+</style>
+
+<script src="main.js"></script>
+</body>
+</html>

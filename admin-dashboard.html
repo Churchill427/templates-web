@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaFlow — Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="rtl-toggle.js"></script>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <span class="nav-logo-dot"></span>Admin
+    <span class="badge badge-red" style="margin-left:auto; font-size:10px;">Admin</span>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section">Overview</div>
+    <a href="admin-dashboard.html" class="active"><span class="nav-icon">🏠</span> Overview</a>
+    <a href="#"><span class="nav-icon">📊</span> Analytics</a>
+    <a href="#"><span class="nav-icon">📈</span> Revenue</a>
+    <div class="sidebar-section">Users</div>
+    <a href="#"><span class="nav-icon">👥</span> All Users</a>
+    <a href="#"><span class="nav-icon">🏢</span> Organizations</a>
+    <a href="#"><span class="nav-icon">🚩</span> Flagged <span class="badge badge-red" style="margin-left:auto; font-size:10px; padding:2px 8px;">5</span></a>
+    <div class="sidebar-section">System</div>
+    <a href="#"><span class="nav-icon">⚡</span> Workflows</a>
+    <a href="#"><span class="nav-icon">🔗</span> Integrations</a>
+    <a href="#"><span class="nav-icon">📋</span> Audit Log</a>
+    <a href="#"><span class="nav-icon">⚙️</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="flex gap-12" style="align-items:center;">
+      <div style="width:36px; height:36px; border-radius:50%; background:var(--clr-red); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">👑</div>
+      <div style="flex:1; min-width:0;">
+        <div style="font-size:13px; font-weight:600; color:var(--clr-white);">Super Admin</div>
+        <div style="font-size:11px; color:var(--clr-muted);">admin@nexaflow.io</div>
+      </div>
+    </div>
+    <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%; margin-top:12px; color:var(--clr-muted); justify-content:flex-start;">← Back to Site</a>
+  </div>
+</aside>
+
+<!-- ─── MAIN ─── -->
+<main class="dashboard-main">
+
+  <!-- TOP BAR -->
+  <div class="dashboard-topbar">
+    <div class="flex gap-12" style="align-items:center;">
+      <button id="sidebarToggle" class="nav-rtl-btn" style="display:none;">☰</button>
+      <div>
+        <h4 style="margin-bottom:2px;">Admin Dashboard</h4>
+        <p class="text-xs">Platform overview — all workspaces</p>
+      </div>
+    </div>
+    <div class="flex gap-12" style="align-items:center;">
+      <button id="rtlToggle" class="nav-rtl-btn">🌐</button>
+      <span class="badge badge-red">5 alerts</span>
+      <a href="user-dashboard.html" class="btn btn-outline btn-sm">User View</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="dashboard-content">
+
+    <!-- ALERT BANNER -->
+    <div class="card mb-32" style="border-color:var(--clr-red); background:rgba(255,95,109,0.05); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div class="flex gap-12" style="align-items:center;">
+        <span style="font-size:22px;">🚨</span>
+        <div>
+          <div style="font-weight:600; color:var(--clr-white);">5 flagged accounts require review</div>
+          <p class="text-sm">Unusual activity detected. Review and take action.</p>
+        </div>
+      </div>
+      <button class="btn btn-danger btn-sm">Review Now</button>
+    </div>
+
+    <!-- PLATFORM METRICS -->
+    <div class="grid-4 mb-32">
+      <div class="card metric-card">
+        <div class="metric-label">Total Users</div>
+        <div class="metric-value">10,284</div>
+        <div class="metric-change metric-up">↑ +124 this week</div>
+      </div>
+      <div class="card metric-card">
+        <div class="metric-label">MRR</div>
+        <div class="metric-value">$142K</div>
+        <div class="metric-change metric-up">↑ +8.4% MoM</div>
+      </div>
+      <div class="card metric-card">
+        <div class="metric-label">Active Workflows</div>
+        <div class="metric-value">48.2K</div>
+        <div class="metric-change metric-up">↑ +2.1K today</div>
+      </div>
+      <div class="card metric-card">
+        <div class="metric-label">Churn Rate</div>
+        <div class="metric-value">1.8%</div>
+        <div class="metric-change metric-down">↓ -0.3% vs last month</div>
+      </div>
+    </div>
+
+    <div class="grid-2 mb-32">
+      <!-- PLAN BREAKDOWN -->
+      <div class="card">
+        <h4 class="mb-20">Users by Plan</h4>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div>
+            <div class="flex-between mb-8">
+              <div class="flex gap-8" style="align-items:center;"><span class="badge badge-gray">Free</span><span class="text-sm">6,820 users</span></div>
+              <span class="text-sm" style="color:var(--clr-muted);">66%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:66%; background:var(--clr-muted)"></div></div>
+          </div>
+          <div>
+            <div class="flex-between mb-8">
+              <div class="flex gap-8" style="align-items:center;"><span class="badge badge-purple">Pro</span><span class="text-sm">2,840 users</span></div>
+              <span class="text-sm" style="color:var(--clr-accent);">28%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div>
+          </div>
+          <div>
+            <div class="flex-between mb-8">
+              <div class="flex gap-8" style="align-items:center;"><span class="badge badge-yellow">Enterprise</span><span class="text-sm">624 users</span></div>
+              <span class="text-sm" style="color:var(--clr-yellow);">6%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:6%; background:var(--clr-yellow)"></div></div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="flex-between">
+          <span class="text-sm">Conversion Rate (Free → Paid)</span>
+          <span class="text-sm metric-up">34% ↑</span>
+        </div>
+      </div>
+
+      <!-- RECENT SIGNUPS -->
+      <div class="card">
+        <div class="flex-between mb-20">
+          <h4>New Signups Today</h4>
+          <span class="badge badge-green">+42</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="flex-between">
+            <div class="flex gap-10" style="align-items:center;">
+              <div style="width:32px; height:32px; border-radius:50%; background:var(--clr-accent-glow); display:flex; align-items:center; justify-content:center; font-size:14px;">👤</div>
+              <div>
+                <div style="font-size:13px; color:var(--clr-white); font-weight:500;">Maria Santos</div>
+                <div class="text-xs" style="color:var(--clr-muted);">maria@tech.io</div>
+              </div>
+            </div>
+            <span class="badge badge-purple">Pro</span>
+          </div>
+          <div class="flex-between">
+            <div class="flex gap-10" style="align-items:center;">
+              <div style="width:32px; height:32px; border-radius:50%; background:rgba(34,211,165,0.15); display:flex; align-items:center; justify-content:center; font-size:14px;">👤</div>
+              <div>
+                <div style="font-size:13px; color:var(--clr-white); font-weight:500;">James Wright</div>
+                <div class="text-xs" style="color:var(--clr-muted);">james@startup.co</div>
+              </div>
+            </div>
+            <span class="badge badge-gray">Free</span>
+          </div>
+          <div class="flex-between">
+            <div class="flex gap-10" style="align-items:center;">
+              <div style="width:32px; height:32px; border-radius:50%; background:rgba(251,191,36,0.15); display:flex; align-items:center; justify-content:center; font-size:14px;">👤</div>
+              <div>
+                <div style="font-size:13px; color:var(--clr-white); font-weight:500;">Acme Corp</div>
+                <div class="text-xs" style="color:var(--clr-muted);">ops@acme.com</div>
+              </div>
+            </div>
+            <span class="badge badge-yellow">Enterprise</span>
+          </div>
+        </div>
+        <a href="#" class="btn btn-outline btn-sm" style="width:100%; margin-top:20px;">View All Users</a>
+      </div>
+    </div>
+
+    <!-- USERS TABLE -->
+    <div class="card">
+      <div class="flex-between mb-20">
+        <h4>All Users</h4>
+        <div class="flex gap-8">
+          <input placeholder="Search users..." style="width:220px; padding:8px 12px; font-size:13px;" />
+          <button class="btn btn-outline btn-sm">Export</button>
+          <button class="btn btn-primary btn-sm">+ Add User</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Plan</th>
+              <th>Workflows</th>
+              <th>MRR</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div><div style="font-weight:500; color:var(--clr-white);">Sarah Kim</div><div class="text-xs" style="color:var(--clr-muted);">sarah@stackify.com</div></div>
+              </td>
+              <td><span class="badge badge-yellow">Enterprise</span></td>
+              <td>142</td>
+              <td style="color:var(--clr-green);">$149/mo</td>
+              <td><span class="badge badge-green">Active</span></td>
+              <td><button class="btn btn-ghost btn-sm">Edit</button><button class="btn btn-ghost btn-sm" style="color:var(--clr-red);">Suspend</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div><div style="font-weight:500; color:var(--clr-white);">Marcus Webb</div><div class="text-xs" style="color:var(--clr-muted);">marcus@launchpad.io</div></div>
+              </td>
+              <td><span class="badge badge-purple">Pro</span></td>
+              <td>38</td>
+              <td style="color:var(--clr-green);">$49/mo</td>
+              <td><span class="badge badge-green">Active</span></td>
+              <td><button class="btn btn-ghost btn-sm">Edit</button><button class="btn btn-ghost btn-sm" style="color:var(--clr-red);">Suspend</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div><div style="font-weight:500; color:var(--clr-white);">Priya Anand</div><div class="text-xs" style="color:var(--clr-muted);">priya@orbis.co</div></div>
+              </td>
+              <td><span class="badge badge-purple">Pro</span></td>
+              <td>12</td>
+              <td style="color:var(--clr-green);">$49/mo</td>
+              <td><span class="badge badge-yellow">Trial</span></td>
+              <td><button class="btn btn-ghost btn-sm">Edit</button><button class="btn btn-ghost btn-sm" style="color:var(--clr-red);">Suspend</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div><div style="font-weight:500; color:var(--clr-white);">John Doe</div><div class="text-xs" style="color:var(--clr-muted);">john@example.com</div></div>
+              </td>
+              <td><span class="badge badge-gray">Free</span></td>
+              <td>2</td>
+              <td style="color:var(--clr-muted);">—</td>
+              <td><span class="badge badge-red">Flagged</span></td>
+              <td><button class="btn btn-ghost btn-sm">Edit</button><button class="btn btn-danger btn-sm">Review</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<style>
+  @media (max-width: 1024px) {
+    #sidebarToggle { display: flex !important; }
+    [dir="rtl"] .dashboard-main { margin-right: 0; }
+  }
+</style>
+
+<script src="main.js"></script>
+</body>
+</html>

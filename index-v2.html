@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexaFlow — Launch Edition</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="rtl-toggle.js"></script>
+  <style>
+    /* ─── V2 EXCLUSIVE: Full-screen split layout ─── */
+    body { overflow-x: hidden; }
+
+    .v2-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+    }
+
+    /* LEFT PANEL — rich dark with accent */
+    .v2-left {
+      background: linear-gradient(160deg, #0a1628 0%, #060e1e 60%, #080d1a 100%);
+      padding: 80px 60px 80px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+      border-right: 1px solid rgba(37,99,235,0.15);
+    }
+    .v2-left::before {
+      content: ''; position: absolute; top: -100px; left: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: rgba(37,99,235,0.12); filter: blur(80px); pointer-events: none;
+    }
+    .v2-left::after {
+      content: ''; position: absolute; bottom: -80px; right: -80px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(6,182,212,0.07); filter: blur(60px); pointer-events: none;
+    }
+    .v2-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);
+      color: #10b981; border-radius: 100px; padding: 5px 14px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; width: fit-content; margin-bottom: 28px;
+    }
+    .v2-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: blink2 2s infinite; }
+    @keyframes blink2 { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .v2-left h1 {
+      font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+      font-weight: 800; line-height: 1.12;
+      letter-spacing: -0.03em; color: var(--clr-white);
+      margin-bottom: 20px;
+    }
+    .v2-left h1 em { font-style: normal; color: #3b82f6; }
+    .v2-left > .sub { font-size: 17px; color: var(--clr-muted); line-height: 1.7; margin-bottom: 36px; max-width: 440px; }
+
+    /* Steps */
+    .v2-steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; position: relative; z-index: 1; }
+    .v2-step { display: flex; gap: 18px; align-items: flex-start; padding: 16px 0; }
+    .v2-step:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .v2-step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(37,99,235,0.2); border: 1px solid rgba(37,99,235,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 13px;
+      color: #3b82f6; flex-shrink: 0;
+    }
+    .v2-step-body h5 { font-size: 14px; font-weight: 600; color: var(--clr-white); margin-bottom: 3px; }
+    .v2-step-body p  { font-size: 13px; color: var(--clr-muted); }
+
+    .v2-cta-row { display: flex; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .v2-trust { margin-top: 28px; font-size: 12px; color: var(--clr-muted); display: flex; align-items: center; gap: 16px; position: relative; z-index: 1; }
+    .v2-trust span { display: flex; align-items: center; gap: 5px; }
+    .v2-trust span::before { content: '✓'; color: var(--clr-green); font-weight: 700; }
+
+    /* RIGHT PANEL — live metrics dashboard */
+    .v2-right {
+      background: var(--clr-bg);
+      padding: 60px 48px 60px 40px;
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 20px; position: relative;
+    }
+    .v2-right-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--clr-muted); margin-bottom: 4px;
+    }
+
+    /* Metric cards */
+    .v2-metrics { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .v2-metric {
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md); padding: 20px;
+      transition: border-color var(--transition);
+    }
+    .v2-metric:hover { border-color: var(--clr-border-hover); }
+    .v2-metric-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .v2-metric-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .v2-metric-val { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--clr-white); }
+    .v2-metric-lbl { font-size: 12px; color: var(--clr-muted); margin-top: 2px; }
+    .v2-metric-chg { font-size: 11px; margin-top: 6px; font-weight: 600; }
+
+    /* Live feed */
+    .v2-feed {
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md); padding: 18px;
+    }
+    .v2-feed-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .v2-feed-title { font-size: 13px; font-weight: 600; color: var(--clr-white); }
+    .live-dot { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--clr-green); }
+    .live-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--clr-green); animation: blink2 1.5s infinite; }
+    .v2-feed-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--clr-border); }
+    .v2-feed-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .v2-feed-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .v2-feed-text { flex: 1; font-size: 12px; color: var(--clr-text); }
+    .v2-feed-time { font-size: 11px; color: var(--clr-muted); }
+
+    /* Integration logos */
+    .v2-integrations {
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md); padding: 18px;
+    }
+    .v2-int-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .v2-chip {
+      background: var(--clr-surface-2); border: 1px solid var(--clr-border);
+      border-radius: 100px; padding: 4px 12px; font-size: 12px; font-weight: 500;
+      color: var(--clr-text); display: flex; align-items: center; gap: 5px;
+    }
+    .v2-chip.active { border-color: rgba(37,99,235,0.4); color: #3b82f6; background: rgba(37,99,235,0.08); }
+
+    /* Section below hero */
+    .v2-why { background: var(--clr-surface); border-top: 1px solid var(--clr-border); }
+    .compare-table-wrap { overflow-x: auto; }
+
+    /* Logos bar */
+    .v2-logos { border-top: 1px solid var(--clr-border); border-bottom: 1px solid var(--clr-border); padding: 24px 0; }
+
+    @media (max-width: 900px) {
+      .v2-hero { grid-template-columns: 1fr; min-height: auto; }
+      .v2-right { padding: 40px 24px; }
+      .v2-left { padding: 60px 24px; }
+      .v2-left::before, .v2-left::after { display: none; }
+    }
+    @media (max-width: 600px) {
+      .v2-metrics { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span>NexaFlow</a>
+    <ul class="nav-links">
+      <li class="nav-item-dropdown">
+        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="index.html" class="nav-dropdown-item">
+            <div class="dd-icon blue">🚀</div>
+            <div class="dd-text"><strong>Home — SaaS Classic</strong><span>Bold hero, features &amp; testimonials</span></div>
+          </a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="index-v2.html" class="nav-dropdown-item">
+            <div class="dd-icon green">⚡</div>
+            <div class="dd-text"><strong>Home — Launch Edition</strong><span>Split layout, live metrics &amp; steps</span></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
+      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+    </div>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <details class="mobile-nav-group">
+    <summary>Home <span>›</span></summary>
+    <div class="mobile-nav-sub">
+      <a href="index.html">🚀 SaaS Classic</a>
+      <a href="index-v2.html">⚡ Launch Edition</a>
+    </div>
+  </details>
+  <a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="portfolio.html">Portfolio</a>
+  <a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  <a href="login.html">Login</a><a href="register.html">Get Started →</a>
+</div>
+
+<!-- HERO — FULL SPLIT -->
+<div class="v2-hero">
+
+  <!-- LEFT: Copy + Steps -->
+  <div class="v2-left">
+    <div class="v2-badge"><span class="v2-badge-dot"></span> Trusted by 10,000+ teams</div>
+    <h1>The Platform That<br/><em>Scales With You</em></h1>
+    <p class="sub">From startup to enterprise — NexaFlow grows alongside your team. Automate anything, integrate everything, and ship without limits.</p>
+
+    <div class="v2-steps">
+      <div class="v2-step">
+        <div class="v2-step-num">1</div>
+        <div class="v2-step-body">
+          <h5>Connect your stack</h5>
+          <p>One-click integrations with 500+ tools your team already uses.</p>
+        </div>
+      </div>
+      <div class="v2-step">
+        <div class="v2-step-num">2</div>
+        <div class="v2-step-body">
+          <h5>Build your workflow</h5>
+          <p>Visual drag-and-drop builder. No code needed, ever.</p>
+        </div>
+      </div>
+      <div class="v2-step">
+        <div class="v2-step-num">3</div>
+        <div class="v2-step-body">
+          <h5>Ship &amp; measure</h5>
+          <p>Deploy instantly and track impact with real-time analytics.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="v2-cta-row">
+      <a href="register.html" class="btn btn-primary btn-lg">Start for Free →</a>
+      <a href="contact.html" class="btn btn-outline btn-lg">Talk to Sales</a>
+    </div>
+    <div class="v2-trust">
+      <span>No credit card</span>
+      <span>14-day trial</span>
+      <span>Cancel anytime</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: Live dashboard panel -->
+  <div class="v2-right">
+    <div class="v2-right-label">Live Platform Metrics</div>
+
+    <div class="v2-metrics">
+      <div class="v2-metric">
+        <div class="v2-metric-top">
+          <div class="v2-metric-icon" style="background:rgba(37,99,235,0.15);">📊</div>
+          <span class="badge badge-green" style="font-size:10px;">↑ 24%</span>
+        </div>
+        <div class="v2-metric-val">12,480</div>
+        <div class="v2-metric-lbl">Tasks Automated Today</div>
+        <div class="v2-metric-chg metric-up">↑ 2,140 more than yesterday</div>
+      </div>
+      <div class="v2-metric">
+        <div class="v2-metric-top">
+          <div class="v2-metric-icon" style="background:rgba(16,185,129,0.15);">⚡</div>
+          <span class="badge badge-green" style="font-size:10px;">Active</span>
+        </div>
+        <div class="v2-metric-val" style="color:var(--clr-green);">99.9%</div>
+        <div class="v2-metric-lbl">Platform Uptime</div>
+        <div class="v2-metric-chg" style="color:var(--clr-green);">→ SLA guaranteed</div>
+      </div>
+      <div class="v2-metric">
+        <div class="v2-metric-top">
+          <div class="v2-metric-icon" style="background:rgba(6,182,212,0.15);">🔗</div>
+          <span class="badge badge-purple" style="font-size:10px;">500+</span>
+        </div>
+        <div class="v2-metric-val" style="color:var(--clr-cyan);">38</div>
+        <div class="v2-metric-lbl">Active Integrations</div>
+        <div class="v2-metric-chg" style="color:var(--clr-muted);">→ Avg. per workspace</div>
+      </div>
+      <div class="v2-metric">
+        <div class="v2-metric-top">
+          <div class="v2-metric-icon" style="background:rgba(245,158,11,0.15);">👥</div>
+          <span class="badge badge-yellow" style="font-size:10px;">+124 /wk</span>
+        </div>
+        <div class="v2-metric-val" style="color:var(--clr-yellow);">10K+</div>
+        <div class="v2-metric-lbl">Teams Worldwide</div>
+        <div class="v2-metric-chg metric-up">↑ Growing fast</div>
+      </div>
+    </div>
+
+    <!-- LIVE FEED -->
+    <div class="v2-feed">
+      <div class="v2-feed-header">
+        <span class="v2-feed-title">Live Activity</span>
+        <span class="live-dot">Live</span>
+      </div>
+      <div class="v2-feed-item">
+        <div class="v2-feed-icon" style="background:rgba(37,99,235,0.15);">⚡</div>
+        <div class="v2-feed-text">Stackify ran workflow <strong>Slack → Jira</strong></div>
+        <div class="v2-feed-time">2s ago</div>
+      </div>
+      <div class="v2-feed-item">
+        <div class="v2-feed-icon" style="background:rgba(16,185,129,0.15);">✓</div>
+        <div class="v2-feed-text">LaunchPad completed onboarding sequence</div>
+        <div class="v2-feed-time">14s ago</div>
+      </div>
+      <div class="v2-feed-item">
+        <div class="v2-feed-icon" style="background:rgba(245,158,11,0.15);">🔗</div>
+        <div class="v2-feed-text">Orbis connected <strong>Stripe</strong> integration</div>
+        <div class="v2-feed-time">41s ago</div>
+      </div>
+      <div class="v2-feed-item">
+        <div class="v2-feed-icon" style="background:rgba(37,99,235,0.15);">👤</div>
+        <div class="v2-feed-text">New team signup — <strong>Acme Corp</strong></div>
+        <div class="v2-feed-time">1m ago</div>
+      </div>
+    </div>
+
+    <!-- INTEGRATIONS -->
+    <div class="v2-integrations">
+      <div class="v2-right-label" style="margin-bottom:0;">Popular Integrations</div>
+      <div class="v2-int-chips">
+        <span class="v2-chip active">✓ Slack</span>
+        <span class="v2-chip active">✓ GitHub</span>
+        <span class="v2-chip active">✓ Jira</span>
+        <span class="v2-chip active">✓ Notion</span>
+        <span class="v2-chip active">✓ Stripe</span>
+        <span class="v2-chip">HubSpot</span>
+        <span class="v2-chip">Salesforce</span>
+        <span class="v2-chip">+493 more</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGOS -->
+<div class="v2-logos">
+  <div class="container flex-center gap-32" style="flex-wrap:wrap; opacity:0.38;">
+    <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">Stripe</span>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">Notion</span>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">Linear</span>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">Vercel</span>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">Figma</span>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:17px;">Loom</span>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<section class="v2-why section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Why NexaFlow</span>
+      <h2>Compare the difference</h2>
+      <p>See how NexaFlow stacks up against traditional tools.</p>
+    </div>
+    <div class="compare-table-wrap">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Feature</th><th style="color:var(--clr-accent);">NexaFlow</th><th>Traditional Tools</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Setup Time</td><td style="color:var(--clr-green);">5 minutes</td><td style="color:var(--clr-muted);">Days / weeks</td></tr>
+            <tr><td>Integrations</td><td style="color:var(--clr-green);">500+</td><td style="color:var(--clr-muted);">10–50</td></tr>
+            <tr><td>Automation Builder</td><td style="color:var(--clr-green);">Visual, no-code</td><td style="color:var(--clr-muted);">Code required</td></tr>
+            <tr><td>Real-time Collaboration</td><td style="color:var(--clr-green);">✓ Built-in</td><td style="color:var(--clr-muted);">Add-on / limited</td></tr>
+            <tr><td>Analytics Dashboard</td><td style="color:var(--clr-green);">Live, customizable</td><td style="color:var(--clr-muted);">Basic / static</td></tr>
+            <tr><td>Security</td><td style="color:var(--clr-green);">SOC 2, SSO, RBAC</td><td style="color:var(--clr-muted);">Varies</td></tr>
+            <tr><td>Support</td><td style="color:var(--clr-green);">24/7 priority</td><td style="color:var(--clr-muted);">Business hours</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section text-center" style="border-top:1px solid var(--clr-border);">
+  <div class="container">
+    <span class="section-label">Get Started</span>
+    <h2 style="max-width:560px;margin:16px auto 20px;">Start your 14-day free trial today</h2>
+    <p style="max-width:400px;margin:0 auto 40px;font-size:18px;">No credit card. No commitment. Cancel anytime.</p>
+    <div class="flex-center gap-12" style="flex-wrap:wrap;">
+      <a href="register.html" class="btn btn-primary btn-lg">Create Free Account →</a>
+      <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="font-size:18px;"><span class="nav-logo-dot"></span>NexaFlow</a><p>The modern platform for teams who build things. Automate, collaborate, and scale effortlessly.</p></div>
+      <div class="footer-col"><h5>Product</h5><ul><li><a href="pricing.html">Pricing</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html">Home V1</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="coming-soon.html">Coming Soon</a></li><li><a href="404.html">404</a></li></ul></div>
+      <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">Dashboard</a></li><li><a href="admin-dashboard.html">Admin</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p style="color:var(--clr-muted);">© 2025 NexaFlow. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
