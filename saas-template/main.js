@@ -4,31 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ─── MOBILE NAV TOGGLE ───
-  const hamburger = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('.mobile-nav');
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      const spans = hamburger.querySelectorAll('span');
-      if (mobileNav.classList.contains('open')) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
-      } else {
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '';
-        spans[2].style.transform = '';
-      }
-    });
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-        mobileNav.classList.remove('open');
-      }
-    });
-  }
-
   // ─── NAVBAR SCROLL EFFECT ───
   const navbar = document.querySelector('.navbar');
   if (navbar) {

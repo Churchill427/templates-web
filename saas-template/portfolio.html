@@ -6,6 +6,22 @@
   <title>NexaFlow — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="rtl-toggle.js"></script>
+  <script>
+    function toggleMobileNav(btn) {
+      var nav = document.querySelector('.mobile-nav');
+      var isOpen = nav.classList.toggle('open');
+      var spans = btn.querySelectorAll('span');
+      if (isOpen) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+      } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -63,7 +79,7 @@
     <button class="hamburger"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-nav">
+<div class="mobile-nav" id="mobileNav" onclick="if(event.target.tagName==='A'){this.classList.remove('open');}">
   <details class="mobile-nav-group">
     <summary>Home <span>›</span></summary>
     <div class="mobile-nav-sub">
