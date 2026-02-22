@@ -34,10 +34,32 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <button id="rtlToggle" class="nav-rtl-btn">🌐</button>
-      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+      <div class="nav-item-dropdown">
+        <a href="login.html" class="btn btn-ghost btn-sm" style="display:flex;align-items:center;gap:5px;">
+          Account <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
+        </a>
+        <div class="nav-dropdown" style="min-width:220px;">
+          <a href="login.html" class="nav-dropdown-item">
+            <div class="dd-icon blue">🔑</div>
+            <div class="dd-text"><strong>Login</strong><span>Sign in to your account</span></div>
+          </a>
+          <a href="register.html" class="nav-dropdown-item">
+            <div class="dd-icon green">✨</div>
+            <div class="dd-text"><strong>Register</strong><span>Create a free account</span></div>
+          </a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="user-dashboard.html" class="nav-dropdown-item">
+            <div class="dd-icon" style="background:rgba(245,158,11,0.15);">📊</div>
+            <div class="dd-text"><strong>User Dashboard</strong><span>Your workspace &amp; workflows</span></div>
+          </a>
+          <a href="admin-dashboard.html" class="nav-dropdown-item">
+            <div class="dd-icon" style="background:rgba(239,68,68,0.15);">👑</div>
+            <div class="dd-text"><strong>Admin Dashboard</strong><span>Platform management</span></div>
+          </a>
+        </div>
+      </div>
       <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
-    </div>
+    </div>    <button id="rtlToggle" class="nav-rtl-btn nav-rtl-always" title="Toggle RTL/LTR">🌐</button>
     <button class="hamburger"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -50,7 +72,16 @@
     </div>
   </details><a href="about.html">About</a><a href="pricing.html">Pricing</a>
   <a href="portfolio.html">Portfolio</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-  <a href="login.html">Login</a><a href="register.html">Get Started →</a>
+  <div class="nav-dropdown-divider" style="margin:4px 0;"></div>
+  <details class="mobile-nav-group">
+    <summary>Account <span>›</span></summary>
+    <div class="mobile-nav-sub">
+      <a href="login.html">🔑 Login</a>
+      <a href="register.html">✨ Register</a>
+      <a href="user-dashboard.html">📊 User Dashboard</a>
+      <a href="admin-dashboard.html">👑 Admin Dashboard</a>
+    </div>
+  </details>
 </div>
 
 <!-- PAGE HERO -->
@@ -95,6 +126,7 @@
     </div>
   </div>
 </section>
+
 <!-- VALUES -->
 <section class="section" style="background: var(--clr-surface); border-top: 1px solid var(--clr-border); border-bottom: 1px solid var(--clr-border);">
   <div class="container">
@@ -154,6 +186,7 @@
     </div>
   </div>
 </section>
+
 <!-- CTA -->
 <section class="section text-center" style="background: var(--clr-surface); border-top: 1px solid var(--clr-border);">
   <div class="container">
@@ -175,7 +208,7 @@
       </div>
       <div class="footer-col"><h5>Product</h5><ul><li><a href="pricing.html">Pricing</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="blog.html">Blog</a></li></ul></div>
       <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li></ul></div>
+      <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">User Dashboard</a></li><li><a href="admin-dashboard.html">Admin Dashboard</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <p style="color:var(--clr-muted);">© 2025 NexaFlow. All rights reserved.</p>

@@ -219,6 +219,25 @@ p { color: var(--clr-muted); }
   font-size: 16px; transition: all var(--transition); cursor: pointer; background: transparent;
 }
 .nav-rtl-btn:hover { border-color: var(--clr-accent); color: var(--clr-accent); }
+
+/* Sits between nav-actions and hamburger — visible at ALL screen sizes */
+.nav-rtl-always {
+  display: flex !important;
+  flex-shrink: 0;
+}
+
+/* For pages with no navbar (404, login, coming-soon, dashboards etc) */
+.nav-rtl-fixed {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex !important;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border-hover);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+[dir="rtl"] .nav-rtl-fixed { right: auto; left: 16px; }
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   padding: 8px; cursor: pointer; background: none; border: none;
