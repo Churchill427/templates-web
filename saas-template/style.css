@@ -212,6 +212,24 @@ p { color: var(--clr-muted); }
   width: 4px; height: 4px; border-radius: 50%; background: var(--clr-accent);
 }
 .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+/* Navbar container layout */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.nav-links { flex: 1; }
+
+/* RTL + hamburger always-visible group */
+.nav-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+[dir="rtl"] .nav-end { margin-left: 0; margin-right: 12px; }
 .nav-rtl-btn {
   width: 36px; height: 36px; border-radius: var(--radius-sm);
   border: 1px solid var(--clr-border); color: var(--clr-muted);
@@ -220,7 +238,7 @@ p { color: var(--clr-muted); }
 }
 .nav-rtl-btn:hover { border-color: var(--clr-accent); color: var(--clr-accent); }
 
-/* Sits between nav-actions and hamburger — visible at ALL screen sizes */
+/* RTL button — always visible at ALL screen sizes, in both LTR and RTL */
 .nav-rtl-always {
   display: flex !important;
   flex-shrink: 0;
@@ -333,7 +351,11 @@ p { color: var(--clr-muted); }
 .sidebar {
   position: fixed; left: 0; top: 0; bottom: 0; width: 260px;
   background: var(--clr-surface); border-right: 1px solid var(--clr-border);
-  display: flex; flex-direction: column; z-index: 100; transition: transform var(--transition);
+  display: flex; flex-direction: column;
+  z-index: 200;
+  /* MOBILE FIRST: hidden off-screen by default */
+  transform: translateX(-260px);
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
 }
 .sidebar-logo {
   padding: 24px 20px; border-bottom: 1px solid var(--clr-border);
@@ -351,8 +373,9 @@ p { color: var(--clr-muted); }
 .sidebar-nav .nav-icon { font-size: 18px; width: 20px; text-align: center; }
 .sidebar-section { padding: 8px 20px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-muted); }
 .sidebar-footer { padding: 16px 20px; border-top: 1px solid var(--clr-border); }
-.sidebar-menu-btn { display: none; } /* shown via media query on mobile */
-.dashboard-main { margin-left: 260px; min-height: 100vh; background: var(--clr-bg); }
+.sidebar-menu-btn { display: none; }
+/* MOBILE FIRST: no left margin — sidebar is hidden off screen */
+.dashboard-main { margin-left: 0; min-height: 100vh; background: var(--clr-bg); }
 .dashboard-topbar {
   position: sticky; top: 0; z-index: 50;
   background: rgba(10,10,15,0.95); backdrop-filter: blur(16px);
@@ -458,37 +481,45 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 ::-webkit-scrollbar-thumb:hover { background: var(--clr-muted); }
 
 /* ─── RESPONSIVE ─── */
+
+/* DESKTOP: sidebar visible, content offset */
+@media (min-width: 1025px) {
+  .sidebar { transform: translateX(0) !important; }
+  .dashboard-main { margin-left: 260px !important; }
+  [dir="rtl"] .sidebar { transform: translateX(0) !important; left: auto; right: 0; }
+  [dir="rtl"] .dashboard-main { margin-left: 0 !important; margin-right: 260px !important; }
+}
+
+/* TABLET & MOBILE: sidebar is a drawer */
 @media (max-width: 1024px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .auth-right { display: none; }
 
-  /* Sidebar becomes a drawer — off screen by default */
-  .dashboard-main { margin-left: 0 !important; }
-  .sidebar {
-    transform: translateX(-100%);
-    z-index: 99;
-  }
+  /* sidebar hidden off-screen — toggleSidebar() slides it in */
+  .sidebar { transform: translateX(-260px); z-index: 200; }
   .sidebar.open { transform: translateX(0); }
+  [dir="rtl"] .sidebar { transform: translateX(260px); left: auto; right: 0; }
+  [dir="rtl"] .sidebar.open { transform: translateX(0); }
 
-  /* Show the sidebar toggle button */
-  .sidebar-menu-btn { display: flex !important; }
+  /* main always full width */
+  .dashboard-main { margin-left: 0 !important; margin-right: 0 !important; }
 
-  /* Dashboard topbar padding */
+  /* topbar spacing */
   .dashboard-topbar { padding: 0 16px; }
   .dashboard-content { padding: 20px 16px; }
 }
 
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .nav-links, .nav-actions { display: none; }
-  .hamburger { display: flex; }
+  /* Hide nav links and action buttons — but keep nav-end (RTL + hamburger) always visible */
+  .nav-links, .nav-actions { display: none !important; }
+  .nav-end { display: flex !important; }
+  .hamburger { display: flex !important; }
   .stats-row { flex-wrap: wrap; gap: 24px; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .countdown { gap: 20px; }
   .pricing-card.featured { margin-top: 0; }
-
-  /* Dashboard metric cards 2-col on phones */
   .dashboard-content .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -496,11 +527,10 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   .container { padding: 0 16px; }
   .section { padding: 64px 0; }
   .btn-lg { padding: 14px 28px; font-size: 15px; }
-
-  /* Dashboard single column on very small screens */
   .dashboard-content .grid-4,
   .dashboard-content .grid-2,
   .dashboard-content .grid-3 { grid-template-columns: 1fr; }
+  .topbar-right .btn { display: none; } /* hide + New Workflow on tiny screens */
 }
 
 /* ─── RTL SUPPORT ─── */
@@ -579,3 +609,104 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   top: -12px; left: 0; right: 0;
   height: 12px;
 }
+
+/* ══════════════════════════════════════════
+   PAGE NAVIGATOR — bottom floating bar
+══════════════════════════════════════════ */
+.page-nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15,20,32,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 8px 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  white-space: nowrap;
+}
+
+.page-nav-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--clr-muted);
+  background: transparent;
+  border: none; cursor: pointer;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+.page-nav-btn:hover {
+  background: rgba(255,255,255,0.07);
+  color: var(--clr-white);
+}
+.page-nav-btn.disabled {
+  opacity: 0.25;
+  pointer-events: none;
+  cursor: default;
+}
+.page-nav-btn svg {
+  width: 15px; height: 15px; flex-shrink: 0;
+}
+
+/* Center pill — current page indicator */
+.page-nav-center {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 14px;
+  background: var(--clr-surface-2);
+  border-radius: 100px;
+  border: 1px solid var(--clr-border);
+}
+.page-nav-dots {
+  display: flex; align-items: center; gap: 5px;
+}
+.page-nav-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--clr-border-hover);
+  transition: all 0.2s ease; cursor: pointer;
+  border: none; padding: 0;
+  flex-shrink: 0;
+}
+.page-nav-dot.active {
+  background: var(--clr-accent);
+  width: 20px; border-radius: 3px;
+}
+.page-nav-dot:hover:not(.active) { background: var(--clr-muted); }
+
+.page-nav-label {
+  font-size: 12px; font-weight: 600;
+  color: var(--clr-white);
+  max-width: 120px;
+  overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Divider between btn and center */
+.page-nav-divider {
+  width: 1px; height: 20px;
+  background: rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+/* RTL flip arrows */
+[dir="rtl"] .page-nav-btn svg { transform: scaleX(-1); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .page-nav { bottom: 16px; padding: 6px 8px; gap: 4px; max-width: calc(100vw - 32px); }
+  .page-nav-btn { padding: 8px 10px; font-size: 0; gap: 0; } /* icon only on small */
+  .page-nav-btn svg { width: 16px; height: 16px; }
+  .page-nav-label { max-width: 80px; font-size: 11px; }
+  .page-nav-dots { display: none; }
+  .page-nav-center { padding: 7px 10px; }
+}
+
+/* Add bottom padding to body so content isn't hidden behind the nav bar */
+body { padding-bottom: 80px; }

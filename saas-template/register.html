@@ -108,5 +108,73 @@
 
 <script src="main.js"></script>
 <button id="rtlToggle" class="nav-rtl-btn nav-rtl-fixed" title="Toggle RTL/LTR">🌐</button>
+
+
+
+<script>
+(function() {
+  var PAGES = [
+    ["index.html","Home Classic"],
+    ["index-v2.html","Home Launch"],
+    ["about.html","About"],
+    ["pricing.html","Pricing"],
+    ["portfolio.html","Portfolio"],
+    ["blog.html","Blog"],
+    ["contact.html","Contact"],
+    ["login.html","Login"],
+    ["register.html","Register"],
+    ["user-dashboard.html","Dashboard"],
+    ["admin-dashboard.html","Admin"],
+    ["coming-soon.html","Coming Soon"],
+    ["404.html","404"]
+  ];
+
+  var current = (window.location.pathname.split("/").pop() || "index.html");
+  if (current === "") current = "index.html";
+  var idx = 0;
+  for (var i = 0; i < PAGES.length; i++) {
+    if (PAGES[i][0] === current) { idx = i; break; }
+  }
+
+  var prev  = idx > 0               ? PAGES[idx - 1] : null;
+  var next  = idx < PAGES.length-1  ? PAGES[idx + 1] : null;
+  var label = PAGES[idx][1];
+
+  function dot(p, i) {
+    var cls = (i === idx) ? "page-nav-dot active" : "page-nav-dot";
+    return "<button class=\"" + cls + "\" onclick=\"location.href='" + p[0] + "'\" title=\"" + p[1] + "\"></button>";
+  }
+
+  var arrowL = "<svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"10 4 6 8 10 12\"/></svg>";
+  var arrowR = "<svg viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><polyline points=\"6 4 10 8 6 12\"/></svg>";
+
+  var prevBtn = prev
+    ? "<a href=\"" + prev[0] + "\" class=\"page-nav-btn\" title=\"" + prev[1] + "\">" + arrowL + "<span class=\"pnb-label\">" + prev[1] + "</span></a>"
+    : "<span class=\"page-nav-btn disabled\">" + arrowL + "</span>";
+
+  var nextBtn = next
+    ? "<a href=\"" + next[0] + "\" class=\"page-nav-btn\" title=\"" + next[1] + "\"><span class=\"pnb-label\">" + next[1] + "</span>" + arrowR + "</a>"
+    : "<span class=\"page-nav-btn disabled\">" + arrowR + "</span>";
+
+  var dotsHtml = "";
+  for (var j = 0; j < PAGES.length; j++) { dotsHtml += dot(PAGES[j], j); }
+
+  var nav = "<div class=\"page-nav\" role=\"navigation\" aria-label=\"Page navigation\">"
+    + prevBtn
+    + "<div class=\"page-nav-divider\"></div>"
+    + "<div class=\"page-nav-center\">"
+    + "<div class=\"page-nav-dots\">" + dotsHtml + "</div>"
+    + "<span class=\"page-nav-label\">" + label + "</span>"
+    + "</div>"
+    + "<div class=\"page-nav-divider\"></div>"
+    + nextBtn
+    + "</div>";
+
+  document.addEventListener("DOMContentLoaded", function() {
+    document.body.insertAdjacentHTML("beforeend", nav);
+  });
+})();
+</script>
+
 </body>
 </html>
