@@ -6,8 +6,23 @@
   <title>NexaFlow — Admin Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <script src="rtl-toggle.js"></script>
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      var isOpen = sidebar.classList.toggle('open');
+      if (overlay) overlay.style.display = isOpen ? 'block' : 'none';
+    }
+    function closeSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      if (sidebar) sidebar.classList.remove('open');
+      if (overlay) overlay.style.display = 'none';
+    }
+  </script>
 </head>
 <body>
+<div id="sidebarOverlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;z-index:98;background:rgba(0,0,0,0.55);backdrop-filter:blur(2px);"></div>
 
 <!-- ─── SIDEBAR ─── -->
 <aside class="sidebar">
@@ -47,14 +62,14 @@
 
   <!-- TOP BAR -->
   <div class="dashboard-topbar">
-    <div class="flex gap-12" style="align-items:center;">
-      <button id="sidebarToggle" class="nav-rtl-btn" style="display:none;">☰</button>
+    <div class="topbar-left">
+      <button id="sidebarToggle" class="nav-rtl-btn" onclick="toggleSidebar()">☰</button>
       <div>
         <h4 style="margin-bottom:2px;">Admin Dashboard</h4>
         <p class="text-xs">Platform overview — all workspaces</p>
       </div>
     </div>
-    <div class="flex gap-12" style="align-items:center;">      <span class="badge badge-red">5 alerts</span>
+    <div class="topbar-right"><span class="badge badge-red">5 alerts</span>
       <a href="user-dashboard.html" class="btn btn-outline btn-sm">User View</a>
     </div>
   </div>
@@ -245,14 +260,7 @@
   </div>
 </main>
 
-<style>
-  @media (max-width: 1024px) {
-    #sidebarToggle { display: flex !important; }
-    [dir="rtl"] .dashboard-main { margin-right: 0; }
-  }
-</style>
 
 <script src="main.js"></script>
-<button id="rtlToggle" class="nav-rtl-btn nav-rtl-fixed" title="Toggle RTL/LTR">🌐</button>
 </body>
 </html>

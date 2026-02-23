@@ -6,8 +6,23 @@
   <title>NexaFlow — My Dashboard</title>
   <link rel="stylesheet" href="style.css" />
   <script src="rtl-toggle.js"></script>
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      var isOpen = sidebar.classList.toggle('open');
+      if (overlay) overlay.style.display = isOpen ? 'block' : 'none';
+    }
+    function closeSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      if (sidebar) sidebar.classList.remove('open');
+      if (overlay) overlay.style.display = 'none';
+    }
+  </script>
 </head>
 <body>
+<div id="sidebarOverlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;z-index:98;background:rgba(0,0,0,0.55);backdrop-filter:blur(2px);"></div>
 
 <!-- ─── SIDEBAR ─── -->
 <aside class="sidebar">
@@ -63,15 +78,16 @@
 
   <!-- TOP BAR -->
   <div class="dashboard-topbar">
-    <div class="flex gap-12" style="align-items:center;">
-      <button id="sidebarToggle" class="nav-rtl-btn" style="display:none;">☰</button>
+    <div class="topbar-left">
+      <button id="sidebarToggle" class="nav-rtl-btn" onclick="toggleSidebar()">☰</button>
       <div>
         <h4 style="margin-bottom:2px;">My Dashboard</h4>
         <p class="text-xs">Saturday, Feb 21, 2025</p>
       </div>
     </div>
-    <div class="flex gap-12" style="align-items:center;">      <button class="btn btn-primary btn-sm">+ New Workflow</button>
+    <div class="topbar-right"><button class="btn btn-primary btn-sm">+ New Workflow</button>
       <div style="width:36px; height:36px; border-radius:50%; background:var(--clr-accent); display:flex; align-items:center; justify-content:center; font-size:16px; cursor:pointer;">👤</div>
+      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
     </div>
   </div>
 
@@ -242,14 +258,7 @@
   </div>
 </main>
 
-<style>
-  @media (max-width: 1024px) {
-    #sidebarToggle { display: flex !important; }
-    [dir="rtl"] .dashboard-main { margin-right: 0; }
-  }
-</style>
 
 <script src="main.js"></script>
-<button id="rtlToggle" class="nav-rtl-btn nav-rtl-fixed" title="Toggle RTL/LTR">🌐</button>
 </body>
 </html>
