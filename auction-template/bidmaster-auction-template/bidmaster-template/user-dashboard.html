@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dashboard — BidMaster</title>
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/rtl-toggle.js"></script>
+  <script>
+    function toggleSidebar(){
+      var s=document.querySelector('.sidebar'),o=document.getElementById('sOverlay');
+      var open=s.classList.toggle('open');
+      if(o)o.style.display=open?'block':'none';
+    }
+    function closeSidebar(){
+      var s=document.querySelector('.sidebar'),o=document.getElementById('sOverlay');
+      if(s)s.classList.remove('open');
+      if(o)o.style.display='none';
+    }
+  </script>
+</head>
+<body>
+
+<div id="sOverlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px)"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🔨</div>BidMaster</a>
+    <ul class="nav-links">
+      <li class="nav-item-dropdown">
+        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="index.html" class="nav-dd-item"><div class="nav-dd-icon blue">🏛️</div><div class="nav-dd-text"><strong>Home — Classic</strong><span>Hero, featured auctions</span></div></a>
+          <div class="nav-dd-divider"></div>
+          <a href="index-v2.html" class="nav-dd-item"><div class="nav-dd-icon amber">⚡</div><div class="nav-dd-text"><strong>Home — Modern</strong><span>Live grid &amp; leaderboard</span></div></a>
+        </div>
+      </li>
+      <li><a href="portfolio.html">Auctions</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+    </ul>
+    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
+      <a href="admin-dashboard.html" class="btn btn-ghost btn-sm">Admin Panel</a>
+    </div>
+    <div class="nav-end">
+      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
+      <button class="hamburger" aria-label="Toggle menu" onclick="(function(btn){var nav=document.querySelector('.mobile-nav');if(!nav)return;var open=nav.classList.toggle('open');var s=btn.querySelectorAll('span');s[0].style.transform=open?'rotate(45deg) translate(5px,5px)':'';s[1].style.opacity=open?'0':'';s[2].style.transform=open?'rotate(-45deg) translate(5px,-5px)':''})(this)"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" onclick="if(event.target.tagName==='A'&&event.target.href)this.classList.remove('open')">
+  <details class="mobile-nav-group"><summary>Home <span>›</span></summary><div class="mobile-nav-sub"><a href="index.html">🏛️ Classic</a><a href="index-v2.html">⚡ Modern</a></div></details>
+  <a href="portfolio.html">Auctions</a><a href="pricing.html">Pricing</a><a href="admin-dashboard.html">Admin Panel</a>
+  <div class="mobile-nav-cta"><a href="login.html" class="btn btn-ghost btn-sm">Logout</a></div>
+</div>
+
+<div class="dashboard-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo"><div class="nav-logo-icon" style="background:var(--amber)">🔨</div>BidMaster</div>
+    <div class="sidebar-section-label">Main</div>
+    <nav class="sidebar-nav">
+      <a href="user-dashboard.html" class="active"><span>📊</span> My Dashboard</a>
+      <a href="portfolio.html"><span>🔨</span> Browse Auctions</a>
+      <a href="#"><span>💰</span> My Bids <span class="badge badge-ending" style="margin-left:auto;font-size:10px">12</span></a>
+      <a href="#"><span>🏆</span> Won Items</a>
+      <a href="#"><span>❤️</span> Watchlist</a>
+    </nav>
+    <div class="sidebar-section-label">Account</div>
+    <nav class="sidebar-nav">
+      <a href="#"><span>👤</span> Profile</a>
+      <a href="#"><span>🔔</span> Notifications</a>
+      <a href="#"><span>💳</span> Payments</a>
+      <a href="#"><span>⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="https://i.pravatar.cc/150?img=11" style="width:36px;height:36px;border-radius:50%" alt=""/>
+        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;color:var(--white)">Arjun Sharma</div><div style="font-size:11px;color:rgba(255,255,255,0.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">arjun@example.com</div></div>
+      </div>
+      <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%;margin-top:12px;color:rgba(255,255,255,0.5);justify-content:flex-start;border-color:rgba(255,255,255,0.1)">← Back to Site</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dashboard-main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <div><h4 style="margin-bottom:2px">My Dashboard</h4><p class="text-xs text-muted">Sunday, Mar 17, 2026</p></div>
+      </div>
+      <div class="topbar-right">
+        <a href="portfolio.html" class="btn btn-primary btn-sm">+ Place New Bid</a>
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:15px">👤</div>
+        <button id="rtlToggle" class="nav-rtl-btn">🌐</button>
+      </div>
+    </div>
+    <div class="dashboard-content">
+
+      <!-- WELCOME -->
+      <div style="background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:var(--radius-lg);padding:28px 32px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+        <div>
+          <h3 style="color:var(--white);margin-bottom:6px">Good Morning, Arjun! 👋</h3>
+          <p style="color:rgba(255,255,255,0.75)">You have <strong style="color:var(--amber-light)">3 active bids</strong> and 1 auction ending in 45 minutes.</p>
+        </div>
+        <a href="portfolio.html" class="btn btn-secondary">View Live Auctions</a>
+      </div>
+
+      <!-- STATS -->
+      <div class="grid-4" style="margin-bottom:24px">
+        <div class="stat-card"><div class="stat-val" style="color:var(--blue)">12</div><div class="stat-label">Total Bids Placed</div><div class="metric-up mt-8">↑ 3 this week</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:var(--green)">4</div><div class="stat-label">Auctions Won</div><div class="metric-up mt-8">↑ 1 this month</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:var(--amber)">3</div><div class="stat-label">Active Bids</div><div style="font-size:12px;color:var(--amber-dark);font-weight:600;margin-top:8px">⚡ 1 ending soon</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:var(--dark)">₹2.4L</div><div class="stat-label">Total Spent</div><div class="metric-up mt-8">Across 4 wins</div></div>
+      </div>
+
+      <!-- ACTIVE BIDS & WATCHLIST -->
+      <div class="grid-2" style="gap:24px;align-items:start">
+        <div>
+          <div class="tabs mb-16" data-tabs>
+            <button class="tab-btn active" data-tab="active">Active Bids (3)</button>
+            <button class="tab-btn" data-tab="won">Won (4)</button>
+            <button class="tab-btn" data-tab="lost">Lost (5)</button>
+          </div>
+          <div data-panel="active">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Item</th><th>Your Bid</th><th>Status</th><th>Time Left</th></tr></thead>
+                <tbody>
+                  <tr><td style="font-weight:600">Diamond Ring</td><td style="color:var(--blue);font-weight:600">₹1,15,000</td><td><span class="badge badge-live"><span class="live-dot"></span>Leading</span></td><td style="color:var(--amber-dark);font-weight:600">45m</td></tr>
+                  <tr><td style="font-weight:600">Vintage Watch</td><td style="color:var(--blue);font-weight:600">₹42,000</td><td><span class="badge badge-ending">Outbid</span></td><td>2h 14m</td></tr>
+                  <tr><td style="font-weight:600">Abstract Art</td><td style="color:var(--blue);font-weight:600">₹26,000</td><td><span class="badge badge-live"><span class="live-dot"></span>Leading</span></td><td>6h 30m</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div data-panel="won" style="display:none">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Item</th><th>Final Bid</th><th>Date</th></tr></thead>
+                <tbody>
+                  <tr><td>Air Jordan</td><td style="color:var(--green);font-weight:600">₹9,500</td><td>Mar 14</td></tr>
+                  <tr><td>Canvas Art</td><td style="color:var(--green);font-weight:600">₹28,500</td><td>Mar 10</td></tr>
+                  <tr><td>Camera</td><td style="color:var(--green);font-weight:600">₹32,000</td><td>Mar 5</td></tr>
+                  <tr><td>Collectible Set</td><td style="color:var(--green);font-weight:600">₹14,000</td><td>Feb 28</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div data-panel="lost" style="display:none">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Item</th><th>Winning Bid</th><th>Your Bid</th></tr></thead>
+                <tbody>
+                  <tr><td>Gold Necklace</td><td>₹85,000</td><td style="color:var(--muted)">₹78,000</td></tr>
+                  <tr><td>Rare Coin</td><td>₹22,000</td><td style="color:var(--muted)">₹20,500</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:16px">❤️ Watchlist</h4>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:12px;align-items:center;background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-md);padding:12px"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=100&q=80" style="width:52px;height:52px;border-radius:var(--radius-sm);object-fit:cover" alt=""/><div style="flex:1"><div style="font-size:14px;font-weight:600">Antique Watch</div><div style="color:var(--blue);font-weight:700;font-size:15px">₹45,000</div></div><span class="badge badge-live"><span class="live-dot"></span>Live</span></div>
+            <div style="display:flex;gap:12px;align-items:center;background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-md);padding:12px"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=100&q=80" style="width:52px;height:52px;border-radius:var(--radius-sm);object-fit:cover" alt=""/><div style="flex:1"><div style="font-size:14px;font-weight:600">Abstract Canvas</div><div style="color:var(--blue);font-weight:700;font-size:15px">₹28,500</div></div><span class="badge badge-ending">Ending</span></div>
+            <div style="display:flex;gap:12px;align-items:center;background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-md);padding:12px"><img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=100&q=80" style="width:52px;height:52px;border-radius:var(--radius-sm);object-fit:cover" alt=""/><div style="flex:1"><div style="font-size:14px;font-weight:600">Air Jordan</div><div style="color:var(--blue);font-weight:700;font-size:15px">₹8,000</div></div><span class="badge badge-blue">Starting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

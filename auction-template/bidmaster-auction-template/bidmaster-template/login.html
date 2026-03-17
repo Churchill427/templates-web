@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — BidMaster</title>
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/rtl-toggle.js"></script>
+  <style>
+    .auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--neutral);padding:calc(var(--nav-h) + 40px) 24px 40px}
+    .auth-box{background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-xl);padding:44px 40px;width:100%;max-width:440px;box-shadow:var(--shadow-lg)}
+    .social-login{display:flex;gap:12px;margin-bottom:24px}
+    .social-login .btn{flex:1;justify-content:center}
+    .auth-divider{display:flex;align-items:center;gap:16px;margin:20px 0}
+    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--neutral-2)}
+    @media(max-width:480px){.auth-box{padding:32px 24px}}
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🔨</div>BidMaster</a>
+    <ul class="nav-links">
+      <li class="nav-item-dropdown">
+        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="index.html" class="nav-dd-item"><div class="nav-dd-icon blue">🏛️</div><div class="nav-dd-text"><strong>Home — Classic</strong><span>Hero, featured auctions &amp; testimonials</span></div></a>
+          <div class="nav-dd-divider"></div>
+          <a href="index-v2.html" class="nav-dd-item"><div class="nav-dd-icon amber">⚡</div><div class="nav-dd-text"><strong>Home — Modern</strong><span>Live grid, leaderboard &amp; marquee</span></div></a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Auctions</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
+      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+    </div>
+    <div class="nav-end">
+      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
+      <button class="hamburger" aria-label="Toggle menu" onclick="(function(btn){var nav=document.querySelector('.mobile-nav');if(!nav)return;var open=nav.classList.toggle('open');var s=btn.querySelectorAll('span');s[0].style.transform=open?'rotate(45deg) translate(5px,5px)':'';s[1].style.opacity=open?'0':'';s[2].style.transform=open?'rotate(-45deg) translate(5px,-5px)':''})(this)"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" onclick="if(event.target.tagName==='A'&&event.target.href)this.classList.remove('open')">
+  <details class="mobile-nav-group"><summary>Home <span>›</span></summary><div class="mobile-nav-sub"><a href="index.html">🏛️ Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
+  <a href="about.html">About</a><a href="portfolio.html">Auctions</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  <div class="mobile-nav-cta"><a href="login.html" class="btn btn-ghost btn-sm">Login</a><a href="register.html" class="btn btn-primary btn-sm">Register</a></div>
+</div>
+
+<div class="auth-page">
+  <div class="auth-box">
+    <a href="index.html" style="display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--dark);margin-bottom:28px"><div class="nav-logo-icon">🔨</div>BidMaster</a>
+    <h2 style="margin-bottom:6px">Welcome Back</h2>
+    <p class="text-muted text-sm mb-32">Login to access your bids and auctions</p>
+    <div style="background:rgba(30,58,138,0.06);border:1px solid rgba(30,58,138,0.15);border-radius:var(--radius-md);padding:14px 16px;margin-bottom:24px">
+      <p style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Quick Access</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="user-dashboard.html" class="btn btn-outline btn-sm" style="flex:1;font-size:12px">📊 User Dashboard</a>
+        <a href="admin-dashboard.html" class="btn btn-outline btn-sm" style="flex:1;font-size:12px">👑 Admin Panel</a>
+      </div>
+    </div>
+    <div class="social-login">
+      <button class="btn btn-ghost btn-sm">🇬 Google</button>
+      <button class="btn btn-ghost btn-sm">f Facebook</button>
+    </div>
+    <div class="auth-divider"><span class="text-xs text-muted">or continue with email</span></div>
+    <form>
+      <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="arjun@example.com"/></div>
+      <div class="form-group"><label class="form-label" style="display:flex;justify-content:space-between">Password <a href="#" style="color:var(--blue);font-size:13px">Forgot?</a></label><input class="form-input" type="password" placeholder="••••••••"/></div>
+      <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;margin-bottom:24px"><input type="checkbox"/> Remember me</label>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Login to BidMaster</button>
+    </form>
+    <p class="text-center text-sm mt-24" style="color:var(--muted)">Don't have an account? <a href="register.html" style="color:var(--blue);font-weight:600">Register Free →</a></p>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white)"><div class="nav-logo-icon">🔨</div>BidMaster</a><p>The premier platform for online auctions. Discover unique items and bid live.</p><div class="social-links"><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">f</a><a href="#" class="social-btn">📷</a><a href="#" class="social-btn">in</a></div></div>
+      <div class="footer-col"><h5>Quick Links</h5><ul><li><a href="index.html">Home Classic</a></li><li><a href="index-v2.html">Home Modern</a></li><li><a href="about.html">About Us</a></li><li><a href="portfolio.html">Browse Auctions</a></li></ul></div>
+      <div class="footer-col"><h5>Support</h5><ul><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="coming-soon.html">Coming Soon</a></li></ul></div>
+      <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">Dashboard</a></li><li><a href="admin-dashboard.html">Admin</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 BidMaster. All rights reserved.</span><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div></div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

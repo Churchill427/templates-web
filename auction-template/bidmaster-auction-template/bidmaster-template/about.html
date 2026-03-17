@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — BidMaster</title>
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/rtl-toggle.js"></script>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🔨</div>BidMaster</a>
+    <ul class="nav-links">
+      <li class="nav-item-dropdown">
+        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="index.html" class="nav-dd-item"><div class="nav-dd-icon blue">🏛️</div><div class="nav-dd-text"><strong>Home — Classic</strong><span>Hero, featured auctions &amp; testimonials</span></div></a>
+          <div class="nav-dd-divider"></div>
+          <a href="index-v2.html" class="nav-dd-item"><div class="nav-dd-icon amber">⚡</div><div class="nav-dd-text"><strong>Home — Modern</strong><span>Live grid, leaderboard &amp; marquee</span></div></a>
+        </div>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Auctions</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
+      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+    </div>
+    <div class="nav-end">
+      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
+      <button class="hamburger" aria-label="Toggle menu" onclick="(function(btn){var nav=document.querySelector('.mobile-nav');if(!nav)return;var open=nav.classList.toggle('open');var s=btn.querySelectorAll('span');s[0].style.transform=open?'rotate(45deg) translate(5px,5px)':'';s[1].style.opacity=open?'0':'';s[2].style.transform=open?'rotate(-45deg) translate(5px,-5px)':''})(this)"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav" onclick="if(event.target.tagName==='A'&&event.target.href)this.classList.remove('open')">
+  <details class="mobile-nav-group"><summary>Home <span>›</span></summary><div class="mobile-nav-sub"><a href="index.html">🏛️ Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
+  <a href="about.html">About</a><a href="portfolio.html">Auctions</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  <div class="mobile-nav-cta"><a href="login.html" class="btn btn-ghost btn-sm">Login</a><a href="register.html" class="btn btn-primary btn-sm">Register</a></div>
+</div>
+
+<section style="padding-top:var(--nav-h);background:linear-gradient(135deg,var(--blue),var(--blue-light));padding-bottom:80px">
+  <div class="container" style="padding-top:60px;text-align:center">
+    <span class="section-label" style="background:rgba(255,255,255,0.15);color:var(--amber-light);border-color:rgba(255,255,255,0.2)">Our Story</span>
+    <h1 style="color:var(--white);margin:16px auto 20px;max-width:700px">The Most Trusted Online Auction Platform in India</h1>
+    <p style="color:rgba(255,255,255,0.8);max-width:540px;margin:0 auto;font-size:18px">Built by auction enthusiasts for auction enthusiasts. We connect buyers and sellers across the country.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="grid-4" style="margin-bottom:64px">
+      <div class="stat-card"><div class="stat-val" style="color:var(--blue)"><span data-count="50000" data-suffix="+">0+</span></div><div class="stat-label">Registered Users</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:var(--amber)"><span data-count="2500" data-suffix="+">0+</span></div><div class="stat-label">Active Auctions</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:var(--green)">₹50Cr+</div><div class="stat-label">Items Sold</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:var(--blue)"><span data-count="98" data-suffix="%">0%</span></div><div class="stat-label">Satisfaction Rate</div></div>
+    </div>
+    <div class="grid-2" style="gap:64px;align-items:center;margin-bottom:80px">
+      <div>
+        <span class="section-label">Our Mission</span>
+        <h2 style="margin:16px 0 20px">Democratizing Access to Unique &amp; Rare Items</h2>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:20px">BidMaster was founded in 2020 with a simple belief: everyone deserves access to extraordinary items at fair prices. We built a transparent, secure platform where buyers and sellers connect in real-time.</p>
+        <p style="color:var(--muted);line-height:1.8">Today, we're India's fastest-growing online auction platform with over 50,000 registered users and 2,500+ active auctions at any given time.</p>
+      </div>
+      <div><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=600&q=80" alt="Team" style="border-radius:var(--radius-xl);width:100%;height:400px;object-fit:cover;box-shadow:var(--shadow-xl)"/></div>
+    </div>
+    <div class="section-header">
+      <span class="section-label">Meet the Team</span>
+      <h2>The People Behind BidMaster</h2>
+    </div>
+    <div class="grid-4">
+      <div class="card" style="text-align:center"><img src="https://i.pravatar.cc/150?img=68" class="avatar-lg" alt="CEO" style="margin:0 auto 16px;width:80px;height:80px"/><h4>Vikram Patel</h4><div style="font-size:13px;color:var(--blue);font-weight:600;margin:4px 0 8px">CEO &amp; Co-Founder</div><p class="text-sm text-muted">10+ years in e-commerce. Built BidMaster from a side project to India's top auction platform.</p></div>
+      <div class="card" style="text-align:center"><img src="https://i.pravatar.cc/150?img=47" class="avatar-lg" alt="CTO" style="margin:0 auto 16px;width:80px;height:80px"/><h4>Sneha Kapoor</h4><div style="font-size:13px;color:var(--blue);font-weight:600;margin:4px 0 8px">CTO &amp; Co-Founder</div><p class="text-sm text-muted">Ex-Google engineer. Architected BidMaster's real-time bidding engine from the ground up.</p></div>
+      <div class="card" style="text-align:center"><img src="https://i.pravatar.cc/150?img=60" class="avatar-lg" alt="Design" style="margin:0 auto 16px;width:80px;height:80px"/><h4>Arjun Sharma</h4><div style="font-size:13px;color:var(--blue);font-weight:600;margin:4px 0 8px">Head of Design</div><p class="text-sm text-muted">Award-winning designer. Creates seamless bidding experiences loved by millions.</p></div>
+      <div class="card" style="text-align:center"><img src="https://i.pravatar.cc/150?img=25" class="avatar-lg" alt="Ops" style="margin:0 auto 16px;width:80px;height:80px"/><h4>Priya Nair</h4><div style="font-size:13px;color:var(--blue);font-weight:600;margin:4px 0 8px">Head of Operations</div><p class="text-sm text-muted">Ensures every auction runs smoothly. Customer satisfaction is her top priority.</p></div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white)"><div class="nav-logo-icon">🔨</div>BidMaster</a><p>The premier platform for online auctions. Discover unique items and bid live.</p><div class="social-links"><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">f</a><a href="#" class="social-btn">📷</a><a href="#" class="social-btn">in</a></div></div>
+      <div class="footer-col"><h5>Quick Links</h5><ul><li><a href="index.html">Home Classic</a></li><li><a href="index-v2.html">Home Modern</a></li><li><a href="about.html">About Us</a></li><li><a href="portfolio.html">Browse Auctions</a></li></ul></div>
+      <div class="footer-col"><h5>Support</h5><ul><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="coming-soon.html">Coming Soon</a></li></ul></div>
+      <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">Dashboard</a></li><li><a href="admin-dashboard.html">Admin</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 BidMaster. All rights reserved.</span><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div></div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
