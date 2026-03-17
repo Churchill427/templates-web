@@ -8,36 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
       navbar.classList.toggle('scrolled', window.scrollY > 20);
     });
   }
-
-  /* ── MOBILE NAV TOGGLE ── */
-  var hamburger = document.querySelector('.hamburger');
-  var mobileNav = document.querySelector('.mobile-nav');
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = mobileNav.classList.toggle('open');
-      var spans = hamburger.querySelectorAll('span');
-      if (open) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
-      } else {
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '';
-        spans[2].style.transform = '';
-      }
-    });
-    document.addEventListener('click', function (e) {
-      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-        mobileNav.classList.remove('open');
-        var spans = hamburger.querySelectorAll('span');
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '';
-        spans[2].style.transform = '';
-      }
-    });
-  }
-
   /* ── HOME DROPDOWN (click for mobile) ── */
   document.querySelectorAll('.nav-item-dropdown').forEach(function (item) {
     var trigger = item.querySelector(':scope > a');
@@ -189,44 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(t);
     setTimeout(function () { t.remove(); }, 3000);
   };
-
-  /* ── PAGE NAVIGATOR ── */
-  (function () {
-    var PAGES = [
-      ['index.html', 'Home Classic'],
-      ['index-v2.html', 'Home V2'],
-      ['about.html', 'About'],
-      ['pricing.html', 'Pricing'],
-      ['portfolio.html', 'Auctions'],
-      ['blog.html', 'Blog'],
-      ['contact.html', 'Contact'],
-      ['login.html', 'Login'],
-      ['register.html', 'Register'],
-      ['user-dashboard.html', 'Dashboard'],
-      ['admin-dashboard.html', 'Admin'],
-      ['coming-soon.html', 'Coming Soon'],
-      ['404.html', '404']
-    ];
-    var cur = (window.location.pathname.split('/').pop() || 'index.html');
-    if (!cur) cur = 'index.html';
-    var idx = 0;
-    for (var i = 0; i < PAGES.length; i++) {
-      if (PAGES[i][0] === cur) { idx = i; break; }
-    }
-    var prev = idx > 0 ? PAGES[idx - 1] : null;
-    var next = idx < PAGES.length - 1 ? PAGES[idx + 1] : null;
-    var label = PAGES[idx][1];
-    var aL = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="10 4 6 8 10 12"/></svg>';
-    var aR = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 4 10 8 6 12"/></svg>';
-    var dots = PAGES.map(function (p, i) {
-      return '<button class="pnav-dot' + (i === idx ? ' active' : '') + '" onclick="location.href=\'' + p[0] + '\'" title="' + p[1] + '"></button>';
-    }).join('');
-    var prevBtn = prev ? '<a href="' + prev[0] + '" class="pnav-btn">' + aL + '<span class="pnav-lbl">' + prev[1] + '</span></a>' : '<span class="pnav-btn disabled">' + aL + '</span>';
-    var nextBtn = next ? '<a href="' + next[0] + '" class="pnav-btn"><span class="pnav-lbl">' + next[1] + '</span>' + aR + '</a>' : '<span class="pnav-btn disabled">' + aR + '</span>';
-    var nav = '<div class="page-nav">' + prevBtn + '<div class="pnav-divider"></div><div class="pnav-center"><div class="pnav-dots">' + dots + '</div><span class="pnav-label">' + label + '</span></div><div class="pnav-divider"></div>' + nextBtn + '</div>';
-    document.body.insertAdjacentHTML('beforeend', nav);
-  })();
-
   /* ── ACTIVE NAV LINK ── */
   var cur2 = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(function (a) {
