@@ -9,6 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
   <script src="js/rtl-toggle.js"></script>
+  <script>
+    function bmToggleNav(btn) {
+      var nav = document.querySelector('.mobile-nav');
+      if (!nav) return;
+      var open = nav.classList.toggle('open');
+      var s = btn.querySelectorAll('span');
+      s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
+      s[1].style.opacity   = open ? '0' : '';
+      s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+    }
+  </script>
 </head>
 <body>
 <nav class="navbar" id="navbar">
@@ -35,7 +46,7 @@
     </div>
     <div class="nav-end">
       <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
-      <button class="hamburger" aria-label="Toggle menu" onclick="(function(btn){var nav=document.querySelector('.mobile-nav');if(!nav)return;var open=nav.classList.toggle('open');var s=btn.querySelectorAll('span');s[0].style.transform=open?'rotate(45deg) translate(5px,5px)':'';s[1].style.opacity=open?'0':'';s[2].style.transform=open?'rotate(-45deg) translate(5px,-5px)':''})(this)"><span></span><span></span><span></span></button>
+      <button class="hamburger" aria-label="Toggle menu" onclick="bmToggleNav(this)"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
