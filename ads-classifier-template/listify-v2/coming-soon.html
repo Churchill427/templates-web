@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Coming Soon — Listify — Listify</title>
+<meta name="description" content="Listify — Buy, sell, and discover local deals across India."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/favicon/favicon.ico"/>
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<div style="min-height:100vh;background:linear-gradient(150deg,var(--dark) 0%,#0A2255 50%,#071A40 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+40px) 24px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:rgba(11,61,145,.5);filter:blur(80px)"></div>
+  <div style="position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,107,53,.15);filter:blur(60px)"></div>
+  <div style="position:relative;z-index:1;max-width:640px">
+    <div style="font-size:3.5rem;margin-bottom:20px;animation:floatA 3s ease-in-out infinite">🚀</div>
+    <span class="lbl" style="background:rgba(255,107,53,.15);color:var(--org-l);border-color:rgba(255,107,53,.3)">Coming Very Soon</span>
+    <h1 style="color:#fff;margin:20px 0 20px;font-size:clamp(2rem,5vw,3.5rem)">Something Big<br/>Is Being Listed</h1>
+    <p style="color:rgba(255,255,255,.65);font-size:18px;margin-bottom:52px;max-width:500px;margin-left:auto;margin-right:auto">Listify Mobile App — post, browse and buy on the go. Real-time alerts, one-tap calls, offline browsing. Be first in line.</p>
+    <div id="lf-cd" class="cd-wrap" style="margin-bottom:52px">
+      <div class="cd-u"><span class="cd-n" id="lf-d">30</span><div class="cd-l">Days</div></div>
+      <div style="font-family:var(--fd);font-size:2.8rem;color:rgba(255,255,255,.2);line-height:1.3">:</div>
+      <div class="cd-u"><span class="cd-n" id="lf-h">00</span><div class="cd-l">Hours</div></div>
+      <div style="font-family:var(--fd);font-size:2.8rem;color:rgba(255,255,255,.2);line-height:1.3">:</div>
+      <div class="cd-u"><span class="cd-n" id="lf-m">00</span><div class="cd-l">Mins</div></div>
+      <div style="font-family:var(--fd);font-size:2.8rem;color:rgba(255,255,255,.2);line-height:1.3">:</div>
+      <div class="cd-u"><span class="cd-n" id="lf-s">00</span><div class="cd-l">Secs</div></div>
+    </div>
+    <form style="display:flex;gap:10px;max-width:440px;margin:0 auto 32px;flex-wrap:wrap">
+      <input class="fi" type="email" placeholder="Your email for early access..." style="flex:1;min-width:200px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff"/>
+      <button type="submit" class="btn btn-org">Notify Me →</button>
+    </form>
+    <div class="soc-row" style="justify-content:center">
+      <a href="#" class="soc-btn">𝕏</a><a href="#" class="soc-btn">f</a><a href="#" class="soc-btn">📷</a><a href="#" class="soc-btn">in</a>
+    </div>
+  </div>
+</div>
+<script src="js/rtl-toggle.js"></script>
+</head>
+<body>
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m">📋</div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue">🏠</div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org">⚡</div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="post-ad.html">Post Ad</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">🌐</button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏠 Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="post-ad.html">Post Ad</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m">📋</div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn" title="Twitter">𝕏</a>
+        <a href="#" class="soc-btn" title="Facebook">f</a>
+        <a href="#" class="soc-btn" title="Instagram">📷</a>
+        <a href="#" class="soc-btn" title="LinkedIn">in</a>
+        <a href="#" class="soc-btn" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Browse</h5>
+      <ul>
+        <li><a href="portfolio.html">All Listings</a></li>
+        <li><a href="index.html">Home Classic</a></li>
+        <li><a href="index-v2.html">Home Modern</a></li>
+        <li><a href="post-ad.html">Post Free Ad</a></li>
+        <li><a href="ad-detail.html">Ad Detail</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="safety.html">Safety Tips</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Account</h5>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register Free</a></li>
+        <li><a href="user-dashboard.html">My Dashboard</a></li>
+        <li><a href="admin-dashboard.html">Admin Panel</a></li>
+        <li><a href="pricing.html">Upgrade Plan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+<script src="js/main.js"></script>
+</body></html>

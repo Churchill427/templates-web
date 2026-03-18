@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Home Modern — Live Listings Feed — Listify</title>
+<meta name="description" content="Listify — Buy, sell, and discover local deals across India."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/favicon/favicon.ico"/>
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+</head>
+<body>
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m">📋</div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue">🏠</div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org">⚡</div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="post-ad.html">Post Ad</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">🌐</button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏠 Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="post-ad.html">Post Ad</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+
+<style>
+.hv2{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:var(--nh)}
+.hv2-left{
+  background:url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80") center/cover no-repeat;
+  padding:80px 52px 80px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden
+}
+/* dark overlay over bg image */
+.hv2-left::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,12,30,.85) 0%,rgba(7,20,55,.78) 60%,rgba(5,12,30,.88) 100%);z-index:0}
+/* ambient orb */
+.hv2-left::after{content:'';position:absolute;bottom:-80px;right:-40px;width:320px;height:320px;border-radius:50%;background:rgba(255,107,53,.16);filter:blur(55px);z-index:1;pointer-events:none}
+/* content above canvas */
+.hv2-left>*:not(canvas){position:relative;z-index:3}
+#v2-nn{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.hv2-right{background:var(--n1);display:flex;flex-direction:column;overflow-y:auto;max-height:calc(100vh - var(--nh))}
+.hv2-right-top{padding:24px 24px 12px;background:var(--n0);border-bottom:1.5px solid var(--n2)}
+.live-feed{flex:1;padding:16px 20px;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
+.lf-card{background:#fff;border:1.5px solid var(--n2);border-radius:var(--r2);padding:14px;display:flex;gap:12px;align-items:center;transition:all var(--tr);cursor:pointer}
+.lf-card:hover{border-color:var(--blue);box-shadow:var(--s2);transform:translateX(4px)}
+.lf-card img{width:60px;height:60px;border-radius:var(--r1);object-fit:cover;flex-shrink:0}
+.lf-price{font-family:var(--fd);font-weight:800;font-size:.95rem;color:var(--blue)}
+.lf-title{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.lf-meta{font-size:11px;color:var(--muted)}
+.new-badge{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:var(--grn-d);background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.2);border-radius:100px;padding:2px 7px;width:fit-content;margin-bottom:5px}
+.city-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.cp{padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--n3);color:var(--dark3);transition:all var(--tr);background:#fff}
+.cp.act,.cp:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+@media(max-width:900px){.hv2{grid-template-columns:1fr;min-height:auto}.hv2-left{padding:60px 24px}.hv2-right{max-height:none}.hv2-right-top{padding:18px}.live-feed{max-height:420px}
+.hv2-left > *:not(canvas){position:relative;z-index:2}
+</style>
+<!-- V2 Neural Network -->
+<script>
+(function(){
+  function initV2NN(){
+    var C=document.getElementById('v2-nn');
+    if(!C)return;
+    var X=C.getContext('2d'),W,H,nodes=[],RAF2;
+    var PALETTES=[[255,107,53],[11,61,145],[0,200,150],[255,190,60]];
+    function Node(){
+      this.x=Math.random()*W;this.y=Math.random()*H;
+      this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;
+      this.r=Math.random()*1.8+.6;
+      this.ph=Math.random()*Math.PI*2;this.ps=.016+Math.random()*.02;
+      this.rgb=PALETTES[Math.floor(Math.random()*PALETTES.length)];
+    }
+    function resize(){W=C.width=C.offsetWidth;H=C.height=C.offsetHeight;}
+    function frame(){
+      RAF2=requestAnimationFrame(frame);
+      X.clearRect(0,0,W,H);
+      for(var i=0;i<nodes.length;i++){
+        var n=nodes[i];n.x+=n.vx;n.y+=n.vy;n.ph+=n.ps;
+        if(n.x<-8)n.x=W+8;if(n.x>W+8)n.x=-8;
+        if(n.y<-8)n.y=H+8;if(n.y>H+8)n.y=-8;
+      }
+      // connections
+      for(var i=0;i<nodes.length;i++){
+        for(var j=i+1;j<nodes.length;j++){
+          var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
+          if(d<120){
+            var t=1-d/120;
+            var ai=0.5+0.5*Math.sin(nodes[i].ph),aj=0.5+0.5*Math.sin(nodes[j].ph);
+            var la=t*t*Math.min(ai,aj)*0.5;
+            var r=(nodes[i].rgb[0]+nodes[j].rgb[0])>>1;
+            var g=(nodes[i].rgb[1]+nodes[j].rgb[1])>>1;
+            var b=(nodes[i].rgb[2]+nodes[j].rgb[2])>>1;
+            X.beginPath();X.moveTo(nodes[i].x,nodes[i].y);X.lineTo(nodes[j].x,nodes[j].y);
+            X.strokeStyle='rgba('+r+','+g+','+b+','+la+')';X.lineWidth=t*1.1;X.stroke();
+          }
+        }
+      }
+      // nodes
+      for(var i=0;i<nodes.length;i++){
+        var n=nodes[i],a=0.5+0.5*Math.sin(n.ph);
+        var r=n.rgb[0],g=n.rgb[1],b=n.rgb[2];
+        var grd=X.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4.5);
+        grd.addColorStop(0,'rgba('+r+','+g+','+b+','+(a*.45)+')');
+        grd.addColorStop(1,'rgba('+r+','+g+','+b+',0)');
+        X.beginPath();X.arc(n.x,n.y,n.r*4.5,0,Math.PI*2);X.fillStyle=grd;X.fill();
+        X.beginPath();X.arc(n.x,n.y,n.r,0,Math.PI*2);
+        X.fillStyle='rgba('+r+','+g+','+b+','+a+')';X.fill();
+      }
+    }
+    resize();
+    nodes=[];for(var i=0;i<65;i++)nodes.push(new Node());
+    frame();
+    window.addEventListener('resize',resize,{passive:true});
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initV2NN);}
+  else{initV2NN();}
+})();
+</script>
+<div class="hv2">
+  <div class="hv2-left"><canvas id="NNC2" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+    <canvas id="v2-nn"></canvas>
+    <span class="lbl" style="background:rgba(255,107,53,.15);color:var(--org-l);border-color:rgba(255,107,53,.3);width:fit-content;margin-bottom:24px">⚡ Modern Classifieds</span>
+    <h1 style="color:#fff;position:relative;z-index:1;margin-bottom:22px">Your Local<br/><span style="color:var(--org-l)">Marketplace,</span><br/>Reimagined.</h1>
+    <p style="color:rgba(255,255,255,.68);font-size:17px;margin-bottom:36px;position:relative;z-index:1;max-width:440px">Real-time listings, AI-powered search, verified sellers. The smartest way to buy and sell in India.</p>
+    <div style="position:relative;z-index:1;max-width:420px">
+      <div class="fi" style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:var(--r2);padding:14px 18px;margin-bottom:12px">
+        <span style="font-size:18px">🔍</span>
+        <input type="text" placeholder="Search anything in your city..." style="flex:1;background:transparent;border:none;outline:none;font-size:15px;color:#fff;font-family:var(--fb)"/>
+      </div>
+      <div class="city-pills">
+        <div class="cp act">All Cities</div>
+        <div class="cp">Mumbai</div>
+        <div class="cp">Delhi</div>
+        <div class="cp">Bangalore</div>
+        <div class="cp">Chennai</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="post-ad.html" class="btn btn-org" style="flex:1;justify-content:center">+ Post Ad Free</a>
+        <a href="portfolio.html" class="btn btn-ghost" style="flex:1;justify-content:center;color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)">Browse All →</a>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px;position:relative;z-index:1">
+      <div style="text-align:center"><div style="font-family:var(--fd);font-size:1.5rem;font-weight:800;color:var(--org-l)"><span data-count="5000000" data-suffix="+">0+</span></div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">Listings</div></div>
+      <div style="text-align:center"><div style="font-family:var(--fd);font-size:1.5rem;font-weight:800;color:var(--grn-l)"><span data-count="2000000" data-suffix="+">0+</span></div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">Users</div></div>
+      <div style="text-align:center"><div style="font-family:var(--fd);font-size:1.5rem;font-weight:800;color:#fff">100%</div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:4px">Free</div></div>
+    </div>
+  </div>
+  <div class="hv2-right">
+    <div class="hv2-right-top">
+      <div class="fb mb16"><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Live Feed</div><div style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--grn-d)"><span class="pulse-dot"></span>247 new today</div></div>
+      <div style="max-width:100%"><div class="sbar"><input type="text" placeholder="Filter listings..."/><button class="sbtn">Filter</button></div></div>
+    </div>
+    <div class="live-feed">
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&q=80" alt=""/><div style="flex:1"><div class="new-badge"><span class="pulse-dot"></span>Just Posted</div><div class="lf-title">MacBook Pro M1 8GB 256GB</div><div class="lf-price">₹45,000</div><div class="lf-meta">📍 Bangalore · 💻 Electronics</div></div></div>
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=200&q=80" alt=""/><div style="flex:1"><div class="lf-title">Honda City 2022 Petrol</div><div class="lf-price">₹8,50,000</div><div class="lf-meta">📍 Mumbai · 🚗 Vehicles · 2h ago</div></div></div>
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200&q=80" alt=""/><div style="flex:1"><div class="lf-title">iPhone 14 Pro 256GB Purple</div><div class="lf-price">₹55,000</div><div class="lf-meta">📍 Chennai · 📱 Mobiles · 3h ago</div></div></div>
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=80" alt=""/><div style="flex:1"><div class="lf-title">L-Shape Sofa Grey 3+2 Seater</div><div class="lf-price">₹12,500</div><div class="lf-meta">📍 Delhi · 🛋️ Furniture · 4h ago</div></div></div>
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=200&q=80" alt=""/><div style="flex:1"><div class="lf-title">Royal Enfield Classic 350 2023</div><div class="lf-price">₹95,000</div><div class="lf-meta">📍 Pune · 🏍️ Bikes · 6h ago</div></div></div>
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1555636222-cae831e670b3?w=200&q=80" alt=""/><div style="flex:1"><div class="lf-title">2BHK Flat for Rent — Furnished</div><div class="lf-price">₹28,000/mo</div><div class="lf-meta">📍 Hyderabad · 🏠 Real Estate · 8h</div></div></div>
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=200&q=80" alt=""/><div style="flex:1"><div class="lf-title">Canon EOS R50 + Kit Lens</div><div class="lf-price">₹38,000</div><div class="lf-meta">📍 Kolkata · 📷 Electronics · 10h</div></div></div>
+      <div class="lf-card"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=200&q=80" alt=""/><div style="flex:1"><div class="lf-title">Samsung 55" 4K Smart TV 2022</div><div class="lf-price">₹18,000</div><div class="lf-meta">📍 Ahmedabad · 📺 Electronics · 1d</div></div></div>
+      <a href="portfolio.html" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">View All Listings →</a>
+    </div>
+  </div>
+</div>
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:28px;align-items:start">
+      <div>
+        <div class="fb mb24 reveal" style="flex-wrap:wrap;gap:14px">
+          <div><span class="lbl">Trending Now</span><h2 style="margin-top:8px">Most Viewed Today</h2></div>
+          <a href="portfolio.html" class="btn btn-outline btn-sm">See All →</a>
+        </div>
+        <div class="g3" style="gap:18px"><div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Laptop" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-feat">⭐ Featured</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">💻 Electronics</div><div class="ac-price">₹45,000</div>
+  <div class="ac-title">MacBook Pro 13" 2021 — M1, 8GB RAM, 256GB SSD</div>
+  <div class="ac-meta"><span>📍 Bangalore</span><span>🕐 2h ago</span><span>👁 248</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&q=80" alt="Car" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-new">🆕 Like New</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">🚗 Vehicles</div><div class="ac-price">₹8,50,000</div>
+  <div class="ac-title">Honda City 2022 — Petrol, 12,000 km, Single Owner</div>
+  <div class="ac-meta"><span>📍 Mumbai</span><span>🕐 5h ago</span><span>👁 589</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Sofa" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-urg">🔥 Urgent Sale</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">🛋️ Furniture</div><div class="ac-price">₹12,500</div>
+  <div class="ac-title">L-Shape Sofa Set — Grey, 3+2 Seater, Excellent Condition</div>
+  <div class="ac-meta"><span>📍 Delhi</span><span>🕐 1d ago</span><span>👁 134</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Phone" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-blue">📦 Exchange OK</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">📱 Mobiles</div><div class="ac-price">₹55,000</div>
+  <div class="ac-title">iPhone 14 Pro 256GB — Deep Purple, Box Pack, Warranty</div>
+  <div class="ac-meta"><span>📍 Chennai</span><span>🕐 3h ago</span><span>👁 412</span></div></div>
+</div>
+<div cla</div>
+      </div>
+      <div>
+        <div class="card" style="position:sticky;top:calc(var(--nh)+12px)">
+          <h4 style="margin-bottom:18px">📊 Top Categories</h4>
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div><div class="fb mb8" style="font-size:13px"><span>🚗 Vehicles</span><span style="color:var(--blue);font-weight:700">1.2L</span></div><div class="prog"><div class="prog-f" style="width:82%"></div></div></div>
+            <div><div class="fb mb8" style="font-size:13px"><span>📱 Mobiles</span><span style="color:var(--blue);font-weight:700">98K</span></div><div class="prog"><div class="prog-f" style="width:65%"></div></div></div>
+            <div><div class="fb mb8" style="font-size:13px"><span>💻 Electronics</span><span style="color:var(--blue);font-weight:700">76K</span></div><div class="prog"><div class="prog-f" style="width:50%"></div></div></div>
+            <div><div class="fb mb8" style="font-size:13px"><span>🏠 Real Estate</span><span style="color:var(--blue);font-weight:700">45K</span></div><div class="prog"><div class="prog-f" style="width:30%"></div></div></div>
+            <div><div class="fb mb8" style="font-size:13px"><span>🛋️ Furniture</span><span style="color:var(--blue);font-weight:700">32K</span></div><div class="prog"><div class="prog-f" style="width:21%"></div></div></div>
+          </div>
+          <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--n2)">
+            <div style="background:linear-gradient(135deg,var(--blue),var(--blue-l));border-radius:var(--r2);padding:22px;text-align:center">
+              <div style="font-size:2rem;margin-bottom:10px">🎯</div>
+              <h4 style="color:#fff;margin-bottom:7px">Post Your Ad Free</h4>
+              <p style="color:rgba(255,255,255,.7);font-size:12px;margin-bottom:14px">Reach 20 lakh+ buyers across India</p>
+              <a href="post-ad.html" class="btn btn-org btn-sm" style="width:100%;justify-content:center">Post Now →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m">📋</div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn" title="Twitter">𝕏</a>
+        <a href="#" class="soc-btn" title="Facebook">f</a>
+        <a href="#" class="soc-btn" title="Instagram">📷</a>
+        <a href="#" class="soc-btn" title="LinkedIn">in</a>
+        <a href="#" class="soc-btn" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Browse</h5>
+      <ul>
+        <li><a href="portfolio.html">All Listings</a></li>
+        <li><a href="index.html">Home Classic</a></li>
+        <li><a href="index-v2.html">Home Modern</a></li>
+        <li><a href="post-ad.html">Post Free Ad</a></li>
+        <li><a href="ad-detail.html">Ad Detail</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="safety.html">Safety Tips</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Account</h5>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register Free</a></li>
+        <li><a href="user-dashboard.html">My Dashboard</a></li>
+        <li><a href="admin-dashboard.html">Admin Panel</a></li>
+        <li><a href="pricing.html">Upgrade Plan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+<script src="js/main.js"></script>
+<script>(function(){var C=document.getElementById("NNC2");if(!C)return;var X=C.getContext("2d"),W,H,nodes=[],P=[[255,107,53],[11,61,145],[0,200,150]],DIST=100,CNT=60;function N(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.r=Math.random()*1.8+.5;this.ph=Math.random()*Math.PI*2;this.ps=.016+Math.random()*.02;this.rgb=P[Math.floor(Math.random()*P.length)]}function init(){W=C.width=C.offsetWidth;H=C.height=C.offsetHeight;nodes=[];for(var i=0;i<CNT;i++)nodes.push(new N())}function frame(){requestAnimationFrame(frame);X.clearRect(0,0,W,H);for(var i=0;i<nodes.length;i++){var n=nodes[i];n.x+=n.vx;n.y+=n.vy;n.ph+=n.ps;if(n.x<-8)n.x=W+8;if(n.x>W+8)n.x=-8;if(n.y<-8)n.y=H+8;if(n.y>H+8)n.y=-8}for(var i=0;i<nodes.length;i++)for(var j=i+1;j<nodes.length;j++){var dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<DIST){var t=1-d/DIST,la=t*t*.4,r=(nodes[i].rgb[0]+nodes[j].rgb[0])>>1,g=(nodes[i].rgb[1]+nodes[j].rgb[1])>>1,b=(nodes[i].rgb[2]+nodes[j].rgb[2])>>1;X.beginPath();X.moveTo(nodes[i].x,nodes[i].y);X.lineTo(nodes[j].x,nodes[j].y);X.strokeStyle="rgba("+r+","+g+","+b+","+la+")";X.lineWidth=t;X.stroke()}for(var i=0;i<nodes.length;i++){var n=nodes[i],a=.4+.5*Math.sin(n.ph),r=n.rgb[0],g=n.rgb[1],b=n.rgb[2];X.beginPath();X.arc(n.x,n.y,n.r,0,Math.PI*2);X.fillStyle="rgba("+r+","+g+","+b+","+a+")";X.fill()}window.addEventListener("resize",init,{passive:true});init();frame()})();</script>
+</body></html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Post Free Ad — Listify</title>
+<meta name="description" content="Listify — Buy, sell, and discover local deals across India."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/favicon/favicon.ico"/>
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+.page-banner{padding-top:var(--nh);position:relative;overflow:hidden;padding-bottom:0}
+.page-banner-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;transition:transform 8s ease}
+.page-banner:hover .page-banner-bg{transform:scale(1.04)}
+.page-banner-overlay{position:absolute;inset:0;z-index:1}
+.page-banner-grain{position:absolute;inset:0;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.35;pointer-events:none}
+.page-banner-content{position:relative;z-index:3;padding:60px 0 52px;text-align:center}
+.page-banner-content .lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:100px;padding:5px 15px;margin-bottom:16px}
+.page-banner-content h1{font-family:var(--fd);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.15;margin-bottom:14px;color:#fff}
+.page-banner-content p{font-size:17px;line-height:1.7;max-width:520px;margin:0 auto;color:rgba(255,255,255,.75)}
+.page-banner-bottom{position:relative;z-index:3;background:#fff;border-radius:16px 16px 0 0;margin-top:-18px;height:20px}
+</style>
+
+<section class="page-banner">
+  <div class="page-banner-bg" style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=80')"></div>
+  <div class="page-banner-overlay" style="background:rgba(7,15,43,.70)"></div>
+  <div class="page-banner-grain"></div>
+  <div class="container page-banner-content">
+    <span class="lbl" style="background:rgba(255,107,53,.18);color:#FF8C5E;border-color:rgba(255,107,53,.35)">Sell Fast</span>
+    <h1>Post Your Ad in 60 Seconds</h1>
+    <p>Free forever. No commission. Goes live instantly.</p>
+  </div>
+  <div class="page-banner-bottom"></div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="pa-layout">
+      <div>
+        <form>
+          <div class="card mb16">
+            <h4 style="margin-bottom:18px">📋 Basic Details</h4>
+            <div class="fg"><label class="fl">Category *</label><select class="fi"><option value="">Choose a category...</option><option>🚗 Vehicles</option><option>📱 Mobiles &amp; Tablets</option><option>💻 Electronics &amp; Appliances</option><option>🏠 Real Estate</option><option>🛋️ Furniture &amp; Decor</option><option>💼 Jobs</option><option>🔧 Services</option><option>📚 Books &amp; Education</option></select></div>
+            <div class="fg"><label class="fl">Ad Title * <span style="color:var(--muted);font-weight:400;font-size:12px">(Be specific — e.g. "iPhone 14 Pro 256GB Deep Purple")</span></label><input class="fi" type="text" placeholder="Write a clear, specific title..."/></div>
+            <div class="fg"><label class="fl">Description *</label><textarea class="fi" style="min-height:160px" placeholder="Describe your item honestly — condition, age, features, reason for selling. The more detail, the faster you sell!"></textarea></div>
+            <div class="g2" style="gap:16px">
+              <div class="fg"><label class="fl">Price (₹) *</label><input class="fi" type="number" placeholder="e.g. 45000"/></div>
+              <div class="fg"><label class="fl">Negotiable?</label><select class="fi"><option>Yes, Negotiable</option><option>Fixed Price — No Negotiation</option><option>Exchange Considered</option></select></div>
+            </div>
+          </div>
+          <div class="card mb16">
+            <h4 style="margin-bottom:18px">📍 Location</h4>
+            <div class="g2" style="gap:16px">
+              <div class="fg"><label class="fl">State *</label><select class="fi"><option>Karnataka</option><option>Maharashtra</option><option>Delhi NCR</option><option>Tamil Nadu</option><option>Telangana</option><option>Rajasthan</option></select></div>
+              <div class="fg"><label class="fl">City *</label><input class="fi" type="text" placeholder="e.g. Bangalore"/></div>
+            </div>
+            <div class="fg"><label class="fl">Locality / Area</label><input class="fi" type="text" placeholder="e.g. Koramangala 5th Block"/></div>
+          </div>
+          <div class="card mb16">
+            <h4 style="margin-bottom:18px">📸 Photos <span style="color:var(--muted);font-size:13px;font-weight:400">(First photo is the cover — add up to 20)</span></h4>
+            <div style="border:2px dashed var(--n3);border-radius:var(--r2);padding:48px;text-align:center;cursor:pointer;transition:all var(--tr)" onmouseover="this.style.borderColor='var(--blue)';this.style.background='rgba(11,61,145,.03)'" onmouseout="this.style.borderColor='var(--n3)';this.style.background=''">
+              <div style="font-size:3rem;margin-bottom:12px">📷</div>
+              <div style="font-weight:700;color:var(--dark);margin-bottom:6px;font-size:16px">Drag &amp; drop your photos here</div>
+              <div style="font-size:14px;color:var(--muted)">or <span style="color:var(--blue);font-weight:600;cursor:pointer;text-decoration:underline">click to browse</span> — JPG, PNG up to 10MB each</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:8px">💡 Tip: Good photos get 3x more responses!</div>
+            </div>
+          </div>
+          <div class="card mb24">
+            <h4 style="margin-bottom:18px">📞 Contact Details</h4>
+            <div class="fg"><label class="fl">Phone Number *</label><input class="fi" type="tel" placeholder="+91 98765 43210"/></div>
+            <div class="fg"><label class="fl">Show phone publicly?</label><select class="fi"><option>Yes — show number on listing</option><option>No — chat only</option></select></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;font-size:17px">🚀 Publish Ad Free →</button>
+          <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:12px">Your ad will be live within 60 seconds · No commission ever</p>
+        </form>
+      </div>
+      <div>
+        <div class="card" style="position:sticky;top:calc(var(--nh)+16px)">
+          <h4 style="margin-bottom:16px">💡 Tips for a Great Ad</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:14px">
+            <div class="flex g10"><span style="color:var(--grn);font-weight:700;font-size:1rem">✓</span><span>Write a specific, detailed title</span></div>
+            <div class="flex g10"><span style="color:var(--grn);font-weight:700;font-size:1rem">✓</span><span>Add at least 5 high quality photos</span></div>
+            <div class="flex g10"><span style="color:var(--grn);font-weight:700;font-size:1rem">✓</span><span>Be honest about condition/defects</span></div>
+            <div class="flex g10"><span style="color:var(--grn);font-weight:700;font-size:1rem">✓</span><span>Set a competitive market price</span></div>
+            <div class="flex g10"><span style="color:var(--grn);font-weight:700;font-size:1rem">✓</span><span>Respond to buyers within 1 hour</span></div>
+            <div class="flex g10"><span style="color:var(--grn);font-weight:700;font-size:1rem">✓</span><span>Include your neighborhood name</span></div>
+          </div>
+          <div style="background:linear-gradient(135deg,var(--blue),var(--blue-l));border-radius:var(--r2);padding:22px;text-align:center;margin-top:22px">
+            <div style="font-size:2rem;margin-bottom:10px">⭐</div>
+            <h4 style="color:#fff;margin-bottom:7px">Boost with Featured Listing</h4>
+            <p style="color:rgba(255,255,255,.72);font-size:12px;margin-bottom:14px">Get 5x more views with top placement in search results</p>
+            <a href="pricing.html" class="btn btn-org btn-sm" style="width:100%;justify-content:center">View Plans →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="js/rtl-toggle.js"></script>
+</head>
+<body>
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m">📋</div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue">🏠</div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org">⚡</div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="post-ad.html">Post Ad</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">🌐</button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏠 Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="post-ad.html">Post Ad</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+<style>.pa-layout{display:grid;grid-template-columns:2fr 1fr;gap:28px;align-items:start}@media(max-width:900px){.pa-layout{grid-template-columns:1fr}</style>
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m">📋</div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn" title="Twitter">𝕏</a>
+        <a href="#" class="soc-btn" title="Facebook">f</a>
+        <a href="#" class="soc-btn" title="Instagram">📷</a>
+        <a href="#" class="soc-btn" title="LinkedIn">in</a>
+        <a href="#" class="soc-btn" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Browse</h5>
+      <ul>
+        <li><a href="portfolio.html">All Listings</a></li>
+        <li><a href="index.html">Home Classic</a></li>
+        <li><a href="index-v2.html">Home Modern</a></li>
+        <li><a href="post-ad.html">Post Free Ad</a></li>
+        <li><a href="ad-detail.html">Ad Detail</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="safety.html">Safety Tips</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Account</h5>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register Free</a></li>
+        <li><a href="user-dashboard.html">My Dashboard</a></li>
+        <li><a href="admin-dashboard.html">Admin Panel</a></li>
+        <li><a href="pricing.html">Upgrade Plan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+<script src="js/main.js"></script>
+</body></html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Blog — Listify — Listify</title>
+<meta name="description" content="Listify — Buy, sell, and discover local deals across India."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/favicon/favicon.ico"/>
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+/* ── PAGE BANNER ── */
+.page-banner{
+  padding-top:var(--nh);
+  position:relative;
+  overflow:hidden;
+  padding-bottom:0;
+}
+.page-banner-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  z-index:0;
+  transition:transform 8s ease;
+}
+.page-banner:hover .page-banner-bg{transform:scale(1.04)}
+.page-banner-overlay{
+  position:absolute;inset:0;z-index:1;
+}
+.page-banner-grain{
+  position:absolute;inset:0;z-index:2;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.35;pointer-events:none;
+}
+.page-banner-content{
+  position:relative;z-index:3;
+  padding:60px 0 52px;
+  text-align:center;
+}
+.page-banner-content .lbl{
+  display:inline-block;font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  border-radius:100px;padding:5px 15px;margin-bottom:16px;
+}
+.page-banner-content h1{
+  font-family:var(--fd);font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:700;letter-spacing:-.025em;line-height:1.15;
+  margin-bottom:14px;
+}
+.page-banner-content p{
+  font-size:17px;line-height:1.7;max-width:520px;margin:0 auto;
+  opacity:.78;
+}
+/* Banner search bar - white on dark */
+.page-banner .sbar{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.25);
+  backdrop-filter:blur(8px);
+  max-width:660px;margin:24px auto 0;
+}
+.page-banner .sbar input{color:#fff;background:transparent}
+.page-banner .sbar input::placeholder{color:rgba(255,255,255,.55)}
+.page-banner .sbar select{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2)}
+.page-banner .sbar .sbtn{background:var(--org)}
+.page-banner .sbar .sbtn:hover{background:var(--org-d)}
+.page-banner .sbar:focus-within{border-color:rgba(255,255,255,.5)}
+/* Active filter badge on banner */
+.page-banner .bdg-new{background:rgba(0,200,150,.2);color:#00E0A8;border-color:rgba(0,200,150,.35)}
+.page-banner-bottom{
+  position:relative;z-index:3;
+  background:#fff;border-radius:16px 16px 0 0;
+  margin-top:-18px;height:20px;
+}
+/* Sort / toggle row stays white */
+.page-banner .fb{color:#fff}
+.page-banner select.fi{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.25)}
+.page-banner .btn-ghost{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+.page-banner .btn-ghost:hover{background:rgba(255,255,255,.2)}
+</style>
+
+<section class="page-banner">
+  <div class="page-banner-bg" style="background-image:url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&q=80')"></div>
+  <div class="page-banner-overlay" style="background:rgba(7,15,43,.68)"></div>
+  <div class="page-banner-grain"></div>
+  <div class="container page-banner-content">
+    
+    <span class="lbl" style="background:rgba(255,107,53,.18);color:#FF8C5E;border-color:rgba(255,107,53,.35)">Our Blog</span>
+    <div style="margin-top:12px">
+      <h1 style="color:#fff;margin-bottom:12px">Listify Blog</h1>
+      <p style="color:rgba(255,255,255,.72);font-size:17px;margin-bottom:24px">Tips, guides and stories for India's smartest buyers and sellers.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+        <button class="btn btn-primary btn-sm">All</button>
+        <button class="btn btn-ghost btn-sm" style="color:#fff;border-color:rgba(255,255,255,.3)">Selling Tips</button>
+        <button class="btn btn-ghost btn-sm" style="color:#fff;border-color:rgba(255,255,255,.3)">Buying Guide</button>
+        <button class="btn btn-ghost btn-sm" style="color:#fff;border-color:rgba(255,255,255,.3)">Platform News</button>
+        <button class="btn btn-ghost btn-sm" style="color:#fff;border-color:rgba(255,255,255,.3)">Success Stories</button>
+      </div>
+    </div>
+  </div>
+  <div class="page-banner-bottom"></div>
+</section>
+<section class="section">
+  <div class="container">
+    <style>
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.blog-card{background:#fff;border:1.5px solid var(--n2);border-radius:var(--r3);overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;height:100%}
+.blog-card:hover{box-shadow:0 16px 48px rgba(11,61,145,.14);transform:translateY(-5px)}
+.bc-img{position:relative;overflow:hidden;flex-shrink:0}
+.bc-img img{width:100%;height:210px;object-fit:cover;transition:transform .5s ease;display:block}
+.blog-card:hover .bc-img img{transform:scale(1.05)}
+.bc-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.bc-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:rgba(11,61,145,.08);border:1px solid rgba(11,61,145,.14);border-radius:100px;padding:3px 10px;margin-bottom:12px}
+.bc-title{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:10px}
+.bc-excerpt{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:16px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.bc-footer{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid var(--n2)}
+.bc-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--n2)}
+.bc-meta{font-size:12px;color:var(--muted);flex:1}
+.bc-meta strong{color:var(--dark3);font-weight:600}
+.bc-read{font-size:13px;color:var(--blue);font-weight:600;text-decoration:none;white-space:nowrap;transition:color .2s}
+.bc-read:hover{color:var(--org)}
+@media(max-width:768px){.blog-grid{grid-template-columns:1fr}.bc-img img{height:200px!important}}
+@media(min-width:769px) and (max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)}
+</style>
+<div class="blog-grid">
+
+  <!-- FEATURED -->
+  <div class="blog-card reveal">
+    <div class="bc-img"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80" alt="Sell listing fast"/></div>
+    <div class="bc-body">
+      <span class="bc-tag">Selling Tips</span>
+      <div class="bc-title">10 Photos That Will Sell Your Listing in Under 24 Hours</div>
+      <p class="bc-excerpt">Great photography gets 3× more responses. Here are the exact angles, lighting tips and editing tricks that top Listify sellers use to close deals faster than anyone else.</p>
+      <div class="bc-footer">
+        <img class="bc-avatar" src="https://i.pravatar.cc/150?img=11" alt="Ravi Kumar"/>
+        <div class="bc-meta"><strong>Ravi Kumar</strong> · Mar 15, 2026 · 5 min read</div>
+        <a href="#" class="bc-read">Read More →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR CARD 1 -->
+  <div class="blog-card reveal">
+    <div class="bc-img"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Fake listings"/></div>
+    <div class="bc-body">
+      <span class="bc-tag">Safety</span>
+      <div class="bc-title">8 Red Flags to Spot Fake Listings</div>
+      <p class="bc-excerpt">Protect yourself from scams with these essential warning signs every buyer should know.</p>
+      <div class="bc-footer">
+        <div class="bc-meta">Mar 12, 2026 · 3 min read</div>
+        <a href="#" class="bc-read">Read →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="blog-card reveal">
+    <div class="bc-img"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80" alt="Platform news"/></div>
+    <div class="bc-body">
+      <span class="bc-tag" style="color:var(--org);background:rgba(255,107,53,.1);border-color:rgba(255,107,53,.2)">Platform News</span>
+      <div class="bc-title">Listify Hits 50 Lakh Listings Milestone 🎉</div>
+      <p class="bc-excerpt">A huge thank you to our incredible community of buyers and sellers across India!</p>
+      <div class="bc-footer">
+        <div class="bc-meta">Mar 10, 2026 · 2 min read</div>
+        <a href="#" class="bc-read">Read →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="blog-card reveal">
+    <div class="bc-img"><img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=600&q=80" alt="Used car"/></div>
+    <div class="bc-body">
+      <span class="bc-tag">Buying Guide</span>
+      <div class="bc-title">Best Time to Buy a Used Car in India</div>
+      <p class="bc-excerpt">Timing your purchase right can save you lakhs. Here's when to buy and what to watch for.</p>
+      <div class="bc-footer">
+        <div class="bc-meta">Mar 8, 2026 · 4 min read</div>
+        <a href="#" class="bc-read">Read →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="blog-card reveal">
+    <div class="bc-img"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80" alt="Pricing"/></div>
+    <div class="bc-body">
+      <span class="bc-tag">Selling Tips</span>
+      <div class="bc-title">How to Price Your Item Right the First Time</div>
+      <p class="bc-excerpt">Overpricing kills your listing. Use this simple formula to find the sweet spot every time.</p>
+      <div class="bc-footer">
+        <div class="bc-meta">Mar 5, 2026 · 3 min read</div>
+        <a href="#" class="bc-read">Read →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="blog-card reveal">
+    <div class="bc-img"><img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80" alt="Success story"/></div>
+    <div class="bc-body">
+      <span class="bc-tag" style="color:var(--grn-d);background:rgba(0,200,150,.1);border-color:rgba(0,200,150,.2)">Success Story</span>
+      <div class="bc-title">How Rahul Made ₹2 Lakhs Reselling on Listify</div>
+      <p class="bc-excerpt">From a small collection of gadgets to a full side-hustle — Rahul's journey in his own words.</p>
+      <div class="bc-footer">
+        <img class="bc-avatar" src="https://i.pravatar.cc/150?img=33" alt="Rahul"/>
+        <div class="bc-meta"><strong>Rahul M.</strong> · Mar 2, 2026 · 5 min read</div>
+        <a href="#" class="bc-read">Read →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+    <div style="text-align:center;margin-top:48px" class="reveal"><a href="#" class="btn btn-outline btn-lg">Load More Articles →</a></div>
+  </div>
+</section>
+<script src="js/rtl-toggle.js"></script>
+</head>
+<body>
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m">📋</div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue">🏠</div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org">⚡</div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="post-ad.html">Post Ad</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">🌐</button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏠 Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="post-ad.html">Post Ad</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m">📋</div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn" title="Twitter">𝕏</a>
+        <a href="#" class="soc-btn" title="Facebook">f</a>
+        <a href="#" class="soc-btn" title="Instagram">📷</a>
+        <a href="#" class="soc-btn" title="LinkedIn">in</a>
+        <a href="#" class="soc-btn" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Browse</h5>
+      <ul>
+        <li><a href="portfolio.html">All Listings</a></li>
+        <li><a href="index.html">Home Classic</a></li>
+        <li><a href="index-v2.html">Home Modern</a></li>
+        <li><a href="post-ad.html">Post Free Ad</a></li>
+        <li><a href="ad-detail.html">Ad Detail</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="safety.html">Safety Tips</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Account</h5>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register Free</a></li>
+        <li><a href="user-dashboard.html">My Dashboard</a></li>
+        <li><a href="admin-dashboard.html">Admin Panel</a></li>
+        <li><a href="pricing.html">Upgrade Plan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+<script src="js/main.js"></script>
+</body></html>

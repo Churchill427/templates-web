@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Home Classic — Find Everything Near You — Listify</title>
+<meta name="description" content="Listify — Buy, sell, and discover local deals across India."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/favicon/favicon.ico"/>
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+</head>
+<body>
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m">📋</div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue">🏠</div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org">⚡</div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="post-ad.html">Post Ad</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">🌐</button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏠 Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="post-ad.html">Post Ad</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+
+<style>
+.hero{min-height:100vh;background:var(--dark);padding-top:var(--nh);position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80") center/cover;opacity:.15}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(11,61,145,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(11,61,145,.08) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 30%,transparent 100%)}
+.hero-orb1{position:absolute;top:-80px;right:-80px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.18) 0%,transparent 70%);filter:blur(40px)}
+.hero-orb2{position:absolute;bottom:-80px;left:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,150,.12) 0%,transparent 70%);filter:blur(40px)}
+.hero-content{position:relative;z-index:2;padding:96px 0 80px;text-align:center;max-width:900px;margin:0 auto}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);border-radius:100px;padding:6px 16px 6px 8px;font-size:13px;font-weight:600;color:var(--org-l);margin-bottom:28px}
+.hero h1{color:#fff;margin-bottom:24px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.hero h1 .hl{display:inline;position:relative}
+.hero h1 .hl::after{content:'';position:absolute;bottom:2px;left:0;right:0;height:6px;background:var(--org);border-radius:3px;opacity:.5;z-index:-1}
+.hero p{color:rgba(255,255,255,.75);font-size:19px;margin-bottom:40px;max-width:580px;margin-left:auto;margin-right:auto}
+.hero-search{max-width:680px;margin:0 auto}
+.hero-tags{display:flex;gap:8px;margin-top:14px;justify-content:center;flex-wrap:wrap}
+.hero-tags span{font-size:12px;color:rgba(255,255,255,.5)}
+.hero-tags a{font-size:13px;color:var(--org-l);font-weight:500;padding:4px 12px;background:rgba(255,107,53,.12);border-radius:100px;border:1px solid rgba(255,107,53,.2);transition:all var(--tr)}
+.hero-tags a:hover{background:rgba(255,107,53,.25)}
+.hero-stats{display:flex;gap:0;margin-top:56px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r3);overflow:hidden;flex-wrap:wrap}
+.hs{flex:1;padding:22px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08);min-width:120px}
+.hs:last-child{border-right:none}
+.hs-v{font-family:var(--fd);font-size:1.8rem;font-weight:800;color:var(--org-l);display:block}
+.hs-l{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
+.ticker-wrap{background:var(--org);padding:11px 0;overflow:hidden;white-space:nowrap;position:relative}
+.ticker-inner{display:inline-flex;gap:48px;animation:ticker 24s linear infinite}
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cat-card{background:#fff;border:1.5px solid var(--n2);border-radius:var(--r3);padding:22px 14px;text-align:center;cursor:pointer;transition:all var(--tr);position:relative;overflow:hidden}
+.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,61,145,.04),transparent);opacity:0;transition:opacity var(--tr)}
+.cat-card:hover{border-color:var(--blue);transform:translateY(-5px);box-shadow:var(--s3)}
+.cat-card:hover::before{opacity:1}
+.cat-icon-wrap{width:52px;height:52px;border-radius:var(--r2);background:var(--n1);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 12px;transition:transform .3s ease}
+.cat-name{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:3px}
+.cat-count{font-size:11px;color:var(--muted)}
+.trust-row{display:flex;gap:0;border:1.5px solid var(--n2);border-radius:var(--r3);overflow:hidden;flex-wrap:wrap}
+.trust-item{flex:1;padding:28px 24px;text-align:center;border-right:1px solid var(--n2);min-width:160px;transition:background var(--tr)}
+.trust-item:last-child{border-right:none}
+.trust-item:hover{background:var(--n1)}
+.trust-icon{font-size:2rem;margin-bottom:12px}
+@media(max-width:1100px){.cat-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:768px){.cat-grid{grid-template-columns:repeat(3,1fr)}.hero-stats{grid-template-columns:repeat(2,1fr);display:grid}.hs{border-right:1px solid rgba(255,255,255,.08)}.hs:nth-child(2n){border-right:none}
+@media(max-width:480px){.cat-grid{grid-template-columns:repeat(2,1fr)}
+</style>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-pill fu">
+        <span class="pulse-dot"></span>
+        50 Lakh+ Active Listings Across India
+      </div>
+      <h1 class="fu2">Find Everything.<br/>Sell <span class="hl">Instantly.</span><br/>Live Local.</h1>
+      <p class="fu3">India's most trusted classified platform. Buy cars, phones, furniture, homes and more — from verified sellers in your city.</p>
+      <div class="hero-search fu4">
+        <div class="sbar">
+          <input type="text" placeholder="What are you looking for? Cars, phones, jobs..."/>
+          <select><option>All Categories</option><option>Vehicles</option><option>Electronics</option><option>Real Estate</option><option>Furniture</option><option>Mobiles</option><option>Jobs</option></select>
+          <button class="sbtn">🔍 Search</button>
+        </div>
+        <div class="hero-tags">
+          <span>Popular:</span>
+          <a href="portfolio.html">iPhone 15</a>
+          <a href="portfolio.html">Honda City</a>
+          <a href="portfolio.html">2BHK Mumbai</a>
+          <a href="portfolio.html">MacBook M3</a>
+          <a href="portfolio.html">Activa 6G</a>
+        </div>
+      </div>
+      <div class="hero-stats fu5">
+        <div class="hs"><span class="hs-v"><span data-count="50" data-suffix="L+">0L+</span></span><span class="hs-l">Total Listings</span></div>
+        <div class="hs"><span class="hs-v"><span data-count="20" data-suffix="L+">0L+</span></span><span class="hs-l">Happy Users</span></div>
+        <div class="hs"><span class="hs-v"><span data-count="500" data-suffix="+">0+</span></span><span class="hs-l">Cities</span></div>
+        <div class="hs"><span class="hs-v"><span data-count="98" data-suffix="%">0%</span></span><span class="hs-l">Satisfaction</span></div>
+        <div class="hs"><span class="hs-v">Free</span><span class="hs-l">To Post</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Ravi sold MacBook for ₹45,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Priya listed Honda City at ₹8.5L</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Amit bought iPhone 14 Pro for ₹55,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Sara rented 2BHK in Pune for ₹22,000/mo</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Raju sold Royal Enfield for ₹95,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Ravi sold MacBook for ₹45,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Priya listed Honda City at ₹8.5L</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Amit bought iPhone 14 Pro for ₹55,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Sara rented 2BHK in Pune for ₹22,000/mo</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Raju sold Royal Enfield for ₹95,000</span>
+  </div>
+</div>
+
+<section class="sec-sm" style="background:var(--n1)">
+  <div class="container">
+    <div class="sh reveal"><span class="lbl">Browse by Category</span><h2>What Are You Looking For?</h2><p>Over 50 lakh listings across 20+ categories — find exactly what you need.</p></div>
+    <div class="cat-grid">
+      <div class="cat-card reveal"><div class="cat-icon-wrap">🚗</div><div class="cat-name">Vehicles</div><div class="cat-count">1.2L ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">📱</div><div class="cat-name">Mobiles</div><div class="cat-count">98K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">🏠</div><div class="cat-name">Real Estate</div><div class="cat-count">45K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">💻</div><div class="cat-name">Electronics</div><div class="cat-count">76K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">🛋️</div><div class="cat-name">Furniture</div><div class="cat-count">32K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">👔</div><div class="cat-name">Fashion</div><div class="cat-count">55K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">🏍️</div><div class="cat-name">Bikes</div><div class="cat-count">67K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">📚</div><div class="cat-name">Books</div><div class="cat-count">18K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">💼</div><div class="cat-name">Jobs</div><div class="cat-count">42K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">🐾</div><div class="cat-name">Pets</div><div class="cat-count">9K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">🔧</div><div class="cat-name">Services</div><div class="cat-count">28K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap">🎵</div><div class="cat-name">Music</div><div class="cat-count">7K ads</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="fb mb32 reveal" style="flex-wrap:wrap;gap:16px">
+      <div><span class="lbl">Fresh Picks</span><h2 style="margin-top:8px">Latest Listings Near You</h2></div>
+      <a href="portfolio.html" class="btn btn-outline">View All →</a>
+    </div>
+    <div class="g4"><div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Laptop" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-feat">⭐ Featured</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">💻 Electronics</div><div class="ac-price">₹45,000</div>
+  <div class="ac-title">MacBook Pro 13" 2021 — M1, 8GB RAM, 256GB SSD</div>
+  <div class="ac-meta"><span>📍 Bangalore</span><span>🕐 2h ago</span><span>👁 248</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&q=80" alt="Car" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-new">🆕 Like New</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">🚗 Vehicles</div><div class="ac-price">₹8,50,000</div>
+  <div class="ac-title">Honda City 2022 — Petrol, 12,000 km, Single Owner</div>
+  <div class="ac-meta"><span>📍 Mumbai</span><span>🕐 5h ago</span><span>👁 589</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Sofa" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-urg">🔥 Urgent Sale</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">🛋️ Furniture</div><div class="ac-price">₹12,500</div>
+  <div class="ac-title">L-Shape Sofa Set — Grey, 3+2 Seater, Excellent Condition</div>
+  <div class="ac-meta"><span>📍 Delhi</span><span>🕐 1d ago</span><span>👁 134</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Phone" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-blue">📦 Exchange OK</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">📱 Mobiles</div><div class="ac-price">₹55,000</div>
+  <div class="ac-title">iPhone 14 Pro 256GB — Deep Purple, Box Pack, Warranty</div>
+  <div class="ac-meta"><span>📍 Chennai</span><span>🕐 3h ago</span><span>👁 412</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=400&q=80" alt="Bike" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-new">⚡ Just Added</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">🏍️ Bikes</div><div class="ac-price">₹95,000</div>
+  <div class="ac-title">Royal Enfield Classic 350 — 2023, 4,800 km, Great Condition</div>
+  <div class="ac-meta"><span>📍 Pune</span><span>🕐 6h ago</span><span>👁 320</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1555636222-cae831e670b3?w=400&q=80" alt="Flat" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-feat">⭐ Featured</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">🏠 Real Estate</div><div class="ac-price">₹28,000/mo</div>
+  <div class="ac-title">Spacious 2BHK Flat for Rent — Furnished, Near Metro</div>
+  <div class="ac-meta"><span>📍 Hyderabad</span><span>🕐 12h ago</span><span>👁 876</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80" alt="Camera" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-blue">🎁 With Accessories</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">📷 Electronics</div><div class="ac-price">₹38,000</div>
+  <div class="ac-title">Canon EOS R50 — Kit Lens + Extra Battery + Bag</div>
+  <div class="ac-meta"><span>📍 Kolkata</span><span>🕐 2d ago</span><span>👁 201</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&q=80" alt="TV" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-urg">🔥 Quick Sale</span></div>
+  <button class="ac-fav">♡</button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat">📺 Electronics</div><div class="ac-price">₹18,000</div>
+  <div class="ac-title">Samsung 55" 4K Smart TV — 2022 Model, Remote Included</div>
+  <div class="ac-meta"><span>📍 Ahmedabad</span><span>🕐 4h ago</span><span>👁 445</span></div></div>
+</div></div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="portfolio.html" class="btn btn-primary btn-lg reveal">Browse All 50L+ Listings →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:linear-gradient(135deg,var(--dark),var(--dark2))">
+  <div class="container">
+    <div class="sh reveal"><span class="lbl" style="background:rgba(255,107,53,.15);color:var(--org-l);border-color:rgba(255,107,53,.3)">How It Works</span><h2 style="color:#fff">Sell Anything in 3 Easy Steps</h2><p style="color:rgba(255,255,255,.6)">No middlemen. No commission. Free forever.</p></div>
+    <div class="g3">
+      <div class="card reveal-l" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.5rem;font-weight:900;margin:0 auto 20px;box-shadow:0 4px 20px rgba(11,61,145,.4)">1</div>
+        <h3 style="color:#fff;margin-bottom:10px">Post Your Ad Free</h3>
+        <p style="color:rgba(255,255,255,.6);font-size:15px">Write a description, add photos and set your price. Takes under 60 seconds — no sign-up required to browse.</p>
+      </div>
+      <div class="card reveal" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--org);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.5rem;font-weight:900;margin:0 auto 20px;box-shadow:0 4px 20px rgba(255,107,53,.4)">2</div>
+        <h3 style="color:#fff;margin-bottom:10px">Get Real Responses</h3>
+        <p style="color:rgba(255,255,255,.6);font-size:15px">Verified buyers contact you directly via chat or call. No fake inquiries — our trust system filters spam automatically.</p>
+      </div>
+      <div class="card reveal-r" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--grn);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.5rem;font-weight:900;margin:0 auto 20px;box-shadow:0 4px 20px rgba(0,200,150,.4)">3</div>
+        <h3 style="color:#fff;margin-bottom:10px">Close the Deal</h3>
+        <p style="color:rgba(255,255,255,.6);font-size:15px">Meet locally, hand over the item and get paid instantly. Safe, simple and no platform commission ever.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="post-ad.html" class="btn btn-org btn-lg reveal">Post Your First Ad Free →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--n1)">
+  <div class="container">
+    <div class="sh reveal"><span class="lbl">What People Say</span><h2>Trusted by 20 Lakh+ Indians</h2></div>
+    <div class="g3">
+      <div class="card reveal-l"><div style="font-size:2.5rem;color:var(--org);font-family:Georgia;line-height:1;margin-bottom:10px">"</div><p style="color:var(--dark3);line-height:1.8;font-style:italic;margin-bottom:20px">"Sold my old laptop in 3 hours after posting! Got more than I expected. Listify is unbelievably easy to use."</p><div class="flex g12" style="align-items:center"><img src="https://i.pravatar.cc/150?img=11" class="avatar" alt=""/><div><div style="font-weight:700;color:var(--dark);font-size:14px">Ravi Kumar</div><div class="txs tm">⭐⭐⭐⭐⭐ · Bangalore</div></div></div></div>
+      <div class="card reveal"><div style="font-size:2.5rem;color:var(--org);font-family:Georgia;line-height:1;margin-bottom:10px">"</div><p style="color:var(--dark3);line-height:1.8;font-style:italic;margin-bottom:20px">"Found my dream apartment on Listify at 30% below market price. The seller was verified and the process was so smooth."</p><div class="flex g12" style="align-items:center"><img src="https://i.pravatar.cc/150?img=47" class="avatar" alt=""/><div><div style="font-weight:700;color:var(--dark);font-size:14px">Priya Sharma</div><div class="txs tm">⭐⭐⭐⭐⭐ · Mumbai</div></div></div></div>
+      <div class="card reveal-r"><div style="font-size:2.5rem;color:var(--org);font-family:Georgia;line-height:1;margin-bottom:10px">"</div><p style="color:var(--dark3);line-height:1.8;font-style:italic;margin-bottom:20px">"I've sold 40+ items on Listify this year alone. The featured listing feature gets you 10x more calls. Worth every rupee!"</p><div class="flex g12" style="align-items:center"><img src="https://i.pravatar.cc/150?img=33" class="avatar" alt=""/><div><div style="font-weight:700;color:var(--dark);font-size:14px">Arjun Mehta</div><div class="txs tm">⭐⭐⭐⭐⭐ · Delhi</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="trust-row reveal">
+      <div class="trust-item"><div class="trust-icon">🔒</div><h4>100% Safe</h4><p class="tsm tm mt8">Verified sellers and buyer protection on every transaction.</p></div>
+      <div class="trust-item"><div class="trust-icon">⚡</div><h4>Lightning Fast</h4><p class="tsm tm mt8">Post your ad in 60 seconds. Get responses within hours.</p></div>
+      <div class="trust-item"><div class="trust-icon">💰</div><h4>Always Free</h4><p class="tsm tm mt8">No commission, no hidden fees. Post and browse absolutely free.</p></div>
+      <div class="trust-item"><div class="trust-icon">🤝</div><h4>24/7 Support</h4><p class="tsm tm mt8">Our team is available round the clock to help buyers and sellers.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-sm">
+  <div class="container">
+    <div style="background:linear-gradient(135deg,var(--blue),var(--blue-l));border-radius:var(--r4);padding:72px 56px;text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,107,53,.18)"></div>
+      <div style="position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;border-radius:50%;background:rgba(0,200,150,.12)"></div>
+      <div style="position:relative;z-index:1">
+        <span class="lbl" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.25)">Get Started Today</span>
+        <h2 style="color:#fff;max-width:560px;margin:16px auto 20px">Ready to Buy or Sell?<br/>Join 20 Lakh+ Indians on Listify</h2>
+        <p style="color:rgba(255,255,255,.78);max-width:420px;margin:0 auto 40px;font-size:17px">Free forever. No commission. No hidden charges. India's most trusted classifieds.</p>
+        <div class="fc g16 reveal" style="flex-wrap:wrap">
+          <a href="post-ad.html" class="btn btn-org btn-lg">+ Post Free Ad</a>
+          <a href="portfolio.html" class="btn btn-white btn-lg">Browse Listings →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m">📋</div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn" title="Twitter">𝕏</a>
+        <a href="#" class="soc-btn" title="Facebook">f</a>
+        <a href="#" class="soc-btn" title="Instagram">📷</a>
+        <a href="#" class="soc-btn" title="LinkedIn">in</a>
+        <a href="#" class="soc-btn" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Browse</h5>
+      <ul>
+        <li><a href="portfolio.html">All Listings</a></li>
+        <li><a href="index.html">Home Classic</a></li>
+        <li><a href="index-v2.html">Home Modern</a></li>
+        <li><a href="post-ad.html">Post Free Ad</a></li>
+        <li><a href="ad-detail.html">Ad Detail</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="safety.html">Safety Tips</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Account</h5>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register Free</a></li>
+        <li><a href="user-dashboard.html">My Dashboard</a></li>
+        <li><a href="admin-dashboard.html">Admin Panel</a></li>
+        <li><a href="pricing.html">Upgrade Plan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+<script src="js/main.js"></script>
+</body></html>
