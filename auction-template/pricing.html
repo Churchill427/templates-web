@@ -1,93 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pricing — BidMaster</title>
-  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <script src="js/rtl-toggle.js"></script>
-  <script>
-    function bmToggleNav(btn) {
-      var nav = document.querySelector('.mobile-nav');
-      if (!nav) return;
-      var open = nav.classList.toggle('open');
-      var s = btn.querySelectorAll('span');
-      s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-      s[1].style.opacity   = open ? '0' : '';
-      s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
-    }
-  </script>
-</head>
-<body>
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🔨</div>BidMaster</a>
-    <ul class="nav-links">
-      <li class="nav-item-dropdown">
-        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
-        <div class="nav-dropdown">
-          <a href="index.html" class="nav-dd-item"><div class="nav-dd-icon blue">🏛️</div><div class="nav-dd-text"><strong>Home — Classic</strong><span>Hero, featured auctions &amp; testimonials</span></div></a>
-          <div class="nav-dd-divider"></div>
-          <a href="index-v2.html" class="nav-dd-item"><div class="nav-dd-icon amber">⚡</div><div class="nav-dd-text"><strong>Home — Modern</strong><span>Live grid, leaderboard &amp; marquee</span></div></a>
-        </div>
-      </li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="portfolio.html">Auctions</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
-      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
-      <a href="register.html" class="btn btn-primary btn-sm">Register</a>
-    </div>
-    <div class="nav-end">
-      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
-      <button class="hamburger" aria-label="Toggle menu" onclick="bmToggleNav(this)"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</nav>
-<div class="mobile-nav" onclick="if(event.target.tagName==='A'&&event.target.href)this.classList.remove('open')">
-  <details class="mobile-nav-group"><summary>Home <span>›</span></summary><div class="mobile-nav-sub"><a href="index.html">🏛️ Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
-  <a href="about.html">About</a><a href="portfolio.html">Auctions</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-  <div class="mobile-nav-cta"><a href="login.html" class="btn btn-ghost btn-sm">Login</a><a href="register.html" class="btn btn-primary btn-sm">Register</a></div>
+<html lang="en" dir="ltr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Seller Pricing — Hammr Auctions</title>
+<link rel="icon" href="assets/favicon/icon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+</head><body>
+<nav class="navbar" id="nb"><div class="container">
+  <a href="index.html" class="nav-logo"><div class="logo-icon">🔨</div><div class="logo-text">Hamm<span>r</span></div></a>
+  <ul class="nav-links">
+    <li class="nav-dd"><a href="index.html">Home<svg class="dd-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></a><div class="dd-panel"><a href="index.html" class="ddi"><div class="ddi-ic ic-gold">🏛️</div><div class="ddi-tx"><strong>Auction Hall</strong><span>Classic grid</span></div></a><div class="dd-rule"></div><a href="index-v2.html" class="ddi"><div class="ddi-ic ic-crim">⚡</div><div class="ddi-tx"><strong>Live Pulse</strong><span>Real-time feed</span></div></a></div></li>
+    <li><a href="portfolio.html">Auctions</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Journal</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act"><a href="login.html" class="btn btn-ghost btn-sm">Sign In</a><a href="register.html" class="btn btn-gold btn-sm">Register Free</a></div>
+  <div class="nav-end"><button id="rtlToggle" class="rtl-btn">🌐</button><button class="hamburger" onclick="hm_nav(this)"><span></span><span></span><span></span></button></div>
+</div></nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏛️ Auction Hall</a><a href="index-v2.html">⚡ Live Pulse</a></div></details>
+  <a href="portfolio.html">Browse Auctions</a><a href="pricing.html">Pricing</a><a href="blog.html">Journal</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+  <div class="mob-cta"><a href="login.html" class="btn btn-ghost btn-sm">Sign In</a><a href="register.html" class="btn btn-gold btn-sm">Register</a></div>
 </div>
 
-<section style="padding-top:var(--nav-h);background:var(--neutral);padding-bottom:0">
-  <div class="container" style="padding-top:60px;padding-bottom:60px;text-align:center">
-    <span class="section-label">Simple Pricing</span>
-    <h1 style="margin:16px 0 20px">Choose Your Plan</h1>
-    <p style="color:var(--muted);max-width:480px;margin:0 auto 32px;font-size:18px">Start free, upgrade when you need more power.</p>
-    <label style="display:inline-flex;align-items:center;gap:12px;cursor:pointer;font-weight:600">
-      <span>Monthly</span>
-      <span style="position:relative;width:48px;height:26px;background:var(--blue);border-radius:100px;display:inline-block"><input type="checkbox" id="pricingToggle" style="opacity:0;position:absolute"/><span style="position:absolute;top:3px;left:3px;width:20px;height:20px;background:var(--white);border-radius:50%;transition:left 0.2s"></span></span>
-      <span>Yearly <span class="badge badge-live" style="margin-left:4px">Save 20%</span></span>
+<section style="padding-top:var(--nh);background:linear-gradient(160deg,var(--abyss) 0%,var(--abyss2) 100%);padding-bottom:80px;position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=1600&q=80')center/cover no-repeat;opacity:.06;pointer-events:none"></div>
+  <canvas id="nn" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0"></canvas>
+  <div class="container" style="padding-top:64px;text-align:center;position:relative;z-index:1">
+    <span class="lbl" style="background:rgba(232,160,32,.12);color:var(--gold-l);border-color:rgba(232,160,32,.28)">Seller Plans</span>
+    <h1 style="color:var(--white);margin:16px auto 18px">Transparent Fees.<br/>No Surprises.</h1>
+    <p style="color:rgba(255,255,255,.62);max-width:440px;margin:0 auto 32px;font-size:18px">Free to bid. Sellers pay only when items sell.</p>
+    <label style="display:inline-flex;align-items:center;gap:14px;cursor:pointer;font-weight:700;font-size:15px;color:var(--white);font-family:var(--fb)">
+      <span>Per-Item</span>
+      <span style="position:relative;width:50px;height:28px;background:var(--gold-d);border-radius:100px;display:inline-block;flex-shrink:0"><input type="checkbox" id="price-toggle" style="opacity:0;position:absolute;inset:0;cursor:pointer;width:100%;height:100%;margin:0"/></span>
+      <span>Monthly <span style="font-size:12px;font-weight:800;background:var(--crim);color:#fff;border-radius:100px;padding:2px 8px;margin-left:4px">Save 35%</span></span>
     </label>
   </div>
 </section>
-<section class="section">
+<section class="section" style="margin-top:-40px">
   <div class="container">
-    <div class="grid-3" style="align-items:start;gap:28px">
-      <div class="card"><div style="margin-bottom:24px"><h3>Basic</h3><p class="text-muted text-sm mt-8">Perfect for casual bidders</p></div><div style="font-family:var(--font-display);font-size:2.8rem;font-weight:800;color:var(--dark);margin-bottom:4px"><span data-monthly>Free</span><span data-yearly style="display:none">Free</span></div><div style="color:var(--muted);font-size:13px;margin-bottom:28px">Forever free</div><a href="register.html" class="btn btn-outline" style="width:100%;margin-bottom:28px">Get Started Free</a><div style="display:flex;flex-direction:column;gap:12px"><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Browse all auctions</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Place up to 5 bids/month</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Basic notifications</span></div><div class="flex gap-12"><span style="color:var(--muted)">✗</span><span class="text-sm text-muted">Auto-bidding</span></div><div class="flex gap-12"><span style="color:var(--muted)">✗</span><span class="text-sm text-muted">Priority support</span></div></div></div>
-      <div class="card" style="border:2px solid var(--blue);position:relative;overflow:visible"><div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--amber);color:var(--dark);font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap">Most Popular</div><div style="margin-bottom:24px"><h3>Pro Bidder</h3><p class="text-muted text-sm mt-8">For serious auction enthusiasts</p></div><div style="font-family:var(--font-display);font-size:2.8rem;font-weight:800;color:var(--blue);margin-bottom:4px"><span data-monthly>₹999</span><span data-yearly style="display:none">₹799</span><span style="font-size:1rem;color:var(--muted);font-weight:400">/mo</span></div><div style="color:var(--muted);font-size:13px;margin-bottom:28px">Billed monthly</div><a href="register.html" class="btn btn-primary" style="width:100%;margin-bottom:28px">Start Pro Trial</a><div style="display:flex;flex-direction:column;gap:12px"><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Unlimited bids</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Auto-bidding system</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Real-time alerts</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Bid history analytics</span></div><div class="flex gap-12"><span style="color:var(--muted)">✗</span><span class="text-sm text-muted">Seller listing</span></div></div></div>
-      <div class="card"><div style="margin-bottom:24px"><h3>Enterprise</h3><p class="text-muted text-sm mt-8">For businesses &amp; power sellers</p></div><div style="font-family:var(--font-display);font-size:2.8rem;font-weight:800;color:var(--dark);margin-bottom:4px"><span data-monthly>₹4,999</span><span data-yearly style="display:none">₹3,999</span><span style="font-size:1rem;color:var(--muted);font-weight:400">/mo</span></div><div style="color:var(--muted);font-size:13px;margin-bottom:28px">Billed monthly</div><a href="contact.html" class="btn btn-outline" style="width:100%;margin-bottom:28px">Contact Sales</a><div style="display:flex;flex-direction:column;gap:12px"><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Everything in Pro</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">List unlimited auctions</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Custom auction branding</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">Dedicated account manager</span></div><div class="flex gap-12"><span style="color:var(--green)">✓</span><span class="text-sm">API access &amp; webhooks</span></div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start">
+      <div class="card reveal-l">
+        <h3 style="margin-bottom:5px">Starter</h3><p style="font-size:14px;color:var(--muted)">Occasional sellers</p>
+        <div style="font-family:var(--fd);font-size:2.7rem;font-weight:800;color:var(--ink);margin:20px 0 5px">₹0<span style="font-size:1rem;color:var(--muted);font-weight:400"> listing</span></div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:22px">+ 12% commission on sale</p>
+        <a href="register.html" class="btn btn-out" style="width:100%;justify-content:center;margin-bottom:22px">List Free</a>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span style="color:var(--ink2)">Up to 5 lots/month</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span style="color:var(--ink2)">Basic authentication</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span style="color:var(--ink2)">Standard listing photos</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✗</span><span style="color:var(--muted)">Featured placement</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✗</span><span style="color:var(--muted)">Auto-refresh listing</span></div>
+      </div>
+      <div class="card reveal" style="border:2px solid var(--gold);position:relative;margin-top:-22px">
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--abyss);font-size:11px;font-weight:900;padding:5px 17px;border-radius:100px;white-space:nowrap;font-family:var(--fb)">⭐ Most Popular</div>
+        <h3 style="margin-bottom:5px">Pro Seller</h3><p style="font-size:14px;color:var(--muted)">Serious collectors</p>
+        <div style="font-family:var(--fd);font-size:2.7rem;font-weight:800;color:var(--gold-d);margin:20px 0 5px"><span data-mo>₹4,999</span><span data-yr style="display:none">₹3,249</span><span style="font-size:1rem;color:var(--muted);font-weight:400">/mo</span></div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:22px">+ 8% commission on sale</p>
+        <a href="register.html" class="btn btn-gold" style="width:100%;justify-content:center;margin-bottom:22px">Start Pro →</a>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span><strong>Unlimited lots/month</strong></span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>Expert authentication</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>Professional photography</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>Featured placement + top of search</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>Auto-refresh &amp; priority support</span></div>
+      </div>
+      <div class="card reveal-r">
+        <h3 style="margin-bottom:5px">Estate & Trade</h3><p style="font-size:14px;color:var(--muted)">Dealers &amp; estates</p>
+        <div style="font-family:var(--fd);font-size:2.7rem;font-weight:800;color:var(--ink);margin:20px 0 5px"><span data-mo>₹14,999</span><span data-yr style="display:none">₹9,749</span><span style="font-size:1rem;color:var(--muted);font-weight:400">/mo</span></div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:22px">+ 5% commission on sale</p>
+        <a href="contact.html" class="btn btn-dark" style="width:100%;justify-content:center;margin-bottom:22px">Contact Sales</a>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span><strong>Branded auction house</strong></span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>White-glove collection service</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>Dedicated specialist account manager</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>API access &amp; webhooks</span></div><div style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px"><span style="color:var(--gold-d);font-weight:800;font-size:15px">✓</span><span>Bulk lot import</span></div>
+      </div>
+    </div>
+    <div class="card reveal" style="text-align:center;margin-top:48px;background:var(--sand)">
+      <h3 style="margin-bottom:9px">🔨 Bidding is Always Free</h3>
+      <p class="tm">Register as a buyer at no cost. Only sellers pay — only when their item sells.</p>
     </div>
   </div>
 </section>
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white)"><div class="nav-logo-icon">🔨</div>BidMaster</a><p>The premier platform for online auctions. Discover unique items and bid live.</p><div class="social-links"><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">f</a><a href="#" class="social-btn">📷</a><a href="#" class="social-btn">in</a></div></div>
-      <div class="footer-col"><h5>Quick Links</h5><ul><li><a href="index.html">Home Classic</a></li><li><a href="index-v2.html">Home Modern</a></li><li><a href="about.html">About Us</a></li><li><a href="portfolio.html">Browse Auctions</a></li></ul></div>
-      <div class="footer-col"><h5>Support</h5><ul><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="coming-soon.html">Coming Soon</a></li></ul></div>
-      <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">Dashboard</a></li><li><a href="admin-dashboard.html">Admin</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© 2026 BidMaster. All rights reserved.</span><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div></div>
+<script>hm_nn("nn",80,125)</script>
+<footer class="footer"><div class="container">
+  <div class="ftr-grid">
+    <div class="ftr-brand"><a href="index.html" class="nav-logo"><div class="logo-icon">🔨</div><div class="logo-text">Hamm<span>r</span></div></a><p>The world's most trusted live auction platform.</p><div class="soc-row"><a href="#" class="soc-a">𝕏</a><a href="#" class="soc-a">📷</a><a href="#" class="soc-a">f</a><a href="#" class="soc-a">▶</a></div></div>
+    <div class="ftr-col"><h5>Auctions</h5><ul><li><a href="portfolio.html">Browse All</a></li><li><a href="index.html">Auction Hall</a></li><li><a href="index-v2.html">Live Pulse</a></li><li><a href="register.html">Sell Items</a></li></ul></div>
+    <div class="ftr-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+    <div class="ftr-col"><h5>Account</h5><ul><li><a href="login.html">Sign In</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">My Dashboard</a></li><li><a href="admin-dashboard.html">Admin</a></li></ul></div>
   </div>
-</footer>
-<script src="js/main.js"></script>
-</body>
-</html>
+  <div class="ftr-bottom"><span>© 2026 Hammr Auctions Ltd. All rights reserved.</span><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a><a href="#">Auction Rules</a></div></div>
+</div></footer><script src="js/main.js"></script></body></html>

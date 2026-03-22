@@ -1,24 +1,19 @@
-/* RTL Toggle — rtl-toggle.js */
+/* HAMMR — rtl-toggle.js  (runs before DOM ready) */
 (function () {
-  var saved = localStorage.getItem('bm-dir') || 'ltr';
+  var saved = localStorage.getItem('hm-dir') || 'ltr';
   document.documentElement.setAttribute('dir', saved);
 
   document.addEventListener('DOMContentLoaded', function () {
-    var btns = document.querySelectorAll('#rtlToggle');
-    function update() {
-      var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-      btns.forEach(function (b) {
-        b.title = isRTL ? 'Switch to LTR' : 'Switch to RTL';
-      });
-    }
-    update();
-    btns.forEach(function (btn) {
+    document.querySelectorAll('[id="rtlToggle"]').forEach(function (btn) {
+      btn.title = saved === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
       btn.addEventListener('click', function () {
         var cur = document.documentElement.getAttribute('dir') || 'ltr';
-        var next = cur === 'ltr' ? 'rtl' : 'ltr';
-        document.documentElement.setAttribute('dir', next);
-        localStorage.setItem('bm-dir', next);
-        update();
+        var nxt = cur === 'ltr' ? 'rtl' : 'ltr';
+        document.documentElement.setAttribute('dir', nxt);
+        localStorage.setItem('hm-dir', nxt);
+        document.querySelectorAll('[id="rtlToggle"]').forEach(function (b) {
+          b.title = nxt === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+        });
       });
     });
   });

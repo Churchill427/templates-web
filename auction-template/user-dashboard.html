@@ -1,191 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Dashboard — BidMaster</title>
-  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <script src="js/rtl-toggle.js"></script>
-  <script>
-    function toggleSidebar(){
-      var s=document.querySelector('.sidebar'),o=document.getElementById('sOverlay');
-      var open=s.classList.toggle('open');
-      if(o)o.style.display=open?'block':'none';
-    }
-    function closeSidebar(){
-      var s=document.querySelector('.sidebar'),o=document.getElementById('sOverlay');
-      if(s)s.classList.remove('open');
-      if(o)o.style.display='none';
-    }
-  </script>
-  <script>
-    function bmToggleNav(btn) {
-      var nav = document.querySelector('.mobile-nav');
-      if (!nav) return;
-      var open = nav.classList.toggle('open');
-      var s = btn.querySelectorAll('span');
-      s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-      s[1].style.opacity   = open ? '0' : '';
-      s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
-    }
-  </script>
-</head>
-<body>
-
-<div id="sOverlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px)"></div>
-
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🔨</div>BidMaster</a>
-    <ul class="nav-links">
-      <li class="nav-item-dropdown">
-        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
-        <div class="nav-dropdown">
-          <a href="index.html" class="nav-dd-item"><div class="nav-dd-icon blue">🏛️</div><div class="nav-dd-text"><strong>Home — Classic</strong><span>Hero, featured auctions</span></div></a>
-          <div class="nav-dd-divider"></div>
-          <a href="index-v2.html" class="nav-dd-item"><div class="nav-dd-icon amber">⚡</div><div class="nav-dd-text"><strong>Home — Modern</strong><span>Live grid &amp; leaderboard</span></div></a>
-        </div>
-      </li>
-      <li><a href="portfolio.html">Auctions</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-    </ul>
-    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
-      <a href="admin-dashboard.html" class="btn btn-ghost btn-sm">Admin Panel</a>
+<html lang="en" dir="ltr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>My Dashboard — Hammr</title>
+<link rel="icon" href="assets/favicon/icon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+<script>
+function hm_nav(b){var n=document.querySelector('.mob-nav');if(!n)return;var o=n.classList.toggle('open');b.classList.toggle('open',o)}
+function hm_sb(){var s=document.querySelector('.sidebar'),v=document.querySelector('.sb-overlay');var o=s.classList.toggle('open');if(v)v.classList.toggle('visible',o)}
+function hm_sb_close(){document.querySelector('.sidebar').classList.remove('open');var v=document.querySelector('.sb-overlay');if(v)v.classList.remove('visible')}
+</script>
+</head><body>
+<div class="sb-overlay" onclick="hm_sb_close()"></div>
+<nav class="navbar" id="nb"><div class="container">
+  <a href="index.html" class="nav-logo"><div class="logo-icon">🔨</div><div class="logo-text">Hamm<span>r</span></div></a>
+  <ul class="nav-links">
+    <li class="nav-dd"><a href="index.html">Home<svg class="dd-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></a><div class="dd-panel"><a href="index.html" class="ddi"><div class="ddi-ic ic-gold">🏛️</div><div class="ddi-tx"><strong>Auction Hall</strong><span>Classic grid</span></div></a><div class="dd-rule"></div><a href="index-v2.html" class="ddi"><div class="ddi-ic ic-crim">⚡</div><div class="ddi-tx"><strong>Live Pulse</strong><span>Real-time feed</span></div></a></div></li>
+    <li><a href="portfolio.html">Auctions</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-act"><a href="admin-dashboard.html" class="btn btn-ghost btn-sm">Admin Panel</a></div>
+  <div class="nav-end"><button id="rtlToggle" class="rtl-btn">🌐</button><button class="hamburger" onclick="hm_nav(this)"><span></span><span></span><span></span></button></div>
+</div></nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏛️ Auction Hall</a><a href="index-v2.html">⚡ Live Pulse</a></div></details>
+  <a href="portfolio.html">All Auctions</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+  <div class="mob-cta"><a href="admin-dashboard.html" class="btn btn-ghost btn-sm">Admin Panel</a></div>
+</div>
+<div class="dash-layout">
+  <aside class="sidebar">
+<div class="sb-brand"><div class="logo-icon">🔨</div><div class="logo-text" style="font-size:18px">Hamm<span>r</span></div></div>
+<div class="sb-section">Bidding</div>
+<nav class="sb-nav">
+  <a href="user-dashboard.html" class="active"><span>📊</span>My Dashboard</a>
+  <a href="#"><span>🔨</span>Active Bids <span class="bdg bdg-live" style="margin-left:auto;font-size:9px;padding:2px 6px">3</span></a>
+  <a href="#"><span>❤️</span>Watchlist</a>
+  <a href="#"><span>🏆</span>Won Auctions</a>
+  <a href="#"><span>🔔</span>Bid Alerts</a>
+</nav>
+<div class="sb-section">Selling</div>
+<nav class="sb-nav">
+  <a href="#"><span>📋</span>My Lots</a>
+  <a href="#"><span>➕</span>Submit a Lot</a>
+  <a href="#"><span>📈</span>Sales History</a>
+</nav>
+<div class="sb-section">Account</div>
+<nav class="sb-nav">
+  <a href="#"><span>👤</span>Profile</a>
+  <a href="pricing.html"><span>💳</span>Upgrade Plan</a>
+  <a href="#"><span>⚙️</span>Settings</a>
+</nav>
+<div class="sb-foot">
+  <div style="display:flex;align-items:center;gap:9px">
+    <img src="https://i.pravatar.cc/150?img=15" style="width:36px;height:36px;border-radius:50%;border:2px solid rgba(232,160,32,.3);flex-shrink:0" alt=""/>
+    <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Arjun Malhotra</div><div style="font-size:11px;color:rgba(255,255,255,.35)">Pro Bidder</div></div>
+  </div>
+  <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%;margin-top:10px;color:rgba(255,255,255,.4);justify-content:flex-start;border-color:rgba(255,255,255,.1);font-size:12px">← Back to Site</a>
+</div></aside>
+  <main class="d-main">
+    <div class="topbar">
+  <div class="t-left"><button class="sb-toggle" onclick="hm_sb()">☰</button><div><div style="font-size:15px;font-weight:700">My Dashboard</div><div style="font-size:11px;color:var(--muted)">Sun, 22 Mar 2026</div></div></div>
+  <div class="t-right"><a href="portfolio.html" class="btn btn-gold btn-sm">Browse Lots</a><div style="width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer">👤</div></div>
+</div>
+    <div class="d-content">
+<div style="background:linear-gradient(135deg,var(--abyss),var(--abyss3));border-radius:20px;padding:24px 28px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+  <div><h3 style="color:var(--white);margin-bottom:6px">Welcome back, Arjun! 🔨</h3><p style="color:rgba(255,255,255,.62)">You have <strong style="color:var(--gold-l)">3 active bids</strong> and are winning <strong style="color:var(--gold-l)">2 of them</strong>.</p></div>
+  <a href="portfolio.html" class="btn btn-gold">Browse Live Lots →</a>
+</div>
+<div class="g4" style="margin-bottom:22px">
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">🔨</div><div class="stat-val" style="color:var(--gold-d)">3</div><div class="stat-lbl">Active Bids</div><div style="font-size:11px;color:var(--gold-d);font-weight:700;margin-top:4px">Winning 2</div></div>
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">🏆</div><div class="stat-val" style="color:var(--crim)">12</div><div class="stat-lbl">Lots Won</div><div style="font-size:11px;color:var(--muted);margin-top:4px">₹48L total</div></div>
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">❤️</div><div class="stat-val">27</div><div class="stat-lbl">Watchlist</div><div style="font-size:11px;color:var(--crim);font-weight:700;margin-top:4px">3 ending today</div></div>
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">💰</div><div class="stat-val" style="color:var(--gold-d)">₹48L</div><div class="stat-lbl">Total Spent</div><div style="font-size:11px;color:var(--muted);margin-top:4px">This year</div></div>
+</div>
+<div class="g2" style="gap:22px;align-items:start">
+  <div>
+    <div class="tabs mb16" data-tabs>
+      <button class="tab-btn active" data-tab="active">Active Bids (3)</button>
+      <button class="tab-btn" data-tab="won">Won (12)</button>
+      <button class="tab-btn" data-tab="lost">Outbid (4)</button>
     </div>
-    <div class="nav-end">
-      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
-      <button class="hamburger" aria-label="Toggle menu" onclick="bmToggleNav(this)"><span></span><span></span><span></span></button>
+    <div data-panel="active">
+      <div class="table-wrap"><table><thead><tr><th>Lot</th><th>My Bid</th><th>Current</th><th>Status</th><th>Ends</th></tr></thead><tbody>
+        <tr><td style="font-weight:700">Patek Philippe Nautilus</td><td>₹18,40,000</td><td style="color:var(--gold-d);font-weight:700">₹18,40,000</td><td><span class="bdg bdg-live" style="font-size:10px"><span class="pulse"></span> Winning</span></td><td style="font-family:var(--fm);font-weight:700;color:var(--crim)" data-ms="7200000">—</td></tr>
+        <tr><td style="font-weight:700">M.F. Husain Oil 1974</td><td>₹8,50,000</td><td style="color:var(--crim);font-weight:700">₹8,75,000</td><td><span class="bdg bdg-ending" style="font-size:10px">Outbid</span></td><td style="font-family:var(--fm);font-weight:700" data-ms="14400000">—</td></tr>
+        <tr><td style="font-weight:700">Leica M3 1954</td><td>₹2,85,000</td><td style="color:var(--gold-d);font-weight:700">₹2,85,000</td><td><span class="bdg bdg-live" style="font-size:10px"><span class="pulse"></span> Winning</span></td><td style="font-family:var(--fm);font-weight:700" data-ms="10800000">—</td></tr>
+      </tbody></table></div>
+    </div>
+    <div data-panel="won" style="display:none"><div class="table-wrap"><table><thead><tr><th>Lot</th><th>Winning Bid</th><th>Date</th></tr></thead><tbody>
+      <tr><td>Rolex Daytona 6265</td><td style="color:var(--gold-d);font-weight:700">₹24,00,000</td><td>Mar 15</td></tr>
+      <tr><td>1961 Pétrus 6-Bottle</td><td style="color:var(--gold-d);font-weight:700">₹14,25,000</td><td>Mar 10</td></tr>
+    </tbody></table></div></div>
+    <div data-panel="lost" style="display:none"><div class="table-wrap"><table><thead><tr><th>Lot</th><th>My Max Bid</th><th>Final Price</th></tr></thead><tbody>
+      <tr><td>Jaguar E-Type 1967</td><td>₹90,00,000</td><td style="color:var(--crim);font-weight:700">₹1,24,00,000</td></tr>
+    </tbody></table></div></div>
+  </div>
+  <div>
+    <h4 style="margin-bottom:14px">❤️ Watchlist — Ending Soon</h4>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--white);border:1.5px solid var(--n2);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center;transition:border-color var(--tr)" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--n2)'">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" style="width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0" style="width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0" alt=""/>
+        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">1969 BSA Gold Star DBD34</div><div style="font-size:12px;color:var(--muted)">₹38,00,000 · 64 bids</div></div>
+        <div style="font-family:var(--fm);font-size:13px;font-weight:500;color:var(--crim);white-space:nowrap" data-ms="3600000">—</div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--n2);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center">
+        <img src="https://images.unsplash.com/photo-1583394293214-0b6b33a80cf8?w=200&q=80" style="width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0" style="width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0" alt=""/>
+        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Mughal Diamond Necklace</div><div style="font-size:12px;color:var(--muted)">₹45,20,000 · 12 bids</div></div>
+        <div style="font-family:var(--fm);font-size:13px;font-weight:500;white-space:nowrap" data-ms="86400000">—</div>
+      </div>
     </div>
   </div>
-</nav>
-<div class="mobile-nav" onclick="if(event.target.tagName==='A'&&event.target.href)this.classList.remove('open')">
-  <details class="mobile-nav-group"><summary>Home <span>›</span></summary><div class="mobile-nav-sub"><a href="index.html">🏛️ Classic</a><a href="index-v2.html">⚡ Modern</a></div></details>
-  <a href="portfolio.html">Auctions</a><a href="pricing.html">Pricing</a><a href="admin-dashboard.html">Admin Panel</a>
-  <div class="mobile-nav-cta"><a href="login.html" class="btn btn-ghost btn-sm">Logout</a></div>
-</div>
-
-<div class="dashboard-layout">
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-logo"><div class="nav-logo-icon" style="background:var(--amber)">🔨</div>BidMaster</div>
-    <div class="sidebar-section-label">Main</div>
-    <nav class="sidebar-nav">
-      <a href="user-dashboard.html" class="active"><span>📊</span> My Dashboard</a>
-      <a href="portfolio.html"><span>🔨</span> Browse Auctions</a>
-      <a href="#"><span>💰</span> My Bids <span class="badge badge-ending" style="margin-left:auto;font-size:10px">12</span></a>
-      <a href="#"><span>🏆</span> Won Items</a>
-      <a href="#"><span>❤️</span> Watchlist</a>
-    </nav>
-    <div class="sidebar-section-label">Account</div>
-    <nav class="sidebar-nav">
-      <a href="#"><span>👤</span> Profile</a>
-      <a href="#"><span>🔔</span> Notifications</a>
-      <a href="#"><span>💳</span> Payments</a>
-      <a href="#"><span>⚙️</span> Settings</a>
-    </nav>
-    <div class="sidebar-footer">
-      <div style="display:flex;align-items:center;gap:10px">
-        <img src="https://i.pravatar.cc/150?img=11" style="width:36px;height:36px;border-radius:50%" alt=""/>
-        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;color:var(--white)">Arjun Sharma</div><div style="font-size:11px;color:rgba(255,255,255,0.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">arjun@example.com</div></div>
-      </div>
-      <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%;margin-top:12px;color:rgba(255,255,255,0.5);justify-content:flex-start;border-color:rgba(255,255,255,0.1)">← Back to Site</a>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <main class="dashboard-main">
-    <div class="topbar">
-      <div class="topbar-left">
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-        <div><h4 style="margin-bottom:2px">My Dashboard</h4><p class="text-xs text-muted">Sunday, Mar 17, 2026</p></div>
-      </div>
-      <div class="topbar-right">
-        <a href="portfolio.html" class="btn btn-primary btn-sm">+ Place New Bid</a>
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:15px">👤</div>
-        <button id="rtlToggle" class="nav-rtl-btn">🌐</button>
-      </div>
-    </div>
-    <div class="dashboard-content">
-
-      <!-- WELCOME -->
-      <div style="background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:var(--radius-lg);padding:28px 32px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
-        <div>
-          <h3 style="color:var(--white);margin-bottom:6px">Good Morning, Arjun! 👋</h3>
-          <p style="color:rgba(255,255,255,0.75)">You have <strong style="color:var(--amber-light)">3 active bids</strong> and 1 auction ending in 45 minutes.</p>
-        </div>
-        <a href="portfolio.html" class="btn btn-secondary">View Live Auctions</a>
-      </div>
-
-      <!-- STATS -->
-      <div class="grid-4" style="margin-bottom:24px">
-        <div class="stat-card"><div class="stat-val" style="color:var(--blue)">12</div><div class="stat-label">Total Bids Placed</div><div class="metric-up mt-8">↑ 3 this week</div></div>
-        <div class="stat-card"><div class="stat-val" style="color:var(--green)">4</div><div class="stat-label">Auctions Won</div><div class="metric-up mt-8">↑ 1 this month</div></div>
-        <div class="stat-card"><div class="stat-val" style="color:var(--amber)">3</div><div class="stat-label">Active Bids</div><div style="font-size:12px;color:var(--amber-dark);font-weight:600;margin-top:8px">⚡ 1 ending soon</div></div>
-        <div class="stat-card"><div class="stat-val" style="color:var(--dark)">₹2.4L</div><div class="stat-label">Total Spent</div><div class="metric-up mt-8">Across 4 wins</div></div>
-      </div>
-
-      <!-- ACTIVE BIDS & WATCHLIST -->
-      <div class="grid-2" style="gap:24px;align-items:start">
-        <div>
-          <div class="tabs mb-16" data-tabs>
-            <button class="tab-btn active" data-tab="active">Active Bids (3)</button>
-            <button class="tab-btn" data-tab="won">Won (4)</button>
-            <button class="tab-btn" data-tab="lost">Lost (5)</button>
-          </div>
-          <div data-panel="active">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Item</th><th>Your Bid</th><th>Status</th><th>Time Left</th></tr></thead>
-                <tbody>
-                  <tr><td style="font-weight:600">Diamond Ring</td><td style="color:var(--blue);font-weight:600">₹1,15,000</td><td><span class="badge badge-live"><span class="live-dot"></span>Leading</span></td><td style="color:var(--amber-dark);font-weight:600">45m</td></tr>
-                  <tr><td style="font-weight:600">Vintage Watch</td><td style="color:var(--blue);font-weight:600">₹42,000</td><td><span class="badge badge-ending">Outbid</span></td><td>2h 14m</td></tr>
-                  <tr><td style="font-weight:600">Abstract Art</td><td style="color:var(--blue);font-weight:600">₹26,000</td><td><span class="badge badge-live"><span class="live-dot"></span>Leading</span></td><td>6h 30m</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div data-panel="won" style="display:none">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Item</th><th>Final Bid</th><th>Date</th></tr></thead>
-                <tbody>
-                  <tr><td>Air Jordan</td><td style="color:var(--green);font-weight:600">₹9,500</td><td>Mar 14</td></tr>
-                  <tr><td>Canvas Art</td><td style="color:var(--green);font-weight:600">₹28,500</td><td>Mar 10</td></tr>
-                  <tr><td>Camera</td><td style="color:var(--green);font-weight:600">₹32,000</td><td>Mar 5</td></tr>
-                  <tr><td>Collectible Set</td><td style="color:var(--green);font-weight:600">₹14,000</td><td>Feb 28</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div data-panel="lost" style="display:none">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Item</th><th>Winning Bid</th><th>Your Bid</th></tr></thead>
-                <tbody>
-                  <tr><td>Gold Necklace</td><td>₹85,000</td><td style="color:var(--muted)">₹78,000</td></tr>
-                  <tr><td>Rare Coin</td><td>₹22,000</td><td style="color:var(--muted)">₹20,500</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h4 style="margin-bottom:16px">❤️ Watchlist</h4>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;gap:12px;align-items:center;background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-md);padding:12px"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=100&q=80" style="width:52px;height:52px;border-radius:var(--radius-sm);object-fit:cover" alt=""/><div style="flex:1"><div style="font-size:14px;font-weight:600">Antique Watch</div><div style="color:var(--blue);font-weight:700;font-size:15px">₹45,000</div></div><span class="badge badge-live"><span class="live-dot"></span>Live</span></div>
-            <div style="display:flex;gap:12px;align-items:center;background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-md);padding:12px"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=100&q=80" style="width:52px;height:52px;border-radius:var(--radius-sm);object-fit:cover" alt=""/><div style="flex:1"><div style="font-size:14px;font-weight:600">Abstract Canvas</div><div style="color:var(--blue);font-weight:700;font-size:15px">₹28,500</div></div><span class="badge badge-ending">Ending</span></div>
-            <div style="display:flex;gap:12px;align-items:center;background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-md);padding:12px"><img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=100&q=80" style="width:52px;height:52px;border-radius:var(--radius-sm);object-fit:cover" alt=""/><div style="flex:1"><div style="font-size:14px;font-weight:600">Air Jordan</div><div style="color:var(--blue);font-weight:700;font-size:15px">₹8,000</div></div><span class="badge badge-blue">Starting</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+</div></div>
   </main>
 </div>
-
 <script src="js/main.js"></script>
-</body>
-</html>
+</body></html>

@@ -1,175 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard — BidMaster</title>
-  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <script src="js/rtl-toggle.js"></script>
-  <script>
-    function toggleSidebar(){
-      var s=document.querySelector('.sidebar'),o=document.getElementById('sOverlay');
-      var open=s.classList.toggle('open');
-      if(o)o.style.display=open?'block':'none';
-    }
-    function closeSidebar(){
-      var s=document.querySelector('.sidebar'),o=document.getElementById('sOverlay');
-      if(s)s.classList.remove('open');
-      if(o)o.style.display='none';
-    }
-  </script>
-  <script>
-    function bmToggleNav(btn) {
-      var nav = document.querySelector('.mobile-nav');
-      if (!nav) return;
-      var open = nav.classList.toggle('open');
-      var s = btn.querySelectorAll('span');
-      s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-      s[1].style.opacity   = open ? '0' : '';
-      s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
-    }
-  </script>
-</head>
-<body>
-
-<div id="sOverlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;z-index:198;background:rgba(0,0,0,0.5);backdrop-filter:blur(2px)"></div>
-
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🔨</div>BidMaster</a>
-    <ul class="nav-links">
-      <li class="nav-item-dropdown">
-        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
-        <div class="nav-dropdown">
-          <a href="index.html" class="nav-dd-item"><div class="nav-dd-icon blue">🏛️</div><div class="nav-dd-text"><strong>Home — Classic</strong><span>Hero, featured auctions</span></div></a>
-          <div class="nav-dd-divider"></div>
-          <a href="index-v2.html" class="nav-dd-item"><div class="nav-dd-icon amber">⚡</div><div class="nav-dd-text"><strong>Home — Modern</strong><span>Live grid &amp; leaderboard</span></div></a>
-        </div>
-      </li>
-      <li><a href="portfolio.html">Auctions</a></li>
-    </ul>
-    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
-      <span class="badge badge-ending">5 alerts</span>
-      <a href="user-dashboard.html" class="btn btn-ghost btn-sm">User View</a>
-    </div>
-    <div class="nav-end">
-      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
-      <button class="hamburger" aria-label="Toggle menu" onclick="bmToggleNav(this)"><span></span><span></span><span></span></button>
+<html lang="en" dir="ltr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin Dashboard — Hammr</title>
+<link rel="icon" href="assets/favicon/icon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+<script>
+function hm_nav(b){var n=document.querySelector('.mob-nav');if(!n)return;var o=n.classList.toggle('open');b.classList.toggle('open',o)}
+function hm_sb(){var s=document.querySelector('.sidebar'),v=document.querySelector('.sb-overlay');var o=s.classList.toggle('open');if(v)v.classList.toggle('visible',o)}
+function hm_sb_close(){document.querySelector('.sidebar').classList.remove('open');var v=document.querySelector('.sb-overlay');if(v)v.classList.remove('visible')}
+</script>
+</head><body>
+<div class="sb-overlay" onclick="hm_sb_close()"></div>
+<nav class="navbar" id="nb"><div class="container">
+  <a href="index.html" class="nav-logo"><div class="logo-icon">🔨</div><div class="logo-text">Hamm<span>r</span></div></a>
+  <ul class="nav-links">
+    <li class="nav-dd"><a href="index.html">Home<svg class="dd-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></a><div class="dd-panel"><a href="index.html" class="ddi"><div class="ddi-ic ic-gold">🏛️</div><div class="ddi-tx"><strong>Auction Hall</strong><span>Classic grid</span></div></a><div class="dd-rule"></div><a href="index-v2.html" class="ddi"><div class="ddi-ic ic-crim">⚡</div><div class="ddi-tx"><strong>Live Pulse</strong><span>Real-time feed</span></div></a></div></li>
+    <li><a href="portfolio.html">Auctions</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="about.html">About</a></li>
+  </ul>
+  <div class="nav-act"><span class="bdg bdg-ending" style="font-size:11px">8 Pending</span><a href="user-dashboard.html" class="btn btn-ghost btn-sm">User View</a></div>
+  <div class="nav-end"><button id="rtlToggle" class="rtl-btn">🌐</button><button class="hamburger" onclick="hm_nav(this)"><span></span><span></span><span></span></button></div>
+</div></nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏛️ Auction Hall</a><a href="index-v2.html">⚡ Live Pulse</a></div></details>
+  <a href="portfolio.html">All Auctions</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+  <div class="mob-cta"><span class="bdg bdg-ending" style="font-size:11px">8 Pending</span><a href="user-dashboard.html" class="btn btn-ghost btn-sm">User View</a></div>
+</div>
+<div class="dash-layout">
+  <aside class="sidebar">
+<div class="sb-brand" style="background:rgba(192,57,43,.15)"><div class="logo-icon" style="background:linear-gradient(135deg,var(--crim-l),var(--crim-d))">⚙️</div><div class="logo-text" style="font-size:16px">Admin<span> Panel</span></div></div>
+<div class="sb-section">Overview</div>
+<nav class="sb-nav">
+  <a href="admin-dashboard.html" class="active"><span>📊</span>Dashboard</a>
+  <a href="#"><span>🔨</span>All Auctions <span style="margin-left:auto;font-size:9px;background:rgba(232,160,32,.2);color:var(--gold-l);border-radius:100px;padding:2px 7px;font-weight:700">2.8K</span></a>
+  <a href="#"><span>👥</span>Users</a>
+  <a href="#"><span>🔍</span>Authentication <span class="bdg bdg-ending" style="margin-left:auto;font-size:9px;padding:2px 6px">8</span></a>
+  <a href="#"><span>💰</span>Revenue</a>
+  <a href="#"><span>📈</span>Analytics</a>
+</nav>
+<div class="sb-section">Management</div>
+<nav class="sb-nav">
+  <a href="#"><span>✅</span>Approvals</a>
+  <a href="#"><span>🚨</span>Disputes</a>
+  <a href="#"><span>⚙️</span>Settings</a>
+</nav>
+<div class="sb-foot">
+  <div style="display:flex;align-items:center;gap:9px">
+    <img src="https://i.pravatar.cc/150?img=68" style="width:36px;height:36px;border-radius:50%;border:2px solid rgba(232,160,32,.3);flex-shrink:0" alt=""/>
+    <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:#fff">Vikram Singhania</div><div style="font-size:11px;color:rgba(255,255,255,.35)">Administrator</div></div>
+  </div>
+  <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%;margin-top:10px;color:rgba(255,255,255,.4);justify-content:flex-start;border-color:rgba(255,255,255,.1);font-size:12px">← Back to Site</a>
+</div></aside>
+  <main class="d-main">
+    <div class="topbar">
+  <div class="t-left"><button class="sb-toggle" onclick="hm_sb()">☰</button><div><div style="font-size:15px;font-weight:700">Admin Dashboard</div><div style="font-size:11px;color:var(--muted)">Platform overview</div></div></div>
+  <div class="t-right"><span class="bdg bdg-ending" style="font-size:11px">⚠️ 8 Pending Reviews</span><a href="user-dashboard.html" class="btn btn-out btn-sm">User View</a></div>
+</div>
+    <div class="d-content">
+<div style="background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.18);border-radius:12px;padding:14px 18px;margin-bottom:22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+  <span style="font-size:1.3rem">⚠️</span><div style="flex:1"><strong>8 lots pending authentication review.</strong> <span style="color:var(--muted)">Process within 24h per policy.</span></div><button class="btn btn-crim btn-sm">Review Now →</button>
+</div>
+<div class="g4" style="margin-bottom:22px">
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">🔨</div><div class="stat-val" style="color:var(--gold-d)"><span data-count="2847">0</span></div><div class="stat-lbl">Live Auctions</div><div style="font-size:11px;color:green;font-weight:700;margin-top:4px">↑ 124 today</div></div>
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">👥</div><div class="stat-val"><span data-count="184000">0</span></div><div class="stat-lbl">Registered Users</div><div style="font-size:11px;color:green;font-weight:700;margin-top:4px">↑ 248 today</div></div>
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">💰</div><div class="stat-val" style="color:var(--gold-d)">₹2.4Cr</div><div class="stat-lbl">This Week</div><div style="font-size:11px;color:green;font-weight:700;margin-top:4px">↑ 18% vs last wk</div></div>
+  <div class="stat-box"><div style="font-size:1.1rem;margin-bottom:6px">📈</div><div class="stat-val"><span data-count="99" data-suffix=".8%">0%</span></div><div class="stat-lbl">Uptime</div><div style="font-size:11px;color:green;font-weight:700;margin-top:4px">Excellent</div></div>
+</div>
+<div class="g2" style="gap:22px;align-items:start;margin-bottom:22px">
+  <div class="card">
+    <h4 style="margin-bottom:16px">Weekly Revenue (₹)</h4>
+    <div style="display:flex;align-items:flex-end;gap:6px;height:100px">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(var(--gold-l),var(--gold-d));border-radius:4px 4px 0 0;height:60%"></div><span style="font-size:10px;color:var(--muted)">M</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(var(--gold-l),var(--gold-d));border-radius:4px 4px 0 0;height:75%"></div><span style="font-size:10px;color:var(--muted)">T</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(var(--crim-l),var(--crim-d));border-radius:4px 4px 0 0;height:93%"></div><span style="font-size:10px;color:var(--muted)">W</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(var(--gold-l),var(--gold-d));border-radius:4px 4px 0 0;height:68%"></div><span style="font-size:10px;color:var(--muted)">T</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(var(--gold-l),var(--gold-d));border-radius:4px 4px 0 0;height:85%"></div><span style="font-size:10px;color:var(--muted)">F</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(var(--gold-l),var(--gold-d));border-radius:4px 4px 0 0;height:100%"></div><span style="font-size:10px;color:var(--muted)">Sa</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;background:linear-gradient(var(--gold-l),var(--gold-d));border-radius:4px 4px 0 0;height:50%"></div><span style="font-size:10px;color:var(--muted)">Su</span></div>
     </div>
   </div>
-</nav>
-<div class="mobile-nav" onclick="if(event.target.tagName==='A'&&event.target.href)this.classList.remove('open')">
-  <details class="mobile-nav-group"><summary>Home <span>›</span></summary><div class="mobile-nav-sub"><a href="index.html">🏛️ Classic</a><a href="index-v2.html">⚡ Modern</a></div></details>
-  <a href="portfolio.html">Auctions</a><a href="user-dashboard.html">User View</a>
-  <div class="mobile-nav-cta"><a href="login.html" class="btn btn-ghost btn-sm">Logout</a></div>
+  <div class="card">
+    <h4 style="margin-bottom:16px">Category Performance</h4>
+    <div style="display:flex;flex-direction:column;gap:11px">
+      <div><div class="fb mb8" style="font-size:13px"><span>🚗 Cars</span><span style="color:var(--gold-d);font-weight:700">₹3.2Cr</span></div><div class="prog"><div class="prog-fill" style="width:95%"></div></div></div>
+      <div><div class="fb mb8" style="font-size:13px"><span>💎 Jewellery</span><span style="color:var(--gold-d);font-weight:700">₹1.4Cr</span></div><div class="prog"><div class="prog-fill" style="width:72%"></div></div></div>
+      <div><div class="fb mb8" style="font-size:13px"><span>⌚ Watches</span><span style="color:var(--gold-d);font-weight:700">₹48L</span></div><div class="prog"><div class="prog-fill" style="width:58%"></div></div></div>
+      <div><div class="fb mb8" style="font-size:13px"><span>🎨 Fine Art</span><span style="color:var(--gold-d);font-weight:700">₹62L</span></div><div class="prog"><div class="prog-fill" style="width:42%"></div></div></div>
+    </div>
+  </div>
 </div>
-
-<div class="dashboard-layout">
-  <aside class="sidebar">
-    <div class="sidebar-logo"><div class="nav-logo-icon" style="background:var(--amber)">👑</div>Admin Panel</div>
-    <div class="sidebar-section-label">Overview</div>
-    <nav class="sidebar-nav">
-      <a href="admin-dashboard.html" class="active"><span>📊</span> Dashboard</a>
-      <a href="#"><span>🔨</span> All Auctions <span class="badge" style="margin-left:auto;background:rgba(245,158,11,0.2);color:var(--amber);font-size:10px">2,487</span></a>
-      <a href="#"><span>👥</span> Users</a>
-      <a href="#"><span>💰</span> Revenue</a>
-      <a href="#"><span>📈</span> Analytics</a>
-    </nav>
-    <div class="sidebar-section-label">Management</div>
-    <nav class="sidebar-nav">
-      <a href="#"><span>✅</span> Approvals <span class="badge badge-ending" style="margin-left:auto;font-size:10px">5</span></a>
-      <a href="#"><span>🚨</span> Reports</a>
-      <a href="#"><span>⚙️</span> Settings</a>
-    </nav>
-    <div class="sidebar-footer">
-      <div style="display:flex;align-items:center;gap:10px">
-        <img src="https://i.pravatar.cc/150?img=68" style="width:36px;height:36px;border-radius:50%" alt=""/>
-        <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;color:var(--white)">Vikram Patel</div><div style="font-size:11px;color:rgba(255,255,255,0.4)">Administrator</div></div>
-      </div>
-      <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%;margin-top:12px;color:rgba(255,255,255,0.5);justify-content:flex-start;border-color:rgba(255,255,255,0.1)">← Back to Site</a>
-    </div>
-  </aside>
-
-  <main class="dashboard-main">
-    <div class="topbar">
-      <div class="topbar-left">
-        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-        <div><h4 style="margin-bottom:2px">Admin Dashboard</h4><p class="text-xs text-muted">Platform overview — all workspaces</p></div>
-      </div>
-      <div class="topbar-right">
-        <span class="badge badge-ending">⚠️ 5 Pending Approvals</span>
-        <a href="user-dashboard.html" class="btn btn-outline btn-sm">User View</a>
-        <button id="rtlToggle" class="nav-rtl-btn">🌐</button>
-      </div>
-    </div>
-    <div class="dashboard-content">
-
-      <!-- ALERT -->
-      <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <span style="font-size:1.3rem">⚠️</span>
-        <div style="flex:1"><strong>5 auctions pending approval.</strong> <span style="color:var(--muted)">Review and approve seller submissions before they go live.</span></div>
-        <button class="btn btn-secondary btn-sm">Review Now</button>
-      </div>
-
-      <!-- STATS -->
-      <div class="grid-4" style="margin-bottom:24px">
-        <div class="stat-card"><div style="font-size:1.5rem;margin-bottom:8px">🔨</div><div class="stat-val" style="color:var(--blue)"><span data-count="2487" data-suffix="">0</span></div><div class="stat-label">Total Auctions</div><div class="metric-up mt-8">↑ 124 this week</div></div>
-        <div class="stat-card"><div style="font-size:1.5rem;margin-bottom:8px">👥</div><div class="stat-val" style="color:var(--green)"><span data-count="52340" data-suffix="">0</span></div><div class="stat-label">Registered Users</div><div class="metric-up mt-8">↑ 340 this week</div></div>
-        <div class="stat-card"><div style="font-size:1.5rem;margin-bottom:8px">💰</div><div class="stat-val" style="color:var(--amber)">₹4.2Cr</div><div class="stat-label">Total Revenue</div><div class="metric-up mt-8">↑ 18% this month</div></div>
-        <div class="stat-card"><div style="font-size:1.5rem;margin-bottom:8px">📈</div><div class="stat-val" style="color:var(--blue)"><span data-count="98" data-suffix="%">0%</span></div><div class="stat-label">Satisfaction Rate</div><div class="metric-up mt-8">Excellent</div></div>
-      </div>
-
-      <!-- CHARTS (CSS bars) + RECENT TABLE -->
-      <div class="grid-2" style="gap:24px;align-items:start;margin-bottom:24px">
-        <div class="card">
-          <h4 style="margin-bottom:20px">Revenue This Week</h4>
-          <div style="display:flex;align-items:flex-end;gap:8px;height:120px">
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:60%"></div><span style="font-size:10px;color:var(--muted)">Mon</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:80%"></div><span style="font-size:10px;color:var(--muted)">Tue</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;background:var(--amber);border-radius:4px 4px 0 0;height:95%"></div><span style="font-size:10px;color:var(--muted)">Wed</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:70%"></div><span style="font-size:10px;color:var(--muted)">Thu</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;background:var(--green);border-radius:4px 4px 0 0;height:88%"></div><span style="font-size:10px;color:var(--muted)">Fri</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:75%"></div><span style="font-size:10px;color:var(--muted)">Sat</span></div>
-            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;background:var(--blue);border-radius:4px 4px 0 0;height:55%"></div><span style="font-size:10px;color:var(--muted)">Sun</span></div>
-          </div>
-        </div>
-        <div class="card">
-          <h4 style="margin-bottom:20px">Category Breakdown</h4>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div><div class="flex-between mb-8"><span style="font-size:13px;font-weight:600">💎 Jewelry</span><span style="font-size:13px;color:var(--blue);font-weight:600">34%</span></div><div class="progress-bar"><div class="progress-fill" style="width:34%"></div></div></div>
-            <div><div class="flex-between mb-8"><span style="font-size:13px;font-weight:600">📱 Electronics</span><span style="font-size:13px;color:var(--blue);font-weight:600">28%</span></div><div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div></div>
-            <div><div class="flex-between mb-8"><span style="font-size:13px;font-weight:600">🖼️ Art</span><span style="font-size:13px;color:var(--blue);font-weight:600">18%</span></div><div class="progress-bar"><div class="progress-fill" style="width:18%"></div></div></div>
-            <div><div class="flex-between mb-8"><span style="font-size:13px;font-weight:600">🪙 Collectibles</span><span style="font-size:13px;color:var(--blue);font-weight:600">20%</span></div><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RECENT AUCTIONS TABLE -->
-      <div class="card" style="padding:0;overflow:hidden">
-        <div style="padding:20px 24px;border-bottom:1px solid var(--neutral-2);display:flex;align-items:center;justify-content:space-between">
-          <h4>Recent Auctions</h4>
-          <a href="portfolio.html" class="btn btn-ghost btn-sm">View All</a>
-        </div>
-        <div class="table-wrap" style="border:none;border-radius:0">
-          <table>
-            <thead><tr><th>Item</th><th>Seller</th><th>Current Bid</th><th>Bids</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:600">Diamond Ring 2.4ct</td><td>Priya N.</td><td style="color:var(--blue);font-weight:600">₹1,20,000</td><td>24</td><td><span class="badge badge-live"><span class="live-dot"></span>Live</span></td><td><a href="#" style="color:var(--blue);font-size:13px;font-weight:600">Manage</a></td></tr>
-              <tr><td style="font-weight:600">Antique Pocket Watch</td><td>Rahul M.</td><td style="color:var(--blue);font-weight:600">₹45,000</td><td>18</td><td><span class="badge badge-live"><span class="live-dot"></span>Live</span></td><td><a href="#" style="color:var(--blue);font-size:13px;font-weight:600">Manage</a></td></tr>
-              <tr><td style="font-weight:600">Abstract Canvas</td><td>Sneha K.</td><td style="color:var(--blue);font-weight:600">₹28,500</td><td>11</td><td><span class="badge badge-ending">Ending Soon</span></td><td><a href="#" style="color:var(--blue);font-size:13px;font-weight:600">Manage</a></td></tr>
-              <tr><td style="font-weight:600">Air Jordan Limited</td><td>Vikram P.</td><td style="color:var(--blue);font-weight:600">₹8,000</td><td>7</td><td><span class="badge badge-blue">Upcoming</span></td><td><a href="#" style="color:var(--blue);font-size:13px;font-weight:600">Manage</a></td></tr>
-              <tr><td style="font-weight:600">Vintage Camera</td><td>Arjun S.</td><td style="color:var(--green);font-weight:600">₹32,000</td><td>22</td><td><span class="badge badge-closed">Closed</span></td><td><a href="#" style="color:var(--blue);font-size:13px;font-weight:600">View</a></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+<div class="card" style="padding:0;overflow:hidden">
+  <div style="padding:16px 20px;border-bottom:1.5px solid var(--n2);display:flex;align-items:center;justify-content:space-between"><h4 style="margin:0">Recent Lot Activity</h4><a href="portfolio.html" class="btn btn-out btn-sm">View All →</a></div>
+  <div class="table-wrap" style="border:none;border-radius:0"><table><thead><tr><th>Lot Title</th><th>Seller</th><th>Category</th><th>Current Bid</th><th>Status</th><th>Action</th></tr></thead><tbody>
+    <tr><td style="font-weight:700">Patek Philippe Nautilus 5711</td><td>Ravi K.</td><td>⌚ Watches</td><td style="color:var(--gold-d);font-weight:700">₹18,40,000</td><td><span class="bdg bdg-live" style="font-size:10px"><span class="pulse"></span>Live</span></td><td><a href="#" style="color:var(--gold-d);font-size:12px;font-weight:700">Manage</a></td></tr>
+    <tr><td style="font-weight:700">1967 Jaguar E-Type Roadster</td><td>ClassicMo</td><td>🚗 Cars</td><td style="color:var(--gold-d);font-weight:700">₹1,24,00,000</td><td><span class="bdg bdg-ending" style="font-size:10px">Ending</span></td><td><a href="#" style="color:var(--gold-d);font-size:12px;font-weight:700">Manage</a></td></tr>
+    <tr><td style="font-weight:700">M.F. Husain Oil 1974</td><td>ArtVault</td><td>🎨 Art</td><td style="color:var(--gold-d);font-weight:700">₹8,75,000</td><td><span class="bdg bdg-live" style="font-size:10px"><span class="pulse"></span>Live</span></td><td><a href="#" style="color:var(--gold-d);font-size:12px;font-weight:700">Manage</a></td></tr>
+    <tr><td style="font-weight:700">Mughal Diamond Necklace</td><td>GemLux</td><td>💎 Jewellery</td><td style="color:var(--gold-d);font-weight:700">₹45,20,000</td><td><span class="bdg" style="background:rgba(239,68,68,.1);color:#DC2626;font-size:10px;border:1px solid rgba(239,68,68,.2)">⚠️ Review</span></td><td><a href="#" style="color:var(--crim-d);font-size:12px;font-weight:700">Authenticate</a></td></tr>
+  </tbody></table></div>
+</div></div>
   </main>
 </div>
-
 <script src="js/main.js"></script>
-</body>
-</html>
+</body></html>

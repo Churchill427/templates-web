@@ -1,117 +1,120 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Browse Auctions — BidMaster</title>
-  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <script src="js/rtl-toggle.js"></script>
-  <style>
-    .auction-filters{background:var(--white);border:1px solid var(--neutral-2);border-radius:var(--radius-lg);padding:20px;position:sticky;top:calc(var(--nav-h) + 16px)}
-    .filter-group{margin-bottom:20px}
-    .filter-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:10px}
-    .filter-options{display:flex;flex-direction:column;gap:8px}
-    .filter-opt{display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer}
-    .portfolio-layout{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
-    @media(max-width:900px){.portfolio-layout{grid-template-columns:1fr}.auction-filters{position:static}}
-  </style>
-  <script>
-    function bmToggleNav(btn) {
-      var nav = document.querySelector('.mobile-nav');
-      if (!nav) return;
-      var open = nav.classList.toggle('open');
-      var s = btn.querySelectorAll('span');
-      s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-      s[1].style.opacity   = open ? '0' : '';
-      s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
-    }
-  </script>
-</head>
-<body>
-<nav class="navbar" id="navbar">
-  <div class="container">
-    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">🔨</div>BidMaster</a>
-    <ul class="nav-links">
-      <li class="nav-item-dropdown">
-        <a href="index.html">Home <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
-        <div class="nav-dropdown">
-          <a href="index.html" class="nav-dd-item"><div class="nav-dd-icon blue">🏛️</div><div class="nav-dd-text"><strong>Home — Classic</strong><span>Hero, featured auctions &amp; testimonials</span></div></a>
-          <div class="nav-dd-divider"></div>
-          <a href="index-v2.html" class="nav-dd-item"><div class="nav-dd-icon amber">⚡</div><div class="nav-dd-text"><strong>Home — Modern</strong><span>Live grid, leaderboard &amp; marquee</span></div></a>
-        </div>
-      </li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="portfolio.html">Auctions</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-actions" style="display:flex;align-items:center;gap:10px">
-      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
-      <a href="register.html" class="btn btn-primary btn-sm">Register</a>
-    </div>
-    <div class="nav-end">
-      <button id="rtlToggle" class="nav-rtl-btn" title="Toggle RTL/LTR">🌐</button>
-      <button class="hamburger" aria-label="Toggle menu" onclick="bmToggleNav(this)"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</nav>
-<div class="mobile-nav" onclick="if(event.target.tagName==='A'&&event.target.href)this.classList.remove('open')">
-  <details class="mobile-nav-group"><summary>Home <span>›</span></summary><div class="mobile-nav-sub"><a href="index.html">🏛️ Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
-  <a href="about.html">About</a><a href="portfolio.html">Auctions</a><a href="pricing.html">Pricing</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
-  <div class="mobile-nav-cta"><a href="login.html" class="btn btn-ghost btn-sm">Login</a><a href="register.html" class="btn btn-primary btn-sm">Register</a></div>
+<html lang="en" dir="ltr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Browse All Auctions — Hammr Auctions</title>
+<link rel="icon" href="assets/favicon/icon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+</head><body>
+<nav class="navbar" id="nb"><div class="container">
+  <a href="index.html" class="nav-logo"><div class="logo-icon">🔨</div><div class="logo-text">Hamm<span>r</span></div></a>
+  <ul class="nav-links">
+    <li class="nav-dd"><a href="index.html">Home<svg class="dd-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></a><div class="dd-panel"><a href="index.html" class="ddi"><div class="ddi-ic ic-gold">🏛️</div><div class="ddi-tx"><strong>Auction Hall</strong><span>Classic grid</span></div></a><div class="dd-rule"></div><a href="index-v2.html" class="ddi"><div class="ddi-ic ic-crim">⚡</div><div class="ddi-tx"><strong>Live Pulse</strong><span>Real-time feed</span></div></a></div></li>
+    <li><a href="portfolio.html">Auctions</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Journal</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act"><a href="login.html" class="btn btn-ghost btn-sm">Sign In</a><a href="register.html" class="btn btn-gold btn-sm">Register Free</a></div>
+  <div class="nav-end"><button id="rtlToggle" class="rtl-btn">🌐</button><button class="hamburger" onclick="hm_nav(this)"><span></span><span></span><span></span></button></div>
+</div></nav>
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏛️ Auction Hall</a><a href="index-v2.html">⚡ Live Pulse</a></div></details>
+  <a href="portfolio.html">Browse Auctions</a><a href="pricing.html">Pricing</a><a href="blog.html">Journal</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+  <div class="mob-cta"><a href="login.html" class="btn btn-ghost btn-sm">Sign In</a><a href="register.html" class="btn btn-gold btn-sm">Register</a></div>
 </div>
 
-<section style="padding-top:var(--nav-h);background:var(--neutral);padding-bottom:0">
-  <div class="container" style="padding-top:60px;padding-bottom:48px">
-    <span class="section-label">Live Auctions</span>
-    <div class="flex-between" style="flex-wrap:wrap;gap:16px;margin-top:12px">
-      <h1>Browse All Auctions</h1>
-      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-        <select class="form-input" style="width:auto;padding:8px 14px;font-size:13px"><option>Sort: Ending Soon</option><option>Newest First</option><option>Price: Low-High</option><option>Price: High-Low</option></select>
-        <span class="badge badge-live"><span class="live-dot"></span>2,487 Active</span>
+<style>
+.pl-wrap{display:grid;grid-template-columns:252px 1fr;gap:28px;align-items:start}
+@media(max-width:960px){.pl-wrap{grid-template-columns:1fr}.flt-panel{position:static}}
+</style>
+<section style="padding-top:var(--nh);background:var(--abyss);border-bottom:1px solid rgba(232,160,32,.12);position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1605101100278-5d1deb2b6498?w=1600&q=80')center/cover no-repeat;opacity:.08;pointer-events:none"></div>
+  <div class="container" style="padding-top:46px;padding-bottom:32px">
+    <span class="lbl" style="background:rgba(192,57,43,.15);color:var(--crim-l);border-color:rgba(192,57,43,.3)"><span class="pulse"></span> Live Auctions</span>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:11px">
+      <h1 style="color:var(--white)">All Auction Lots <span style="color:rgba(255,255,255,.3);font-size:1rem;font-weight:400;font-family:var(--fb)">(2,847 live)</span></h1>
+    </div>
+    <div style="max-width:640px;margin-top:16px;display:flex;gap:8px">
+      <div style="flex:1;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;padding:11px 17px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:17px">🔍</span>
+        <input type="text" placeholder="Search lots, categories, sellers..." style="flex:1;background:none;border:none;color:var(--white);font-size:15px;font-family:var(--fb)"/>
       </div>
+      <button class="btn btn-gold">Search</button>
     </div>
   </div>
 </section>
-<section class="section">
+<section class="section" style="padding-top:28px">
   <div class="container">
-    <div class="portfolio-layout">
-      <aside class="auction-filters">
-        <h4 style="margin-bottom:20px">Filters</h4>
-        <div class="filter-group"><div class="filter-label">Category</div><div class="filter-options"><label class="filter-opt"><input type="checkbox" checked/> All Categories</label><label class="filter-opt"><input type="checkbox"/> 💎 Jewelry (842)</label><label class="filter-opt"><input type="checkbox"/> 🖼️ Art (634)</label><label class="filter-opt"><input type="checkbox"/> 📱 Electronics (1,240)</label><label class="filter-opt"><input type="checkbox"/> 🏎️ Vehicles (312)</label><label class="filter-opt"><input type="checkbox"/> 🪙 Collectibles (2,180)</label></div></div>
-        <div class="filter-group"><div class="filter-label">Status</div><div class="filter-options"><label class="filter-opt"><input type="radio" name="status" checked/> All</label><label class="filter-opt"><input type="radio" name="status"/> Live Now</label><label class="filter-opt"><input type="radio" name="status"/> Ending Soon</label><label class="filter-opt"><input type="radio" name="status"/> Starting Today</label></div></div>
-        <div class="filter-group"><div class="filter-label">Price Range</div><input type="range" min="0" max="100000" style="width:100%;accent-color:var(--blue)"/><div class="flex-between"><span style="font-size:12px;color:var(--muted)">₹0</span><span style="font-size:12px;color:var(--muted)">₹1,00,000+</span></div></div>
-        <button class="btn btn-primary" style="width:100%;margin-top:8px">Apply Filters</button>
+    <div class="pl-wrap">
+      <aside class="flt-panel">
+        <div class="flt-head"><h4 style="margin:0">🎛️ Filters</h4><button class="flt-clear">Clear All</button></div>
+        <div class="flt-sec"><span class="flt-label">Category</span><div class="flt-list">
+          <label class="flt-opt"><input type="checkbox" checked/> All Categories <span class="flt-cnt">2,847</span></label>
+          <label class="flt-opt"><input type="checkbox"/> ⌚ Watches <span class="flt-cnt">348</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 🎨 Fine Art <span class="flt-cnt">521</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 🚗 Vintage Cars <span class="flt-cnt">89</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 💎 Jewellery <span class="flt-cnt">412</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 🪙 Rare Coins <span class="flt-cnt">234</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 📷 Cameras <span class="flt-cnt">178</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 🍷 Fine Wine <span class="flt-cnt">95</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 🏺 Antiques <span class="flt-cnt">670</span></label>
+          <label class="flt-opt"><input type="checkbox"/> 🏍️ Motorcycles <span class="flt-cnt">300</span></label>
+        </div></div>
+        <div class="flt-sec"><span class="flt-label">Auction Status</span><div class="flt-list">
+          <label class="flt-opt"><input type="radio" name="st" checked/> All Lots</label>
+          <label class="flt-opt"><input type="radio" name="st"/> 🔴 Live Now</label>
+          <label class="flt-opt"><input type="radio" name="st"/> 🔥 Ending Soon</label>
+          <label class="flt-opt"><input type="radio" name="st"/> 📅 Upcoming</label>
+        </div></div>
+        <div class="flt-sec"><span class="flt-label">Estimate (₹)</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+            <input type="number" placeholder="Min" style="padding:9px 12px;border:1.5px solid var(--n2);border-radius:8px;font-size:13px;font-family:var(--fb)"/>
+            <input type="number" placeholder="Max" style="padding:9px 12px;border:1.5px solid var(--n2);border-radius:8px;font-size:13px;font-family:var(--fb)"/>
+          </div>
+          <input type="range" style="width:100%;accent-color:var(--gold-d)"/>
+        </div>
+        <div class="flt-sec"><span class="flt-label">Ends Within</span><div class="flt-list">
+          <label class="flt-opt"><input type="radio" name="en" checked/> Any Time</label>
+          <label class="flt-opt"><input type="radio" name="en"/> Next 1 Hour</label>
+          <label class="flt-opt"><input type="radio" name="en"/> Next 24 Hours</label>
+          <label class="flt-opt"><input type="radio" name="en"/> Next 7 Days</label>
+        </div></div>
+        <div class="flt-actions">
+          <button class="btn btn-gold" style="width:100%;justify-content:center">Apply Filters</button>
+          <button class="btn btn-out" style="width:100%;justify-content:center">Reset All</button>
+        </div>
       </aside>
       <div>
-        <div class="grid-3" style="gap:20px">
-          <div class="auction-card"><div class="auction-card-img"><img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&q=80" alt="Watch"/><span class="badge badge-live"><span class="live-dot"></span>Live</span><button class="wishlist">♡</button></div><div class="auction-card-body"><div class="auction-card-title">Antique Pocket Watch — 1920s Gold</div><div class="auction-meta"><div><div class="auction-bid-label">Current Bid</div><div class="auction-bid-val">₹45,000</div></div><div class="auction-timer">⏱ 2h 14m</div></div><div class="auction-card-foot"><a href="#" class="btn btn-primary" style="width:100%">Bid Now</a></div></div></div>
-          <div class="auction-card"><div class="auction-card-img"><img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400&q=80" alt="Ring"/><span class="badge badge-ending">⚡ Ending Soon</span><button class="wishlist">♡</button></div><div class="auction-card-body"><div class="auction-card-title">Diamond Solitaire Ring 2.4ct</div><div class="auction-meta"><div><div class="auction-bid-label">Current Bid</div><div class="auction-bid-val">₹1,20,000</div></div><div class="auction-timer">⏱ 45m</div></div><div class="auction-card-foot"><a href="#" class="btn btn-secondary" style="width:100%">Bid Now</a></div></div></div>
-          <div class="auction-card"><div class="auction-card-img"><img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=400&q=80" alt="Art"/><span class="badge badge-live"><span class="live-dot"></span>Live</span><button class="wishlist">♡</button></div><div class="auction-card-body"><div class="auction-card-title">Abstract Canvas Original</div><div class="auction-meta"><div><div class="auction-bid-label">Current Bid</div><div class="auction-bid-val">₹28,500</div></div><div class="auction-timer">⏱ 6h 30m</div></div><div class="auction-card-foot"><a href="#" class="btn btn-primary" style="width:100%">Bid Now</a></div></div></div>
-          <div class="auction-card"><div class="auction-card-img"><img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&q=80" alt="Shoes"/><span class="badge badge-blue">New</span><button class="wishlist">♡</button></div><div class="auction-card-body"><div class="auction-card-title">Limited Edition Air Jordan</div><div class="auction-meta"><div><div class="auction-bid-label">Starting Bid</div><div class="auction-bid-val">₹8,000</div></div><div class="auction-timer">⏱ 3d</div></div><div class="auction-card-foot"><a href="#" class="btn btn-green" style="width:100%">Bid Now</a></div></div></div>
-          <div class="auction-card"><div class="auction-card-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Item"/><span class="badge badge-live"><span class="live-dot"></span>Live</span><button class="wishlist">♡</button></div><div class="auction-card-body"><div class="auction-card-title">Vintage Collectible Set</div><div class="auction-meta"><div><div class="auction-bid-label">Current Bid</div><div class="auction-bid-val">₹12,000</div></div><div class="auction-timer">⏱ 1d 4h</div></div><div class="auction-card-foot"><a href="#" class="btn btn-primary" style="width:100%">Bid Now</a></div></div></div>
-          <div class="auction-card"><div class="auction-card-img"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=400&q=80" alt="Item"/><span class="badge badge-ending">⚡ Hot</span><button class="wishlist">♡</button></div><div class="auction-card-body"><div class="auction-card-title">Rare Vintage Camera</div><div class="auction-meta"><div><div class="auction-bid-label">Current Bid</div><div class="auction-bid-val">₹32,000</div></div><div class="auction-timer">⏱ 5h</div></div><div class="auction-card-foot"><a href="#" class="btn btn-secondary" style="width:100%">Bid Now</a></div></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;padding:12px 16px;background:var(--white);border:1.5px solid var(--n2);border-radius:12px">
+          <div style="font-size:14px;color:var(--ink2)">Showing <strong>2,847 active lots</strong></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <select class="fi" style="width:auto;padding:8px 13px;font-size:13px"><option>Ending Soonest</option><option>Highest Bid</option><option>Most Bids</option><option>Newest Listed</option></select>
+            <div style="display:flex;gap:4px">
+              <button style="width:34px;height:34px;border-radius:8px;border:1.5px solid var(--n2);background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer">⊞</button>
+              <button style="width:34px;height:34px;border-radius:8px;border:1.5px solid var(--n2);background:var(--white);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer">☰</button>
+            </div>
+          </div>
         </div>
-        <div class="flex-center gap-8 mt-32"><button class="btn btn-outline btn-sm">← Prev</button><button class="btn btn-primary btn-sm">1</button><button class="btn btn-ghost btn-sm">2</button><button class="btn btn-ghost btn-sm">3</button><span style="color:var(--muted)">...</span><button class="btn btn-ghost btn-sm">12</button><button class="btn btn-outline btn-sm">Next →</button></div>
+        <div class="g3" style="gap:20px"><div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1547619292-240b6e7b5a6e?w=500&q=80" alt="Patek Philippe Nautilus 5711 — 18K Gold" loading="lazy"/><div class="lot-top"><span class="bdg bdg-live"><span class="pulse"></span> Live</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="7200000">—</span></div></div><div class="lot-body"><div class="lot-cat">⌚ Watches</div><div class="lot-name">Patek Philippe Nautilus 5711 — 18K Gold</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹18,40,000</div></div><div class="lot-bids"><strong>47</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=11" alt=""/><span>Ravi K. ⭐4.9</span></div><button class="btn btn-gold btn-sm bid-now">Bid Now →</button></div></div></div>
+<div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=500&q=80" alt="M.F. Husain Oil on Canvas — Signed Estate 1974" loading="lazy"/><div class="lot-top"><span class="bdg bdg-feat">⭐ Featured</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="14400000">—</span></div></div><div class="lot-body"><div class="lot-cat">🎨 Fine Art</div><div class="lot-name">M.F. Husain Oil on Canvas — Signed Estate 1974</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹8,75,000</div></div><div class="lot-bids"><strong>23</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=22" alt=""/><span>ArtVault ⭐5.0</span></div><button class="btn btn-gold btn-sm bid-now">Bid Now →</button></div></div></div>
+<div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=500&q=80" alt="1967 Jaguar E-Type Series 1 Roadster" loading="lazy"/><div class="lot-top"><span class="bdg bdg-ending">🔥 Ending Soon</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="1800000">—</span></div></div><div class="lot-body"><div class="lot-cat">🚗 Vintage Cars</div><div class="lot-name">1967 Jaguar E-Type Series 1 Roadster</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹1,24,00,000</div></div><div class="lot-bids"><strong>89</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=33" alt=""/><span>ClassicMo ⭐4.8</span></div><button class="btn btn-crim btn-sm bid-now">Bid Now →</button></div></div></div>
+<div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1583394293214-0b6b33a80cf8?w=500&q=80" alt="Mughal Diamond Necklace — GIA Certified" loading="lazy"/><div class="lot-top"><span class="bdg bdg-new">🆕 Just Listed</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="86400000">—</span></div></div><div class="lot-body"><div class="lot-cat">💎 Jewellery</div><div class="lot-name">Mughal Diamond Necklace — GIA Certified</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹45,20,000</div></div><div class="lot-bids"><strong>12</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=44" alt=""/><span>GemLux ⭐4.7</span></div><button class="btn btn-gold btn-sm bid-now">Bid Now →</button></div></div></div>
+<div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=500&q=80" alt="1787 Brasher Doubloon Gold — MS-65 NGC" loading="lazy"/><div class="lot-top"><span class="bdg bdg-live"><span class="pulse"></span> Live</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="3600000">—</span></div></div><div class="lot-body"><div class="lot-cat">🪙 Coins</div><div class="lot-name">1787 Brasher Doubloon Gold — MS-65 NGC</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹62,50,000</div></div><div class="lot-bids"><strong>31</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=55" alt=""/><span>NumisMaster ⭐5.0</span></div><button class="btn btn-gold btn-sm bid-now">Bid Now →</button></div></div></div>
+<div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1461301214746-1e109215d6d3?w=500&q=80" alt="Leica M3 Double Stroke 1954 — Mint" loading="lazy"/><div class="lot-top"><span class="bdg bdg-feat">⭐ Featured</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="10800000">—</span></div></div><div class="lot-body"><div class="lot-cat">📷 Cameras</div><div class="lot-name">Leica M3 Double Stroke 1954 — Mint</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹2,85,000</div></div><div class="lot-bids"><strong>18</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=66" alt=""/><span>VintageOptics ⭐4.9</span></div><button class="btn btn-gold btn-sm bid-now">Bid Now →</button></div></div></div>
+<div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="1969 BSA Gold Star DBD34 — Matching Numbers" loading="lazy"/><div class="lot-top"><span class="bdg bdg-ending">🔥 Last Hour</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="3600000">—</span></div></div><div class="lot-body"><div class="lot-cat">🏍️ Motorcycles</div><div class="lot-name">1969 BSA Gold Star DBD34 — Matching Numbers</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹38,00,000</div></div><div class="lot-bids"><strong>64</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=77" alt=""/><span>BritBikes ⭐4.8</span></div><button class="btn btn-crim btn-sm bid-now">Bid Now →</button></div></div></div>
+<div class="lot-card reveal"><div class="lot-img"><img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=500&q=80" alt="Pétrus 1961 — 12-Bottle Original Crate" loading="lazy"/><div class="lot-top"><span class="bdg bdg-new">🆕 New Lot</span><button class="lot-fav">♡</button></div><div class="lot-timer"><span class="tl">⏱ Ends in</span><span class="tv" data-ms="172800000">—</span></div></div><div class="lot-body"><div class="lot-cat">🍷 Fine Wine</div><div class="lot-name">Pétrus 1961 — 12-Bottle Original Crate</div><div class="lot-bid-row"><div><span class="lot-bid-label">Current Bid</span><div class="lot-price">₹28,50,000</div></div><div class="lot-bids"><strong>7</strong><br/>bids</div></div><div class="lot-foot"><div class="lot-seller"><img src="https://i.pravatar.cc/150?img=88" alt=""/><span>WineCellar ⭐5.0</span></div><button class="btn btn-gold btn-sm bid-now">Bid Now →</button></div></div></div></div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:40px;flex-wrap:wrap">
+          <button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--gold);background:var(--gold);color:var(--abyss)">← Prev</button><button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--n2);background:var(--white);color:var(--ink2)">1</button><button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--n2);background:var(--white);color:var(--ink2)">2</button><button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--n2);background:var(--white);color:var(--ink2)">3</button><button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--n2);background:var(--white);color:var(--ink2)">4</button><button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--n2);background:var(--white);color:var(--ink2)">···</button><button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--n2);background:var(--white);color:var(--ink2)">18</button><button style="min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:all var(--tr);border:1.5px solid var(--n2);background:var(--white);color:var(--ink2)">Next →</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white)"><div class="nav-logo-icon">🔨</div>BidMaster</a><p>The premier platform for online auctions. Discover unique items and bid live.</p><div class="social-links"><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">f</a><a href="#" class="social-btn">📷</a><a href="#" class="social-btn">in</a></div></div>
-      <div class="footer-col"><h5>Quick Links</h5><ul><li><a href="index.html">Home Classic</a></li><li><a href="index-v2.html">Home Modern</a></li><li><a href="about.html">About Us</a></li><li><a href="portfolio.html">Browse Auctions</a></li></ul></div>
-      <div class="footer-col"><h5>Support</h5><ul><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="#">FAQ</a></li><li><a href="coming-soon.html">Coming Soon</a></li></ul></div>
-      <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">Dashboard</a></li><li><a href="admin-dashboard.html">Admin</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© 2026 BidMaster. All rights reserved.</span><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div></div>
+<footer class="footer"><div class="container">
+  <div class="ftr-grid">
+    <div class="ftr-brand"><a href="index.html" class="nav-logo"><div class="logo-icon">🔨</div><div class="logo-text">Hamm<span>r</span></div></a><p>The world's most trusted live auction platform.</p><div class="soc-row"><a href="#" class="soc-a">𝕏</a><a href="#" class="soc-a">📷</a><a href="#" class="soc-a">f</a><a href="#" class="soc-a">▶</a></div></div>
+    <div class="ftr-col"><h5>Auctions</h5><ul><li><a href="portfolio.html">Browse All</a></li><li><a href="index.html">Auction Hall</a></li><li><a href="index-v2.html">Live Pulse</a></li><li><a href="register.html">Sell</a></li></ul></div>
+    <div class="ftr-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Journal</a></li><li><a href="contact.html">Contact</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+    <div class="ftr-col"><h5>Account</h5><ul><li><a href="login.html">Sign In</a></li><li><a href="register.html">Register</a></li><li><a href="user-dashboard.html">Dashboard</a></li><li><a href="admin-dashboard.html">Admin</a></li></ul></div>
   </div>
-</footer>
-<script src="js/main.js"></script>
-</body>
-</html>
+  <div class="ftr-bottom"><span>© 2026 Hammr Auctions Ltd. All rights reserved.</span><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a><a href="#">Auction Rules</a></div></div>
+</div></footer><script src="js/main.js"></script></body></html>
