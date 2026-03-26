@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Our Services — Listify</title>
+<meta name="description" content="Explore Listify's full range of services — from free listings and premium features to trust and safety tools that help you buy and sell confidently."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="manifest" href="assets/favicon/site.webmanifest"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+<style>
+/* ── SERVICES PAGE STYLES ── */
+.services-hero{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);padding:clamp(80px,10vw,120px) 0 clamp(60px,8vw,96px);text-align:center;position:relative;overflow:hidden}
+.services-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(59,130,246,.18) 0%,transparent 70%)}
+.services-hero h1{color:#fff;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:16px;position:relative;z-index:1}
+.services-hero p{color:rgba(255,255,255,.7);font-size:18px;max-width:560px;margin:0 auto;position:relative;z-index:1}
+.services-hero .lbl{background:rgba(59,130,246,.2);color:#93c5fd;border:1px solid rgba(59,130,246,.35);display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:100px;padding:5px 15px;margin-bottom:14px;position:relative;z-index:1}
+
+/* Service Grid */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.svc-card{background:#fff;border:1.5px solid var(--n3);border-radius:var(--r3);padding:32px;cursor:pointer;transition:all .3s ease;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--secondary),var(--tertiary));transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc-card:hover{box-shadow:var(--s3);transform:translateY(-6px);border-color:rgba(59,130,246,.25)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-card-num{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--secondary);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.svc-card-num::after{content:'';flex:1;height:1px;background:var(--n3)}
+.svc-card h3{font-size:1.2rem;color:var(--dark);margin-bottom:12px;line-height:1.3}
+.svc-card p{font-size:14px;color:var(--muted);line-height:1.75;flex:1}
+.svc-card .svc-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--secondary);margin-top:20px;transition:gap .2s ease}
+.svc-card:hover .svc-link{gap:10px}
+.svc-card .svc-badge{position:absolute;top:20px;right:20px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:rgba(16,185,129,.12);color:var(--tertiary-d);border:1px solid rgba(16,185,129,.25)}
+
+/* Stats row */
+.stats-band{background:#0F172A;padding:56px 0}
+.stats-band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,.1);border-radius:var(--r3);overflow:hidden}
+.sb-item{padding:32px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.sb-item:last-child{border-right:none}
+.sb-num{font-family:var(--fd);font-size:2.2rem;font-weight:700;color:var(--secondary-l);display:block;margin-bottom:6px}
+.sb-label{font-size:13px;color:rgba(255,255,255,.55)}
+
+/* Process section */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--secondary),var(--tertiary));z-index:0}
+.ps-item{text-align:center;position:relative;z-index:1}
+.ps-num{width:72px;height:72px;border-radius:50%;background:#fff;border:2px solid var(--secondary);color:var(--secondary);font-family:var(--fd);font-size:1.4rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 4px 20px rgba(59,130,246,.2);transition:all .3s ease}
+.ps-item:hover .ps-num{background:var(--secondary);color:#fff;transform:scale(1.1)}
+.ps-item h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.ps-item p{font-size:13px;color:var(--muted);line-height:1.65;max-width:160px;margin:0 auto}
+
+/* Pricing teaser */
+.pricing-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+.pp-card{background:#fff;border:1.5px solid var(--n3);border-radius:var(--r3);padding:32px;text-align:center;position:relative;transition:all .3s ease}
+.pp-card:hover{box-shadow:var(--s3);transform:translateY(-4px)}
+.pp-card.popular{border-color:var(--secondary);box-shadow:0 0 0 4px rgba(59,130,246,.08)}
+.pp-card.popular::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--secondary);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 16px;border-radius:100px}
+.pp-plan{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px}
+.pp-price{font-family:var(--fd);font-size:2.8rem;font-weight:700;color:var(--dark);line-height:1;margin-bottom:8px}
+.pp-price span{font-size:16px;font-weight:400;color:var(--muted)}
+.pp-desc{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6}
+.pp-features{list-style:none;text-align:left;margin-bottom:28px}
+.pp-features li{font-size:13px;color:var(--dark3);padding:7px 0;border-bottom:1px solid var(--n2);display:flex;align-items:center;gap:10px}
+.pp-features li::before{content:'\eb7a';font-family:'boxicons';width:20px;height:20px;border-radius:50%;background:rgba(16,185,129,.15);color:var(--tertiary);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+
+/* FAQ */
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1.5px solid var(--n3);overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer;font-weight:600;color:var(--dark);font-size:16px;gap:16px;user-select:none}
+.faq-q .faq-tog{width:32px;height:32px;border-radius:50%;background:var(--n2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;font-weight:300;transition:all .3s ease;color:var(--muted)}
+.faq-item.open .faq-q .faq-tog{background:var(--secondary);color:#fff;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:15px;color:var(--muted);line-height:1.8}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:22px}
+
+/* CTA */
+.services-cta{background:linear-gradient(135deg,var(--secondary),var(--tertiary));border-radius:var(--r4);padding:72px 56px;text-align:center;position:relative;overflow:hidden;margin:0 auto}
+.services-cta::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.08)}
+.services-cta::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06)}
+.services-cta h2{color:#fff;margin-bottom:16px;position:relative;z-index:1}
+.services-cta p{color:rgba(255,255,255,.8);max-width:460px;margin:0 auto 36px;font-size:17px;position:relative;z-index:1}
+.services-cta .btns{position:relative;z-index:1;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+@media(max-width:1024px){.svc-grid{grid-template-columns:repeat(2,1fr)}.stats-band-grid{grid-template-columns:repeat(2,1fr)}.sb-item:nth-child(2){border-right:none}.sb-item:nth-child(3),.sb-item:nth-child(4){border-top:1px solid rgba(255,255,255,.1)}.sb-item:nth-child(4){border-right:none}.process-steps{grid-template-columns:repeat(2,1fr);gap:40px}.process-steps::before{display:none}.pricing-preview{grid-template-columns:1fr}}
+@media(max-width:768px){.svc-grid{grid-template-columns:1fr}.stats-band-grid{grid-template-columns:1fr}.sb-item{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.1)}.sb-item:last-child{border-bottom:none}.process-steps{grid-template-columns:1fr}.services-cta{padding:48px 24px}.pricing-preview{gap:16px}}
+</style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m"><i class='bx bx-list-ul'></i></div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue"><i class='bx bx-home-alt'></i></div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org"><i class='bx bx-bolt-circle'></i></div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR"><i class='bx bx-globe'></i></button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">Home Classic</a><a href="index-v2.html">Home Modern</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="services.html">Services</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="services-hero">
+  <div class="container">
+    <span class="lbl">What We Offer</span>
+    <h1>Everything You Need<br/>to Buy &amp; Sell Smarter</h1>
+    <p>From free listings to premium boosts, Listify gives you professional-grade tools to reach more buyers and close faster.</p>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="section">
+  <div class="container">
+    <div class="sh reveal">
+      <span class="lbl">Core Services</span>
+      <h2>Our Complete Service Offering</h2>
+      <p>Choose the features that match your goals — from free basics to enterprise-grade solutions.</p>
+    </div>
+    <div class="svc-grid">
+      <a href="service-details.html" class="svc-card reveal-l">
+        <div class="svc-card-num">01</div>
+        <h3>Free Listings</h3>
+        <p>Post unlimited ads in any category — vehicles, electronics, real estate, and more. No subscription needed, no commission on sales.</p>
+        <div class="svc-link">View details &rarr;</div>
+      </a>
+      <a href="service-details.html" class="svc-card reveal">
+        <span class="svc-badge">Popular</span>
+        <div class="svc-card-num">02</div>
+        <h3>Featured Listings</h3>
+        <p>Get 10x more visibility with premium placement at the top of search results and category pages. Attract serious buyers faster.</p>
+        <div class="svc-link">View details &rarr;</div>
+      </a>
+      <a href="service-details.html" class="svc-card reveal-r">
+        <div class="svc-card-num">03</div>
+        <h3>Verified Seller Badge</h3>
+        <p>Build trust with a government-verified identity badge. Verified listings get 3x more inquiries than unverified ones.</p>
+        <div class="svc-link">View details &rarr;</div>
+      </a>
+      <a href="service-details.html" class="svc-card reveal-l">
+        <div class="svc-card-num">04</div>
+        <h3>Quick Sell Package</h3>
+        <p>Bundle of featured placement, bump ups, and social sharing tools designed to sell your item within 48 hours or your money back.</p>
+        <div class="svc-link">View details &rarr;</div>
+      </a>
+      <a href="service-details.html" class="svc-card reveal">
+        <div class="svc-card-num">05</div>
+        <h3>Business Dashboard</h3>
+        <p>Advanced analytics, inventory management, bulk listing tools, and CRM features for dealers and commercial sellers.</p>
+        <div class="svc-link">View details &rarr;</div>
+      </a>
+      <a href="service-details.html" class="svc-card reveal-r">
+        <div class="svc-card-num">06</div>
+        <h3>Safe &amp; Secure Messaging</h3>
+        <p>End-to-end encrypted chat with spam filtering, fraud detection, and automated safety alerts for every conversation.</p>
+        <div class="svc-link">View details &rarr;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-band-grid">
+      <div class="sb-item">
+        <span class="sb-num" data-count="50" data-suffix="L+">0</span>
+        <div class="sb-label">Active Listings</div>
+      </div>
+      <div class="sb-item">
+        <span class="sb-num" data-count="20" data-suffix="L+">0</span>
+        <div class="sb-label">Registered Users</div>
+      </div>
+      <div class="sb-item">
+        <span class="sb-num" data-count="500" data-suffix="+">0</span>
+        <div class="sb-label">Cities Covered</div>
+      </div>
+      <div class="sb-item">
+        <span class="sb-num" data-count="98" data-suffix="%">0</span>
+        <div class="sb-label">Satisfaction Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS / PROCESS -->
+<section class="section">
+  <div class="container">
+    <div class="sh reveal">
+      <span class="lbl">Simple Process</span>
+      <h2>Start Selling in 4 Simple Steps</h2>
+      <p>Our streamlined platform gets your listing live and in front of buyers in under 5 minutes.</p>
+    </div>
+    <div class="process-steps reveal">
+      <div class="ps-item">
+        <div class="ps-num">1</div>
+        <h4>Create Account</h4>
+        <p>Sign up free in 60 seconds using email, Google, or Facebook.</p>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">2</div>
+        <h4>Post Your Ad</h4>
+        <p>Upload photos, write a description, and set your price.</p>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">3</div>
+        <h4>Get Responses</h4>
+        <p>Receive inquiries from verified buyers via secure chat.</p>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">4</div>
+        <h4>Close the Deal</h4>
+        <p>Meet locally, hand over the item and get paid instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TEASER -->
+<section class="section" style="background:var(--n1)">
+  <div class="container">
+    <div class="sh reveal">
+      <span class="lbl">Pricing Plans</span>
+      <h2>Simple Transparent Pricing</h2>
+      <p>No hidden fees. No commission on sales. Ever.</p>
+    </div>
+    <div class="pricing-preview">
+      <div class="pp-card reveal-l">
+        <div class="pp-plan">Free</div>
+        <div class="pp-price">&#8377;0 <span>/ month</span></div>
+        <p class="pp-desc">Perfect for occasional sellers and buyers</p>
+        <ul class="pp-features">
+          <li>Post up to 10 ads</li>
+          <li>Basic search visibility</li>
+          <li>Secure messaging</li>
+          <li>Mobile app access</li>
+        </ul>
+        <a href="register.html" class="btn btn-outline" style="width:100%;justify-content:center">Get Started Free</a>
+      </div>
+      <div class="pp-card popular reveal">
+        <div class="pp-plan">Pro</div>
+        <div class="pp-price">&#8377;299 <span>/ month</span></div>
+        <p class="pp-desc">For active sellers who want faster results</p>
+        <ul class="pp-features">
+          <li>Unlimited ad posts</li>
+          <li>3 Featured listings/month</li>
+          <li>Priority search placement</li>
+          <li>Verified Seller badge</li>
+          <li>Advanced analytics</li>
+        </ul>
+        <a href="pricing.html" class="btn btn-primary" style="width:100%;justify-content:center">Choose Pro</a>
+      </div>
+      <div class="pp-card reveal-r">
+        <div class="pp-plan">Business</div>
+        <div class="pp-price">&#8377;999 <span>/ month</span></div>
+        <p class="pp-desc">Built for dealers, agents and power sellers</p>
+        <ul class="pp-features">
+          <li>Unlimited everything</li>
+          <li>Bulk listing tools</li>
+          <li>CRM &amp; inventory dashboard</li>
+          <li>Dedicated account manager</li>
+          <li>API access</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="sh reveal">
+      <span class="lbl">Common Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">Is it really free to post ads on Listify?<div class="faq-tog"><i class='bx bx-plus'></i></div></div>
+        <div class="faq-a">Yes! Basic listings are completely free — no hidden charges, no commission, no subscription required. You only pay if you want premium features like featured placement or the Quick Sell Package.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I get the Verified Seller badge?<div class="faq-tog"><i class='bx bx-plus'></i></div></div>
+        <div class="faq-a">Upload a valid government ID (Aadhaar, PAN, or Passport) through your account settings. Our team verifies it within 24–48 hours and adds the badge to your profile and all your listings.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="sec-sm">
+  <div class="container">
+    <div class="services-cta reveal">
+      <h2>Ready to Get Started?</h2>
+      <p>Join 20 Lakh+ Indians already using Listify to buy and sell smarter every day.</p>
+      <div class="btns">
+        <a href="register.html" class="btn btn-white btn-lg">Create Free Account</a>
+        <a href="portfolio.html" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.35)">Browse Listings &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:700;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m"><i class='bx bx-list-ul'></i></div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn" title="Twitter"><i class='bx bxl-twitter'></i></a>
+        <a href="#" class="soc-btn" title="Facebook"><i class='bx bxl-facebook'></i></a>
+        <a href="#" class="soc-btn" title="Instagram"><i class='bx bxl-instagram'></i></a>
+        <a href="#" class="soc-btn" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Explore</h5><ul><li><a href="portfolio.html">All Listings</a></li><li><a href="services.html">Services</a></li><li><a href="post-ad.html">Post Free Ad</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+    <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register Free</a></li><li><a href="user-dashboard.html">My Dashboard</a></li><li><a href="admin-dashboard.html">Admin Panel</a></li></ul></div>
+  </div>
+  <div class="foot-bot">
+    <span>&copy; 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function lf_nav(btn){var nav=document.querySelector('.mob-nav');if(!nav)return;var open=nav.classList.toggle('open');var s=btn.querySelectorAll('span');s[0].style.transform=open?'rotate(45deg) translate(5px,5px)':'';s[1].style.opacity=open?'0':'';s[2].style.transform=open?'rotate(-45deg) translate(5px,-5px)':''}
+function toggleFaq(el){var item=el.closest('.faq-item');var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});if(!wasOpen)item.classList.add('open')}
+</script>
+</body>
+</html>

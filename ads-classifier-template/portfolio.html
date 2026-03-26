@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Browse All Listings — Listify</title>
+<meta name="description" content="Listify — Buy, sell, and discover local deals across India."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/favicon/favicon.ico"/>
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+<style>
+/* ── PAGE BANNER ── */
+.p-hero{
+  padding-top:var(--nh);
+  position:relative;
+  overflow:hidden;
+  background:var(--dark);
+}
+.p-hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80') center/cover;
+  opacity:.15;
+  z-index:0;
+}
+.p-hero-content{
+  position:relative;z-index:3;
+  padding:60px 0 52px;
+  text-align:center;
+}
+.p-hero h1{
+  font-family:var(--fd);font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:700;letter-spacing:-.025em;line-height:1.15;
+  color:#fff;margin-bottom:14px;
+}
+.p-hero p{
+  font-size:17px;line-height:1.7;max-width:520px;margin:0 auto;
+  color:rgba(255,255,255,.7);
+}
+.p-hero .sbar{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);
+  max-width:660px;margin:24px auto 0;
+}
+.p-hero .sbar input{color:#fff}
+.p-hero .sbar input::placeholder{color:rgba(255,255,255,.4)}
+.p-hero .sbar select{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.1)}
+.p-hero .sbar .sbtn{background:var(--blue)}
+
+/* Filter Sidebar */
+.pl{display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start}
+.flt{background:#fff;border:1.5px solid var(--n2);border-radius:var(--r3);padding:22px;position:sticky;top:calc(var(--nh)+20px)}
+.flbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.fopt{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;color:var(--dark3);padding:4px 0}
+.fopt input{accent-color:var(--blue)}
+
+@media(max-width:900px){
+  .pl{grid-template-columns:1fr}
+  .flt{position:static;margin-bottom:24px}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m"><i class='bx bx-list-ul'></i></div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<i class='bx bx-chevron-down' style='margin-left:4px;font-size:14px'></i></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue"><i class='bx bx-home-alt'></i></div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org"><i class='bx bx-bolt-circle'></i></div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html" class="active">Listings</a></li>
+    <li><a href="post-ad.html">Post Ad</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR"><i class='bx bx-globe'></i></button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span><i class='bx bx-chevron-right'></i></span></summary><div class="mob-sub"><a href="index.html">Classic Home</a><a href="index-v2.html">Modern Home</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="post-ad.html">Post Ad</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+
+<section class="p-hero">
+  <div class="p-hero-bg"></div>
+  <div class="container p-hero-content">
+    <span class="lbl" style="background:rgba(59,130,246,.15);color:var(--blue-l);border-color:rgba(59,130,246,.3)">Explore India's Largest Marketplace</span>
+    <h1>All Listings <span style="font-weight:400;opacity:.5;font-size:.5em">(50L+)</span></h1>
+    <p>Discover locally verified electronics, cars, homes, and more. India's fastest way to buy and sell.</p>
+    
+    <div class="sbar">
+      <input type="text" placeholder="Search for what you need..."/>
+      <select><option>All Categories</option><option>Vehicles</option><option>Electronics</option><option>Real Estate</option><option>Furniture</option></select>
+      <button class="sbtn"><i class='bx bx-search-alt'></i> Search</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="pl">
+      <aside class="flt">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px"><h4>Filters</h4><button style="font-size:11px;color:var(--blue);font-weight:700">RESET</button></div>
+        
+        <div style="margin-bottom:24px">
+          <span class="flbl"><i class='bx bx-category'></i> Category</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label class="fopt"><input type="checkbox" checked/> All Categories</label>
+            <label class="fopt"><input type="checkbox"/> <i class='bx bx-car'></i> Vehicles</label>
+            <label class="fopt"><input type="checkbox"/> <i class='bx bx-laptop'></i> Electronics</label>
+            <label class="fopt"><input type="checkbox"/> <i class='bx bx-home-alt'></i> Real Estate</label>
+          </div>
+        </div>
+        
+        <div style="margin-bottom:24px">
+          <span class="flbl"><i class='bx bx-map'></i> City</span>
+          <select class="fi" style="font-size:13px"><option>All Cities</option><option>Bangalore</option><option>Mumbai</option><option>Delhi</option></select>
+        </div>
+        
+        <div style="margin-bottom:24px">
+          <span class="flbl"><i class='bx bx-rupee'></i> Price Range</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input class="fi" type="number" placeholder="Min" style="font-size:12px"/><input class="fi" type="number" placeholder="Max" style="font-size:12px"/></div>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%"><i class='bx bx-filter-alt'></i> Apply Filters</button>
+      </aside>
+      
+      <div>
+        <div class="fb" style="margin-bottom:20px">
+          <p style="font-size:14px;color:var(--muted)">Showing <strong>248</strong> results in Bangalore</p>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-ghost btn-sm active"><i class='bx bxs-grid-alt'></i></button>
+            <button class="btn btn-ghost btn-sm"><i class='bx bx-list-ul'></i></button>
+          </div>
+        </div>
+        
+        <div class="g3">
+          <!-- Listing Card -->
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Laptop" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-feat"><i class='bx bxs-star'></i> Featured</span></div>
+  <button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat"><i class='bx bx-laptop'></i> Electronics</div><div class="ac-price">₹45,000</div>
+  <div class="ac-title">MacBook Pro 13" 2021 — M1, 8GB RAM, 256GB SSD</div>
+  <div class="ac-meta"><span><i class='bx bx-map'></i> Bangalore</span><span><i class='bx bx-time'></i> 2h ago</span><span><i class='bx bx-show'></i> 248</span></div></div>
+</div>
+<!-- Repeat Listings... -->
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&q=80" alt="Car" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-new"><i class='bx bx-purchase-tag-alt'></i> Like New</span></div>
+  <button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat"><i class='bx bx-car'></i> Vehicles</div><div class="ac-price">₹8,50,000</div>
+  <div class="ac-title">Honda City 2022 — Petrol, 12,000 km, Single Owner</div>
+  <div class="ac-meta"><span><i class='bx bx-map'></i> Mumbai</span><span><i class='bx bx-time'></i> 5h ago</span><span><i class='bx bx-show'></i> 589</span></div></div>
+</div>
+<div class="ac reveal">
+  <div class="ac-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Sofa" loading="lazy"/>
+  <div class="ac-badge"><span class="bdg bdg-urg"><i class='bx bx-bolt'></i> Urgent</span></div>
+  <button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div></div>
+  <div class="ac-body"><div class="ac-cat"><i class='bx bx-chair'></i> Furniture</div><div class="ac-price">₹12,500</div>
+  <div class="ac-title">L-Shape Sofa Set — Grey, 3+2 Seater, Excellent Condition</div>
+  <div class="ac-meta"><span><i class='bx bx-map'></i> Delhi</span><span><i class='bx bx-time'></i> 1d ago</span><span><i class='bx bx-show'></i> 134</span></div></div>
+</div>
+        </div>
+        
+        <div class="fc mt32 g8">
+          <button class="btn btn-ghost btn-sm"><i class='bx bx-chevron-left'></i></button>
+          <button class="btn btn-primary btn-sm">1</button>
+          <button class="btn btn-ghost btn-sm">2</button>
+          <button class="btn btn-ghost btn-sm">3</button>
+          <span style="padding:0 8px;color:var(--muted)">...</span>
+          <button class="btn btn-ghost btn-sm">18</button>
+          <button class="btn btn-ghost btn-sm"><i class='bx bx-chevron-right'></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m"><i class='bx bx-list-ul'></i></div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn" title="Twitter"><i class='bx bxl-twitter'></i></a>
+        <a href="#" class="soc-btn" title="Facebook"><i class='bx bxl-facebook'></i></a>
+        <a href="#" class="soc-btn" title="Instagram"><i class='bx bxl-instagram'></i></a>
+        <a href="#" class="soc-btn" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+        <a href="#" class="soc-btn" title="YouTube"><i class='bx bxl-youtube'></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Browse</h5>
+      <ul>
+        <li><a href="portfolio.html">All Listings</a></li>
+        <li><a href="index.html">Home Classic</a></li>
+        <li><a href="index-v2.html">Home Modern</a></li>
+        <li><a href="post-ad.html">Post Free Ad</a></li>
+        <li><a href="ad-detail.html">Ad Detail</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="safety.html">Safety Tips</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Account</h5>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register Free</a></li>
+        <li><a href="user-dashboard.html">My Dashboard</a></li>
+        <li><a href="admin-dashboard.html">Admin Panel</a></li>
+        <li><a href="pricing.html">Upgrade Plan</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

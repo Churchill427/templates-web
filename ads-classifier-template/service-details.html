@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Featured Listings — Service Details — Listify</title>
+<meta name="description" content="Learn how Listify's Featured Listings service gets your ad 10x more visibility and sells your item 3x faster with premium placement."/>
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="manifest" href="assets/favicon/site.webmanifest"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="js/rtl-toggle.js"></script>
+<style>
+/* ── SERVICE DETAILS PAGE ── */
+.sd-hero{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);padding:clamp(80px,10vw,120px) 0 0;position:relative;overflow:hidden}
+.sd-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(59,130,246,.2) 0%,transparent 70%)}
+.sd-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;position:relative;z-index:1}
+.sd-hero-text{padding-bottom:72px}
+.sd-hero-text .lbl{background:rgba(59,130,246,.2);color:#93c5fd;border:1px solid rgba(59,130,246,.35);display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:100px;padding:5px 15px;margin-bottom:20px}
+.sd-hero-text h1{color:#fff;margin-bottom:20px;font-size:clamp(1.9rem,3.5vw,3rem)}
+.sd-hero-text p{color:rgba(255,255,255,.72);font-size:17px;line-height:1.8;margin-bottom:32px}
+.sd-hero-text .sd-stats{display:flex;gap:32px;flex-wrap:wrap}
+.sd-stat strong{display:block;font-family:var(--fd);font-size:1.8rem;font-weight:700;color:var(--secondary-l)}
+.sd-stat span{font-size:12px;color:rgba(255,255,255,.5);margin-top:3px;display:block}
+.sd-hero-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r3) var(--r3) 0 0;padding:36px;backdrop-filter:blur(12px)}
+.sd-hero-card h4{color:#fff;font-size:14px;font-weight:700;margin-bottom:20px;text-transform:uppercase;letter-spacing:.08em}
+.sd-result-row{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.sd-result-row:last-child{border-bottom:none}
+.sd-result-label{font-size:13px;color:rgba(255,255,255,.55);flex:1}
+.sd-result-val{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:#fff}
+.sd-result-val.good{color:var(--tertiary-l)}
+.sd-result-val.great{color:#fcd34d}
+
+/* Breadcrumb */
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);padding:20px 0;flex-wrap:wrap}
+.breadcrumb a{color:var(--secondary);text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:var(--secondary-d)}
+.breadcrumb span{color:var(--n4)}
+
+/* Main layout */
+.sd-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start}
+
+/* Content sections */
+.sd-section{margin-bottom:40px}
+.sd-section h2{font-size:1.5rem;color:var(--dark);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--n3)}
+.sd-section h3{font-size:1.1rem;color:var(--dark);margin-bottom:12px}
+.feature-list{display:flex;flex-direction:column;gap:16px}
+.fl-item{background:#fff;border:1.5px solid var(--n3);border-radius:var(--r2);padding:20px 22px;display:flex;align-items:flex-start;gap:16px;transition:all .25s ease}
+.fl-item:hover{border-color:rgba(59,130,246,.3);box-shadow:var(--s2)}
+.fl-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--secondary),var(--secondary-d));color:#fff;font-family:var(--fd);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fl-body strong{display:block;font-size:14px;color:var(--dark);margin-bottom:4px}
+.fl-body p{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
+
+/* Comparison table */
+.cmp-table{width:100%;border-collapse:collapse;border-radius:var(--r2);overflow:hidden;border:1.5px solid var(--n3)}
+.cmp-table thead{background:var(--primary)}
+.cmp-table th{padding:16px 20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7);text-align:left}
+.cmp-table th:not(:first-child){text-align:center}
+.cmp-table td{padding:14px 20px;font-size:14px;border-top:1px solid var(--n3);color:var(--dark3)}
+.cmp-table td:not(:first-child){text-align:center;font-weight:600}
+.cmp-table tr:nth-child(even) td{background:var(--n1)}
+.cmp-table .yes{color:var(--tertiary-d)}
+.cmp-table .no{color:var(--n4)}
+.cmp-table .highlighted{background:rgba(59,130,246,.04)!important;font-weight:700;color:var(--secondary-d)}
+
+/* FAQ accordion */
+.faq-item{border-bottom:1.5px solid var(--n3)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 0;cursor:pointer;font-weight:600;color:var(--dark);font-size:15px;gap:12px;user-select:none}
+.faq-tog{width:28px;height:28px;border-radius:50%;background:var(--n2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;font-weight:300;transition:all .3s ease;color:var(--muted)}
+.faq-item.open .faq-tog{background:var(--secondary);color:#fff;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:14px;color:var(--muted);line-height:1.8}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:18px}
+
+/* Sidebar */
+.sd-sidebar-card{background:#fff;border:1.5px solid var(--n3);border-radius:var(--r3);padding:28px;margin-bottom:20px;position:sticky;top:90px}
+.sd-price-banner{background:linear-gradient(135deg,var(--secondary),var(--secondary-d));border-radius:var(--r2);padding:22px;text-align:center;margin-bottom:20px}
+.sd-price-banner .price-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.sd-price-banner .price-val{font-family:var(--fd);font-size:2.4rem;font-weight:700;color:#fff;line-height:1}
+.sd-price-banner .price-per{font-size:13px;color:rgba(255,255,255,.65);margin-top:4px}
+.sd-sidebar-features{list-style:none;margin-bottom:20px}
+.sd-sidebar-features li{font-size:13px;color:var(--dark3);padding:8px 0;border-bottom:1px solid var(--n2);display:flex;align-items:center;gap:10px}
+.sd-sidebar-features li:last-child{border-bottom:none}
+.check-dot{width:18px;height:18px;border-radius:50%;background:rgba(16,185,129,.15);color:var(--tertiary);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.check-dot::before{content:'\eb7a';font-family:'boxicons'}
+.sd-trust{background:var(--n1);border-radius:var(--r2);padding:16px;text-align:center}
+.sd-trust p{font-size:12px;color:var(--muted);line-height:1.6}
+.sd-trust strong{color:var(--dark);display:block;margin-bottom:4px;font-size:13px}
+
+@media(max-width:1024px){.sd-hero-inner{grid-template-columns:1fr}.sd-hero-card{display:none}.sd-layout{grid-template-columns:1fr}.sd-sidebar-card{position:static}}
+@media(max-width:768px){.sd-hero-inner{gap:32px}.sd-stats{gap:20px}}
+</style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="nb">
+<div class="container">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m"><i class='bx bx-list-ul'></i></div>List<span>ify</span></a>
+  <ul class="nav-links">
+    <li class="nav-dd">
+      <a href="index.html">Home<i class='bx bx-chevron-down' style='font-size:14px;margin-left:4px'></i></a>
+      <div class="dd-panel">
+        <a href="index.html" class="ddi"><div class="ddi-ic blue"><i class='bx bx-home-alt'></i></div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <div class="dd-sep"></div>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org"><i class='bx bx-bolt-circle'></i></div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-act">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+  <div class="nav-end">
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR"><i class='bx bx-globe'></i></button>
+    <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
+  </div>
+</div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav">
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">Home Classic</a><a href="index-v2.html">Home Modern</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="services.html">Services</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <div class="mob-cta">
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="sd-hero">
+  <div class="container">
+    <div class="sd-hero-inner">
+      <div class="sd-hero-text">
+        <a href="services.html" class="lbl"><i class='bx bx-left-arrow-alt'></i> All Services</a>
+        <h1>Featured Listings</h1>
+        <p>Pin your ad to the top of search results and category pages to reach serious buyers first. On average, featured ads sell 3x faster.</p>
+        <div class="sd-stats">
+          <div class="sd-stat"><strong>10x</strong><span>More impressions</span></div>
+          <div class="sd-stat"><strong>3x</strong><span>Faster sale time</span></div>
+          <div class="sd-stat"><strong>8x</strong><span>More inquiries</span></div>
+        </div>
+      </div>
+      <div class="sd-hero-card">
+        <h4>Average Results for Featured Sellers</h4>
+        <div class="sd-result-row"><span class="sd-result-label">Standard ad views/day</span><span class="sd-result-val">18</span></div>
+        <div class="sd-result-row"><span class="sd-result-label">Featured ad views/day</span><span class="sd-result-val great">182</span></div>
+        <div class="sd-result-row"><span class="sd-result-label">Avg. days to sell (standard)</span><span class="sd-result-val">14 days</span></div>
+        <div class="sd-result-row"><span class="sd-result-label">Avg. days to sell (featured)</span><span class="sd-result-val good">4.5 days</span></div>
+        <div class="sd-result-row"><span class="sd-result-label">Inquiry rate lift</span><span class="sd-result-val great">+820%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container" style="padding-top:24px;padding-bottom:16px">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <i class='bx bx-chevron-right'></i>
+    <a href="services.html">Services</a>
+    <i class='bx bx-chevron-right'></i>
+    <span style="color:var(--dark)">Featured Listings</span>
+  </div>
+</div>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sd-layout">
+      <!-- MAIN -->
+      <div>
+        <div class="sd-section reveal">
+          <h2>How Featured Listings Work</h2>
+          <div class="feature-list">
+            <div class="fl-item">
+              <div class="fl-num">1</div>
+              <div class="fl-body"><strong>Top-of-Page Placement</strong><p>Your ad appears at the very top of relevant search results and category pages, above all standard listings. Maximum eyeballs, minimum competition.</p></div>
+            </div>
+            <div class="fl-item">
+              <div class="fl-num">2</div>
+              <div class="fl-body"><strong>Featured Badge</strong><p>A gold "Featured" badge makes your listing stand out visually in grids and lists, signalling quality and trustworthiness to buyers.</p></div>
+            </div>
+            <div class="fl-item">
+              <div class="fl-num">3</div>
+              <div class="fl-body"><strong>Automatic Bump Ups</strong><p>Your featured ad is automatically bumped to the top of results every 24 hours for the duration of your plan — no manual refreshing needed.</p></div>
+            </div>
+            <div class="fl-item">
+              <div class="fl-num">4</div>
+              <div class="fl-body"><strong>Performance Analytics</strong><p>Track views, clicks, inquiries, and saves in real time via your dashboard. Know exactly how your featured listing is performing.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sd-section reveal">
+          <h2>Plan Comparison</h2>
+          <div class="tw">
+            <table class="cmp-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Standard (Free)</th>
+                  <th style="background:rgba(59,130,246,.15)">Featured</th>
+                  <th>Quick Sell Bundle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Search placement</td>
+                  <td class="no">Bottom of list</td>
+                  <td class="yes highlighted">Top of results</td>
+                  <td class="yes">Top + homepage</td>
+                </tr>
+                <tr>
+                  <td>Featured badge</td>
+                  <td class="no">No</td>
+                  <td class="yes highlighted">Yes</td>
+                  <td class="yes">Yes + Bold</td>
+                </tr>
+                <tr>
+                  <td>Auto bump-ups</td>
+                  <td class="no">No</td>
+                  <td class="yes highlighted">Every 24h</td>
+                  <td class="yes">Every 12h</td>
+                </tr>
+                <tr>
+                  <td>Analytics dashboard</td>
+                  <td class="no">Basic</td>
+                  <td class="yes highlighted">Full</td>
+                  <td class="yes">Full + Export</td>
+                </tr>
+                <tr>
+                  <td>Duration options</td>
+                  <td>Unlimited</td>
+                  <td class="highlighted">7 / 14 / 30 days</td>
+                  <td>48h intensive</td>
+                </tr>
+                <tr>
+                  <td>Price (from)</td>
+                  <td>Free</td>
+                  <td class="highlighted" style="color:var(--secondary-d)">&#8377;99</td>
+                  <td>&#8377;299</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="sd-section reveal">
+          <h2>Frequently Asked Questions</h2>
+          <div>
+            <div class="faq-item open">
+              <div class="faq-q" onclick="toggleFaq(this)">How quickly will my ad appear featured?<div class="faq-tog"><i class='bx bx-plus'></i></div></div>
+              <div class="faq-a">Featured placement is activated instantly after payment confirmation. Your listing moves to the top of search results within seconds — no waiting period.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFaq(this)">Can I feature multiple ads at once?<div class="faq-tog">+</div></div>
+              <div class="faq-a">Yes. You can feature as many listings as you want simultaneously. Each ad is featured independently and billed separately. Pro plan members get 3 featured slots included monthly.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFaq(this)">What happens when my featured period ends?<div class="faq-tog">+</div></div>
+              <div class="faq-a">Your ad simply reverts to a standard (free) listing. It remains active and visible in search results — just without the premium placement. You can renew at any time.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFaq(this)">Do featured listings work for all categories?<div class="faq-tog">+</div></div>
+              <div class="faq-a">Yes — featured listings are available across all categories including vehicles, real estate, electronics, furniture, and services. Results are consistently strong across all categories.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFaq(this)">Is there a refund if my item doesn't sell?<div class="faq-tog">+</div></div>
+              <div class="faq-a">We offer a 7-day money-back guarantee on all featured plans if you haven't received any inquiries. The Quick Sell Bundle comes with a full guarantee if your item doesn't sell in 48 hours.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="sd-sidebar-card reveal-r">
+          <div class="sd-price-banner">
+            <div class="price-label">Starting from</div>
+            <div class="price-val">&#8377;99</div>
+            <div class="price-per">for 7 days featured placement</div>
+          </div>
+          <ul class="sd-sidebar-features">
+            <li><span class="check-dot"></span> Top search result placement</li>
+            <li><span class="check-dot"></span> Featured badge on listing</li>
+            <li><span class="check-dot"></span> Automatic daily bump-ups</li>
+            <li><span class="check-dot"></span> Full analytics dashboard</li>
+            <li><span class="check-dot"></span> Priority customer support</li>
+            <li><span class="check-dot"></span> 7-day money-back guarantee</li>
+          </ul>
+          <a href="post-ad.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-bottom:12px">Feature My Ad &rarr;</a>
+          <a href="pricing.html" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">See All Plans</a>
+          <div class="sd-trust" style="margin-top:16px">
+            <strong>100% Safe & Secure</strong>
+            <p>Payments are SSL encrypted. If you're not satisfied, we'll refund you in full — no questions asked.</p>
+          </div>
+        </div>
+
+        <div class="sd-sidebar-card reveal-r" style="position:static">
+          <h4 style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:16px;text-transform:uppercase;letter-spacing:.08em">Other Services</h4>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <a href="services.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:10px;border-radius:var(--r1);border:1px solid var(--n3);transition:all .2s ease" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='var(--n3)'">
+              <div style="width:36px;height:36px;border-radius:var(--r1);background:rgba(59,130,246,.1);color:var(--secondary);font-family:var(--fd);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center">VS</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--dark)">Verified Seller</div><div style="font-size:11px;color:var(--muted)">Build buyer trust</div></div>
+            </a>
+            <a href="services.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:10px;border-radius:var(--r1);border:1px solid var(--n3);transition:all .2s ease" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='var(--n3)'">
+              <div style="width:36px;height:36px;border-radius:var(--r1);background:rgba(16,185,129,.1);color:var(--tertiary-d);font-family:var(--fd);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center">QS</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--dark)">Quick Sell Bundle</div><div style="font-size:11px;color:var(--muted)">Sell in 48 hours</div></div>
+            </a>
+            <a href="services.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding:10px;border-radius:var(--r1);border:1px solid var(--n3);transition:all .2s ease" onmouseover="this.style.borderColor='var(--secondary)'" onmouseout="this.style.borderColor='var(--n3)'">
+              <div style="width:36px;height:36px;border-radius:var(--r1);background:rgba(245,158,11,.1);color:var(--org-d);font-family:var(--fd);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center">BD</div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--dark)">Business Dashboard</div><div style="font-size:11px;color:var(--muted)">For power sellers</div></div>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-g">
+    <div class="footer-brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:700;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m">L</div>List<span style="color:var(--org)">ify</span></a>
+      <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
+      <div class="soc-row">
+        <a href="#" class="soc-btn"><i class='bx bxl-twitter'></i></a><a href="#" class="soc-btn"><i class='bx bxl-facebook'></i></a><a href="#" class="soc-btn"><i class='bx bxl-instagram'></i></a><a href="#" class="soc-btn"><i class='bx bxl-linkedin'></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Explore</h5><ul><li><a href="portfolio.html">All Listings</a></li><li><a href="services.html">Services</a></li><li><a href="post-ad.html">Post Free Ad</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+    <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register Free</a></li><li><a href="user-dashboard.html">My Dashboard</a></li></ul></div>
+  </div>
+  <div class="foot-bot">
+    <span>&copy; 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Sitemap</a></div>
+  </div>
+</div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function lf_nav(btn){var nav=document.querySelector('.mob-nav');if(!nav)return;var open=nav.classList.toggle('open');var s=btn.querySelectorAll('span');s[0].style.transform=open?'rotate(45deg) translate(5px,5px)':'';s[1].style.opacity=open?'0':'';s[2].style.transform=open?'rotate(-45deg) translate(5px,-5px)':''}
+function toggleFaq(el){var item=el.closest('.faq-item');var wasOpen=item.classList.contains('open');item.closest('.sd-section,section,.sd-sidebar-card').querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});if(!wasOpen)item.classList.add('open')}
+</script>
+</body>
+</html>

@@ -6,6 +6,8 @@
 <title>Home — Find Everything Near You — Listify</title>
 <meta name="description" content="Listify — Buy, sell, and discover local deals across India."/>
 <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch.png"/>
+<link rel="manifest" href="assets/favicon/site.webmanifest"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css"/>
@@ -18,7 +20,7 @@
 /* ─── Cursor glow (desktop only) ─── */
 #cursorGlow{position:fixed;width:20px;height:20px;border-radius:50%;background:rgba(255,107,53,.35);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;filter:blur(6px)}
 #cursorGlow.big{width:50px;height:50px;background:rgba(11,61,145,.25)}
-@media(max-width:768px){#cursorGlow{display:none}
+@media(max-width:768px){#cursorGlow{display:none}}
 </style>
 </head>
 <body>
@@ -33,29 +35,29 @@
 <!-- NAVBAR -->
 <nav class="navbar" id="nb">
 <div class="container">
-  <a href="index.html" class="nav-logo"><div class="nav-logo-m">📋</div>List<span>ify</span></a>
+  <a href="index.html" class="nav-logo"><div class="nav-logo-m"><i class='bx bx-list-ul'></i></div>List<span>ify</span></a>
   <ul class="nav-links">
     <li class="nav-dd">
       <a href="index.html">Home<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg></a>
       <div class="dd-panel">
-        <a href="index.html" class="ddi"><div class="ddi-ic blue">🏠</div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
+        <a href="index.html" class="ddi"><div class="ddi-ic blue"><i class='bx bx-home-alt'></i></div><div class="ddi-tx"><strong>Home Classic</strong><span>Hero search, categories &amp; featured ads</span></div></a>
         <div class="dd-sep"></div>
-        <a href="index-v2.html" class="ddi"><div class="ddi-ic org">⚡</div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
+        <a href="index-v2.html" class="ddi"><div class="ddi-ic org"><i class='bx bx-bolt-circle'></i></div><div class="ddi-tx"><strong>Home Modern</strong><span>Split layout with live feed &amp; map</span></div></a>
       </div>
     </li>
-    <li><a href="listify-v2/portfolio.html">Listings</a></li>
-    <li><a href="listify-v2/post-ad.html">Post Ad</a></li>
-    <li><a href="listify-v2/pricing.html">Pricing</a></li>
+    <li><a href="portfolio.html">Listings</a></li>
+    <li><a href="post-ad.html">Post Ad</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="nav-act">
-    <a href="listify-v2/login.html" class="btn btn-ghost btn-sm">Login</a>
-    <a href="listify-v2/register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
   </div>
   <div class="nav-end">
-    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR">🌐</button>
+    <button id="rtlToggle" class="rtl-btn" title="Toggle RTL/LTR"><i class='bx bx-globe'></i></button>
     <button class="hamburger" aria-label="Menu" onclick="lf_nav(this)"><span></span><span></span><span></span></button>
   </div>
 </div>
@@ -63,16 +65,16 @@
 
 <!-- MOBILE NAV -->
 <div class="mob-nav">
-  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html">🏠 Classic Home</a><a href="index-v2.html">⚡ Modern Home</a></div></details>
-  <a href="listify-v2/portfolio.html">Browse Listings</a>
-  <a href="listify-v2/post-ad.html">Post Ad</a>
-  <a href="listify-v2/pricing.html">Pricing</a>
+  <details class="mob-grp"><summary>Home <span>›</span></summary><div class="mob-sub"><a href="index.html"><i class='bx bx-home-alt'></i> Classic Home</a><a href="index-v2.html"><i class='bx bx-bolt-circle'></i> Modern Home</a></div></details>
+  <a href="portfolio.html">Browse Listings</a>
+  <a href="post-ad.html">Post Ad</a>
+  <a href="pricing.html">Pricing</a>
   <a href="blog.html">Blog</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
   <div class="mob-cta">
-    <a href="listify-v2/login.html" class="btn btn-ghost btn-sm">Login</a>
-    <a href="listify-v2/register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
+    <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+    <a href="register.html" class="btn btn-primary btn-sm">+ Post Ad</a>
   </div>
 </div>
 
@@ -105,16 +107,16 @@
         <div class="sbar">
           <input type="text" placeholder="What are you looking for? Cars, phones, jobs..." autocomplete="off"/>
           <select><option>All Categories</option><option>Vehicles</option><option>Electronics</option><option>Real Estate</option><option>Furniture</option><option>Mobiles</option><option>Jobs</option></select>
-          <button class="sbtn" onclick="showToast('🔍 Searching listings...','info')">🔍 Search</button>
+          <button class="sbtn" onclick="showToast('Searching listings...','info')"><i class='bx bx-search'></i> Search</button>
         </div>
         <div id="searchSuggestions" class="search-suggestions"></div>
         <div class="hero-tags">
           <span>Popular:</span>
-          <a href="listify-v2/portfolio.html">iPhone 15</a>
-          <a href="listify-v2/portfolio.html">Honda City</a>
-          <a href="listify-v2/portfolio.html">2BHK Mumbai</a>
-          <a href="listify-v2/portfolio.html">MacBook M3</a>
-          <a href="listify-v2/portfolio.html">Activa 6G</a>
+          <a href="portfolio.html">iPhone 15</a>
+          <a href="portfolio.html">Honda City</a>
+          <a href="portfolio.html">2BHK Mumbai</a>
+          <a href="portfolio.html">MacBook M3</a>
+          <a href="portfolio.html">Activa 6G</a>
         </div>
       </div>
 
@@ -132,11 +134,11 @@
 
       <!-- STATS -->
       <div class="hero-stats fu5">
-        <div class="hs"><span class="hs-ico">📋</span><span class="hs-v"><span data-count="50" data-suffix="L+">0L+</span></span><span class="hs-l">Total Listings</span></div>
-        <div class="hs"><span class="hs-ico">👥</span><span class="hs-v"><span data-count="20" data-suffix="L+">0L+</span></span><span class="hs-l">Happy Users</span></div>
-        <div class="hs"><span class="hs-ico">🏙️</span><span class="hs-v"><span data-count="500" data-suffix="+">0+</span></span><span class="hs-l">Cities</span></div>
-        <div class="hs"><span class="hs-ico">⭐</span><span class="hs-v"><span data-count="98" data-suffix="%">0%</span></span><span class="hs-l">Satisfaction</span></div>
-        <div class="hs"><span class="hs-ico">🎁</span><span class="hs-v">Always</span><span class="hs-l">Free to Post</span></div>
+        <div class="hs"><span class="hs-ico"><i class='bx bx-list-ul'></i></span><span class="hs-v"><span data-count="50" data-suffix="L+">0L+</span></span><span class="hs-l">Total Listings</span></div>
+        <div class="hs"><span class="hs-ico"><i class='bx bx-group'></i></span><span class="hs-v"><span data-count="20" data-suffix="L+">0L+</span></span><span class="hs-l">Happy Users</span></div>
+        <div class="hs"><span class="hs-ico"><i class='bx bx-buildings'></i></span><span class="hs-v"><span data-count="500" data-suffix="+">0+</span></span><span class="hs-l">Cities</span></div>
+        <div class="hs"><span class="hs-ico"><i class='bx bx-star'></i></span><span class="hs-v"><span data-count="98" data-suffix="%">0%</span></span><span class="hs-l">Satisfaction</span></div>
+        <div class="hs"><span class="hs-ico"><i class='bx bx-gift'></i></span><span class="hs-v">Always</span><span class="hs-l">Free to Post</span></div>
       </div>
     </div>
   </div>
@@ -145,16 +147,16 @@
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-inner">
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Ravi sold MacBook for ₹45,000</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Priya listed Honda City at ₹8.5L</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Amit bought iPhone 14 Pro for ₹55,000</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Sara rented 2BHK in Pune for ₹22,000/mo</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Raju sold Royal Enfield for ₹95,000</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Ravi sold MacBook for ₹45,000</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Priya listed Honda City at ₹8.5L</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Amit bought iPhone 14 Pro for ₹55,000</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Sara rented 2BHK in Pune for ₹22,000/mo</span>
-    <span style="font-weight:700;font-size:13px;color:var(--dark)">🔥 Raju sold Royal Enfield for ₹95,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Ravi sold MacBook for ₹45,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Priya listed Honda City at ₹8.5L</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Amit bought iPhone 14 Pro for ₹55,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Sara rented 2BHK in Pune for ₹22,000/mo</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Raju sold Royal Enfield for ₹95,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Ravi sold MacBook for ₹45,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Priya listed Honda City at ₹8.5L</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Amit bought iPhone 14 Pro for ₹55,000</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Sara rented 2BHK in Pune for ₹22,000/mo</span>
+    <span style="font-weight:700;font-size:13px;color:var(--dark)"><i class='bx bxs-hot' style='color:var(--org)'></i> Raju sold Royal Enfield for ₹95,000</span>
   </div>
 </div>
 
@@ -163,18 +165,18 @@
   <div class="container">
     <div class="sh reveal"><span class="lbl">Browse by Category</span><h2>What Are You Looking For?</h2><p>Over 50 lakh listings across 20+ categories — find exactly what you need.</p></div>
     <div class="cat-grid">
-      <div class="cat-card reveal"><div class="cat-icon-wrap">🚗</div><div class="cat-name">Vehicles</div><div class="cat-count">1.2L ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">📱</div><div class="cat-name">Mobiles</div><div class="cat-count">98K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">🏠</div><div class="cat-name">Real Estate</div><div class="cat-count">45K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">💻</div><div class="cat-name">Electronics</div><div class="cat-count">76K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">🛋️</div><div class="cat-name">Furniture</div><div class="cat-count">32K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">👔</div><div class="cat-name">Fashion</div><div class="cat-count">55K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">🏍️</div><div class="cat-name">Bikes</div><div class="cat-count">67K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">📚</div><div class="cat-name">Books</div><div class="cat-count">18K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">💼</div><div class="cat-name">Jobs</div><div class="cat-count">42K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">🐾</div><div class="cat-name">Pets</div><div class="cat-count">9K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">🔧</div><div class="cat-name">Services</div><div class="cat-count">28K ads</div></div>
-      <div class="cat-card reveal"><div class="cat-icon-wrap">🎵</div><div class="cat-name">Music</div><div class="cat-count">7K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-car'></i></div><div class="cat-name">Vehicles</div><div class="cat-count">1.2L ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-mobile-alt'></i></div><div class="cat-name">Mobiles</div><div class="cat-count">98K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-home'></i></div><div class="cat-name">Real Estate</div><div class="cat-count">45K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-laptop'></i></div><div class="cat-name">Electronics</div><div class="cat-count">76K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-chair'></i></div><div class="cat-name">Furniture</div><div class="cat-count">32K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-closet'></i></div><div class="cat-name">Fashion</div><div class="cat-count">55K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-cycling'></i></div><div class="cat-name">Bikes</div><div class="cat-count">67K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-book'></i></div><div class="cat-name">Books</div><div class="cat-count">18K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-briefcase'></i></div><div class="cat-name">Jobs</div><div class="cat-count">42K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-bone'></i></div><div class="cat-name">Pets</div><div class="cat-count">9K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-wrench'></i></div><div class="cat-name">Services</div><div class="cat-count">28K ads</div></div>
+      <div class="cat-card reveal"><div class="cat-icon-wrap"><i class='bx bx-music'></i></div><div class="cat-name">Music</div><div class="cat-count">7K ads</div></div>
     </div>
   </div>
 </section>
@@ -184,7 +186,7 @@
   <div class="container">
     <div class="fb mb32 reveal" style="flex-wrap:wrap;gap:16px">
       <div><span class="lbl">Fresh Picks</span><h2 style="margin-top:8px">Latest Listings Near You</h2></div>
-      <a href="listify-v2/portfolio.html" class="btn btn-outline">View All →</a>
+      <a href="portfolio.html" class="btn btn-outline">View All →</a>
     </div>
     <!-- Filter Tags -->
     <div class="filter-tags reveal">
@@ -197,16 +199,16 @@
       <div class="filter-tag">Jobs</div>
     </div>
     <div class="g4">
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Laptop" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-feat">⭐ Featured</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">💻 Electronics</div><div class="ac-price">₹45,000</div><div class="ac-title">MacBook Pro 13" 2021 — M1, 8GB RAM, 256GB SSD</div><div class="ac-meta"><span>📍 Bangalore</span><span>🕐 2h ago</span><span>👁 248</span></div></div></div>
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&q=80" alt="Car" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-new">🆕 Like New</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">🚗 Vehicles</div><div class="ac-price">₹8,50,000</div><div class="ac-title">Honda City 2022 — Petrol, 12,000 km, Single Owner</div><div class="ac-meta"><span>📍 Mumbai</span><span>🕐 5h ago</span><span>👁 589</span></div></div></div>
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Sofa" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-urg">🔥 Urgent Sale</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">🛋️ Furniture</div><div class="ac-price">₹12,500</div><div class="ac-title">L-Shape Sofa Set — Grey, 3+2 Seater, Excellent Condition</div><div class="ac-meta"><span>📍 Delhi</span><span>🕐 1d ago</span><span>👁 134</span></div></div></div>
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Phone" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-blue">📦 Exchange OK</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">📱 Mobiles</div><div class="ac-price">₹55,000</div><div class="ac-title">iPhone 14 Pro 256GB — Deep Purple, Box Pack, Warranty</div><div class="ac-meta"><span>📍 Chennai</span><span>🕐 3h ago</span><span>👁 412</span></div></div></div>
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=400&q=80" alt="Bike" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-new">⚡ Just Added</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">🏍️ Bikes</div><div class="ac-price">₹95,000</div><div class="ac-title">Royal Enfield Classic 350 — 2023, 4,800 km, Great Condition</div><div class="ac-meta"><span>📍 Pune</span><span>🕐 6h ago</span><span>👁 320</span></div></div></div>
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1555636222-cae831e670b3?w=400&q=80" alt="Flat" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-feat">⭐ Featured</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">🏠 Real Estate</div><div class="ac-price">₹28,000/mo</div><div class="ac-title">Spacious 2BHK Flat for Rent — Furnished, Near Metro</div><div class="ac-meta"><span>📍 Hyderabad</span><span>🕐 12h ago</span><span>👁 876</span></div></div></div>
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80" alt="Camera" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-blue">🎁 With Accessories</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">📷 Electronics</div><div class="ac-price">₹38,000</div><div class="ac-title">Canon EOS R50 — Kit Lens + Extra Battery + Bag</div><div class="ac-meta"><span>📍 Kolkata</span><span>🕐 2d ago</span><span>👁 201</span></div></div></div>
-      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&q=80" alt="TV" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-urg">🔥 Quick Sale</span></div><button class="ac-fav">♡</button><div class="ac-img-overlay"></div><div class="ac-quick-view">👁 Quick View</div></div><div class="ac-body"><div class="ac-cat">📺 Electronics</div><div class="ac-price">₹18,000</div><div class="ac-title">Samsung 55" 4K Smart TV — 2022 Model, Remote Included</div><div class="ac-meta"><span>📍 Ahmedabad</span><span>🕐 4h ago</span><span>👁 445</span></div></div></div>
+<div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Laptop" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-feat"><i class='bx bxs-star'></i> Featured</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-laptop'></i> Electronics</div><div class="ac-price">₹45,000</div><div class="ac-title">MacBook Pro 13" 2021 — M1, 8GB RAM, 256GB SSD</div><div class="ac-meta"><span><i class='bx bx-map'></i> Bangalore</span><span><i class='bx bx-time'></i> 2h ago</span><span><i class='bx bx-show-alt'></i> 248</span></div></div></div>
+      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&q=80" alt="Car" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-new"><i class='bx bx-check-circle'></i> Like New</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-car'></i> Vehicles</div><div class="ac-price">₹8,50,000</div><div class="ac-title">Honda City 2022 — Petrol, 12,000 km, Single Owner</div><div class="ac-meta"><span><i class='bx bx-map'></i> Mumbai</span><span><i class='bx bx-time'></i> 5h ago</span><span><i class='bx bx-show-alt'></i> 589</span></div></div></div>
+      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Sofa" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-urg"><i class='bx bxs-hot'></i> Urgent Sale</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-chair'></i> Furniture</div><div class="ac-price">₹12,500</div><div class="ac-title">L-Shape Sofa Set — Grey, 3+2 Seater, Excellent Condition</div><div class="ac-meta"><span><i class='bx bx-map'></i> Delhi</span><span><i class='bx bx-time'></i> 1d ago</span><span><i class='bx bx-show-alt'></i> 134</span></div></div></div>
+      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Phone" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-blue"><i class='bx bx-package'></i> Exchange OK</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-mobile-alt'></i> Mobiles</div><div class="ac-price">₹55,000</div><div class="ac-title">iPhone 14 Pro 256GB — Deep Purple, Box Pack, Warranty</div><div class="ac-meta"><span><i class='bx bx-map'></i> Chennai</span><span><i class='bx bx-time'></i> 3h ago</span><span><i class='bx bx-show-alt'></i> 412</span></div></div></div>
+      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=400&q=80" alt="Bike" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-new"><i class='bx bx-bolt-circle'></i> Just Added</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-cycling'></i> Bikes</div><div class="ac-price">₹95,000</div><div class="ac-title">Royal Enfield Classic 350 — 2023, 4,800 km, Great Condition</div><div class="ac-meta"><span><i class='bx bx-map'></i> Pune</span><span><i class='bx bx-time'></i> 6h ago</span><span><i class='bx bx-show-alt'></i> 320</span></div></div></div>
+      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1555636222-cae831e670b3?w=400&q=80" alt="Flat" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-feat"><i class='bx bxs-star'></i> Featured</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-home'></i> Real Estate</div><div class="ac-price">₹28,000/mo</div><div class="ac-title">Spacious 2BHK Flat for Rent — Furnished, Near Metro</div><div class="ac-meta"><span><i class='bx bx-map'></i> Hyderabad</span><span><i class='bx bx-time'></i> 12h ago</span><span><i class='bx bx-show-alt'></i> 876</span></div></div></div>
+      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80" alt="Camera" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-blue"><i class='bx bx-gift'></i> With Accessories</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-camera'></i> Electronics</div><div class="ac-price">₹38,000</div><div class="ac-title">Canon EOS R50 — Kit Lens + Extra Battery + Bag</div><div class="ac-meta"><span><i class='bx bx-map'></i> Kolkata</span><span><i class='bx bx-time'></i> 2d ago</span><span><i class='bx bx-show-alt'></i> 201</span></div></div></div>
+      <div class="ac reveal"><div class="ac-img"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&q=80" alt="TV" loading="lazy"/><div class="ac-badge"><span class="bdg bdg-urg"><i class='bx bxs-hot'></i> Quick Sale</span></div><button class="ac-fav"><i class='bx bx-heart'></i></button><div class="ac-img-overlay"></div><div class="ac-quick-view"><i class='bx bx-show'></i> Quick View</div></div><div class="ac-body"><div class="ac-cat"><i class='bx bx-tv'></i> Electronics</div><div class="ac-price">₹18,000</div><div class="ac-title">Samsung 55" 4K Smart TV — 2022 Model, Remote Included</div><div class="ac-meta"><span><i class='bx bx-map'></i> Ahmedabad</span><span><i class='bx bx-time'></i> 4h ago</span><span><i class='bx bx-show-alt'></i> 445</span></div></div></div>
     </div>
-    <div style="text-align:center;margin-top:48px"><a href="listify-v2/portfolio.html" class="btn btn-primary btn-lg reveal">Browse All 50L+ Listings →</a></div>
+    <div style="text-align:center;margin-top:48px"><a href="portfolio.html" class="btn btn-primary btn-lg reveal">Browse All 50L+ Listings →</a></div>
   </div>
 </section>
 
@@ -231,7 +233,7 @@
         <p style="color:rgba(255,255,255,.6);font-size:15px">Meet locally, hand over the item and get paid instantly. Safe, simple and no platform commission ever.</p>
       </div>
     </div>
-    <div style="text-align:center;margin-top:48px"><a href="listify-v2/post-ad.html" class="btn btn-org btn-lg reveal">Post Your First Ad Free →</a></div>
+    <div style="text-align:center;margin-top:48px"><a href="post-ad.html" class="btn btn-org btn-lg reveal">Post Your First Ad Free →</a></div>
   </div>
 </section>
 
@@ -251,10 +253,10 @@
 <section class="section">
   <div class="container">
     <div class="trust-row reveal">
-      <div class="trust-item"><div class="trust-icon">🔒</div><h4>100% Safe</h4><p class="tsm tm mt8">Verified sellers and buyer protection on every transaction.</p></div>
-      <div class="trust-item"><div class="trust-icon">⚡</div><h4>Lightning Fast</h4><p class="tsm tm mt8">Post your ad in 60 seconds. Get responses within hours.</p></div>
-      <div class="trust-item"><div class="trust-icon">💰</div><h4>Always Free</h4><p class="tsm tm mt8">No commission, no hidden fees. Post and browse absolutely free.</p></div>
-      <div class="trust-item"><div class="trust-icon">🤝</div><h4>24/7 Support</h4><p class="tsm tm mt8">Our team is available round the clock to help buyers and sellers.</p></div>
+      <div class="trust-item"><div class="trust-icon"><i class='bx bx-lock-alt'></i></div><h4>100% Safe</h4><p class="tsm tm mt8">Verified sellers and buyer protection on every transaction.</p></div>
+      <div class="trust-item"><div class="trust-icon"><i class='bx bx-bolt-circle'></i></div><h4>Lightning Fast</h4><p class="tsm tm mt8">Post your ad in 60 seconds. Get responses within hours.</p></div>
+      <div class="trust-item"><div class="trust-icon"><i class='bx bx-rupee'></i></div><h4>Always Free</h4><p class="tsm tm mt8">No commission, no hidden fees. Post and browse absolutely free.</p></div>
+      <div class="trust-item"><div class="trust-icon"><i class='bx bx-support'></i></div><h4>24/7 Support</h4><p class="tsm tm mt8">Our team is available round the clock to help buyers and sellers.</p></div>
     </div>
   </div>
 </section>
@@ -270,8 +272,8 @@
         <h2 style="color:#fff;max-width:560px;margin:16px auto 20px">Ready to Buy or Sell?<br/>Join 20 Lakh+ Indians on Listify</h2>
         <p style="color:rgba(255,255,255,.78);max-width:420px;margin:0 auto 40px;font-size:17px">Free forever. No commission. No hidden charges. India's most trusted classifieds.</p>
         <div class="fc g16 reveal" style="flex-wrap:wrap">
-          <a href="listify-v2/post-ad.html" class="btn btn-org btn-lg">+ Post Free Ad</a>
-          <a href="listify-v2/portfolio.html" class="btn btn-white btn-lg">Browse Listings →</a>
+          <a href="post-ad.html" class="btn btn-org btn-lg">+ Post Free Ad</a>
+          <a href="portfolio.html" class="btn btn-white btn-lg">Browse Listings →</a>
         </div>
       </div>
     </div>
@@ -283,19 +285,19 @@
 <div class="container">
   <div class="footer-g">
     <div class="footer-brand">
-      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:700;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m">📋</div>List<span style="color:var(--org)">ify</span></a>
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:22px;font-weight:700;color:#fff;letter-spacing:-.02em"><div class="nav-logo-m"><i class='bx bx-list-ul'></i></div>List<span style="color:var(--org)">ify</span></a>
       <p>India's fastest-growing classified platform. Buy, sell and discover great local deals every day — completely free.</p>
       <div class="soc-row">
-        <a href="#" class="soc-btn" title="Twitter">𝕏</a>
-        <a href="#" class="soc-btn" title="Facebook">f</a>
-        <a href="#" class="soc-btn" title="Instagram">📷</a>
-        <a href="#" class="soc-btn" title="LinkedIn">in</a>
-        <a href="#" class="soc-btn" title="YouTube">▶</a>
+        <a href="#" class="soc-btn" title="Twitter"><i class='bx bxl-twitter'></i></a>
+        <a href="#" class="soc-btn" title="Facebook"><i class='bx bxl-facebook'></i></a>
+        <a href="#" class="soc-btn" title="Instagram"><i class='bx bxl-instagram'></i></a>
+        <a href="#" class="soc-btn" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+        <a href="#" class="soc-btn" title="YouTube"><i class='bx bxl-youtube'></i></a>
       </div>
     </div>
-    <div class="footer-col"><h5>Browse</h5><ul><li><a href="listify-v2/portfolio.html">All Listings</a></li><li><a href="index.html">Home Classic</a></li><li><a href="index-v2.html">Home Modern</a></li><li><a href="listify-v2/post-ad.html">Post Free Ad</a></li><li><a href="listify-v2/ad-detail.html">Ad Detail</a></li></ul></div>
-    <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="listify-v2/safety.html">Safety Tips</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
-    <div class="footer-col"><h5>Account</h5><ul><li><a href="listify-v2/login.html">Login</a></li><li><a href="listify-v2/register.html">Register Free</a></li><li><a href="listify-v2/user-dashboard.html">My Dashboard</a></li><li><a href="listify-v2/admin-dashboard.html">Admin Panel</a></li><li><a href="listify-v2/pricing.html">Upgrade Plan</a></li></ul></div>
+    <div class="footer-col"><h5>Browse</h5><ul><li><a href="portfolio.html">All Listings</a></li><li><a href="index.html">Home Classic</a></li><li><a href="index-v2.html">Home Modern</a></li><li><a href="post-ad.html">Post Free Ad</a></li><li><a href="ad-detail.html">Ad Detail</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="safety.html">Safety Tips</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+    <div class="footer-col"><h5>Account</h5><ul><li><a href="login.html">Login</a></li><li><a href="register.html">Register Free</a></li><li><a href="user-dashboard.html">My Dashboard</a></li><li><a href="admin-dashboard.html">Admin Panel</a></li><li><a href="pricing.html">Upgrade Plan</a></li></ul></div>
   </div>
   <div class="foot-bot">
     <span>© 2026 Listify Technologies Pvt. Ltd. All rights reserved.</span>

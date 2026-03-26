@@ -1,23 +1,55 @@
 /* ================================================================
-   LISTIFY — ENHANCED v3.0
-   Fonts: Space Grotesk (display) + DM Sans (body) + Playfair Display (accent)
+   LISTIFY — ENHANCED v4.0 — Professional Tech Color System
+   Fonts: Inter (primary) + Space Grotesk (display) + DM Sans (body)
+   Color Palette: Deep Slate / Electric Blue / Emerald Green
    ================================================================ */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+/* ── Boxicon helper sizes ── */
+.bx-sm{font-size:1.1rem}.bx-md{font-size:1.35rem}.bx-lg{font-size:1.6rem}.bx-xl{font-size:2rem}
+/* hs-ico override: Boxicons instead of emoji */
+.hs-ico{font-size:1.5rem;display:flex;align-items:center;justify-content:center}
+/* cat-icon-wrap: Boxicons */
+.cat-icon-wrap{font-size:1.8rem;display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:var(--r2);background:var(--n1);color:var(--blue);margin:0 auto 12px;transition:all var(--tr)}
+.cat-card:hover .cat-icon-wrap{background:var(--blue);color:#fff;transform:scale(1.08)}
+/* trust-icon: Boxicons */
+.trust-icon{font-size:2rem;color:var(--blue);margin-bottom:10px}
+/* soc-btn: Boxicons */
+.soc-btn{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
 
 :root {
-  --blue:#0B3D91;--blue-l:#1557CC;--blue-d:#082E6B;--blue-xl:#0A2255;
-  --org:#FF6B35;--org-l:#FF8C5E;--org-d:#E0531D;
-  --grn:#00C896;--grn-l:#00E0A8;--grn-d:#00A87D;
-  --n0:#FFFFFF;--n1:#F7F8FC;--n2:#EEF0F8;--n3:#DDE1EF;--n4:#B0B8D1;
-  --dark:#0D1B3E;--dark2:#1E2D55;--dark3:#3D4E75;--muted:#7A8CAE;
+  /* ── Professional Tech Tri-Color System ── */
+  /* Primary: Deep Slate — headers, footer, primary buttons (60% UI) */
+  --primary:#0F172A;--primary-l:#1E293B;--primary-d:#080D19;
+  /* Secondary: Electric Blue — links, active states, accents (30% UI) */
+  --secondary:#3B82F6;--secondary-l:#60A5FA;--secondary-d:#2563EB;
+  /* Tertiary/Accent: Emerald Green — success, CTAs, highlights (10% UI) */
+  --tertiary:#10B981;--tertiary-l:#34D399;--tertiary-d:#059669;
+
+  /* ── Neutral Scale ── */
+  --n0:#FFFFFF;--n1:#F8FAFC;--n2:#F1F5F9;--n3:#E2E8F0;--n4:#CBD5E1;
+  --dark:#0F172A;--dark2:#1E293B;--dark3:#334155;--muted:#64748B;
+  --slate:#94A3B8;
+
+  /* ── Backward-compatible aliases (keep existing pages working) ── */
+  --blue:var(--secondary);--blue-l:var(--secondary-l);--blue-d:var(--secondary-d);--blue-xl:#1E40AF;
+  --org:#F59E0B;--org-l:#FCD34D;--org-d:#D97706;
+  --grn:var(--tertiary);--grn-l:var(--tertiary-l);--grn-d:var(--tertiary-d);
+
+  /* ── Typography ── */
   --fd:'Space Grotesk',sans-serif;
-  --fb:'DM Sans',sans-serif;
+  --fb:'Inter','DM Sans',sans-serif;
+
+  /* ── Spacing & Shape ── */
   --r1:6px;--r2:12px;--r3:20px;--r4:32px;--r5:48px;
   --nh:70px;--sw:260px;
-  --s1:0 1px 4px rgba(11,61,145,.07);
-  --s2:0 4px 20px rgba(11,61,145,.10);
-  --s3:0 8px 40px rgba(11,61,145,.13);
-  --s4:0 24px 80px rgba(11,61,145,.18);
+
+  /* ── Shadows (tuned for Electric Blue palette) ── */
+  --s1:0 1px 4px rgba(15,23,42,.08);
+  --s2:0 4px 20px rgba(59,130,246,.12);
+  --s3:0 8px 40px rgba(59,130,246,.16);
+  --s4:0 24px 80px rgba(15,23,42,.22);
   --tr:.22s cubic-bezier(.4,0,.2,1);
 }
 
@@ -110,7 +142,7 @@ textarea.fi{resize:vertical;min-height:120px}
 .ac-body{padding:16px 15px;flex:1;display:flex;flex-direction:column}
 .ac-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
 .ac-price{font-family:var(--fd);font-size:1.3rem;font-weight:700;color:var(--blue);margin-bottom:6px;letter-spacing:-.01em;white-space:nowrap;word-break:keep-all}
-.ac-title{font-size:14px;font-weight:500;color:var(--dark);margin-bottom:10px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;word-break:break-word}
+.ac-title{font-size:14px;font-weight:500;color:var(--dark);margin-bottom:10px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1;word-break:break-word}
 .ac-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);flex-wrap:wrap;margin-top:auto;padding-top:10px;border-top:1px solid var(--n2)}
 .ac-meta span{display:flex;align-items:center;gap:3px}
 
