@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | SpaceCraft Organizers</title>
+  <meta name="description" content="Manage your SpaceCraft account, bookings, messages, and settings from your personalized dashboard.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <div class="dashboard">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-brand-icon"><i class="fas fa-leaf"></i></div>
+          <span class="nav-brand-text">SpaceCraft</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Main</div>
+        <a href="#" class="sidebar-link active" data-section="overview"><i class="fas fa-th-large"></i> Dashboard</a>
+        <a href="#" class="sidebar-link admin-only" data-section="analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+        <a href="#" class="sidebar-link admin-only" data-section="users"><i class="fas fa-users"></i> Users</a>
+
+        <div class="sidebar-section-title">Management</div>
+        <a href="#" class="sidebar-link" data-section="bookings"><i class="fas fa-calendar-check"></i> Bookings</a>
+        <a href="#" class="sidebar-link" data-section="messages"><i class="fas fa-envelope"></i> Messages <span style="background:var(--accent);color:#fff;font-size:0.65rem;padding:2px 7px;border-radius:10px;margin-left:auto;">3</span></a>
+        <a href="#" class="sidebar-link admin-only" data-section="content"><i class="fas fa-file-alt"></i> Content</a>
+
+        <div class="sidebar-section-title">Account</div>
+        <a href="#" class="sidebar-link" data-section="profile"><i class="fas fa-user"></i> Profile</a>
+        <a href="#" class="sidebar-link" data-section="settings"><i class="fas fa-cog"></i> Settings</a>
+        <a href="login.html" class="sidebar-link" style="color:var(--error);"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </nav>
+
+      <!-- Theme & RTL Toggles inside sidebar -->
+      <div style="padding:16px 20px;border-top:1px solid var(--border);display:flex;gap:8px;">
+        <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme" style="flex:1;"><i class="fas fa-moon"></i></button>
+        <button class="nav-icon-btn" id="rtlToggle" aria-label="Toggle direction" style="flex:1;"><i class="fas fa-globe"></i></button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-main">
+
+      <!-- Top Header Bar -->
+      <div class="dash-header">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <button id="sidebarToggle" style="display:none;font-size:1.3rem;color:var(--text-primary);padding:8px;" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+          <div>
+            <h1>Dashboard</h1>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Welcome back, Emma</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <!-- Search -->
+          <div style="position:relative;">
+            <input type="text" id="dashSearch" placeholder="Search..." style="padding:10px 16px 10px 40px;border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:0.85rem;background:var(--surface);color:var(--text-primary);width:220px;" aria-label="Search dashboard">
+            <i class="fas fa-search" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.85rem;"></i>
+          </div>
+          <!-- Notifications -->
+          <div style="position:relative;">
+            <button id="notifBtn" style="width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);background:var(--surface);border:1px solid var(--border);position:relative;" aria-label="Notifications">
+              <i class="fas fa-bell"></i>
+              <span style="position:absolute;top:6px;right:6px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid var(--background);"></span>
+            </button>
+            <div id="notifPanel" style="position:absolute;top:calc(100% + 8px);right:0;width:320px;background:var(--background);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);padding:16px;display:none;z-index:100;">
+              <h4 style="font-size:0.9rem;margin-bottom:12px;">Notifications</h4>
+              <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+                <p style="font-size:0.85rem;color:var(--text-primary);font-weight:500;">New booking request</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);">Sarah M. — Closet Organization · 2 hours ago</p>
+              </div>
+              <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+                <p style="font-size:0.85rem;color:var(--text-primary);font-weight:500;">Payment received</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);">$499 — Professional Package · 5 hours ago</p>
+              </div>
+              <div style="padding:10px 0;">
+                <p style="font-size:0.85rem;color:var(--text-primary);font-weight:500;">New review posted</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);">David C. — 5 stars · 1 day ago</p>
+              </div>
+            </div>
+          </div>
+          <!-- Profile -->
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=40&h=40&fit=crop&crop=face" alt="Emma" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================
+           ADMIN VIEW
+           ========================================= -->
+      <div class="admin-view">
+
+        <!-- Stats Cards -->
+        <div class="dash-stats">
+          <div class="dash-stat-card">
+            <div class="stat-label">Total Users</div>
+            <div class="stat-value">1,847</div>
+            <div class="stat-change positive"><i class="fas fa-arrow-up"></i> 12% this month</div>
+            <div class="mini-chart" data-points="[12,19,15,25,22,30,28,35,32,40,38,47]" style="height:40px;margin-top:8px;"></div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-label">Active Bookings</div>
+            <div class="stat-value">24</div>
+            <div class="stat-change positive"><i class="fas fa-arrow-up"></i> 8% this week</div>
+            <div class="mini-chart" data-points="[5,8,6,10,9,12,14,11,16,18,20,24]" style="height:40px;margin-top:8px;"></div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-label">Revenue (MTD)</div>
+            <div class="stat-value">$12,450</div>
+            <div class="stat-change positive"><i class="fas fa-arrow-up"></i> 18% vs last month</div>
+            <div class="mini-chart" data-points="[800,1200,950,1500,1800,2100,1900,2400,2200,2800,3100,3400]" style="height:40px;margin-top:8px;"></div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-label">Messages</div>
+            <div class="stat-value">38</div>
+            <div class="stat-change negative"><i class="fas fa-arrow-down"></i> 3 unread</div>
+            <div class="mini-chart" data-points="[20,22,18,25,30,28,35,32,38,34,40,38]" style="height:40px;margin-top:8px;"></div>
+          </div>
+        </div>
+
+        <!-- Recent Bookings Table -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;margin-bottom:32px;">
+          <div style="padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+            <h3 style="font-size:1.1rem;">Recent Bookings</h3>
+            <a href="#" style="font-size:0.85rem;color:var(--primary);font-weight:500;">View All <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Service</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=36&h=36&fit=crop&crop=face" alt="Sarah M." style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                      <div>
+                        <div style="font-weight:500;color:var(--text-primary);font-size:0.88rem;">Sarah Mitchell</div>
+                        <div style="font-size:0.75rem;color:var(--text-muted);">sarah@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Closet Organization</td>
+                  <td>Apr 8, 2026</td>
+                  <td>$499</td>
+                  <td><span class="status-badge status-active">Confirmed</span></td>
+                  <td><button style="padding:6px 14px;border-radius:var(--radius-sm);background:var(--primary);color:#fff;font-size:0.78rem;font-weight:500;">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=36&h=36&fit=crop&crop=face" alt="David C." style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                      <div>
+                        <div style="font-weight:500;color:var(--text-primary);font-size:0.88rem;">David Chen</div>
+                        <div style="font-size:0.75rem;color:var(--text-muted);">david@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Home Office Setup</td>
+                  <td>Apr 10, 2026</td>
+                  <td>$299</td>
+                  <td><span class="status-badge status-pending">Pending</span></td>
+                  <td><button style="padding:6px 14px;border-radius:var(--radius-sm);background:var(--primary);color:#fff;font-size:0.78rem;font-weight:500;">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=36&h=36&fit=crop&crop=face" alt="Elena V." style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                      <div>
+                        <div style="font-weight:500;color:var(--text-primary);font-size:0.88rem;">Eleanor Vance</div>
+                        <div style="font-size:0.75rem;color:var(--text-muted);">eleanor@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Full Home — Enterprise</td>
+                  <td>Apr 12, 2026</td>
+                  <td>$999</td>
+                  <td><span class="status-badge status-active">Confirmed</span></td>
+                  <td><button style="padding:6px 14px;border-radius:var(--radius-sm);background:var(--primary);color:#fff;font-size:0.78rem;font-weight:500;">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=36&h=36&fit=crop&crop=face" alt="Robert K." style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                      <div>
+                        <div style="font-weight:500;color:var(--text-primary);font-size:0.88rem;">Robert Kim</div>
+                        <div style="font-size:0.75rem;color:var(--text-muted);">robert@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Garage Organization</td>
+                  <td>Apr 15, 2026</td>
+                  <td>$199</td>
+                  <td><span class="status-badge status-inactive">Cancelled</span></td>
+                  <td><button style="padding:6px 14px;border-radius:var(--radius-sm);background:var(--primary);color:#fff;font-size:0.78rem;font-weight:500;">View</button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=36&h=36&fit=crop&crop=face" alt="Aisha P." style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                      <div>
+                        <div style="font-weight:500;color:var(--text-primary);font-size:0.88rem;">Aisha Patel</div>
+                        <div style="font-size:0.75rem;color:var(--text-muted);">aisha@email.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>Kitchen & Pantry</td>
+                  <td>Apr 18, 2026</td>
+                  <td>$499</td>
+                  <td><span class="status-badge status-pending">In Progress</span></td>
+                  <td><button style="padding:6px 14px;border-radius:var(--radius-sm);background:var(--primary);color:#fff;font-size:0.78rem;font-weight:500;">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Activity Feed + Quick Actions -->
+        <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:24px;">
+          <!-- Recent Activity -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <h3 style="font-size:1.1rem;margin-bottom:20px;">Recent Activity</h3>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(5,150,105,0.1);display:flex;align-items:center;justify-content:center;color:var(--success);font-size:0.85rem;"><i class="fas fa-check"></i></div>
+                <div>
+                  <p style="font-size:0.88rem;color:var(--text-primary);font-weight:500;">Booking #1847 completed</p>
+                  <p style="font-size:0.78rem;color:var(--text-muted);">Kitchen & Pantry for Sarah M. · 2 hours ago</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;color:var(--info);font-size:0.85rem;"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <p style="font-size:0.88rem;color:var(--text-primary);font-weight:500;">New message from David C.</p>
+                  <p style="font-size:0.78rem;color:var(--text-muted);">"Can we reschedule to next week?" · 3 hours ago</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;color:var(--warning);font-size:0.85rem;"><i class="fas fa-star"></i></div>
+                <div>
+                  <p style="font-size:0.88rem;color:var(--text-primary);font-weight:500;">New 5-star review</p>
+                  <p style="font-size:0.78rem;color:var(--text-muted);">Eleanor V. left a glowing review · 5 hours ago</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(224,122,95,0.1);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:0.85rem;"><i class="fas fa-user-plus"></i></div>
+                <div>
+                  <p style="font-size:0.88rem;color:var(--text-primary);font-weight:500;">New client registered</p>
+                  <p style="font-size:0.78rem;color:var(--text-muted);">Martha J. signed up via website · 8 hours ago</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(45,90,76,0.1);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:0.85rem;"><i class="fas fa-calendar"></i></div>
+                <div>
+                  <p style="font-size:0.88rem;color:var(--text-primary);font-weight:500;">Booking #1849 scheduled</p>
+                  <p style="font-size:0.78rem;color:var(--text-muted);">Full Home org for Robert K. · 1 day ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <h3 style="font-size:1.1rem;margin-bottom:20px;">Quick Actions</h3>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <button class="btn btn-primary btn-block" style="justify-content:flex-start;padding:14px 20px;"><i class="fas fa-plus"></i> New Booking</button>
+              <button class="btn btn-secondary btn-block" style="justify-content:flex-start;padding:14px 20px;"><i class="fas fa-user-plus"></i> Add Client</button>
+              <button class="btn btn-secondary btn-block" style="justify-content:flex-start;padding:14px 20px;"><i class="fas fa-envelope"></i> Send Message</button>
+              <button class="btn btn-secondary btn-block" style="justify-content:flex-start;padding:14px 20px;"><i class="fas fa-file-alt"></i> New Blog Post</button>
+              <button class="btn btn-secondary btn-block" style="justify-content:flex-start;padding:14px 20px;"><i class="fas fa-download"></i> Export Report</button>
+            </div>
+
+            <!-- Upcoming -->
+            <h4 style="margin-top:28px;margin-bottom:14px;font-size:0.95rem;">Today's Schedule</h4>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="padding:12px 16px;background:var(--background);border-radius:var(--radius-sm);border-left:3px solid var(--primary);">
+                <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary);">9:00 AM — Sarah M.</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);">Closet Organization · 3hr session</p>
+              </div>
+              <div style="padding:12px 16px;background:var(--background);border-radius:var(--radius-sm);border-left:3px solid var(--accent);">
+                <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary);">1:00 PM — David C.</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);">Home Office Consultation · 1hr</p>
+              </div>
+              <div style="padding:12px 16px;background:var(--background);border-radius:var(--radius-sm);border-left:3px solid var(--success);">
+                <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary);">4:00 PM — Team Meeting</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);">Weekly project review · 30min</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /admin-view -->
+
+      <!-- =========================================
+           USER VIEW (hidden by default)
+           ========================================= -->
+      <div class="user-view" style="display:none;">
+
+        <!-- User Stats -->
+        <div class="dash-stats" style="grid-template-columns:repeat(3,1fr);">
+          <div class="dash-stat-card">
+            <div class="stat-label">My Bookings</div>
+            <div class="stat-value">3</div>
+            <div class="stat-change positive"><i class="fas fa-calendar-check"></i> 1 upcoming</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-label">Messages</div>
+            <div class="stat-value">5</div>
+            <div class="stat-change positive"><i class="fas fa-envelope"></i> 1 unread</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-label">Membership</div>
+            <div class="stat-value" style="font-size:1.4rem;">Professional</div>
+            <div class="stat-change positive"><i class="fas fa-crown"></i> Active</div>
+          </div>
+        </div>
+
+        <!-- Upcoming Booking -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px;margin-bottom:24px;">
+          <h3 style="font-size:1.1rem;margin-bottom:20px;">Upcoming Booking</h3>
+          <div class="dash-card-row upcoming-card" style="display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:20px;background:var(--background);border-radius:var(--radius-md);border:1px solid var(--border);">
+            <div style="width:56px;height:56px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;">
+              <i class="fas fa-couch"></i>
+            </div>
+            <div>
+              <h4 style="font-size:1rem;margin-bottom:4px;">Living Room & Kitchen Organization</h4>
+              <p style="font-size:0.88rem;">Professional Package · 2 Rooms</p>
+              <div style="display:flex;gap:16px;margin-top:8px;">
+                <span style="font-size:0.82rem;color:var(--text-muted);display:flex;align-items:center;gap:6px;"><i class="fas fa-calendar"></i> April 15, 2026</span>
+                <span style="font-size:0.82rem;color:var(--text-muted);display:flex;align-items:center;gap:6px;"><i class="fas fa-clock"></i> 9:00 AM — 12:00 PM</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+              <span class="status-badge status-active">Confirmed</span>
+              <span style="font-size:1.1rem;font-weight:700;color:var(--primary);">$499</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Past Bookings -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;margin-bottom:24px;">
+          <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+            <h3 style="font-size:1.1rem;">Booking History</h3>
+          </div>
+          <div class="dash-table-wrap">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Review</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:500;color:var(--text-primary);">Closet Organization</td>
+                  <td>Mar 20, 2026</td>
+                  <td>$199</td>
+                  <td><span class="status-badge status-active">Completed</span></td>
+                  <td><span style="color:#F59E0B;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:500;color:var(--text-primary);">Home Office Setup</td>
+                  <td>Feb 14, 2026</td>
+                  <td>$299</td>
+                  <td><span class="status-badge status-active">Completed</span></td>
+                  <td><span style="color:#F59E0B;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Messages & Profile Row -->
+        <div class="dash-grid-row stack-on-mobile">
+          <!-- Recent Messages -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <h3 style="font-size:1.1rem;margin-bottom:20px;">Recent Messages</h3>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="display:flex;gap:12px;padding:14px;background:var(--background);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=40&h=40&fit=crop&crop=face" alt="Emma" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">
+                <div style="flex:1;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="font-weight:600;font-size:0.88rem;color:var(--text-primary);">Emma Richardson</span>
+                    <span style="font-size:0.75rem;color:var(--text-muted);">2h ago</span>
+                  </div>
+                  <p style="font-size:0.85rem;margin-top:4px;">Hi! Just confirming your appointment for April 15th. See you then! 🌿</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;padding:14px;background:var(--background);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=40&h=40&fit=crop&crop=face" alt="Marcus" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">
+                <div style="flex:1;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="font-weight:600;font-size:0.88rem;color:var(--text-primary);">Marcus Williams</span>
+                    <span style="font-size:0.75rem;color:var(--text-muted);">1d ago</span>
+                  </div>
+                  <p style="font-size:0.85rem;margin-top:4px;">Your storage product recommendations have been sent to your email.</p>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block" style="margin-top:16px;"><i class="fas fa-envelope"></i> View All Messages</button>
+          </div>
+
+          <!-- Profile Summary -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <h3 style="font-size:1.1rem;margin-bottom:20px;">My Profile</h3>
+            <div style="text-align:center;margin-bottom:20px;">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&crop=face" alt="Profile" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 12px;border:3px solid var(--primary);">
+              <h4 style="font-size:1.05rem;">Sarah Mitchell</h4>
+              <p style="font-size:0.85rem;">Member since January 2026</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);">
+                <span style="font-size:0.85rem;color:var(--text-muted);">Email</span>
+                <span style="font-size:0.85rem;font-weight:500;color:var(--text-primary);">sarah@email.com</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);">
+                <span style="font-size:0.85rem;color:var(--text-muted);">Phone</span>
+                <span style="font-size:0.85rem;font-weight:500;color:var(--text-primary);">(503) 555-0189</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);">
+                <span style="font-size:0.85rem;color:var(--text-muted);">Plan</span>
+                <span style="font-size:0.85rem;font-weight:500;color:var(--primary);">Professional</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;">
+                <span style="font-size:0.85rem;color:var(--text-muted);">Total Spent</span>
+                <span style="font-size:0.85rem;font-weight:500;color:var(--text-primary);">$1,496</span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block" style="margin-top:20px;"><i class="fas fa-pen"></i> Edit Profile</button>
+          </div>
+        </div>
+
+      </div><!-- /user-view -->
+
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
