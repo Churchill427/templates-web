@@ -36,10 +36,64 @@
     .password-toggle{position:absolute;inset-inline-end:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--text-muted);padding:4px;}
     .name-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);}
     @media(max-width:480px){.name-row{grid-template-columns:1fr;}}
+
+    @media (max-width: 1023px) {
+      .auth-logo {
+        margin-bottom: var(--space-4) !important;
+        justify-content: center !important;
+      }
+      .auth-title {
+        text-align: center !important;
+        margin-bottom: var(--space-1) !important;
+      }
+    }
+
+    /* Floating Toolbar - Top Right */
+    .auth-toolbar {
+      position: fixed !important;
+      top: var(--space-6) !important;
+      inset-inline-end: var(--space-6) !important;
+      bottom: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: var(--space-3) !important;
+      z-index: 1000 !important;
+    }
+    .auth-toolbar button {
+      box-shadow: var(--shadow-md) !important;
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border-light) !important;
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: var(--radius-md) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      color: var(--text-primary) !important;
+      transition: all var(--transition-fast) !important;
+    }
+    .auth-toolbar button:hover {
+      background: var(--bg-primary) !important;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
-  <div class="auth-wrapper">
+  <a href="#main-content" class="skip-to-content sr-only">Skip to content</a>
+
+  <!-- Floating Auth Toolbar (Top Right) -->
+  <div class="auth-toolbar">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+    </button>
+  </div>
+
+  <div class="auth-wrapper" id="main-content">
     <!-- Left: Image -->
     <div class="auth-image">
       <img src="assets/images/hero/hero-niche.png" alt="" loading="eager">
@@ -130,6 +184,7 @@
 
   <script src="assets/js/utils.js"></script>
   <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/forms.js"></script>
   <script src="assets/js/main.js"></script>
   <script>

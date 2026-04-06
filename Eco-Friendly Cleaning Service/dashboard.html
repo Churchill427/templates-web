@@ -12,15 +12,46 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <style>
-    .dash-layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - var(--nav-height));}
-    @media(max-width:1023px){.dash-layout{grid-template-columns:1fr;}.dash-sidebar{display:none;}.dash-sidebar.open{display:flex;position:fixed;top:var(--nav-height-mobile);inset-inline-start:0;bottom:0;width:280px;z-index:var(--z-overlay);box-shadow:var(--shadow-xl);}}
-    .dash-sidebar{background:var(--bg-card);border-inline-end:1px solid var(--border-light);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-1);}
-    .dash-sidebar-link{display:flex;align-items:center;gap:var(--space-3);padding:0.625rem 0.875rem;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:500;color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;}
+    .dash-layout{display:grid;grid-template-columns:1fr;min-height:calc(100vh - var(--nav-height));position:relative;}
+    .dash-sidebar{
+      position:fixed;
+      top:var(--nav-height);
+      inset-inline-start:-100%;
+      bottom:0;
+      width:280px;
+      background:var(--bg-card);
+      border-inline-start:1px solid var(--border-light);
+      padding:var(--space-8);
+      display:flex;
+      flex-direction:column;
+      gap:var(--space-1);
+      z-index:var(--z-overlay);
+      box-shadow:var(--shadow-xl);
+      transition: inset-inline-start 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dash-sidebar.open{inset-inline-start:0;}
+    .dash-main{padding:var(--space-8);width:100%;}
+    @media(max-width:640px){.dash-main{padding:var(--space-6) var(--space-4);}}
+
+    
+    /* Overlay for sidebar */
+    .sidebar-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(4px);
+      z-index:calc(var(--z-overlay) - 1);
+      opacity:0;
+      visibility:hidden;
+      transition:all 0.3s ease;
+    }
+    .sidebar-overlay.active{opacity:1;visibility:visible;}
+
+    .dash-sidebar-link{display:flex;align-items:center;gap:var(--space-3);padding:0.75rem 1rem;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:500;color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;}
     .dash-sidebar-link:hover{background:rgba(45,80,22,0.06);color:var(--primary-green);}
     .dash-sidebar-link.active{background:rgba(45,80,22,0.1);color:var(--primary-green);font-weight:600;}
     .dash-sidebar-link svg{width:20px;height:20px;flex-shrink:0;}
-    .dash-main{padding:var(--space-8);overflow-y:auto;}
-    @media(max-width:640px){.dash-main{padding:var(--space-4);}}
+
     .dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-8);flex-wrap:wrap;gap:var(--space-4);}
     .role-toggle{display:flex;border:1.5px solid var(--border-color);border-radius:var(--radius-full);overflow:hidden;}
     .role-btn{padding:0.5rem 1.25rem;font-size:0.8125rem;font-weight:500;border:none;background:none;cursor:pointer;transition:all var(--transition-fast);color:var(--text-muted);}
@@ -33,9 +64,9 @@
     .stat-card-icon{width:40px;height:40px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-3);}
     .stat-card-value{font-family:var(--font-heading);font-size:1.75rem;font-weight:700;line-height:1;margin-bottom:var(--space-1);}
     .stat-card-label{font-size:0.8125rem;color:var(--text-muted);}
-    .dash-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6);}
+    .dash-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:var(--space-6);margin-bottom:var(--space-8);}
     @media(max-width:1024px){.dash-grid{grid-template-columns:1fr;}}
-    .dash-widget{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:var(--space-6);}
+    .dash-widget{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm);transition:all var(--transition-base);display:flex;flex-direction:column;justify-content:space-between;}
     .dash-widget-title{font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:var(--space-4);display:flex;align-items:center;justify-content:space-between;}
     .mini-chart{display:flex;align-items:flex-end;gap:4px;height:80px;}
     .mini-bar{flex:1;background:var(--secondary-sage);opacity:0.25;border-radius:3px 3px 0 0;transition:all var(--transition-base);}
@@ -60,47 +91,74 @@
     /* Admin View Styling */
     .is-admin .dash-sidebar-link.active{background:rgba(30,58,95,0.1);color:var(--primary-blue);}
     .is-admin .role-btn.active{background:var(--primary-blue);}
-    .is-admin .stat-card-icon{background:rgba(30,58,95,0.1) !important;color:var(--primary-blue) !important;}
-    .is-admin .progress-ring .fill{stroke:var(--primary-blue);}
-    .is-admin .progress-ring .value{color:var(--primary-blue);}
-    .is-admin .nav-brand-icon{background:var(--primary-blue) !important;}
-    .is-admin .dash-main{background:linear-gradient(to bottom right, var(--bg-primary), rgba(30,58,95,0.03));}
+    /* Widget Visibility */
+    .admin-only{display:none !important;}
+    .user-only{display:block !important;}
+    .is-admin .admin-only{display:block !important;}
+    .is-admin .user-only{display:none !important;}
+
+    /* New Infographic Styles */
+    .svg-chart{width:100%;height:120px;overflow:visible;}
+    .line-path{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;transition:all var(--transition-slow);}
+    .area-path{opacity:0.1;transition:all var(--transition-slow);}
+    .gauge{transform-origin:center;transition:stroke-dashoffset 1s ease;}
+    .donut-segment{transition:stroke-dashoffset 1s ease, stroke 0.3s ease;}
+    
+    .horizontal-bars{display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-2);}
+    .hbar-item{display:flex;flex-direction:column;gap:4px;}
+    .hbar-label-row{display:flex;justify-content:space-between;font-size:0.75rem;font-weight:600;}
+    .hbar-track{height:8px;background:var(--bg-secondary);border-radius:var(--radius-full);overflow:hidden;}
+    .hbar-fill{height:100%;border-radius:var(--radius-full);transition:width 1s cubic-bezier(0.34, 1.56, 0.64, 1);}
+
+    .metric-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:var(--space-2);margin-top:var(--space-4);text-align:center;}
+    .metric-item{padding:var(--space-2);background:var(--bg-secondary);border-radius:var(--radius-md);}
+    .metric-value{font-weight:700;font-size:1rem;display:block;}
+    .metric-label{font-size:0.6875rem;color:var(--text-muted);}
+
+    /* Admin specific colors */
+    .is-admin .line-path{stroke:var(--primary-blue);}
+    .is-admin .area-path{fill:var(--primary-blue);}
+    .is-admin .hbar-fill{background:var(--primary-blue);}
+    
+    /* User specific colors */
+    .line-path{stroke:var(--primary-green);}
+    .area-path{fill:var(--primary-green);}
+    .hbar-fill{background:var(--primary-green);}
+    /* Responsive Navbar Adjustments */
+    @media(max-width:480px){
+      .navbar > div{padding:0 var(--space-4) !important;}
+      .nav-actions{gap:var(--space-2);}
+      #main-nav{height:60px !important;}
+    }
   </style>
 </head>
 <body class="has-navbar">
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+  
   <!-- NAVBAR -->
-  <nav class="navbar" id="main-nav" aria-label="Main navigation">
-    <div class="container">
-      <div style="display:flex;align-items:center;gap:var(--space-3);">
-        <button class="btn btn-ghost btn-icon sidebar-toggle-dash" id="sidebar-toggle" aria-label="Toggle sidebar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
-        <a href="index.html" class="nav-brand"><span class="nav-brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a>
+  <nav class="navbar" id="main-nav" aria-label="Main navigation" style="height:var(--nav-height); padding:0;">
+    <div style="width:100%; height:100%; padding:0 var(--space-8); display:flex; justify-content:space-between; align-items:center;">
+      <!-- HAMBURGER & BRAND ON LEFT -->
+      <div style="display:flex; align-items:center; gap:var(--space-4);">
+        <!-- Hamburger Toggle for Sidebar -->
+        <button class="nav-hamburger" id="sidebar-toggle" aria-label="Toggle menu" aria-expanded="false" style="display:flex; margin-inline-start:-8px;">
+          <span></span><span></span><span></span>
+        </button>
+        
+        <a href="index.html" class="nav-brand" style="margin:0;"><span class="nav-brand-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg></span><span>EcoClean Pro</span></a>
       </div>
+      
+      <!-- ACTIONS ON RIGHT -->
       <div class="nav-actions">
-        <!-- Role Dropdown -->
-        <div class="nav-dropdown" id="dashboard-role-dropdown" style="margin-inline-end:var(--space-2);">
-          <a href="#" class="nav-link nav-dropdown-toggle" style="font-size:0.875rem;padding:0.5rem 1rem;background:var(--bg-secondary);border-radius:var(--radius-full);border:1px solid var(--border-light);">
-            Switch View
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;"><path d="M6 9l6 6 6-6"/></svg>
-          </a>
-          <div class="nav-dropdown-menu" role="menu" style="inset-inline-end:0;inset-inline-start:auto;">
-            <a href="#" class="nav-dropdown-item role-trigger" data-role="user" role="menuitem">
-              <span class="dropdown-icon">👤</span>
-              <span class="dropdown-text">
-                <span class="dropdown-label">User View</span>
-                <span class="dropdown-desc">Customer dashboard</span>
-              </span>
-            </a>
-            <a href="#" class="nav-dropdown-item role-trigger" data-role="admin" role="menuitem">
-              <span class="dropdown-icon">🛡️</span>
-              <span class="dropdown-text">
-                <span class="dropdown-label">Admin View</span>
-                <span class="dropdown-desc">Staff dashboard</span>
-              </span>
-            </a>
-          </div>
+        <div class="nav-actions-utility">
+          <button class="theme-toggle btn btn-ghost btn-icon" id="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-primary);padding:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </button>
         </div>
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
-        <img src="assets/images/user/user-avatar.png" alt="John Doe" style="width:36px;height:36px;border-radius:50%;object-fit:cover;cursor:pointer;">
       </div>
     </div>
   </nav>
@@ -121,9 +179,12 @@
     <!-- Main Content -->
     <main class="dash-main" id="main-content">
       <div class="dash-header">
-        <div>
-          <h1 style="font-size:1.75rem;margin-bottom:var(--space-1);">Dashboard</h1>
-          <p style="color:var(--text-muted);font-size:0.9375rem;margin:0;">Welcome back, John! Here's your overview.</p>
+        <div style="display:flex; align-items:center; gap:var(--space-4);">
+          <img src="assets/images/user/user-avatar.png" alt="John Doe" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--border-light);">
+          <div>
+            <h1 style="font-size:1.75rem;margin-bottom:var(--space-1);">Dashboard</h1>
+            <p style="color:var(--text-muted);font-size:0.9375rem;margin:0;">Welcome back, John! Here's your overview.</p>
+          </div>
         </div>
         <div id="active-role-indicator" class="text-small" style="font-weight:600;padding:0.375rem 0.875rem;border-radius:var(--radius-full);background:rgba(45,80,22,0.1);color:var(--primary-green);">
           Customer View
@@ -156,28 +217,120 @@
 
       <!-- Widgets Row -->
       <div class="dash-grid">
-        <!-- Chart Widget -->
-        <div class="dash-widget">
-          <div class="dash-widget-title">Cleaning Activity <span class="text-small text-muted">Last 7 months</span></div>
-          <div class="mini-chart">
-            <div class="mini-bar" style="height:40%;"></div>
-            <div class="mini-bar" style="height:65%;"></div>
-            <div class="mini-bar" style="height:45%;"></div>
-            <div class="mini-bar" style="height:80%;"></div>
-            <div class="mini-bar" style="height:55%;"></div>
-            <div class="mini-bar" style="height:90%;"></div>
-            <div class="mini-bar" style="height:70%;"></div>
+        <!-- USER ONLY: Eco Impact Wave Chart -->
+        <div class="dash-widget user-only">
+          <div class="dash-widget-title">Eco Impact History <span class="text-small text-muted">Last 6 months</span></div>
+          <svg class="svg-chart" viewBox="0 0 400 120">
+            <path class="area-path" d="M0,80 Q50,40 100,70 T200,50 T300,90 T400,60 L400,120 L0,120 Z" />
+            <path class="line-path" d="M0,80 Q50,40 100,70 T200,50 T300,90 T400,60" />
+            <circle cx="200" cy="50" r="4" fill="var(--primary-green)" />
+          </svg>
+          <div class="metric-grid">
+            <div class="metric-item"><span class="metric-value">48.2</span><span class="metric-label">kg CO₂</span></div>
+            <div class="metric-item"><span class="metric-value">124</span><span class="metric-label">L Water</span></div>
+            <div class="metric-item"><span class="metric-value">+12%</span><span class="metric-label">vs Prev month</span></div>
           </div>
         </div>
 
-        <!-- Profile Completion -->
-        <div class="dash-widget" style="text-align:center;">
-          <div class="dash-widget-title" style="justify-content:center;">Profile Completion</div>
-          <div class="progress-ring">
-            <svg width="100" height="100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fill" cx="50" cy="50" r="42" stroke-dasharray="264" stroke-dashoffset="66"/></svg>
-            <div class="value">75%</div>
+        <!-- ADMIN ONLY: Revenue Growth Wave Chart -->
+        <div class="dash-widget admin-only">
+          <div class="dash-widget-title">Revenue Forecast <span class="text-small text-muted">Projected vs Actual</span></div>
+          <svg class="svg-chart" viewBox="0 0 400 120">
+            <path style="fill:none;stroke:var(--text-muted);opacity:0.2;stroke-dasharray:4 4;" d="M0,100 L400,20" />
+            <path class="area-path" d="M0,110 C50,110 80,40 120,50 C160,60 200,10 250,30 C300,50 350,10 400,20 L400,120 L0,120 Z" />
+            <path class="line-path" d="M0,110 C50,110 80,40 120,50 C160,60 200,10 250,30 C300,50 350,10 400,20" />
+          </svg>
+          <div class="metric-grid">
+            <div class="metric-item"><span class="metric-value">$24.5k</span><span class="metric-label">Current</span></div>
+            <div class="metric-item"><span class="metric-value">$28k</span><span class="metric-label">Target</span></div>
+            <div class="metric-item" style="color:var(--success);"><span class="metric-value">↑ 18.4%</span><span class="metric-label">Growth</span></div>
           </div>
-          <p style="font-size:0.8125rem;color:var(--text-muted);margin:0;">Add your address to reach 100%</p>
+        </div>
+
+        <!-- PROFILE COMPLETION / SERVICE MIX Donut -->
+        <div class="dash-widget" style="text-align:center;">
+          <div class="user-only">
+            <div class="dash-widget-title" style="justify-content:center;">Profile Completion</div>
+            <div class="progress-ring">
+              <svg width="100" height="100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fill" cx="50" cy="50" r="42" stroke-dasharray="264" stroke-dashoffset="66"/></svg>
+              <div class="value">75%</div>
+            </div>
+            <p style="font-size:0.8125rem;color:var(--text-muted);margin:0;">Add your phone to reach 100%</p>
+          </div>
+          <div class="admin-only">
+            <div class="dash-widget-title" style="justify-content:center;">Client Satisfaction</div>
+            <div class="progress-ring" style="width:120px;height:120px;">
+              <svg width="120" height="120" viewBox="0 0 100 100">
+                <circle class="bg" cx="50" cy="50" r="40" stroke-width="12" />
+                <circle class="fill donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke-dasharray="251" stroke-dashoffset="12" style="stroke:var(--success);" />
+                <circle class="fill donut-segment" cx="50" cy="50" r="40" stroke-width="12" stroke-dasharray="251" stroke-dashoffset="200" style="stroke:var(--warning); opacity:0.6;" />
+              </svg>
+              <div class="value" style="font-size:1.75rem;">4.9</div>
+            </div>
+            <div style="display:flex;justify-content:center;gap:12px;margin-top:8px;">
+              <span style="font-size:0.75rem;display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;background:var(--success);border-radius:50%;"></span>Positive</span>
+              <span style="font-size:0.75rem;display:flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;background:var(--warning);border-radius:50%;"></span>Neutral</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity / Resource Bars -->
+        <div class="dash-widget">
+          <div class="user-only">
+            <div class="dash-widget-title">Cleaning Frequency <span class="text-small text-muted">Visits per month</span></div>
+            <div class="mini-chart">
+              <div class="mini-bar" style="height:40%;"></div>
+              <div class="mini-bar" style="height:65%;"></div>
+              <div class="mini-bar" style="height:80%;"></div>
+              <div class="mini-bar" style="height:55%;"></div>
+              <div class="mini-bar" style="height:90%;"></div>
+              <div class="mini-bar" style="height:70%;"></div>
+            </div>
+          </div>
+          <div class="admin-only">
+            <div class="dash-widget-title">Resource Allocation <span class="text-small text-muted">Inventory Levels</span></div>
+            <div class="horizontal-bars">
+              <div class="hbar-item">
+                <div class="hbar-label-row"><span>Eco Detergent</span><span>82%</span></div>
+                <div class="hbar-track"><div class="hbar-fill" style="width:82%;"></div></div>
+              </div>
+              <div class="hbar-item">
+                <div class="hbar-label-row"><span>Bamboo Microfiber</span><span>45%</span></div>
+                <div class="hbar-track"><div class="hbar-fill" style="width:45%; background:var(--warning);"></div></div>
+              </div>
+              <div class="hbar-item">
+                <div class="hbar-label-row"><span>HEPA Filters</span><span>12%</span></div>
+                <div class="hbar-track"><div class="hbar-fill" style="width:12%; background:var(--error);"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW: Service Stats / Team Widget -->
+        <div class="dash-widget">
+          <div class="user-only">
+            <div class="dash-widget-title">Service Distribution <span class="text-small text-muted">Your favorite types</span></div>
+            <div style="padding:var(--space-2) 0;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px; font-size:0.875rem;"><span>Residential</span><span>65%</span></div>
+              <div class="hbar-track" style="margin-bottom:12px;"><div class="hbar-fill" style="width:65%;"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px; font-size:0.875rem;"><span>Deep Cleaning</span><span>25%</span></div>
+              <div class="hbar-track" style="margin-bottom:12px;"><div class="hbar-fill" style="width:25%; opacity:0.6;"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px; font-size:0.875rem;"><span>Windows</span><span>10%</span></div>
+              <div class="hbar-track" style="margin-bottom:4px;"><div class="hbar-fill" style="width:10%; opacity:0.3;"></div></div>
+            </div>
+          </div>
+          <div class="admin-only">
+            <div class="dash-widget-title">Staff Efficiency <span class="text-small text-muted">Last 24h</span></div>
+            <svg class="svg-chart" viewBox="0 0 400 120">
+              <path class="line-path" style="stroke:var(--info); opacity:0.4;" d="M0,100 Q50,90 100,95 T200,85 T300,98 T400,90" />
+              <path class="line-path" d="M0,80 Q50,60 100,75 T200,45 T300,60 T400,40" />
+            </svg>
+            <div class="metric-grid" style="margin-top:0;">
+              <div class="metric-item"><span class="metric-value">94%</span><span class="metric-label">On-Time</span></div>
+              <div class="metric-item"><span class="metric-value">8.2</span><span class="metric-label">Avg Rate</span></div>
+              <div class="metric-item"><span class="metric-value">22</span><span class="metric-label">Staff</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -194,6 +347,7 @@
 
   <script src="assets/js/utils.js"></script>
   <script src="assets/js/animations.js"></script>
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/forms.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
@@ -266,11 +420,29 @@
       switchRole(roleParam);
     }
 
-    // Sidebar toggle (mobile)
+    // Sidebar toggle
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebar = document.getElementById('dash-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    
+    const toggleSidebar = (forceClose = false) => {
+      const isOpen = forceClose ? true : sidebar.classList.contains('open');
+      if (isOpen) {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        sidebarToggle.classList.remove('active');
+      } else {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        sidebarToggle.classList.add('active');
+      }
+    };
+
     if (sidebarToggle) {
-      sidebarToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+      sidebarToggle.addEventListener('click', () => toggleSidebar());
+    }
+    if (overlay) {
+      overlay.addEventListener('click', () => toggleSidebar(true));
     }
 
     // Sidebar navigation
@@ -279,7 +451,7 @@
         e.preventDefault();
         document.querySelectorAll('.dash-sidebar-link').forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        if (sidebar) sidebar.classList.remove('open');
+        toggleSidebar(true);
       });
     });
   </script>
