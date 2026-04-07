@@ -8,7 +8,7 @@ const Dashboard = (() => {
   function init() {
     initSidebar();
     initRoleToggle();
-    initCharts();
+    // initCharts will be called by setRole during initialization
     initDataTables();
     initMessageInteractions();
   }
@@ -16,29 +16,18 @@ const Dashboard = (() => {
   // ---- Sidebar ----
   function initSidebar() {
     const sidebar = document.querySelector('.sidebar');
-    const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-    const mobileToggle = document.querySelector('.dashboard-mobile-toggle');
+    const drawerToggle = document.querySelector('.dashboard-toggle-drawer');
 
-    if (toggleBtn && sidebar) {
-      toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('sidebar-collapsed');
-        // Adjust main content
-        const main = document.querySelector('.dashboard-main');
-        if (main) {
-          main.style.marginLeft = sidebar.classList.contains('sidebar-collapsed') ? '80px' : '280px';
-        }
-      });
-    }
-
-    if (mobileToggle && sidebar) {
-      mobileToggle.addEventListener('click', () => {
+    if (drawerToggle && sidebar) {
+      drawerToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         sidebar.classList.toggle('mobile-open');
       });
 
       // Close on outside click
       document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768 && sidebar.classList.contains('mobile-open')) {
-          if (!e.target.closest('.sidebar') && !e.target.closest('.dashboard-mobile-toggle')) {
+        if (sidebar.classList.contains('mobile-open')) {
+          if (!e.target.closest('.sidebar') && !e.target.closest('.dashboard-toggle-drawer')) {
             sidebar.classList.remove('mobile-open');
           }
         }
@@ -69,6 +58,12 @@ const Dashboard = (() => {
         adminContent.forEach(el => el.style.display = 'none');
         userContent.forEach(el => el.style.display = '');
       }
+
+      // Re-initialize charts after role change using requestAnimationFrame
+      // to ensure display:block has taken effect and dimensions are available.
+      requestAnimationFrame(() => {
+        initCharts();
+      });
 
       // Update UI for any existing toggle buttons
       toggleBtns.forEach(btn => {
@@ -103,22 +98,28 @@ const Dashboard = (() => {
 
   // ---- Simple Chart Drawing (Canvas) ----
   function initCharts() {
-    // Line chart
-    const lineCanvas = document.getElementById('lineChart');
-    if (lineCanvas) drawLineChart(lineCanvas);
+    const charts = [
+      { id: 'lineChart', fn: drawLineChart },
+      { id: 'barChart', fn: drawBarChart },
+      { id: 'pieChart', fn: drawPieChart },
+      { id: 'growthChart', fn: drawGrowthChart },
+      { id: 'userSpendingChart', fn: drawUserSpendingChart },
+      { id: 'userSessionTypeChart', fn: drawUserSessionTypeChart },
+      { id: 'userHealingChart', fn: drawUserHealingChart },
+      { id: 'userArtistVisitsChart', fn: drawUserArtistVisitsChart }
+    ];
 
-    // Bar chart
-    const barCanvas = document.getElementById('barChart');
-    if (barCanvas) drawBarChart(barCanvas);
-
-    // Pie chart
-    const pieCanvas = document.getElementById('pieChart');
-    if (pieCanvas) drawPieChart(pieCanvas);
+    charts.forEach(c => {
+      const canvas = document.getElementById(c.id);
+      if (canvas && canvas.offsetParent !== null) { // Only draw if visible
+        c.fn(canvas);
+      }
+    });
   }
 
   function drawLineChart(canvas) {
     const ctx = canvas.getContext('2d');
-    const width = canvas.parentElement.clientWidth - 40;
+    const width = canvas.parentElement.clientWidth;
     const height = 220;
     canvas.width = width;
     canvas.height = height;
@@ -126,20 +127,25 @@ const Dashboard = (() => {
     const data = [20, 45, 35, 60, 80, 55, 90, 70, 95, 85, 110, 100];
     const labels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const maxVal = Math.max(...data) * 1.1;
-    const padding = 40;
-    const chartW = width - padding * 2;
-    const chartH = height - padding * 2;
+    const paddingX = 50;
+    const paddingY = 40;
+    const chartW = width - paddingX * 2;
+    const chartH = height - paddingY * 2;
 
     // Grid lines
     ctx.strokeStyle = '#e5e5e5';
     ctx.lineWidth = 0.5;
     for (let i = 0; i <= 4; i++) {
-      const y = padding + (chartH / 4) * i;
+      const y = paddingY + (chartH / 4) * i;
       ctx.beginPath();
-      ctx.moveTo(padding, y);
-      ctx.lineTo(width - padding, y);
+      ctx.moveTo(paddingX, y);
+      ctx.lineTo(width - paddingX, y);
       ctx.stroke();
     }
+
+    // Adjust chart height calculation for better "zoom out"
+    const usableChartH = chartH;
+    const chartYOffset = paddingY;
 
     // Line
     ctx.beginPath();
@@ -148,28 +154,28 @@ const Dashboard = (() => {
     ctx.lineJoin = 'round';
 
     data.forEach((val, i) => {
-      const x = padding + (chartW / (data.length - 1)) * i;
-      const y = padding + chartH - (val / maxVal) * chartH;
+      const x = paddingX + (chartW / (data.length - 1)) * i;
+      const y = paddingY + chartH - (val / maxVal) * chartH;
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     });
     ctx.stroke();
 
     // Fill gradient
-    const gradient = ctx.createLinearGradient(0, padding, 0, height - padding);
+    const gradient = ctx.createLinearGradient(0, paddingY, 0, height - paddingY);
     gradient.addColorStop(0, 'rgba(220, 38, 38, 0.15)');
     gradient.addColorStop(1, 'rgba(220, 38, 38, 0)');
 
-    ctx.lineTo(padding + chartW, height - padding);
-    ctx.lineTo(padding, height - padding);
+    ctx.lineTo(paddingX + chartW, height - paddingY);
+    ctx.lineTo(paddingX, height - paddingY);
     ctx.closePath();
     ctx.fillStyle = gradient;
     ctx.fill();
 
     // Points
     data.forEach((val, i) => {
-      const x = padding + (chartW / (data.length - 1)) * i;
-      const y = padding + chartH - (val / maxVal) * chartH;
+      const x = paddingX + (chartW / (data.length - 1)) * i;
+      const y = paddingY + chartH - (val / maxVal) * chartH;
 
       ctx.beginPath();
       ctx.arc(x, y, 4, 0, Math.PI * 2);
@@ -185,7 +191,7 @@ const Dashboard = (() => {
     ctx.font = '11px Inter, sans-serif';
     ctx.textAlign = 'center';
     data.forEach((_, i) => {
-      const x = padding + (chartW / (data.length - 1)) * i;
+      const x = paddingX + (chartW / (data.length - 1)) * i;
       ctx.fillText(labels[i], x, height - 8);
     });
   }
@@ -257,18 +263,20 @@ const Dashboard = (() => {
 
   function drawPieChart(canvas) {
     const ctx = canvas.getContext('2d');
-    canvas.width = 220;
-    canvas.height = 220;
+    const width = canvas.parentElement.clientWidth;
+    const height = 220;
+    canvas.width = width;
+    canvas.height = height;
 
     const data = [
-      { label: '18-25', value: 30, color: '#dc2626' },
-      { label: '26-35', value: 40, color: '#f59e0b' },
-      { label: '36-45', value: 18, color: '#3b82f6' },
-      { label: '46+', value: 12, color: '#10b981' }
+      { label: 'New Clients', value: 65, color: '#dc2626' },
+      { label: 'Returning', value: 35, color: '#f59e0b' }
     ];
 
     const total = data.reduce((sum, d) => sum + d.value, 0);
-    const cx = 110, cy = 100, radius = 80;
+    const cx = width / 2;
+    const cy = height / 2;
+    const radius = Math.min(width, height) / 2 - 30;
     let startAngle = -Math.PI / 2;
 
     data.forEach(item => {
@@ -295,15 +303,235 @@ const Dashboard = (() => {
 
     // Center circle (donut)
     ctx.beginPath();
-    ctx.arc(cx, cy, 40, 0, Math.PI * 2);
-    ctx.fillStyle = '#fff';
+    ctx.arc(cx, cy, radius * 0.6, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
+    ctx.fill();
+  }
+
+  function drawGrowthChart(canvas) {
+    const ctx = canvas.getContext('2d');
+    const width = canvas.parentElement.clientWidth || 400;
+    const height = 220;
+    canvas.width = width;
+    canvas.height = height;
+
+    const data = [
+      { label: 'Marcus', value: 85, color: '#dc2626' },
+      { label: 'Luna', value: 72, color: '#f59e0b' },
+      { label: 'Jake', value: 64, color: '#3b82f6' },
+      { label: 'Sasha', value: 91, color: '#10b981' }
+    ];
+
+    const maxVal = 100;
+    const padLeft = 60;
+    const padRight = 60;
+    const padTop = 40;
+    const padBottom = 30;
+    const chartW = width - padLeft - padRight;
+    const chartH = height - padTop - padBottom;
+    const barWidth = chartW / data.length * 0.4;
+    const gap = chartW / data.length * 0.6;
+
+    // Grid
+    ctx.strokeStyle = '#e5e5e5';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 4; i++) {
+      const y = padTop + (chartH / 4) * i;
+      ctx.beginPath();
+      ctx.moveTo(padLeft, y);
+      ctx.lineTo(width - padRight, y);
+      ctx.stroke();
+    }
+
+    // Horizontal bars
+    data.forEach((item, i) => {
+      const y = padTop + (chartH / data.length) * i + 10;
+      const barW = (item.value / maxVal) * chartW;
+      const h = 18;
+
+      ctx.fillStyle = '#f3f4f6';
+      ctx.fillRect(padLeft, y, chartW, h);
+
+      ctx.fillStyle = item.color;
+      ctx.fillRect(padLeft, y, barW, h);
+
+      ctx.fillStyle = '#737373';
+      ctx.font = '11px Inter, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(item.label, padLeft, y - 6);
+
+      ctx.textAlign = 'right';
+      ctx.fillText(item.value + '%', padLeft + chartW, y - 6);
+    });
+  }
+
+  function drawUserSpendingChart(canvas) {
+    const ctx = canvas.getContext('2d');
+    const width = canvas.parentElement.clientWidth || 400;
+    const height = 220;
+    canvas.width = width;
+    canvas.height = height;
+
+    const data = [120, 0, 450, 0, 280, 0];
+    const labels = ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'];
+    const maxVal = 500;
+    const paddingX = 50;
+    const paddingY = 40;
+    const chartW = width - paddingX * 2;
+    const chartH = height - paddingY * 2;
+
+    // Line
+    ctx.beginPath();
+    ctx.strokeStyle = '#3b82f6';
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+
+    data.forEach((val, i) => {
+      const x = paddingX + (chartW / (data.length - 1)) * i;
+      const y = paddingY + chartH - (val / maxVal) * chartH;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Fill
+    const gradient = ctx.createLinearGradient(0, paddingY, 0, height - paddingY);
+    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.2)');
+    gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+    ctx.lineTo(paddingX + chartW, height - paddingY);
+    ctx.lineTo(paddingX, height - paddingY);
+    ctx.fillStyle = gradient;
     ctx.fill();
 
-    // Legend
+    // Labels
+    ctx.fillStyle = '#737373';
     ctx.font = '11px Inter, sans-serif';
-    ctx.textAlign = 'left';
+    ctx.textAlign = 'center';
+    labels.forEach((l, i) => {
+      const x = paddingX + (chartW / (labels.length - 1)) * i;
+      ctx.fillText(l, x, height - 8);
+    });
+  }
+
+  function drawUserSessionTypeChart(canvas) {
+    const ctx = canvas.getContext('2d');
+    const width = canvas.parentElement.clientWidth;
+    const height = 220;
+    canvas.width = width;
+    canvas.height = height;
+
+    const data = [
+      { label: 'Tattoo', value: 3, color: '#dc2626' },
+      { label: 'Piercing', value: 1, color: '#f59e0b' }
+    ];
+
+    const total = 4;
+    const cx = width / 2;
+    const cy = height / 2;
+    const radius = Math.min(width, height) / 2 - 40;
+    let startAngle = -Math.PI / 2;
+
+    data.forEach(item => {
+      const sliceAngle = (item.value / total) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, radius, startAngle, startAngle + sliceAngle);
+      ctx.closePath();
+      ctx.fillStyle = item.color;
+      ctx.fill();
+      startAngle += sliceAngle;
+    });
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius * 0.65, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
+    ctx.fill();
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 16px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('4 Total', cx, cy + 5);
+  }
+
+  function drawUserHealingChart(canvas) {
+    const ctx = canvas.getContext('2d');
+    const width = canvas.parentElement.clientWidth;
+    const height = 220;
+    canvas.width = width;
+    canvas.height = height;
+
+    const percentage = 85;
+    const cx = width / 2;
+    const cy = height / 2 + 10;
+    const radius = 70;
+
+    // Track
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, Math.PI * 0.8, Math.PI * 2.2);
+    ctx.lineWidth = 12;
+    ctx.strokeStyle = '#262626';
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Progress
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, Math.PI * 0.8, Math.PI * 0.8 + (Math.PI * 1.4 * (percentage / 100)));
+    ctx.lineWidth = 12;
+    ctx.strokeStyle = '#dc2626';
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Text
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 24px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(percentage + '%', cx, cy);
+
+    ctx.fillStyle = '#737373';
+    ctx.font = '11px Inter, sans-serif';
+    ctx.fillText('Heal Complete', cx, cy + 20);
+  }
+
+  function drawUserArtistVisitsChart(canvas) {
+    const ctx = canvas.getContext('2d');
+    const width = canvas.parentElement.clientWidth;
+    const height = 220;
+    canvas.width = width;
+    canvas.height = height;
+
+    const data = [
+      { label: 'Marcus', value: 3, color: '#dc2626' },
+      { label: 'Luna', value: 1, color: '#f59e0b' }
+    ];
+
+    const maxVal = 4;
+    const padLeft = 60;
+    const padRight = 30;
+    const padTop = 40;
+    const padBottom = 30;
+    const chartW = width - padLeft - padRight;
+    const chartH = height - padTop - padBottom;
+    const barH = 20;
+
     data.forEach((item, i) => {
-      const ly = 195 + i * 0; // Not enough room, use below-chart legend
+      const y = padTop + (chartH / data.length) * i + 10;
+      const barW = (item.value / maxVal) * chartW;
+
+      ctx.fillStyle = '#262626';
+      ctx.fillRect(padLeft, y, chartW, barH);
+
+      ctx.fillStyle = item.color;
+      ctx.fillRect(padLeft, y, barW, barH);
+
+      ctx.fillStyle = '#737373';
+      ctx.font = '12px Inter, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(item.label, padLeft - 10, y + 14);
+
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 12px Inter, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(item.value + ' Sessions', padLeft + 10, y + 14);
     });
   }
 

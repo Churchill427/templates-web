@@ -15,9 +15,6 @@
   <div class="dashboard-layout">
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-      <button class="sidebar-toggle-btn" aria-label="Toggle sidebar">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
       <div class="sidebar-header">
         <svg class="brand-icon" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="transparent" stroke="rgba(255,255,255,0.2)" stroke-width="1"/><path d="M12,8 L16,8 L28,32 L24,34 L18,34 Z" fill="#dc2626" opacity="0.9"/><path d="M14,8 L18,8 L30,32 L26,34 L20,34 Z" fill="#f59e0b" opacity="0.7"/></svg>
         <span class="brand-name">INK <span>STUDIO</span></span>
@@ -76,12 +73,14 @@
     <div class="dashboard-main">
       <!-- Header -->
       <header class="dashboard-header">
-        <div class="dashboard-header-left">
-          <button class="btn-icon dashboard-mobile-toggle" aria-label="Toggle sidebar" style="display:none;">
+        <div class="dashboard-header-left" style="display:flex; align-items:center; gap:var(--space-4);">
+          <button class="btn-icon dashboard-toggle-drawer" aria-label="Toggle sidebar" style="background:var(--bg-tertiary); border:none; border-radius:var(--radius-md); width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text-primary);">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
-          <h1>Dashboard</h1>
-          <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><span>Dashboard</span></div>
+          <div>
+            <h1>Dashboard</h1>
+            <div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><span>Dashboard</span></div>
+          </div>
         </div>
         <div class="dashboard-header-right">
           <!-- Role Toggle (Removed per user request) -->
@@ -149,7 +148,7 @@
             </div>
           </div>
 
-          <!-- Charts Row -->
+          <!-- Charts Row 1 -->
           <div class="dashboard-grid dashboard-grid-2-1" style="margin-bottom:var(--space-6);">
             <div class="dashboard-card">
               <div class="dashboard-card-header"><h3>Appointments Overview</h3><select style="padding:var(--space-1) var(--space-3);border:1px solid var(--bg-tertiary);border-radius:var(--radius-sm);font-size:0.8125rem;background:var(--bg-primary);color:var(--text-primary);"><option>This Year</option><option>Last Year</option></select></div>
@@ -158,6 +157,18 @@
             <div class="dashboard-card">
               <div class="dashboard-card-header"><h3>Popular Services</h3></div>
               <div class="chart-container"><canvas id="barChart"></canvas></div>
+            </div>
+          </div>
+
+          <!-- Charts Row 2 (New) -->
+          <div class="dashboard-grid dashboard-grid-1-1" style="margin-bottom:var(--space-6);">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Customer Retention</h3></div>
+              <div class="chart-container" style="display:flex; justify-content:center;"><canvas id="pieChart"></canvas></div>
+            </div>
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Artist Performance</h3></div>
+              <div class="chart-container"><canvas id="growthChart"></canvas></div>
             </div>
           </div>
 
@@ -185,6 +196,30 @@
               <div><h3 style="color:#fff;font-size:1.125rem;font-weight:600;margin-bottom:var(--space-2);">Next Appointment</h3><p style="color:rgba(255,255,255,0.8);font-size:1.5rem;font-weight:700;margin:0;">Apr 8, 2026</p><p style="color:rgba(255,255,255,0.6);font-size:0.875rem;margin:var(--space-2) 0 0;">Full Sleeve with Marcus Steel</p></div>
             </div>
             <div class="stat-card"><div class="stat-card-info"><h3>4</h3><p>Total Sessions</p></div></div>
+          </div>
+
+          <!-- User Charts Row 1 -->
+          <div class="dashboard-grid dashboard-grid-1-1" style="margin-top:var(--space-6);">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>My Spending Trend</h3></div>
+              <div class="chart-container"><canvas id="userSpendingChart"></canvas></div>
+            </div>
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Session Distribution</h3></div>
+              <div class="chart-container" style="display:flex; justify-content:center;"><canvas id="userSessionTypeChart"></canvas></div>
+            </div>
+          </div>
+
+          <!-- User Charts Row 2 (New) -->
+          <div class="dashboard-grid dashboard-grid-1-1" style="margin-top:var(--space-6);">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Healing Progress</h3></div>
+              <div class="chart-container"><canvas id="userHealingChart"></canvas></div>
+            </div>
+            <div class="dashboard-card">
+              <div class="dashboard-card-header"><h3>Artist Preferences</h3></div>
+              <div class="chart-container"><canvas id="userArtistVisitsChart"></canvas></div>
+            </div>
           </div>
 
           <div class="dashboard-card" style="margin-top:var(--space-6);">

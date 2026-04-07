@@ -76,13 +76,16 @@ const InkStudio = (() => {
       }
     }
 
-    // Navbar scroll shadow
+    // Navbar scroll logic
     window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header-wrapper');
       const navbar = document.querySelector('.navbar');
-      if (navbar) {
-        if (window.scrollY > 10) {
+      if (header && navbar) {
+        if (window.scrollY > 40) {
+          header.classList.add('header-scrolled');
           navbar.classList.add('navbar-scrolled');
         } else {
+          header.classList.remove('header-scrolled');
           navbar.classList.remove('navbar-scrolled');
         }
       }
@@ -98,7 +101,7 @@ const InkStudio = (() => {
 
       // Desktop hover handled by CSS, but click for mobile
       link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1024) {
           e.preventDefault();
           item.classList.toggle('open');
           // Close other dropdowns
