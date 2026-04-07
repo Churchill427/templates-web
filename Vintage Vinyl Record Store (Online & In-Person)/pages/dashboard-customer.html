@@ -18,21 +18,34 @@
 
     /* Sidebar */
     .dash-sidebar {
-      width: var(--sidebar-width); background: #12122a;
+      width: 260px;
+      background: var(--bg-secondary);
       border-right: 1px solid var(--border-color);
-      display: flex; flex-direction: column;
-      flex-shrink: 0; overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      z-index: 1001;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: var(--shadow-xl);
     }
+    .dash-sidebar.open { transform: translateX(0); }
+    .dash-main { flex: 1; width: 100%; min-width: 0; transition: margin-left 0.3s ease; }
+
     .dash-sidebar__logo {
       padding: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
-      text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none; border-bottom: 1px solid var(--border-color);
     }
-    .dash-sidebar__nav { flex: 1; padding: var(--space-4) var(--space-3); }
+    .dash-sidebar__logo span { color: var(--text-primary); }
+    .dash-sidebar__nav { padding: var(--space-4); display: flex; flex-direction: column; gap: 4px; }
+    
+    .dash-sidebar__section { margin-bottom: var(--space-6); }
+    .dash-sidebar__section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; padding: 0 12px; margin-bottom: 12px; }
+
     .dash-nav-link {
       display: flex; align-items: center; gap: var(--space-3);
-      padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
-      font-size: var(--text-sm); color: rgba(255,255,255,0.5);
-      transition: all var(--transition-fast); text-decoration: none; margin-bottom: 2px;
     }
     .dash-nav-link:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
     .dash-nav-link.active { background: rgba(255,215,0,0.1); color: var(--color-accent); }
@@ -101,9 +114,20 @@
     .wishlist-item__price { font-size: var(--text-sm); font-weight: 600; margin-left: auto; }
 
     @media (max-width: 1024px) {
-      .dash-sidebar { display: none; }
+      .dash-sidebar {
+        display: flex !important;
+        position: fixed;
+        top: 0; left: 0; bottom: 0;
+        z-index: 1001;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        width: 260px;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+      }
+      .dash-sidebar.open { transform: translateX(0); }
       .stat-cards { grid-template-columns: 1fr; }
       .layout-grid { grid-template-columns: 1fr; }
+      .dash-hamburger { display: flex !important; }
     }
 
     @media (max-width: 640px) {
@@ -114,36 +138,120 @@
       }
       .dash-topbar__left { order: 1; width: 100%; display: flex; align-items: center; justify-content: space-between; }
       .dash-topbar__right { order: 2; width: 100%; justify-content: flex-end; }
-      
       .dash-content { padding: var(--space-4); }
       .panel { padding: var(--space-4); }
       .order-item { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
       .order-item > div:last-child { width: 100%; display: flex; justify-content: space-between; align-items: center; }
     }
+
+    /* Hamburger Button */
+    .dash-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      width: 40px; height: 40px;
+      transition: all 0.2s;
+    }
+    .dash-hamburger:hover { background: var(--bg-card); }
+    .dash-hamburger span {
+      display: block;
+      width: 20px; height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Overlay */
+    .dash-sidebar-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: var(--bg-overlay);
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+    }
+    .dash-sidebar-overlay.active { display: block; }
+
+    /* Personal Analytics Viz */
+    .customer-viz-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    
+    /* Activity Heatmap */
+    .heatmap { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 15px; }
+    .heatmap-cell { aspect-ratio: 1; border-radius: 2px; background: rgba(255,255,255,0.03); position: relative; }
+    .heatmap-cell:hover::after { content: attr(data-val); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #000; color: #fff; padding: 2px 5px; border-radius: 3px; font-size: 10px; white-space: nowrap; z-index: 5; }
+    .lvl-1 { background: rgba(212, 175, 55, 0.2); }
+    .lvl-2 { background: rgba(212, 175, 55, 0.5); }
+    .lvl-3 { background: rgba(212, 175, 55, 0.8); }
+    .lvl-4 { background: var(--color-accent); }
+
+    /* Progress Stats */
+    .prog-stat { margin-bottom: 15px; }
+    .prog-bar-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-top: 8px; overflow: hidden; }
+    .prog-bar-fill { height: 100%; border-radius: 10px; transition: width 1s ease; }
+
+    /* Tiny Donut */
+    .mini-donut { position: relative; width: 80px; height: 80px; }
+    .donut-text { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+    
+    /* New Charts */
+    .cust-chart-svg { width: 100%; height: 120px; overflow: visible; }
+    .spending-path { stroke-dasharray: 800; stroke-dashoffset: 800; animation: drawPath 2.5s ease-out forwards; }
+    @keyframes drawPath { to { stroke-dashoffset: 0; } }
+    
+    @media (max-width: 768px) {
+      .customer-viz-row { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div class="dashboard">
+    <!-- Mobile overlay -->
+    <div class="dash-sidebar-overlay" id="dash-overlay" onclick="closeSidebar()"></div>
     <!-- Sidebar -->
     <aside class="dash-sidebar">
       <a href="../index.html" class="dash-sidebar__logo">
         <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img" style="width:32px;height:32px;object-fit:contain;">
-        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:#fff;">Vintage Vinyl</span>
+        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">Vintage Vinyl</span>
       </a>
       <nav class="dash-sidebar__nav">
-        <a href="#" class="dash-nav-link active"><span class="nav-icon">👤</span> My Profile</a>
-        <a href="#" class="dash-nav-link"><span class="nav-icon">📦</span> My Orders</a>
-        <a href="#" class="dash-nav-link"><span class="nav-icon">❤️</span> Wishlist</a>
-        <a href="#" class="dash-nav-link"><span class="nav-icon">🎧</span> Listening Sessions</a>
-        <a href="#" class="dash-nav-link"><span class="nav-icon">⚙️</span> Account Settings</a>
-        <a href="login.html" class="dash-nav-link" style="margin-top:var(--space-6);"><span class="nav-icon">🚪</span> Logout</a>
+        <div class="dash-sidebar__section">
+          <div class="dash-sidebar__section-title">Main</div>
+          <a href="#" class="dash-nav-link active"><span class="nav-icon">👤</span> My Profile</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">📦</span> My Orders <span class="nav-badge">2</span></a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">❤️</span> Wishlist</a>
+        </div>
+        <div class="dash-sidebar__section">
+          <div class="dash-sidebar__section-title">Content</div>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">🎧</span> Listening Sessions</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">📅</span> My Events</a>
+        </div>
+        <div class="dash-sidebar__section">
+          <div class="dash-sidebar__section-title">Settings</div>
+          <a href="#" class="dash-nav-link"><span class="nav-icon">⚙️</span> Account Settings</a>
+          <a href="login.html" class="dash-nav-link"><span class="nav-icon">🚪</span> Logout</a>
+        </div>
       </nav>
+      <div class="dash-sidebar__footer" style="padding:var(--space-4);border-top:1px solid var(--border-color);margin-top:auto;">
+        <a href="../index.html" class="btn btn--primary btn--sm btn--full" style="justify-content:center;gap:8px;">
+          <span>🏠</span> Back to Site
+        </a>
+      </div>
     </aside>
 
     <!-- Main -->
     <div class="dash-main">
       <header class="dash-topbar">
         <div class="dash-topbar__left">
+          <button class="dash-hamburger" id="dash-hamburger" aria-label="Open sidebar" onclick="openSidebar()">
+            <span></span><span></span><span></span>
+          </button>
           <a href="../index.html" style="text-decoration:none;display:flex;align-items:center;padding:8px;margin-right:8px;background:rgba(255,255,255,0.05);border-radius:var(--radius-full);color:var(--text-primary);" title="Back to Store">🏠</a>
           <span class="dash-topbar__breadcrumb">Dashboard / <span>Customer</span></span>
         </div>
@@ -153,7 +261,8 @@
           <div style="display:flex;align-items:center;gap:var(--space-2);">
             <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications">🔔</button>
             <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">☀️</button>
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Customer avatar" class="dash-topbar__avatar" width="36" height="36">
+            <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">🌐</button>
+            <img src="../assets/images/team/team-2.png" alt="Customer avatar" class="dash-topbar__avatar" width="36" height="36">
           </div>
         </div>
       </header>
@@ -161,6 +270,89 @@
       <div class="dash-content">
         <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Welcome, James 🎵</h1>
         <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Manage your collection, tracking and wishlist from here.</p>
+
+        <!-- Personalized Analytics -->
+        <div class="customer-viz-row">
+          <div class="panel">
+            <h2 class="panel__title">Listening Activity</h2>
+            <p style="font-size:12px;color:var(--text-muted);">Your vinyl sessions over the last year</p>
+            <div class="heatmap">
+              <!-- Mock Heatmap Data -->
+              <div class="heatmap-cell lvl-2" data-val="12 sessions"></div>
+              <div class="heatmap-cell lvl-1" data-val="5 sessions"></div>
+              <div class="heatmap-cell lvl-3" data-val="18 sessions"></div>
+              <div class="heatmap-cell" data-val="0 sessions"></div>
+              <div class="heatmap-cell lvl-4" data-val="25 sessions"></div>
+              <div class="heatmap-cell lvl-2" data-val="10 sessions"></div>
+              <div class="heatmap-cell lvl-3" data-val="22 sessions"></div>
+              <div class="heatmap-cell lvl-1" data-val="4 sessions"></div>
+              <div class="heatmap-cell lvl-2" data-val="14 sessions"></div>
+              <div class="heatmap-cell lvl-4" data-val="30 sessions"></div>
+              <div class="heatmap-cell lvl-3" data-val="20 sessions"></div>
+              <div class="heatmap-cell lvl-2" data-val="12 sessions"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text-muted);text-transform:uppercase;">
+              <span>Jan</span><span>Mar</span><span>Jun</span><span>Sep</span><span>Dec</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel__title">Genre Breakdown</h2>
+            <div style="display:flex;align-items:center;gap:20px;">
+              <div class="mini-donut">
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="10"/>
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-accent)" stroke-width="10" stroke-dasharray="251" stroke-dashoffset="62.75" transform="rotate(-90 50 50)"/>
+                </svg>
+                <div class="donut-text">75%</div>
+              </div>
+              <div style="flex:1;">
+                <div class="prog-stat">
+                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span>Jazz & Soul</span><span>75%</span></div>
+                  <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:75%;background:var(--color-accent);"></div></div>
+                </div>
+                <div class="prog-stat">
+                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span>Rock Classics</span><span>15%</span></div>
+                  <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:15%;background:#FF4D4D;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-viz-row">
+          <div class="panel">
+            <h2 class="panel__title">Collection Value</h2>
+            <div style="margin-top:15px;display:flex;align-items:flex-end;gap:8px;height:100px;padding-bottom:10px;border-bottom:1px solid var(--border-color);">
+              <div style="flex:1;background:var(--color-primary);height:40%;border-radius:2px;opacity:0.6;" title="$420"></div>
+              <div style="flex:1;background:var(--color-primary);height:60%;border-radius:2px;opacity:0.6;" title="$600"></div>
+              <div style="flex:1;background:var(--color-primary);height:50%;border-radius:2px;opacity:0.6;" title="$520"></div>
+              <div style="flex:1;background:var(--color-primary);height:85%;border-radius:2px;opacity:1;" title="$890"></div>
+              <div style="flex:1;background:var(--color-primary);height:70%;border-radius:2px;opacity:0.8;" title="$740"></div>
+              <div style="flex:1;background:var(--color-accent);height:95%;border-radius:2px;" title="$1,240"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text-muted);text-transform:uppercase;">
+              <span>Q1</span><span>Q2</span><span>Current</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 class="panel__title">Spending History</h2>
+            <div style="margin-top:15px;">
+              <svg class="cust-chart-svg" viewBox="0 0 300 120">
+                <path class="spending-path" d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10" fill="none" stroke="#2ECC71" stroke-width="2" />
+                <path d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10 L300,120 L0,120 Z" fill="url(#grad)" opacity="0.1" />
+                <defs>
+                  <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2ECC71;" />
+                    <stop offset="100%" style="stop-color:transparent;" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:5px;">Your monthly investment in vinyl culture</p>
+            </div>
+          </div>
+        </div>
 
         <!-- Stat Cards -->
         <div class="stat-cards">
@@ -249,6 +441,18 @@
     </div>
   </div>
   <script src="../assets/js/theme-switcher.js"></script>
+  <script>
+    function openSidebar() {
+      document.querySelector('.dash-sidebar').classList.add('open');
+      document.getElementById('dash-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSidebar() {
+      document.querySelector('.dash-sidebar').classList.remove('open');
+      document.getElementById('dash-overlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
 </body>
 </html>
 

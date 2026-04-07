@@ -18,30 +18,34 @@
 
     /* Sidebar */
     .dash-sidebar {
-      width: var(--sidebar-width); background: #12122a;
+      width: 260px;
+      background: var(--bg-secondary);
       border-right: 1px solid var(--border-color);
-      display: flex; flex-direction: column;
-      flex-shrink: 0; overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      z-index: 1001;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: var(--shadow-xl);
     }
+    .dash-sidebar.open { transform: translateX(0); }
+    .dash-main { flex: 1; width: 100%; min-width: 0; transition: margin-left 0.3s ease; }
+
     .dash-sidebar__logo {
       padding: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
-      text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none; border-bottom: 1px solid var(--border-color);
     }
+    .dash-sidebar__logo span { color: var(--text-primary); }
     .dash-sidebar__nav { flex: 1; padding: var(--space-4) var(--space-3); }
     .dash-sidebar__section { margin-bottom: var(--space-6); }
-    .dash-sidebar__section-title {
-      font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.3); padding: var(--space-2) var(--space-3); margin-bottom: var(--space-1);
-    }
+    .dash-sidebar__section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; padding: 0 12px; margin-bottom: 12px; }
+
     .dash-nav-link {
       display: flex; align-items: center; gap: var(--space-3);
-      padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
-      font-size: var(--text-sm); color: rgba(255,255,255,0.5);
-      transition: all var(--transition-fast); text-decoration: none; margin-bottom: 2px;
     }
-    .dash-nav-link:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
-    .dash-nav-link.active { background: rgba(255,215,0,0.1); color: var(--color-accent); }
-    .dash-nav-link .nav-icon { width: 20px; text-align: center; }
     .dash-nav-link .nav-badge {
       margin-inline-start: auto; padding: 2px 8px; border-radius: var(--radius-full);
       font-size: 10px; font-weight: 700; background: var(--color-error); color: #fff;
@@ -143,13 +147,40 @@
     .top-product__name { font-size: var(--text-sm); font-weight: 500; }
     .top-product__sales { margin-inline-start: auto; font-size: var(--text-sm); color: var(--text-muted); }
 
+    /* New Visualization Types */
+    .viz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    
+    /* Donut Chart */
+    .donut-container { position: relative; width: 150px; height: 150px; margin: 0 auto; }
+    .donut-ring { transform: rotate(-90deg); transform-origin: center; transition: stroke-dashoffset 1s ease; }
+    .donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    .viz-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+    /* Line Chart SVG */
+    .line-chart-svg { width: 100%; height: 160px; overflow: visible; }
+    .chart-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 2s forwards; }
+    @keyframes drawLine { to { stroke-dashoffset: 0; } }
+    .chart-grid-line { stroke: rgba(255,255,255,0.05); stroke-width: 1; }
+
+    /* Radial Progress */
+    .radial-progress-group { display: flex; justify-content: space-around; gap: 10px; margin-top: 20px; }
+    .radial-item { text-align: center; }
+    .radial-circle { transform: rotate(-90deg); transform-origin: center; }
+    .radial-label { font-size: 10px; margin-top: 5px; color: var(--text-muted); text-transform: uppercase; }
+
+    @media (max-width: 1200px) {
+      .viz-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 1024px) {
-      .dash-sidebar { display: none; }
       .stat-cards { grid-template-columns: repeat(2, 1fr); }
       .chart-section { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
+      .stat-cards { grid-template-columns: 1fr; }
       .dash-main { width: 100vw; max-width: 100%; overflow-x: hidden; }
       .dash-topbar { 
         height: auto; min-height: 70px; padding: 12px var(--space-4); 
@@ -158,21 +189,55 @@
       .dash-topbar__left { order: 1; width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; }
       .dash-topbar__right { order: 2; width: 100%; justify-content: space-between; }
       .dash-topbar__search { width: 100% !important; margin: 0; }
-      
-      .stat-cards { grid-template-columns: 1fr; }
       .dash-content { padding: var(--space-4); }
       .dash-table-wrap { display: block; overflow-x: auto; width: 100%; }
       .dash-table { min-width: 600px; }
     }
+
+    .dash-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      width: 40px; height: 40px;
+      transition: all 0.2s;
+    }
+    .dash-hamburger:hover { background: var(--bg-card); }
+    .dash-hamburger span {
+      display: block;
+      width: 20px; height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Overlay */
+    .dash-sidebar-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: var(--bg-overlay);
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+    }
+    .dash-sidebar-overlay.active { display: block; }
   </style>
 </head>
 <body>
   <div class="dashboard">
+    <!-- Mobile overlay -->
+    <div class="dash-sidebar-overlay" id="dash-overlay" onclick="closeSidebar()"></div>
     <!-- Sidebar -->
     <aside class="dash-sidebar">
       <a href="../index.html" class="dash-sidebar__logo">
         <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img" style="width:32px;height:32px;object-fit:contain;">
-        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:#fff;">Vintage Vinyl</span>
+        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">Vintage Vinyl</span>
       </a>
       <nav class="dash-sidebar__nav">
         <div class="dash-sidebar__section">
@@ -195,12 +260,20 @@
           <a href="login.html" class="dash-nav-link"><span class="nav-icon">🚪</span> Logout</a>
         </div>
       </nav>
+      <div class="dash-sidebar__footer" style="padding:var(--space-4);border-top:1px solid var(--border-color);margin-top:auto;">
+        <a href="../index.html" class="btn btn--primary btn--sm btn--full" style="justify-content:center;gap:8px;">
+          <span>🏠</span> Back to Site
+        </a>
+      </div>
     </aside>
 
     <!-- Main -->
     <div class="dash-main">
       <header class="dash-topbar">
         <div class="dash-topbar__left">
+          <button class="dash-hamburger" id="dash-hamburger" aria-label="Open sidebar" onclick="openSidebar()">
+            <span></span><span></span><span></span>
+          </button>
           <a href="../index.html" style="text-decoration:none;display:flex;align-items:center;padding:8px;margin-right:8px;background:rgba(255,255,255,0.05);border-radius:var(--radius-full);color:var(--text-primary);" title="Back to Store">🏠</a>
           <span class="dash-topbar__breadcrumb">Admin / <span>Dashboard</span></span>
         </div>
@@ -210,6 +283,7 @@
           <div style="display:flex;align-items:center;gap:var(--space-2);">
             <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications">🔔<span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--color-error);border-radius:50%;"></span></button>
             <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">☀️</button>
+            <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">🌐</button>
             <img src="../assets/images/team/team-1.png" alt="Admin avatar" class="dash-topbar__avatar" width="36" height="36">
           </div>
         </div>
@@ -245,13 +319,13 @@
 
         <!-- Charts -->
         <div class="chart-section">
+          <!-- Sales Overview (Bar Chart) -->
           <div class="chart-card">
             <div class="chart-card__header">
               <h2 class="chart-card__title">Sales Overview (30 Days)</h2>
               <select class="form-input" style="width:auto;padding:6px 12px;font-size:var(--text-xs);">
                 <option>Last 30 Days</option>
                 <option>Last 7 Days</option>
-                <option>This Year</option>
               </select>
             </div>
             <div class="chart-placeholder">
@@ -272,14 +346,96 @@
               <div class="chart-bar" style="height:90%;"></div>
             </div>
           </div>
+
+          <!-- Genre Distribution (Donut Chart) -->
+          <div class="chart-card">
+            <h2 class="chart-card__title">Sales by Genre</h2>
+            <div style="margin-top:20px;">
+              <div class="donut-container">
+                <svg width="150" height="150" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="12"/>
+                  <!-- Jazz (40%) -->
+                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#FFD700" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="150.72"/>
+                  <!-- Rock (30%) -->
+                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#FF4D4D" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="175.84" style="transform: rotate(54deg); transform-origin: 50% 50%;"/>
+                  <!-- Electronic (20%) -->
+                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#4D79FF" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="200.96" style="transform: rotate(162deg); transform-origin: 50% 50%;"/>
+                  <!-- Classical (10%) -->
+                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#2ECC71" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="226.08" style="transform: rotate(234deg); transform-origin: 50% 50%;"/>
+                </svg>
+                <div class="donut-center">
+                  <div style="font-size:18px;font-weight:700;">1,240</div>
+                  <div style="font-size:10px;color:var(--text-muted);">UNITS</div>
+                </div>
+              </div>
+              <div class="viz-legend">
+                <div class="legend-item"><span class="legend-dot" style="background:#FFD700;"></span> Jazz (40%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#FF4D4D;"></span> Rock (30%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#4D79FF;"></span> Electronic (20%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#2ECC71;"></span> Classical (10%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="viz-grid">
+          <!-- User Growth (Line Chart) -->
+          <div class="chart-card">
+            <h2 class="chart-card__title">User Growth</h2>
+            <div style="margin-top:20px;">
+              <svg class="line-chart-svg" viewBox="0 0 300 160">
+                <!-- Grid Lines -->
+                <line x1="0" y1="40" x2="300" y2="40" class="chart-grid-line" />
+                <line x1="0" y1="80" x2="300" y2="80" class="chart-grid-line" />
+                <line x1="0" y1="120" x2="300" y2="120" class="chart-grid-line" />
+                <!-- Growth Path -->
+                <path class="chart-path" d="M0,140 Q40,130 60,110 T120,90 T180,60 T240,40 T300,20" fill="none" stroke="var(--color-accent)" stroke-width="3" />
+                <!-- Data Points -->
+                <circle cx="60" cy="110" r="4" fill="var(--color-accent)" />
+                <circle cx="180" cy="60" r="4" fill="var(--color-accent)" />
+                <circle cx="300" cy="20" r="4" fill="var(--color-accent)" />
+              </svg>
+              <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px;">Weekly Active User Growth Trend</p>
+            </div>
+          </div>
+
+          <!-- Inventory Health (Radial) -->
+          <div class="chart-card">
+            <h2 class="chart-card__title">Inventory Health</h2>
+            <div class="radial-progress-group">
+              <div class="radial-item">
+                <svg width="60" height="60">
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4" />
+                  <circle class="radial-circle" cx="30" cy="30" r="25" fill="none" stroke="#2ECC71" stroke-width="4" stroke-dasharray="157" stroke-dashoffset="31.4" />
+                </svg>
+                <div class="radial-label">In Stock</div>
+                <div style="font-weight:700;">80%</div>
+              </div>
+              <div class="radial-item">
+                <svg width="60" height="60">
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4" />
+                  <circle class="radial-circle" cx="30" cy="30" r="25" fill="none" stroke="#F1C40F" stroke-width="4" stroke-dasharray="157" stroke-dashoffset="109.9" />
+                </svg>
+                <div class="radial-label">Low Stock</div>
+                <div style="font-weight:700;">30%</div>
+              </div>
+              <div class="radial-item">
+                <svg width="60" height="60">
+                  <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4" />
+                  <circle class="radial-circle" cx="30" cy="30" r="25" fill="none" stroke="#E74C3C" stroke-width="4" stroke-dasharray="157" stroke-dashoffset="141.3" />
+                </svg>
+                <div class="radial-label">Out</div>
+                <div style="font-weight:700;">10%</div>
+              </div>
+            </div>
+          </div>
+
           <div class="chart-card">
             <h2 class="chart-card__title">Top Selling Records</h2>
             <div style="margin-top:var(--space-4);">
-              <div class="top-product"><span class="top-product__rank">1</span><img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Dark Side of the Moon</div><div style="font-size:11px;color:var(--text-muted);">Pink Floyd</div></div><span class="top-product__sales">42 sold</span></div>
-              <div class="top-product"><span class="top-product__rank">2</span><img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Kind of Blue</div><div style="font-size:11px;color:var(--text-muted);">Miles Davis</div></div><span class="top-product__sales">38 sold</span></div>
-              <div class="top-product"><span class="top-product__rank">3</span><img src="https://images.unsplash.com/photo-1619983081563-430f63602796?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Abbey Road</div><div style="font-size:11px;color:var(--text-muted);">The Beatles</div></div><span class="top-product__sales">31 sold</span></div>
-              <div class="top-product"><span class="top-product__rank">4</span><img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Rumours</div><div style="font-size:11px;color:var(--text-muted);">Fleetwood Mac</div></div><span class="top-product__sales">28 sold</span></div>
-              <div class="top-product"><span class="top-product__rank">5</span><img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=80&h=80&fit=crop" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Thriller</div><div style="font-size:11px;color:var(--text-muted);">Michael Jackson</div></div><span class="top-product__sales">25 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">1</span><img src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Dark Side of the Moon</div><div style="font-size:11px;color:var(--text-muted);">Pink Floyd</div></div><span class="top-product__sales">42 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">2</span><img src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Kind of Blue</div><div style="font-size:11px;color:var(--text-muted);">Miles Davis</div></div><span class="top-product__sales">38 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">3</span><img src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Abbey Road</div><div style="font-size:11px;color:var(--text-muted);">The Beatles</div></div><span class="top-product__sales">31 sold</span></div>
             </div>
           </div>
         </div>
@@ -310,6 +466,18 @@
   </div>
 
   <script src="../assets/js/theme-switcher.js"></script>
+  <script>
+    function openSidebar() {
+      document.querySelector('.dash-sidebar').classList.add('open');
+      document.getElementById('dash-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSidebar() {
+      document.querySelector('.dash-sidebar').classList.remove('open');
+      document.getElementById('dash-overlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
 </body>
 </html>
 

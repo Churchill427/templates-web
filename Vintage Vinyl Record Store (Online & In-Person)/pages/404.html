@@ -9,10 +9,13 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png?v=2">
   <link rel="shortcut icon" href="../assets/images/favicons/favicon-32x32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-touch-icon.png">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/dark-mode.css">
-  <style>
-    html, body { height: 100%; }
+   <link rel="stylesheet" href="../assets/css/style.css">
+   <link rel="stylesheet" href="../assets/css/dark-mode.css">
+   <link rel="stylesheet" href="../assets/css/rtl.css">
+   <style>
+     html, body { height: 100%; }
+     .theme-float-bar { position: absolute; top: var(--space-4); right: var(--space-4); z-index: 10; display: flex; gap: var(--space-2); }
+     .theme-float-bar button { padding: 10px; background: rgba(0,0,0,0.05); border-radius: 50%; border: 1px solid rgba(0,0,0,0.08); }
     .error-page {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       text-align: center; padding: var(--space-8);
@@ -38,6 +41,10 @@
   </style>
 </head>
 <body>
+  <div class="theme-float-bar">
+    <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">🌙</button>
+    <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">🌐</button>
+  </div>
   <div class="error-page">
     <div>
       <div class="error-vinyl"></div>

@@ -64,7 +64,8 @@
     .form-row a { font-size: var(--text-sm); color: var(--color-primary); font-weight: 500; }
     .auth-footer { text-align: center; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--text-muted); }
     .auth-footer a { color: var(--color-primary); font-weight: 600; }
-    .theme-float { position: absolute; top: var(--space-4); right: var(--space-4); z-index: 10; padding: 10px; background: rgba(0,0,0,0.05); border-radius: 50%; }
+    .theme-float-bar { position: absolute; top: var(--space-4); right: var(--space-4); z-index: 10; display: flex; gap: var(--space-2); }
+    .theme-float-bar button { padding: 10px; background: rgba(0,0,0,0.05); border-radius: 50%; border: 1px solid rgba(0,0,0,0.08); }
 
     @media (max-width: 640px) {
       .auth-left { padding: var(--space-4); }
@@ -80,7 +81,10 @@
 </head>
 <body>
   <div class="auth-page">
-    <button class="navbar__icon-btn theme-toggle theme-float" aria-label="Toggle theme">🌙</button>
+    <div class="theme-float-bar">
+      <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">🌐</button>
+    </div>
     <div class="auth-left">
       <div class="auth-card">
         <a href="../index.html" class="auth-logo">
