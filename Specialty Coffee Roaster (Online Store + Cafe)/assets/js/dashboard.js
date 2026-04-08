@@ -18,8 +18,23 @@
      SIDEBAR NAVIGATION
      ================================================ */
   function initSidebar() {
+    const dashboard = document.querySelector('.dashboard');
     const links = document.querySelectorAll('.sidebar__link');
     const panels = document.querySelectorAll('.dashboard__panel');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    if (sidebarToggle && dashboard) {
+      sidebarToggle.addEventListener('click', () => {
+        dashboard.classList.toggle('sidebar-open');
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener('click', () => {
+        dashboard.classList.remove('sidebar-open');
+      });
+    }
 
     links.forEach(link => {
       link.addEventListener('click', e => {
@@ -33,17 +48,11 @@
           p.classList.remove('active');
           if (p.id === target) p.classList.add('active');
         });
+
+        // Close on link click (mobile focus)
+        dashboard.classList.remove('sidebar-open');
       });
     });
-
-    // Mobile sidebar toggle
-    const sidebarToggle = document.querySelector('.dashboard__sidebar-toggle');
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebarToggle && sidebar) {
-      sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
-      });
-    }
   }
 
   /* ================================================
@@ -96,8 +105,17 @@
      DASHBOARD CHARTS (Simple Canvas)
      ================================================ */
   function initDashboardCharts() {
-    drawRevenueChart();
-    drawOrdersChart();
+    // Admin Charts
+    drawRevenueChart(); // Bar
+    drawOrdersChart();  // Line
+    drawGrowthChart();  // Area
+    drawCategoriesChart(); // Horizontal Bar
+    
+    // User Charts
+    drawConsumptionChart(); // Line
+    drawSpendingChart();    // Bar
+    drawTasteChart();       // Dot Plot
+    drawProgressChart();    // Circular Gauge
   }
 
   function drawRevenueChart() {
@@ -134,7 +152,6 @@
       const y = h - 30 - barH;
       const bw = barW * 0.7;
 
-      // Gradient bar
       const grad = ctx.createLinearGradient(x, y, x, h - 30);
       grad.addColorStop(0, '#6F4E37');
       grad.addColorStop(1, '#D4A574');
@@ -143,21 +160,16 @@
       ctx.roundRect(x, y, bw, barH, [4, 4, 0, 0]);
       ctx.fill();
 
-      // Label
       ctx.fillStyle = '#7A7A7A';
-      ctx.font = '11px Inter, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(labels[i], x + bw / 2, h - 12);
+      ctx.font = '10px Inter'; ctx.textAlign = 'center';
+      if (i % 2 === 0) ctx.fillText(labels[i], x + bw / 2, h - 12);
     });
 
-    // Y-axis labels
-    ctx.fillStyle = '#7A7A7A';
-    ctx.font = '10px Inter, sans-serif';
     ctx.textAlign = 'right';
     for (let i = 0; i <= 4; i++) {
       const val = Math.round((max / 4) * (4 - i));
       const y = offsetY + ((h - 50) / 4) * i + 4;
-      ctx.fillText('$' + val.toLocaleString(), offsetX - 6, y);
+      ctx.fillText('$' + (val > 1000 ? (val/1000).toFixed(1)+'k' : val), offsetX - 6, y);
     }
   }
 
@@ -175,37 +187,12 @@
 
     ctx.clearRect(0, 0, w, h);
 
-    // Grid
-    ctx.strokeStyle = '#E0D5C180';
-    ctx.lineWidth = 0.5;
-    for (let i = 0; i <= 4; i++) {
-      const y = 20 + ((h - 50) / 4) * i;
-      ctx.beginPath();
-      ctx.moveTo(offsetX, y);
-      ctx.lineTo(w - 10, y);
-      ctx.stroke();
-    }
-
-    // Line + fill
     ctx.beginPath();
     const points = data.map((val, i) => ({
       x: offsetX + i * step,
       y: h - 30 - ((h - 50) * val) / max
     }));
 
-    // Fill area
-    ctx.beginPath();
-    ctx.moveTo(points[0].x, h - 30);
-    points.forEach(p => ctx.lineTo(p.x, p.y));
-    ctx.lineTo(points[points.length - 1].x, h - 30);
-    ctx.closePath();
-    const fillGrad = ctx.createLinearGradient(0, 0, 0, h);
-    fillGrad.addColorStop(0, 'rgba(111,78,55,.2)');
-    fillGrad.addColorStop(1, 'rgba(111,78,55,.02)');
-    ctx.fillStyle = fillGrad;
-    ctx.fill();
-
-    // Line
     ctx.beginPath();
     points.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
     ctx.strokeStyle = '#6F4E37';
@@ -213,17 +200,167 @@
     ctx.lineJoin = 'round';
     ctx.stroke();
 
-    // Dots
     points.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
-      ctx.fillStyle = '#6F4E37';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = '#FDFBF7';
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#6F4E37'; ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+      ctx.fillStyle = '#fff'; ctx.fill();
     });
+  }
+
+  function drawGrowthChart() {
+    const canvas = document.getElementById('growth-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = canvas.parentElement.offsetWidth;
+    const h = canvas.height = 220;
+    const data = [200, 350, 600, 900, 1400, 2100, 3000, 4200, 5800, 7500];
+    const max = 10000;
+    const step = (w - 60) / (data.length - 1);
+    const offset = 40;
+
+    ctx.clearRect(0,0,w,h);
+    const points = data.map((v, i) => ({ x: offset + i*step, y: h - 30 - (v/max)*(h-50) }));
+
+    const grad = ctx.createLinearGradient(0, 0, 0, h);
+    grad.addColorStop(0, 'rgba(232,93,4,.4)');
+    grad.addColorStop(1, 'rgba(232,93,4,0)');
+
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, h-30);
+    points.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.lineTo(points[points.length-1].x, h-30);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    ctx.beginPath();
+    points.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+    ctx.strokeStyle = '#E85D04';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  function drawCategoriesChart() {
+    const canvas = document.getElementById('categories-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = canvas.parentElement.offsetWidth;
+    const h = canvas.height = 220;
+    const categories = ['Single Origin', 'Blends', 'Equipment', 'Merch', 'Courses'];
+    const values = [85, 65, 45, 30, 15];
+
+    ctx.clearRect(0,0,w,h);
+    const bh = 24;
+    const gap = 12;
+
+    categories.forEach((cat, i) => {
+      const y = 30 + i * (bh + gap);
+      const bw = (values[i]/100) * (w - 120);
+
+      ctx.fillStyle = '#F5F1E8';
+      ctx.beginPath(); ctx.roundRect(100, y, w-120, bh, bh/2); ctx.fill();
+
+      ctx.fillStyle = '#6F4E37';
+      ctx.beginPath(); ctx.roundRect(100, y, bw, bh, bh/2); ctx.fill();
+
+      ctx.fillStyle = '#7A7A7A'; ctx.font = '11px Inter'; ctx.textAlign = 'right';
+      ctx.fillText(cat, 90, y + 16);
+    });
+  }
+
+  function drawConsumptionChart() {
+    const canvas = document.getElementById('consumption-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = canvas.parentElement.offsetWidth;
+    const h = canvas.height = 220;
+    const data = [2, 3, 2, 4, 3, 5, 4];
+    const step = (w - 60) / (data.length - 1);
+
+    ctx.clearRect(0,0,w,h);
+    ctx.beginPath();
+    data.forEach((v, i) => {
+      const x = 30 + i * step;
+      const y = h - 30 - v * 20;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.strokeStyle = '#D4A574'; ctx.lineWidth = 3; ctx.stroke();
+  }
+
+  function drawSpendingChart() {
+    const canvas = document.getElementById('spending-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = canvas.parentElement.offsetWidth;
+    const h = canvas.height = 220;
+    const weeks = ['W1', 'W2', 'W3', 'W4'];
+    const spend = [45, 82, 35, 64];
+
+    ctx.clearRect(0,0,w,h);
+    weeks.forEach((wk, i) => {
+      const bw = 40; const x = 60 + i * ((w-100)/4);
+      const bh = spend[i] * 1.5;
+      ctx.fillStyle = '#6F4E37';
+      ctx.beginPath(); ctx.roundRect(x, h-30-bh, bw, bh, 4); ctx.fill();
+      ctx.fillStyle = '#7A7A7A'; ctx.textAlign = 'center';
+      ctx.fillText(wk, x + bw/2, h - 10);
+    });
+  }
+
+  function drawTasteChart() {
+    const canvas = document.getElementById('taste-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = canvas.parentElement.offsetWidth;
+    const h = canvas.height = 220;
+    const labels = ['Acidity', 'Body', 'Sweet', 'Roast', 'Price'];
+    const vals = [0.8, 0.6, 0.9, 0.4, 0.7];
+
+    ctx.clearRect(0,0,w,h);
+    const cx = w/2; const cy = h/2;
+    const radius = 60;
+
+    ctx.strokeStyle = '#E0D5C1';
+    for(let r=1;r<=3;r++){ ctx.beginPath(); ctx.arc(cx,cy, (radius/3)*r, 0, Math.PI*2); ctx.stroke(); }
+
+    ctx.beginPath();
+    labels.forEach((l, i) => {
+      const angle = (i / labels.length) * Math.PI * 2 - Math.PI/2;
+      const x = cx + Math.cos(angle) * radius * vals[i];
+      const y = cy + Math.sin(angle) * radius * vals[i];
+      i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+
+      ctx.fillStyle = '#7A7A7A'; ctx.font = '10px Inter';
+      ctx.fillText(l, cx + Math.cos(angle)*(radius+15), cy + Math.sin(angle)*(radius+15));
+    });
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(212,165,116,0.3)'; ctx.fill();
+    ctx.strokeStyle = '#D4A574'; ctx.stroke();
+  }
+
+  function drawProgressChart() {
+    const canvas = document.getElementById('progress-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = canvas.parentElement.offsetWidth;
+    const h = canvas.height = 220;
+
+    ctx.clearRect(0,0,w,h);
+    const cx = w/2; const cy = h/2 + 20;
+    const r = 70;
+
+    // Background arc
+    ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, 0);
+    ctx.strokeStyle = '#F5F1E8'; ctx.lineWidth = 20; ctx.lineCap = 'round'; ctx.stroke();
+
+    // Progress arc (75%)
+    ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, Math.PI + (Math.PI * 0.75));
+    ctx.strokeStyle = '#6F4E37'; ctx.stroke();
+
+    ctx.fillStyle = '#1A1A1A'; ctx.font = 'bold 24px Playfair Display'; ctx.textAlign = 'center';
+    ctx.fillText('75%', cx, cy - 10);
+    ctx.font = '12px Inter'; ctx.fillStyle = '#7A7A7A';
+    ctx.fillText('Next shipment in 4 days', cx, cy + 20);
   }
 
   /* ================================================
