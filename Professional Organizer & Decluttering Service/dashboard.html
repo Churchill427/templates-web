@@ -9,8 +9,14 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/responsive-fix.css">
+  <link rel="stylesheet" href="assets/css/dashboard-responsive.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
+
+  <!-- Sidebar Overlay (mobile/tablet) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <div class="dashboard">
 
@@ -21,6 +27,7 @@
           <div class="nav-brand-icon"><i class="fas fa-leaf"></i></div>
           <span class="nav-brand-text">SpaceCraft</span>
         </a>
+        <button class="sidebar-close-btn" id="sidebarClose" aria-label="Close sidebar"><i class="fas fa-times"></i></button>
       </div>
 
       <nav class="sidebar-nav">
@@ -37,14 +44,10 @@
         <div class="sidebar-section-title">Account</div>
         <a href="#" class="sidebar-link" data-section="profile"><i class="fas fa-user"></i> Profile</a>
         <a href="#" class="sidebar-link" data-section="settings"><i class="fas fa-cog"></i> Settings</a>
-        <a href="login.html" class="sidebar-link" style="color:var(--error);"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Back to Home</a>
       </nav>
 
-      <!-- Theme & RTL Toggles inside sidebar -->
-      <div style="padding:16px 20px;border-top:1px solid var(--border);display:flex;gap:8px;">
-        <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme" style="flex:1;"><i class="fas fa-moon"></i></button>
-        <button class="nav-icon-btn" id="rtlToggle" aria-label="Toggle direction" style="flex:1;"><i class="fas fa-globe"></i></button>
-      </div>
+
     </aside>
 
     <!-- Main Content Area -->
@@ -53,18 +56,17 @@
       <!-- Top Header Bar -->
       <div class="dash-header">
         <div style="display:flex;align-items:center;gap:16px;">
-          <button id="sidebarToggle" style="display:none;font-size:1.3rem;color:var(--text-primary);padding:8px;" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+          <button id="sidebarToggle" style="font-size:1.3rem;color:var(--text-primary);padding:8px;" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
           <div>
             <h1>Dashboard</h1>
             <p style="font-size:0.85rem;color:var(--text-muted);margin-top:2px;">Welcome back, Emma</p>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
-          <!-- Search -->
-          <div style="position:relative;">
-            <input type="text" id="dashSearch" placeholder="Search..." style="padding:10px 16px 10px 40px;border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:0.85rem;background:var(--surface);color:var(--text-primary);width:220px;" aria-label="Search dashboard">
-            <i class="fas fa-search" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.85rem;"></i>
-          </div>
+          <!-- Theme & Direction Toggles -->
+          <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme" style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);"><i class="fas fa-moon"></i></button>
+          <button class="nav-icon-btn" id="rtlToggle" aria-label="Toggle direction" style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);"><i class="fas fa-globe"></i></button>
+          
           <!-- Notifications -->
           <div style="position:relative;">
             <button id="notifBtn" style="width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);background:var(--surface);border:1px solid var(--border);position:relative;" aria-label="Notifications">
@@ -126,6 +128,51 @@
             <div class="mini-chart" data-points="[20,22,18,25,30,28,35,32,38,34,40,38]" style="height:40px;margin-top:8px;"></div>
           </div>
         </div>
+
+        <!-- ===== 4 CHARTS SECTION ===== -->
+        <div class="charts-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:32px;">
+          <!-- Chart 1: Revenue Line Chart -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">Monthly Revenue</h3>
+              <span style="font-size:0.75rem;color:var(--success);font-weight:600;background:rgba(5,150,105,0.1);padding:4px 10px;border-radius:20px;"><i class="fas fa-arrow-up"></i> 18%</span>
+            </div>
+            <div class="chart-wrapper" style="height:220px;position:relative;">
+              <canvas id="revenueLineChart"></canvas>
+            </div>
+          </div>
+          <!-- Chart 2: Services Donut Chart -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">Services Breakdown</h3>
+              <span style="font-size:0.75rem;color:var(--text-muted);">2026</span>
+            </div>
+            <div class="chart-wrapper" style="height:220px;position:relative;">
+              <canvas id="servicesDoughnutChart"></canvas>
+            </div>
+          </div>
+          <!-- Chart 3: Bookings Bar Chart -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">Weekly Bookings</h3>
+              <span style="font-size:0.75rem;color:var(--info);font-weight:600;background:rgba(59,130,246,0.1);padding:4px 10px;border-radius:20px;">This Week</span>
+            </div>
+            <div class="chart-wrapper" style="height:220px;position:relative;">
+              <canvas id="bookingsBarChart"></canvas>
+            </div>
+          </div>
+          <!-- Chart 4: Customer Satisfaction Radar -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">Client Satisfaction</h3>
+              <span style="font-size:0.75rem;color:var(--accent);font-weight:600;background:rgba(224,122,95,0.1);padding:4px 10px;border-radius:20px;">Avg 4.8★</span>
+            </div>
+            <div class="chart-wrapper" style="height:220px;position:relative;">
+              <canvas id="satisfactionRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- ===== END CHARTS ===== -->
 
         <!-- Recent Bookings Table -->
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;margin-bottom:32px;">
@@ -331,6 +378,51 @@
           </div>
         </div>
 
+        <!-- ===== USER 4 CHARTS ===== -->
+        <div class="charts-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:24px;">
+          <!-- Chart 1: My Spending Line -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">My Spending</h3>
+              <span style="font-size:0.75rem;color:var(--primary);font-weight:600;">Last 6 Months</span>
+            </div>
+            <div class="chart-wrapper" style="height:200px;position:relative;">
+              <canvas id="userSpendingChart"></canvas>
+            </div>
+          </div>
+          <!-- Chart 2: Service Breakdown Pie -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">Services Used</h3>
+              <span style="font-size:0.75rem;color:var(--text-muted);">All Time</span>
+            </div>
+            <div class="chart-wrapper" style="height:200px;position:relative;">
+              <canvas id="userServicesPieChart"></canvas>
+            </div>
+          </div>
+          <!-- Chart 3: Session Hours Bar -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">Session Hours</h3>
+              <span style="font-size:0.75rem;color:var(--accent);font-weight:600;">Per Visit</span>
+            </div>
+            <div class="chart-wrapper" style="height:200px;position:relative;">
+              <canvas id="userSessionsBarChart"></canvas>
+            </div>
+          </div>
+          <!-- Chart 4: Rooms Progress Horizontal Bar -->
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <h3 style="font-size:1rem;">Room Progress</h3>
+              <span style="font-size:0.75rem;color:var(--success);font-weight:600;">Organized</span>
+            </div>
+            <div class="chart-wrapper" style="height:200px;position:relative;">
+              <canvas id="userRoomsChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- ===== END USER CHARTS ===== -->
+
         <!-- Upcoming Booking -->
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px;margin-bottom:24px;">
           <h3 style="font-size:1.1rem;margin-bottom:20px;">Upcoming Booking</h3>
@@ -456,5 +548,242 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/dashboard.js"></script>
+  <script>
+  /* ── SPACECRAFT DASHBOARD CHARTS ── */
+  (function() {
+    function getCSS(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+    function primary(){ return getCSS('--primary') || '#2D5A4C'; }
+    function accent(){ return getCSS('--accent') || '#E07A5F'; }
+    function border(){ return getCSS('--border') || '#E5E5E5'; }
+    function textMuted(){ return getCSS('--text-muted') || '#8A8A8A'; }
+
+    const defaultFontColor = () => getCSS('--text-secondary') || '#5C5C5C';
+
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.font.size = 11;
+
+    function chartDefaults(){
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: defaultFontColor(), padding: 10, boxWidth: 12 } } }
+      };
+    }
+
+    /* ── ADMIN CHART 1: Revenue Line ── */
+    const ctx1 = document.getElementById('revenueLineChart');
+    if(ctx1){
+      new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: ['Oct','Nov','Dec','Jan','Feb','Mar','Apr'],
+          datasets: [{
+            label: 'Revenue ($)',
+            data: [3200, 4100, 5800, 4900, 6200, 7400, 8100],
+            borderColor: primary(),
+            backgroundColor: primary() + '22',
+            tension: 0.4,
+            fill: true,
+            pointBackgroundColor: primary(),
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            borderWidth: 2.5
+          }]
+        },
+        options: { ...chartDefaults(),
+          scales: {
+            x: { grid: { color: border()+'44' }, ticks: { color: textMuted() } },
+            y: { grid: { color: border()+'44' }, ticks: { color: textMuted(), callback: v => '$'+v.toLocaleString() } }
+          }
+        }
+      });
+    }
+
+    /* ── ADMIN CHART 2: Services Doughnut ── */
+    const ctx2 = document.getElementById('servicesDoughnutChart');
+    if(ctx2){
+      new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Closet','Kitchen','Office','Garage','Digital','Moving'],
+          datasets: [{
+            data: [32, 21, 18, 14, 9, 6],
+            backgroundColor: ['#2D5A4C','#E07A5F','#4A7C6F','#F59E0B','#3B82F6','#8B5CF6'],
+            borderWidth: 2,
+            borderColor: getCSS('--background') || '#fff',
+            hoverOffset: 6
+          }]
+        },
+        options: { ...chartDefaults(),
+          cutout: '65%',
+          plugins: { legend: { position: 'right', labels: { color: defaultFontColor(), boxWidth: 10, padding: 8 } } }
+        }
+      });
+    }
+
+    /* ── ADMIN CHART 3: Bookings Bar ── */
+    const ctx3 = document.getElementById('bookingsBarChart');
+    if(ctx3){
+      new Chart(ctx3, {
+        type: 'bar',
+        data: {
+          labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+          datasets: [{
+            label: 'Bookings',
+            data: [4, 6, 5, 8, 9, 7, 3],
+            backgroundColor: primary() + 'CC',
+            borderColor: primary(),
+            borderWidth: 1.5,
+            borderRadius: 6,
+            hoverBackgroundColor: accent()
+          }]
+        },
+        options: { ...chartDefaults(),
+          scales: {
+            x: { grid: { display: false }, ticks: { color: textMuted() } },
+            y: { grid: { color: border()+'44' }, ticks: { color: textMuted(), stepSize: 2 }, beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    /* ── ADMIN CHART 4: Satisfaction Radar ── */
+    const ctx4 = document.getElementById('satisfactionRadarChart');
+    if(ctx4){
+      new Chart(ctx4, {
+        type: 'radar',
+        data: {
+          labels: ['Punctuality','Quality','Communication','Value','Friendliness','Follow-up'],
+          datasets: [{
+            label: 'Client Ratings',
+            data: [4.9, 4.8, 4.7, 4.6, 5.0, 4.5],
+            backgroundColor: accent() + '33',
+            borderColor: accent(),
+            pointBackgroundColor: accent(),
+            pointRadius: 4,
+            borderWidth: 2
+          }]
+        },
+        options: { ...chartDefaults(),
+          scales: {
+            r: {
+              beginAtZero: false, min: 4, max: 5,
+              grid: { color: border()+'66' },
+              ticks: { color: textMuted(), stepSize: 0.25, backdropColor: 'transparent' },
+              pointLabels: { color: defaultFontColor(), font: { size: 10 } }
+            }
+          }
+        }
+      });
+    }
+
+    /* ── USER CHART 1: Spending Line ── */
+    const ctx5 = document.getElementById('userSpendingChart');
+    if(ctx5){
+      new Chart(ctx5, {
+        type: 'line',
+        data: {
+          labels: ['Nov','Dec','Jan','Feb','Mar','Apr'],
+          datasets: [{
+            label: 'Spent ($)',
+            data: [0, 199, 0, 299, 0, 499],
+            borderColor: primary(),
+            backgroundColor: primary() + '1A',
+            tension: 0.3,
+            fill: true,
+            pointBackgroundColor: primary(),
+            pointRadius: 5,
+            borderWidth: 2.5
+          }]
+        },
+        options: { ...chartDefaults(),
+          scales: {
+            x: { grid: { display: false }, ticks: { color: textMuted() } },
+            y: { grid: { color: border()+'44' }, ticks: { color: textMuted(), callback: v => '$'+v }, beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    /* ── USER CHART 2: Services Used Pie ── */
+    const ctx6 = document.getElementById('userServicesPieChart');
+    if(ctx6){
+      new Chart(ctx6, {
+        type: 'pie',
+        data: {
+          labels: ['Closet','Office','Garage'],
+          datasets: [{
+            data: [1, 1, 1],
+            backgroundColor: ['#2D5A4C','#E07A5F','#4A7C6F'],
+            borderWidth: 2,
+            borderColor: getCSS('--background') || '#fff',
+            hoverOffset: 8
+          }]
+        },
+        options: { ...chartDefaults(),
+          plugins: { legend: { position: 'bottom', labels: { color: defaultFontColor(), padding: 10, boxWidth: 12 } } }
+        }
+      });
+    }
+
+    /* ── USER CHART 3: Session Hours Bar ── */
+    const ctx7 = document.getElementById('userSessionsBarChart');
+    if(ctx7){
+      new Chart(ctx7, {
+        type: 'bar',
+        data: {
+          labels: ['Closet\n(Dec)', 'Office\n(Feb)', 'Garage\n(Apr)'],
+          datasets: [{
+            label: 'Hours',
+            data: [3.5, 2.5, 5.0],
+            backgroundColor: [primary()+'CC', accent()+'CC', '#4A7C6F'+'CC'],
+            borderColor: [primary(), accent(), '#4A7C6F'],
+            borderWidth: 1.5,
+            borderRadius: 8
+          }]
+        },
+        options: { ...chartDefaults(),
+          scales: {
+            x: { grid: { display: false }, ticks: { color: textMuted() } },
+            y: { grid: { color: border()+'44' }, ticks: { color: textMuted(), callback: v => v+'h' }, beginAtZero: true }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    /* ── USER CHART 4: Rooms Progress Horizontal Bar ── */
+    const ctx8 = document.getElementById('userRoomsChart');
+    if(ctx8){
+      new Chart(ctx8, {
+        type: 'bar',
+        data: {
+          labels: ['Wardrobe','Home Office','Garage','Kitchen','Living Room'],
+          datasets: [{
+            label: '% Organized',
+            data: [100, 100, 85, 40, 20],
+            backgroundColor: [primary(), primary(), '#4A7C6F', accent(), border()],
+            borderRadius: 6,
+            borderSkipped: false
+          }]
+        },
+        options: { ...chartDefaults(),
+          indexAxis: 'y',
+          scales: {
+            x: { grid: { color: border()+'44' }, ticks: { color: textMuted(), callback: v => v+'%' }, max: 100, beginAtZero: true },
+            y: { grid: { display: false }, ticks: { color: textMuted() } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    /* Re-render charts on theme change to pick up new CSS var colors */
+    const observer = new MutationObserver(() => {
+      Chart.instances && Object.values(Chart.instances).forEach(c => c.update && c.update());
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+  </script>
 </body>
 </html>
