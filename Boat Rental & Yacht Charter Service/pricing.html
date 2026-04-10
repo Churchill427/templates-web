@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — AquaLux Yacht & Boat Charter</title>
+  <meta name="description" content="Transparent pricing for AquaLux yacht charters and boat rentals. Compare packages and find the perfect plan for your ocean adventure.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);align-items:start;}
+    @media(max-width:768px){.pricing-grid{grid-template-columns:1fr;}}
+    .comparison-table{width:100%;border-collapse:collapse;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-lg);overflow:hidden;}
+    .comparison-table th,.comparison-table td{padding:var(--space-4) var(--space-5);text-align:center;border-bottom:1px solid var(--border-color);font-size:var(--fs-sm);}
+    .comparison-table th{background:var(--color-primary);color:#fff;font-weight:var(--fw-semibold);}
+    .comparison-table th:first-child{text-align:start;}
+    .comparison-table td:first-child{text-align:start;font-weight:var(--fw-medium);color:var(--text-primary);}
+    .comparison-table tr:last-child td{border-bottom:none;}
+    .comparison-table tr:hover td{background:var(--bg-card-hover);}
+    .comparison-table .check{color:var(--color-secondary);}
+    .comparison-table .cross{color:var(--text-light);}
+    .addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);}
+    @media(max-width:639px){.addon-grid{grid-template-columns:1fr;}}
+    .addon-card{display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-6);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-lg);transition:all var(--transition-base);}
+    .addon-card:hover{box-shadow:var(--shadow-md);border-color:var(--color-secondary);}
+    .addon-card__icon{width:52px;height:52px;border-radius:var(--border-radius-lg);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .addon-card__price{font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--color-secondary);margin-top:var(--space-2);}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <nav class="navbar navbar--transparent" data-transparent="true" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="AquaLux Home"><div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div><span class="navbar__logo-text">AquaLux</span></a>
+      <ul class="navbar__links"><li class="navbar__dropdown"><a href="#" class="navbar__link">Home <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></li><li><a href="about.html" class="navbar__link">About</a></li><li><a href="services.html" class="navbar__link">Services</a></li><li><a href="blog.html" class="navbar__link">Blog</a></li><li><a href="pricing.html" class="navbar__link navbar__link--active">Pricing</a></li><li><a href="contact.html" class="navbar__link">Contact</a></li>
+        <li class="navbar__dropdown"><a href="#" class="navbar__link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="admin-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-tachometer-alt" style="margin-right:8px;"></i> Admin Panel</a><a href="user-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-user-circle" style="margin-right:8px;"></i> My Dashboard</a></div></li></ul>
+      <div class="navbar__utils"><button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><a href="login.html" class="navbar__util-btn" aria-label="Login"><i class="fas fa-user"></i></a></div>
+      <button class="navbar__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-overlay"></div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__mobile-link">Home</a><a href="about.html" class="navbar__mobile-link">About</a><a href="services.html" class="navbar__mobile-link">Services</a><a href="blog.html" class="navbar__mobile-link">Blog</a><a href="pricing.html" class="navbar__mobile-link navbar__mobile-link--active">Pricing</a><a href="contact.html" class="navbar__mobile-link">Contact</a>
+      <div class="navbar__dropdown"><a href="#" class="navbar__mobile-link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;margin-left:4px;"></i></a><div class="navbar__mobile-submenu"><a href="admin-dashboard.html" class="navbar__mobile-link">Admin Panel</a><a href="user-dashboard.html" class="navbar__mobile-link">My Dashboard</a></div></div><hr class="divider"><div style="display:flex;gap:8px;padding:8px 16px;"><button class="navbar__util-btn rtl-toggle-btn" aria-label="Toggle direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></div></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- SECTION 1: Pricing Header -->
+    <section class="hero hero--xs" aria-label="Pricing hero">
+      <div class="hero__bg"><img src="assets/images/boats/catamaran.png" alt="Pricing" width="1920" height="600"><div class="hero__overlay"></div></div>
+      <div class="container" style="position:relative;z-index:1;"><div class="text-center">
+        <nav class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><span class="breadcrumb__item"><a href="index.html">Home</a></span><span class="breadcrumb__separator"><i class="fas fa-chevron-right"></i></span><span class="breadcrumb__item breadcrumb__item--active">Pricing</span></nav>
+        <h1 class="hero__title" style="color:#fff;">Simple, Transparent Pricing</h1>
+        <p class="hero__subtitle">No hidden fees. Choose the package that fits your adventure.</p>
+      </div></div>
+    </section>
+
+    <!-- SECTION 2: Pricing Cards -->
+    <section class="section" aria-label="Pricing plans">
+      <div class="container">
+        <div class="pricing-grid">
+          <div class="pricing-card reveal reveal-delay-1">
+            <h2 class="pricing-card__name">Explorer</h2>
+            <div class="pricing-card__price">$750 <span>/day</span></div>
+            <p class="pricing-card__desc">Perfect for day trips and coastal adventures</p>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Speedboat or sailboat (up to 35ft)</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Experienced skipper</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Safety equipment included</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Fuel included</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Basic refreshments</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="fas fa-times"></i> Catering service</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="fas fa-times"></i> Water sports equipment</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="fas fa-times"></i> Concierge service</div>
+            </div>
+            <a href="contact.html" class="btn btn--outline btn--full">Get Started</a>
+          </div>
+          <div class="pricing-card pricing-card--featured reveal reveal-delay-2">
+            <span class="pricing-card__badge">Most Popular</span>
+            <h2 class="pricing-card__name">Voyager</h2>
+            <div class="pricing-card__price">$1,800 <span>/day</span></div>
+            <p class="pricing-card__desc">Ideal for groups and special occasions</p>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Yacht or catamaran (up to 52ft)</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Captain & trained crew</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Gourmet catering included</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Fuel & docking fees</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Water sports equipment</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Custom itinerary planning</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Photography service</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="fas fa-times"></i> VIP airport transfer</div>
+            </div>
+            <a href="contact.html" class="btn btn--secondary btn--full">Get Started</a>
+          </div>
+          <div class="pricing-card reveal reveal-delay-3">
+            <h2 class="pricing-card__name">Prestige</h2>
+            <div class="pricing-card__price">$4,500 <span>/day</span></div>
+            <p class="pricing-card__desc">Ultimate luxury mega-yacht experience</p>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Mega-yacht (60ft+)</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Full crew & private chef</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Premium concierge service</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Entertainment system</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> All water sports gear</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> VIP airport transfer</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> Professional videographer</div>
+              <div class="pricing-card__feature"><i class="fas fa-check"></i> 24/7 dedicated support</div>
+            </div>
+            <a href="contact.html" class="btn btn--outline btn--full">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Comparison Table -->
+    <section class="section section--gray" aria-label="Feature comparison">
+      <div class="container">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Feature Comparison</h2>
+        <div class="table-wrapper reveal" style="overflow-x:auto;">
+          <table class="comparison-table">
+            <thead><tr><th>Feature</th><th>Explorer</th><th>Voyager</th><th>Prestige</th></tr></thead>
+            <tbody>
+              <tr><td>Vessel Size</td><td>Up to 35ft</td><td>Up to 52ft</td><td>60ft+</td></tr>
+              <tr><td>Guest Capacity</td><td>6 guests</td><td>12 guests</td><td>20+ guests</td></tr>
+              <tr><td>Professional Crew</td><td class="check"><i class="fas fa-check"></i></td><td class="check"><i class="fas fa-check"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+              <tr><td>Fuel Included</td><td class="check"><i class="fas fa-check"></i></td><td class="check"><i class="fas fa-check"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+              <tr><td>Catering</td><td class="cross"><i class="fas fa-times"></i></td><td class="check"><i class="fas fa-check"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+              <tr><td>Water Sports</td><td class="cross"><i class="fas fa-times"></i></td><td class="check"><i class="fas fa-check"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+              <tr><td>Custom Itinerary</td><td class="cross"><i class="fas fa-times"></i></td><td class="check"><i class="fas fa-check"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+              <tr><td>Concierge Service</td><td class="cross"><i class="fas fa-times"></i></td><td class="cross"><i class="fas fa-times"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+              <tr><td>VIP Transfer</td><td class="cross"><i class="fas fa-times"></i></td><td class="cross"><i class="fas fa-times"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+              <tr><td>Videographer</td><td class="cross"><i class="fas fa-times"></i></td><td class="cross"><i class="fas fa-times"></i></td><td class="check"><i class="fas fa-check"></i></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Add-ons -->
+    <section class="section" aria-label="Add-ons">
+      <div class="container">
+        <div class="text-center" style="margin-bottom:var(--space-8);"><span class="section-label reveal">Extras</span><h2 class="section-title reveal reveal-delay-1">Available Add-ons</h2><p class="section-subtitle reveal reveal-delay-2">Enhance your charter with these optional premium services.</p></div>
+        <div class="addon-grid">
+          <div class="addon-card reveal reveal-delay-1"><div class="addon-card__icon" style="background:rgba(49,151,149,0.1);color:var(--color-secondary);"><i class="fas fa-camera"></i></div><div><h3 style="font-size:var(--fs-lg);margin-bottom:var(--space-1);">Professional Photography</h3><p style="font-size:var(--fs-sm);color:var(--text-muted);">Capture every moment with a professional photographer on board.</p><div class="addon-card__price">$350 /session</div></div></div>
+          <div class="addon-card reveal reveal-delay-2"><div class="addon-card__icon" style="background:rgba(237,137,54,0.1);color:var(--color-accent);"><i class="fas fa-cake-candles"></i></div><div><h3 style="font-size:var(--fs-lg);margin-bottom:var(--space-1);">Special Occasion Setup</h3><p style="font-size:var(--fs-sm);color:var(--text-muted);">Decorations, cake, and champagne for birthdays and celebrations.</p><div class="addon-card__price">$500 /event</div></div></div>
+          <div class="addon-card reveal reveal-delay-3"><div class="addon-card__icon" style="background:rgba(49,151,149,0.1);color:var(--color-secondary);"><i class="fas fa-fish"></i></div><div><h3 style="font-size:var(--fs-lg);margin-bottom:var(--space-1);">Fishing Equipment</h3><p style="font-size:var(--fs-sm);color:var(--text-muted);">Premium tackle, rods, and bait for deep-sea fishing along the way.</p><div class="addon-card__price">$200 /day</div></div></div>
+          <div class="addon-card reveal reveal-delay-4"><div class="addon-card__icon" style="background:rgba(237,137,54,0.1);color:var(--color-accent);"><i class="fas fa-spa"></i></div><div><h3 style="font-size:var(--fs-lg);margin-bottom:var(--space-1);">On-Board Spa Treatment</h3><p style="font-size:var(--fs-sm);color:var(--text-muted);">Massage therapist and relaxation treatments on the sun deck.</p><div class="addon-card__price">$400 /person</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FAQ -->
+    <section class="section section--gray" aria-label="Pricing FAQ">
+      <div class="container container--narrow">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Pricing FAQ</h2>
+        <div class="accordion reveal">
+          <div class="accordion__item"><button class="accordion__header"><span class="accordion__title">Are there any hidden fees?</span><i class="accordion__icon fas fa-chevron-down"></i></button><div class="accordion__content"><div class="accordion__body">No, our pricing is fully transparent. The listed price includes the vessel, crew, fuel, and all specified inclusions. Optional add-ons are separately listed. Docking fees at certain exclusive marinas may apply and will be communicated in advance.</div></div></div>
+          <div class="accordion__item"><button class="accordion__header"><span class="accordion__title">Can I get a discount for multi-day bookings?</span><i class="accordion__icon fas fa-chevron-down"></i></button><div class="accordion__content"><div class="accordion__body">Yes! We offer 10% off for 3-5 day bookings and 20% off for weekly charters (7+ days). Contact our team for custom multi-day packages.</div></div></div>
+          <div class="accordion__item"><button class="accordion__header"><span class="accordion__title">What payment methods do you accept?</span><i class="accordion__icon fas fa-chevron-down"></i></button><div class="accordion__content"><div class="accordion__body">We accept all major credit cards (Visa, Mastercard, Amex), bank transfers, and PayPal. A 30% deposit is required to confirm your booking, with the balance due 14 days before departure.</div></div></div>
+          <div class="accordion__item"><button class="accordion__header"><span class="accordion__title">Is trip insurance included?</span><i class="accordion__icon fas fa-chevron-down"></i></button><div class="accordion__content"><div class="accordion__body">Basic liability insurance is included in all packages. Comprehensive trip insurance (covering cancellation, medical, and weather) is available as an add-on for 5% of the total charter cost.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Custom Quote CTA -->
+    <section class="section" aria-label="Custom quote" style="position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;z-index:0;"><img src="assets/images/hero/hero-1.png" alt="" style="width:100%;height:100%;object-fit:cover;" aria-hidden="true"><div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,35,65,0.92),rgba(26,54,93,0.85));"></div></div>
+      <div class="container" style="position:relative;z-index:1;"><div class="text-center" style="max-width:600px;margin:0 auto;">
+        <h2 class="section-title reveal" style="color:#fff;">Need a Custom Quote?</h2>
+        <p class="reveal reveal-delay-1" style="color:rgba(255,255,255,0.8);font-size:var(--fs-lg);margin-bottom:var(--space-8);line-height:var(--lh-relaxed);">Have specific requirements? Our team will create a personalized package tailored to your needs, schedule, and budget.</p>
+        <div class="flex justify-center gap-4 flex-wrap reveal reveal-delay-2"><a href="contact.html" class="btn btn--accent btn--lg">Request Custom Quote <i class="fas fa-arrow-right"></i></a><a href="services.html" class="btn btn--outline-light btn--lg">View All Services</a></div>
+      </div></div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><div class="footer__logo"><div class="footer__logo-icon"><i class="fas fa-anchor"></i></div><span class="footer__logo-text">AquaLux</span></div><p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean adventurers.</p><div class="footer__social"><a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" class="footer__social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div>
+        <div><h4 class="footer__heading">Quick Links</h4><ul class="footer__link-list"><li><a href="index.html" class="footer__link">Home</a></li><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="services.html" class="footer__link">Services</a></li><li><a href="blog.html" class="footer__link">Blog</a></li><li><a href="pricing.html" class="footer__link">Pricing</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+        <div><h4 class="footer__heading">Our Services</h4><ul class="footer__link-list"><li><a href="service-details.html" class="footer__link">Yacht Charter</a></li><li><a href="service-details.html" class="footer__link">Sailing Adventures</a></li><li><a href="service-details.html" class="footer__link">Event Cruises</a></li><li><a href="service-details.html" class="footer__link">Speedboat Rentals</a></li></ul></div>
+        <div class="footer__newsletter"><h4 class="footer__heading">Newsletter</h4><p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers delivered to your inbox.</p><form class="footer__newsletter-form" data-validate><input type="email" class="footer__newsletter-input" placeholder="Your email" required aria-label="Newsletter email"><button type="submit" class="footer__newsletter-btn">Join</button></form></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 AquaLux. All rights reserved.</p><div class="footer__bottom-links"><a href="#" class="footer__bottom-link">Privacy Policy</a><a href="#" class="footer__bottom-link">Terms of Service</a></div></div>
+    </div>
+  </footer>
+  <script src="assets/js/theme-toggle.js"></script><script src="assets/js/rtl-ltr.js"></script><script src="assets/js/animations.js"></script><script src="assets/js/main.js"></script>
+</body>
+</html>

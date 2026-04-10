@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — AquaLux</title>
+  <meta name="description" content="Sign in to your AquaLux account to manage bookings, view trip history, and access exclusive member features.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    html{height:100%;}
+    body{min-height:100%;overflow-x:hidden;}
+    .auth-page{min-height:100vh;display:flex;}
+    .auth-page__utils{position:fixed;top:var(--space-4);right:var(--space-4);display:flex;gap:var(--space-2);z-index:10;}
+    .auth-page__grid{display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:100vh;}
+    @media(max-width:1023px){
+      .auth-page__grid{grid-template-columns:1fr;}
+      .auth-page__highlight{display:none !important;}
+      .auth-page__utils { background: var(--bg-card); padding: 4px; border-radius: var(--border-radius-full); top: var(--space-4); right: var(--space-4); box-shadow: var(--shadow-sm); }
+      .auth-page__form-side { padding-top: var(--space-16); }
+    }
+    .auth-page__form-side{display:flex;align-items:flex-start;justify-content:center;padding:var(--space-8) var(--space-6);background:var(--bg-primary);overflow-y:auto;}
+    .auth-page__form-inner{width:100%;max-width:420px;padding:var(--space-6) 0;}
+    .auth-page__logo{display:flex;align-items:center;justify-content:center;gap:var(--space-3);margin-bottom:var(--space-8);text-decoration:none;}
+    .auth-page__logo-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--color-secondary),var(--color-primary));border-radius:var(--border-radius-lg);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;}
+    .auth-page__logo-text{font-family:var(--font-heading);font-size:var(--fs-3xl);font-weight:var(--fw-bold);color:var(--text-primary);}
+    .auth-page__title{text-align:center;margin-bottom:var(--space-2);font-size:var(--fs-3xl);}
+    .auth-page__subtitle{text-align:center;color:var(--text-muted);margin-bottom:var(--space-6);font-size:var(--fs-sm);}
+    .auth-divider{display:flex;align-items:center;gap:var(--space-4);margin:var(--space-5) 0;color:var(--text-light);font-size:var(--fs-sm);}
+    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border-color);}
+    .auth-social{display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-5);}
+    .auth-social .btn{justify-content:center;padding:var(--space-3) var(--space-5);font-size:var(--fs-sm);}
+    .auth-social .btn i{font-size:1.1rem;}
+    .auth-page__footer{text-align:center;margin-top:var(--space-5);padding-bottom:var(--space-4);font-size:var(--fs-sm);color:var(--text-muted);}
+    .auth-page__footer a{color:var(--color-secondary);font-weight:var(--fw-semibold);}
+    .auth-page__highlight{display:flex;flex-direction:column;justify-content:center;padding:var(--space-12);position:relative;overflow:hidden;}
+    .auth-page__highlight::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,35,65,0.92),rgba(26,54,93,0.8),rgba(49,151,149,0.6));z-index:1;}
+    .auth-page__highlight-bg{position:absolute;inset:0;z-index:0;}
+    .auth-page__highlight-bg img{width:100%;height:100%;object-fit:cover;}
+    .auth-page__highlight-content{position:relative;z-index:2;color:#fff;}
+    .auth-page__highlight h2{font-size:var(--fs-4xl);margin-bottom:var(--space-6);color:#fff;}
+    .highlight-feature{display:flex;align-items:flex-start;gap:var(--space-4);margin-bottom:var(--space-5);}
+    .highlight-feature__icon{width:44px;height:44px;border-radius:var(--border-radius);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;backdrop-filter:blur(4px);}
+    .highlight-feature__title{font-weight:var(--fw-semibold);margin-bottom:var(--space-1);font-size:var(--fs-base);}
+    .highlight-feature__text{font-size:var(--fs-sm);color:rgba(255,255,255,0.7);line-height:var(--lh-relaxed);}
+    .form-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-5);}
+    .form-forgot{font-size:var(--fs-sm);color:var(--color-secondary);font-weight:var(--fw-medium);}
+    @media(max-width:480px){.auth-page__form-side{padding:var(--space-5) var(--space-4);}}
+  </style>
+</head>
+<body>
+  <!-- Utilities -->
+  <div class="auth-page__utils">
+    <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button>
+    <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+  </div>
+
+  <main class="auth-page">
+    <div class="auth-page__grid">
+      <!-- Form Side -->
+      <div class="auth-page__form-side">
+        <div class="auth-page__form-inner">
+          <a href="index.html" class="auth-page__logo" aria-label="AquaLux Home">
+            <div class="auth-page__logo-icon"><i class="fas fa-anchor"></i></div>
+            <span class="auth-page__logo-text">AquaLux</span>
+          </a>
+          <h1 class="auth-page__title">Welcome Back</h1>
+          <p class="auth-page__subtitle">Sign in to manage your bookings and explore exclusive offers.</p>
+
+          <div class="auth-social">
+            <button class="btn btn--google btn--full"><i class="fab fa-google" style="color:#4285f4;"></i> Continue with Google</button>
+            <button class="btn btn--facebook btn--full"><i class="fab fa-facebook-f"></i> Continue with Facebook</button>
+            <button class="btn btn--apple btn--full"><i class="fab fa-apple"></i> Continue with Apple</button>
+          </div>
+
+          <div class="auth-divider">or sign in with email</div>
+
+          <form data-validate>
+            <div class="form-group">
+              <label class="form-label" for="login-email">Email Address</label>
+              <input type="email" class="form-input" id="login-email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="login-password">Password</label>
+              <input type="password" class="form-input" id="login-password" placeholder="••••••••" required>
+            </div>
+            <div class="form-row">
+              <div class="form-checkbox"><input type="checkbox" id="remember" name="remember"><label for="remember">Remember me</label></div>
+              <a href="#" class="form-forgot">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn--secondary btn--lg btn--full">Sign In <i class="fas fa-arrow-right"></i></button>
+          </form>
+
+          <p class="auth-page__footer">Don't have an account? <a href="register.html">Create one</a></p>
+        </div>
+      </div>
+
+      <!-- Highlight Side -->
+      <div class="auth-page__highlight">
+        <div class="auth-page__highlight-bg"><img src="assets/images/hero/hero-1.png" alt="" aria-hidden="true"></div>
+        <div class="auth-page__highlight-content">
+          <h2>Your Next Adventure Awaits</h2>
+          <div class="highlight-feature"><div class="highlight-feature__icon"><i class="fas fa-ship"></i></div><div><div class="highlight-feature__title">85+ Premium Vessels</div><div class="highlight-feature__text">From intimate sailboats to mega-yachts, find your perfect match.</div></div></div>
+          <div class="highlight-feature"><div class="highlight-feature__icon"><i class="fas fa-shield-halved"></i></div><div><div class="highlight-feature__title">Safe & Secure</div><div class="highlight-feature__text">ISO certified with 24/7 support and comprehensive insurance.</div></div></div>
+          <div class="highlight-feature"><div class="highlight-feature__icon"><i class="fas fa-star"></i></div><div><div class="highlight-feature__title">4.9/5 Client Rating</div><div class="highlight-feature__text">Trusted by 2,500+ happy clients worldwide.</div></div></div>
+          <div class="highlight-feature"><div class="highlight-feature__icon"><i class="fas fa-percent"></i></div><div><div class="highlight-feature__title">Member Exclusive Discounts</div><div class="highlight-feature__text">Up to 20% off on multi-day charters for registered members.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

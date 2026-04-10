@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — AquaLux Yacht & Boat Charter</title>
+  <meta name="description" content="Read the latest articles about yacht charters, sailing tips, destination guides, and marine lifestyle from AquaLux.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .blog-search { display: flex; gap: 0; max-width: 480px; margin: 0 auto; border-radius: var(--border-radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
+    .blog-search input { flex: 1; padding: var(--space-3) var(--space-4); background: rgba(255,255,255,0.1); color: #fff; font-size: var(--fs-sm); border: none; }
+    .blog-search input::placeholder { color: rgba(255,255,255,0.5); }
+    .blog-search button { padding: var(--space-3) var(--space-5); background: var(--color-secondary); color: #fff; border: none; cursor: pointer; }
+    .featured-post { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-8); align-items: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-xl); overflow: hidden; transition: all var(--transition-base); }
+    .featured-post:hover { box-shadow: var(--shadow-lg); }
+    @media(max-width:768px) { .featured-post { grid-template-columns: 1fr; } }
+    .featured-post__image { width: 100%; height: 100%; object-fit: cover; min-height: 300px; }
+    .featured-post__body { padding: var(--space-8); }
+    .featured-post__meta { display: flex; align-items: center; gap: var(--space-4); font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: var(--space-4); flex-wrap: wrap; }
+    .blog-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); overflow: hidden; transition: all var(--transition-base); }
+    .blog-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .blog-card__image { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .blog-card__body { padding: var(--space-6); }
+    .blog-card__meta { display: flex; align-items: center; gap: var(--space-3); font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: var(--space-3); }
+    .blog-card__title { font-size: var(--fs-xl); margin-bottom: var(--space-3); }
+    .blog-card__title a { color: var(--text-primary); transition: color var(--transition-fast); }
+    .blog-card__title a:hover { color: var(--color-secondary); }
+    .blog-card__excerpt { font-size: var(--fs-sm); color: var(--text-muted); line-height: var(--lh-relaxed); margin-bottom: var(--space-4); }
+    .categories-cloud { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center; }
+    .category-tag { padding: var(--space-2) var(--space-4); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--border-radius-full); font-size: var(--fs-sm); color: var(--text-secondary); transition: all var(--transition-fast); cursor: pointer; text-decoration: none; }
+    .category-tag:hover { background: var(--color-secondary); color: #fff; border-color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar--transparent" data-transparent="true" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="AquaLux Home"><div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div><span class="navbar__logo-text">AquaLux</span></a>
+      <ul class="navbar__links">
+        <li class="navbar__dropdown"><a href="#" class="navbar__link">Home <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></li>
+        <li><a href="about.html" class="navbar__link">About</a></li>
+        <li><a href="services.html" class="navbar__link">Services</a></li>
+        <li><a href="blog.html" class="navbar__link navbar__link--active">Blog</a></li>
+        <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+        <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        <li class="navbar__dropdown"><a href="#" class="navbar__link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="admin-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-tachometer-alt" style="margin-right:8px;"></i> Admin Panel</a><a href="user-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-user-circle" style="margin-right:8px;"></i> My Dashboard</a></div></li>
+      </ul>
+      <div class="navbar__utils">
+        <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button>
+        <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <a href="login.html" class="navbar__util-btn" aria-label="Login"><i class="fas fa-user"></i></a>
+      </div>
+      <button class="navbar__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-overlay"></div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__mobile-link">Home</a><a href="about.html" class="navbar__mobile-link">About</a><a href="services.html" class="navbar__mobile-link">Services</a><a href="blog.html" class="navbar__mobile-link navbar__mobile-link--active">Blog</a><a href="pricing.html" class="navbar__mobile-link">Pricing</a><a href="contact.html" class="navbar__mobile-link">Contact</a>
+      <div class="navbar__dropdown"><a href="#" class="navbar__mobile-link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;margin-left:4px;"></i></a><div class="navbar__mobile-submenu"><a href="admin-dashboard.html" class="navbar__mobile-link">Admin Panel</a><a href="user-dashboard.html" class="navbar__mobile-link">My Dashboard</a></div></div><hr class="divider"><div style="display:flex;gap:8px;padding:8px 16px;"><button class="navbar__util-btn rtl-toggle-btn" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></div></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- SECTION 1: Blog Header -->
+    <section class="hero hero--xs" aria-label="Blog hero">
+      <div class="hero__bg"><img src="assets/images/blog/sunset.png" alt="AquaLux Blog" width="1920" height="600"><div class="hero__overlay"></div></div>
+      <div class="container" style="position:relative;z-index:1;">
+        <div class="text-center">
+          <nav class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><span class="breadcrumb__item"><a href="index.html">Home</a></span><span class="breadcrumb__separator"><i class="fas fa-chevron-right"></i></span><span class="breadcrumb__item breadcrumb__item--active">Blog</span></nav>
+          <h1 class="hero__title" style="color:#fff;">Our Blog</h1>
+          <p class="hero__subtitle" style="margin-bottom:var(--space-6);">Stories, tips, and guides from the open sea.</p>
+          <div class="blog-search"><input type="text" placeholder="Search articles..." aria-label="Search blog"><button type="button"><i class="fas fa-search"></i></button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Featured Post -->
+    <section class="section" aria-label="Featured post">
+      <div class="container">
+        <span class="section-label reveal" style="margin-bottom:var(--space-6);display:block;">Featured Article</span>
+        <a href="blog-details.html" class="featured-post reveal" style="text-decoration:none;">
+          <img src="assets/images/hero/hero-2.png" alt="Ultimate guide to Mediterranean yacht charters" class="featured-post__image" loading="lazy">
+          <div class="featured-post__body">
+            <span class="card__tag">Destinations</span>
+            <h2 style="font-size:var(--fs-3xl);margin-bottom:var(--space-3);color:var(--text-primary);">The Ultimate Guide to Mediterranean Yacht Charters</h2>
+            <div class="featured-post__meta"><span><i class="fas fa-calendar" style="margin-right:4px;"></i> Mar 15, 2026</span><span><i class="fas fa-clock" style="margin-right:4px;"></i> 8 min read</span><span><i class="fas fa-user" style="margin-right:4px;"></i> James Hartford</span></div>
+            <p style="color:var(--text-muted);line-height:var(--lh-relaxed);font-size:var(--fs-sm);">Discover the best routes, hidden coves, and luxury marinas across the Mediterranean. Our comprehensive guide covers everything from the Greek Islands to the French Riviera...</p>
+            <span class="btn btn--ghost btn--sm" style="margin-top:var(--space-4);">Read Article <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Recent Posts Grid -->
+    <section class="section section--gray" aria-label="Recent posts">
+      <div class="container">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Recent Articles</h2>
+        <div class="grid grid--3">
+          <article class="blog-card reveal reveal-delay-1">
+            <div class="overflow-hidden"><img src="assets/images/blog/sunset.png" alt="Sunset sailing tips" class="blog-card__image" loading="lazy"></div>
+            <div class="blog-card__body">
+              <span class="card__tag">Tips</span>
+              <div class="blog-card__meta"><span><i class="fas fa-calendar"></i> Mar 10, 2026</span><span><i class="fas fa-clock"></i> 5 min</span></div>
+              <h3 class="blog-card__title"><a href="blog-details.html">10 Tips for Your First Sunset Sailing Experience</a></h3>
+              <p class="blog-card__excerpt">Make the most of golden hour on the water with these essential tips for a perfect sunset cruise.</p>
+              <a href="blog-details.html" class="btn btn--ghost btn--sm">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="blog-card reveal reveal-delay-2">
+            <div class="overflow-hidden"><img src="assets/images/boats/catamaran.png" alt="Catamaran vs yacht" class="blog-card__image" loading="lazy"></div>
+            <div class="blog-card__body">
+              <span class="card__tag">Guide</span>
+              <div class="blog-card__meta"><span><i class="fas fa-calendar"></i> Mar 5, 2026</span><span><i class="fas fa-clock"></i> 7 min</span></div>
+              <h3 class="blog-card__title"><a href="blog-details.html">Catamaran vs Yacht: Which Is Right for You?</a></h3>
+              <p class="blog-card__excerpt">Comparing the pros and cons of catamarans and yachts to help you choose the perfect vessel.</p>
+              <a href="blog-details.html" class="btn btn--ghost btn--sm">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="blog-card reveal reveal-delay-3">
+            <div class="overflow-hidden"><img src="assets/images/blog/diving.png" alt="Snorkeling destinations" class="blog-card__image" loading="lazy"></div>
+            <div class="blog-card__body">
+              <span class="card__tag">Destinations</span>
+              <div class="blog-card__meta"><span><i class="fas fa-calendar"></i> Feb 28, 2026</span><span><i class="fas fa-clock"></i> 6 min</span></div>
+              <h3 class="blog-card__title"><a href="blog-details.html">Top 5 Snorkeling Spots in the Caribbean</a></h3>
+              <p class="blog-card__excerpt">Crystal-clear waters, vibrant coral reefs, and marine life — discover the best underwater adventures.</p>
+              <a href="blog-details.html" class="btn btn--ghost btn--sm">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="blog-card reveal reveal-delay-4">
+            <div class="overflow-hidden"><img src="assets/images/boats/speedboat.png" alt="Water sports guide" class="blog-card__image" loading="lazy"></div>
+            <div class="blog-card__body">
+              <span class="card__tag">Adventure</span>
+              <div class="blog-card__meta"><span><i class="fas fa-calendar"></i> Feb 20, 2026</span><span><i class="fas fa-clock"></i> 4 min</span></div>
+              <h3 class="blog-card__title"><a href="blog-details.html">Water Sports You Can Enjoy on a Charter</a></h3>
+              <p class="blog-card__excerpt">From jet skiing to paddleboarding, explore the thrilling water sports available during your charter.</p>
+              <a href="blog-details.html" class="btn btn--ghost btn--sm">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="blog-card reveal reveal-delay-5">
+            <div class="overflow-hidden"><img src="assets/images/gallery/marina.png" alt="Marina guide" class="blog-card__image" loading="lazy"></div>
+            <div class="blog-card__body">
+              <span class="card__tag">Lifestyle</span>
+              <div class="blog-card__meta"><span><i class="fas fa-calendar"></i> Feb 15, 2026</span><span><i class="fas fa-clock"></i> 5 min</span></div>
+              <h3 class="blog-card__title"><a href="blog-details.html">A Guide to the World's Most Exclusive Marinas</a></h3>
+              <p class="blog-card__excerpt">From Monaco to Dubai, explore the most prestigious marinas where luxury meets the sea.</p>
+              <a href="blog-details.html" class="btn btn--ghost btn--sm">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="blog-card reveal reveal-delay-6">
+            <div class="overflow-hidden"><img src="assets/images/boats/sailboat.png" alt="Sailing for beginners" class="blog-card__image" loading="lazy"></div>
+            <div class="blog-card__body">
+              <span class="card__tag">Education</span>
+              <div class="blog-card__meta"><span><i class="fas fa-calendar"></i> Feb 10, 2026</span><span><i class="fas fa-clock"></i> 6 min</span></div>
+              <h3 class="blog-card__title"><a href="blog-details.html">Sailing 101: Essential Terms Every Beginner Should Know</a></h3>
+              <p class="blog-card__excerpt">Port, starboard, tacking — master the language of the sea before your first voyage.</p>
+              <a href="blog-details.html" class="btn btn--ghost btn--sm">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Categories Cloud -->
+    <section class="section" aria-label="Blog categories">
+      <div class="container">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Browse by Category</h2>
+        <div class="categories-cloud reveal">
+          <a href="#" class="category-tag">Destinations</a><a href="#" class="category-tag">Tips & Tricks</a><a href="#" class="category-tag">Sailing Guide</a><a href="#" class="category-tag">Adventure</a><a href="#" class="category-tag">Lifestyle</a><a href="#" class="category-tag">Water Sports</a><a href="#" class="category-tag">Marine Life</a><a href="#" class="category-tag">Events</a><a href="#" class="category-tag">Safety</a><a href="#" class="category-tag">Boat Reviews</a><a href="#" class="category-tag">Cuisine</a><a href="#" class="category-tag">Photography</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Newsletter Signup -->
+    <section class="section section--dark" aria-label="Newsletter" style="position:relative;overflow:hidden;">
+      <div class="container" style="position:relative;z-index:1;">
+        <div class="text-center" style="max-width:560px;margin:0 auto;">
+          <h2 class="section-title reveal" style="color:#fff;">Subscribe to Our Newsletter</h2>
+          <p class="reveal reveal-delay-1" style="color:rgba(255,255,255,0.7);margin-bottom:var(--space-6);">Get weekly sailing tips, destination guides, and exclusive charter deals delivered to your inbox.</p>
+          <form class="reveal reveal-delay-2" data-validate style="display:flex;gap:0;border-radius:var(--border-radius);overflow:hidden;border:1px solid rgba(255,255,255,0.2);">
+            <input type="email" class="form-input" placeholder="Enter your email" required style="background:rgba(255,255,255,0.1);color:#fff;border:none;border-radius:0;" aria-label="Email for newsletter">
+            <button type="submit" class="btn btn--accent" style="border-radius:0;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="wave-bg"></div>
+    </section>
+
+    <!-- SECTION 6: Pagination -->
+    <section class="section" aria-label="Pagination">
+      <div class="container">
+        <nav class="pagination" aria-label="Blog pages">
+          <button class="pagination__btn" aria-label="Previous page"><i class="fas fa-chevron-left"></i></button>
+          <button class="pagination__btn pagination__btn--active">1</button>
+          <button class="pagination__btn">2</button>
+          <button class="pagination__btn">3</button>
+          <button class="pagination__btn">4</button>
+          <button class="pagination__btn" aria-label="Next page"><i class="fas fa-chevron-right"></i></button>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><div class="footer__logo"><div class="footer__logo-icon"><i class="fas fa-anchor"></i></div><span class="footer__logo-text">AquaLux</span></div><p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean adventurers.</p><div class="footer__social"><a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" class="footer__social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div>
+        <div><h4 class="footer__heading">Quick Links</h4><ul class="footer__link-list"><li><a href="index.html" class="footer__link">Home</a></li><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="services.html" class="footer__link">Services</a></li><li><a href="blog.html" class="footer__link">Blog</a></li><li><a href="pricing.html" class="footer__link">Pricing</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+        <div><h4 class="footer__heading">Our Services</h4><ul class="footer__link-list"><li><a href="service-details.html" class="footer__link">Yacht Charter</a></li><li><a href="service-details.html" class="footer__link">Sailing Adventures</a></li><li><a href="service-details.html" class="footer__link">Event Cruises</a></li><li><a href="service-details.html" class="footer__link">Speedboat Rentals</a></li></ul></div>
+        <div class="footer__newsletter"><h4 class="footer__heading">Newsletter</h4><p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers delivered to your inbox.</p><form class="footer__newsletter-form" data-validate><input type="email" class="footer__newsletter-input" placeholder="Your email" required aria-label="Newsletter email"><button type="submit" class="footer__newsletter-btn">Join</button></form><div style="margin-top:var(--space-5);"><div class="footer__contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Marina Bay Drive, Miami, FL 33139</span></div><div class="footer__contact-item"><i class="fas fa-phone"></i><span>+1 (305) 555-0199</span></div></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 AquaLux. All rights reserved.</p><div class="footer__bottom-links"><a href="#" class="footer__bottom-link">Privacy Policy</a><a href="#" class="footer__bottom-link">Terms of Service</a></div></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

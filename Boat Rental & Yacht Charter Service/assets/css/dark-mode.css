@@ -1,0 +1,114 @@
+/* ============================================
+   AquaLux — Dark Mode Overrides
+   Applied via [data-theme="dark"] on <html>
+   ============================================ */
+
+[data-theme="dark"] {
+  /* --- Backgrounds --- */
+  --bg-primary: #0f1724;
+  --bg-secondary: #1a2332;
+  --bg-tertiary: #243042;
+  --bg-card: #1e293b;
+  --bg-card-hover: #243042;
+  --bg-overlay: rgba(15, 23, 36, 0.9);
+  --bg-glass: rgba(30, 41, 59, 0.6);
+
+  /* --- Text --- */
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e0;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+  --text-inverse: #0f1724;
+
+  /* --- Borders --- */
+  --border-color: #2d3a4d;
+  --border-color-hover: #3d4f6a;
+
+  /* --- Shadows (deeper for dark) --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 30px rgba(49, 151, 149, 0.2);
+
+  /* --- Primary slight shift --- */
+  --color-primary: #2a4a7f;
+  --color-primary-light: #3b64a8;
+  --color-primary-dark: #1a365d;
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .navbar--scrolled {
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(16px);
+}
+
+[data-theme="dark"] .footer {
+  background: #0a1018;
+}
+
+[data-theme="dark"] .btn--outline {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+[data-theme="dark"] .btn--outline:hover {
+  background: var(--color-secondary);
+  color: #fff;
+}
+
+[data-theme="dark"] .btn--google {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+[data-theme="dark"] .btn--google:hover {
+  background: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .form-input {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(49, 151, 149, 0.2);
+}
+
+[data-theme="dark"] .accordion__header {
+  background: var(--bg-card);
+}
+[data-theme="dark"] .accordion__header:hover {
+  background: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .table th {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .pricing-card--featured {
+  background: linear-gradient(135deg, rgba(49, 151, 149, 0.08), rgba(26, 54, 93, 0.12));
+}
+
+/* Dark mode chart colors */
+[data-theme="dark"] .chart-container {
+  --chart-grid: rgba(255, 255, 255, 0.08);
+  --chart-text: #94a3b8;
+}
+
+/* Scrollbar dark mode */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+}
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color-hover);
+}

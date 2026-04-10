@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Yacht Charter — AquaLux Service Details</title>
+  <meta name="description" content="Explore our luxury yacht charter service in detail. View gallery, features, pricing, and book your dream voyage with AquaLux.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .gallery-main { border-radius: var(--border-radius-xl); overflow: hidden; margin-bottom: var(--space-4); }
+    .gallery-main img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .gallery-thumbs { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-3); }
+    .gallery-thumb { border-radius: var(--border-radius); overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: all var(--transition-fast); }
+    .gallery-thumb:hover, .gallery-thumb--active { border-color: var(--color-secondary); }
+    .gallery-thumb img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .service-detail__grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-8); }
+    @media(max-width:1023px) { .service-detail__grid { grid-template-columns: 1fr; } }
+    .booking-sidebar { position: sticky; top: calc(var(--nav-height) + var(--space-4)); }
+    .booking-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-xl); padding: var(--space-8); }
+    .booking-card__price { font-size: var(--fs-hero); font-weight: var(--fw-extrabold); color: var(--color-primary); margin-bottom: var(--space-2); }
+    .booking-card__price span { font-size: var(--fs-lg); font-weight: var(--fw-normal); color: var(--text-muted); }
+    .features-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    @media(max-width:639px) { .features-list { grid-template-columns: 1fr; } }
+    .feature-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); background: var(--bg-secondary); border-radius: var(--border-radius); font-size: var(--fs-sm); }
+    .feature-item i { color: var(--color-secondary); }
+    .detail-table { width: 100%; }
+    .detail-table td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-color); font-size: var(--fs-sm); }
+    .detail-table td:first-child { font-weight: var(--fw-semibold); color: var(--text-primary); width: 40%; }
+    .detail-table td:last-child { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar--transparent" data-transparent="true" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="AquaLux Home"><div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div><span class="navbar__logo-text">AquaLux</span></a>
+      <ul class="navbar__links">
+        <li class="navbar__dropdown"><a href="#" class="navbar__link">Home <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1 — Classic</a><a href="home-2.html" class="navbar__dropdown-item">Home 2 — Modern</a></div></li>
+        <li><a href="about.html" class="navbar__link">About</a></li>
+        <li><a href="services.html" class="navbar__link navbar__link--active">Services</a></li>
+        <li><a href="blog.html" class="navbar__link">Blog</a></li>
+        <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
+        <li><a href="contact.html" class="navbar__link">Contact</a></li>
+        <li class="navbar__dropdown"><a href="#" class="navbar__link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="admin-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-tachometer-alt" style="margin-right:8px;"></i> Admin Panel</a><a href="user-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-user-circle" style="margin-right:8px;"></i> My Dashboard</a></div></li>
+      </ul>
+      <div class="navbar__utils">
+        <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button>
+        <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <a href="login.html" class="navbar__util-btn" aria-label="Login"><i class="fas fa-user"></i></a>
+      </div>
+      <button class="navbar__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-overlay"></div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__mobile-link">Home</a><a href="about.html" class="navbar__mobile-link">About</a><a href="services.html" class="navbar__mobile-link navbar__mobile-link--active">Services</a><a href="blog.html" class="navbar__mobile-link">Blog</a><a href="pricing.html" class="navbar__mobile-link">Pricing</a><a href="contact.html" class="navbar__mobile-link">Contact</a>
+      <div class="navbar__dropdown"><a href="#" class="navbar__mobile-link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;margin-left:4px;"></i></a><div class="navbar__mobile-submenu"><a href="admin-dashboard.html" class="navbar__mobile-link">Admin Panel</a><a href="user-dashboard.html" class="navbar__mobile-link">My Dashboard</a></div></div><hr class="divider"><div style="display:flex;gap:8px;padding:8px 16px;"><button class="navbar__util-btn rtl-toggle-btn" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></div></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- SECTION 1: Service Header -->
+    <section class="hero hero--xs" aria-label="Service hero">
+      <div class="hero__bg"><img src="assets/images/boats/luxury-yacht.png" alt="Luxury Yacht Charter" width="1920" height="600"><div class="hero__overlay"></div></div>
+      <div class="container" style="position:relative;z-index:1;">
+        <nav class="breadcrumb" style="margin-bottom:var(--space-4);"><span class="breadcrumb__item"><a href="index.html">Home</a></span><span class="breadcrumb__separator"><i class="fas fa-chevron-right"></i></span><span class="breadcrumb__item"><a href="services.html">Services</a></span><span class="breadcrumb__separator"><i class="fas fa-chevron-right"></i></span><span class="breadcrumb__item breadcrumb__item--active">Yacht Charter</span></nav>
+        <h1 class="hero__title" style="color:#fff;font-size:var(--fs-5xl);">Luxury Yacht Charter</h1>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Image Gallery -->
+    <section class="section" aria-label="Image gallery">
+      <div class="container">
+        <div class="gallery-main reveal" id="gallery-main">
+          <img src="assets/images/boats/luxury-yacht.png" alt="Luxury yacht main view" id="gallery-main-img">
+        </div>
+        <div class="gallery-thumbs reveal reveal-delay-1">
+          <div class="gallery-thumb gallery-thumb--active" data-src="assets/images/boats/luxury-yacht.png"><img src="assets/images/boats/luxury-yacht.png" alt="Yacht exterior" loading="lazy"></div>
+          <div class="gallery-thumb" data-src="assets/images/hero/hero-1.png"><img src="assets/images/hero/hero-1.png" alt="Yacht at sunset" loading="lazy"></div>
+          <div class="gallery-thumb" data-src="assets/images/boats/catamaran.png"><img src="assets/images/boats/catamaran.png" alt="Deck view" loading="lazy"></div>
+          <div class="gallery-thumb" data-src="assets/images/hero/hero-2.png"><img src="assets/images/hero/hero-2.png" alt="Aerial view" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Description & Features -->
+    <section class="section" style="padding-top:0;" aria-label="Service details">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div>
+            <h2 style="margin-bottom:var(--space-4);" class="reveal">About This Service</h2>
+            <p style="color:var(--text-secondary);line-height:var(--lh-relaxed);margin-bottom:var(--space-6);" class="reveal reveal-delay-1">Experience the pinnacle of maritime luxury with our premium yacht charter service. Step aboard a world-class vessel and let our professional crew take you on an unforgettable journey across crystalline waters. From intimate sunset cruises to week-long Mediterranean adventures, every detail is crafted to exceed your expectations.</p>
+            <p style="color:var(--text-secondary);line-height:var(--lh-relaxed);margin-bottom:var(--space-8);" class="reveal reveal-delay-2">Our luxury yachts feature spacious cabins, sun decks, gourmet kitchens, and state-of-the-art entertainment systems. Whether you're celebrating a milestone, hosting a corporate retreat, or simply seeking the ultimate escape, our yacht charter service delivers an experience unlike any other.</p>
+
+            <h3 style="margin-bottom:var(--space-4);" class="reveal">Key Features</h3>
+            <div class="features-list reveal reveal-delay-1">
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Professional captain & crew</div>
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Gourmet on-board dining</div>
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Water sports equipment</div>
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Entertainment system</div>
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Wi-Fi connectivity</div>
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Air-conditioned cabins</div>
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Custom itinerary</div>
+              <div class="feature-item"><i class="fas fa-check-circle"></i> 24/7 concierge support</div>
+            </div>
+          </div>
+
+          <!-- SECTION 4 (integrated): Pricing Table / Booking Sidebar -->
+          <div class="booking-sidebar">
+            <div class="booking-card reveal">
+              <div class="booking-card__price">$2,500 <span>/day</span></div>
+              <div class="stars" style="margin-bottom:var(--space-4);"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span style="color:var(--text-muted);font-size:var(--fs-sm);margin-left:4px;">(47 reviews)</span></div>
+              <hr class="divider">
+              <table class="detail-table">
+                <tr><td>Vessel Size</td><td>62 ft</td></tr>
+                <tr><td>Capacity</td><td>12 guests</td></tr>
+                <tr><td>Cabins</td><td>4 en-suite</td></tr>
+                <tr><td>Speed</td><td>22 knots</td></tr>
+                <tr><td>Fuel</td><td>Included</td></tr>
+                <tr><td>Crew</td><td>4 members</td></tr>
+              </table>
+              <hr class="divider">
+              <form data-validate>
+                <div class="form-group"><label class="form-label" for="sd-date">Preferred Date</label><input type="date" class="form-input" id="sd-date" required></div>
+                <div class="form-group"><label class="form-label" for="sd-guests">Number of Guests</label><input type="number" class="form-input" id="sd-guests" min="1" max="12" value="4" required></div>
+                <div class="form-group"><label class="form-label" for="sd-duration">Duration (days)</label><input type="number" class="form-input" id="sd-duration" min="1" value="1" required></div>
+                <button type="submit" class="btn btn--secondary btn--lg btn--full" style="margin-top:var(--space-2);">Book This Vessel <i class="fas fa-arrow-right"></i></button>
+              </form>
+              <p style="font-size:var(--fs-xs);color:var(--text-muted);text-align:center;margin-top:var(--space-3);">No payment required to inquire</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Related Services -->
+    <section class="section section--gray" aria-label="Related services">
+      <div class="container">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Related Services</h2>
+        <div class="grid grid--3">
+          <div class="card reveal reveal-delay-1">
+            <div class="overflow-hidden"><img src="assets/images/boats/catamaran.png" alt="Catamaran Charter" class="card__image" loading="lazy"></div>
+            <div class="card__body"><span class="card__tag">Popular</span><h3 class="card__title">Catamaran Charter</h3><p class="card__text">Spacious twin-hull comfort perfect for groups and families.</p><div class="card__footer"><span class="card__price">$1,800 <span>/day</span></span><a href="service-details.html" class="btn btn--secondary btn--sm">View</a></div></div>
+          </div>
+          <div class="card reveal reveal-delay-2">
+            <div class="overflow-hidden"><img src="assets/images/boats/sailboat.png" alt="Sailing Adventure" class="card__image" loading="lazy"></div>
+            <div class="card__body"><span class="card__tag">Classic</span><h3 class="card__title">Sailing Adventure</h3><p class="card__text">Wind-powered journeys for a truly authentic experience.</p><div class="card__footer"><span class="card__price">$950 <span>/day</span></span><a href="service-details.html" class="btn btn--secondary btn--sm">View</a></div></div>
+          </div>
+          <div class="card reveal reveal-delay-3">
+            <div class="overflow-hidden"><img src="assets/images/boats/speedboat.png" alt="Speedboat Rental" class="card__image" loading="lazy"></div>
+            <div class="card__body"><span class="card__tag">Adventure</span><h3 class="card__title">Speedboat Rental</h3><p class="card__text">High-performance thrills for water sports enthusiasts.</p><div class="card__footer"><span class="card__price">$750 <span>/day</span></span><a href="service-details.html" class="btn btn--secondary btn--sm">View</a></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Booking Form (Full) -->
+    <section class="section" aria-label="Booking inquiry">
+      <div class="container container--narrow">
+        <div class="text-center" style="margin-bottom:var(--space-8);"><h2 class="section-title reveal">Request a Custom Quote</h2><p class="section-subtitle reveal reveal-delay-1">Tell us about your dream voyage and we'll craft a personalized proposal.</p></div>
+        <form class="reveal reveal-delay-2" data-validate style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-xl);padding:var(--space-8);">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);">
+            <div class="form-group"><label class="form-label" for="bk-name">Full Name</label><input type="text" class="form-input" id="bk-name" placeholder="John Doe" required></div>
+            <div class="form-group"><label class="form-label" for="bk-email">Email</label><input type="email" class="form-input" id="bk-email" placeholder="john@example.com" required></div>
+            <div class="form-group"><label class="form-label" for="bk-phone">Phone</label><input type="tel" class="form-input" id="bk-phone" placeholder="+1 (305) 555-0199"></div>
+            <div class="form-group"><label class="form-label" for="bk-guests">Guests</label><input type="number" class="form-input" id="bk-guests" min="1" value="4"></div>
+            <div class="form-group"><label class="form-label" for="bk-start">Start Date</label><input type="date" class="form-input" id="bk-start" required></div>
+            <div class="form-group"><label class="form-label" for="bk-end">End Date</label><input type="date" class="form-input" id="bk-end" required></div>
+          </div>
+          <div class="form-group"><label class="form-label" for="bk-message">Additional Requests</label><textarea class="form-input form-textarea" id="bk-message" placeholder="Tell us about your preferences, special occasions, dietary requirements, etc."></textarea></div>
+          <button type="submit" class="btn btn--secondary btn--lg btn--full">Submit Inquiry <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><div class="footer__logo"><div class="footer__logo-icon"><i class="fas fa-anchor"></i></div><span class="footer__logo-text">AquaLux</span></div><p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean adventurers.</p><div class="footer__social"><a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" class="footer__social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div>
+        <div><h4 class="footer__heading">Quick Links</h4><ul class="footer__link-list"><li><a href="index.html" class="footer__link">Home</a></li><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="services.html" class="footer__link">Services</a></li><li><a href="blog.html" class="footer__link">Blog</a></li><li><a href="pricing.html" class="footer__link">Pricing</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+        <div><h4 class="footer__heading">Our Services</h4><ul class="footer__link-list"><li><a href="service-details.html" class="footer__link">Yacht Charter</a></li><li><a href="service-details.html" class="footer__link">Sailing Adventures</a></li><li><a href="service-details.html" class="footer__link">Event Cruises</a></li><li><a href="service-details.html" class="footer__link">Speedboat Rentals</a></li></ul></div>
+        <div class="footer__newsletter"><h4 class="footer__heading">Newsletter</h4><p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers delivered to your inbox.</p><form class="footer__newsletter-form" data-validate><input type="email" class="footer__newsletter-input" placeholder="Your email" required aria-label="Newsletter email"><button type="submit" class="footer__newsletter-btn">Join</button></form><div style="margin-top:var(--space-5);"><div class="footer__contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Marina Bay Drive, Miami, FL 33139</span></div><div class="footer__contact-item"><i class="fas fa-phone"></i><span>+1 (305) 555-0199</span></div></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 AquaLux. All rights reserved.</p><div class="footer__bottom-links"><a href="#" class="footer__bottom-link">Privacy Policy</a><a href="#" class="footer__bottom-link">Terms of Service</a></div></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Gallery thumbnail switcher
+    document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('gallery-thumb--active'));
+        thumb.classList.add('gallery-thumb--active');
+        document.getElementById('gallery-main-img').src = thumb.dataset.src;
+      });
+    });
+  </script>
+</body>
+</html>

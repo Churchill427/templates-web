@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — AquaLux Yacht & Boat Charter</title>
+  <meta name="description" content="Get in touch with AquaLux. Contact us for yacht charter inquiries, custom quotes, and booking assistance.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .contact__grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:var(--space-10);}
+    @media(max-width:1023px){.contact__grid{grid-template-columns:1fr;}}
+    .contact-info-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-lg);padding:var(--space-6);display:flex;align-items:flex-start;gap:var(--space-4);transition:all var(--transition-base);}
+    .contact-info-card:hover{box-shadow:var(--shadow-md);border-color:var(--color-secondary);}
+    .contact-info-card__icon{width:52px;height:52px;border-radius:var(--border-radius-lg);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+    .map-placeholder{width:100%;height:350px;border-radius:var(--border-radius-xl);overflow:hidden;border:1px solid var(--border-color);background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;position:relative;}
+    .map-placeholder iframe{width:100%;height:100%;border:none;}
+    .social-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-4);}
+    .social-card{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-4);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius);transition:all var(--transition-fast);text-decoration:none;}
+    .social-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+    .social-card__icon{width:44px;height:44px;border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;}
+    .social-card__name{font-weight:var(--fw-semibold);font-size:var(--fs-sm);color:var(--text-primary);}
+    .social-card__handle{font-size:var(--fs-xs);color:var(--text-muted);}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <nav class="navbar navbar--transparent" data-transparent="true" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="AquaLux Home"><div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div><span class="navbar__logo-text">AquaLux</span></a>
+      <ul class="navbar__links"><li class="navbar__dropdown"><a href="#" class="navbar__link">Home <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></li><li><a href="about.html" class="navbar__link">About</a></li><li><a href="services.html" class="navbar__link">Services</a></li><li><a href="blog.html" class="navbar__link">Blog</a></li><li><a href="pricing.html" class="navbar__link">Pricing</a></li><li><a href="contact.html" class="navbar__link navbar__link--active">Contact</a></li><li class="navbar__dropdown"><a href="#" class="navbar__link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="admin-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-tachometer-alt" style="margin-right:8px;"></i> Admin Panel</a><a href="user-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-user-circle" style="margin-right:8px;"></i> My Dashboard</a></div></li></ul>
+      <div class="navbar__utils"><button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><a href="login.html" class="navbar__util-btn" aria-label="Login"><i class="fas fa-user"></i></a></div>
+      <button class="navbar__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-overlay"></div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__mobile-link">Home</a><a href="about.html" class="navbar__mobile-link">About</a><a href="services.html" class="navbar__mobile-link">Services</a><a href="blog.html" class="navbar__mobile-link">Blog</a><a href="pricing.html" class="navbar__mobile-link">Pricing</a><a href="contact.html" class="navbar__mobile-link navbar__mobile-link--active">Contact</a><div class="navbar__dropdown"><a href="#" class="navbar__mobile-link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;margin-left:4px;"></i></a><div class="navbar__mobile-submenu"><a href="admin-dashboard.html" class="navbar__mobile-link">Admin Panel</a><a href="user-dashboard.html" class="navbar__mobile-link">My Dashboard</a></div></div><hr class="divider"><div style="display:flex;gap:8px;padding:8px 16px;"><button class="navbar__util-btn rtl-toggle-btn" aria-label="Toggle direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></div></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- SECTION 1: Contact Hero -->
+    <section class="hero hero--xs" aria-label="Contact hero">
+      <div class="hero__bg"><img src="assets/images/gallery/marina.png" alt="Contact AquaLux" width="1920" height="600"><div class="hero__overlay"></div></div>
+      <div class="container" style="position:relative;z-index:1;"><div class="text-center">
+        <nav class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><span class="breadcrumb__item"><a href="index.html">Home</a></span><span class="breadcrumb__separator"><i class="fas fa-chevron-right"></i></span><span class="breadcrumb__item breadcrumb__item--active">Contact</span></nav>
+        <h1 class="hero__title" style="color:#fff;">Get in Touch</h1>
+        <p class="hero__subtitle">We'd love to hear from you. Reach out for inquiries, bookings, or just to say hello.</p>
+      </div></div>
+    </section>
+
+    <!-- SECTION 2: Contact Form -->
+    <section class="section" aria-label="Contact form">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="reveal">
+            <h2 style="margin-bottom:var(--space-2);">Send Us a Message</h2>
+            <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Fill out the form and our team will get back to you within 24 hours.</p>
+            <form data-validate style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-xl);padding:var(--space-8);">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);">
+                <div class="form-group"><label class="form-label" for="c-name">Full Name</label><input type="text" class="form-input" id="c-name" placeholder="John Doe" required></div>
+                <div class="form-group"><label class="form-label" for="c-email">Email</label><input type="email" class="form-input" id="c-email" placeholder="john@example.com" required></div>
+                <div class="form-group"><label class="form-label" for="c-phone">Phone</label><input type="tel" class="form-input" id="c-phone" placeholder="+1 (305) 555-0199"></div>
+                <div class="form-group"><label class="form-label" for="c-subject">Subject</label><input type="text" class="form-input" id="c-subject" placeholder="Charter Inquiry" required></div>
+              </div>
+              <div class="form-group"><label class="form-label" for="c-message">Message</label><textarea class="form-input form-textarea" id="c-message" placeholder="Tell us about your inquiry..." required></textarea></div>
+              <button type="submit" class="btn btn--secondary btn--lg btn--full">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+
+          <!-- SECTION 3: Contact Information -->
+          <div>
+            <h2 style="margin-bottom:var(--space-6);" class="reveal">Contact Information</h2>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+              <div class="contact-info-card reveal reveal-delay-1"><div class="contact-info-card__icon" style="background:rgba(49,151,149,0.1);color:var(--color-secondary);"><i class="fas fa-map-marker-alt"></i></div><div><h4 style="font-size:var(--fs-base);margin-bottom:var(--space-1);">Our Office</h4><p style="font-size:var(--fs-sm);color:var(--text-muted);">123 Marina Bay Drive<br>Miami, FL 33139, USA</p></div></div>
+              <div class="contact-info-card reveal reveal-delay-2"><div class="contact-info-card__icon" style="background:rgba(237,137,54,0.1);color:var(--color-accent);"><i class="fas fa-phone"></i></div><div><h4 style="font-size:var(--fs-base);margin-bottom:var(--space-1);">Phone</h4><p style="font-size:var(--fs-sm);color:var(--text-muted);">+1 (305) 555-0199<br>+1 (305) 555-0200</p></div></div>
+              <div class="contact-info-card reveal reveal-delay-3"><div class="contact-info-card__icon" style="background:rgba(49,151,149,0.1);color:var(--color-secondary);"><i class="fas fa-envelope"></i></div><div><h4 style="font-size:var(--fs-base);margin-bottom:var(--space-1);">Email</h4><p style="font-size:var(--fs-sm);color:var(--text-muted);">hello@aqualux.com<br>bookings@aqualux.com</p></div></div>
+              <div class="contact-info-card reveal reveal-delay-4"><div class="contact-info-card__icon" style="background:rgba(237,137,54,0.1);color:var(--color-accent);"><i class="fas fa-clock"></i></div><div><h4 style="font-size:var(--fs-base);margin-bottom:var(--space-1);">Business Hours</h4><p style="font-size:var(--fs-sm);color:var(--text-muted);">Mon - Fri: 8:00 AM - 8:00 PM<br>Sat - Sun: 9:00 AM - 6:00 PM</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Map -->
+    <section class="section section--gray" aria-label="Location map">
+      <div class="container">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Find Us</h2>
+        <div class="map-placeholder reveal">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.2!2d-80.13!3d25.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDQ2JzEyLjAiTiA4MMKwMDcnNDguMCJX!5e0!3m2!1sen!2sus!4v1" title="AquaLux office location on Google Maps" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Social Links -->
+    <section class="section" aria-label="Social media">
+      <div class="container">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Follow Us</h2>
+        <div class="social-grid reveal">
+          <a href="#" class="social-card"><div class="social-card__icon" style="background:#1877f2;"><i class="fab fa-facebook-f"></i></div><div><div class="social-card__name">Facebook</div><div class="social-card__handle">@aqualux</div></div></a>
+          <a href="#" class="social-card"><div class="social-card__icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);"><i class="fab fa-instagram"></i></div><div><div class="social-card__name">Instagram</div><div class="social-card__handle">@aqualux_charters</div></div></a>
+          <a href="#" class="social-card"><div class="social-card__icon" style="background:#1da1f2;"><i class="fab fa-twitter"></i></div><div><div class="social-card__name">Twitter</div><div class="social-card__handle">@aqualux</div></div></a>
+          <a href="#" class="social-card"><div class="social-card__icon" style="background:#ff0000;"><i class="fab fa-youtube"></i></div><div><div class="social-card__name">YouTube</div><div class="social-card__handle">AquaLux Yachts</div></div></a>
+          <a href="#" class="social-card"><div class="social-card__icon" style="background:#0a66c2;"><i class="fab fa-linkedin-in"></i></div><div><div class="social-card__name">LinkedIn</div><div class="social-card__handle">AquaLux Charter</div></div></a>
+          <a href="#" class="social-card"><div class="social-card__icon" style="background:#25d366;"><i class="fab fa-whatsapp"></i></div><div><div class="social-card__name">WhatsApp</div><div class="social-card__handle">+1 (305) 555-0199</div></div></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: FAQ/Help -->
+    <section class="section section--gray" aria-label="Help FAQ">
+      <div class="container container--narrow">
+        <h2 class="section-title text-center reveal" style="margin-bottom:var(--space-8);">Need Help?</h2>
+        <div class="accordion reveal">
+          <div class="accordion__item"><button class="accordion__header"><span class="accordion__title">How quickly will you respond to my inquiry?</span><i class="accordion__icon fas fa-chevron-down"></i></button><div class="accordion__content"><div class="accordion__body">We aim to respond to all inquiries within 2-4 hours during business hours. For urgent matters, call us directly at +1 (305) 555-0199.</div></div></div>
+          <div class="accordion__item"><button class="accordion__header"><span class="accordion__title">Can I visit your office in person?</span><i class="accordion__icon fas fa-chevron-down"></i></button><div class="accordion__content"><div class="accordion__body">Absolutely! Our office is located at Marina Bay Drive and we welcome walk-ins during business hours. We also offer complimentary marina tours on weekends.</div></div></div>
+          <div class="accordion__item"><button class="accordion__header"><span class="accordion__title">Do you offer virtual consultations?</span><i class="accordion__icon fas fa-chevron-down"></i></button><div class="accordion__content"><div class="accordion__body">Yes! We offer video consultations via Zoom or Google Meet. Schedule a virtual tour of our fleet and discuss your charter requirements from the comfort of your home.</div></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand"><div class="footer__logo"><div class="footer__logo-icon"><i class="fas fa-anchor"></i></div><span class="footer__logo-text">AquaLux</span></div><p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean adventurers.</p><div class="footer__social"><a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" class="footer__social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div>
+        <div><h4 class="footer__heading">Quick Links</h4><ul class="footer__link-list"><li><a href="index.html" class="footer__link">Home</a></li><li><a href="about.html" class="footer__link">About Us</a></li><li><a href="services.html" class="footer__link">Services</a></li><li><a href="blog.html" class="footer__link">Blog</a></li><li><a href="pricing.html" class="footer__link">Pricing</a></li><li><a href="contact.html" class="footer__link">Contact</a></li></ul></div>
+        <div><h4 class="footer__heading">Our Services</h4><ul class="footer__link-list"><li><a href="service-details.html" class="footer__link">Yacht Charter</a></li><li><a href="service-details.html" class="footer__link">Sailing Adventures</a></li><li><a href="service-details.html" class="footer__link">Event Cruises</a></li><li><a href="service-details.html" class="footer__link">Speedboat Rentals</a></li></ul></div>
+        <div class="footer__newsletter"><h4 class="footer__heading">Newsletter</h4><p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers delivered to your inbox.</p><form class="footer__newsletter-form" data-validate><input type="email" class="footer__newsletter-input" placeholder="Your email" required aria-label="Newsletter email"><button type="submit" class="footer__newsletter-btn">Join</button></form></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 AquaLux. All rights reserved.</p><div class="footer__bottom-links"><a href="#" class="footer__bottom-link">Privacy Policy</a><a href="#" class="footer__bottom-link">Terms of Service</a></div></div>
+    </div>
+  </footer>
+  <script src="assets/js/theme-toggle.js"></script><script src="assets/js/rtl-ltr.js"></script><script src="assets/js/animations.js"></script><script src="assets/js/main.js"></script>
+</body>
+</html>

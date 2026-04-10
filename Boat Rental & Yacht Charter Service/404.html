@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | AquaLux</title>
+  <meta name="description" content="The page you're looking for could not be found. Navigate back to AquaLux.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    body{height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+    .error-header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-6);flex-shrink:0;}
+    .error-logo{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;}
+    .error-page{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+    .error-page__bg{position:absolute;inset:0;z-index:0;}
+    .error-page__bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3) blur(2px);}
+    .error-page__content{position:relative;z-index:1;text-align:center;max-width:560px;padding:var(--space-6);}
+    .error-page__code{font-size:clamp(6rem,15vw,12rem);font-weight:var(--fw-extrabold);line-height:1;background:linear-gradient(135deg,var(--color-secondary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:var(--space-4);}
+    .error-page__title{font-size:var(--fs-4xl);color:#fff;margin-bottom:var(--space-4);}
+    .error-page__text{font-size:var(--fs-lg);color:rgba(255,255,255,0.7);line-height:var(--lh-relaxed);margin-bottom:var(--space-8);}
+    .error-search{display:flex;gap:0;max-width:400px;margin:0 auto var(--space-6);border-radius:var(--border-radius);overflow:hidden;border:1px solid rgba(255,255,255,0.2);}
+    .error-search input{flex:1;padding:var(--space-3) var(--space-4);background:rgba(255,255,255,0.1);color:#fff;border:none;font-size:var(--fs-sm);}
+    .error-search input::placeholder{color:rgba(255,255,255,0.5);}
+    .error-search button{padding:var(--space-3) var(--space-5);background:var(--color-secondary);color:#fff;border:none;cursor:pointer;}
+  </style>
+</head>
+<body>
+  <!-- Minimal Header (logo only + utilities) -->
+  <header class="error-header">
+    <a href="index.html" class="error-logo" aria-label="AquaLux Home">
+      <div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div>
+      <span class="navbar__logo-text">AquaLux</span>
+    </a>
+    <div style="display:flex;gap:var(--space-2);">
+      <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button>
+      <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+  </header>
+
+  <main class="error-page">
+    <div class="error-page__bg"><img src="assets/images/hero/hero-1.png" alt="" aria-hidden="true"></div>
+    <div class="error-page__content">
+      <div class="error-page__code">404</div>
+      <h1 class="error-page__title">Lost at Sea?</h1>
+      <p class="error-page__text">The page you're looking for seems to have drifted away. Let's get you back on course.</p>
+      <div class="error-search">
+        <input type="text" placeholder="Search our site..." aria-label="Search">
+        <button type="button"><i class="fas fa-search"></i></button>
+      </div>
+      <a href="index.html" class="btn btn--secondary btn--lg"><i class="fas fa-anchor"></i> Return to Shore</a>
+    </div>
+  </main>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+</body>
+</html>

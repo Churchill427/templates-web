@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — AquaLux</title>
+  <meta name="description" content="AquaLux is launching something exciting. Stay tuned and subscribe to be the first to know.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    body{height:100vh;overflow:hidden;}
+    .coming-soon{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+    .coming-soon__bg{position:absolute;inset:0;z-index:0;}
+    .coming-soon__bg img{width:100%;height:100%;object-fit:cover;}
+    .coming-soon__overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,35,65,0.92) 0%,rgba(26,54,93,0.85) 50%,rgba(49,151,149,0.5) 100%);}
+    .coming-soon__utils{position:fixed;top:var(--space-4);right:var(--space-4);display:flex;gap:var(--space-2);z-index:10;}
+    .coming-soon__logo{position:fixed;top:var(--space-4);left:var(--space-6);display:flex;align-items:center;gap:var(--space-3);z-index:10;text-decoration:none;}
+    .coming-soon__content{position:relative;z-index:1;text-align:center;max-width:640px;padding:var(--space-6);}
+    .coming-soon__badge{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-5);background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--border-radius-full);color:rgba(255,255,255,0.9);font-size:var(--fs-sm);font-weight:var(--fw-semibold);margin-bottom:var(--space-6);backdrop-filter:blur(8px);}
+    .coming-soon__title{font-size:var(--fs-hero);color:#fff;margin-bottom:var(--space-4);}
+    .coming-soon__text{font-size:var(--fs-lg);color:rgba(255,255,255,0.8);margin-bottom:var(--space-8);line-height:var(--lh-relaxed);}
+    .countdown{display:flex;justify-content:center;gap:var(--space-6);margin-bottom:var(--space-10);}
+    @media(max-width:480px){.countdown{gap:var(--space-3);}}
+    .countdown__item{text-align:center;}
+    .countdown__number{display:block;font-size:var(--fs-hero);font-weight:var(--fw-extrabold);color:#fff;line-height:1;min-width:80px;padding:var(--space-4);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--border-radius-lg);backdrop-filter:blur(8px);margin-bottom:var(--space-2);}
+    .countdown__label{font-size:var(--fs-xs);color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:2px;}
+    .coming-soon__form{display:flex;gap:0;max-width:440px;margin:0 auto var(--space-8);border-radius:var(--border-radius);overflow:hidden;border:1px solid rgba(255,255,255,0.2);}
+    .coming-soon__form input{flex:1;padding:var(--space-3) var(--space-4);background:rgba(255,255,255,0.1);color:#fff;border:none;font-size:var(--fs-sm);}
+    .coming-soon__form input::placeholder{color:rgba(255,255,255,0.5);}
+    .coming-soon__form button{padding:var(--space-3) var(--space-6);background:var(--color-accent);color:#fff;border:none;cursor:pointer;font-weight:var(--fw-semibold);font-size:var(--fs-sm);}
+    .coming-soon__social{display:flex;justify-content:center;gap:var(--space-4);}
+    .coming-soon__social a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:var(--border-radius-full);background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);font-size:var(--fs-base);transition:all var(--transition-fast);border:1px solid rgba(255,255,255,0.15);}
+    .coming-soon__social a:hover{background:var(--color-secondary);color:#fff;transform:translateY(-3px);}
+    /* Animated bubbles */
+    .bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);animation:bubbleFloat linear infinite;}
+    .bubble:nth-child(1){width:80px;height:80px;left:10%;bottom:-100px;animation-duration:12s;animation-delay:0s;}
+    .bubble:nth-child(2){width:120px;height:120px;left:30%;bottom:-100px;animation-duration:16s;animation-delay:2s;}
+    .bubble:nth-child(3){width:60px;height:60px;left:60%;bottom:-100px;animation-duration:10s;animation-delay:4s;}
+    .bubble:nth-child(4){width:100px;height:100px;left:80%;bottom:-100px;animation-duration:14s;animation-delay:1s;}
+    .bubble:nth-child(5){width:50px;height:50px;left:45%;bottom:-100px;animation-duration:11s;animation-delay:3s;}
+    @keyframes bubbleFloat{0%{transform:translateY(0) scale(1);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-110vh) scale(0.5);opacity:0;}}
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <a href="index.html" class="coming-soon__logo" aria-label="AquaLux Home">
+    <div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div>
+    <span class="navbar__logo-text" style="color:#fff;">AquaLux</span>
+  </a>
+
+  <!-- Utilities -->
+  <div class="coming-soon__utils">
+    <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction" style="color:rgba(255,255,255,0.8);"><i class="fas fa-globe"></i></button>
+    <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode" style="color:rgba(255,255,255,0.8);"><i class="fas fa-moon"></i></button>
+  </div>
+
+  <main class="coming-soon">
+    <div class="coming-soon__bg">
+      <img src="assets/images/hero/hero-2.png" alt="" aria-hidden="true">
+      <div class="coming-soon__overlay"></div>
+    </div>
+
+    <!-- Animated bubbles -->
+    <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+
+    <div class="coming-soon__content">
+      <div class="coming-soon__badge"><i class="fas fa-rocket"></i> Something Exciting is Coming</div>
+      <h1 class="coming-soon__title">We're Launching Soon</h1>
+      <p class="coming-soon__text">We're building something incredible. Our new luxury charter experience is almost ready. Subscribe to be notified the moment we launch.</p>
+
+      <div class="countdown" id="countdown">
+        <div class="countdown__item"><span class="countdown__number" id="cd-days">30</span><span class="countdown__label">Days</span></div>
+        <div class="countdown__item"><span class="countdown__number" id="cd-hours">12</span><span class="countdown__label">Hours</span></div>
+        <div class="countdown__item"><span class="countdown__number" id="cd-mins">45</span><span class="countdown__label">Minutes</span></div>
+        <div class="countdown__item"><span class="countdown__number" id="cd-secs">30</span><span class="countdown__label">Seconds</span></div>
+      </div>
+
+      <form class="coming-soon__form" data-validate>
+        <input type="email" placeholder="Enter your email" required aria-label="Email for launch notification">
+        <button type="submit">Notify Me</button>
+      </form>
+
+      <div class="coming-soon__social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script>
+    // Countdown Timer
+    (function() {
+      const launchDate = new Date();
+      launchDate.setDate(launchDate.getDate() + 30);
+
+      function update() {
+        const now = new Date();
+        const diff = launchDate - now;
+        if (diff <= 0) return;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
+</body>
+</html>

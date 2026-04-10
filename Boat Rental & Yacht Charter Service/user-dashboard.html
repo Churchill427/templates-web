@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard — AquaLux</title>
+  <meta name="description" content="Your AquaLux dashboard: view bookings, manage profile, track trips, and access member benefits.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    body{background:var(--bg-secondary);}
+    .dashboard{display:flex;min-height:100vh;}
+    .dashboard__sidebar--collapsed{width:var(--sidebar-collapsed);}
+    .dashboard__sidebar--collapsed .sidebar-logo__text,
+    .dashboard__sidebar--collapsed .sidebar-nav__label,
+    .dashboard__sidebar--collapsed .sidebar-nav__link span,
+    .dashboard__sidebar--collapsed .sidebar-nav__badge,
+    .dashboard__sidebar--collapsed .sidebar-user__name,
+    .dashboard__sidebar--collapsed .sidebar-user__role,
+    .dashboard__sidebar--collapsed .sidebar-user__avatar {display:none;}
+    .dashboard__sidebar--collapsed .sidebar-nav__link {justify-content:center;padding:var(--space-3);}
+    .dashboard__sidebar--collapsed .sidebar-header,
+    .dashboard__sidebar--collapsed .sidebar-nav {padding-left:0;padding-right:0;text-align:center;}
+    .dashboard__sidebar--collapsed .sidebar-user {padding:var(--space-2);border-bottom:none;}
+
+    .sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-5);border-bottom:1px solid var(--border-color);}
+    .sidebar-logo{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;overflow:hidden;}
+    .sidebar-logo__icon{flex-shrink:0;width:36px;height:36px;background:linear-gradient(135deg,var(--color-secondary),var(--color-primary));border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;}
+    .sidebar-logo__text{font-family:var(--font-heading);font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--text-primary);white-space:nowrap;}
+    .sidebar-user{padding:var(--space-5);text-align:center;border-bottom:1px solid var(--border-color);transition:all var(--transition-base);}
+    .sidebar-user__avatar{width:72px;height:72px;border-radius:var(--border-radius-full);object-fit:cover;border:3px solid var(--color-secondary);margin-bottom:var(--space-2);}
+    .sidebar-user__name{font-weight:var(--fw-semibold);font-size:var(--fs-base);color:var(--text-primary);white-space:nowrap;}
+    .sidebar-user__role{font-size:var(--fs-xs);color:var(--text-muted);white-space:nowrap;}
+    .sidebar-nav{padding:var(--space-4) var(--space-3);}
+    .sidebar-nav__section{margin-bottom:var(--space-4);}
+    .sidebar-nav__label{font-size:var(--fs-xs);font-weight:var(--fw-semibold);color:var(--text-light);text-transform:uppercase;letter-spacing:1.5px;padding:var(--space-2) var(--space-3);margin-bottom:var(--space-1);white-space:nowrap;}
+    .sidebar-nav__link{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-radius:var(--border-radius);font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text-secondary);text-decoration:none;transition:all var(--transition-fast);margin-bottom:2px;white-space:nowrap;}
+    .sidebar-nav__link:hover{background:rgba(49,151,149,0.08);color:var(--color-secondary);}
+    .sidebar-nav__link--active{background:rgba(49,151,149,0.1);color:var(--color-secondary);font-weight:var(--fw-semibold);}
+    .sidebar-nav__link i{width:20px;text-align:center;font-size:var(--fs-base);flex-shrink:0;}
+    .sidebar-nav__badge{margin-left:auto;padding:2px 8px;background:var(--color-accent);color:#fff;font-size:10px;font-weight:var(--fw-bold);border-radius:var(--border-radius-full);}
+    .dashboard__main{margin-left:var(--sidebar-width);flex:1;transition:all var(--transition-base);}
+    .dashboard__main--collapsed{margin-left:var(--sidebar-collapsed);}
+    .dashboard__header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-6);background:var(--bg-card);border-bottom:1px solid var(--border-color);position:sticky;top:0;z-index:var(--z-sticky);}
+    .dashboard__header-left{display:flex;align-items:center;gap:var(--space-4);}
+    .dashboard__header-right{display:flex;align-items:center;gap:var(--space-3);}
+    .dashboard__sidebar-toggle{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:var(--border-radius);color:var(--text-secondary);cursor:pointer;transition:all var(--transition-fast);}
+    .dashboard__sidebar-toggle:hover{background:var(--bg-secondary);color:var(--color-secondary);}
+    .dashboard__page-title{font-family:var(--font-primary);font-size:var(--fs-xl);font-weight:var(--fw-bold);color:var(--text-primary);}
+    .dashboard__content{padding:var(--space-6);}
+    .dashboard__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);margin-bottom:var(--space-6);}
+    @media(max-width:768px){.dashboard__stats{grid-template-columns:1fr;}}
+    .dash-stat{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-lg);padding:var(--space-5);display:flex;align-items:flex-start;justify-content:space-between;}
+    .dash-stat__info h4{font-family:var(--font-primary);font-size:var(--fs-sm);color:var(--text-muted);font-weight:var(--fw-medium);margin-bottom:var(--space-2);}
+    .dash-stat__value{font-size:var(--fs-4xl);font-weight:var(--fw-extrabold);color:var(--text-primary);line-height:1;}
+    .dash-stat__change{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-xs);font-weight:var(--fw-semibold);margin-top:var(--space-2);color:var(--text-muted);}
+    .dash-stat__icon{width:48px;height:48px;border-radius:var(--border-radius-lg);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+    .dashboard__charts{display:grid;grid-template-columns:1.5fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6);}
+    @media(max-width:1023px){.dashboard__charts{grid-template-columns:1fr;}}
+    .chart-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-lg);padding:var(--space-5);}
+    .chart-card__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);}
+    .chart-card__title{font-family:var(--font-primary);font-size:var(--fs-base);font-weight:var(--fw-semibold);color:var(--text-primary);}
+    .chart-card__canvas{width:100%;}
+    .chart-legend{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-3);}
+    .dash-section{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--border-radius-lg);padding:var(--space-5);margin-bottom:var(--space-6);}
+    .dash-section__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);}
+    .dash-section__title{font-family:var(--font-primary);font-size:var(--fs-lg);font-weight:var(--fw-semibold);color:var(--text-primary);}
+    .booking-status{display:inline-flex;padding:4px 12px;border-radius:var(--border-radius-full);font-size:var(--fs-xs);font-weight:var(--fw-semibold);}
+    .booking-status--confirmed{background:rgba(56,161,105,0.1);color:#38a169;}
+    .booking-status--pending{background:rgba(237,137,54,0.1);color:var(--color-accent);}
+    .booking-status--completed{background:rgba(49,151,149,0.1);color:var(--color-secondary);}
+    @media(max-width:1023px){
+      .dashboard__sidebar{left:-100%;width:var(--sidebar-width)!important;}
+      .dashboard__sidebar--open{left:0;}
+      .dashboard__sidebar--collapsed{display:none;}
+      .dashboard__main{margin-left:0!important;}
+      .sidebar-logo__text, .sidebar-nav__label, .sidebar-nav__link span, .sidebar-nav__badge, .sidebar-user__name, .sidebar-user__role, .sidebar-user__avatar {display:inline-block!important;}
+      .sidebar-user__avatar {width:72px!important;height:72px!important;}
+    }
+    .dashboard__overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:calc(var(--z-overlay) - 1);}
+    .dashboard__overlay--visible{display:block;}
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="dashboard__sidebar" aria-label="User sidebar">
+      <div class="sidebar-header"><a href="index.html" class="sidebar-logo" aria-label="AquaLux Home"><div class="sidebar-logo__icon"><i class="fas fa-anchor"></i></div><span class="sidebar-logo__text">AquaLux</span></a></div>
+      <div class="sidebar-user"><img src="assets/images/team/member-1.png" alt="Sarah Mitchell" class="sidebar-user__avatar"><div class="sidebar-user__name">Sarah Mitchell</div><div class="sidebar-user__role">Premium Member</div></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav__section">
+          <div class="sidebar-nav__label">Dashboard</div>
+          <a href="user-dashboard.html" class="sidebar-nav__link sidebar-nav__link--active"><i class="fas fa-home"></i> <span>Overview</span></a>
+          <a href="#my-bookings" class="sidebar-nav__link"><i class="fas fa-calendar-check"></i> <span>My Bookings</span> <span class="sidebar-nav__badge">3</span></a>
+          <a href="#wishlist" class="sidebar-nav__link"><i class="fas fa-heart"></i> <span>Wishlist</span></a>
+        </div>
+        <div class="sidebar-nav__section">
+          <div class="sidebar-nav__label">Account</div>
+          <a href="#profile" class="sidebar-nav__link"><i class="fas fa-user-edit"></i> <span>Profile</span></a>
+          <a href="#" class="sidebar-nav__link"><i class="fas fa-credit-card"></i> <span>Payments</span></a>
+          <a href="#" class="sidebar-nav__link"><i class="fas fa-bell"></i> <span>Notifications</span></a>
+        </div>
+        <div class="sidebar-nav__section">
+          <div class="sidebar-nav__label">More</div>
+          <a href="home-1.html" class="sidebar-nav__link"><i class="fas fa-external-link-alt"></i> <span>Browse Fleet</span></a>
+          <a href="contact.html" class="sidebar-nav__link"><i class="fas fa-headset"></i> <span>Support</span></a>
+          <a href="home-1.html" class="sidebar-nav__link"><i class="fas fa-arrow-left"></i> <span>Back to Site</span></a>
+        </div>
+      </nav>
+    </aside>
+
+    <div class="dashboard__overlay"></div>
+
+    <!-- Main Content -->
+    <main class="dashboard__main">
+      <header class="dashboard__header">
+        <div class="dashboard__header-left"><button class="dashboard__sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button><h1 class="dashboard__page-title">Welcome, Sarah!</h1></div>
+        <div class="dashboard__header-right"><button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><div style="display:flex;align-items:center;gap:var(--space-3);margin-left:var(--space-2);"><img src="assets/images/team/member-1.png" alt="Sarah" style="width:36px;height:36px;border-radius:50%;object-fit:cover;"><span style="font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--text-primary);">Sarah M.</span></div></div>
+      </header>
+
+      <div class="dashboard__content">
+        <!-- SECTION 1: Stats -->
+        <div class="dashboard__stats">
+          <div class="dash-stat"><div class="dash-stat__info"><h4>Total Voyages</h4><div class="dash-stat__value">12</div><div class="dash-stat__change">Lifetime trips</div></div><div class="dash-stat__icon" style="background:rgba(49,151,149,0.1);color:var(--color-secondary);"><i class="fas fa-ship"></i></div></div>
+          <div class="dash-stat"><div class="dash-stat__info"><h4>Upcoming Trips</h4><div class="dash-stat__value">2</div><div class="dash-stat__change">Next: Mar 20</div></div><div class="dash-stat__icon" style="background:rgba(237,137,54,0.1);color:var(--color-accent);"><i class="fas fa-calendar"></i></div></div>
+          <div class="dash-stat"><div class="dash-stat__info"><h4>Loyalty Points</h4><div class="dash-stat__value">2,450</div><div class="dash-stat__change">Gold tier</div></div><div class="dash-stat__icon" style="background:rgba(49,151,149,0.1);color:var(--color-secondary);"><i class="fas fa-coins"></i></div></div>
+        </div>
+
+        <!-- SECTION 2: Charts -->
+        <div class="dashboard__charts">
+          <div class="chart-card">
+            <div class="chart-card__header"><div class="chart-card__title">Spending History</div><span class="badge badge--secondary">12 Months</span></div>
+            <div class="chart-card__canvas"><canvas id="spending-chart"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card__header"><div class="chart-card__title">Trips by Type</div></div>
+            <div style="display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap;justify-content:center;">
+              <canvas id="trips-chart"></canvas>
+              <div id="trips-legend" class="chart-legend" style="flex-direction:column;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: My Bookings -->
+        <div class="dash-section" id="my-bookings">
+          <div class="dash-section__header"><h2 class="dash-section__title">My Bookings</h2><a href="services.html" class="btn btn--secondary btn--sm">New Booking <i class="fas fa-plus"></i></a></div>
+          <div class="table-wrapper">
+            <table class="table">
+              <thead><tr><th>Booking ID</th><th>Vessel</th><th>Date</th><th>Duration</th><th>Amount</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>#BK-2641</td><td>The Azure Dream</td><td>Mar 20, 2026</td><td>2 days</td><td>$5,000</td><td><span class="booking-status booking-status--confirmed">Confirmed</span></td></tr>
+                <tr><td>#BK-2555</td><td>Ocean Breeze</td><td>Apr 5, 2026</td><td>1 day</td><td>$1,800</td><td><span class="booking-status booking-status--pending">Pending</span></td></tr>
+                <tr><td>#BK-2480</td><td>Wind Dancer</td><td>Feb 14, 2026</td><td>1 day</td><td>$950</td><td><span class="booking-status booking-status--completed">Completed</span></td></tr>
+                <tr><td>#BK-2350</td><td>Sea Hawk</td><td>Jan 20, 2026</td><td>1 day</td><td>$750</td><td><span class="booking-status booking-status--completed">Completed</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SECTION 4: Wishlist -->
+        <div class="dash-section" id="wishlist">
+          <div class="dash-section__header"><h2 class="dash-section__title">My Wishlist</h2></div>
+          <div class="wishlist-grid">
+            <div class="wishlist-card"><img src="assets/images/boats/luxury-yacht.png" alt="Azure Dream" loading="lazy"><div class="wishlist-card__body"><div class="wishlist-card__name">The Azure Dream</div><div class="wishlist-card__price">$2,500/day</div></div></div>
+            <div class="wishlist-card"><img src="assets/images/boats/catamaran.png" alt="Ocean Breeze" loading="lazy"><div class="wishlist-card__body"><div class="wishlist-card__name">Ocean Breeze</div><div class="wishlist-card__price">$1,800/day</div></div></div>
+            <div class="wishlist-card"><img src="assets/images/boats/sailboat.png" alt="Wind Dancer" loading="lazy"><div class="wishlist-card__body"><div class="wishlist-card__name">Wind Dancer</div><div class="wishlist-card__price">$950/day</div></div></div>
+          </div>
+        </div>
+
+        <!-- SECTION 5: Profile Settings -->
+        <div class="dash-section" id="profile">
+          <div class="dash-section__header"><h2 class="dash-section__title">Profile Settings</h2></div>
+          <form data-validate>
+            <div class="profile-form">
+              <div class="form-group"><label class="form-label" for="p-first">First Name</label><input type="text" class="form-input" id="p-first" value="Sarah" required></div>
+              <div class="form-group"><label class="form-label" for="p-last">Last Name</label><input type="text" class="form-input" id="p-last" value="Mitchell" required></div>
+              <div class="form-group"><label class="form-label" for="p-email">Email</label><input type="email" class="form-input" id="p-email" value="sarah@example.com" required></div>
+              <div class="form-group"><label class="form-label" for="p-phone">Phone</label><input type="tel" class="form-input" id="p-phone" value="+1 (305) 555-0142"></div>
+              <div class="form-group"><label class="form-label" for="p-city">City</label><input type="text" class="form-input" id="p-city" value="Miami"></div>
+              <div class="form-group"><label class="form-label" for="p-country">Country</label><input type="text" class="form-input" id="p-country" value="United States"></div>
+            </div>
+            <div style="margin-top:var(--space-5);"><button type="submit" class="btn btn--secondary btn--lg">Save Changes <i class="fas fa-check"></i></button></div>
+          </form>
+        </div>
+
+        <!-- SECTION 6: Notifications -->
+        <div class="dash-section" id="notifications">
+          <div class="dash-section__header"><h2 class="dash-section__title">Recent Notifications</h2><a href="#" class="btn btn--ghost btn--sm">Mark All Read</a></div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+            <div style="display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3);border-radius:var(--border-radius);background:var(--bg-secondary);"><div style="width:36px;height:36px;border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;background:rgba(49,151,149,0.1);color:var(--color-secondary);flex-shrink:0;"><i class="fas fa-check-circle"></i></div><div><div style="font-weight:var(--fw-semibold);font-size:var(--fs-sm);">Booking Confirmed</div><p style="font-size:var(--fs-sm);color:var(--text-muted);">Your booking #BK-2641 for The Azure Dream has been confirmed.</p><span style="font-size:var(--fs-xs);color:var(--text-light);">2 hours ago</span></div></div>
+            <div style="display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3);border-radius:var(--border-radius);"><div style="width:36px;height:36px;border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;background:rgba(237,137,54,0.1);color:var(--color-accent);flex-shrink:0;"><i class="fas fa-tag"></i></div><div><div style="font-weight:var(--fw-semibold);font-size:var(--fs-sm);">Special Offer</div><p style="font-size:var(--fs-sm);color:var(--text-muted);">20% off all catamaran charters this weekend. Use code: SAIL20</p><span style="font-size:var(--fs-xs);color:var(--text-light);">1 day ago</span></div></div>
+            <div style="display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3);border-radius:var(--border-radius);"><div style="width:36px;height:36px;border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;background:rgba(49,151,149,0.1);color:var(--color-secondary);flex-shrink:0;"><i class="fas fa-star"></i></div><div><div style="font-weight:var(--fw-semibold);font-size:var(--fs-sm);">Points Earned</div><p style="font-size:var(--fs-sm);color:var(--text-muted);">You earned 250 loyalty points from your last trip. Total: 2,450 pts.</p><span style="font-size:var(--fs-xs);color:var(--text-light);">3 days ago</span></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      Dashboard.drawLineChart('spending-chart', {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        values: [750,0,1800,0,950,2500,0,0,3600,0,5000,0]
+      }, { color: '#319795', prefix: '$', height: 220 });
+
+      Dashboard.drawPieChart('trips-chart', {
+        labels: ['Yacht','Catamaran','Sailboat','Speedboat'],
+        values: [5, 3, 2, 2]
+      }, { size: 180, centerLabel: 'Trips' });
+
+      Dashboard.createLegend('trips-legend',
+        ['Yacht (5)','Catamaran (3)','Sailboat (2)','Speedboat (2)'],
+        ['#319795','#ed8936','#1a365d','#4fd1c5']
+      );
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => window.dispatchEvent(new Event('load')), 200);
+    });
+  </script>
+</body>
+</html>

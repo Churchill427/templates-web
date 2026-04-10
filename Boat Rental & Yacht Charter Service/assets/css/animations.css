@@ -1,0 +1,333 @@
+/* ============================================
+   AquaLux — Animations & Transitions
+   Scroll reveals, hover effects, keyframes
+   ============================================ */
+
+/* ---- Respect user preference ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* ============================================
+   1. SCROLL REVEAL ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+.reveal-delay-5 { transition-delay: 500ms; }
+.reveal-delay-6 { transition-delay: 600ms; }
+
+/* Direction variants */
+.reveal--left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.reveal--left.reveal--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal--right {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.reveal--right.reveal--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal--scale {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.reveal--scale.reveal--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal--fade {
+  opacity: 0;
+  transform: none;
+}
+.reveal--fade.reveal--visible {
+  opacity: 1;
+}
+
+/* ============================================
+   2. HERO ANIMATIONS
+   ============================================ */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__label {
+  animation: heroFadeUp 0.8s ease-out 0.2s both;
+}
+
+.hero__title {
+  animation: heroFadeUp 0.8s ease-out 0.4s both;
+}
+
+.hero__subtitle {
+  animation: heroFadeUp 0.8s ease-out 0.6s both;
+}
+
+.hero__actions {
+  animation: heroFadeUp 0.8s ease-out 0.8s both;
+}
+
+/* Typewriter effect */
+.typewriter {
+  display: inline-block;
+  border-right: 3px solid var(--color-secondary);
+  animation: typewriterCursor 0.8s step-end infinite;
+}
+
+@keyframes typewriterCursor {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--color-secondary); }
+}
+
+/* ============================================
+   3. FLOATING ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.float { animation: float 4s ease-in-out infinite; }
+.float--slow { animation: floatSlow 6s ease-in-out infinite; }
+.pulse { animation: pulse 2s ease-in-out infinite; }
+
+/* ============================================
+   4. BUTTON ANIMATIONS
+   ============================================ */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* ============================================
+   5. CARD HOVER ANIMATIONS
+   ============================================ */
+.card,
+.feature-card,
+.testimonial-card,
+.pricing-card,
+.team-card {
+  will-change: transform;
+}
+
+/* Image zoom on hover */
+.card__image,
+.team-card__image {
+  will-change: transform;
+}
+
+/* ============================================
+   6. COUNTER ANIMATION
+   ============================================ */
+.counter {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   7. CHART DRAW ANIMATION
+   ============================================ */
+@keyframes chartFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-container {
+  animation: chartFadeIn 0.8s ease-out;
+}
+
+/* ============================================
+   8. LOADING ANIMATIONS
+   ============================================ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--bg-secondary) 25%, 
+    var(--bg-tertiary) 50%, 
+    var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--border-radius);
+}
+
+/* ============================================
+   9. PAGE TRANSITIONS
+   ============================================ */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+main {
+  animation: pageEnter 0.3s ease-out;
+}
+
+/* ============================================
+   10. COUNTDOWN TIMER ANIMATION
+   ============================================ */
+@keyframes countdownPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.countdown__digit {
+  animation: countdownPulse 1s ease-in-out infinite;
+}
+
+/* ============================================
+   11. PROGRESS BARS
+   ============================================ */
+@keyframes progressFill {
+  from { width: 0; }
+}
+
+.progress-bar__fill {
+  animation: progressFill 1s ease-out;
+}
+
+/* ============================================
+   12. NOTIFICATION DOT
+   ============================================ */
+@keyframes notifPulse {
+  0% { box-shadow: 0 0 0 0 rgba(237, 137, 54, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(237, 137, 54, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(237, 137, 54, 0); }
+}
+
+.notif-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  animation: notifPulse 2s infinite;
+}
+
+/* ============================================
+   13. WAVE DECORATION
+   ============================================ */
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.wave-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 80px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath fill='%23f7fafc' d='M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 L1200,120 L0,120 Z'/%3E%3C/svg%3E") repeat-x;
+  background-size: 50% 100%;
+  animation: waveMove 10s linear infinite;
+}
+
+[data-theme="dark"] .wave-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath fill='%230f1724' d='M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 L1200,120 L0,120 Z'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   14. MOBILE PERFORMANCE
+   ============================================ */
+@media (max-width: 768px) {
+  .float,
+  .float--slow {
+    animation: none;
+  }
+  
+  .wave-bg {
+    animation-duration: 20s;
+  }
+  
+  .card:hover,
+  .feature-card:hover,
+  .testimonial-card:hover,
+  .pricing-card:hover,
+  .team-card:hover {
+    transform: translateY(-4px);
+  }
+}
