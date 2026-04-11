@@ -119,7 +119,8 @@ const Dashboard = (() => {
 
   function drawLineChart(canvas) {
     const ctx = canvas.getContext('2d');
-    const width = canvas.parentElement.clientWidth;
+    const parentWidth = canvas.parentElement.clientWidth;
+    const width = Math.max(parentWidth, 600);
     const height = 220;
     canvas.width = width;
     canvas.height = height;
@@ -198,7 +199,8 @@ const Dashboard = (() => {
 
   function drawBarChart(canvas) {
     const ctx = canvas.getContext('2d');
-    const width = canvas.parentElement.clientWidth - 40;
+    const parentWidth = canvas.parentElement.clientWidth;
+    const width = Math.max(parentWidth - 40, 600);
     const height = 220;
     canvas.width = width;
     canvas.height = height;
@@ -263,7 +265,8 @@ const Dashboard = (() => {
 
   function drawPieChart(canvas) {
     const ctx = canvas.getContext('2d');
-    const width = canvas.parentElement.clientWidth;
+    const parentWidth = canvas.parentElement.clientWidth;
+    const width = Math.max(parentWidth, 300); // Pie chart can be smaller
     const height = 220;
     canvas.width = width;
     canvas.height = height;
@@ -310,7 +313,8 @@ const Dashboard = (() => {
 
   function drawGrowthChart(canvas) {
     const ctx = canvas.getContext('2d');
-    const width = canvas.parentElement.clientWidth || 400;
+    const parentWidth = canvas.parentElement.clientWidth;
+    const width = Math.max(parentWidth || 400, 500);
     const height = 220;
     canvas.width = width;
     canvas.height = height;
@@ -367,7 +371,8 @@ const Dashboard = (() => {
 
   function drawUserSpendingChart(canvas) {
     const ctx = canvas.getContext('2d');
-    const width = canvas.parentElement.clientWidth || 400;
+    const parentWidth = canvas.parentElement.clientWidth;
+    const width = Math.max(parentWidth || 400, 500);
     const height = 220;
     canvas.width = width;
     canvas.height = height;

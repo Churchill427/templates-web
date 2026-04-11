@@ -295,9 +295,10 @@
   padding: var(--space-6);
   box-shadow: var(--shadow-sm);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-4);
   transition: all var(--transition-base);
+  min-width: 0; /* Allow shrinking if needed */
 }
 .stat-card:hover {
   box-shadow: var(--shadow-md);
@@ -684,82 +685,108 @@
   .sidebar-toggle-btn {
     display: none;
   }
+
+  .dashboard-header {
+    padding: var(--space-4);
+  }
 }
 
 /* Mobile (< 640px) */
 @media (max-width: 639px) {
   .dashboard-content {
-    padding: var(--space-3);
+    padding: var(--space-4) var(--space-3);
   }
 
-  /* Stats Grid: Horizontal scroll instead of stack */
+  /* Stats Grid: Better layout for very small screens */
   .stats-grid {
-    display: flex;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: 1fr; /* Stacked look is better for 360px if they are descriptive */
     gap: var(--space-4);
-    padding-bottom: var(--space-4);
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    margin-inline: calc(var(--space-3) * -1); /* Pull out to edges */
-    padding-inline: var(--space-3);
+    margin-bottom: var(--space-6);
   }
-  .stat-card {
-    min-width: 280px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    padding: var(--space-5);
+  
+  /* Alternative: Horizontal scroll if user prefers. 
+     But stacked is more "premium" and readable on 360px.
+     Let's use a 2x2 grid for 360px if possible, otherwise stack.
+  */
+  @media (min-width: 480px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .stat-card-icon {
-    width: 44px !important;
-    height: 44px !important;
+  .stat-card {
+    min-width: 0;
+    padding: var(--space-4);
   }
 
   .stat-card-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 
   .dashboard-header {
     padding: var(--space-3) var(--space-4);
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch !important;
     gap: var(--space-4);
   }
 
-  .dashboard-header-right {
+  .dashboard-header-left {
     width: 100%;
     justify-content: space-between;
   }
 
-  .dashboard-card-header h3 {
-    font-size: 0.9375rem;
+  .dashboard-header-left h1 {
+    font-size: 1.25rem;
   }
 
-  /* Force horizontal scroll for all cards containing charts or tables */
-  .dashboard-card-body {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .dashboard-header-right {
+    width: 100%;
+    justify-content: flex-end; /* Keep them together */
+    background: var(--bg-secondary);
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    gap: var(--space-2);
+  }
+  
+  [data-theme="dark"] .dashboard-header-right {
+    background: var(--bg-tertiary);
+  }
+
+  .dashboard-card-header {
     padding: var(--space-4);
   }
 
-  .data-table {
-    min-width: 750px; /* Ensure wide table layout */
+  .dashboard-card-header h3 {
+    font-size: 0.875rem;
   }
-  
+
   .chart-container {
-    height: 220px;
-    min-width: 650px; /* Ensure chart is wide enough to be readable */
+    height: 200px;
+    padding: var(--space-2);
+    overflow-x: auto;
+    display: flex; /* Helps centered charts like pie chart */
+    justify-content: flex-start;
+  }
+
+  .chart-container canvas {
+    min-width: 600px; /* Force minimum width for readability on mobile */
+    height: 100% !important;
   }
   
-  /* Hide scrollbars for cleaner look but keep functionality */
-  .stats-grid::-webkit-scrollbar,
-  .dashboard-card-body::-webkit-scrollbar {
-    height: 4px;
+  /* Tables need horizontal scroll */
+  .data-table-container {
+    margin-inline: calc(var(--space-1) * -1);
+    padding-inline: var(--space-1);
   }
-  .stats-grid::-webkit-scrollbar-thumb,
-  .dashboard-card-body::-webkit-scrollbar-thumb {
-    background: var(--color-blood-red);
-    border-radius: 4px;
+
+  .data-table {
+    min-width: 700px;
+  }
+  
+  .badge {
+    padding: 2px 6px;
+    font-size: 0.625rem;
   }
 }
 
