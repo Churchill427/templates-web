@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Coaching — Service Details — Elevate Bureau</title>
+  <meta name="description" content="Transform your leadership with personalized executive coaching. One-on-one sessions, leadership assessments, and action plans.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .service-detail-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-10); align-items: center; }
+    .service-detail-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+    .feature-card {
+      display: flex; gap: var(--space-4); padding: var(--space-5);
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl); transition: all var(--transition-base);
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+    .feature-card__icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-primary-light); border-radius: var(--radius-lg);
+      font-size: var(--text-xl); color: var(--color-primary);
+    }
+    .feature-card__title { font-size: var(--text-base); font-weight: var(--weight-semibold); margin-bottom: var(--space-1); }
+    .feature-card__desc { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+    .outcomes-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .outcome-item {
+      display: flex; gap: var(--space-4); padding: var(--space-4);
+      background: var(--color-surface); border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border); transition: all var(--transition-base);
+    }
+    .outcome-item:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); }
+    .outcome-item__icon { width: 36px; height: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--color-accent-light); color: var(--color-accent); border-radius: var(--radius-md); font-size: var(--text-lg); }
+    @media (max-width: 1023px) { .service-detail-grid { grid-template-columns: 1fr; } .service-detail-features { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 639px) { .service-detail-features { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo"><div class="navbar__logo-icon">E</div><div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle">Home <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></div>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle active">Services <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="services.html" class="navbar__dropdown-item">All Services</a><a href="service-details.html" class="navbar__dropdown-item active">Coaching</a></div></div>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="pricing.html" class="navbar__link">Pricing</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle" aria-expanded="false">
+            Dashboard <i class="ri-arrow-down-s-line"></i>
+          </a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>      </div>
+
+      <div class="navbar__utils">
+        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+        <div class="navbar__user-dropdown"><button class="navbar__util-btn" aria-label="User Menu"><i class="ri-user-line"></i></button><div class="navbar__user-menu"><a href="login.html"><i class="ri-login-box-line"></i> Login</a><a href="register.html"><i class="ri-user-add-line"></i> Register</a><a href="user-dashboard.html"><i class="ri-dashboard-line"></i> User Dashboard</a><a href="admin-dashboard.html"><i class="ri-settings-3-line"></i> Admin Dashboard</a></div></div>
+        <button class="navbar__hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__link">Home 1</a><a href="about.html" class="navbar__link">About</a><a href="services.html" class="navbar__link">Services</a><a href="blog.html" class="navbar__link">Blog</a><a href="pricing.html" class="navbar__link">Pricing</a><a href="contact.html" class="navbar__link">Contact</a><a href="user-dashboard.html" class="navbar__link">User Dashboard</a><a href="admin-dashboard.html" class="navbar__link">Admin Dashboard</a><a href="login.html" class="navbar__link">Login</a></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Section 1: Service Hero -->
+    <section class="page-hero page-hero--60" aria-label="Service Details Hero">
+      <div class="page-hero__bg"><img src="assets/images/hero/hero-coaching.png" alt="Executive coaching session" loading="eager"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <div class="breadcrumb hero-animate"><a href="index.html">Home</a><span class="breadcrumb__separator"><i class="ri-arrow-right-s-line"></i></span><a href="services.html">Services</a><span class="breadcrumb__separator"><i class="ri-arrow-right-s-line"></i></span><span class="breadcrumb__current">Executive Coaching</span></div>
+        <h1 class="page-hero__title hero-animate hero-animate--delay-1">Executive Coaching</h1>
+        <p class="page-hero__subtitle hero-animate hero-animate--delay-2">Personalized coaching for C-suite executives and senior leaders</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Service Overview -->
+    <section class="section" aria-label="Service Overview">
+      <div class="container">
+        <div class="service-detail-grid">
+          <div class="reveal">
+            <p class="section-subtitle">Service Overview</p>
+            <h2 class="section-title" style="text-align: start;">Unlock Your Leadership Potential</h2>
+            <p style="color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-bottom: var(--space-4);">Our Executive Coaching program is designed for senior leaders looking to accelerate their effectiveness, navigate complex challenges, and drive organizational transformation. Each engagement is fully customized based on a comprehensive leadership assessment.</p>
+            <p style="color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-bottom: var(--space-6);">Sessions are delivered by ICF-certified coaches with 15+ years of industry experience, combining evidence-based methodologies with practical business acumen.</p>
+            <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+              <a href="contact.html" class="btn btn--primary btn--lg">Book Free Consultation</a>
+              <a href="pricing.html" class="btn btn--secondary btn--lg">View Pricing</a>
+            </div>
+          </div>
+          <div class="reveal reveal--right">
+            <img src="assets/images/hero/office-modern.png" alt="Modern coaching office environment" style="width: 100%; border-radius: var(--radius-2xl); object-fit: cover; aspect-ratio: 4/3; box-shadow: var(--shadow-xl);" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Key Features -->
+    <section class="section section--alt" aria-label="Key Features">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">What's Included</p>
+          <h2 class="section-title">Program Features</h2>
+        </div>
+        <div class="service-detail-features reveal" style="margin-top: var(--space-10);" data-stagger="100">
+          <div class="feature-card reveal"><div class="feature-card__icon"><i class="ri-user-star-line"></i></div><div><h3 class="feature-card__title">1-on-1 Sessions</h3><p class="feature-card__desc">Weekly 60-90 minute private sessions with your dedicated executive coach.</p></div></div>
+          <div class="feature-card reveal"><div class="feature-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-bar-chart-2-line"></i></div><div><h3 class="feature-card__title">360° Assessment</h3><p class="feature-card__desc">Comprehensive leadership assessment with feedback from peers, direct reports, and stakeholders.</p></div></div>
+          <div class="feature-card reveal"><div class="feature-card__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-roadmap-line"></i></div><div><h3 class="feature-card__title">Action Plan</h3><p class="feature-card__desc">Personalized development roadmap with measurable milestones and progress tracking.</p></div></div>
+          <div class="feature-card reveal"><div class="feature-card__icon" style="background: #fef3c7; color: #d97706;"><i class="ri-24-hours-line"></i></div><div><h3 class="feature-card__title">Ongoing Support</h3><p class="feature-card__desc">Between-session support via messaging, resources, and accountability check-ins.</p></div></div>
+          <div class="feature-card reveal"><div class="feature-card__icon" style="background: #ede9fe; color: #7c3aed;"><i class="ri-book-read-line"></i></div><div><h3 class="feature-card__title">Resource Library</h3><p class="feature-card__desc">Access to exclusive frameworks, worksheets, and leadership development tools.</p></div></div>
+          <div class="feature-card reveal"><div class="feature-card__icon" style="background: #fce7f3; color: #db2777;"><i class="ri-flask-line"></i></div><div><h3 class="feature-card__title">Evidence-Based</h3><p class="feature-card__desc">Programs grounded in organizational psychology and proven leadership science.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Expected Outcomes -->
+    <section class="section" aria-label="Expected Outcomes">
+      <div class="container container--narrow">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Results You Can Expect</p>
+          <h2 class="section-title">Measurable Outcomes</h2>
+        </div>
+        <div class="outcomes-list reveal" style="margin-top: var(--space-10);" data-stagger="100">
+          <div class="outcome-item reveal"><div class="outcome-item__icon"><i class="ri-check-double-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">34% Increase in Team Engagement</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Leaders report significantly improved team morale and engagement scores.</p></div></div>
+          <div class="outcome-item reveal"><div class="outcome-item__icon"><i class="ri-check-double-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">28% Reduction in Leadership Turnover</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Coached executives demonstrate stronger retention and career commitment.</p></div></div>
+          <div class="outcome-item reveal"><div class="outcome-item__icon"><i class="ri-check-double-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">7x Return on Investment</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Average ROI measured through improved performance and business outcomes.</p></div></div>
+          <div class="outcome-item reveal"><div class="outcome-item__icon"><i class="ri-check-double-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">Enhanced Strategic Thinking</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Executives develop clearer decision-making frameworks and strategic vision.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Testimonial -->
+    <section class="section section--alt" aria-label="Client Stories">
+      <div class="container container--narrow text-center">
+        <div class="reveal">
+          <p class="section-subtitle">Client Stories</p>
+          <h2 class="section-title">What Clients Say</h2>
+          <div class="testimonial-card" style="margin-top: var(--space-10); text-align: center; padding: var(--space-10);">
+            <div class="testimonial-card__quote-icon">"</div>
+            <p class="testimonial-card__text" style="font-size: var(--text-xl); line-height: var(--leading-relaxed);">The executive coaching program at Elevate completely transformed how I approach strategic challenges. Within 6 months, I led our company through a successful $50M acquisition — something I never would have had the confidence to do before.</p>
+            <div class="testimonial-card__stars" style="justify-content: center;"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+            <div class="testimonial-card__author" style="justify-content: center;"><img src="assets/images/coaches/coach-2.png" alt="Jennifer Park" class="testimonial-card__avatar"><div><div class="testimonial-card__name">Jennifer Park</div><div class="testimonial-card__company">VP Engineering, TechScale Inc.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Contact CTA -->
+    <section class="section" aria-label="Get Started">
+      <div class="container text-center">
+        <div class="reveal" style="background: linear-gradient(135deg, var(--color-primary), #7c3aed); border-radius: var(--radius-2xl); padding: var(--space-16) var(--space-8); color: white;">
+          <h2 class="section-title" style="color: white;">Ready to Start Your Coaching Journey?</h2>
+          <p style="color: rgba(255,255,255,0.85); max-width: 540px; margin-inline: auto; font-size: var(--text-lg); margin-bottom: var(--space-8);">Book a complimentary 30-minute consultation and discover how executive coaching can transform your leadership.</p>
+          <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+            <a href="contact.html" class="btn btn--accent btn--lg">Book Free Consultation</a>
+            <a href="pricing.html" class="btn btn--secondary btn--lg" style="color: white; border-color: rgba(255,255,255,0.4);">View All Plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__brand-logo"><div class="navbar__logo-icon">E</div><span class="footer__brand-name">Elevate</span></div><p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance.</p><div class="footer__socials"><a href="#" class="footer__social-link footer__social-link--linkedin"><i class="ri-linkedin-fill"></i></a><a href="#" class="footer__social-link footer__social-link--twitter"><i class="ri-twitter-x-fill"></i></a><a href="#" class="footer__social-link footer__social-link--facebook"><i class="ri-facebook-fill"></i></a><a href="#" class="footer__social-link footer__social-link--instagram"><i class="ri-instagram-line"></i></a></div></div>
+        <div><h3 class="footer__heading">Quick Links</h3><div class="footer__links"><a href="index.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Home</a><a href="about.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> About</a><a href="services.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Services</a><a href="blog.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Blog</a><a href="contact.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Contact</a></div></div>
+        <div><h3 class="footer__heading">Services</h3><div class="footer__links"><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a></div></div>
+        <div><h3 class="footer__heading">Stay Connected</h3><form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email"><button type="submit" class="footer__newsletter-btn">Subscribe</button></form><div class="footer__contact-info"><div class="footer__contact-item"><i class="ri-mail-line"></i> hello@elevatebureau.com</div><div class="footer__contact-item"><i class="ri-phone-line"></i> +1 (555) 358-2836</div></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 Elevate. All rights reserved.</p><div class="footer__bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+  <button class="scroll-top" aria-label="Scroll to top"><i class="ri-arrow-up-line"></i></button>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

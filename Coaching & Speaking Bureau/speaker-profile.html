@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priya Sharma — Speaker Profile — Elevate Bureau</title>
+  <meta name="description" content="Book Priya Sharma for your next event. Innovation & digital transformation keynote speaker with Fortune 500 experience.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .profile-header { display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--space-10); align-items: center; }
+    .profile-image-wrap { position: relative; }
+    .profile-image {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      border-radius: var(--radius-2xl); box-shadow: var(--shadow-2xl);
+    }
+    .profile-badge {
+      position: absolute; bottom: var(--space-4); left: var(--space-4); right: var(--space-4);
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(20px);
+      border-radius: var(--radius-xl); padding: var(--space-4); display: flex; align-items: center; gap: var(--space-3);
+    }
+    [data-theme="dark"] .profile-badge { background: rgba(30, 41, 59, 0.9); }
+    .profile-badge__icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-lg); font-size: var(--text-lg); }
+    .profile-badge__text { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+    .profile-badge__sub { font-size: var(--text-xs); color: var(--color-text-muted); }
+    .profile-info__name { font-size: var(--text-5xl); font-weight: var(--weight-extrabold); margin-bottom: var(--space-2); }
+    .profile-info__role { font-size: var(--text-xl); color: var(--color-primary); font-weight: var(--weight-semibold); margin-bottom: var(--space-4); }
+    .profile-info__bio { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-bottom: var(--space-6); }
+    .profile-info__stats { display: flex; gap: var(--space-6); margin-bottom: var(--space-6); flex-wrap: wrap; }
+    .profile-stat { text-align: center; }
+    .profile-stat__number { font-size: var(--text-3xl); font-weight: var(--weight-bold); color: var(--color-primary); }
+    .profile-stat__label { font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .profile-socials { display: flex; gap: var(--space-3); }
+    .profile-social { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text-secondary); transition: all var(--transition-base); }
+    .profile-social:hover { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+    .topics-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .topic-item {
+      display: flex; gap: var(--space-4); padding: var(--space-4);
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); transition: all var(--transition-base);
+    }
+    .topic-item:hover { border-color: var(--color-primary); box-shadow: var(--shadow-md); }
+    .topic-item__icon { width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-md); font-size: var(--text-xl); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-lg); cursor: pointer; transition: all var(--transition-base); }
+    .gallery-grid img:hover { transform: scale(1.03); box-shadow: var(--shadow-lg); }
+    @media (max-width: 1023px) { .profile-header { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 639px) { .gallery-grid { grid-template-columns: 1fr; } .profile-info__name { font-size: var(--text-4xl); } }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo"><div class="navbar__logo-icon">E</div><div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle">Home <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></div>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle">Services <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="services.html" class="navbar__dropdown-item">All Services</a></div></div>
+        <a href="blog.html" class="navbar__link">Blog</a><a href="pricing.html" class="navbar__link">Pricing</a><a href="contact.html" class="navbar__link">Contact</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle" aria-expanded="false">
+            Dashboard <i class="ri-arrow-down-s-line"></i>
+          </a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>      </div>
+
+      <div class="navbar__utils">
+        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+        <div class="navbar__user-dropdown"><button class="navbar__util-btn" aria-label="User Menu"><i class="ri-user-line"></i></button><div class="navbar__user-menu"><a href="login.html"><i class="ri-login-box-line"></i> Login</a><a href="register.html"><i class="ri-user-add-line"></i> Register</a></div></div>
+        <button class="navbar__hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__link">Home 1</a><a href="about.html" class="navbar__link">About</a><a href="services.html" class="navbar__link">Services</a><a href="blog.html" class="navbar__link">Blog</a><a href="pricing.html" class="navbar__link">Pricing</a><a href="contact.html" class="navbar__link">Contact</a><a href="user-dashboard.html" class="navbar__link">User Dashboard</a><a href="admin-dashboard.html" class="navbar__link">Admin Dashboard</a></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Section 1: Profile Header -->
+    <section class="section" style="padding-top: calc(var(--nav-height) + var(--space-10));" aria-label="Speaker Profile">
+      <div class="container">
+        <div class="breadcrumb reveal" style="margin-bottom: var(--space-8);"><a href="index.html">Home</a><span class="breadcrumb__separator"><i class="ri-arrow-right-s-line"></i></span><a href="services.html">Speakers</a><span class="breadcrumb__separator"><i class="ri-arrow-right-s-line"></i></span><span class="breadcrumb__current">Priya Sharma</span></div>
+        <div class="profile-header">
+          <div class="profile-image-wrap reveal">
+            <img src="assets/images/speakers/speaker-1.png" alt="Priya Sharma - Innovation & Digital Transformation Speaker" class="profile-image" loading="eager">
+            <div class="profile-badge">
+              <div class="profile-badge__icon"><i class="ri-verified-badge-fill"></i></div>
+              <div><div class="profile-badge__text">Verified Speaker</div><div class="profile-badge__sub">ICF & NSA Certified</div></div>
+            </div>
+          </div>
+          <div class="reveal reveal--right">
+            <span class="card__badge" style="margin-bottom: var(--space-4); display: inline-block;">Keynote Speaker</span>
+            <h1 class="profile-info__name">Priya Sharma</h1>
+            <p class="profile-info__role">Innovation & Digital Transformation</p>
+            <p class="profile-info__bio">Priya Sharma is a globally recognized keynote speaker specializing in innovation strategy, digital transformation, and future-ready leadership. With 15+ years of experience leading innovation at Fortune 500 companies, she brings practical insights that help organizations thrive in an era of constant disruption.</p>
+            <div class="profile-info__stats">
+              <div class="profile-stat"><div class="profile-stat__number counter" data-count="500" data-suffix="+">0</div><div class="profile-stat__label">Events</div></div>
+              <div class="profile-stat"><div class="profile-stat__number counter" data-count="200" data-suffix="K+">0</div><div class="profile-stat__label">Attendees</div></div>
+              <div class="profile-stat"><div class="profile-stat__number">4.9</div><div class="profile-stat__label">Rating</div></div>
+              <div class="profile-stat"><div class="profile-stat__number counter" data-count="35" data-suffix="+">0</div><div class="profile-stat__label">Countries</div></div>
+            </div>
+            <div style="display: flex; gap: var(--space-4); margin-bottom: var(--space-4); flex-wrap: wrap;">
+              <a href="contact.html" class="btn btn--primary btn--lg"><i class="ri-calendar-check-line"></i> Check Availability</a>
+              <a href="contact.html" class="btn btn--secondary btn--lg"><i class="ri-mail-line"></i> Request Quote</a>
+            </div>
+            <div class="profile-socials">
+              <a href="#" class="profile-social" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+              <a href="#" class="profile-social" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
+              <a href="#" class="profile-social" aria-label="Website"><i class="ri-global-line"></i></a>
+              <a href="#" class="profile-social" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Speaking Topics -->
+    <section class="section section--alt" aria-label="Speaking Topics">
+      <div class="container container--narrow">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Expertise</p>
+          <h2 class="section-title">Speaking Topics</h2>
+        </div>
+        <div class="topics-list reveal" style="margin-top: var(--space-8);" data-stagger="100">
+          <div class="topic-item reveal"><div class="topic-item__icon"><i class="ri-lightbulb-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">The Innovation Imperative</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">How organizations can build sustainable innovation cultures and stay ahead of disruption.</p></div></div>
+          <div class="topic-item reveal"><div class="topic-item__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-robot-2-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">AI & the Future of Work</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Navigating the intersection of artificial intelligence and human leadership.</p></div></div>
+          <div class="topic-item reveal"><div class="topic-item__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-compass-3-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">Digital Transformation Leadership</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Leading large-scale digital transformations from strategy to successful execution.</p></div></div>
+          <div class="topic-item reveal"><div class="topic-item__icon" style="background: #fef3c7; color: #d97706;"><i class="ri-flashlight-line"></i></div><div><h3 style="font-weight: var(--weight-semibold);">Disruptive Thinking</h3><p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Frameworks for thinking beyond boundaries and challenging the status quo.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Speaking Gallery -->
+    <section class="section" aria-label="Gallery">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">In Action</p>
+          <h2 class="section-title">Speaking Gallery</h2>
+        </div>
+        <div class="gallery-grid reveal" style="margin-top: var(--space-8);" data-lightbox-gallery>
+          <img src="assets/images/speakers/speaker-1.png" alt="Priya Sharma keynote at TechSummit 2025" loading="lazy">
+          <img src="assets/images/events/conference-audience.png" alt="Priya addressing audience at Innovation Forum" loading="lazy">
+          <img src="assets/images/speakers/speaker-2.png" alt="Panel discussion at World Leaders Conference" loading="lazy">
+          <img src="assets/images/events/workshop-session.png" alt="Workshop facilitation at Google HQ" loading="lazy">
+          <img src="assets/images/speakers/speaker-3.png" alt="Keynote at Digital Transformation Summit" loading="lazy">
+          <img src="assets/images/hero/hero-speaking.png" alt="Priya on the main stage at TEDx" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Testimonials -->
+    <section class="section section--alt" aria-label="Client Reviews">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Reviews</p>
+          <h2 class="section-title">What Event Planners Say</h2>
+        </div>
+        <div class="grid grid--2 reveal" style="margin-top: var(--space-8);" data-stagger="150">
+          <div class="testimonial-card reveal">
+            <div class="testimonial-card__quote-icon">"</div>
+            <p class="testimonial-card__text">Priya was the highest-rated speaker at our annual conference. Her energy was incredible and the audience was completely engaged from start to finish.</p>
+            <div class="testimonial-card__stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+            <div class="testimonial-card__author"><img src="assets/images/coaches/coach-2.png" alt="Rebecca Chen" class="testimonial-card__avatar"><div><div class="testimonial-card__name">Rebecca Chen</div><div class="testimonial-card__company">Events Director, InnovateTech</div></div></div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="testimonial-card__quote-icon">"</div>
+            <p class="testimonial-card__text">We've had Priya speak three times now and each time she delivers a completely fresh, customized presentation. Our leadership team always walks away inspired.</p>
+            <div class="testimonial-card__stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+            <div class="testimonial-card__author"><img src="assets/images/coaches/coach-1.png" alt="Derek Johnson" class="testimonial-card__avatar"><div><div class="testimonial-card__name">Derek Johnson</div><div class="testimonial-card__company">VP HR, GlobalFirst Holdings</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Video / Demo Reel -->
+    <section class="section" aria-label="Video Preview">
+      <div class="container container--narrow text-center">
+        <div class="reveal">
+          <p class="section-subtitle">See Priya in Action</p>
+          <h2 class="section-title">Demo Reel</h2>
+          <div style="position: relative; padding-top: 56.25%; background: var(--color-surface-alt); border-radius: var(--radius-2xl); overflow: hidden; margin-top: var(--space-8); cursor: pointer;">
+            <img src="assets/images/hero/hero-speaking.png" alt="Demo reel thumbnail" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+            <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
+              <div style="width: 80px; height: 80px; background: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; box-shadow: 0 8px 30px rgba(79, 70, 229, 0.4); transition: transform var(--transition-base);">
+                <i class="ri-play-fill" style="margin-left: 4px;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Booking CTA -->
+    <section class="section" aria-label="Book Priya">
+      <div class="container text-center">
+        <div class="reveal" style="background: linear-gradient(135deg, var(--color-primary), #7c3aed); border-radius: var(--radius-2xl); padding: var(--space-16) var(--space-8); color: white;">
+          <h2 class="section-title" style="color: white;">Book Priya for Your Next Event</h2>
+          <p style="color: rgba(255,255,255,0.85); max-width: 540px; margin-inline: auto; font-size: var(--text-lg); margin-bottom: var(--space-8);">Fill out a booking form and our team will respond within 4 hours with availability and pricing options.</p>
+          <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+            <a href="contact.html" class="btn btn--accent btn--lg"><i class="ri-calendar-check-line"></i> Check Availability</a>
+            <a href="contact.html" class="btn btn--secondary btn--lg" style="color: white; border-color: rgba(255,255,255,0.4);"><i class="ri-download-2-line"></i> Download Media Kit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__brand-logo"><div class="navbar__logo-icon">E</div><span class="footer__brand-name">Elevate</span></div><p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance.</p><div class="footer__socials"><a href="#" class="footer__social-link footer__social-link--linkedin"><i class="ri-linkedin-fill"></i></a><a href="#" class="footer__social-link footer__social-link--twitter"><i class="ri-twitter-x-fill"></i></a><a href="#" class="footer__social-link footer__social-link--facebook"><i class="ri-facebook-fill"></i></a><a href="#" class="footer__social-link footer__social-link--instagram"><i class="ri-instagram-line"></i></a></div></div>
+        <div><h3 class="footer__heading">Quick Links</h3><div class="footer__links"><a href="index.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Home</a><a href="about.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> About</a><a href="services.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Services</a><a href="blog.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Blog</a><a href="contact.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Contact</a></div></div>
+        <div><h3 class="footer__heading">Services</h3><div class="footer__links"><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a></div></div>
+        <div><h3 class="footer__heading">Stay Connected</h3><form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email"><button type="submit" class="footer__newsletter-btn">Subscribe</button></form><div class="footer__contact-info"><div class="footer__contact-item"><i class="ri-mail-line"></i> hello@elevatebureau.com</div></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 Elevate. All rights reserved.</p><div class="footer__bottom-links"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+    </div>
+  </footer>
+  <button class="scroll-top" aria-label="Scroll to top"><i class="ri-arrow-up-line"></i></button>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

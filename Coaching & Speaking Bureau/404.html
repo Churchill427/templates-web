@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found — Elevate Bureau</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Return to the homepage or explore our services.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    body { overflow: hidden; }
+    .error-page {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: var(--space-8); position: relative;
+    }
+    .error-page__utils {
+      position: fixed; top: var(--space-4); right: var(--space-4);
+      display: flex; gap: var(--space-2); z-index: 100;
+    }
+    .error-page__code {
+      font-size: clamp(6rem, 20vw, 12rem); font-weight: var(--weight-extrabold);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1; margin-bottom: var(--space-4);
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 20px rgba(79, 70, 229, 0.3)); }
+      50% { filter: drop-shadow(0 0 40px rgba(79, 70, 229, 0.6)); }
+    }
+    .error-page__title { font-size: var(--text-3xl); font-weight: var(--weight-bold); margin-bottom: var(--space-3); }
+    .error-page__desc { font-size: var(--text-lg); color: var(--color-text-secondary); max-width: 480px; margin-bottom: var(--space-8); line-height: var(--leading-relaxed); }
+    .error-page__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center; }
+    .error-page__bg-shapes {
+      position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: -1;
+    }
+    .error-page__bg-shape {
+      position: absolute; border-radius: 50%; opacity: 0.05;
+      background: var(--color-primary);
+    }
+    .error-page__bg-shape:nth-child(1) { width: 400px; height: 400px; top: -10%; right: -10%; }
+    .error-page__bg-shape:nth-child(2) { width: 300px; height: 300px; bottom: -10%; left: -5%; background: var(--color-secondary); }
+    .error-page__bg-shape:nth-child(3) { width: 200px; height: 200px; top: 30%; left: 10%; background: var(--color-accent); }
+    @media (max-width: 639px) { body { overflow: auto; overflow-x: hidden; } }
+  </style>
+</head>
+<body>
+  <div class="error-page__utils">
+    <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+    <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+  </div>
+
+  <div class="error-page__bg-shapes">
+    <div class="error-page__bg-shape"></div>
+    <div class="error-page__bg-shape"></div>
+    <div class="error-page__bg-shape"></div>
+  </div>
+
+  <main class="error-page">
+    <a href="index.html" class="navbar__logo hero-animate" style="margin-bottom: var(--space-8);" aria-label="Elevate - Home">
+      <div class="navbar__logo-icon">E</div>
+      <div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div>
+    </a>
+    <div class="error-page__code hero-animate hero-animate--delay-1">404</div>
+    <h1 class="error-page__title hero-animate hero-animate--delay-1">Page Not Found</h1>
+    <p class="error-page__desc hero-animate hero-animate--delay-2">The page you're looking for seems to have taken a different path. Let's get you back on track.</p>
+    <div class="error-page__actions hero-animate hero-animate--delay-3">
+      <a href="index.html" class="btn btn--primary btn--lg"><i class="ri-home-line"></i> Go Home</a>
+      <a href="services.html" class="btn btn--secondary btn--lg"><i class="ri-compass-3-line"></i> Explore Services</a>
+      <a href="contact.html" class="btn btn--secondary btn--lg"><i class="ri-customer-service-2-line"></i> Contact Support</a>
+    </div>
+  </main>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+</body>
+</html>

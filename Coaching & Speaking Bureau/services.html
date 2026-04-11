@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services — Elevate Coaching & Speaking Bureau</title>
+  <meta name="description" content="Explore Elevate's full suite of executive coaching, keynote speaking, corporate workshops, and team building programs.">
+  <meta property="og:title" content="Services — Elevate Bureau">
+  <meta property="og:description" content="Executive coaching, keynote speaking, workshops and more.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .services-hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+    .service-overview-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      text-align: center;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-overview-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      transform: scaleX(0);
+      transition: transform var(--transition-base);
+    }
+    .service-overview-card:hover::before { transform: scaleX(1); }
+    .service-overview-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: transparent;
+    }
+    .service-overview-card__icon {
+      width: 72px; height: 72px;
+      margin-inline: auto;
+      margin-bottom: var(--space-5);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-primary-light);
+      border-radius: var(--radius-xl);
+      font-size: 2rem;
+      color: var(--color-primary);
+      transition: all var(--transition-base);
+    }
+    .service-overview-card:hover .service-overview-card__icon {
+      background: var(--color-primary); color: white; transform: scale(1.1);
+    }
+    .service-overview-card__title {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-3);
+    }
+    .service-overview-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-3);
+    }
+    .service-overview-card__price {
+      font-size: var(--text-sm);
+      color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-4);
+    }
+    .process-horizontal {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      position: relative;
+    }
+    .process-horizontal::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 15%; right: 15%;
+      height: 2px;
+      background: var(--color-border);
+      z-index: 0;
+    }
+    .process-card {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .process-card__number {
+      width: 64px; height: 64px;
+      margin-inline: auto; margin-bottom: var(--space-5);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-primary);
+      color: white;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-bold);
+      border: 4px solid var(--color-bg);
+    }
+    .process-card__title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-2);
+    }
+    .process-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+    .booking-form-section {
+      background: linear-gradient(135deg, var(--color-primary), #7c3aed);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    .booking-form-section .form-input {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+    .booking-form-section .form-input::placeholder { color: rgba(255,255,255,0.5); }
+    .booking-form-section .form-input:focus { border-color: rgba(255,255,255,0.5); }
+    .booking-form-section .form-label { color: rgba(255,255,255,0.9); }
+    .booking-form-section .form-select {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      color: white;
+    }
+    @media (max-width: 1023px) {
+      .services-hero-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-horizontal { grid-template-columns: 1fr; }
+      .process-horizontal::before { display: none; }
+      .booking-form-section { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 639px) {
+      .services-hero-grid { grid-template-columns: 1fr; }
+      .booking-form-section { padding: var(--space-8) var(--space-6); }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Elevate - Home">
+        <div class="navbar__logo-icon">E</div>
+        <div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div>
+      </a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle">Home <i class="ri-arrow-down-s-line"></i></a>
+          <div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div>
+        </div>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle active">Services <i class="ri-arrow-down-s-line"></i></a>
+          <div class="navbar__dropdown-menu"><a href="services.html" class="navbar__dropdown-item active">All Services</a><a href="service-details.html" class="navbar__dropdown-item">Coaching</a><a href="service-details.html" class="navbar__dropdown-item">Speaking</a><a href="service-details.html" class="navbar__dropdown-item">Workshops</a></div>
+        </div>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="pricing.html" class="navbar__link">Pricing</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle" aria-expanded="false">
+            Dashboard <i class="ri-arrow-down-s-line"></i>
+          </a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>      </div>
+
+      <div class="navbar__utils">
+        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+        <div class="navbar__user-dropdown">
+          <button class="navbar__util-btn" aria-label="User Menu"><i class="ri-user-line"></i></button>
+          <div class="navbar__user-menu"><a href="login.html"><i class="ri-login-box-line"></i> Login</a><a href="register.html"><i class="ri-user-add-line"></i> Register</a><a href="user-dashboard.html"><i class="ri-dashboard-line"></i> User Dashboard</a><a href="admin-dashboard.html"><i class="ri-settings-3-line"></i> Admin Dashboard</a></div>
+        </div>
+        <button class="navbar__hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__link">Home 1</a><a href="home-2.html" class="navbar__link">Home 2</a><a href="about.html" class="navbar__link">About</a><a href="services.html" class="navbar__link active">Services</a><a href="blog.html" class="navbar__link">Blog</a><a href="pricing.html" class="navbar__link">Pricing</a><a href="contact.html" class="navbar__link">Contact</a><a href="user-dashboard.html" class="navbar__link">User Dashboard</a><a href="admin-dashboard.html" class="navbar__link">Admin Dashboard</a><a href="login.html" class="navbar__link">Login</a></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Section 1: Page Header -->
+    <section class="page-hero page-hero--60" aria-label="Services Hero">
+      <div class="page-hero__bg"><img src="assets/images/events/workshop-session.png" alt="Professional coaching workshop in progress" loading="eager"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <div class="breadcrumb hero-animate"><a href="index.html">Home</a><span class="breadcrumb__separator"><i class="ri-arrow-right-s-line"></i></span><span class="breadcrumb__current">Services</span></div>
+        <h1 class="page-hero__title hero-animate hero-animate--delay-1">Our Services</h1>
+        <p class="page-hero__subtitle hero-animate hero-animate--delay-2">Comprehensive coaching and speaking solutions tailored to your goals</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Services Overview Grid (2x2) -->
+    <section class="section" aria-label="Services Overview">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">What We Offer</p>
+          <h2 class="section-title">Transform Your Organization</h2>
+          <p class="section-desc">Four core service areas designed to develop leaders, inspire teams, and drive business performance.</p>
+        </div>
+        <div class="services-hero-grid reveal" style="margin-top: var(--space-12);" data-stagger="150">
+          <div class="service-overview-card reveal">
+            <div class="service-overview-card__icon"><i class="ri-user-star-line"></i></div>
+            <h3 class="service-overview-card__title">Executive Coaching</h3>
+            <p class="service-overview-card__desc">Personalized one-on-one coaching for C-suite executives and senior leaders. Develop strategic thinking, executive presence, and transformational leadership skills.</p>
+            <p class="service-overview-card__price">From $500/session</p>
+            <a href="service-details.html" class="btn btn--primary btn--sm">View Details</a>
+          </div>
+          <div class="service-overview-card reveal">
+            <div class="service-overview-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-mic-line"></i></div>
+            <h3 class="service-overview-card__title">Keynote Speaking</h3>
+            <p class="service-overview-card__desc">Electrifying keynote presentations that captivate audiences and drive action. Topics range from leadership and innovation to diversity and change management.</p>
+            <p class="service-overview-card__price">From $5,000/event</p>
+            <a href="service-details.html" class="btn btn--primary btn--sm">View Details</a>
+          </div>
+          <div class="service-overview-card reveal">
+            <div class="service-overview-card__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-presentation-line"></i></div>
+            <h3 class="service-overview-card__title">Corporate Workshops</h3>
+            <p class="service-overview-card__desc">Interactive half-day and full-day workshops for teams of 10-100. Build skills in communication, collaboration, and problem-solving.</p>
+            <p class="service-overview-card__price">From $3,000/workshop</p>
+            <a href="service-details.html" class="btn btn--primary btn--sm">View Details</a>
+          </div>
+          <div class="service-overview-card reveal">
+            <div class="service-overview-card__icon" style="background: #fef3c7; color: #d97706;"><i class="ri-team-line"></i></div>
+            <h3 class="service-overview-card__title">Team Building Programs</h3>
+            <p class="service-overview-card__desc">Multi-week team development programs that transform group dynamics, improve collaboration, and create high-performing teams.</p>
+            <p class="service-overview-card__price">From $8,000/program</p>
+            <a href="service-details.html" class="btn btn--primary btn--sm">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: How It Works -->
+    <section class="section section--alt" aria-label="How It Works">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Our Process</p>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-desc">A simple 3-step process from discovery to transformation.</p>
+        </div>
+        <div class="process-horizontal reveal" style="margin-top: var(--space-12);" data-stagger="200">
+          <div class="process-card reveal">
+            <div class="process-card__number">1</div>
+            <h3 class="process-card__title">Discovery Call</h3>
+            <p class="process-card__desc">We start with a free 30-minute consultation to understand your goals, challenges, and organizational context.</p>
+          </div>
+          <div class="process-card reveal">
+            <div class="process-card__number" style="background: var(--color-secondary);">2</div>
+            <h3 class="process-card__title">Customized Program</h3>
+            <p class="process-card__desc">Our team designs a tailored program with measurable milestones, matched with the ideal coach or speaker.</p>
+          </div>
+          <div class="process-card reveal">
+            <div class="process-card__number" style="background: var(--color-accent);">3</div>
+            <h3 class="process-card__title">Transformation</h3>
+            <p class="process-card__desc">Execute the program with ongoing support, progress tracking, and adjustments to ensure lasting impact.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Pricing Preview -->
+    <section class="section" aria-label="Pricing Preview">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Investment</p>
+          <h2 class="section-title">Pricing Plans</h2>
+          <p class="section-desc">Flexible plans for individuals, teams, and enterprises.</p>
+        </div>
+        <div class="grid grid--3 reveal" style="margin-top: var(--space-12);" data-stagger="150">
+          <div class="pricing-card reveal">
+            <h3 class="pricing-card__name">Individual</h3>
+            <div class="pricing-card__price">$299</div>
+            <div class="pricing-card__period">per session</div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> 1-on-1 coaching sessions</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Personalized action plan</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Email support</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="ri-close-line"></i> Team workshops</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="ri-close-line"></i> On-site delivery</div>
+            </div>
+            <a href="pricing.html" class="btn btn--secondary btn--full">Learn More</a>
+          </div>
+          <div class="pricing-card popular reveal">
+            <span class="pricing-card__badge">Most Popular</span>
+            <h3 class="pricing-card__name">Team</h3>
+            <div class="pricing-card__price">$1,499</div>
+            <div class="pricing-card__period">per month</div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Up to 10 team members</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Weekly group sessions</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Priority support</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Team workshops</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="ri-close-line"></i> On-site delivery</div>
+            </div>
+            <a href="pricing.html" class="btn btn--primary btn--full">Get Started</a>
+          </div>
+          <div class="pricing-card reveal">
+            <h3 class="pricing-card__name">Enterprise</h3>
+            <div class="pricing-card__price">Custom</div>
+            <div class="pricing-card__period">tailored solution</div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Unlimited team members</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Dedicated coach</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> 24/7 support</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Team workshops</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> On-site delivery</div>
+            </div>
+            <a href="contact.html" class="btn btn--secondary btn--full">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: FAQ -->
+    <section class="section section--alt" aria-label="FAQ">
+      <div class="container container--narrow">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Common Questions</p>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="accordion reveal" style="margin-top: var(--space-10);">
+          <div class="accordion__item active">
+            <button class="accordion__trigger" aria-expanded="true">How long is a typical coaching engagement? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">Most coaching engagements run 3-6 months, with sessions scheduled weekly or bi-weekly. However, we customize the duration based on your specific goals and the complexity of the transformation you're seeking.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">How do you match coaches with clients? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">We use a proprietary matching algorithm that considers industry experience, coaching style, personality fit, and specific goals. We also offer a complimentary chemistry session to ensure the right match before any commitment.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">What makes your speakers different? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">All our speakers are vetted through a rigorous selection process. They bring real-world experience, not just theory. Each presentation is customized to your audience, and we provide pre-event preparation and post-event follow-up to maximize impact.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">Do you offer virtual coaching and speaking? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">Absolutely! We offer fully virtual, hybrid, and in-person formats across all our services. Our virtual platform includes interactive tools, breakout rooms, and digital resources to ensure the same level of engagement as in-person events.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">What is your cancellation policy? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">We offer full refunds for cancellations made 30+ days in advance. For cancellations within 14-30 days, we offer a 50% refund or full credit towards a future booking. Within 14 days, bookings are non-refundable but can be rescheduled.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Book Discovery Call CTA -->
+    <section class="section" aria-label="Book a Discovery Call">
+      <div class="container">
+        <div class="booking-form-section reveal">
+          <div>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Get Started</p>
+            <h2 class="section-title" style="color: white;">Book a Discovery Call</h2>
+            <p style="color: rgba(255,255,255,0.85); font-size: var(--text-lg); line-height: var(--leading-relaxed);">
+              Schedule a complimentary 30-minute consultation to discuss your goals and explore how Elevate can help transform your organization.
+            </p>
+            <div style="display: flex; gap: var(--space-4); margin-top: var(--space-6); flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: var(--space-2);"><i class="ri-check-double-line" style="color: var(--color-accent);"></i><span style="font-size: var(--text-sm);">No obligation</span></div>
+              <div style="display: flex; align-items: center; gap: var(--space-2);"><i class="ri-check-double-line" style="color: var(--color-accent);"></i><span style="font-size: var(--text-sm);">30-minute session</span></div>
+              <div style="display: flex; align-items: center; gap: var(--space-2);"><i class="ri-check-double-line" style="color: var(--color-accent);"></i><span style="font-size: var(--text-sm);">Custom recommendations</span></div>
+            </div>
+          </div>
+          <form data-validate>
+            <div class="form-group"><label class="form-label" for="bookName">Full Name</label><input type="text" class="form-input" id="bookName" placeholder="Your name" required></div>
+            <div class="form-group"><label class="form-label" for="bookEmail">Email</label><input type="email" class="form-input" id="bookEmail" placeholder="Your email" required></div>
+            <div class="form-group"><label class="form-label" for="bookCompany">Company</label><input type="text" class="form-input" id="bookCompany" placeholder="Company name"></div>
+            <div class="form-group">
+              <label class="form-label" for="bookInterest">Interest Area</label>
+              <select class="form-select" id="bookInterest">
+                <option value="">Select an area</option>
+                <option>Executive Coaching</option>
+                <option>Keynote Speaking</option>
+                <option>Corporate Workshops</option>
+                <option>Team Building</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn--accent btn--full btn--lg">Schedule Call</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__brand-logo"><div class="navbar__logo-icon">E</div><span class="footer__brand-name">Elevate</span></div><p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance through world-class coaching and speaking services.</p><div class="footer__socials"><a href="#" class="footer__social-link footer__social-link--google" aria-label="Google"><i class="ri-google-fill"></i></a><a href="#" class="footer__social-link footer__social-link--facebook" aria-label="Facebook"><i class="ri-facebook-fill"></i></a><a href="#" class="footer__social-link footer__social-link--linkedin" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a><a href="#" class="footer__social-link footer__social-link--twitter" aria-label="Twitter/X"><i class="ri-twitter-x-fill"></i></a><a href="#" class="footer__social-link footer__social-link--instagram" aria-label="Instagram"><i class="ri-instagram-line"></i></a></div></div>
+        <div><h3 class="footer__heading">Quick Links</h3><div class="footer__links"><a href="index.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Home</a><a href="about.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> About Us</a><a href="services.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Services</a><a href="blog.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Blog</a><a href="contact.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Contact</a></div></div>
+        <div><h3 class="footer__heading">Services</h3><div class="footer__links"><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate Training</a></div></div>
+        <div><h3 class="footer__heading">Stay Connected</h3><p class="footer__newsletter-text">Subscribe to get the latest insights on leadership and coaching.</p><form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email" aria-label="Email"><button type="submit" class="footer__newsletter-btn">Subscribe</button></form><div class="footer__contact-info"><div class="footer__contact-item"><i class="ri-map-pin-line"></i> 100 Innovation Dr, Suite 800, NY</div><div class="footer__contact-item"><i class="ri-phone-line"></i> +1 (555) 358-2836</div><div class="footer__contact-item"><i class="ri-mail-line"></i> hello@elevatebureau.com</div></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 Elevate Coaching & Speaking Bureau. All rights reserved.</p><div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Sitemap</a></div></div>
+    </div>
+  </footer>
+  <button class="scroll-top" aria-label="Scroll to top"><i class="ri-arrow-up-line"></i></button>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

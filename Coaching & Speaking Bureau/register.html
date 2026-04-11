@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Elevate Coaching & Speaking Bureau</title>
+  <meta name="description" content="Create your Elevate account to start your leadership transformation journey with world-class coaches and speakers.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    body { overflow: hidden; }
+    .auth-social-buttons {
+      display: flex; gap: var(--space-3); margin-bottom: var(--space-6);
+    }
+    .auth-social-buttons .btn--social { flex: 1; font-size: var(--text-sm); }
+    .password-wrap { position: relative; }
+    .password-toggle {
+      position: absolute; right: var(--space-3); top: 50%; transform: translateY(-50%);
+      color: var(--color-text-muted); cursor: pointer; padding: var(--space-1); font-size: var(--text-lg);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .auth-visual-content h2 { font-size: var(--text-4xl); font-weight: var(--weight-bold); margin-bottom: var(--space-4); }
+    .auth-visual-content p { font-size: var(--text-lg); opacity: 0.85; max-width: 400px; line-height: var(--leading-relaxed); }
+    .auth-card__title { font-size: var(--text-2xl); }
+    .form-group { margin-bottom: var(--space-4); }
+    @media (max-width: 1023px) { body { overflow: auto; overflow-x: hidden; } }
+    @media (max-width: 639px) { .form-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="auth-page__utils">
+    <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+    <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+  </div>
+
+  <div class="auth-page">
+    <div class="auth-page__visual">
+      <img src="assets/images/hero/hero-speaking.png" alt="Keynote speaking event" loading="eager">
+      <div class="auth-page__visual-overlay">
+        <div class="auth-visual-content">
+          <h2>Start Your Journey</h2>
+          <p>Join thousands of leaders who have transformed their careers with Elevate's coaching and speaking programs.</p>
+        </div>
+      </div>
+    </div>
+    <div class="auth-page__form-side">
+      <div class="auth-card">
+        <div class="auth-card__logo">
+          <a href="index.html" style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="navbar__logo-icon">E</div>
+            <div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div>
+          </a>
+        </div>
+        <h1 class="auth-card__title">Create Account</h1>
+        <p class="auth-card__subtitle">Join Elevate and begin your transformation</p>
+
+        <div class="auth-social-buttons">
+          <button class="btn btn--social btn--google" type="button"><i class="ri-google-fill"></i> Google</button>
+          <button class="btn btn--social btn--linkedin" type="button"><i class="ri-linkedin-fill"></i> LinkedIn</button>
+          <button class="btn btn--social btn--facebook" type="button"><i class="ri-facebook-fill"></i> Facebook</button>
+        </div>
+        <div class="divider">or register with email</div>
+
+        <form id="registerForm" style="margin-top: var(--space-5);">
+          <div class="form-grid">
+            <div class="form-group"><label class="form-label" for="regName">Full Name</label><input type="text" class="form-input" id="regName" placeholder="Your full name" required></div>
+            <div class="form-group"><label class="form-label" for="regPhone">Phone</label><input type="tel" class="form-input" id="regPhone" placeholder="+1 (555) 000-0000"></div>
+          </div>
+          <div class="form-group"><label class="form-label" for="regEmail">Email Address</label><input type="email" class="form-input" id="regEmail" placeholder="name@company.com" required></div>
+          <div class="form-group"><label class="form-label" for="regCompany">Company</label><input type="text" class="form-input" id="regCompany" placeholder="Your company name"></div>
+          <div class="form-grid">
+            <div class="form-group"><label class="form-label" for="regPassword">Password</label><div class="password-wrap"><input type="password" class="form-input" id="regPassword" placeholder="Min 8 characters" required><button type="button" class="password-toggle" data-password-toggle="regPassword"><i class="ri-eye-line"></i></button></div></div>
+            <div class="form-group"><label class="form-label" for="regConfirmPassword">Confirm Password</label><div class="password-wrap"><input type="password" class="form-input" id="regConfirmPassword" placeholder="Confirm password" required><button type="button" class="password-toggle" data-password-toggle="regConfirmPassword"><i class="ri-eye-line"></i></button></div></div>
+          </div>
+          <div class="form-check" style="margin-bottom: var(--space-5);">
+            <input type="checkbox" id="regTerms" required><label for="regTerms">I agree to the <a href="#" style="color: var(--color-primary);">Terms of Service</a> and <a href="#" style="color: var(--color-primary);">Privacy Policy</a></label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">Create Account</button>
+        </form>
+        <div class="auth-card__footer">Already have an account? <a href="login.html">Sign In</a></div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Elevate Coaching & Speaking Bureau</title>
+  <meta name="description" content="Get in touch with Elevate for coaching inquiries, speaking bookings, or partnership opportunities. We'd love to connect.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-12); align-items: start; }
+    .contact-info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+    .contact-info-card {
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl); padding: var(--space-6);
+      display: flex; align-items: flex-start; gap: var(--space-4);
+      transition: all var(--transition-base);
+    }
+    .contact-info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+    .contact-info-card__icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--color-primary-light); border-radius: var(--radius-lg);
+      font-size: var(--text-xl); color: var(--color-primary);
+    }
+    .contact-info-card__title { font-size: var(--text-base); font-weight: var(--weight-semibold); margin-bottom: var(--space-1); }
+    .contact-info-card__text { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+    .map-container {
+      width: 100%; height: 350px; border-radius: var(--radius-xl);
+      overflow: hidden; border: 1px solid var(--color-border);
+      background: var(--color-surface-alt);
+    }
+    .map-container iframe { width: 100%; height: 100%; border: none; }
+    .social-connect {
+      display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;
+    }
+    .social-connect-btn {
+      display: flex; align-items: center; gap: var(--space-3);
+      padding: var(--space-3) var(--space-6); border-radius: var(--radius-xl);
+      font-size: var(--text-sm); font-weight: var(--weight-semibold);
+      color: white; transition: all var(--transition-base);
+    }
+    .social-connect-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); color: white; }
+    .social-connect-btn__count { font-size: var(--text-xs); opacity: 0.8; }
+    @media (max-width: 1023px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 639px) { .contact-info-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo"><div class="navbar__logo-icon">E</div><div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle">Home <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></div>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle">Services <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="services.html" class="navbar__dropdown-item">All Services</a><a href="service-details.html" class="navbar__dropdown-item">Coaching</a><a href="service-details.html" class="navbar__dropdown-item">Speaking</a></div></div>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="pricing.html" class="navbar__link">Pricing</a>
+        <a href="contact.html" class="navbar__link active">Contact</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle" aria-expanded="false">
+            Dashboard <i class="ri-arrow-down-s-line"></i>
+          </a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>      </div>
+
+      <div class="navbar__utils">
+        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+        <div class="navbar__user-dropdown"><button class="navbar__util-btn" aria-label="User Menu"><i class="ri-user-line"></i></button><div class="navbar__user-menu"><a href="login.html"><i class="ri-login-box-line"></i> Login</a><a href="register.html"><i class="ri-user-add-line"></i> Register</a><a href="user-dashboard.html"><i class="ri-dashboard-line"></i> User Dashboard</a><a href="admin-dashboard.html"><i class="ri-settings-3-line"></i> Admin Dashboard</a></div></div>
+        <button class="navbar__hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__link">Home 1</a><a href="home-2.html" class="navbar__link">Home 2</a><a href="about.html" class="navbar__link">About</a><a href="services.html" class="navbar__link">Services</a><a href="blog.html" class="navbar__link">Blog</a><a href="pricing.html" class="navbar__link">Pricing</a><a href="contact.html" class="navbar__link active">Contact</a><a href="user-dashboard.html" class="navbar__link">User Dashboard</a><a href="admin-dashboard.html" class="navbar__link">Admin Dashboard</a><a href="login.html" class="navbar__link">Login</a></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Section 1: Contact Hero -->
+    <section class="page-hero page-hero--60" aria-label="Contact Hero">
+      <div class="page-hero__bg"><img src="assets/images/team/team-group.png" alt="Elevate team" loading="eager"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <div class="breadcrumb hero-animate"><a href="index.html">Home</a><span class="breadcrumb__separator"><i class="ri-arrow-right-s-line"></i></span><span class="breadcrumb__current">Contact</span></div>
+        <h1 class="page-hero__title hero-animate hero-animate--delay-1">Let's Connect</h1>
+        <p class="page-hero__subtitle hero-animate hero-animate--delay-2">Coaching inquiry or speaking booking — we're here to help</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Contact Form -->
+    <section class="section" aria-label="Contact Form">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="section-subtitle">Get in Touch</p>
+            <h2 class="section-title" style="text-align: start;">Send Us a Message</h2>
+            <p class="section-desc" style="text-align: start; margin-inline: 0; margin-bottom: var(--space-8);">Have a question about our services or want to book a speaker? Fill out the form and our team will respond within 24 hours.</p>
+            <form data-validate id="contactForm">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                <div class="form-group"><label class="form-label" for="contactFirst">First Name</label><input type="text" class="form-input" id="contactFirst" placeholder="First name" required></div>
+                <div class="form-group"><label class="form-label" for="contactLast">Last Name</label><input type="text" class="form-input" id="contactLast" placeholder="Last name" required></div>
+              </div>
+              <div class="form-group"><label class="form-label" for="contactEmail">Email</label><input type="email" class="form-input" id="contactEmail" placeholder="name@company.com" required></div>
+              <div class="form-group"><label class="form-label" for="contactPhone">Phone</label><input type="tel" class="form-input" id="contactPhone" placeholder="+1 (555) 000-0000"></div>
+              <div class="form-group"><label class="form-label" for="contactCompany">Company</label><input type="text" class="form-input" id="contactCompany" placeholder="Your company"></div>
+              <div class="form-group">
+                <label class="form-label" for="contactInterest">Interest</label>
+                <select class="form-select" id="contactInterest">
+                  <option value="">Select your interest</option>
+                  <option>Executive Coaching</option>
+                  <option>Keynote Speaking</option>
+                  <option>Corporate Workshop</option>
+                  <option>Team Building</option>
+                  <option>Partnership</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group"><label class="form-label" for="contactMessage">Message</label><textarea class="form-input" id="contactMessage" rows="4" placeholder="Tell us about your needs..." required></textarea></div>
+              <button type="submit" class="btn btn--primary btn--lg">Send Message</button>
+            </form>
+          </div>
+          <div class="reveal reveal--right" style="position: sticky; top: calc(var(--nav-height) + var(--space-6));">
+            <div class="map-container" style="margin-bottom: var(--space-6);">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.99!3d40.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzI0LjAiTiA3M8KwNTknMjQuMCJX!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" title="Elevate Office Location"></iframe>
+            </div>
+            <a href="#" class="btn btn--secondary btn--full" style="margin-bottom: var(--space-4);"><i class="ri-map-pin-line"></i> Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Contact Info Cards -->
+    <section class="section section--alt" aria-label="Contact Information">
+      <div class="container">
+        <div class="contact-info-grid reveal" data-stagger="100">
+          <div class="contact-info-card reveal">
+            <div class="contact-info-card__icon"><i class="ri-map-pin-2-line"></i></div>
+            <div><h3 class="contact-info-card__title">Our Office</h3><p class="contact-info-card__text">100 Innovation Drive, Suite 800<br>New York, NY 10001</p></div>
+          </div>
+          <div class="contact-info-card reveal">
+            <div class="contact-info-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-phone-line"></i></div>
+            <div><h3 class="contact-info-card__title">Phone</h3><p class="contact-info-card__text">Office: +1 (555) 358-2836<br>Mobile: +1 (555) 987-6543</p></div>
+          </div>
+          <div class="contact-info-card reveal">
+            <div class="contact-info-card__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-mail-send-line"></i></div>
+            <div><h3 class="contact-info-card__title">Email</h3><p class="contact-info-card__text">General: hello@elevatebureau.com<br>Booking: bookings@elevatebureau.com</p></div>
+          </div>
+          <div class="contact-info-card reveal">
+            <div class="contact-info-card__icon" style="background: #ede9fe; color: #7c3aed;"><i class="ri-time-line"></i></div>
+            <div><h3 class="contact-info-card__title">Business Hours</h3><p class="contact-info-card__text">Mon–Fri: 9:00 AM – 6:00 PM EST<br>Response within 24 hours</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Map (already embedded in section 2 sidebar) - Social Connect section -->
+    <section class="section" aria-label="Social Connect">
+      <div class="container text-center">
+        <div class="reveal">
+          <p class="section-subtitle">Follow Us</p>
+          <h2 class="section-title">Connect on Social Media</h2>
+          <p class="section-desc" style="margin-bottom: var(--space-10);">Stay updated with insights, events, and behind-the-scenes content.</p>
+        </div>
+        <div class="social-connect reveal" data-stagger="100">
+          <a href="#" class="social-connect-btn reveal" style="background: var(--color-linkedin);"><i class="ri-linkedin-fill"></i> LinkedIn <span class="social-connect-btn__count">45K followers</span></a>
+          <a href="#" class="social-connect-btn reveal" style="background: var(--color-twitter);"><i class="ri-twitter-x-fill"></i> Twitter/X <span class="social-connect-btn__count">28K followers</span></a>
+          <a href="#" class="social-connect-btn reveal" style="background: var(--color-facebook);"><i class="ri-facebook-fill"></i> Facebook <span class="social-connect-btn__count">32K followers</span></a>
+          <a href="#" class="social-connect-btn reveal" style="background: var(--color-instagram);"><i class="ri-instagram-line"></i> Instagram <span class="social-connect-btn__count">18K followers</span></a>
+          <a href="#" class="social-connect-btn reveal" style="background: var(--color-youtube);"><i class="ri-youtube-fill"></i> YouTube <span class="social-connect-btn__count">12K subscribers</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 & 6: FAQ / Calendly CTA -->
+    <section class="section section--alt" aria-label="FAQ and Scheduling">
+      <div class="container container--narrow">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Need Help?</p>
+          <h2 class="section-title">Common Questions</h2>
+        </div>
+        <div class="accordion reveal" style="margin-top: var(--space-8);">
+          <div class="accordion__item active">
+            <button class="accordion__trigger">How quickly will you respond to my inquiry? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">We respond to all inquiries within 24 business hours. For urgent requests, please call our office directly or use the booking calendar.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Can I schedule a call instead of filling out the form? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">Absolutely! You can schedule a free 30-minute discovery call through our booking page or by clicking the "Schedule Call" button below.</div></div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Do you offer services internationally? <i class="ri-arrow-down-s-line"></i></button>
+            <div class="accordion__content"><div class="accordion__body">Yes! We serve clients in 45+ countries. Our coaches and speakers are available both in-person and virtually, making global engagement seamless.</div></div>
+          </div>
+        </div>
+        <div class="text-center reveal" style="margin-top: var(--space-10);">
+          <p style="color: var(--color-text-secondary); margin-bottom: var(--space-4);">Prefer to schedule a time that works for you?</p>
+          <a href="#" class="btn btn--primary btn--lg"><i class="ri-calendar-line"></i> Schedule a Call</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__brand-logo"><div class="navbar__logo-icon">E</div><span class="footer__brand-name">Elevate</span></div><p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance through world-class coaching and speaking services.</p><div class="footer__socials"><a href="#" class="footer__social-link footer__social-link--google"><i class="ri-google-fill"></i></a><a href="#" class="footer__social-link footer__social-link--facebook"><i class="ri-facebook-fill"></i></a><a href="#" class="footer__social-link footer__social-link--linkedin"><i class="ri-linkedin-fill"></i></a><a href="#" class="footer__social-link footer__social-link--twitter"><i class="ri-twitter-x-fill"></i></a><a href="#" class="footer__social-link footer__social-link--instagram"><i class="ri-instagram-line"></i></a></div></div>
+        <div><h3 class="footer__heading">Quick Links</h3><div class="footer__links"><a href="index.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Home</a><a href="about.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> About Us</a><a href="services.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Services</a><a href="blog.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Blog</a><a href="contact.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Contact</a></div></div>
+        <div><h3 class="footer__heading">Services</h3><div class="footer__links"><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate Training</a></div></div>
+        <div><h3 class="footer__heading">Stay Connected</h3><p class="footer__newsletter-text">Subscribe to get the latest insights.</p><form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email"><button type="submit" class="footer__newsletter-btn">Subscribe</button></form><div class="footer__contact-info"><div class="footer__contact-item"><i class="ri-map-pin-line"></i> 100 Innovation Dr, Suite 800, NY</div><div class="footer__contact-item"><i class="ri-phone-line"></i> +1 (555) 358-2836</div><div class="footer__contact-item"><i class="ri-mail-line"></i> hello@elevatebureau.com</div></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 Elevate Coaching & Speaking Bureau. All rights reserved.</p><div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Sitemap</a></div></div>
+    </div>
+  </footer>
+  <button class="scroll-top" aria-label="Scroll to top"><i class="ri-arrow-up-line"></i></button>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

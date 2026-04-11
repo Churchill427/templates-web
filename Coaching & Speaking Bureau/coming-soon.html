@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — Elevate Coaching & Speaking Bureau</title>
+  <meta name="description" content="Something exciting is coming! Join our waitlist to be the first to know when we launch.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    body { overflow: hidden; }
+    .coming-soon {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: var(--space-8); position: relative; overflow: hidden;
+    }
+    .coming-soon__bg {
+      position: fixed; inset: 0; z-index: -1;
+    }
+    .coming-soon__bg img { width: 100%; height: 100%; object-fit: cover; }
+    .coming-soon__overlay {
+      position: fixed; inset: 0; z-index: -1;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(79, 70, 229, 0.5));
+    }
+    .coming-soon__utils {
+      position: fixed; top: var(--space-4); right: var(--space-4);
+      display: flex; gap: var(--space-2); z-index: 100;
+    }
+    .coming-soon__content { color: white; max-width: 600px; }
+    .coming-soon__title {
+      font-size: var(--text-6xl); font-weight: var(--weight-extrabold);
+      margin-bottom: var(--space-4); line-height: var(--leading-tight);
+    }
+    .coming-soon__desc {
+      font-size: var(--text-lg); opacity: 0.85; margin-bottom: var(--space-8);
+      line-height: var(--leading-relaxed);
+    }
+    .countdown {
+      display: flex; gap: var(--space-6); justify-content: center; margin-bottom: var(--space-10);
+    }
+    .countdown__item { text-align: center; }
+    .countdown__number {
+      font-size: var(--text-5xl); font-weight: var(--weight-bold);
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-xl);
+      width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-2);
+    }
+    .countdown__label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; }
+    .coming-soon__form {
+      display: flex; gap: var(--space-3); max-width: 440px; margin-inline: auto;
+      margin-bottom: var(--space-8);
+    }
+    .coming-soon__form input {
+      flex: 1; padding: var(--space-3) var(--space-4);
+      border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg); color: white; font-size: var(--text-base);
+      backdrop-filter: blur(10px);
+    }
+    .coming-soon__form input::placeholder { color: rgba(255,255,255,0.5); }
+    .coming-soon__socials {
+      display: flex; gap: var(--space-4); justify-content: center;
+    }
+    .coming-soon__social {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-full); border: 1px solid rgba(255,255,255,0.3);
+      color: white; font-size: var(--text-lg); transition: all var(--transition-base);
+      background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+    }
+    .coming-soon__social:hover { background: var(--color-primary); border-color: var(--color-primary); color: white; transform: translateY(-3px); }
+    @media (max-width: 639px) {
+      body { overflow: auto; overflow-x: hidden; }
+      .coming-soon__title { font-size: clamp(2rem, 10vw, 3rem); }
+      .countdown { gap: var(--space-3); }
+      .countdown__number { width: 60px; height: 60px; font-size: var(--text-3xl); }
+      .coming-soon__form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="coming-soon__utils">
+    <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR" style="color: white;"><i class="ri-global-line"></i></button>
+    <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme" style="color: white;"><i class="ri-moon-line"></i></button>
+  </div>
+
+  <div class="coming-soon__bg"><img src="assets/images/hero/hero-speaking.png" alt="Background" loading="eager"></div>
+  <div class="coming-soon__overlay"></div>
+
+  <main class="coming-soon">
+    <div class="coming-soon__content">
+      <a href="index.html" class="navbar__logo hero-animate" style="margin-bottom: var(--space-8); justify-content: center;">
+        <div class="navbar__logo-icon">E</div>
+        <div class="navbar__logo-text" style="color: white;"><span>Elevate</span><span style="opacity: 0.7;">Coaching & Speaking</span></div>
+      </a>
+      <h1 class="coming-soon__title hero-animate hero-animate--delay-1">Something <span style="color: var(--color-secondary);">Amazing</span> Is Coming</h1>
+      <p class="coming-soon__desc hero-animate hero-animate--delay-2">We're building something extraordinary for leaders and organizations. Join our waitlist to be the first to experience it.</p>
+
+      <div class="countdown hero-animate hero-animate--delay-2">
+        <div class="countdown__item"><div class="countdown__number" id="cd-days">14</div><div class="countdown__label">Days</div></div>
+        <div class="countdown__item"><div class="countdown__number" id="cd-hours">08</div><div class="countdown__label">Hours</div></div>
+        <div class="countdown__item"><div class="countdown__number" id="cd-mins">32</div><div class="countdown__label">Minutes</div></div>
+        <div class="countdown__item"><div class="countdown__number" id="cd-secs">15</div><div class="countdown__label">Seconds</div></div>
+      </div>
+
+      <form class="coming-soon__form hero-animate hero-animate--delay-3" data-validate>
+        <input type="email" placeholder="Enter your email to join waitlist" required aria-label="Email for waitlist">
+        <button type="submit" class="btn btn--accent">Notify Me</button>
+      </form>
+
+      <div class="coming-soon__socials hero-animate hero-animate--delay-3">
+        <a href="#" class="coming-soon__social" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+        <a href="#" class="coming-soon__social" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
+        <a href="#" class="coming-soon__social" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+        <a href="#" class="coming-soon__social" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script>
+    // Countdown timer
+    function updateCountdown() {
+      const target = new Date();
+      target.setDate(target.getDate() + 14);
+      function update() {
+        const now = new Date();
+        const diff = target - now;
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+        document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+      }
+      update();
+      setInterval(update, 1000);
+    }
+    updateCountdown();
+  </script>
+</body>
+</html>

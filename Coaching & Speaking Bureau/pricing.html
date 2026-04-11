@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Elevate Coaching & Speaking Bureau</title>
+  <meta name="description" content="Explore Elevate's transparent pricing for executive coaching, speaking, and workshops. Flexible plans for individuals, teams, and enterprises.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .pricing-toggle {
+      display: flex; align-items: center; justify-content: center; gap: var(--space-4); margin-bottom: var(--space-10);
+    }
+    .pricing-toggle__label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--color-text-secondary); }
+    .pricing-toggle__label.active { color: var(--color-primary); font-weight: var(--weight-semibold); }
+    .pricing-toggle__switch {
+      width: 48px; height: 26px; border-radius: 13px; background: var(--color-border);
+      position: relative; cursor: pointer; transition: background var(--transition-base);
+    }
+    .pricing-toggle__switch.active { background: var(--color-primary); }
+    .pricing-toggle__switch::after {
+      content: ''; position: absolute; top: 3px; left: 3px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: white; box-shadow: var(--shadow-sm); transition: transform var(--transition-base);
+    }
+    .pricing-toggle__switch.active::after { transform: translateX(22px); }
+    .comparison-table {
+      width: 100%; border-collapse: collapse; margin-top: var(--space-6);
+    }
+    .comparison-table th, .comparison-table td {
+      padding: var(--space-3) var(--space-4); text-align: center; border-bottom: 1px solid var(--color-border);
+      font-size: var(--text-sm);
+    }
+    .comparison-table th { font-weight: var(--weight-semibold); background: var(--color-surface-alt); color: var(--color-text-secondary); position: sticky; top: 0; z-index: 5; }
+    .comparison-table td:first-child { text-align: start; font-weight: var(--weight-medium); }
+    .comparison-table .check { color: var(--color-accent); font-size: var(--text-lg); }
+    .comparison-table .cross { color: var(--color-text-muted); font-size: var(--text-lg); }
+    .addons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    .addon-card {
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl); padding: var(--space-6);
+      transition: all var(--transition-base);
+    }
+    .addon-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary); }
+    .addon-card__title { font-size: var(--text-lg); font-weight: var(--weight-semibold); margin-bottom: var(--space-2); }
+    .addon-card__desc { font-size: var(--text-sm); color: var(--color-text-secondary); margin-bottom: var(--space-3); }
+    .addon-card__price { font-size: var(--text-xl); font-weight: var(--weight-bold); color: var(--color-primary); }
+    @media (max-width: 639px) { .addons-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo"><div class="navbar__logo-icon">E</div><div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div></a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle">Home <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></div>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-toggle">Services <i class="ri-arrow-down-s-line"></i></a><div class="navbar__dropdown-menu"><a href="services.html" class="navbar__dropdown-item">All Services</a><a href="service-details.html" class="navbar__dropdown-item">Coaching</a></div></div>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="pricing.html" class="navbar__link active">Pricing</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle" aria-expanded="false">
+            Dashboard <i class="ri-arrow-down-s-line"></i>
+          </a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>      </div>
+
+      <div class="navbar__utils">
+        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+        <div class="navbar__user-dropdown"><button class="navbar__util-btn" aria-label="User Menu"><i class="ri-user-line"></i></button><div class="navbar__user-menu"><a href="login.html"><i class="ri-login-box-line"></i> Login</a><a href="register.html"><i class="ri-user-add-line"></i> Register</a><a href="user-dashboard.html"><i class="ri-dashboard-line"></i> User Dashboard</a><a href="admin-dashboard.html"><i class="ri-settings-3-line"></i> Admin Dashboard</a></div></div>
+        <button class="navbar__hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu"><a href="home-1.html" class="navbar__link">Home 1</a><a href="home-2.html" class="navbar__link">Home 2</a><a href="about.html" class="navbar__link">About</a><a href="services.html" class="navbar__link">Services</a><a href="blog.html" class="navbar__link">Blog</a><a href="pricing.html" class="navbar__link active">Pricing</a><a href="contact.html" class="navbar__link">Contact</a><a href="user-dashboard.html" class="navbar__link">User Dashboard</a><a href="admin-dashboard.html" class="navbar__link">Admin Dashboard</a><a href="login.html" class="navbar__link">Login</a></div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Section 1: Header -->
+    <section class="page-hero page-hero--60" aria-label="Pricing Hero">
+      <div class="page-hero__bg"><img src="assets/images/hero/office-modern.png" alt="Modern executive office" loading="eager"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <div class="breadcrumb hero-animate"><a href="index.html">Home</a><span class="breadcrumb__separator"><i class="ri-arrow-right-s-line"></i></span><span class="breadcrumb__current">Pricing</span></div>
+        <h1 class="page-hero__title hero-animate hero-animate--delay-1">Investment in Transformation</h1>
+        <p class="page-hero__subtitle hero-animate hero-animate--delay-2">Transparent pricing for every stage of your growth journey</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Pricing Cards -->
+    <section class="section" aria-label="Pricing Plans">
+      <div class="container">
+        <div class="pricing-toggle reveal">
+          <span class="pricing-toggle__label active">Individual</span>
+          <div class="pricing-toggle__switch" id="pricingToggle" role="switch" aria-checked="false" tabindex="0"></div>
+          <span class="pricing-toggle__label">Corporate</span>
+        </div>
+        <div class="grid grid--3 reveal" data-stagger="150">
+          <div class="pricing-card reveal">
+            <h2 class="pricing-card__name">Starter</h2>
+            <div class="pricing-card__price">$299</div>
+            <div class="pricing-card__period">per session</div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> 1-on-1 coaching (60 mins)</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Goal setting framework</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Session recordings</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Email support</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="ri-close-line"></i> Team access</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="ri-close-line"></i> On-site delivery</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="ri-close-line"></i> Custom curriculum</div>
+            </div>
+            <a href="contact.html" class="btn btn--secondary btn--full">Get Started</a>
+          </div>
+          <div class="pricing-card popular reveal">
+            <span class="pricing-card__badge">Most Popular</span>
+            <h2 class="pricing-card__name">Professional</h2>
+            <div class="pricing-card__price">$1,499</div>
+            <div class="pricing-card__period">per month</div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> 4 coaching sessions/month</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> 360° leadership assessment</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Personalized action plan</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Priority support</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Resource library access</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Progress tracking</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="ri-close-line"></i> On-site delivery</div>
+            </div>
+            <a href="contact.html" class="btn btn--primary btn--full">Get Started</a>
+          </div>
+          <div class="pricing-card reveal">
+            <h2 class="pricing-card__name">Enterprise</h2>
+            <div class="pricing-card__price">Custom</div>
+            <div class="pricing-card__period">tailored pricing</div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Unlimited coaching</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Dedicated success manager</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Custom curriculum</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> On-site delivery</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Team workshops</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> ROI reporting</div>
+              <div class="pricing-card__feature"><i class="ri-check-line"></i> Executive retreats</div>
+            </div>
+            <a href="contact.html" class="btn btn--secondary btn--full">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Comparison Table -->
+    <section class="section section--alt" aria-label="Feature Comparison">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Compare Plans</p>
+          <h2 class="section-title">Feature Comparison</h2>
+        </div>
+        <div class="table-wrap reveal" style="margin-top: var(--space-8);">
+          <table class="comparison-table">
+            <thead><tr><th>Feature</th><th>Starter</th><th>Professional</th><th>Enterprise</th></tr></thead>
+            <tbody>
+              <tr><td>Coaching Sessions</td><td>Pay per session</td><td>4/month</td><td>Unlimited</td></tr>
+              <tr><td>Session Duration</td><td>60 mins</td><td>60-90 mins</td><td>Custom</td></tr>
+              <tr><td>Leadership Assessment</td><td><span class="cross"><i class="ri-close-line"></i></span></td><td><span class="check"><i class="ri-check-line"></i></span></td><td><span class="check"><i class="ri-check-line"></i></span></td></tr>
+              <tr><td>Action Plan</td><td>Basic</td><td>Detailed</td><td>Custom</td></tr>
+              <tr><td>Support</td><td>Email</td><td>Priority</td><td>24/7 Dedicated</td></tr>
+              <tr><td>Resource Library</td><td><span class="cross"><i class="ri-close-line"></i></span></td><td><span class="check"><i class="ri-check-line"></i></span></td><td><span class="check"><i class="ri-check-line"></i></span></td></tr>
+              <tr><td>Team Access</td><td><span class="cross"><i class="ri-close-line"></i></span></td><td>Up to 5</td><td>Unlimited</td></tr>
+              <tr><td>Custom Curriculum</td><td><span class="cross"><i class="ri-close-line"></i></span></td><td><span class="cross"><i class="ri-close-line"></i></span></td><td><span class="check"><i class="ri-check-line"></i></span></td></tr>
+              <tr><td>On-site Delivery</td><td><span class="cross"><i class="ri-close-line"></i></span></td><td><span class="cross"><i class="ri-close-line"></i></span></td><td><span class="check"><i class="ri-check-line"></i></span></td></tr>
+              <tr><td>ROI Reporting</td><td><span class="cross"><i class="ri-close-line"></i></span></td><td>Basic</td><td>Comprehensive</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Add-ons -->
+    <section class="section" aria-label="Add-ons">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Enhance Your Program</p>
+          <h2 class="section-title">Additional Services</h2>
+        </div>
+        <div class="addons-grid reveal" style="margin-top: var(--space-10);" data-stagger="100">
+          <div class="addon-card reveal">
+            <h3 class="addon-card__title">Private Intensive</h3>
+            <p class="addon-card__desc">Full-day one-on-one coaching intensive focused on breakthrough results.</p>
+            <div class="addon-card__price">$2,500</div>
+          </div>
+          <div class="addon-card reveal">
+            <h3 class="addon-card__title">Group Workshop</h3>
+            <p class="addon-card__desc">Half-day interactive workshop for teams of up to 25 participants.</p>
+            <div class="addon-card__price">$4,000</div>
+          </div>
+          <div class="addon-card reveal">
+            <h3 class="addon-card__title">Ongoing Support</h3>
+            <p class="addon-card__desc">Monthly check-in sessions and unlimited messaging for continued growth.</p>
+            <div class="addon-card__price">$500/mo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Testimonials -->
+    <section class="section section--alt" aria-label="Testimonials">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">ROI Stories</p>
+          <h2 class="section-title">What Clients Say About Value</h2>
+        </div>
+        <div class="grid grid--3 reveal" style="margin-top: var(--space-10);" data-stagger="150">
+          <div class="testimonial-card reveal">
+            <div class="testimonial-card__quote-icon">"</div>
+            <p class="testimonial-card__text">The ROI was incredible — our team's efficiency improved by 35% within the first quarter. Worth every penny invested.</p>
+            <div class="testimonial-card__author"><img src="assets/images/coaches/coach-1.png" alt="Client" class="testimonial-card__avatar"><div><div class="testimonial-card__name">Alex Rivera</div><div class="testimonial-card__company">CTO, DataFlow Systems</div></div></div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="testimonial-card__quote-icon">"</div>
+            <p class="testimonial-card__text">Elevate's coaching paid for itself in the first month when I closed a deal I'd been struggling with for 6 months.</p>
+            <div class="testimonial-card__author"><img src="assets/images/coaches/coach-2.png" alt="Client" class="testimonial-card__avatar"><div><div class="testimonial-card__name">Maria Santos</div><div class="testimonial-card__company">SVP Sales, Nexus Corp</div></div></div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="testimonial-card__quote-icon">"</div>
+            <p class="testimonial-card__text">The enterprise plan transformed how our 200+ leaders approach challenges. Our retention rate improved by 28%.</p>
+            <div class="testimonial-card__author"><img src="assets/images/coaches/coach-3.png" alt="Client" class="testimonial-card__avatar"><div><div class="testimonial-card__name">Tom Andrews</div><div class="testimonial-card__company">CHRO, FutureWave Inc</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Custom Quote CTA -->
+    <section class="section" aria-label="Custom Quote">
+      <div class="container text-center">
+        <div class="reveal" style="background: linear-gradient(135deg, var(--color-primary), #7c3aed); border-radius: var(--radius-2xl); padding: var(--space-16) var(--space-8); color: white; position: relative; overflow: hidden;">
+          <h2 class="section-title" style="color: white;">Need Something Specific?</h2>
+          <p style="color: rgba(255,255,255,0.85); max-width: 540px; margin-inline: auto; font-size: var(--text-lg); margin-bottom: var(--space-2);">Let's create a custom program tailored to your organization's unique needs and budget.</p>
+          <p style="color: rgba(255,255,255,0.6); font-size: var(--text-sm); margin-bottom: var(--space-8);"><i class="ri-time-line"></i> Average response time: 4 hours</p>
+          <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+            <a href="contact.html" class="btn btn--accent btn--lg">Get Custom Quote</a>
+            <a href="#" class="btn btn--secondary btn--lg" style="color: white; border-color: rgba(255,255,255,0.4);"><i class="ri-calendar-line"></i> Schedule Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div><div class="footer__brand-logo"><div class="navbar__logo-icon">E</div><span class="footer__brand-name">Elevate</span></div><p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance.</p><div class="footer__socials"><a href="#" class="footer__social-link footer__social-link--google"><i class="ri-google-fill"></i></a><a href="#" class="footer__social-link footer__social-link--facebook"><i class="ri-facebook-fill"></i></a><a href="#" class="footer__social-link footer__social-link--linkedin"><i class="ri-linkedin-fill"></i></a><a href="#" class="footer__social-link footer__social-link--twitter"><i class="ri-twitter-x-fill"></i></a><a href="#" class="footer__social-link footer__social-link--instagram"><i class="ri-instagram-line"></i></a></div></div>
+        <div><h3 class="footer__heading">Quick Links</h3><div class="footer__links"><a href="index.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Home</a><a href="about.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> About Us</a><a href="services.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Services</a><a href="blog.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Blog</a><a href="contact.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Contact</a></div></div>
+        <div><h3 class="footer__heading">Services</h3><div class="footer__links"><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a><a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate Training</a></div></div>
+        <div><h3 class="footer__heading">Stay Connected</h3><p class="footer__newsletter-text">Subscribe to get the latest insights.</p><form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email"><button type="submit" class="footer__newsletter-btn">Subscribe</button></form><div class="footer__contact-info"><div class="footer__contact-item"><i class="ri-map-pin-line"></i> 100 Innovation Dr, Suite 800, NY</div><div class="footer__contact-item"><i class="ri-phone-line"></i> +1 (555) 358-2836</div><div class="footer__contact-item"><i class="ri-mail-line"></i> hello@elevatebureau.com</div></div></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 Elevate Coaching & Speaking Bureau. All rights reserved.</p><div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Sitemap</a></div></div>
+    </div>
+  </footer>
+  <button class="scroll-top" aria-label="Scroll to top"><i class="ri-arrow-up-line"></i></button>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('pricingToggle').addEventListener('click', function() {
+      this.classList.toggle('active');
+      const labels = document.querySelectorAll('.pricing-toggle__label');
+      labels.forEach(l => l.classList.toggle('active'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking Bureau — Elevate Coaching & Speaking Bureau</title>
+  <meta name="description" content="Book world-class keynote speakers for your next event. Leadership, innovation, and motivation speakers for conferences and corporate events.">
+
+  <meta property="og:title" content="Speaking Bureau — Elevate Bureau">
+  <meta property="og:description" content="Book world-class keynote speakers for your events.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero/hero-speaking.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    /* Home 2 specific styles */
+    .hero-h2 {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+      position: relative;
+      overflow: hidden;
+      background: var(--color-bg);
+    }
+
+    .hero-h2__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    .hero-h2__text {
+      padding-block: var(--space-8);
+    }
+
+    .hero-h2__label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-4);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-h2__title {
+      font-size: var(--text-6xl);
+      font-weight: var(--weight-extrabold);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-h2__desc {
+      font-size: var(--text-lg);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-8);
+      max-width: 540px;
+    }
+
+    .hero-h2__actions {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .hero-h2__image-wrap {
+      position: relative;
+    }
+
+    .hero-h2__image {
+      width: 100%;
+      border-radius: var(--radius-2xl);
+      object-fit: cover;
+      aspect-ratio: 4/5;
+      box-shadow: var(--shadow-2xl);
+    }
+
+    .hero-h2__float-badge {
+      position: absolute;
+      padding: var(--space-3) var(--space-5);
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      font-weight: var(--weight-semibold);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .hero-h2__float-badge--top {
+      top: var(--space-6);
+      right: calc(-1 * var(--space-6));
+    }
+
+    .hero-h2__float-badge--bottom {
+      bottom: var(--space-8);
+      left: calc(-1 * var(--space-6));
+    }
+
+    .hero-h2__float-badge i {
+      color: var(--color-secondary);
+    }
+
+    .hero-h2__float-badge span {
+      font-size: var(--text-sm);
+    }
+
+    /* Topics Grid */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    .topic-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      transition: all var(--transition-base);
+    }
+
+    .topic-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-primary);
+    }
+
+    .topic-card__icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary-light);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-xl);
+      color: var(--color-primary);
+      transition: all var(--transition-base);
+    }
+
+    .topic-card:hover .topic-card__icon {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .topic-card__title {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-1);
+    }
+
+    .topic-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Process/Timeline */
+    .process-timeline {
+      max-width: 700px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    /* Speaker Showcase */
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    .speaker-showcase-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+
+    .speaker-showcase-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .speaker-showcase-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .speaker-showcase-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 40%, rgba(0,0,0,0.85));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-6);
+      color: white;
+      transition: all var(--transition-base);
+    }
+
+    .speaker-showcase-card:hover .speaker-showcase-card__overlay {
+      background: linear-gradient(transparent 20%, rgba(79, 70, 229, 0.85));
+    }
+
+    .speaker-showcase-card__name {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-1);
+    }
+
+    .speaker-showcase-card__role {
+      font-size: var(--text-sm);
+      opacity: 0.8;
+      margin-bottom: var(--space-3);
+    }
+
+    .speaker-showcase-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-secondary);
+      color: white;
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all var(--transition-base);
+      width: fit-content;
+    }
+
+    .speaker-showcase-card:hover .speaker-showcase-card__cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stats inline */
+    .trust-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-10);
+    }
+
+    .trust-stat {
+      text-align: center;
+    }
+
+    .trust-stat__number {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary);
+    }
+
+    .trust-stat__label {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    /* Booking CTA */
+    .booking-cta {
+      background: linear-gradient(135deg, var(--color-primary), #7c3aed);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-16) var(--space-8);
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .booking-cta__actions {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-8);
+    }
+
+    .booking-cta .btn--secondary {
+      color: white;
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .booking-cta .btn--secondary:hover {
+      background: white;
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 1023px) {
+      .hero-h2__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+      .hero-h2__float-badge--top { right: var(--space-4); }
+      .hero-h2__float-badge--bottom { left: var(--space-4); }
+      .topics-grid { grid-template-columns: repeat(2, 1fr); }
+      .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 639px) {
+      .hero-h2 { min-height: auto; padding-top: calc(var(--nav-height-mobile) + var(--space-8)); padding-bottom: var(--space-8); }
+      .topics-grid { grid-template-columns: 1fr; }
+      .speakers-grid { grid-template-columns: 1fr; }
+      .hero-h2__float-badge { display: none; }
+      .booking-cta { padding: var(--space-10) var(--space-4); }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Bar (identical to Home 1) -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Elevate - Home">
+        <div class="navbar__logo-icon">E</div>
+        <div class="navbar__logo-text">
+          <span>Elevate</span>
+          <span>Coaching & Speaking</span>
+        </div>
+      </a>
+      <div class="navbar__links" id="nav-links">
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle active">Home <i class="ri-arrow-down-s-line"></i></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="home-1.html" class="navbar__dropdown-item" role="menuitem">Home 1</a>
+            <a href="home-2.html" class="navbar__dropdown-item active" role="menuitem">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle">Services <i class="ri-arrow-down-s-line"></i></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="services.html" class="navbar__dropdown-item" role="menuitem">All Services</a>
+            <a href="service-details.html" class="navbar__dropdown-item" role="menuitem">Coaching</a>
+            <a href="service-details.html" class="navbar__dropdown-item" role="menuitem">Speaking</a>
+            <a href="service-details.html" class="navbar__dropdown-item" role="menuitem">Workshops</a>
+          </div>
+        </div>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="pricing.html" class="navbar__link">Pricing</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle" aria-expanded="false">
+            Dashboard <i class="ri-arrow-down-s-line"></i>
+          </a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
+            <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
+          </div>
+        </div>      </div>
+
+      <div class="navbar__utils">
+        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+        <div class="navbar__user-dropdown">
+          <button class="navbar__util-btn" aria-label="User Menu"><i class="ri-user-line"></i></button>
+          <div class="navbar__user-menu" role="menu">
+            <a href="login.html" role="menuitem"><i class="ri-login-box-line"></i> Login</a>
+            <a href="register.html" role="menuitem"><i class="ri-user-add-line"></i> Register</a>
+          </div>
+        </div>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="navbar__mobile-menu" id="mobile-menu" role="menu">
+      <a href="home-1.html" class="navbar__link">Home 1</a>
+      <a href="home-2.html" class="navbar__link active">Home 2</a>
+      <a href="about.html" class="navbar__link">About</a>
+      <a href="services.html" class="navbar__link">Services</a>
+      <a href="blog.html" class="navbar__link">Blog</a>
+      <a href="pricing.html" class="navbar__link">Pricing</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+      <a href="user-dashboard.html" class="navbar__link">User Dashboard</a>
+      <a href="admin-dashboard.html" class="navbar__link">Admin Dashboard</a>
+      <a href="login.html" class="navbar__link">Login</a>
+      <a href="register.html" class="navbar__link">Register</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Section 1: Modern Asymmetric Hero -->
+    <section class="hero-h2" id="hero" aria-label="Hero">
+      <div class="container">
+        <div class="hero-h2__grid">
+          <div class="hero-h2__text">
+            <div class="hero-h2__label hero-animate">
+              <i class="ri-mic-line"></i> #1 Speaking Bureau
+            </div>
+            <h1 class="hero-h2__title hero-animate hero-animate--delay-1">
+              Book <span class="text-gradient">World-Class</span> Speakers
+            </h1>
+            <p class="hero-h2__desc hero-animate hero-animate--delay-2">
+              Connect with keynote speakers, thought leaders, and industry experts who captivate audiences and drive real business impact.
+            </p>
+            <div class="hero-h2__actions hero-animate hero-animate--delay-3">
+              <a href="services.html" class="btn btn--primary btn--lg">Browse Speakers</a>
+              <a href="contact.html" class="btn btn--secondary btn--lg">Request Quote</a>
+            </div>
+          </div>
+          <div class="hero-h2__image-wrap hero-animate hero-animate--delay-2">
+            <img src="assets/images/hero/hero-speaking.png" alt="Keynote speaker addressing a large audience on a modern stage" class="hero-h2__image" loading="eager">
+            <div class="hero-h2__float-badge hero-h2__float-badge--top badge-float">
+              <i class="ri-fire-line"></i>
+              <span><strong>500+</strong> Events</span>
+            </div>
+            <div class="hero-h2__float-badge hero-h2__float-badge--bottom badge-float badge-float--delay">
+              <i class="ri-star-line"></i>
+              <span><strong>4.9</strong> Top Rated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Speaking Topics Grid -->
+    <section class="section section--alt" id="topics" aria-label="Speaking Topics">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Explore Topics</p>
+          <h2 class="section-title">Speaking Categories</h2>
+          <p class="section-desc">Our speakers cover a wide range of topics to match your event's theme and audience needs.</p>
+        </div>
+
+        <div class="topics-grid reveal" style="margin-top: var(--space-12);" data-stagger="100">
+          <div class="topic-card reveal">
+            <div class="topic-card__icon"><i class="ri-compass-3-line"></i></div>
+            <div>
+              <h3 class="topic-card__title">Leadership</h3>
+              <p class="topic-card__desc">Visionary leadership, executive presence, and organizational transformation.</p>
+            </div>
+          </div>
+          <div class="topic-card reveal">
+            <div class="topic-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-lightbulb-line"></i></div>
+            <div>
+              <h3 class="topic-card__title">Innovation</h3>
+              <p class="topic-card__desc">Disruptive thinking, digital transformation, and future-ready strategies.</p>
+            </div>
+          </div>
+          <div class="topic-card reveal">
+            <div class="topic-card__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-rocket-line"></i></div>
+            <div>
+              <h3 class="topic-card__title">Motivation</h3>
+              <p class="topic-card__desc">Resilience, mindset mastery, and peak performance through adversity.</p>
+            </div>
+          </div>
+          <div class="topic-card reveal">
+            <div class="topic-card__icon" style="background: #fef3c7; color: #d97706;"><i class="ri-bar-chart-box-line"></i></div>
+            <div>
+              <h3 class="topic-card__title">Sales Excellence</h3>
+              <p class="topic-card__desc">Customer-centric selling, negotiation mastery, and revenue growth.</p>
+            </div>
+          </div>
+          <div class="topic-card reveal">
+            <div class="topic-card__icon" style="background: #ede9fe; color: #7c3aed;"><i class="ri-exchange-line"></i></div>
+            <div>
+              <h3 class="topic-card__title">Change Management</h3>
+              <p class="topic-card__desc">Organizational change, cultural shifts, and stakeholder alignment.</p>
+            </div>
+          </div>
+          <div class="topic-card reveal">
+            <div class="topic-card__icon" style="background: #fce7f3; color: #db2777;"><i class="ri-hand-heart-line"></i></div>
+            <div>
+              <h3 class="topic-card__title">Diversity & Inclusion</h3>
+              <p class="topic-card__desc">Building inclusive workplaces, equity strategies, and belonging culture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Event Types / Process -->
+    <section class="section" id="process" aria-label="Our Process">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">How It Works</p>
+          <h2 class="section-title">Simple Booking Process</h2>
+          <p class="section-desc">From initial inquiry to post-event follow-up, we ensure a seamless experience.</p>
+        </div>
+
+        <div class="process-timeline reveal" style="margin-top: var(--space-12);">
+          <div class="process-step reveal">
+            <div class="process-step__number">1</div>
+            <div class="process-step__line"></div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Inquiry & Discovery</h3>
+              <p class="process-step__desc">Tell us about your event, audience, and goals. We'll understand your vision and recommend the perfect speaker match.</p>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="process-step__number" style="background: var(--color-secondary);">2</div>
+            <div class="process-step__line"></div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Customization</h3>
+              <p class="process-step__desc">Your selected speaker tailors their presentation to align with your themes, industry, and desired outcomes.</p>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="process-step__number" style="background: var(--color-accent);">3</div>
+            <div class="process-step__line"></div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Event Delivery</h3>
+              <p class="process-step__desc">Professional delivery with pre-event coordination, technical setup, and engaging audience interaction.</p>
+            </div>
+          </div>
+          <div class="process-step reveal">
+            <div class="process-step__number" style="background: #7c3aed;">4</div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Follow-Up & Impact</h3>
+              <p class="process-step__desc">Post-event feedback, attendee resources, and follow-up sessions to maximize the lasting impact of the engagement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Speaker Roster Showcase -->
+    <section class="section section--alt" id="speakers" aria-label="Our Speakers">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Our Roster</p>
+          <h2 class="section-title">Featured Speakers</h2>
+          <p class="section-desc">Internationally recognized voices who inspire transformation and drive action.</p>
+        </div>
+
+        <div class="category-tabs reveal" style="margin-top: var(--space-8); margin-bottom: var(--space-10);" data-tabs="speakers">
+          <button class="category-tab active" data-filter="all">All</button>
+          <button class="category-tab" data-filter="keynote">Keynote</button>
+          <button class="category-tab" data-filter="workshop">Workshop</button>
+          <button class="category-tab" data-filter="panel">Panel</button>
+        </div>
+
+        <div class="speakers-grid reveal" data-stagger="150">
+          <div class="speaker-showcase-card reveal" data-category="keynote">
+            <img src="assets/images/speakers/speaker-1.png" alt="Priya Sharma - Keynote Speaker on Innovation" loading="lazy">
+            <div class="speaker-showcase-card__overlay">
+              <h3 class="speaker-showcase-card__name">Priya Sharma</h3>
+              <p class="speaker-showcase-card__role">Innovation & Digital Transformation</p>
+              <a href="speaker-profile.html" class="speaker-showcase-card__cta">Book Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+          </div>
+          <div class="speaker-showcase-card reveal" data-category="keynote">
+            <img src="assets/images/speakers/speaker-2.png" alt="James Wilson - Motivational Speaker" loading="lazy">
+            <div class="speaker-showcase-card__overlay">
+              <h3 class="speaker-showcase-card__name">James Wilson</h3>
+              <p class="speaker-showcase-card__role">Leadership & Resilience</p>
+              <a href="speaker-profile.html" class="speaker-showcase-card__cta">Book Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+          </div>
+          <div class="speaker-showcase-card reveal" data-category="workshop">
+            <img src="assets/images/speakers/speaker-3.png" alt="Elena Rodriguez - Workshop Facilitator" loading="lazy">
+            <div class="speaker-showcase-card__overlay">
+              <h3 class="speaker-showcase-card__name">Elena Rodriguez</h3>
+              <p class="speaker-showcase-card__role">Change Management & Culture</p>
+              <a href="speaker-profile.html" class="speaker-showcase-card__cta">Book Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+          </div>
+          <div class="speaker-showcase-card reveal" data-category="panel">
+            <img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson - Panel Expert" loading="lazy">
+            <div class="speaker-showcase-card__overlay">
+              <h3 class="speaker-showcase-card__name">Marcus Thompson</h3>
+              <p class="speaker-showcase-card__role">Executive Strategy & Growth</p>
+              <a href="speaker-profile.html" class="speaker-showcase-card__cta">Book Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+          </div>
+          <div class="speaker-showcase-card reveal" data-category="workshop">
+            <img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell - Workshop Leader" loading="lazy">
+            <div class="speaker-showcase-card__overlay">
+              <h3 class="speaker-showcase-card__name">Sarah Mitchell</h3>
+              <p class="speaker-showcase-card__role">Team Performance & Coaching</p>
+              <a href="speaker-profile.html" class="speaker-showcase-card__cta">Book Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+          </div>
+          <div class="speaker-showcase-card reveal" data-category="keynote">
+            <img src="assets/images/coaches/coach-3.png" alt="David Chen - Keynote Speaker" loading="lazy">
+            <div class="speaker-showcase-card__overlay">
+              <h3 class="speaker-showcase-card__name">David Chen</h3>
+              <p class="speaker-showcase-card__role">Career Intelligence & Branding</p>
+              <a href="speaker-profile.html" class="speaker-showcase-card__cta">Book Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Client Logos & Trust -->
+    <section class="section" id="trust" aria-label="Trusted By">
+      <div class="container">
+        <div class="text-center reveal">
+          <p class="section-subtitle">Trusted Partners</p>
+          <h2 class="section-title">Trusted by Industry Leaders</h2>
+        </div>
+
+        <div class="logo-carousel reveal" style="margin-top: var(--space-10);">
+          <div class="logo-carousel__track">
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Microsoft</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Google</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Amazon</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Deloitte</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">McKinsey</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Tesla</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Meta</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">IBM</span>
+            <!-- Duplicate for infinite scroll -->
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Microsoft</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Google</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Amazon</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Deloitte</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">McKinsey</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Tesla</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">Meta</span>
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-muted); white-space: nowrap;">IBM</span>
+          </div>
+        </div>
+
+        <div class="trust-stats reveal" data-stagger="100">
+          <div class="trust-stat reveal">
+            <div class="trust-stat__number counter" data-count="5000" data-suffix="+">0</div>
+            <div class="trust-stat__label">Events Delivered</div>
+          </div>
+          <div class="trust-stat reveal">
+            <div class="trust-stat__number counter" data-count="2" data-suffix="M+">0</div>
+            <div class="trust-stat__label">Attendees Reached</div>
+          </div>
+          <div class="trust-stat reveal">
+            <div class="trust-stat__number counter" data-count="98" data-suffix="%">0</div>
+            <div class="trust-stat__label">Satisfaction Rate</div>
+          </div>
+          <div class="trust-stat reveal">
+            <div class="trust-stat__number counter" data-count="85" data-suffix="%">0</div>
+            <div class="trust-stat__label">Repeat Bookings</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Booking CTA -->
+    <section class="section" id="booking" aria-label="Book a Speaker">
+      <div class="container">
+        <div class="booking-cta reveal">
+          <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Ready to Inspire?</p>
+          <h2 class="section-title" style="color: white;">Check Speaker Availability</h2>
+          <p style="color: rgba(255,255,255,0.8); max-width: 560px; margin-inline: auto; font-size: var(--text-lg);">
+            Find the perfect speaker for your next event. Our team is ready to help you create an unforgettable experience.
+          </p>
+          <div class="booking-cta__actions">
+            <a href="services.html" class="btn btn--accent btn--lg">Browse Speakers</a>
+            <a href="contact.html" class="btn btn--secondary btn--lg">Request Custom Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (same as Home 1) -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">
+            <div class="navbar__logo-icon">E</div>
+            <span class="footer__brand-name">Elevate</span>
+          </div>
+          <p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance through world-class coaching and speaking services.</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link footer__social-link--google" aria-label="Google"><i class="ri-google-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--facebook" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--linkedin" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--twitter" aria-label="Twitter/X"><i class="ri-twitter-x-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--instagram" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__heading">Quick Links</h3>
+          <div class="footer__links">
+            <a href="index.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Home</a>
+            <a href="about.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> About Us</a>
+            <a href="services.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Services</a>
+            <a href="blog.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Blog</a>
+            <a href="contact.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__heading">Services</h3>
+          <div class="footer__links">
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate Training</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer__heading">Stay Connected</h3>
+          <p class="footer__newsletter-text">Subscribe to get the latest insights on leadership and coaching.</p>
+          <form class="footer__newsletter-form" aria-label="Footer newsletter">
+            <input type="email" class="footer__newsletter-input" placeholder="Your email" aria-label="Email">
+            <button type="submit" class="footer__newsletter-btn">Subscribe</button>
+          </form>
+          <div class="footer__contact-info">
+            <div class="footer__contact-item"><i class="ri-map-pin-line"></i> 100 Innovation Dr, Suite 800, NY</div>
+            <div class="footer__contact-item"><i class="ri-phone-line"></i> +1 (555) 358-2836</div>
+            <div class="footer__contact-item"><i class="ri-mail-line"></i> hello@elevatebureau.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 Elevate Coaching & Speaking Bureau. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top"><i class="ri-arrow-up-line"></i></button>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

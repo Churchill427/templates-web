@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Elevate Coaching & Speaking Bureau</title>
+  <meta name="description" content="Sign in to your Elevate account to access coaching sessions, resources, and your personalized dashboard.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    body { overflow: hidden; }
+    .auth-social-buttons {
+      display: flex;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+    .auth-social-buttons .btn--social {
+      flex: 1;
+      font-size: var(--text-sm);
+    }
+    .form-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .form-row a {
+      font-size: var(--text-sm);
+      color: var(--color-primary);
+      font-weight: var(--weight-medium);
+    }
+    .form-row a:hover { text-decoration: underline; }
+    .password-wrap {
+      position: relative;
+    }
+    .password-toggle {
+      position: absolute;
+      right: var(--space-3);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: var(--space-1);
+      font-size: var(--text-lg);
+    }
+    .auth-visual-content h2 {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-bold);
+      margin-bottom: var(--space-4);
+    }
+    .auth-visual-content p {
+      font-size: var(--text-lg);
+      opacity: 0.85;
+      max-width: 400px;
+      line-height: var(--leading-relaxed);
+    }
+    .auth-visual-stats {
+      display: flex;
+      gap: var(--space-8);
+      margin-top: var(--space-8);
+    }
+    .auth-visual-stat {
+      text-align: center;
+    }
+    .auth-visual-stat strong {
+      font-size: var(--text-3xl);
+      display: block;
+    }
+    .auth-visual-stat span {
+      font-size: var(--text-sm);
+      opacity: 0.7;
+    }
+    @media (max-width: 1023px) {
+      body { overflow: auto; overflow-x: hidden; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme & RTL Utils (top-right mandatory) -->
+  <div class="auth-page__utils">
+    <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
+    <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme" title="Toggle Theme"><i class="ri-moon-line"></i></button>
+  </div>
+
+  <div class="auth-page">
+    <!-- Visual Side -->
+    <div class="auth-page__visual">
+      <img src="assets/images/hero/hero-coaching.png" alt="Executive coaching session" loading="eager">
+      <div class="auth-page__visual-overlay">
+        <div class="auth-visual-content">
+          <h2>Elevate Your Leadership</h2>
+          <p>Access personalized coaching programs, track your progress, and connect with world-class mentors.</p>
+          <div class="auth-visual-stats">
+            <div class="auth-visual-stat"><strong>2,500+</strong><span>Leaders Coached</span></div>
+            <div class="auth-visual-stat"><strong>97%</strong><span>Success Rate</span></div>
+            <div class="auth-visual-stat"><strong>45+</strong><span>Countries</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Side -->
+    <div class="auth-page__form-side">
+      <div class="auth-card">
+        <div class="auth-card__logo">
+          <a href="index.html" aria-label="Elevate - Home" style="display: flex; align-items: center; gap: var(--space-3);">
+            <div class="navbar__logo-icon">E</div>
+            <div class="navbar__logo-text"><span>Elevate</span><span>Coaching & Speaking</span></div>
+          </a>
+        </div>
+
+        <h1 class="auth-card__title">Welcome Back</h1>
+        <p class="auth-card__subtitle">Sign in to access your dashboard</p>
+
+        <!-- Social Login -->
+        <div class="auth-social-buttons">
+          <button class="btn btn--social btn--google" type="button"><i class="ri-google-fill"></i> Google</button>
+          <button class="btn btn--social btn--linkedin" type="button"><i class="ri-linkedin-fill"></i> LinkedIn</button>
+          <button class="btn btn--social btn--facebook" type="button"><i class="ri-facebook-fill"></i> Facebook</button>
+        </div>
+
+        <div class="divider">or sign in with email</div>
+
+        <form id="loginForm" style="margin-top: var(--space-6);">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address</label>
+            <input type="email" class="form-input" id="loginEmail" placeholder="name@company.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input type="password" class="form-input" id="loginPassword" placeholder="Enter your password" required>
+              <button type="button" class="password-toggle" data-password-toggle="loginPassword" aria-label="Toggle password visibility"><i class="ri-eye-line"></i></button>
+            </div>
+          </div>
+          <div class="form-row" style="margin-bottom: var(--space-6);">
+            <div class="form-check">
+              <input type="checkbox" id="rememberMe"><label for="rememberMe">Remember me</label>
+            </div>
+            <a href="#">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full btn--lg">Sign In</button>
+        </form>
+
+        <div class="auth-card__footer">
+          Don't have an account? <a href="register.html">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-ltr.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
