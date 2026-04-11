@@ -47,8 +47,8 @@
     .dash-nav-link {
       display: flex; align-items: center; gap: var(--space-3);
     }
-    .dash-nav-link:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
-    .dash-nav-link.active { background: rgba(255,215,0,0.1); color: var(--color-accent); }
+    .dash-nav-link:hover { background: var(--bg-primary); color: var(--text-primary); }
+    .dash-nav-link.active { background: var(--bg-card); color: var(--color-primary); border-left: 3px solid var(--color-accent); }
     .dash-nav-link .nav-icon { width: 20px; text-align: center; }
 
     /* Main Content */
@@ -91,7 +91,7 @@
     }
     .panel__title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-4); }
 
-    .order-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .order-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid var(--border-color); }
     .order-item:last-child { border-bottom: none; }
     .order-item__left { display: flex; flex-direction: column; }
     .order-item__title { font-size: var(--text-sm); font-weight: 500; }
@@ -105,7 +105,7 @@
     .status-badge--info { background: rgba(70,130,180,0.15); color: var(--color-info); }
 
     /* Wishlist Items */
-    .wishlist-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .wishlist-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--border-color); }
     .wishlist-item:last-child { border: none; }
     .wishlist-item__img { width: 48px; height: 48px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0; }
     .wishlist-item__details { flex: 1; }
@@ -184,7 +184,7 @@
     
     /* Activity Heatmap */
     .heatmap { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 15px; }
-    .heatmap-cell { aspect-ratio: 1; border-radius: 2px; background: rgba(255,255,255,0.03); position: relative; }
+    .heatmap-cell { aspect-ratio: 1; border-radius: 2px; background: var(--bg-secondary); position: relative; }
     .heatmap-cell:hover::after { content: attr(data-val); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #000; color: #fff; padding: 2px 5px; border-radius: 3px; font-size: 10px; white-space: nowrap; z-index: 5; }
     .lvl-1 { background: rgba(212, 175, 55, 0.2); }
     .lvl-2 { background: rgba(212, 175, 55, 0.5); }
@@ -193,7 +193,7 @@
 
     /* Progress Stats */
     .prog-stat { margin-bottom: 15px; }
-    .prog-bar-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-top: 8px; overflow: hidden; }
+    .prog-bar-bg { height: 6px; background: var(--bg-secondary); border-radius: 10px; margin-top: 8px; overflow: hidden; }
     .prog-bar-fill { height: 100%; border-radius: 10px; transition: width 1s ease; }
 
     /* Tiny Donut */
@@ -252,7 +252,7 @@
           <button class="dash-hamburger" id="dash-hamburger" aria-label="Open sidebar" onclick="openSidebar()">
             <span></span><span></span><span></span>
           </button>
-          <a href="../index.html" style="text-decoration:none;display:flex;align-items:center;padding:8px;margin-right:8px;background:rgba(255,255,255,0.05);border-radius:var(--radius-full);color:var(--text-primary);" title="Back to Store">🏠</a>
+          <a href="../index.html" style="text-decoration:none;display:flex;align-items:center;padding:8px;margin-right:8px;background:var(--bg-secondary);border-radius:var(--radius-full);color:var(--text-primary);" title="Back to Store">🏠</a>
           <span class="dash-topbar__breadcrumb">Dashboard / <span>Customer</span></span>
         </div>
         
