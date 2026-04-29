@@ -76,6 +76,15 @@
     .booking-status--confirmed{background:rgba(56,161,105,0.1);color:#38a169;}
     .booking-status--pending{background:rgba(237,137,54,0.1);color:var(--color-accent);}
     .booking-status--completed{background:rgba(49,151,149,0.1);color:var(--color-secondary);}
+    .wishlist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);}
+    @media(max-width:1023px){.wishlist-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:600px){.wishlist-grid{grid-template-columns:1fr;}}
+    .wishlist-card{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--border-radius-lg);overflow:hidden;transition:box-shadow var(--transition-base),transform var(--transition-base);display:flex;flex-direction:column;}
+    .wishlist-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+    .wishlist-card img{width:100%;height:180px;object-fit:cover;display:block;flex-shrink:0;}
+    .wishlist-card__body{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);flex:1;}
+    .wishlist-card__name{font-family:var(--font-heading);font-size:var(--fs-base);font-weight:var(--fw-semibold);color:var(--text-primary);}
+    .wishlist-card__price{font-size:var(--fs-sm);font-weight:var(--fw-bold);color:var(--color-secondary);}
     @media(max-width:1023px){
       .dashboard__sidebar{left:-100%;width:var(--sidebar-width)!important;}
       .dashboard__sidebar--open{left:0;}
