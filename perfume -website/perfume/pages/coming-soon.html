@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - AromaLux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<text y='50' font-size='50'>🧴</text>
+</svg>">
+</head>
+<body class="antialiased bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen flex items-center justify-center p-4">
+    
+    <div class="max-w-4xl w-full text-center text-white">
+        
+        <!-- Logo -->
+        <a href="index.html" class="inline-flex items-center space-x-2 mb-12">
+            <i class="fas fa-spray-can text-5xl text-yellow-500"></i>
+            <span class="text-4xl font-bold font-serif">AromaLux</span>
+        </a>
+        
+        <!-- Coming Soon Message -->
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white">Something Amazing is Coming</h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            We're crafting an exclusive collection of luxury fragrances. Be the first to experience it.
+        </p>
+        
+        <!-- Countdown Timer -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">30</div>
+                <div class="text-sm text-gray-400 mt-2">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">12</div>
+                <div class="text-sm text-gray-400 mt-2">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">45</div>
+                <div class="text-sm text-gray-400 mt-2">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">30</div>
+                <div class="text-sm text-gray-400 mt-2">Seconds</div>
+            </div>
+        </div>
+        
+        <!-- Email Subscription -->
+        <div class="max-w-md mx-auto mb-12">
+            <p class="text-gray-300 mb-4">Get notified when we launch:</p>
+            <form onsubmit="event.preventDefault(); subscribeNewsletter(this.querySelector('input').value);" class="flex flex-col sm:flex-row gap-4">
+                <input type="email" placeholder="Enter your email" required class="input-luxury flex-1 bg-white bg-opacity-10 border-white border-opacity-30 text-white placeholder-gray-400">
+                <button type="submit" class="btn-luxury whitespace-nowrap">
+                    Notify Me
+                </button>
+            </form>
+            <p class="text-sm text-gray-400 mt-4">We respect your privacy. No spam, ever.</p>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="flex justify-center gap-4 mb-12">
+            <a href="#" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors">
+                <i class="fab fa-facebook-f text-xl"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors">
+                <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors">
+                <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a href="#" class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors">
+                <i class="fab fa-youtube text-xl"></i>
+            </a>
+        </div>
+        
+        <!-- Features Preview -->
+        <div class="grid md:grid-cols-3 gap-6 text-left max-w-3xl mx-auto">
+            <div class="bg-white bg-opacity-5 p-6 rounded-xl backdrop-blur-sm">
+                <i class="fas fa-gem text-3xl text-yellow-500 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Exclusive Collection</h3>
+                <p class="text-gray-400 text-sm">Limited edition fragrances crafted by master perfumers</p>
+            </div>
+            <div class="bg-white bg-opacity-5 p-6 rounded-xl backdrop-blur-sm">
+                <i class="fas fa-gift text-3xl text-yellow-500 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Luxury Packaging</h3>
+                <p class="text-gray-400 text-sm">Premium gift-ready packaging for every order</p>
+            </div>
+            <div class="bg-white bg-opacity-5 p-6 rounded-xl backdrop-blur-sm">
+                <i class="fas fa-truck text-3xl text-yellow-500 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Fast Delivery</h3>
+                <p class="text-gray-400 text-sm">Express shipping worldwide with tracking</p>
+            </div>
+        </div>
+        
+        <!-- Back to Home -->
+        <div class="mt-12">
+            <a href="index.html" class="text-gray-400 hover:text-yellow-500 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Current Site
+            </a>
+        </div>
+        
+    </div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Start countdown timer (30 days from now)
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 30);
+        startCountdown(launchDate.getTime());
+    </script>
+</body>
+</html>

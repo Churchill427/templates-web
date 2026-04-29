@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details - AromaLux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<text y='50' font-size='50'>🧴</text>
+</svg>">
+</head>
+<body class="antialiased">
+    
+    <!-- Navbar -->
+    <nav class="navbar-luxury bg-white/95 shadow-md absolute top-0 left-0 right-0 z-[1200]">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-spray-can text-3xl text-yellow-600"></i>
+                    <span class="text-2xl font-bold font-serif text-gray-900">AromaLux</span>
+                </a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Home</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="index.html" class="block px-4 py-3 hover:bg-yellow-50">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-3 hover:bg-yellow-50">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link active text-gray-700 hover:text-yellow-600 font-medium">About</a>
+                    <a href="services.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Services</a>
+                    <a href="shop.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Shop</a>
+                    <a href="blog.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Blog</a>
+                    <a href="pricing.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Pricing</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Contact</a>
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">Admin Dashboard</a>
+                            <a href="user-dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">User Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600"><i class="fas fa-globe text-xl"></i></button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600"><i class="fas fa-moon text-xl"></i></button>
+                    <a href="login.html" class="btn-luxury text-sm">Login</a>
+                </div>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold font-serif">Menu</span>
+                <button onclick="toggleMobileMenu()" class="text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="space-y-4">
+                <a href="index.html" class="block py-3 border-b">Home 1</a>
+                <a href="index2.html" class="block py-3 border-b">Home 2</a>
+                <a href="about.html" class="block py-3 border-b">About</a>
+                <a href="services.html" class="block py-3 border-b">Services</a>
+                <a href="shop.html" class="block py-3 border-b">Shop</a>
+                <a href="blog.html" class="block py-3 border-b">Blog</a>
+                <a href="pricing.html" class="block py-3 border-b">Pricing</a>
+                <a href="contact.html" class="block py-3 border-b">Contact</a>
+                <a href="dashboard.html" class="block py-3 border-b">Admin Dashboard</a>
+                <a href="user-dashboard.html" class="block py-3 border-b">User Dashboard</a>
+                <div class="flex items-center gap-4 py-3 border-b border-gray-200">
+                    <button onclick="toggleRTL()" class="flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-globe"></i>
+                        <span>RTL</span>
+                    </button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+                <a href="login.html" class="block py-3 text-yellow-600 font-semibold">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Header -->
+    <section class="relative py-32 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="../assets/images/heroes/hero-service-details.png" alt="Custom fragrance creation process" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70"></div>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-5xl font-bold mb-4 text-white">Custom Fragrance Creation</h1>
+            <p class="text-xl text-gray-200">Create your signature scent with our master perfumers</p>
+        </div>
+    </section>
+    
+    <!-- Service Details -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-3 gap-12">
+                
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&h=500&fit=crop" alt="Service" class="w-full rounded-2xl shadow-lg mb-8">
+                    
+                    <h2 class="text-3xl font-bold mb-6">About This Service</h2>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        Work one-on-one with our master perfumers to create a completely unique fragrance that reflects your personality, memories, and style. This exclusive service takes you on a journey through the world of scents.
+                    </p>
+                    
+                    <!-- Process Steps -->
+                    <h3 class="text-2xl font-bold mb-6">Our Process</h3>
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-white font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Initial Consultation</h4>
+                                <p class="text-gray-600">We discuss your preferences, lifestyle, and the story you want your fragrance to tell.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-white font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Scent Exploration</h4>
+                                <p class="text-gray-600">Experience hundreds of premium ingredients and discover your favorite notes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-white font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Creation & Refinement</h4>
+                                <p class="text-gray-600">Our perfumer crafts your custom blend, refining it until it's perfect.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0 text-white font-bold">4</div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Bottling & Delivery</h4>
+                                <p class="text-gray-600">Your fragrance is bottled in a custom-designed container with your name.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pricing Packages -->
+                    <h3 class="text-2xl font-bold mb-6">Pricing Packages</h3>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-xl shadow-md border-2 border-gray-200">
+                            <h4 class="font-bold text-xl mb-2">Basic</h4>
+                            <p class="text-3xl font-bold text-yellow-600 mb-4">$299</p>
+                            <ul class="space-y-2 text-sm mb-6">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>2 consultation sessions</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>3 sample iterations</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>50ml bottle</li>
+                            </ul>
+                            <button class="btn-outline-luxury w-full text-sm">Select Package</button>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-md border-2 border-yellow-500 relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold">POPULAR</div>
+                            <h4 class="font-bold text-xl mb-2">Premium</h4>
+                            <p class="text-3xl font-bold text-yellow-600 mb-4">$499</p>
+                            <ul class="space-y-2 text-sm mb-6">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>4 consultation sessions</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Unlimited iterations</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>100ml bottle</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Custom label design</li>
+                            </ul>
+                            <button class="btn-luxury w-full text-sm">Select Package</button>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-md border-2 border-gray-200">
+                            <h4 class="font-bold text-xl mb-2">Luxury</h4>
+                            <p class="text-3xl font-bold text-yellow-600 mb-4">$799</p>
+                            <ul class="space-y-2 text-sm mb-6">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Unlimited consultations</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Unlimited iterations</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>200ml bottle + 2x 50ml travel size</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Premium packaging</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Certificate of authenticity</li>
+                            </ul>
+                            <button class="btn-outline-luxury w-full text-sm">Select Package</button>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Section -->
+                    <h3 class="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold mb-2">How long does the process take?</h4>
+                            <p class="text-gray-600">Typically 4-6 weeks from initial consultation to final delivery.</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold mb-2">Can I reorder my custom fragrance?</h4>
+                            <p class="text-gray-600">Yes! We keep your formula on file for easy reordering anytime.</p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold mb-2">Is this service available remotely?</h4>
+                            <p class="text-gray-600">Yes, we offer virtual consultations via video call for remote clients.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <aside class="lg:col-span-1">
+                    <div class="sticky top-24 space-y-6">
+                        <!-- CTA Card -->
+                        <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 p-8 rounded-2xl text-white">
+                            <h3 class="text-2xl font-bold mb-4">Ready to Create?</h3>
+                            <p class="mb-6">Book your consultation today and start your fragrance journey.</p>
+                            <a href="contact.html" class="btn-luxury w-full bg-white text-yellow-600 hover:bg-gray-100">Book Now</a>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="font-bold mb-4">Need Help?</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <i class="fas fa-phone text-yellow-600 mr-3"></i>
+                                    <span>+1 (555) 123-4567</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-envelope text-yellow-600 mr-3"></i>
+                                    <span>services@aromalux.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+                
+            </div>
+        </div>
+    </section>
+    
+  <footer class="footer-luxury">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-spray-can text-3xl text-yellow-500"></i>
+                        <span class="text-2xl font-bold font-serif">AromaLux</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Your premier destination for rare, artisan fragrances and luxury scent experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="shop.html" class="footer-link">Shop</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Scent Guide</a></li>
+                        <li><a href="#" class="footer-link">Care Instructions</a></li>
+                        <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                        <li><a href="#" class="footer-link">Artisan Process</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">123 Luxury Lane, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">info@aromalux.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2026 AromaLux. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

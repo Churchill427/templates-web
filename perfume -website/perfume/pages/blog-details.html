@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details - AromaLux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<text y='50' font-size='50'>🧴</text>
+</svg>">
+</head>
+<body class="antialiased bg-gray-50">
+    
+    <!-- Navbar -->
+     <nav class="navbar-luxury bg-white/95 shadow-md absolute top-0 left-0 right-0 z-[1200]">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-spray-can text-3xl text-yellow-600"></i>
+                    <span class="text-2xl font-bold font-serif text-gray-900">AromaLux</span>
+                </a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Home</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="index.html" class="block px-4 py-3 hover:bg-yellow-50">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-3 hover:bg-yellow-50">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link active text-gray-700 hover:text-yellow-600 font-medium">About</a>
+                    <a href="services.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Services</a>
+                    <a href="shop.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Shop</a>
+                    <a href="blog.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Blog</a>
+                    <a href="pricing.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Pricing</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Contact</a>
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">Admin Dashboard</a>
+                            <a href="user-dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">User Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600"><i class="fas fa-globe text-xl"></i></button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600"><i class="fas fa-moon text-xl"></i></button>
+                    <a href="login.html" class="btn-luxury text-sm">Login</a>
+                </div>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold font-serif">Menu</span>
+                <button onclick="toggleMobileMenu()" class="text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="space-y-4">
+                <a href="index.html" class="block py-3 border-b">Home 1</a>
+                <a href="index2.html" class="block py-3 border-b">Home 2</a>
+                <a href="about.html" class="block py-3 border-b">About</a>
+                <a href="services.html" class="block py-3 border-b">Services</a>
+                <a href="shop.html" class="block py-3 border-b">Shop</a>
+                <a href="blog.html" class="block py-3 border-b">Blog</a>
+                <a href="pricing.html" class="block py-3 border-b">Pricing</a>
+                <a href="contact.html" class="block py-3 border-b">Contact</a>
+                <a href="dashboard.html" class="block py-3 border-b">Admin Dashboard</a>
+                <a href="user-dashboard.html" class="block py-3 border-b">User Dashboard</a>
+                <div class="flex items-center gap-4 py-3 border-b border-gray-200">
+                    <button onclick="toggleRTL()" class="flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-globe"></i>
+                        <span>RTL</span>
+                    </button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+                <a href="login.html" class="block py-3 text-yellow-600 font-semibold">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-4 gap-8">
+                
+                <!-- Main Article -->
+                <article class="lg:col-span-3 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=1200&h=600&fit=crop" alt="Blog Post" class="w-full h-96 object-cover">
+                    
+                    <div class="p-8 md:p-12">
+                        <div class="flex items-center gap-4 mb-6 text-sm text-gray-500">
+                            <span><i class="far fa-calendar mr-2"></i>January 15, 2026</span>
+                            <span><i class="far fa-user mr-2"></i>By Isabelle Laurent</span>
+                            <span><i class="far fa-clock mr-2"></i>5 min read</span>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800">How to Choose Your Perfect Signature Scent</h1>
+                        
+                        <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+                            <p class="text-xl text-gray-600 italic border-l-4 border-yellow-500 pl-6">
+                                Finding your signature scent is like discovering a part of yourself you never knew existed. It's an intimate journey that connects memory, emotion, and identity.
+                            </p>
+                            
+                            <h2 class="text-2xl font-bold mt-8 mb-4">Understanding Your Personality</h2>
+                            <p>
+                                Your fragrance should be an extension of who you are. Are you bold and adventurous, or soft and romantic? Do you prefer classic elegance or modern minimalism? Understanding your personality traits will guide you toward fragrances that feel authentically you.
+                            </p>
+                            <p>
+                                For the bold and confident, consider oriental or woody fragrances with strong sillage. Those with a gentle demeanor might gravitate toward floral or fresh scents that whisper rather than shout.
+                            </p>
+                            
+                            <h2 class="text-2xl font-bold mt-8 mb-4">Consider Your Lifestyle</h2>
+                            <p>
+                                Think about where you'll wear your signature scent most often. Office environments call for subtle, professional fragrances that won't overwhelm colleagues. Evening events allow for more dramatic, sensual compositions.
+                            </p>
+                            
+                            <div class="bg-yellow-50 p-6 rounded-xl my-8">
+                                <h3 class="font-bold text-lg mb-3">Pro Tips:</h3>
+                                <ul class="space-y-2">
+                                    <li><i class="fas fa-check-circle text-yellow-600 mr-2"></i>Test fragrances on your skin, not just paper strips</li>
+                                    <li><i class="fas fa-check-circle text-yellow-600 mr-2"></i>Allow at least 30 minutes for the scent to develop</li>
+                                    <li><i class="fas fa-check-circle text-yellow-600 mr-2"></i>Don't test more than 3 fragrances at once</li>
+                                    <li><i class="fas fa-check-circle text-yellow-600 mr-2"></i>Consider seasonal variations in your choice</li>
+                                </ul>
+                            </div>
+                            
+                            <h2 class="text-2xl font-bold mt-8 mb-4">The Art of Layering</h2>
+                            <p>
+                                Some people find their signature by layering multiple fragrances. This advanced technique allows you to create a truly unique scent profile. Start with a base fragrance and add complementary notes to personalize it further.
+                            </p>
+                            
+                            <h2 class="text-2xl font-bold mt-8 mb-4">Trust Your Instincts</h2>
+                            <p>
+                                Ultimately, the perfect signature scent is the one that makes you feel confident, comfortable, and authentically yourself. Don't choose a fragrance because it's trendy or because someone else loves it. Trust your nose and your heart.
+                            </p>
+                            
+                            <blockquote class="border-l-4 border-yellow-500 pl-6 italic text-xl my-8">
+                                "A woman's perfume tells more about her than her handwriting." — Christian Dior
+                            </blockquote>
+                        </div>
+                        
+                        <!-- Tags -->
+                        <div class="mt-12 pt-8 border-t">
+                            <h3 class="font-bold mb-4">Tags:</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-yellow-500 hover:text-white transition-colors cursor-pointer">Perfume Guide</span>
+                                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-yellow-500 hover:text-white transition-colors cursor-pointer">Fragrance Tips</span>
+                                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-yellow-500 hover:text-white transition-colors cursor-pointer">Signature Scent</span>
+                                <span class="px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-yellow-500 hover:text-white transition-colors cursor-pointer">Beginner's Guide</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Share -->
+                        <div class="mt-8 pt-8 border-t">
+                            <h3 class="font-bold mb-4">Share this article:</h3>
+                            <div class="flex gap-4">
+                                <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors">
+                                    <i class="fab fa-pinterest"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Comments Section -->
+                        <div class="mt-12 pt-8 border-t">
+                            <h3 class="text-2xl font-bold mb-8">Comments (3)</h3>
+                            
+                            <div class="space-y-6 mb-8">
+                                <div class="flex gap-4">
+                                    <img src="https://i.pravatar.cc/100?img=14" alt="Commenter" class="w-12 h-12 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="font-bold">Emily Watson</h4>
+                                                <span class="text-sm text-gray-500">2 days ago</span>
+                                            </div>
+                                            <p class="text-gray-700">This article was so helpful! I've been struggling to find my signature scent for years. The tip about testing on skin instead of paper really opened my eyes.</p>
+                                        </div>
+                                        <button class="text-sm text-yellow-600 mt-2 hover:underline"><i class="far fa-heart mr-1"></i>Like (12)</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex gap-4">
+                                    <img src="https://i.pravatar.cc/100?img=15" alt="Commenter" class="w-12 h-12 rounded-full">
+                                    <div class="flex-1">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <h4 class="font-bold">James Rodriguez</h4>
+                                                <span class="text-sm text-gray-500">5 days ago</span>
+                                            </div>
+                                            <p class="text-gray-700">Great advice! I'd also add that it's important to consider the season. I have different signatures for summer and winter.</p>
+                                        </div>
+                                        <button class="text-sm text-yellow-600 mt-2 hover:underline"><i class="far fa-heart mr-1"></i>Like (8)</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Comment Form -->
+                            <div class="bg-gray-50 p-6 rounded-xl">
+                                <h4 class="font-bold mb-4">Leave a Comment</h4>
+                                <form onsubmit="event.preventDefault(); showToast('Comment submitted!', 'success');">
+                                    <div class="mb-4">
+                                        <input type="text" placeholder="Your Name" required class="input-luxury">
+                                    </div>
+                                    <div class="mb-4">
+                                        <textarea rows="4" placeholder="Your Comment" required class="input-luxury"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-luxury">Post Comment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Sidebar -->
+                <aside class="lg:col-span-1">
+                    <div class="sticky top-24 space-y-6">
+                        <!-- Search -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="font-bold mb-4">Search</h3>
+                            <input type="text" placeholder="Search articles..." class="input-luxury" onkeypress="handleSearch(event)">
+                        </div>
+                        
+                        <!-- Recent Posts -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="font-bold mb-4">Recent Posts</h3>
+                            <div class="space-y-4">
+                                <a href="#" class="flex gap-3 group">
+                                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=100&h=100&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h4 class="font-semibold text-sm group-hover:text-yellow-600">Top 10 Winter Perfumes</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Jan 10, 2026</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex gap-3 group">
+                                    <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=100&h=100&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                                    <div>
+                                        <h4 class="font-semibold text-sm group-hover:text-yellow-600">Understanding Fragrance Notes</h4>
+                                        <p class="text-xs text-gray-500 mt-1">Jan 5, 2026</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Categories -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="font-bold mb-4">Categories</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#" class="text-gray-700 hover:text-yellow-600">Perfume Guides (12)</a></li>
+                                <li><a href="#" class="text-gray-700 hover:text-yellow-600">Fragrance Trends (8)</a></li>
+                                <li><a href="#" class="text-gray-700 hover:text-yellow-600">Tips & Tricks (15)</a></li>
+                                <li><a href="#" class="text-gray-700 hover:text-yellow-600">Brand Stories (6)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+                
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer-luxury">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-spray-can text-3xl text-yellow-500"></i>
+                        <span class="text-2xl font-bold font-serif">AromaLux</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Your premier destination for rare, artisan fragrances and luxury scent experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="shop.html" class="footer-link">Shop</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link">Scent Guide</a></li>
+                        <li><a href="#" class="footer-link">Care Instructions</a></li>
+                        <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                        <li><a href="#" class="footer-link">Artisan Process</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">123 Luxury Lane, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">info@aromalux.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2026 AromaLux. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

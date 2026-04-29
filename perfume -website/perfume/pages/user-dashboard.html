@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - AromaLux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<text y='50' font-size='50'>🧴</text>
+</svg>">
+</head>
+<body class="antialiased bg-gray-50">
+    
+    <!-- Top Navbar -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="w-full px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleDashboardSidebar()" class="text-gray-700 text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-spray-can text-2xl text-yellow-600"></i>
+                        <span class="text-xl font-bold font-serif">AromaLux</span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-globe text-xl"></i>
+                    </button>
+                    <button onclick="toggleDarkMode()" class="text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <div class="relative">
+                        <i class="fas fa-bell text-gray-700 text-xl cursor-pointer hover:text-yellow-600"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">5</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://i.pravatar.cc/100?img=32" alt="User" class="w-10 h-10 rounded-full">
+                        <span class="hidden md:inline font-semibold">Sophia</span>
+                    </div>
+                    <a href="index.html" class="text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-sign-out-alt text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Dashboard Layout -->
+    <div id="dashboardOverlay" class="dashboard-overlay"></div>
+    <div class="dashboard-layout pt-16">
+        
+        <!-- Sidebar -->
+        <aside id="dashboardSidebar" class="dashboard-sidebar fixed left-0 top-16 w-64 transform -translate-x-full transition-transform duration-300 z-40">
+            <div class="p-6 h-full flex flex-col">
+                <div class="flex items-center space-x-2 mb-8">
+                    <i class="fas fa-spray-can text-2xl text-yellow-600"></i>
+                    <span class="text-xl font-bold font-serif">AromaLux</span>
+                </div>
+                <h3 class="text-xs font-bold text-gray-500 uppercase mb-4">My Account</h3>
+                <nav class="space-y-2">
+                    <a href="#" class="sidebar-link active">
+                        <i class="fas fa-tachometer-alt mr-3"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-heart mr-3"></i>
+                        <span>My Wishlist</span>
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-shopping-bag mr-3"></i>
+                        <span>My Orders</span>
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-flask mr-3"></i>
+                        <span>Scent Profile</span>
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-gift mr-3"></i>
+                        <span>Rewards</span>
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-star mr-3"></i>
+                        <span>My Reviews</span>
+                    </a>
+                </nav>
+                
+                <h3 class="text-xs font-bold text-gray-500 uppercase mb-4 mt-8">Settings</h3>
+                <nav class="space-y-2">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-user-edit mr-3"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-lock mr-3"></i>
+                        <span>Security</span>
+                    </a>
+                </nav>
+
+                <div class="mt-auto border-t pt-8">
+                    <a href="index.html" class="sidebar-link text-yellow-700 font-bold">
+                        <i class="fas fa-arrow-left mr-3"></i>
+                        <span>Back to Website</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            
+            <!-- Welcome Banner -->
+            <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-2xl p-8 mb-8 text-white">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div>
+                        <h1 class="text-3xl font-bold mb-2">Welcome back, Sophia! 🌸</h1>
+                        <p class="text-yellow-100">Your scent journey continues. Here's your fragrance overview.</p>
+                    </div>
+                    <a href="shop.html" class="mt-4 md:mt-0 bg-white text-yellow-600 px-6 py-3 rounded-xl font-bold hover:bg-yellow-50 transition-colors">
+                        <i class="fas fa-shopping-bag mr-2"></i>Shop Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-gray-600 text-sm">Total Orders</p>
+                            <h3 class="text-3xl font-bold">18</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shopping-bag text-2xl text-blue-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up mr-1"></i>3 new this month</p>
+                </div>
+                
+                <div class="stat-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-gray-600 text-sm">Wishlist Items</p>
+                            <h3 class="text-3xl font-bold">7</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-pink-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-heart text-2xl text-pink-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-yellow-500 text-sm"><i class="fas fa-exclamation-circle mr-1"></i>2 items on sale</p>
+                </div>
+                
+                <div class="stat-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-gray-600 text-sm">Loyalty Points</p>
+                            <h3 class="text-3xl font-bold">2,450</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-crown text-2xl text-yellow-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-green-500 text-sm"><i class="fas fa-arrow-up mr-1"></i>Gold Tier Member</p>
+                </div>
+                
+                <div class="stat-card bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="text-gray-600 text-sm">Reviews Written</p>
+                            <h3 class="text-3xl font-bold">12</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-pen-fancy text-2xl text-green-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-purple-500 text-sm"><i class="fas fa-award mr-1"></i>Top Reviewer Badge</p>
+                </div>
+            </div>
+            
+            <!-- Charts Section -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <!-- Spending Trend Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">My Spending Trend</h3>
+                    <div class="dashboard-chart">
+                        <canvas id="userSpendingChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Scent Profile Radar Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">My Scent Profile</h3>
+                    <div class="dashboard-chart">
+                        <canvas id="userScentProfile"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Collection & Orders -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <!-- My Collection Breakdown -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">My Collection</h3>
+                    <div class="dashboard-chart dashboard-chart--donut">
+                        <canvas id="userCollectionChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Monthly Purchase Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Monthly Purchases</h3>
+                    <div class="dashboard-chart">
+                        <canvas id="userPurchaseChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loyalty & Seasonal Charts -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                <!-- Loyalty Tier Progress -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-2">Loyalty Tier Progress</h3>
+                    <p class="text-sm text-gray-500 mb-4">2,450 / 3,000 points to Platinum</p>
+                    <div class="w-full bg-gray-200 rounded-full h-4 mb-4">
+                        <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 h-4 rounded-full" style="width: 82%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mb-6">
+                        <span>Silver</span><span>Gold ★</span><span>Platinum</span><span>Diamond</span>
+                    </div>
+                    <div class="dashboard-chart">
+                        <canvas id="userLoyaltyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Seasonal Fragrance Preferences -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Seasonal Preferences</h3>
+                    <div class="dashboard-chart">
+                        <canvas id="userSeasonalChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders & Recommendations -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Recent Orders -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Recent Orders</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-sm">Royal Oud</h4>
+                                    <p class="text-xs text-gray-500">Order #4829 · Apr 25, 2026</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Delivered</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-sm">Velvet Rose</h4>
+                                    <p class="text-xs text-gray-500">Order #4815 · Apr 18, 2026</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">Shipped</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-sm">Heritage Collection</h4>
+                                    <p class="text-xs text-gray-500">Order #4790 · Apr 10, 2026</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Delivered</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                                <div>
+                                    <h4 class="font-bold text-sm">Midnight Musk</h4>
+                                    <p class="text-xs text-gray-500">Order #4761 · Mar 28, 2026</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Delivered</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recommended For You -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Recommended For You</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-gradient-to-r from-yellow-50 to-white rounded-lg border border-yellow-100 hover:shadow-md transition-shadow cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm">Amber Noir</h4>
+                                <p class="text-xs text-gray-500">Based on your love for Royal Oud</p>
+                            </div>
+                            <span class="font-bold text-yellow-600">$199.99</span>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gradient-to-r from-pink-50 to-white rounded-lg border border-pink-100 hover:shadow-md transition-shadow cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm">Floral Symphony Set</h4>
+                                <p class="text-xs text-gray-500">Matches your floral preference</p>
+                            </div>
+                            <span class="font-bold text-yellow-600">$140.00</span>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gradient-to-r from-blue-50 to-white rounded-lg border border-blue-100 hover:shadow-md transition-shadow cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm">Ocean Breeze</h4>
+                                <p class="text-xs text-gray-500">Perfect for your summer collection</p>
+                            </div>
+                            <span class="font-bold text-yellow-600">$99.99</span>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-gradient-to-r from-purple-50 to-white rounded-lg border border-purple-100 hover:shadow-md transition-shadow cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=60&h=60&fit=crop" class="w-12 h-12 rounded-lg object-cover mr-4">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm">Scent Discovery Kit</h4>
+                                <p class="text-xs text-gray-500">Explore 12 new essences</p>
+                            </div>
+                            <span class="font-bold text-yellow-600">$45.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/user-dashboard.js"></script>
+</body>
+</html>

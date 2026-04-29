@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - AromaLux | Luxury Perfumes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='50' font-size='50'>🧴</text></svg>">
+</head>
+<body class="antialiased bg-gray-50">
+    
+    <!-- Navbar -->
+     <nav class="navbar-luxury bg-white/95 shadow-md absolute top-0 left-0 right-0 z-[1200]">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-spray-can text-3xl text-yellow-600"></i>
+                    <span class="text-2xl font-bold font-serif text-gray-900">AromaLux</span>
+                </a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Home</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="index.html" class="block px-4 py-3 hover:bg-yellow-50">Home 1 </a>
+                            <a href="index2.html" class="block px-4 py-3 hover:bg-yellow-50">Home 2 </a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link active text-gray-700 hover:text-yellow-600 font-medium">About</a>
+                    <a href="services.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Services</a>
+                    <a href="shop.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Shop</a>
+                    <a href="blog.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Blog</a>
+                    <a href="pricing.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Pricing</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Contact</a>
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">Admin Dashboard</a>
+                            <a href="user-dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">User Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600"><i class="fas fa-globe text-xl"></i></button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600"><i class="fas fa-moon text-xl"></i></button>
+                    <a href="login.html" class="btn-luxury text-sm">Login</a>
+                </div>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Shop Header -->
+    <section class="relative py-32 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="../assets/images/heroes/hero-shop.png" alt="Luxury perfume shelf display" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-5xl font-bold text-center mb-4 text-white">Our Collection</h1>
+            <p class="text-center text-gray-200">Discover luxury fragrances for every occasion</p>
+        </div>
+    </section>
+    
+    <!-- Shop Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-4 gap-8 shop-layout">
+                
+                <!-- Filters Sidebar -->
+                <aside class="lg:col-span-1 shop-sidebar">
+                    <div class="filter-section lg:sticky lg:top-24">
+                        <h3 class="text-xl font-bold mb-6">Filters</h3>
+                        
+                        <!-- Category Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Category</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="category" value="all" checked class="mr-2" onchange="filterProducts('all')">
+                                    <span>All Categories</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="category" value="men" class="mr-2" onchange="filterProducts('men')">
+                                    <span>Men's Perfumes</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="category" value="women" class="mr-2" onchange="filterProducts('women')">
+                                    <span>Women's Perfumes</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="category" value="unisex" class="mr-2" onchange="filterProducts('unisex')">
+                                    <span>Unisex</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Price Range -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Price Range</h4>
+                            <input type="range" min="0" max="500" value="500" class="w-full" oninput="document.getElementById('priceValue').textContent = '$' + this.value">
+                            <div class="flex justify-between text-sm text-gray-600 mt-2">
+                                <span>$0</span>
+                                <span id="priceValue">$500</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Fragrance Notes -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">Fragrance Notes</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Woody</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Floral</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Citrus</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Oriental</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-luxury w-full">Apply Filters</button>
+                    </div>
+                </aside>
+                
+                <!-- Products Grid -->
+                <div class="lg:col-span-3 shop-products">
+                    <!-- Sort & Search -->
+                    <div class="shop-toolbar flex flex-col gap-4 md:flex-row md:justify-between md:items-center mb-8 bg-white p-4 rounded-lg shadow">
+                        <div class="mb-4 md:mb-0">
+                            <span class="text-gray-600">Showing <strong>12</strong> products</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                            <select class="input-luxury w-full sm:w-auto" onchange="sortProducts(this.value)">
+                                <option value="default">Sort by: Default</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name-asc">Name: A-Z</option>
+                                <option value="name-desc">Name: Z-A</option>
+                            </select>
+                            <input type="text" placeholder="Search products..." class="input-luxury w-full sm:w-72" onkeypress="handleSearch(event)">
+                        </div>
+                    </div>
+                    
+                    <!-- Products -->
+                    <div class="products-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Product 1 -->
+                        <div class="product-card" data-category="men" data-price="89.99" data-name="Royal Oud">
+                            <div class="wishlist-btn" onclick="toggleWishlist('p1')"><i class="far fa-heart"></i></div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop" alt="Royal Oud">
+                                <div class="product-overlay">
+                                    <button onclick="openQuickView('p1')" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2 text-gray-900">Royal Oud</h3>
+                                <div class="fragrance-notes mb-2">
+                                    <span class="note-tag text-xs">Woody</span>
+                                    <span class="note-tag text-xs">Spicy</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-yellow-600">$89.99</span>
+                                    <button onclick="addToCart('p1', 'Royal Oud', 89.99)" class="btn-luxury text-xs px-3 py-1">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 2 -->
+                        <div class="product-card" data-category="women" data-price="119.99" data-name="Rose Elegance">
+                            <div class="wishlist-btn" onclick="toggleWishlist('p2')"><i class="far fa-heart"></i></div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400&h=400&fit=crop" alt="Rose Elegance">
+                                <div class="product-overlay">
+                                    <button onclick="openQuickView('p2')" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2 text-gray-900">Rose Elegance</h3>
+                                <div class="fragrance-notes mb-2">
+                                    <span class="note-tag text-xs">Floral</span>
+                                    <span class="note-tag text-xs">Sweet</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-yellow-600">$119.99</span>
+                                    <button onclick="addToCart('p2', 'Rose Elegance', 119.99)" class="btn-luxury text-xs px-3 py-1">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 3 -->
+                        <div class="product-card" data-category="unisex" data-price="95.00" data-name="Citrus Breeze">
+                            <div class="wishlist-btn" onclick="toggleWishlist('p3')"><i class="far fa-heart"></i></div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=400&h=400&fit=crop" alt="Citrus Breeze">
+                                <div class="product-overlay">
+                                    <button onclick="openQuickView('p3')" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2 text-gray-900">Citrus Breeze</h3>
+                                <div class="fragrance-notes mb-2">
+                                    <span class="note-tag text-xs">Citrus</span>
+                                    <span class="note-tag text-xs">Fresh</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-yellow-600">$95.00</span>
+                                    <button onclick="addToCart('p3', 'Citrus Breeze', 95.00)" class="btn-luxury text-xs px-3 py-1">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- More products... -->
+                        <div class="product-card" data-category="luxury" data-price="249.99" data-name="Golden Amber">
+                            <div class="wishlist-btn" onclick="toggleWishlist('p4')"><i class="far fa-heart"></i></div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop" alt="Golden Amber">
+                                <div class="product-overlay">
+                                    <button onclick="openQuickView('p4')" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2 text-gray-900">Golden Amber</h3>
+                                <div class="fragrance-notes mb-2">
+                                    <span class="note-tag text-xs">Amber</span>
+                                    <span class="note-tag text-xs">Vanilla</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-yellow-600">$249.99</span>
+                                    <button onclick="addToCart('p4', 'Golden Amber', 249.99)" class="btn-luxury text-xs px-3 py-1">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-category="men" data-price="129.99" data-name="Midnight Musk">
+                            <div class="wishlist-btn" onclick="toggleWishlist('p5')"><i class="far fa-heart"></i></div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop" alt="Midnight Musk">
+                                <div class="product-overlay">
+                                    <button onclick="openQuickView('p5')" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2 text-gray-900">Midnight Musk</h3>
+                                <div class="fragrance-notes mb-2">
+                                    <span class="note-tag text-xs">Musk</span>
+                                    <span class="note-tag text-xs">Oriental</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-yellow-600">$129.99</span>
+                                    <button onclick="addToCart('p5', 'Midnight Musk', 129.99)" class="btn-luxury text-xs px-3 py-1">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-category="women" data-price="109.99" data-name="Velvet Rose">
+                            <div class="wishlist-btn" onclick="toggleWishlist('p6')"><i class="far fa-heart"></i></div>
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400&h=400&fit=crop" alt="Velvet Rose">
+                                <div class="product-overlay">
+                                    <button onclick="openQuickView('p6')" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm">Quick View</button>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold mb-2 text-gray-900">Velvet Rose</h3>
+                                <div class="fragrance-notes mb-2">
+                                    <span class="note-tag text-xs">Floral</span>
+                                    <span class="note-tag text-xs">Romantic</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-yellow-600">$109.99</span>
+                                    <button onclick="addToCart('p6', 'Velvet Rose', 109.99)" class="btn-luxury text-xs px-3 py-1">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="flex justify-center mt-12">
+                        <div class="flex gap-2">
+                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors"><i class="fas fa-chevron-left"></i></button>
+                            <button class="w-10 h-10 rounded-lg bg-yellow-500 text-white">1</button>
+                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors">2</button>
+                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors">3</button>
+                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+   <footer class="footer-luxury">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-spray-can text-3xl text-yellow-500"></i>
+                        <span class="text-2xl font-bold font-serif">AromaLux</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Your premier destination for rare, artisan fragrances and luxury scent experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="shop.html" class="footer-link">Shop</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                         <li><a href="#" class="footer-link">Scent Guide</a></li>
+                         <li><a href="#" class="footer-link">Care Instructions</a></li>
+                         <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                         <li><a href="#" class="footer-link">Artisan Process</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">123 Luxury Lane, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">info@aromalux.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2026 AromaLux. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold font-serif">Menu</span>
+                <button onclick="toggleMobileMenu()" class="text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="space-y-4">
+                <a href="index.html" class="block py-3 border-b">Home 1</a>
+                <a href="index2.html" class="block py-3 border-b">Home 2</a>
+                <a href="about.html" class="block py-3 border-b">About</a>
+                <a href="services.html" class="block py-3 border-b">Services</a>
+                <a href="shop.html" class="block py-3 border-b">Shop</a>
+                <a href="blog.html" class="block py-3 border-b">Blog</a>
+                <a href="pricing.html" class="block py-3 border-b">Pricing</a>
+                <a href="contact.html" class="block py-3 border-b">Contact</a>
+                <a href="dashboard.html" class="block py-3 border-b">Admin Dashboard</a>
+                <a href="user-dashboard.html" class="block py-3 border-b">User Dashboard</a>
+                <div class="flex items-center gap-4 py-3 border-b border-gray-200">
+                    <button onclick="toggleRTL()" class="flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-globe"></i>
+                        <span>RTL</span>
+                    </button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+                <a href="login.html" class="block py-3 text-yellow-600 font-semibold">Login</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

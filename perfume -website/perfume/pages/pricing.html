@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - AromaLux | Subscription Plans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+<text y='50' font-size='50'>🧴</text>
+</svg>">
+</head>
+<body class="antialiased">
+    
+    <!-- Navbar -->
+    <nav class="navbar-luxury bg-white/95 shadow-md absolute top-0 left-0 right-0 z-[1200]">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-spray-can text-3xl text-yellow-600"></i>
+                    <span class="text-2xl font-bold font-serif text-gray-900">AromaLux</span>
+                </a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Home</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="index.html" class="block px-4 py-3 hover:bg-yellow-50">Home 1</a>
+                            <a href="index2.html" class="block px-4 py-3 hover:bg-yellow-50">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link active text-gray-700 hover:text-yellow-600 font-medium">About</a>
+                    <a href="services.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Services</a>
+                    <a href="shop.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Shop</a>
+                    <a href="blog.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Blog</a>
+                    <a href="pricing.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Pricing</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Contact</a>
+                    <div class="relative group">
+                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                            <span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <a href="dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">Admin Dashboard</a>
+                            <a href="user-dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">User Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600"><i class="fas fa-globe text-xl"></i></button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600"><i class="fas fa-moon text-xl"></i></button>
+                    <a href="login.html" class="btn-luxury text-sm">Login</a>
+                </div>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileMenuOverlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold font-serif">Menu</span>
+                <button onclick="toggleMobileMenu()" class="text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="space-y-4">
+                <a href="index.html" class="block py-3 border-b">Home 1</a>
+                <a href="index2.html" class="block py-3 border-b">Home 2</a>
+                <a href="about.html" class="block py-3 border-b">About</a>
+                <a href="services.html" class="block py-3 border-b">Services</a>
+                <a href="shop.html" class="block py-3 border-b">Shop</a>
+                <a href="blog.html" class="block py-3 border-b">Blog</a>
+                <a href="pricing.html" class="block py-3 border-b">Pricing</a>
+                <a href="contact.html" class="block py-3 border-b">Contact</a>
+                <a href="dashboard.html" class="block py-3 border-b">Admin Dashboard</a>
+                <a href="user-dashboard.html" class="block py-3 border-b">User Dashboard</a>
+                <div class="flex items-center gap-4 py-3 border-b border-gray-200">
+                    <button onclick="toggleRTL()" class="flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-globe"></i>
+                        <span>RTL</span>
+                    </button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+                <a href="login.html" class="block py-3 text-yellow-600 font-semibold">Login</a>
+            </div>
+        </div>
+    </div>
+    <!-- Pricing Header -->
+    <section class="relative py-32 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="../assets/images/heroes/hero-pricing.png" alt="Premium perfume gift boxes" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70"></div>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-5xl font-bold mb-4 text-white">Subscription Plans</h1>
+            <p class="text-xl text-gray-200">Choose your perfect fragrance journey</p>
+        </div>
+    </section>
+    
+    <!-- Pricing Cards -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                        <p class="text-gray-600 mb-6">Perfect for beginners</p>
+                        <div class="mb-6">
+                            <span class="text-5xl font-bold">$29</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <button class="btn-outline-luxury w-full">Get Started</button>
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>3 Sample Perfumes Monthly</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Free Shipping</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Access to Sales</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times mr-3"></i>
+                            <span>Exclusive Releases</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-times mr-3"></i>
+                            <span>Personal Consultation</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Premium Plan (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                        <p class="text-gray-600 mb-6">Most popular choice</p>
+                        <div class="mb-6">
+                            <span class="text-5xl font-bold text-yellow-600">$59</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <button class="btn-luxury w-full">Get Started</button>
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>5 Premium Samples Monthly</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Free Express Shipping</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Early Access to Sales</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Exclusive Releases</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>10% Discount on Full Bottles</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Luxury Club Plan -->
+                <div class="pricing-card">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Luxury Club</h3>
+                        <p class="text-gray-600 mb-6">Ultimate experience</p>
+                        <div class="mb-6">
+                            <span class="text-5xl font-bold">$99</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <button class="btn-outline-luxury w-full">Get Started</button>
+                    </div>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>7 Luxury Samples Monthly</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Priority Express Shipping</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>VIP Early Access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Limited Edition Access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>Monthly Personal Consultation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span>20% Discount on Full Bottles</span>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="mt-20 max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-lg mb-2">Can I cancel my subscription anytime?</h3>
+                        <p class="text-gray-600">Yes! You can cancel or pause your subscription at any time with no penalties.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-lg mb-2">How are samples selected?</h3>
+                        <p class="text-gray-600">Our experts curate samples based on your preferences and previous ratings.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-lg mb-2">When will I receive my box?</h3>
+                        <p class="text-gray-600">Boxes ship on the 1st of each month and typically arrive within 3-5 business days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer-luxury">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-spray-can text-3xl text-yellow-500"></i>
+                        <span class="text-2xl font-bold font-serif">AromaLux</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Your premier destination for rare, artisan fragrances and luxury scent experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="shop.html" class="footer-link">Shop</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Resources</h3>
+                    <ul class="space-y-3">
+                         <li><a href="#" class="footer-link">Scent Guide</a></li>
+                         <li><a href="#" class="footer-link">Care Instructions</a></li>
+                         <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                         <li><a href="#" class="footer-link">Artisan Process</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">123 Luxury Lane, NY 10001</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            <span class="text-gray-400">info@aromalux.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; 2026 AromaLux. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
