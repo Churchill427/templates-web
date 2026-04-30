@@ -26,6 +26,8 @@
       position: relative;
       overflow: hidden;
       background: #0a1a08;
+      padding-top: calc(var(--navbar-height) + var(--space-12));
+      padding-bottom: var(--space-20);
     }
     .niche-hero-bg {
       position: absolute;
@@ -113,7 +115,7 @@
     }
     .niche-float-stat {
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--secondary-sage);
     }
     [data-theme="dark"] .niche-float-stat {
@@ -188,6 +190,26 @@
     .comparison-table tbody tr:last-child td { border-bottom: none; }
     .check-icon { color: var(--success); }
     .x-icon { color: var(--text-muted); opacity: 0.4; }
+
+    @media (max-width: 480px) {
+      .comparison-table th,
+      .comparison-table td {
+        padding: 10px 6px !important;
+        font-size: 0.75rem !important;
+      }
+      .comparison-table th:first-child,
+      .comparison-table td:first-child {
+        width: 50% !important;
+      }
+      .comparison-table th:not(:first-child),
+      .comparison-table td:not(:first-child) {
+        text-align: center !important;
+        width: 25% !important;
+      }
+      .comparison-table thead th {
+        font-size: 0.7rem !important;
+      }
+    }
   </style>
 </head>
 <body class="has-navbar">
@@ -216,9 +238,9 @@
         </div>
         <a href="about.html" class="nav-link">About</a>
         <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
         <div class="nav-dropdown" id="dashboard-dropdown">
           <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.dashboard">
             Dashboard
@@ -226,40 +248,37 @@
           </a>
           <div class="nav-dropdown-menu" role="menu">
             <a href="dashboard.html?role=user" class="nav-dropdown-item" role="menuitem">
-              <span class="dropdown-icon">👤</span>
               <span class="dropdown-text">
                 <span class="dropdown-label">User Dashboard</span>
-                <span class="dropdown-desc">Manage your bookings</span>
               </span>
             </a>
             <a href="dashboard.html?role=admin" class="nav-dropdown-item" role="menuitem">
-              <span class="dropdown-icon">🛡️</span>
               <span class="dropdown-text">
                 <span class="dropdown-label">Admin Dashboard</span>
-                <span class="dropdown-desc">System administration</span>
               </span>
             </a>
           </div>
-           <!-- Mobile Login Link (inside sliding menu) -->
+        </div>
+        <!-- Mobile Login Link (inside sliding menu) -->
         <a href="login.html" class="nav-link nav-link-login-mobile" data-i18n="nav.login">Login</a>
       </div>
 
       <!-- Persistent Utility & Hamburger -->
       <div class="nav-actions">
-        <!-- Persistent utility buttons (Theme, Language) -->
         <div class="nav-actions-utility">
-          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
-          
-          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></button>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          </button>
         </div>
-
-        <!-- Login (Desktop only) -->
         <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
-
-        <!-- Mobile Hamburger -->
-        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-     </div>
     </div>
   </nav>
 
@@ -276,15 +295,15 @@
         <div class="niche-hero-grid">
           <div style="color:#fff">
             <span class="section-label anim-fade-up" style="color:#FFFFFF">🌿 Next-Gen Green Cleaning</span>
-            <h1 class="hero-title anim-fade-up" style="font-size:3.5rem;transition-delay:100ms;color:#fff;">
+            <h1 class="hero-title anim-fade-up" style="font-size:clamp(2.5rem, 5vw, 3.5rem); transition-delay:100ms; color:#fff; line-height:1.1; margin-bottom:var(--space-6);">
               Sustainable Cleaning<br><span style="color:var(--secondary-sage)">Powered by Nature</span>
             </h1>
-            <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms;color:#FFFFFF;max-width:520px;">
+            <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms; color:rgba(255,255,255,0.9); max-width:540px; font-size:1.125rem; margin-bottom:var(--space-10);">
               Enterprise-grade eco-cleaning solutions with real-time reporting, carbon tracking, and LEED compliance — all powered by 100% plant-based chemistry.
             </p>
-            <div class="hero-actions anim-fade-up" style="transition-delay:300ms;">
+            <div class="hero-actions anim-fade-up" style="transition-delay:300ms; display:flex; gap:var(--space-4); align-items:center;">
               <a href="contact.html" class="btn btn-accent btn-lg">Start Free Trial</a>
-              <a href="services.html" class="btn btn-lg" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(255,255,255,0.15);">
+              <a href="services.html" class="btn btn-lg" style="background:rgba(255,255,255,0.08); color:#fff; border:1.5px solid rgba(255,255,255,0.15);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 Watch Demo
               </a>
@@ -323,9 +342,9 @@
     </section>
 
     <!-- ========== LOGO MARQUEE ========== -->
-    <section style="padding-block:var(--space-10);">
+    <section style="padding-block:var(--space-16);">
       <div class="container">
-        <p class="text-center text-muted text-small mb-4">Trusted by Industry Leaders</p>
+        <p class="text-center text-muted text-small mb-4" style="text-transform:uppercase; letter-spacing:0.1em; font-weight:600;">Trusted by Leading Organizations</p>
         <div class="logo-marquee">
           <div class="logo-marquee-track">
             <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">GreenCorp</text></svg>
@@ -488,7 +507,7 @@
     </section>
 
     <!-- ========== CTA ========== -->
-    <section style="padding-block:var(--space-20);text-align:center;">
+    <section class="centered-cta" style="padding-block:var(--space-20);">
       <div class="container">
         <h2 class="section-title anim-fade-up" style="max-width:640px;margin:0 auto var(--space-4);">Start Your Green Cleaning Journey</h2>
         <p class="section-subtitle anim-fade-up" style="margin:0 auto var(--space-8);">Get a custom quote for your business. Free consultation, no obligations.</p>
@@ -508,7 +527,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-brand" style="color:#fff" aria-label="EcoClean Pro Home">
-            <span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)">
+            <span class="nav-brand-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
             </span>
             <span>EcoClean Pro</span>

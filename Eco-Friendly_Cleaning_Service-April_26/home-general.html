@@ -56,9 +56,9 @@
 
         <a href="about.html" class="nav-link" data-i18n="nav.about">About</a>
         <a href="services.html" class="nav-link" data-i18n="nav.services">Services</a>
+        <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a>
         <a href="blog.html" class="nav-link" data-i18n="nav.blog">Blog</a>
         <a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
-        <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a>
         <div class="nav-dropdown" id="dashboard-dropdown">
           <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.dashboard">
             Dashboard
@@ -66,17 +66,13 @@
           </a>
           <div class="nav-dropdown-menu" role="menu">
             <a href="dashboard.html?role=user" class="nav-dropdown-item" role="menuitem">
-              <span class="dropdown-icon">👤</span>
               <span class="dropdown-text">
                 <span class="dropdown-label">User Dashboard</span>
-                <span class="dropdown-desc">Manage your bookings</span>
               </span>
             </a>
             <a href="dashboard.html?role=admin" class="nav-dropdown-item" role="menuitem">
-              <span class="dropdown-icon">🛡️</span>
               <span class="dropdown-text">
                 <span class="dropdown-label">Admin Dashboard</span>
-                <span class="dropdown-desc">System administration</span>
               </span>
             </a>
           </div>
@@ -87,22 +83,16 @@
 
       <!-- Persistent Utility & Hamburger -->
       <div class="nav-actions">
-        <!-- Persistent utility buttons (Theme, Language) -->
         <div class="nav-actions-utility">
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           </button>
-          
-          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:4px;color:var(--text-primary);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
           </button>
         </div>
-
-        <!-- Login (Desktop only) -->
         <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
-
-        <!-- Mobile Hamburger -->
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -329,7 +319,7 @@
     </section>
 
     <!-- ========== CTA SECTION ========== -->
-    <section style="background:var(--primary-green);color:#fff;text-align:center;">
+    <section class="centered-cta" style="background:var(--primary-green);color:#fff;">
       <div class="container">
         <h2 class="section-title anim-fade-up" style="color:#fff;max-width:640px;margin:0 auto var(--space-4);">Ready for a Cleaner, Greener Space?</h2>
         <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.8);margin:0 auto var(--space-8);">Book your first eco-friendly cleaning today and get 20% off. No contracts, cancel anytime.</p>
@@ -341,9 +331,9 @@
     </section>
 
     <!-- ========== LOGO MARQUEE ========== -->
-    <section style="padding-block:var(--space-8);">
+    <section style="padding-block:var(--space-16);">
       <div class="container">
-        <p class="text-center text-muted text-small mb-4">Trusted by Leading Organizations</p>
+        <p class="text-center text-muted text-small mb-4" style="text-transform:uppercase; letter-spacing:0.1em; font-weight:600;">Trusted by Leading Organizations</p>
         <div class="logo-marquee">
           <div class="logo-marquee-track">
             <svg class="logo-marquee-item" viewBox="0 0 120 40" width="120"><rect width="120" height="40" rx="4" fill="var(--border-color)"/><text x="60" y="24" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-family="Inter">GreenCorp</text></svg>
@@ -372,7 +362,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-brand" style="color:#fff" aria-label="EcoClean Pro Home">
-            <span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)">
+            <span class="nav-brand-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
             </span>
             <span>EcoClean Pro</span>

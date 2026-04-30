@@ -29,7 +29,7 @@
     .sidebar-widget{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:var(--space-6);margin-bottom:var(--space-6);}
     .sidebar-widget h4{font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:var(--space-4);}
     .author-card{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3);}
-    .author-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary-green),var(--secondary-sage));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.25rem;flex-shrink:0;}
+    .author-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary-green),var(--secondary-sage));display:flex;align-items:center;justify-content:center;color:#fff;font-weight: 600;font-size:1.25rem;flex-shrink:0;}
     .share-btns{display:flex;gap:var(--space-2);}
     .share-btn{width:40px;height:40px;border-radius:var(--radius-md);background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--transition-fast);}
     .share-btn:hover{background:var(--primary-green);color:#fff;}
@@ -49,9 +49,9 @@
         <div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false">Home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a><div class="nav-dropdown-menu" role="menu"><a href="home-general.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-text"><span class="dropdown-label">Home 1</span></span></a><a href="home-niche.html" class="nav-dropdown-item" role="menuitem"><span class="dropdown-text"><span class="dropdown-label">Home 2</span></span></a></div></div>
         <a href="about.html" class="nav-link">About</a>
         <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="blog.html" class="nav-link active">Blog</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
         <div class="nav-dropdown" id="dashboard-dropdown">
           <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             Dashboard
@@ -59,17 +59,13 @@
           </a>
           <div class="nav-dropdown-menu" role="menu">
             <a href="dashboard.html?role=user" class="nav-dropdown-item" role="menuitem">
-              <span class="dropdown-icon">👤</span>
               <span class="dropdown-text">
                 <span class="dropdown-label">User Dashboard</span>
-                <span class="dropdown-desc">Manage your bookings</span>
               </span>
             </a>
             <a href="dashboard.html?role=admin" class="nav-dropdown-item" role="menuitem">
-              <span class="dropdown-icon">🛡️</span>
               <span class="dropdown-text">
                 <span class="dropdown-label">Admin Dashboard</span>
-                <span class="dropdown-desc">System administration</span>
               </span>
             </a>
           </div>
@@ -80,23 +76,19 @@
 
       <!-- Persistent Utility & Hamburger -->
       <div class="nav-actions">
-        <!-- Persistent utility buttons (Theme, Language) -->
         <div class="nav-actions-utility">
-          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           </button>
-          
-          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;display:flex;align-items:center;justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
           </button>
         </div>
-
-        <!-- Login (Desktop only) -->
         <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
-
-        <!-- Mobile Hamburger -->
-        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
@@ -209,7 +201,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="nav-brand" style="color:#fff" aria-label="EcoClean Pro Home">
-            <span class="nav-brand-icon" style="background:rgba(255,255,255,0.15)">
+            <span class="nav-brand-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor" stroke="none" opacity="0.9"/><path d="M5.5 21.5L10 15" stroke-linecap="round"/></svg>
             </span>
             <span>EcoClean Pro</span>
