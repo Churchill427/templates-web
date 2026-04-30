@@ -42,7 +42,7 @@
   <nav class="navbar" id="main-navbar" role="navigation" aria-label="Main navigation">
     <div class="navbar__inner">
       <a href="home-classic.html" class="navbar__brand" aria-label="Ember & Brew Home">
-        <div class="navbar__brand-icon" aria-hidden="true"></div>
+        <div class="navbar__brand-icon">E</div>
         <div class="navbar__brand-text">Ember <span>&</span> Brew</div>
       </a>
 
@@ -82,11 +82,16 @@
 
       <div class="navbar__actions">
         <button class="btn--icon navbar__cart" id="cart-btn" aria-label="Shopping cart">
-          🛒
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
           <span class="navbar__cart-badge">0</span>
         </button>
-        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">🌐</button>
-        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+        <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+        </button>
+        <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
         <a href="login.html" class="btn btn--primary btn--sm">Login</a>
         <div class="navbar__toggle" id="mobile-toggle" aria-label="Toggle menu" role="button" tabindex="0">
           <span></span><span></span><span></span>
@@ -168,6 +173,9 @@
           <span class="section-subtitle">Our Collection</span>
           <h2>Featured Coffees</h2>
           <p>Handpicked selections from our current roster, roasted fresh every week.</p>
+          <div style="margin-top:var(--space-6)">
+            <a href="services.html" class="btn btn--primary">Shop Our Collection</a>
+          </div>
         </div>
 
         <div class="grid grid--4" data-stagger="0.1">
@@ -265,30 +273,32 @@
     </section>
 
     <!-- ==================== SERVICES ==================== -->
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-subtitle">What We Offer</span>
-          <h2>Our Services</h2>
-          <p>From freshly roasted beans to immersive cafe experiences.</p>
-        </div>
+    <section class="section" id="services" style="padding: var(--space-20) 0;">
+      <div class="container" style="position:relative; background: url('../assets/images/services-bg.png') center/cover no-repeat; padding: var(--space-16) var(--space-8); border-radius: var(--radius-xl); overflow: hidden;">
+        <div class="section-overlay" style="position:absolute; inset:0; background:rgba(253, 251, 247, 0.88); z-index:1;"></div>
+        <div style="position:relative; z-index:2;">
+          <div class="section-header reveal">
+            <span class="section-subtitle">What We Offer</span>
+            <h2>Our Services</h2>
+            <p>From freshly roasted beans to immersive cafe experiences.</p>
+          </div>
 
         <div class="grid grid--3" data-stagger="0.15">
-          <div class="card service-card">
+          <div class="card service-card service-card--roasting">
             <div class="service-card__icon">☕</div>
             <h4>Specialty Roasting</h4>
             <p class="card__text">Small-batch roasting of single-origin and blend coffees, crafted to bring out each
               bean's unique flavor profile.</p>
             <a href="service-details.html" class="btn btn--ghost btn--sm">Learn More →</a>
           </div>
-          <div class="card service-card">
+          <div class="card service-card service-card--cafe">
             <div class="service-card__icon">🏪</div>
             <h4>Cafe Experience</h4>
             <p class="card__text">Visit our cozy cafe for hand-brewed pour-overs, creamy lattes, and freshly baked
               pastries in a warm atmosphere.</p>
             <a href="service-details.html" class="btn btn--ghost btn--sm">Learn More →</a>
           </div>
-          <div class="card service-card">
+          <div class="card service-card service-card--subscription">
             <div class="service-card__icon">📦</div>
             <h4>Online Store & Subscriptions</h4>
             <p class="card__text">Fresh-roasted coffee delivered to your door. Choose one-time orders or subscribe for
@@ -297,7 +307,8 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- ==================== ROASTING PROCESS ==================== -->
     <section class="section" id="process" style="background:var(--color-bg-secondary)">
@@ -386,7 +397,6 @@
               </div>
             </div>
           </div>
-
           <div class="testimonial-card">
             <div class="testimonial-card__quote">Ember & Brew's cafe is my second home. The atmosphere, the quality of
               every cup, and the warmth of the baristas make it truly special.</div>
@@ -399,7 +409,6 @@
               </div>
             </div>
           </div>
-
           <div class="testimonial-card">
             <div class="testimonial-card__quote">I run a restaurant and switched all our coffee to Ember & Brew
               wholesale. Our guests constantly compliment the coffee now. Game-changer.</div>
@@ -482,10 +491,18 @@
           </a>
           <p>Premium specialty coffee, roasted fresh daily. From our roastery to your cup — every sip tells a story.</p>
           <div class="footer__socials">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">ig</a>
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.14 1 12 1 12s0 3.86.42 5.58a2.78 2.78 0 0 0 1.94 2c1.71.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.86 23 12 23 12s0-3.86-.42-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+            </a>
           </div>
         </div>
 

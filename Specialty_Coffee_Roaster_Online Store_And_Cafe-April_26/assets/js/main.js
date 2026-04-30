@@ -119,7 +119,6 @@
     document.documentElement.setAttribute('data-theme', theme);
     const btn = document.getElementById('theme-toggle');
     if (btn) {
-      btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
       btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
     }
   }
