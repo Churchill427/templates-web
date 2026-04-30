@@ -56,8 +56,18 @@ const Navbar = {
     this.navLinks = document.querySelector('.nav-links');
     if (!this.navbar) return;
 
+    this.progressBar = document.querySelector('.scroll-progress');
+
     window.addEventListener('scroll', () => {
       this.navbar.classList.toggle('scrolled', window.scrollY > 50);
+      
+      // Scroll Progress
+      if (this.progressBar) {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        this.progressBar.style.width = scrolled + "%";
+      }
     });
 
     this.hamburger?.addEventListener('click', () => {
@@ -184,7 +194,7 @@ const BASlider = {
         let pos = ((x - rect.left) / rect.width) * 100;
         pos = Math.max(5, Math.min(95, pos));
         handle.style.left = pos + '%';
-        after.style.width = pos + '%';
+        after.style.width = (100 - pos) + '%';
       };
 
       handle.addEventListener('mousedown', () => isDragging = true);
