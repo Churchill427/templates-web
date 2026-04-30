@@ -18,7 +18,13 @@ function toggleDarkMode() {
 // Check for saved dark mode preference
 if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.dark-mode-toggle i').forEach(icon => {
+            icon.className = 'fas fa-sun';
+        });
+    });
 }
+
 
 // ===== RTL Toggle =====
 function toggleRTL() {

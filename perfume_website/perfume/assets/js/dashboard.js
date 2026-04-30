@@ -8,7 +8,46 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSalesChart();
     initializeRevenueChart();
     initializeCategoryChart();
+    
+    // Update charts if dark mode is active
+    if (document.body.classList.contains('dark-mode')) {
+        updateChartsForDarkMode();
+    }
 });
+
+// Watch for dark mode changes to update charts
+const darkModeObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+            updateChartsForDarkMode();
+        }
+    });
+});
+darkModeObserver.observe(document.body, { attributes: true });
+
+function updateChartsForDarkMode() {
+    const isDark = document.body.classList.contains('dark-mode');
+    const textColor = isDark ? '#c4b4a4' : '#666';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+
+    Chart.helpers.each(Chart.instances, function(instance) {
+        if (instance.options.scales) {
+            if (instance.options.scales.x) {
+                instance.options.scales.x.ticks.color = textColor;
+                instance.options.scales.x.grid.color = gridColor;
+            }
+            if (instance.options.scales.y) {
+                instance.options.scales.y.ticks.color = textColor;
+                instance.options.scales.y.grid.color = gridColor;
+            }
+        }
+        if (instance.options.plugins && instance.options.plugins.legend) {
+            instance.options.plugins.legend.labels.color = textColor;
+        }
+        instance.update();
+    });
+}
+
 
 // ===== Sales Growth Chart =====
 function initializeSalesChart() {

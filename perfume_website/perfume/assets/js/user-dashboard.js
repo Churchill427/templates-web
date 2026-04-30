@@ -10,7 +10,59 @@ document.addEventListener('DOMContentLoaded', function() {
     initUserPurchaseChart();
     initUserLoyaltyChart();
     initUserSeasonalChart();
+
+    // Update charts if dark mode is active
+    if (document.body.classList.contains('dark-mode')) {
+        updateChartsForDarkMode();
+    }
 });
+
+// Watch for dark mode changes to update charts
+const darkModeObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+            updateChartsForDarkMode();
+        }
+    });
+});
+darkModeObserver.observe(document.body, { attributes: true });
+
+function updateChartsForDarkMode() {
+    const isDark = document.body.classList.contains('dark-mode');
+    const textColor = isDark ? '#c4b4a4' : '#666';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+
+    Chart.helpers.each(Chart.instances, function(instance) {
+        // Handle standard scales
+        if (instance.options.scales) {
+            // XY Scales
+            ['x', 'y'].forEach(axis => {
+                if (instance.options.scales[axis]) {
+                    if (!instance.options.scales[axis].ticks) instance.options.scales[axis].ticks = {};
+                    if (!instance.options.scales[axis].grid) instance.options.scales[axis].grid = {};
+                    instance.options.scales[axis].ticks.color = textColor;
+                    instance.options.scales[axis].grid.color = gridColor;
+                }
+            });
+            // Radial Scale (for Radar/Polar charts)
+            if (instance.options.scales.r) {
+                if (!instance.options.scales.r.grid) instance.options.scales.r.grid = {};
+                if (!instance.options.scales.r.angleLines) instance.options.scales.r.angleLines = {};
+                if (!instance.options.scales.r.pointLabels) instance.options.scales.r.pointLabels = {};
+                instance.options.scales.r.grid.color = gridColor;
+                instance.options.scales.r.angleLines.color = gridColor;
+                instance.options.scales.r.pointLabels.color = textColor;
+            }
+        }
+        // Legend labels
+        if (instance.options.plugins && instance.options.plugins.legend) {
+            if (!instance.options.plugins.legend.labels) instance.options.plugins.legend.labels = {};
+            instance.options.plugins.legend.labels.color = textColor;
+        }
+        instance.update();
+    });
+}
+
 
 // ===== User Spending Trend (Area Chart) =====
 function initUserSpendingChart() {
