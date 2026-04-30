@@ -335,12 +335,14 @@ a:hover { color: var(--color-blood-red-dark); }
   color: var(--text-inverse);
 }
 [data-theme="dark"] .btn-secondary {
-  color: var(--text-inverse);
-  border-color: var(--text-inverse);
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  background: transparent;
 }
 [data-theme="dark"] .btn-secondary:hover {
-  background-color: #fff;
+  background-color: var(--color-gold);
   color: var(--color-ink-black);
+  box-shadow: var(--shadow-glow-gold);
 }
 
 .btn-outline-white {
@@ -575,7 +577,6 @@ a:hover { color: var(--color-blood-red-dark); }
   -webkit-backdrop-filter: blur(12px);
   transition: all var(--transition-base);
   border-bottom: 1px solid rgba(0,0,0,0.05);
-  direction: ltr !important;
 }
 
 [data-theme="dark"] .navbar {
@@ -897,7 +898,7 @@ a:hover { color: var(--color-blood-red-dark); }
   font-size: 1.125rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #fff;
+  color: #fff !important;
   margin-bottom: var(--space-6);
 }
 
@@ -1257,6 +1258,22 @@ main { padding-top: 72px; }
   /* Show mobile-only nav items */
   .navbar-nav .nav-mobile-only { display: block !important; }
 
+  /* Styling for the Book Now/Login button inside the mobile menu */
+  .navbar-nav .mobile-cta {
+    display: block !important;
+    width: 100%;
+    padding: var(--space-6) var(--space-4);
+    margin-top: var(--space-4);
+    border-top: 1px solid var(--bg-tertiary);
+  }
+  .navbar-nav .mobile-cta .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    min-height: 52px;
+  }
+
   .grid-4, .grid-3, .grid-2 { grid-template-columns: repeat(2, 1fr); padding-inline: 0; }
   .section { padding-block: var(--space-16); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-10); }
@@ -1318,20 +1335,6 @@ main { padding-top: 72px; }
     margin-right: -4px;
   }
 
-  /* Styling for the Book Now button inside the mobile menu */
-  .navbar-nav .mobile-cta {
-    display: block !important;
-    padding: var(--space-6) var(--space-4);
-    margin-top: var(--space-4);
-    border-top: 1px solid var(--bg-tertiary);
-  }
-  .navbar-nav .mobile-cta .btn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
-    min-height: 52px;
-  }
 
   /* Typography */
   h1 { font-size: clamp(1.75rem, 8vw, 2.25rem); }
@@ -1361,11 +1364,13 @@ main { padding-top: 72px; }
   main { padding-top: 70px; } /* Match 70px header height */
   .section { padding-block: var(--space-8); }
   
-  /* Blog & Contact Page Specific Mobile Fixes */
+  /* Blog & Portfolio Specific Mobile Fixes */
   [style*="grid-template-columns: 1fr 1fr"],
   [style*="grid-template-columns:1fr 1fr"],
   [style*="grid-template-columns: 1.2fr 1fr"],
-  [style*="grid-template-columns:1.2fr 1fr"] {
+  [style*="grid-template-columns:1.2fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.2fr"],
+  [style*="grid-template-columns:1fr 1.2fr"] {
     grid-template-columns: 1fr !important;
     gap: var(--space-8) !important;
   }
@@ -1411,6 +1416,23 @@ main { padding-top: 72px; }
     justify-content: center;
     gap: var(--space-4);
   }
+}
+
+/* ---- Footer Visibility Fixes ---- */
+.footer-heading {
+  color: #fff !important;
+}
+.footer .brand-name {
+  color: #fff !important;
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.footer-links a:hover {
+  color: var(--color-gold) !important;
+}
+.footer-contact-item {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* ---- Scrollbar Styling ---- */

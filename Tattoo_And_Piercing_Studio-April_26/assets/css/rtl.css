@@ -28,20 +28,21 @@
 }
 
 /* ---- Navbar RTL ---- */
-[dir="rtl"] .navbar-inner {
-  flex-direction: row-reverse;
+[dir="rtl"] .navbar {
+  direction: rtl !important;
 }
 
-[dir="rtl"] .navbar-nav {
-  flex-direction: column;
-}
-
-[dir="rtl"] .navbar-actions {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .navbar-brand {
-  flex-direction: row-reverse;
+@media (min-width: 1025px) {
+  [dir="rtl"] .navbar-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+  [dir="rtl"] .navbar-nav {
+    flex-direction: row;
+  }
+  [dir="rtl"] .navbar-actions {
+    justify-content: flex-end;
+  }
 }
 
 /* ---- Mobile nav RTL ---- */
@@ -242,6 +243,11 @@
   right: 0;
   border-left: 1px solid rgba(255,255,255,0.1);
   border-right: none;
+  transform: translateX(100%); /* Hide to the right */
+}
+
+[dir="rtl"] .sidebar.mobile-open {
+  transform: translateX(0);
 }
 
 [dir="rtl"] .sidebar-link {
@@ -255,12 +261,12 @@
 
 [dir="rtl"] .dashboard-main {
   margin-left: 0;
-  margin-right: 280px;
+  margin-right: 0; /* Consistent with LTR margin-left: 0 */
 }
 
 [dir="rtl"] .sidebar-collapsed ~ .dashboard-main {
   margin-left: 0;
-  margin-right: 80px;
+  margin-right: 0;
 }
 
 [dir="rtl"] .sidebar-toggle-btn {
@@ -269,11 +275,11 @@
 }
 
 [dir="rtl"] .dashboard-header {
-  flex-direction: row-reverse;
+  /* Let native RTL handle the direction */
 }
 
 [dir="rtl"] .dashboard-header-right {
-  flex-direction: row-reverse;
+  /* Let native RTL handle the direction */
 }
 
 [dir="rtl"] .data-table th {
@@ -281,20 +287,24 @@
 }
 
 [dir="rtl"] .data-table .user-info {
-  flex-direction: row-reverse;
+  /* Let native RTL handle it */
 }
 
 [dir="rtl"] .data-table .actions {
-  flex-direction: row-reverse;
+  /* Let native RTL handle it */
 }
 
 [dir="rtl"] .stat-card {
-  flex-direction: row-reverse;
   text-align: right;
+  flex-direction: row; /* Don't reverse the internal card flex */
 }
 
 [dir="rtl"] .dashboard-card-header {
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */ /* Removed to let native RTL handle it */
+}
+
+[dir="rtl"] .stat-card-info {
+  text-align: right;
 }
 
 [dir="rtl"] .notification-dot {
@@ -319,7 +329,7 @@
   flex-direction: row-reverse;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   [dir="rtl"] .sidebar {
     transform: translateX(100%);
   }
