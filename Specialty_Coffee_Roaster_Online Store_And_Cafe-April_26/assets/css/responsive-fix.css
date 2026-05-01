@@ -442,21 +442,14 @@ main {
     justify-content: center;
   }
 
-  /* Grids — 1 column */
+  /* Grids — 2 columns on tablet, 1 on mobile */
   .grid--4,
-  .grid--3 {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-
+  .grid--3,
   .grid--2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    max-width: 480px;
+    gap: var(--space-6);
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     width: 100%;

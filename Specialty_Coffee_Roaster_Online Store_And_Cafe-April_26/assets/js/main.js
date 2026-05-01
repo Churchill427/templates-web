@@ -146,6 +146,9 @@
     const btn = document.getElementById('rtl-toggle');
     if (btn) {
       btn.setAttribute('aria-label', dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
+      btn.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+      btn.style.fontSize = '12px';
+      btn.style.fontWeight = '700';
     }
   }
 
