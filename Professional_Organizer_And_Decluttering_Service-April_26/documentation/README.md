@@ -2,13 +2,13 @@
 
 A premium, modern, fully-responsive HTML/CSS/JS website for a professional organizer & decluttering service business.
 
-## 🚀 Quick Start
+## Quick Start
 
 1. Clone or download the project
 2. Open `index.html` in your browser
 3. No build tools, frameworks, or package managers required
 
-## 📁 File Structure
+## File Structure
 
 ```
 ├── index.html              # Home Page 1 — General Services Landing
@@ -68,11 +68,11 @@ A premium, modern, fully-responsive HTML/CSS/JS website for a professional organ
 | Desktop | 1024–1280px |
 | Large   | > 1280px    |
 
-## ⚡ Features
+## Features
 
 - **Two Homepage Layouts** — General and Niche/SaaS style with dropdown switcher
 - **Dark/Light Mode** — System preference detection + manual toggle with localStorage persistence
-- **RTL Support** — Full right-to-left layout via globe icon toggle
+- **RTL Support** — Full right-to-left layout via LTR/RTL text toggle
 - **Responsive Design** — Mobile-first with 4 breakpoints
 - **Dual Dashboard** — Admin and User roles with role switcher
 - **Scroll Animations** — Intersection Observer-based reveal animations
@@ -84,7 +84,7 @@ A premium, modern, fully-responsive HTML/CSS/JS website for a professional organ
 - **Countdown Timer** — Animated countdown for Coming Soon page
 - **Mini Charts** — SVG sparkline charts in dashboard (no dependencies)
 
-## 🛠 Customization
+## Customization
 
 ### Changing Brand Colors
 Edit the CSS variables in `assets/css/main.css`:
@@ -103,17 +103,17 @@ All images are in `assets/images/`. Replace with your own while maintaining the 
 2. Update the `<title>`, `<meta>`, and content
 3. Add navigation links if needed
 
-## 📋 Browser Support
+## Browser Support
 
 - Chrome (latest 2 versions)
 - Firefox (latest 2 versions)
 - Safari (latest 2 versions)
 - Edge (latest 2 versions)
 
-## 📄 License
+## License
 
 This template is provided as-is for commercial and personal use.
 
 ---
 
-Built with ❤️ by SpaceCraft Organizers
+Built with passion by SpaceCraft Organizers

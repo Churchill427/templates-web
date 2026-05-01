@@ -37,9 +37,11 @@ const RTLManager = {
   apply(dir) {
     document.documentElement.setAttribute('dir', dir);
     localStorage.setItem('dir', dir);
-    const icon = document.querySelector('#rtlToggle i');
-    if (icon) {
-      icon.className = 'fas fa-globe';
+    const toggleBtn = document.getElementById('rtlToggle');
+    if (toggleBtn) {
+      toggleBtn.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+      toggleBtn.style.fontSize = '0.75rem';
+      toggleBtn.style.fontWeight = '700';
     }
   },
   toggle() {
