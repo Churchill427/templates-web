@@ -94,9 +94,7 @@
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           </button>
-          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR" style="padding:4px;display:flex;align-items:center;justify-content:center;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-          </button>
+          <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR">LTR</button>
         </div>
         <a href="login.html" class="btn btn-primary btn-sm nav-login-desktop" data-i18n="nav.login">Login</a>
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -114,7 +112,6 @@
       <div class="hero-overlay" style="background:linear-gradient(135deg,rgba(15,26,11,0.88) 0%,rgba(30,58,95,0.65) 100%);"></div>
       <div class="container">
         <div class="hero-content" style="color:#fff;text-align:center;max-width:720px;margin:0 auto;">
-          <span class="section-label anim-fade-up" style="color:#FFFFFF;justify-content:center;">🧹 Our Services</span>
           <h1 class="hero-title anim-fade-up" style="transition-delay:100ms">Professional Eco-Friendly Cleaning</h1>
           <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms;text-align:center;">From homes to offices, we deliver spotless results using only planet-friendly products. Explore our full range of services.</p>
         </div>
@@ -125,7 +122,6 @@
     <section id="all-services">
       <div class="container">
         <div class="section-header center">
-          <span class="section-label anim-fade-up">Browse Services</span>
           <h2 class="section-title anim-fade-up">What We Offer</h2>
           <p class="section-subtitle anim-fade-up">Click on any service to learn more about what's included and how we can help.</p>
         </div>
@@ -133,22 +129,21 @@
         <!-- NEW SECTION: OUR PROCESS -->
         <div style="margin-bottom: var(--space-16);">
           <div class="section-header center">
-            <span class="section-label anim-fade-up">How It Works</span>
             <h3 class="section-title anim-fade-up" style="font-size: 1.75rem;">Our Professional Process</h3>
           </div>
           <div class="grid grid-3 stagger-children">
             <div class="card anim-fade-up" style="text-align: center; padding: var(--space-8);">
-              <div style="width: 64px; height: 64px; background: rgba(45,80,22,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4); color: var(--primary-green); font-weight: 600; font-size: 1.5rem;">1</div>
+              <div class="process-step-number">1</div>
               <h4 style="margin-bottom: var(--space-2);">Book Your Service</h4>
               <p style="font-size: 0.9375rem; color: var(--text-secondary);">Select your plan and preferred date through our easy online platform.</p>
             </div>
             <div class="card anim-fade-up" style="text-align: center; padding: var(--space-8);">
-              <div style="width: 64px; height: 64px; background: rgba(45,80,22,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4); color: var(--primary-green); font-weight: 600; font-size: 1.5rem;">2</div>
+              <div class="process-step-number">2</div>
               <h4 style="margin-bottom: var(--space-2);">Professional Cleaning</h4>
               <p style="font-size: 0.9375rem; color: var(--text-secondary);">Our background-checked team arrives with certified eco-friendly supplies.</p>
             </div>
             <div class="card anim-fade-up" style="text-align: center; padding: var(--space-8);">
-              <div style="width: 64px; height: 64px; background: rgba(45,80,22,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4); color: var(--primary-green); font-weight: 600; font-size: 1.5rem;">3</div>
+              <div class="process-step-number">3</div>
               <h4 style="margin-bottom: var(--space-2);">Enjoy Your Space</h4>
               <p style="font-size: 0.9375rem; color: var(--text-secondary);">Relax in a spotless, healthy environment that's safe for children and pets.</p>
             </div>
@@ -279,27 +274,44 @@
         <!-- NEW SECTION: WHY CHOOSE US -->
         <div style="margin-top: var(--space-20); padding: var(--space-12); background: rgba(45,80,22,0.03); border-radius: var(--radius-2xl);">
           <div class="section-header center">
-            <span class="section-label anim-fade-up">Trusted Quality</span>
             <h3 class="section-title anim-fade-up" style="font-size: 1.75rem;">Why Choose EcoClean Pro?</h3>
           </div>
           <div class="grid grid-4 stagger-children">
             <div class="anim-fade-up" style="text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: var(--space-3);">🌿</div>
+              <div class="feature-icon-box">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1.35 14-1.1-2.2-2.4-3.5-3.35-4a7 7 0 1 1-6 8ZM11 20l4-5" />
+                </svg>
+              </div>
               <h5 style="margin-bottom: var(--space-1);">100% Eco-Certified</h5>
               <p style="font-size: 0.8125rem; color: var(--text-secondary);">Using only non-toxic, plant-based biological formulas.</p>
             </div>
             <div class="anim-fade-up" style="text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: var(--space-3);">🛡️</div>
+              <div class="feature-icon-box">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
               <h5 style="margin-bottom: var(--space-1);">Insured & Bonded</h5>
               <p style="font-size: 0.8125rem; color: var(--text-secondary);">Your home is protected by full liability and worker's comp.</p>
             </div>
             <div class="anim-fade-up" style="text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: var(--space-3);">👩‍💼</div>
+              <div class="feature-icon-box">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
               <h5 style="margin-bottom: var(--space-1);">Certified Cleaners</h5>
               <p style="font-size: 0.8125rem; color: var(--text-secondary);">Background-checked and trained in green tech.</p>
             </div>
             <div class="anim-fade-up" style="text-align: center;">
-              <div style="font-size: 2.5rem; margin-bottom: var(--space-3);">⭐</div>
+              <div class="feature-icon-box">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                </svg>
+              </div>
               <h5 style="margin-bottom: var(--space-1);">Satisfaction Guarante</h5>
               <p style="font-size: 0.8125rem; color: var(--text-secondary);">Not spotless? We'll re-clean for free within 24 hours.</p>
             </div>

@@ -17,11 +17,11 @@ const I18n = (() => {
    */
   const setDir = (dir) => {
     currentDir = dir;
-    
+
     // Update HTML attributes
     document.documentElement.lang = 'en'; // Keep English
     document.documentElement.dir = dir;
-    
+
     // Load/unload RTL stylesheet
     const rtlLink = document.getElementById('rtl-stylesheet');
     if (dir === 'rtl') {
@@ -35,10 +35,16 @@ const I18n = (() => {
     } else {
       if (rtlLink) rtlLink.remove();
     }
-    
+
+    // Update toggle button text
+    const toggleBtn = document.getElementById('dir-toggle');
+    if (toggleBtn) {
+      toggleBtn.textContent = dir.toUpperCase();
+    }
+
     // Persist
     Utils.storage.set(STORAGE_KEY, dir);
-    
+
     // Emit event
     Utils.bus.emit('dirChange', dir);
   };
@@ -69,5 +75,5 @@ const I18n = (() => {
   };
 
   // We expose setLang and getLang as aliases just in case other modules depend on them
-  return { init, setDir, toggleDir, getDir, setLang: setDir, getLang: getDir, t: (k)=>k };
+  return { init, setDir, toggleDir, getDir, setLang: setDir, getLang: getDir, t: (k) => k };
 })();

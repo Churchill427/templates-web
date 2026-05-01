@@ -28,9 +28,16 @@ const RTLToggle = (() => {
   function updateUI(direction) {
     // Update aria-label and title on toggle buttons
     document.querySelectorAll('.globe-toggle-btn').forEach(btn => {
-      btn.setAttribute('aria-label', `Switch to ${direction === 'rtl' ? 'LTR' : 'RTL'}`);
+      const nextDir = direction === 'rtl' ? 'LTR' : 'RTL';
+      btn.setAttribute('aria-label', `Switch to ${nextDir}`);
       btn.setAttribute('title', `Currently ${direction.toUpperCase()} — Click to switch`);
       btn.classList.toggle('rtl-active', direction === 'rtl');
+      // Set text content to the direction it will switch to
+      btn.textContent = nextDir;
+      // Ensure it has a consistent font size and weight
+      btn.style.fontWeight = '700';
+      btn.style.fontSize = '13px';
+      btn.style.letterSpacing = '0.05em';
     });
   }
 
