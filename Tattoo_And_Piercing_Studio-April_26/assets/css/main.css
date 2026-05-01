@@ -255,6 +255,17 @@ a:hover { color: var(--color-blood-red-dark); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
+.portfolio-masonry {
+  columns: 3;
+  column-gap: var(--space-6);
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-4);
+}
+
 .flex {
   display: flex;
   align-items: center;
@@ -1280,6 +1291,13 @@ main { padding-top: 72px; }
 
   /* Ensure hero content doesn't feel too cramped on large tablets */
   .hero .container { padding-inline: var(--space-8); }
+  .portfolio-masonry { columns: 2; column-gap: var(--space-4); }
+  .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tablet Portrait (768px) */
+@media (max-width: 768px) {
+  .portfolio-masonry { columns: 2; }
 }
 
 /* Mobile (< 640px) */
@@ -1416,6 +1434,14 @@ main { padding-top: 72px; }
     justify-content: center;
     gap: var(--space-4);
   }
+  .portfolio-masonry { columns: 1; gap: var(--space-4); }
+  .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Small Mobile (360px) */
+@media (max-width: 360px) {
+  .portfolio-masonry { columns: 1; }
+  .section-title h2 { font-size: 1.375rem; }
 }
 
 /* ---- Footer Visibility Fixes ---- */
