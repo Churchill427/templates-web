@@ -32,8 +32,6 @@ const ThemeSwitcher = (() => {
       if (sunIcon && moonIcon) {
         sunIcon.style.display = theme === 'dark' ? 'block' : 'none';
         moonIcon.style.display = theme === 'light' ? 'block' : 'none';
-      } else {
-        btn.textContent = theme === 'dark' ? '☀️' : '🌙';
       }
     });
   }
@@ -46,6 +44,14 @@ const ThemeSwitcher = (() => {
   function applyDir(dir) {
     document.documentElement.setAttribute('dir', dir);
     localStorage.setItem(DIR_KEY, dir);
+    updateDir(dir);
+  }
+
+  function updateDir(dir) {
+    const btns = document.querySelectorAll('.dir-toggle');
+    btns.forEach(btn => {
+      btn.textContent = dir.toUpperCase();
+    });
   }
 
   function toggleDir() {
