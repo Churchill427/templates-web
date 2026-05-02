@@ -12,6 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
     rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/animations.css">
@@ -327,7 +328,13 @@
       background: var(--white);
       border-radius: var(--radius-md);
       padding: var(--space-5);
-      border: 1px solid var(--color-border-light)
+      border: 1px solid var(--color-border-light);
+      position: relative;
+    }
+
+    .chart-box canvas {
+      max-height: 240px;
+      width: 100% !important;
     }
 
     .chart-box h4 {

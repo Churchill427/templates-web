@@ -102,265 +102,318 @@
   }
 
   /* ================================================
-     DASHBOARD CHARTS (Simple Canvas)
+     DASHBOARD CHARTS (Chart.js Integration)
      ================================================ */
+  let charts = {};
+
   function initDashboardCharts() {
+    // Clear existing charts if any
+    Object.values(charts).forEach(chart => chart.destroy());
+    charts = {};
+
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const textColor = isDark ? '#A0988C' : '#7A7A7A';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+    const primaryColor = '#6F4E37';
+    const accentColor = '#D4A574';
+
+    Chart.defaults.color = textColor;
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.plugins.tooltip.backgroundColor = isDark ? '#252119' : '#FFFFFF';
+    Chart.defaults.plugins.tooltip.titleColor = isDark ? '#FFFFFF' : '#1A1A1A';
+    Chart.defaults.plugins.tooltip.bodyColor = isDark ? '#E0D8CC' : '#7A7A7A';
+    Chart.defaults.plugins.tooltip.borderColor = isDark ? '#2E2A24' : '#E0D5C1';
+    Chart.defaults.plugins.tooltip.borderWidth = 1;
+    Chart.defaults.plugins.tooltip.padding = 12;
+    Chart.defaults.plugins.tooltip.cornerRadius = 8;
+
     // Admin Charts
-    drawRevenueChart(); // Bar
-    drawOrdersChart();  // Line
-    drawGrowthChart();  // Area
-    drawCategoriesChart(); // Horizontal Bar
-    
+    drawRevenueChart(primaryColor, accentColor, gridColor);
+    drawOrdersChart(primaryColor, gridColor);
+    drawGrowthChart('#E85D04', gridColor);
+    drawCategoriesChart(primaryColor, gridColor);
+
     // User Charts
-    drawConsumptionChart(); // Line
-    drawSpendingChart();    // Bar
-    drawTasteChart();       // Dot Plot
-    drawProgressChart();    // Circular Gauge
-  }
+    drawConsumptionChart(accentColor, gridColor);
+    drawSpendingChart(primaryColor, gridColor);
+    drawTasteChart(accentColor, gridColor);
+    drawProgressChart(primaryColor);
 
-  function drawRevenueChart() {
-    const canvas = document.getElementById('revenue-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
-
-    const data = [1200, 1900, 1500, 2800, 2200, 3100, 2700, 3400, 2900, 3800, 3200, 4100];
-    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const max = Math.max(...data) * 1.15;
-    const barW = (w - 80) / data.length;
-    const offsetX = 50;
-    const offsetY = 20;
-
-    ctx.clearRect(0, 0, w, h);
-
-    // Grid lines
-    ctx.strokeStyle = '#E0D5C180';
-    ctx.lineWidth = 0.5;
-    for (let i = 0; i <= 4; i++) {
-      const y = offsetY + ((h - 50) / 4) * i;
-      ctx.beginPath();
-      ctx.moveTo(offsetX, y);
-      ctx.lineTo(w - 10, y);
-      ctx.stroke();
-    }
-
-    // Bars
-    data.forEach((val, i) => {
-      const barH = ((h - 50) * val) / max;
-      const x = offsetX + i * barW + barW * 0.15;
-      const y = h - 30 - barH;
-      const bw = barW * 0.7;
-
-      const grad = ctx.createLinearGradient(x, y, x, h - 30);
-      grad.addColorStop(0, '#6F4E37');
-      grad.addColorStop(1, '#D4A574');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.roundRect(x, y, bw, barH, [4, 4, 0, 0]);
-      ctx.fill();
-
-      ctx.fillStyle = '#7A7A7A';
-      ctx.font = '10px Inter'; ctx.textAlign = 'center';
-      if (i % 2 === 0) ctx.fillText(labels[i], x + bw / 2, h - 12);
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          initDashboardCharts();
+        }
+      });
     });
-
-    ctx.textAlign = 'right';
-    for (let i = 0; i <= 4; i++) {
-      const val = Math.round((max / 4) * (4 - i));
-      const y = offsetY + ((h - 50) / 4) * i + 4;
-      ctx.fillText('$' + (val > 1000 ? (val/1000).toFixed(1)+'k' : val), offsetX - 6, y);
-    }
+    observer.observe(document.documentElement, { attributes: true });
   }
 
-  function drawOrdersChart() {
-    const canvas = document.getElementById('orders-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
+  function drawRevenueChart(primary, accent, grid) {
+    const ctx = document.getElementById('revenue-chart')?.getContext('2d');
+    if (!ctx) return;
 
-    const data = [45, 62, 58, 78, 71, 90, 85, 95, 88, 102, 96, 110];
-    const max = Math.max(...data) * 1.15;
-    const step = (w - 80) / (data.length - 1);
-    const offsetX = 50;
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, primary);
+    gradient.addColorStop(1, accent);
 
-    ctx.clearRect(0, 0, w, h);
-
-    ctx.beginPath();
-    const points = data.map((val, i) => ({
-      x: offsetX + i * step,
-      y: h - 30 - ((h - 50) * val) / max
-    }));
-
-    ctx.beginPath();
-    points.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
-    ctx.strokeStyle = '#6F4E37';
-    ctx.lineWidth = 2.5;
-    ctx.lineJoin = 'round';
-    ctx.stroke();
-
-    points.forEach(p => {
-      ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = '#6F4E37'; ctx.fill();
-      ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = '#fff'; ctx.fill();
+    charts.revenue = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Revenue',
+          data: [1200, 1900, 1500, 2800, 2200, 3100, 2700, 3400, 2900, 3800, 3200, 4100],
+          backgroundColor: gradient,
+          borderRadius: 6,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { grid: { color: grid }, ticks: { callback: value => '$' + (value >= 1000 ? value / 1000 + 'k' : value) } },
+          x: { grid: { display: false } }
+        }
+      }
     });
   }
 
-  function drawGrowthChart() {
-    const canvas = document.getElementById('growth-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
-    const data = [200, 350, 600, 900, 1400, 2100, 3000, 4200, 5800, 7500];
-    const max = 10000;
-    const step = (w - 60) / (data.length - 1);
-    const offset = 40;
+  function drawOrdersChart(primary, grid) {
+    const ctx = document.getElementById('orders-chart')?.getContext('2d');
+    if (!ctx) return;
 
-    ctx.clearRect(0,0,w,h);
-    const points = data.map((v, i) => ({ x: offset + i*step, y: h - 30 - (v/max)*(h-50) }));
-
-    const grad = ctx.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, 'rgba(232,93,4,.4)');
-    grad.addColorStop(1, 'rgba(232,93,4,0)');
-
-    ctx.beginPath();
-    ctx.moveTo(points[0].x, h-30);
-    points.forEach(p => ctx.lineTo(p.x, p.y));
-    ctx.lineTo(points[points.length-1].x, h-30);
-    ctx.fillStyle = grad;
-    ctx.fill();
-
-    ctx.beginPath();
-    points.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
-    ctx.strokeStyle = '#E85D04';
-    ctx.lineWidth = 3;
-    ctx.stroke();
-  }
-
-  function drawCategoriesChart() {
-    const canvas = document.getElementById('categories-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
-    const categories = ['Single Origin', 'Blends', 'Equipment', 'Merch', 'Courses'];
-    const values = [85, 65, 45, 30, 15];
-
-    ctx.clearRect(0,0,w,h);
-    const bh = 24;
-    const gap = 12;
-
-    categories.forEach((cat, i) => {
-      const y = 30 + i * (bh + gap);
-      const bw = (values[i]/100) * (w - 120);
-
-      ctx.fillStyle = '#F5F1E8';
-      ctx.beginPath(); ctx.roundRect(100, y, w-120, bh, bh/2); ctx.fill();
-
-      ctx.fillStyle = '#6F4E37';
-      ctx.beginPath(); ctx.roundRect(100, y, bw, bh, bh/2); ctx.fill();
-
-      ctx.fillStyle = '#7A7A7A'; ctx.font = '11px Inter'; ctx.textAlign = 'right';
-      ctx.fillText(cat, 90, y + 16);
+    charts.orders = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Orders',
+          data: [45, 62, 58, 78, 71, 90, 85, 95, 88, 102, 96, 110],
+          borderColor: primary,
+          borderWidth: 3,
+          pointBackgroundColor: '#FFFFFF',
+          pointBorderColor: primary,
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { grid: { color: grid } },
+          x: { grid: { display: false } }
+        }
+      }
     });
   }
 
-  function drawConsumptionChart() {
-    const canvas = document.getElementById('consumption-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
-    const data = [2, 3, 2, 4, 3, 5, 4];
-    const step = (w - 60) / (data.length - 1);
+  function drawGrowthChart(color, grid) {
+    const ctx = document.getElementById('growth-chart')?.getContext('2d');
+    if (!ctx) return;
 
-    ctx.clearRect(0,0,w,h);
-    ctx.beginPath();
-    data.forEach((v, i) => {
-      const x = 30 + i * step;
-      const y = h - 30 - v * 20;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    });
-    ctx.strokeStyle = '#D4A574'; ctx.lineWidth = 3; ctx.stroke();
-  }
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(232, 93, 4, 0.4)');
+    gradient.addColorStop(1, 'rgba(232, 93, 4, 0)');
 
-  function drawSpendingChart() {
-    const canvas = document.getElementById('spending-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
-    const weeks = ['W1', 'W2', 'W3', 'W4'];
-    const spend = [45, 82, 35, 64];
-
-    ctx.clearRect(0,0,w,h);
-    weeks.forEach((wk, i) => {
-      const bw = 40; const x = 60 + i * ((w-100)/4);
-      const bh = spend[i] * 1.5;
-      ctx.fillStyle = '#6F4E37';
-      ctx.beginPath(); ctx.roundRect(x, h-30-bh, bw, bh, 4); ctx.fill();
-      ctx.fillStyle = '#7A7A7A'; ctx.textAlign = 'center';
-      ctx.fillText(wk, x + bw/2, h - 10);
+    charts.growth = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        datasets: [{
+          label: 'Customers',
+          data: [200, 350, 600, 900, 1400, 2100, 3000, 4200, 5800, 7500],
+          borderColor: color,
+          backgroundColor: gradient,
+          fill: true,
+          borderWidth: 3,
+          pointRadius: 0,
+          pointHoverRadius: 6,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { grid: { color: grid }, max: 10000 },
+          x: { grid: { display: false } }
+        }
+      }
     });
   }
 
-  function drawTasteChart() {
-    const canvas = document.getElementById('taste-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
-    const labels = ['Acidity', 'Body', 'Sweet', 'Roast', 'Price'];
-    const vals = [0.8, 0.6, 0.9, 0.4, 0.7];
+  function drawCategoriesChart(primary, grid) {
+    const ctx = document.getElementById('categories-chart')?.getContext('2d');
+    if (!ctx) return;
 
-    ctx.clearRect(0,0,w,h);
-    const cx = w/2; const cy = h/2;
-    const radius = 60;
-
-    ctx.strokeStyle = '#E0D5C1';
-    for(let r=1;r<=3;r++){ ctx.beginPath(); ctx.arc(cx,cy, (radius/3)*r, 0, Math.PI*2); ctx.stroke(); }
-
-    ctx.beginPath();
-    labels.forEach((l, i) => {
-      const angle = (i / labels.length) * Math.PI * 2 - Math.PI/2;
-      const x = cx + Math.cos(angle) * radius * vals[i];
-      const y = cy + Math.sin(angle) * radius * vals[i];
-      i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
-
-      ctx.fillStyle = '#7A7A7A'; ctx.font = '10px Inter';
-      ctx.fillText(l, cx + Math.cos(angle)*(radius+15), cy + Math.sin(angle)*(radius+15));
+    charts.categories = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Single Origin', 'Blends', 'Equipment', 'Merch', 'Courses'],
+        datasets: [{
+          label: 'Sales Share',
+          data: [85, 65, 45, 30, 15],
+          backgroundColor: primary,
+          borderRadius: 20,
+          barThickness: 12
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { color: grid }, max: 100 },
+          y: { grid: { display: false } }
+        }
+      }
     });
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(212,165,116,0.3)'; ctx.fill();
-    ctx.strokeStyle = '#D4A574'; ctx.stroke();
   }
 
-  function drawProgressChart() {
-    const canvas = document.getElementById('progress-chart');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const w = canvas.width = canvas.parentElement.offsetWidth;
-    const h = canvas.height = 220;
+  function drawConsumptionChart(accent, grid) {
+    const ctx = document.getElementById('consumption-chart')?.getContext('2d');
+    if (!ctx) return;
 
-    ctx.clearRect(0,0,w,h);
-    const cx = w/2; const cy = h/2 + 20;
-    const r = 70;
+    const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+    gradient.addColorStop(0, 'rgba(212, 165, 116, 0.4)');
+    gradient.addColorStop(1, 'rgba(212, 165, 116, 0)');
 
-    // Background arc
-    ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, 0);
-    ctx.strokeStyle = '#F5F1E8'; ctx.lineWidth = 20; ctx.lineCap = 'round'; ctx.stroke();
+    charts.consumption = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Cups',
+          data: [2, 3, 2, 4, 3, 5, 4],
+          borderColor: accent,
+          backgroundColor: gradient,
+          fill: true,
+          borderWidth: 3,
+          pointBackgroundColor: accent,
+          pointBorderColor: '#FFF',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 7,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (context) => ` ${context.parsed.y} cups consumed`
+            }
+          }
+        },
+        scales: {
+          y: { grid: { color: grid }, min: 0, max: 6, ticks: { stepSize: 1 } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
 
-    // Progress arc (75%)
-    ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, Math.PI + (Math.PI * 0.75));
-    ctx.strokeStyle = '#6F4E37'; ctx.stroke();
+  function drawSpendingChart(primary, grid) {
+    const ctx = document.getElementById('spending-chart')?.getContext('2d');
+    if (!ctx) return;
 
-    ctx.fillStyle = '#1A1A1A'; ctx.font = 'bold 24px Playfair Display'; ctx.textAlign = 'center';
-    ctx.fillText('75%', cx, cy - 10);
-    ctx.font = '12px Inter'; ctx.fillStyle = '#7A7A7A';
-    ctx.fillText('Next shipment in 4 days', cx, cy + 20);
+    charts.spending = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+        datasets: [{
+          label: 'Spending',
+          data: [45, 82, 35, 64],
+          backgroundColor: primary,
+          borderRadius: 4,
+          barThickness: 30
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { grid: { color: grid }, ticks: { callback: v => '$' + v } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  function drawTasteChart(accent, grid) {
+    const ctx = document.getElementById('taste-chart')?.getContext('2d');
+    if (!ctx) return;
+
+    charts.taste = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Acidity', 'Body', 'Sweet', 'Roast', 'Price'],
+        datasets: [{
+          label: 'Preference',
+          data: [80, 60, 90, 40, 70],
+          backgroundColor: 'rgba(212, 165, 116, 0.3)',
+          borderColor: accent,
+          borderWidth: 2,
+          pointRadius: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            grid: { color: grid },
+            angleLines: { color: grid },
+            suggestedMin: 0,
+            suggestedMax: 100,
+            ticks: { display: false }
+          }
+        }
+      }
+    });
+  }
+
+  function drawProgressChart(primary) {
+    const ctx = document.getElementById('progress-chart')?.getContext('2d');
+    if (!ctx) return;
+
+    charts.progress = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Completed', 'Remaining'],
+        datasets: [{
+          data: [75, 25],
+          backgroundColor: [primary, 'rgba(0,0,0,0.05)'],
+          borderWidth: 0,
+          circumference: 180,
+          rotation: 270,
+          cutout: '80%'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false }
+        }
+      }
+    });
   }
 
   /* ================================================
