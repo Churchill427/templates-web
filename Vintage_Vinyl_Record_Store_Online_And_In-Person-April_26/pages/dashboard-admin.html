@@ -174,28 +174,33 @@
     .radial-circle { transform: rotate(-90deg); transform-origin: center; }
     .radial-label { font-size: 10px; margin-top: 5px; color: var(--text-muted); text-transform: uppercase; }
 
-    @media (max-width: 1200px) {
-      .viz-grid { grid-template-columns: 1fr; }
-    }
-
     @media (max-width: 1024px) {
       .stat-cards { grid-template-columns: repeat(2, 1fr); }
       .chart-section { grid-template-columns: 1fr; }
+      .viz-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .stat-cards { grid-template-columns: repeat(2, 1fr); }
+      .viz-grid { grid-template-columns: 1fr; }
+      .dash-topbar__breadcrumb { display: none; }
+    }
+
+    @media (max-width: 480px) {
       .stat-cards { grid-template-columns: 1fr; }
       .dash-main { width: 100vw; max-width: 100%; overflow-x: hidden; }
       .dash-topbar { 
-        height: auto; min-height: 70px; padding: 12px var(--space-4); 
-        flex-wrap: wrap; gap: var(--space-2); 
+        height: auto; padding: 12px var(--space-4); 
+        flex-direction: column; align-items: stretch; gap: var(--space-3); 
       }
-      .dash-topbar__left { order: 1; width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; }
-      .dash-topbar__right { order: 2; width: 100%; justify-content: space-between; }
+      .dash-topbar__left { width: 100%; justify-content: space-between; }
+      .dash-topbar__right { width: 100%; flex-direction: column; align-items: stretch; gap: var(--space-3); }
       .dash-topbar__search { width: 100% !important; margin: 0; }
+      .dash-topbar__right > div { justify-content: space-between; width: 100%; }
       .dash-content { padding: var(--space-4); }
       .dash-table-wrap { display: block; overflow-x: auto; width: 100%; }
       .dash-table { min-width: 600px; }
+      .stat-card__value { font-size: var(--text-2xl); }
     }
 
     .dash-hamburger {
@@ -331,22 +336,8 @@
                 <option>Last 7 Days</option>
               </select>
             </div>
-            <div class="chart-placeholder">
-              <div class="chart-bar" style="height:35%;"></div>
-              <div class="chart-bar" style="height:45%;"></div>
-              <div class="chart-bar" style="height:30%;"></div>
-              <div class="chart-bar" style="height:60%;"></div>
-              <div class="chart-bar" style="height:55%;"></div>
-              <div class="chart-bar" style="height:40%;"></div>
-              <div class="chart-bar" style="height:70%;"></div>
-              <div class="chart-bar" style="height:65%;"></div>
-              <div class="chart-bar" style="height:50%;"></div>
-              <div class="chart-bar" style="height:80%;"></div>
-              <div class="chart-bar" style="height:75%;"></div>
-              <div class="chart-bar" style="height:60%;"></div>
-              <div class="chart-bar" style="height:85%;"></div>
-              <div class="chart-bar" style="height:70%;"></div>
-              <div class="chart-bar" style="height:90%;"></div>
+            <div class="chart-container" style="position: relative; height:250px; width:100%">
+              <canvas id="salesOverviewChart"></canvas>
             </div>
           </div>
 
@@ -354,28 +345,8 @@
           <div class="chart-card">
             <h2 class="chart-card__title">Sales by Genre</h2>
             <div style="margin-top:20px;">
-              <div class="donut-container">
-                <svg width="150" height="150" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="12"/>
-                  <!-- Jazz (40%) -->
-                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#FFD700" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="150.72"/>
-                  <!-- Rock (30%) -->
-                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#FF4D4D" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="175.84" style="transform: rotate(54deg); transform-origin: 50% 50%;"/>
-                  <!-- Electronic (20%) -->
-                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#4D79FF" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="200.96" style="transform: rotate(162deg); transform-origin: 50% 50%;"/>
-                  <!-- Classical (10%) -->
-                  <circle class="donut-ring" cx="50" cy="50" r="40" fill="transparent" stroke="#2ECC71" stroke-width="12" stroke-dasharray="251.2" stroke-dashoffset="226.08" style="transform: rotate(234deg); transform-origin: 50% 50%;"/>
-                </svg>
-                <div class="donut-center">
-                  <div style="font-size:18px;font-weight:700;">1,240</div>
-                  <div style="font-size:10px;color:var(--text-muted);">UNITS</div>
-                </div>
-              </div>
-              <div class="viz-legend">
-                <div class="legend-item"><span class="legend-dot" style="background:#FFD700;"></span> Jazz (40%)</div>
-                <div class="legend-item"><span class="legend-dot" style="background:#FF4D4D;"></span> Rock (30%)</div>
-                <div class="legend-item"><span class="legend-dot" style="background:#4D79FF;"></span> Electronic (20%)</div>
-                <div class="legend-item"><span class="legend-dot" style="background:#2ECC71;"></span> Classical (10%)</div>
+              <div class="donut-container" style="height:180px;">
+                <canvas id="genreDistributionChart"></canvas>
               </div>
             </div>
           </div>
@@ -385,51 +356,16 @@
           <!-- User Growth (Line Chart) -->
           <div class="chart-card">
             <h2 class="chart-card__title">User Growth</h2>
-            <div style="margin-top:20px;">
-              <svg class="line-chart-svg" viewBox="0 0 300 160">
-                <!-- Grid Lines -->
-                <line x1="0" y1="40" x2="300" y2="40" class="chart-grid-line" />
-                <line x1="0" y1="80" x2="300" y2="80" class="chart-grid-line" />
-                <line x1="0" y1="120" x2="300" y2="120" class="chart-grid-line" />
-                <!-- Growth Path -->
-                <path class="chart-path" d="M0,140 Q40,130 60,110 T120,90 T180,60 T240,40 T300,20" fill="none" stroke="var(--color-accent)" stroke-width="3" />
-                <!-- Data Points -->
-                <circle cx="60" cy="110" r="4" fill="var(--color-accent)" />
-                <circle cx="180" cy="60" r="4" fill="var(--color-accent)" />
-                <circle cx="300" cy="20" r="4" fill="var(--color-accent)" />
-              </svg>
-              <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px;">Weekly Active User Growth Trend</p>
+            <div style="margin-top:20px; height:160px;">
+              <canvas id="userGrowthChart"></canvas>
             </div>
           </div>
 
           <!-- Inventory Health (Radial) -->
           <div class="chart-card">
             <h2 class="chart-card__title">Inventory Health</h2>
-            <div class="radial-progress-group">
-              <div class="radial-item">
-                <svg width="60" height="60">
-                  <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4" />
-                  <circle class="radial-circle" cx="30" cy="30" r="25" fill="none" stroke="#2ECC71" stroke-width="4" stroke-dasharray="157" stroke-dashoffset="31.4" />
-                </svg>
-                <div class="radial-label">In Stock</div>
-                <div style="font-weight:700;">80%</div>
-              </div>
-              <div class="radial-item">
-                <svg width="60" height="60">
-                  <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4" />
-                  <circle class="radial-circle" cx="30" cy="30" r="25" fill="none" stroke="#F1C40F" stroke-width="4" stroke-dasharray="157" stroke-dashoffset="109.9" />
-                </svg>
-                <div class="radial-label">Low Stock</div>
-                <div style="font-weight:700;">30%</div>
-              </div>
-              <div class="radial-item">
-                <svg width="60" height="60">
-                  <circle cx="30" cy="30" r="25" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4" />
-                  <circle class="radial-circle" cx="30" cy="30" r="25" fill="none" stroke="#E74C3C" stroke-width="4" stroke-dasharray="157" stroke-dashoffset="141.3" />
-                </svg>
-                <div class="radial-label">Out</div>
-                <div style="font-weight:700;">10%</div>
-              </div>
+            <div class="radial-progress-group" style="height: 120px;">
+              <canvas id="inventoryHealthChart"></canvas>
             </div>
           </div>
 
@@ -468,6 +404,9 @@
     </div>
   </div>
 
+  <!-- Chart.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/dashboard-charts.js"></script>
   <script src="../assets/js/theme-switcher.js"></script>
   <script>
     function openSidebar() {

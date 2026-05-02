@@ -125,23 +125,30 @@
         box-shadow: 4px 0 24px rgba(0,0,0,0.5);
       }
       .dash-sidebar.open { transform: translateX(0); }
-      .stat-cards { grid-template-columns: 1fr; }
+      .stat-cards { grid-template-columns: repeat(2, 1fr); }
       .layout-grid { grid-template-columns: 1fr; }
       .dash-hamburger { display: flex !important; }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .dash-topbar__breadcrumb { display: none; }
+      .customer-viz-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .stat-cards { grid-template-columns: 1fr; }
       .dash-main { width: 100vw; max-width: 100%; overflow-x: hidden; }
       .dash-topbar { 
-        height: auto; min-height: 70px; padding: 12px var(--space-4); 
-        flex-wrap: wrap; gap: var(--space-2); 
+        height: auto; padding: 12px var(--space-4); 
+        flex-direction: column; align-items: stretch; gap: var(--space-3); 
       }
-      .dash-topbar__left { order: 1; width: 100%; display: flex; align-items: center; justify-content: space-between; }
-      .dash-topbar__right { order: 2; width: 100%; justify-content: flex-end; }
+      .dash-topbar__left { width: 100%; justify-content: space-between; }
+      .dash-topbar__right { width: 100%; justify-content: flex-end; }
       .dash-content { padding: var(--space-4); }
       .panel { padding: var(--space-4); }
       .order-item { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
       .order-item > div:last-child { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+      .stat-card__value { font-size: var(--text-2xl); }
     }
 
     /* Hamburger Button */
@@ -338,6 +345,7 @@
           <div class="panel">
             <h2 class="panel__title">Spending History</h2>
             <div style="margin-top:15px;">
+            <div style="margin-top:15px;">
               <svg class="cust-chart-svg" viewBox="0 0 300 120">
                 <path class="spending-path" d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10" fill="none" stroke="#2ECC71" stroke-width="2" />
                 <path d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10 L300,120 L0,120 Z" fill="url(#grad)" opacity="0.1" />
@@ -349,6 +357,7 @@
                 </defs>
               </svg>
               <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:5px;">Your monthly investment in vinyl culture</p>
+            </div>
             </div>
           </div>
         </div>
