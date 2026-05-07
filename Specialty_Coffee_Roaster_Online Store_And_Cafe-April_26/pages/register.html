@@ -306,7 +306,7 @@
     .social-btn {
       display: flex;
       align-items: center;
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: 8px;
       font-size: .875rem;
       font-weight: 600;
@@ -317,7 +317,6 @@
       color: #1A1A1A;
       border: 1px solid #E0D5C1;
       width: 100%;
-      position: relative;
     }
 
     .social-btn:hover {
@@ -331,13 +330,14 @@
       width: 20px;
       height: 20px;
       flex-shrink: 0;
-      position: absolute;
-      left: 20px;
+      margin-left: auto; /* Push the group to the center */
     }
 
     .social-btn span {
-      flex: 1;
-      text-align: center;
+      width: 190px; /* Fixed width to ensure text starts at the same spot */
+      text-align: left;
+      margin-right: auto; /* Push the group to the center */
+      margin-left: 12px; /* Fixed gap between icon and text */
     }
 
     .register-footer {
@@ -372,6 +372,24 @@
 
       body {
         overflow-y: auto
+      }
+    }
+
+    .page-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px
+    }
+
+    @media (max-width: 480px) {
+      .page-controls {
+        flex-direction: column;
+        top: 15px;
+        right: 15px;
+        gap: 8px
       }
     }
   </style>
@@ -474,20 +492,11 @@
             </svg>
             <span>Continue with Facebook</span>
           </a>
-          <a href="#" class="social-btn" aria-label="Sign up with Instagram">
+          <a href="#" class="social-btn" aria-label="Sign in with Apple">
             <svg viewBox="0 0 24 24">
-              <defs>
-                <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" style="stop-color:#f09433;stop-opacity:1" />
-                  <stop offset="25%" style="stop-color:#e6683c;stop-opacity:1" />
-                  <stop offset="50%" style="stop-color:#dc2743;stop-opacity:1" />
-                  <stop offset="75%" style="stop-color:#cc2366;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#bc1888;stop-opacity:1" />
-                </linearGradient>
-              </defs>
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="url(#instagram-gradient)" />
+              <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.078-2.04 0-3.905 1.159-4.954 3.002-2.117 3.72-.54 9.221 1.512 12.203 1.003 1.452 2.212 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.039 2.48-4.5 2.597-4.571-1.428-2.09-3.65-2.324-4.442-2.376-1.714-.143-3.311 1.065-4.182 1.065zm1.614-2.143c.772-.942 1.29-2.253 1.144-3.56-1.12.046-2.474.743-3.279 1.682-.727.838-1.361 2.175-1.192 3.442 1.25.097 2.51-.623 3.327-1.564z" fill="currentColor" />
             </svg>
-            Continue with Instagram
+            <span>Continue with Apple</span>
           </a>
         </div>
 
@@ -498,7 +507,7 @@
     </div>
   </div>
 
-  <div class="page-controls" style="position:fixed;top:20px;right:20px;z-index:1000;display:flex;gap:10px">
+  <div class="page-controls">
     <button class="btn--icon" id="rtl-toggle" aria-label="Switch to RTL">RTL</button>
     <button class="btn--icon" id="theme-toggle" aria-label="Switch to dark mode">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
