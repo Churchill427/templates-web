@@ -103,6 +103,23 @@
       flex-shrink: 0;
     }
 
+    /* Dashboard Navbar */
+    .dash-nav-inner {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      padding: 0 var(--space-6);
+    }
+
+    @media(max-width:640px) {
+      .dash-nav-inner {
+        padding: 0 var(--space-4);
+      }
+    }
+
     .dash-header {
       display: flex;
       align-items: center;
@@ -552,18 +569,23 @@
 
   <!-- NAVBAR -->
   <nav class="navbar" id="main-nav" aria-label="Main navigation">
-    <div class="container">
-      <!-- BRAND ON LEFT -->
-      <a href="index.html" class="nav-brand">
-        <span class="nav-brand-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z" fill="currentColor"
-              stroke="none" opacity="0.9" />
-            <path d="M5.5 21.5L10 15" stroke-linecap="round" />
-          </svg>
-        </span>
-        <span>EcoClean Pro</span>
-      </a>
+    <div class="dash-nav-inner">
+      <!-- LEFT SIDE: Hamburger & Brand -->
+      <div style="display:flex; align-items:center; gap:var(--space-4);">
+        <button class="nav-hamburger" id="sidebar-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" class="nav-brand">
+          <span class="nav-brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z"
+                fill="currentColor" stroke="none" opacity="0.9" />
+              <path d="M5.5 21.5L10 15" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span>EcoClean Pro</span>
+        </a>
+      </div>
 
       <!-- ACTIONS ON RIGHT -->
       <div class="nav-actions">
@@ -583,11 +605,6 @@
           <button class="lang-toggle btn btn-ghost btn-icon" id="dir-toggle" aria-label="Toggle RTL/LTR"
             title="Toggle RTL/LTR">LTR</button>
         </div>
-
-        <!-- Hamburger Toggle for Sidebar (Now on Right for Consistency) -->
-        <button class="nav-hamburger" id="sidebar-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </div>
   </nav>
@@ -809,7 +826,8 @@
                 types</span></div>
             <div style="padding:var(--space-2) 0;">
               <div style="display:flex;justify-content:space-between;margin-bottom:8px; font-size:0.875rem;">
-                <span>Residential</span><span>65%</span></div>
+                <span>Residential</span><span>65%</span>
+              </div>
               <div class="hbar-track" style="margin-bottom:12px;">
                 <div class="hbar-fill" style="width:65%;"></div>
               </div>
@@ -819,7 +837,8 @@
                 <div class="hbar-fill" style="width:25%; opacity:0.6;"></div>
               </div>
               <div style="display:flex;justify-content:space-between;margin-bottom:8px; font-size:0.875rem;">
-                <span>Windows</span><span>10%</span></div>
+                <span>Windows</span><span>10%</span>
+              </div>
               <div class="hbar-track" style="margin-bottom:4px;">
                 <div class="hbar-fill" style="width:10%; opacity:0.3;"></div>
               </div>

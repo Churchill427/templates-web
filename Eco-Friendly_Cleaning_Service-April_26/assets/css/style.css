@@ -116,19 +116,19 @@
   --text-secondary: #B8B5AD;
   --text-muted: #A0A0A0;
   --text-light: #808080;
-  --bg-primary: #0F1A0B;
-  --bg-secondary: #1A2914;
-  --bg-card: #1E2E17;
-  --border-color: #3E5035;
-  --border-light: #2A3B1F;
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #1A1A1A;
+  --bg-card: #141414;
+  --border-color: #2A2A2A;
+  --border-light: #1F1F1F;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 20px rgba(135, 168, 120, 0.15);
-  --secondary-sand: #1A2914;
-  --secondary-sand-dark: #253319;
+  --secondary-sand: #1A1A1A;
+  --secondary-sand-dark: #222222;
 }
 
 /* --- Dark Mode Numbers Color --- */
@@ -161,7 +161,7 @@
 
 [data-theme="dark"] .centered-cta,
 [data-theme="dark"] .section-alt.centered-cta {
-  background: #1a3010 !important;
+  background: #111111 !important;
 }
 
 [data-theme="dark"] .section-title {
@@ -205,7 +205,9 @@ body {
 }
 
 /* --- Global Responsive Foundation --- */
-.container {
+.container,
+.container-narrow,
+.container-wide {
   width: 100%;
   margin: 0 auto;
   padding: 0 var(--space-4);
@@ -218,7 +220,9 @@ body {
     font-size: 1rem;
   }
 
-  .container {
+  .container,
+  .container-narrow,
+  .container-wide {
     padding: 0 var(--space-6);
   }
 }
@@ -482,19 +486,16 @@ p {
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--space-6);
 }
 
 .container-narrow {
   max-width: var(--container-narrow);
   margin-inline: auto;
-  padding-inline: var(--space-6);
 }
 
 .container-wide {
   max-width: var(--container-wide);
   margin-inline: auto;
-  padding-inline: var(--space-6);
 }
 
 section {
@@ -770,7 +771,7 @@ section {
 }
 
 [data-theme="dark"] .navbar {
-  background: rgba(15, 26, 11, 0.9);
+  background: rgba(13, 13, 13, 0.92);
 }
 
 .navbar.scrolled {
@@ -1043,8 +1044,8 @@ section {
 
 .theme-toggle:hover,
 .lang-toggle:hover {
-  background: var(--bg-secondary);
-  color: var(--primary-green);
+  background: transparent !important;
+  color: var(--text-secondary) !important;
 }
 
 .theme-toggle svg {
@@ -1941,6 +1942,31 @@ textarea.form-input {
   color: var(--error);
 }
 
+[data-theme="dark"] .badge-primary {
+  background: rgba(163, 196, 148, 0.15);
+  color: #a3c494;
+}
+
+[data-theme="dark"] .badge-accent {
+  background: rgba(255, 138, 102, 0.15);
+  color: #ff8a66;
+}
+
+[data-theme="dark"] .badge-success {
+  background: rgba(102, 194, 133, 0.15);
+  color: #66c285;
+}
+
+[data-theme="dark"] .badge-warning {
+  background: rgba(255, 193, 51, 0.15);
+  color: #ffc133;
+}
+
+[data-theme="dark"] .badge-error {
+  background: rgba(239, 118, 118, 0.15);
+  color: #ef7676;
+}
+
 
 /* ============================================================
    ACCORDION
@@ -2474,7 +2500,7 @@ textarea.form-input {
 }
 
 [data-theme=" dark\] .footer {
- background: #0a1207;
+ background: #0D0D0D;
 border-top: 1px solid var(--border-light);
 }
 
@@ -2541,7 +2567,7 @@ section[style*='var(--primary-green)'] .stat-card-label {
 
 /* Dashboard specific contrast */
 [data-theme='dark'] .dash-widget {
-  background: #152210 !important;
+  background: #141414 !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
 

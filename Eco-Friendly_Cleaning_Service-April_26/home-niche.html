@@ -55,97 +55,45 @@
     }
     .niche-hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: var(--space-12);
       align-items: center;
     }
     @media (max-width: 1024px) {
-      .niche-hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .niche-hero-grid { text-align: center; }
       .niche-hero-grid .hero-actions { justify-content: center; }
-    }
-    .niche-floating-cards {
-      position: relative;
-      height: 400px;
-    }
-    @media (max-width: 1024px) {
-      .niche-floating-cards { display: none; }
-    }
-    .niche-float-card {
-      position: absolute;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      border-radius: var(--radius-xl);
-      padding: var(--space-5);
-      color: #fff;
-      min-width: 220px;
-    }
-    .niche-float-card:nth-child(1) {
-      top: 10%;
-      right: 10%;
-      animation: float 6s ease-in-out infinite;
-    }
-    .niche-float-card:nth-child(2) {
-      top: 45%;
-      right: 5%;
-      animation: float 8s ease-in-out infinite;
-      animation-delay: -2s;
-    }
-    .niche-float-card:nth-child(3) {
-      bottom: 5%;
-      right: 25%;
-      animation: float 7s ease-in-out infinite;
-      animation-delay: -4s;
-    }
-    .niche-float-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-md);
-      background: rgba(135,168,120,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--space-3);
-      color: var(--secondary-sage);
-    }
-    .niche-float-title {
-      font-weight: 600;
-      font-size: 0.9375rem;
-      margin-bottom: var(--space-1);
-    }
-    .niche-float-stat {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--secondary-sage);
-    }
-    [data-theme="dark"] .niche-float-stat {
-      color: #FFFFFF;
-    }
-    .niche-float-desc {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
     }
 
     /* Feature tabs section */
     .feature-tab-panels { min-height: 300px; }
     .feature-tab-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-8);
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-10);
       align-items: center;
     }
     @media (max-width: 768px) {
       .feature-tab-content { grid-template-columns: 1fr; }
     }
-    .feature-list { display: flex; flex-direction: column; gap: var(--space-4); }
+    .feature-list { display: flex; flex-direction: column; gap: var(--space-6); }
     .feature-item {
       display: flex;
       align-items: flex-start;
-      gap: var(--space-3);
+      gap: var(--space-4);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-fast);
+    }
+    .feature-item:hover {
+      border-color: var(--primary-green);
+      box-shadow: var(--shadow-sm);
     }
     .feature-icon {
-      width: 32px;
-      height: 32px;
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
       border-radius: var(--radius-md);
       background: rgba(45,80,22,0.15);
       display: flex;
@@ -154,13 +102,29 @@
       flex-shrink: 0;
       color: var(--secondary-sage);
     }
+    .feature-icon svg {
+      width: 20px;
+      height: 20px;
+    }
     .feature-item h4 {
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
+      font-size: 1.0625rem;
+      margin-bottom: 0.375rem;
     }
     .feature-item p {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       margin: 0;
+      line-height: 1.6;
+    }
+    .feature-tab-img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      max-height: 340px;
+    }
+    .feature-tab-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
     }
 
     /* Comparison table */
@@ -209,6 +173,125 @@
       .comparison-table thead th {
         font-size: 0.7rem !important;
       }
+    }
+
+    /* New: Tech Stack Section */
+    .tech-stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    .tech-card {
+      background: var(--bg-card);
+      padding: var(--space-6);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-light);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+    .tech-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-green);
+      box-shadow: var(--shadow-md);
+    }
+    .tech-card-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(45,80,22,0.1);
+      color: var(--primary-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-4);
+    }
+    .tech-card h4 { margin-bottom: var(--space-2); font-size: 1.1rem; }
+    .tech-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* New: Sector Focus Section */
+    .sector-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+    .sector-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .sector-item {
+      display: flex;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      transition: background 0.3s;
+    }
+    .sector-item:hover { background: var(--bg-secondary); }
+    .sector-item-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: var(--primary-green);
+      color: #fff;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sector-item h4 { margin-bottom: 2px; }
+    .sector-image {
+      position: relative;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .sector-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Comparison Section Background */
+    #comparison {
+      position: relative;
+      background: url('assets/images/hero/comparison-bg.png') center/cover no-repeat;
+      padding-block: var(--space-24);
+      overflow: hidden;
+      color: #FFFFFF !important; /* Force white text for visibility */
+    }
+    #comparison::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 13, 13, 0.85); /* Dark overlay for readability */
+      z-index: 1;
+    }
+    #comparison .container {
+      position: relative;
+      z-index: 2;
+    }
+    #comparison .section-title,
+    #comparison .section-subtitle,
+    #comparison table,
+    #comparison table th,
+    #comparison table td {
+      color: #FFFFFF !important;
+    }
+    #comparison .comparison-table thead th {
+      background: rgba(0, 0, 0, 0.4) !important; /* Darker header for contrast */
+    }
+    #comparison .comparison-table {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    #comparison .comparison-table th,
+    #comparison .comparison-table td {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 1024px) {
+      .tech-stack-grid { grid-template-columns: repeat(2, 1fr); }
+      .sector-split { grid-template-columns: 1fr; gap: var(--space-10); }
+      .sector-image { order: -1; height: 400px; }
+    }
+    @media (max-width: 640px) {
+      .tech-stack-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -291,15 +374,15 @@
 
       <div class="container">
         <div class="niche-hero-grid">
-          <div style="color:#fff">
-            <span class="section-label anim-fade-up" style="color:#FFFFFF">🌿 Next-Gen Green Cleaning</span>
+          <div style="color:#fff; text-align:center;">
+            <span class="section-label anim-fade-up" style="color:#FFFFFF; justify-content:center;">🌿 Next-Gen Green Cleaning</span>
             <h1 class="hero-title anim-fade-up" style="font-size:clamp(2.5rem, 5vw, 3.5rem); transition-delay:100ms; color:#fff; line-height:1.1; margin-bottom:var(--space-6);">
               Sustainable Cleaning<br><span style="color:var(--secondary-sage)">Powered by Nature</span>
             </h1>
-            <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms; color:rgba(255,255,255,0.9); max-width:540px; font-size:1.125rem; margin-bottom:var(--space-10);">
+            <p class="hero-subtitle anim-fade-up" style="transition-delay:200ms; color:rgba(255,255,255,0.9); max-width:540px; font-size:1.125rem; margin-bottom:var(--space-10); margin-inline:auto;">
               Enterprise-grade eco-cleaning solutions with real-time reporting, carbon tracking, and LEED compliance — all powered by 100% plant-based chemistry.
             </p>
-            <div class="hero-actions anim-fade-up" style="transition-delay:300ms; display:flex; gap:var(--space-4); align-items:center;">
+            <div class="hero-actions anim-fade-up" style="transition-delay:300ms; display:flex; gap:var(--space-4); align-items:center; justify-content:center;">
               <a href="contact.html" class="btn btn-accent btn-lg">Start Free Trial</a>
               <a href="services.html" class="btn btn-lg" style="background:rgba(255,255,255,0.08); color:#fff; border:1.5px solid rgba(255,255,255,0.15);">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -308,39 +391,13 @@
             </div>
           </div>
 
-          <!-- Floating stat cards -->
-          <div class="niche-floating-cards" aria-hidden="true">
-            <div class="niche-float-card anim-fade-up" style="transition-delay:200ms">
-              <div class="niche-float-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L3 23l2-1c4-2 7-4 9-8 2 1 4 1 6-1-2-4-6-8-10-8z"/></svg>
-              </div>
-              <div class="niche-float-title">Carbon Offset</div>
-              <div class="niche-float-stat" data-count="12500" data-suffix=" kg">0</div>
-              <div class="niche-float-desc">CO₂ saved this year</div>
-            </div>
-            <div class="niche-float-card anim-fade-up" style="transition-delay:350ms">
-              <div class="niche-float-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-              </div>
-              <div class="niche-float-title">Client Satisfaction</div>
-              <div class="niche-float-stat" data-count="98" data-suffix="%">0</div>
-              <div class="niche-float-desc">5-star reviews</div>
-            </div>
-            <div class="niche-float-card anim-fade-up" style="transition-delay:500ms">
-              <div class="niche-float-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
-              </div>
-              <div class="niche-float-title">Enterprise Clients</div>
-              <div class="niche-float-stat" data-count="340" data-suffix="+">0</div>
-              <div class="niche-float-desc">Active contracts</div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
 
     <!-- ========== LOGO MARQUEE ========== -->
-    <section style="padding-block:var(--space-16);">
+    <section class="section-alt" style="padding-block:var(--space-20); border-bottom: 1px solid var(--border-light);">
       <div class="container">
         <p class="text-center text-muted text-small mb-4" style="text-transform:uppercase; letter-spacing:0.1em; font-weight:600;">Trusted by Leading Organizations</p>
         <div class="logo-marquee">
@@ -363,7 +420,7 @@
     </section>
 
     <!-- ========== INTERACTIVE SERVICE TABS ========== -->
-    <section id="feature-explorer">
+    <section id="feature-explorer" style="padding-block:var(--space-24);">
       <div class="container">
         <div class="section-header center">
           <h2 class="section-title anim-fade-up">Explore Our Green Solutions</h2>
@@ -394,8 +451,8 @@
                     <div><h4>24/7 Availability</h4><p>Round-the-clock service with dedicated account managers for enterprise clients.</p></div>
                   </div>
                 </div>
-                <div class="card" style="overflow:hidden;">
-                  <img src="assets/images/services/commercial.png" alt="Commercial cleaning dashboard" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                <div class="feature-tab-img">
+                  <img src="assets/images/services/commercial.png" alt="Commercial cleaning dashboard" loading="lazy">
                 </div>
               </div>
             </div>
@@ -416,8 +473,8 @@
                     <div><h4>Transparent Pricing</h4><p>No hidden fees. See exact costs before booking with our instant calculator.</p></div>
                   </div>
                 </div>
-                <div class="card" style="overflow:hidden;">
-                  <img src="assets/images/services/residential.png" alt="Residential eco cleaning" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                <div class="feature-tab-img">
+                  <img src="assets/images/services/residential.png" alt="Residential eco cleaning" loading="lazy">
                 </div>
               </div>
             </div>
@@ -438,8 +495,8 @@
                     <div><h4>Custom Solutions</h4><p>Tailored cleaning protocols for healthcare, hospitality, and industrial facilities.</p></div>
                   </div>
                 </div>
-                <div class="card" style="overflow:hidden;">
-                  <img src="assets/images/services/deep-clean.png" alt="Specialized deep cleaning" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                <div class="feature-tab-img">
+                  <img src="assets/images/services/deep-clean.png" alt="Specialized deep cleaning" loading="lazy">
                 </div>
               </div>
             </div>
@@ -457,7 +514,7 @@
         </div>
 
         <div class="anim-fade-up" style="max-width:800px;margin:0 auto;overflow-x:auto;">
-          <table class="comparison-table">
+          <table class="comparison-table" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(8px);">
             <thead>
               <tr>
                 <th>Feature</th>
@@ -502,14 +559,93 @@
       </div>
     </section>
 
-    <!-- ========== CTA ========== -->
-    <section class="centered-cta" style="padding-block:var(--space-20);">
+    <!-- ========== NEW: TECH STACK SECTION ========== -->
+    <section id="tech-stack">
       <div class="container">
-        <h2 class="section-title anim-fade-up" style="max-width:640px;margin:0 auto var(--space-4);">Start Your Green Cleaning Journey</h2>
-        <p class="section-subtitle anim-fade-up" style="margin:0 auto var(--space-8);">Get a custom quote for your business. Free consultation, no obligations.</p>
+        <div class="section-header center">
+          <h2 class="section-title anim-fade-up">Our Advanced Green Tech Stack</h2>
+          <p class="section-subtitle anim-fade-up">We invest in the world's most advanced sustainable cleaning technologies to deliver clinical-grade cleanliness.</p>
+        </div>
+        
+        <div class="tech-stack-grid">
+          <div class="tech-card anim-fade-up">
+            <div class="tech-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg></div>
+            <h4>Plant-Based Bio-Chemistry</h4>
+            <p>100% biodegradable solvents derived from citrus, soy, and corn extracts with zero VOCs.</p>
+          </div>
+          <div class="tech-card anim-fade-up" style="transition-delay:100ms">
+            <div class="tech-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+            <h4>HEPA H13 Filtration</h4>
+            <p>Medical-grade vacuum systems capturing 99.97% of particulates down to 0.3 microns.</p>
+          </div>
+          <div class="tech-card anim-fade-up" style="transition-delay:200ms">
+            <div class="tech-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <h4>UV-C Sanitization</h4>
+            <p>Non-chemical microbial disinfection using controlled ultraviolet light spectrums.</p>
+          </div>
+          <div class="tech-card anim-fade-up" style="transition-delay:300ms">
+            <div class="tech-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h7"/><path d="M16 19l2 2 4-4"/></svg></div>
+            <h4>Smart Usage Monitoring</h4>
+            <p>Real-time IoT sensors track solution usage and efficiency metrics across facilities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NEW: SECTOR SOLUTIONS SECTION ========== -->
+    <section class="section-alt" id="sectors">
+      <div class="container">
+        <div class="sector-split">
+          <div class="sector-content">
+            <div class="section-header">
+              <h2 class="section-title anim-fade-up">Enterprise Solutions for Every Sector</h2>
+              <p class="section-subtitle anim-fade-up">We provide specialized, LEED-compliant protocols tailored to the unique demands of high-traffic professional environments.</p>
+            </div>
+            
+            <div class="sector-list">
+              <div class="sector-item anim-fade-up">
+                <div class="sector-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                <div>
+                  <h4>High-Tech Hubs</h4>
+                  <p class="text-small">Precision cleaning for data centers, R&D labs, and modern open-plan tech offices.</p>
+                </div>
+              </div>
+              <div class="sector-item anim-fade-up" style="transition-delay:100ms">
+                <div class="sector-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></div>
+                <div>
+                  <h4>Healthcare Centers</h4>
+                  <p class="text-small">Bio-safe sanitization for clinics, wellness centers, and private medical practices.</p>
+                </div>
+              </div>
+              <div class="sector-item anim-fade-up" style="transition-delay:200ms">
+                <div class="sector-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div>
+                  <h4>Luxury Hospitality</h4>
+                  <p class="text-small">Boutique hotel and premium retail cleaning with a focus on high-touch sensory details.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="sector-image anim-fade-up" style="transition-delay:300ms">
+            <img src="assets/images/services/enterprise.png" alt="Enterprise corporate office environment" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="centered-cta" style="padding-block:var(--space-20); position:relative; overflow:hidden;">
+      <div style="position:absolute;inset:0;z-index:0;">
+        <img src="assets/images/hero/cta-bg.png" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="position:absolute;inset:0;z-index:1;background:rgba(13,13,13,0.7);"></div>
+      <div class="container" style="position:relative;z-index:2;">
+        <h2 class="section-title anim-fade-up" style="max-width:640px;margin:0 auto var(--space-4);color:#fff;">Start Your Green Cleaning Journey</h2>
+        <p class="section-subtitle anim-fade-up" style="margin:0 auto var(--space-8);color:rgba(255,255,255,0.85);">Get a custom quote for your business. Free consultation, no obligations.</p>
         <div class="anim-fade-up" style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
           <a href="contact.html" class="btn btn-accent btn-lg">Get Custom Quote</a>
-          <a href="pricing.html" class="btn btn-secondary btn-lg">View Plans</a>
+          <a href="pricing.html" class="btn btn-lg" style="background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.25);">View Plans</a>
         </div>
       </div>
     </section>
