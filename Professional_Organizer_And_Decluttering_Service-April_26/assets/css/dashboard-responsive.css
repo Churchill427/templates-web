@@ -22,6 +22,34 @@
   display: none;
 }
 
+/* ── SHARED UTILITIES ── */
+.admin-bottom-row,
+.dash-grid-row {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.admin-bottom-row {
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.dash-grid-row {
+  grid-template-columns: 1fr 1fr;
+}
+
+.stack-on-mobile {
+  display: grid;
+  gap: 24px;
+}
+
+/* Prevent flex children from overflowing */
+.dashboard-main *, 
+.dash-grid-row *,
+.admin-bottom-row * {
+  min-width: 0;
+}
+
 /* ═══════════════════════════════════════════════════════════
    BREAKPOINT: 1024px — Tablet Landscape / Small Desktop
    ═══════════════════════════════════════════════════════════ */
@@ -65,11 +93,6 @@
   /* Charts: 2x2 grid */
   .charts-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  /* Bottom row: split layout */
-  .admin-bottom-row {
-    grid-template-columns: 1.5fr 1fr !important;
   }
 }
 
