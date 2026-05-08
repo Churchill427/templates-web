@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard — Vintage Vinyl</title>
-  
-  
+
+
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png?v=2">
   <link rel="shortcut icon" href="../assets/images/favicons/favicon-32x32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-touch-icon.png">
@@ -13,8 +14,16 @@
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
   <style>
-    body { overflow: hidden; height: 100vh; }
-    .dashboard { display: flex; height: 100vh; background: var(--bg-primary); }
+    body {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .dashboard {
+      display: flex;
+      height: 100vh;
+      background: var(--bg-primary);
+    }
 
     /* Sidebar */
     .dash-sidebar {
@@ -25,182 +34,532 @@
       flex-direction: column;
       flex-shrink: 0;
       position: fixed;
-      top: 0; left: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
       z-index: 1001;
       transform: translateX(-100%);
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: var(--shadow-xl);
     }
-    .dash-sidebar.open { transform: translateX(0); }
-    .dash-main { flex: 1; width: 100%; min-width: 0; transition: margin-left 0.3s ease; }
+
+    .dash-sidebar.open {
+      transform: translateX(0);
+    }
+
+    .dash-main {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      transition: margin-left 0.3s ease;
+    }
 
     .dash-sidebar__logo {
-      padding: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
-      text-decoration: none; border-bottom: 1px solid var(--border-color);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-color);
     }
-    .dash-sidebar__logo span { color: var(--text-primary); }
-    .dash-sidebar__nav { flex: 1; padding: var(--space-4) var(--space-3); }
-    .dash-sidebar__section { margin-bottom: var(--space-6); }
-    .dash-sidebar__section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; padding: 0 12px; margin-bottom: 12px; }
+
+    .dash-sidebar__logo span {
+      color: var(--text-primary);
+    }
+
+    .dash-sidebar__nav {
+      flex: 1;
+      padding: var(--space-4) var(--space-3);
+    }
+
+    .dash-sidebar__section {
+      margin-bottom: var(--space-6);
+    }
+
+    .dash-sidebar__section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0 12px;
+      margin-bottom: 12px;
+    }
 
     .dash-nav-link {
-      display: flex; align-items: center; gap: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
     }
+
     .dash-nav-link .nav-badge {
-      margin-inline-start: auto; padding: 2px 8px; border-radius: var(--radius-full);
-      font-size: 10px; font-weight: 700; background: var(--color-error); color: #fff;
+      margin-inline-start: auto;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--color-error);
+      color: #fff;
     }
 
     /* Main Content */
-    .dash-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .dash-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
     /* Top Bar */
     .dash-topbar {
-      height: 60px; padding: 0 var(--space-6);
-      display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid var(--border-color); flex-shrink: 0;
+      height: 60px;
+      padding: 0 var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      flex-shrink: 0;
     }
-    .dash-topbar__left { display: flex; align-items: center; gap: var(--space-4); }
-    .dash-topbar__breadcrumb { font-size: var(--text-sm); color: var(--text-muted); }
-    .dash-topbar__breadcrumb span { color: var(--text-primary); }
+
+    .dash-topbar__left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .dash-topbar__breadcrumb {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .dash-topbar__breadcrumb span {
+      color: var(--text-primary);
+    }
+
     .dash-topbar__search {
-      padding: 8px 16px; background: var(--bg-secondary); border: 1px solid var(--border-color);
-      border-radius: var(--radius-full); color: var(--text-primary); font-size: var(--text-sm);
-      width: 280px; transition: all var(--transition-fast);
+      padding: 8px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+      font-size: var(--text-sm);
+      width: 280px;
+      transition: all var(--transition-fast);
     }
+
     .dash-topbar__search:focus {
-      outline: none; border-color: var(--color-accent); background: var(--bg-card);
+      outline: none;
+      border-color: var(--color-accent);
+      background: var(--bg-card);
       box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
     }
-    .dash-topbar__right { display: flex; align-items: center; gap: var(--space-3); }
+
+    .dash-topbar__right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
     .dash-topbar__avatar {
-      width: 36px; height: 36px; border-radius: var(--radius-full); object-fit: cover;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
       border: 2px solid var(--color-accent);
     }
 
     /* Content Area */
-    .dash-content { flex: 1; overflow-y: auto; padding: var(--space-6); }
+    .dash-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-6);
+    }
 
     /* Stat Cards */
-    .stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
-    .stat-card {
-      background: var(--bg-card); border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg); padding: var(--space-5);
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
     }
-    .stat-card__label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2); }
-    .stat-card__value { font-family: var(--font-accent); font-size: var(--text-3xl); font-weight: 700; color: var(--text-primary); }
-    .stat-card__change { font-size: var(--text-xs); margin-top: var(--space-1); }
-    .stat-card__change--up { color: var(--color-success); }
-    .stat-card__change--down { color: var(--color-error); }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+
+    .stat-card__label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+
+    .stat-card__value {
+      font-family: var(--font-accent);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .stat-card__change {
+      font-size: var(--text-xs);
+      margin-top: var(--space-1);
+    }
+
+    .stat-card__change--up {
+      color: var(--color-success);
+    }
+
+    .stat-card__change--down {
+      color: var(--color-error);
+    }
 
     /* Chart Container */
     .chart-section {
-      display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
     }
+
     .chart-card {
-      background: var(--bg-card); border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg); padding: var(--space-5);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
     }
+
     .chart-card__header {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-4);
     }
-    .chart-card__title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; }
+
+    .chart-card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+    }
+
     .chart-placeholder {
-      height: 200px; background: linear-gradient(to top, rgba(255,215,0,0.1), transparent);
-      border-radius: var(--radius-md); position: relative; overflow: hidden;
-      display: flex; align-items: flex-end; gap: 2px; padding: 0 var(--space-3);
+      height: 200px;
+      background: linear-gradient(to top, rgba(255, 215, 0, 0.1), transparent);
+      border-radius: var(--radius-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      padding: 0 var(--space-3);
     }
+
     .chart-bar {
-      flex: 1; background: linear-gradient(to top, var(--color-accent), rgba(255,215,0,0.4));
-      border-radius: 4px 4px 0 0; transition: all var(--transition-fast);
+      flex: 1;
+      background: linear-gradient(to top, var(--color-accent), rgba(255, 215, 0, 0.4));
+      border-radius: 4px 4px 0 0;
+      transition: all var(--transition-fast);
       min-height: 10px;
     }
-    .chart-bar:hover { opacity: 0.8; }
+
+    .chart-bar:hover {
+      opacity: 0.8;
+    }
 
     /* Table */
     .dash-table {
-      width: 100%; border-collapse: collapse;
-      background: var(--bg-card); border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg); overflow: hidden;
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
     }
+
     .dash-table th {
-      padding: var(--space-3) var(--space-4); text-align: start;
-      font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em;
-      color: var(--text-muted); background: rgba(255,255,255,0.02);
+      padding: var(--space-3) var(--space-4);
+      text-align: start;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.02);
       border-bottom: 1px solid var(--border-color);
     }
+
     .dash-table td {
-      padding: var(--space-3) var(--space-4); font-size: var(--text-sm);
-      border-bottom: 1px solid rgba(255,255,255,0.03);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
-    .dash-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .dash-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
     .status-badge {
-      display: inline-flex; padding: 2px 10px; border-radius: var(--radius-full);
-      font-size: 11px; font-weight: 600;
+      display: inline-flex;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
     }
-    .status-badge--success { background: rgba(46,139,87,0.15); color: var(--color-success); }
-    .status-badge--warning { background: rgba(255,140,0,0.15); color: var(--color-warning); }
-    .status-badge--info { background: rgba(70,130,180,0.15); color: var(--color-info); }
-    .status-badge--error { background: rgba(220,20,60,0.15); color: var(--color-error); }
+
+    .status-badge--success {
+      background: rgba(46, 139, 87, 0.15);
+      color: var(--color-success);
+    }
+
+    .status-badge--warning {
+      background: rgba(255, 140, 0, 0.15);
+      color: var(--color-warning);
+    }
+
+    .status-badge--info {
+      background: rgba(70, 130, 180, 0.15);
+      color: var(--color-info);
+    }
+
+    .status-badge--error {
+      background: rgba(220, 20, 60, 0.15);
+      color: var(--color-error);
+    }
 
     /* Top Products */
-    .top-product { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
-    .top-product:last-child { border: none; }
-    .top-product__rank { width: 24px; height: 24px; border-radius: var(--radius-full); background: rgba(255,215,0,0.1); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
-    .top-product__img { width: 40px; height: 40px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0; }
-    .top-product__name { font-size: var(--text-sm); font-weight: 500; }
-    .top-product__sales { margin-inline-start: auto; font-size: var(--text-sm); color: var(--text-muted); }
+    .top-product {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .top-product:last-child {
+      border: none;
+    }
+
+    .top-product__rank {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .top-product__img {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .top-product__name {
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+
+    .top-product__sales {
+      margin-inline-start: auto;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
 
     /* New Visualization Types */
-    .viz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
-    
+    .viz-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
     /* Donut Chart */
-    .donut-container { position: relative; width: 150px; height: 150px; margin: 0 auto; }
-    .donut-ring { transform: rotate(-90deg); transform-origin: center; transition: stroke-dashoffset 1s ease; }
-    .donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
-    .viz-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
-    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); }
-    .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+    .donut-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+    }
+
+    .donut-ring {
+      transform: rotate(-90deg);
+      transform-origin: center;
+      transition: stroke-dashoffset 1s ease;
+    }
+
+    .donut-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .viz-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
 
     /* Line Chart SVG */
-    .line-chart-svg { width: 100%; height: 160px; overflow: visible; }
-    .chart-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 2s forwards; }
-    @keyframes drawLine { to { stroke-dashoffset: 0; } }
-    .chart-grid-line { stroke: rgba(255,255,255,0.05); stroke-width: 1; }
+    .line-chart-svg {
+      width: 100%;
+      height: 160px;
+      overflow: visible;
+    }
+
+    .chart-path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 2s forwards;
+    }
+
+    @keyframes drawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .chart-grid-line {
+      stroke: rgba(255, 255, 255, 0.05);
+      stroke-width: 1;
+    }
 
     /* Radial Progress */
-    .radial-progress-group { display: flex; justify-content: space-around; gap: 10px; margin-top: 20px; }
-    .radial-item { text-align: center; }
-    .radial-circle { transform: rotate(-90deg); transform-origin: center; }
-    .radial-label { font-size: 10px; margin-top: 5px; color: var(--text-muted); text-transform: uppercase; }
+    .radial-progress-group {
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .radial-item {
+      text-align: center;
+    }
+
+    .radial-circle {
+      transform: rotate(-90deg);
+      transform-origin: center;
+    }
+
+    .radial-label {
+      font-size: 10px;
+      margin-top: 5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
 
     @media (max-width: 1024px) {
-      .stat-cards { grid-template-columns: repeat(2, 1fr); }
-      .chart-section { grid-template-columns: 1fr; }
-      .viz-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .chart-section {
+        grid-template-columns: 1fr;
+      }
+
+      .viz-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
-      .stat-cards { grid-template-columns: repeat(2, 1fr); }
-      .viz-grid { grid-template-columns: 1fr; }
-      .dash-topbar__breadcrumb { display: none; }
+      .stat-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .viz-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dash-topbar__breadcrumb {
+        display: none;
+      }
     }
 
     @media (max-width: 480px) {
-      .stat-cards { grid-template-columns: 1fr; }
-      .dash-main { width: 100vw; max-width: 100%; overflow-x: hidden; }
-      .dash-topbar { 
-        height: auto; padding: 12px var(--space-4); 
-        flex-direction: column; align-items: stretch; gap: var(--space-3); 
+      .stat-cards {
+        grid-template-columns: 1fr;
       }
-      .dash-topbar__left { width: 100%; justify-content: space-between; }
-      .dash-topbar__right { width: 100%; flex-direction: column; align-items: stretch; gap: var(--space-3); }
-      .dash-topbar__search { width: 100% !important; margin: 0; }
-      .dash-topbar__right > div { justify-content: space-between; width: 100%; }
-      .dash-content { padding: var(--space-4); }
-      .dash-table-wrap { display: block; overflow-x: auto; width: 100%; }
-      .dash-table { min-width: 600px; }
-      .stat-card__value { font-size: var(--text-2xl); }
+
+      .dash-main {
+        width: 100vw;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .dash-topbar {
+        height: auto;
+        padding: 12px var(--space-4);
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+      }
+
+      .dash-topbar__left {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .dash-topbar__right {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+      }
+
+      .dash-topbar__search {
+        width: 100% !important;
+        margin: 0;
+      }
+
+      .dash-topbar__right>div {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .dash-content {
+        padding: var(--space-4);
+      }
+
+      .dash-table-wrap {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+      }
+
+      .dash-table {
+        min-width: 600px;
+      }
+
+      .stat-card__value {
+        font-size: var(--text-2xl);
+      }
     }
 
     .dash-hamburger {
@@ -214,13 +573,19 @@
       padding: 8px 10px;
       border-radius: var(--radius-md);
       color: var(--text-primary);
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       transition: all 0.2s;
     }
-    .dash-hamburger:hover { background: var(--bg-card); }
+
+    .dash-hamburger:hover {
+      background: var(--bg-card);
+    }
+
     .dash-hamburger span {
       display: block;
-      width: 20px; height: 2px;
+      width: 20px;
+      height: 2px;
       background: var(--text-primary);
       border-radius: 2px;
       transition: all 0.3s ease;
@@ -229,15 +594,20 @@
     /* Mobile Overlay */
     .dash-sidebar-overlay {
       display: none;
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background: var(--bg-overlay);
       z-index: 1000;
       backdrop-filter: blur(4px);
       cursor: pointer;
     }
-    .dash-sidebar-overlay.active { display: block; }
+
+    .dash-sidebar-overlay.active {
+      display: block;
+    }
   </style>
 </head>
+
 <body>
   <div class="dashboard">
     <!-- Mobile overlay -->
@@ -245,28 +615,99 @@
     <!-- Sidebar -->
     <aside class="dash-sidebar">
       <a href="../index.html" class="dash-sidebar__logo">
-        <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img" style="width:32px;height:32px;object-fit:contain;">
-        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">Vintage Vinyl</span>
+        <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img"
+          style="width:32px;height:32px;object-fit:contain;">
+        <span
+          style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">Vintage
+          Vinyl</span>
       </a>
       <nav class="dash-sidebar__nav">
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Main</div>
-          <a href="#" class="dash-nav-link active"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-bar-chart"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg></span> Dashboard</a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></span> Orders <span class="nav-badge">12</span></a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-package"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.27 6.96 8.73 5.05 8.73-5.05"/><path d="M12 22.08V12"/></svg></span> Inventory</a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Customers</a>
+          <a href="#" class="dash-nav-link active"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-bar-chart">
+                <line x1="12" x2="12" y1="20" y2="10" />
+                <line x1="18" x2="18" y1="20" y2="4" />
+                <line x1="6" x2="6" y1="20" y2="16" />
+              </svg></span> Dashboard</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-shopping-cart">
+                <circle cx="8" cy="21" r="1" />
+                <circle cx="19" cy="21" r="1" />
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+              </svg></span> Orders <span class="nav-badge">12</span></a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-package">
+                <path d="m7.5 4.27 9 5.15" />
+                <path
+                  d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                <path d="m3.27 6.96 8.73 5.05 8.73-5.05" />
+                <path d="M12 22.08V12" />
+              </svg></span> Inventory</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-users">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg></span> Customers</a>
         </div>
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Content</div>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-file-text"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14.5 2 14.5 7.5 20 7.5"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg></span> Blog Posts</a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-calendar"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></span> Events</a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mail"><rect width="20" height="16" x="2" y="4" rx="2" ry="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span> Messages <span class="nav-badge">3</span></a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-file-text">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                <polyline points="14.5 2 14.5 7.5 20 7.5" />
+                <line x1="16" x2="8" y1="13" y2="13" />
+                <line x1="16" x2="8" y1="17" y2="17" />
+                <line x1="10" x2="8" y1="9" y2="9" />
+              </svg></span> Blog Posts</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-calendar">
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                <line x1="16" x2="16" y1="2" y2="6" />
+                <line x1="8" x2="8" y1="2" y2="6" />
+                <line x1="3" x2="21" y1="10" y2="10" />
+              </svg></span> Events</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-mail">
+                <rect width="20" height="16" x="2" y="4" rx="2" ry="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg></span> Messages <span class="nav-badge">3</span></a>
         </div>
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Settings</div>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.72V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span> Settings</a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-palette"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125 0-.941.732-1.688 1.688-1.688h1.939c3.102 0 5.6-2.498 5.6-5.6 0-4.696-4.044-8.75-10-8.75z"/></svg></span> Appearance</a>
-          <a href="login.html" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg></span> Logout</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-settings">
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.72V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg></span> Settings</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-palette">
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+                <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+                <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125 0-.941.732-1.688 1.688-1.688h1.939c3.102 0 5.6-2.498 5.6-5.6 0-4.696-4.044-8.75-10-8.75z" />
+              </svg></span> Appearance</a>
+          <a href="login.html" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-log-out">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" x2="9" y1="12" y2="12" />
+              </svg></span> Logout</a>
         </div>
       </nav>
 
@@ -279,49 +720,100 @@
           <button class="dash-hamburger" id="dash-hamburger" aria-label="Open sidebar" onclick="openSidebar()">
             <span></span><span></span><span></span>
           </button>
-          <a href="../index.html" style="text-decoration:none;display:flex;align-items:center;padding:8px;margin-right:8px;background:rgba(255,255,255,0.05);border-radius:var(--radius-full);color:var(--text-primary);" title="Back to Store"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
           <span class="dash-topbar__breadcrumb">Admin / <span>Dashboard</span></span>
         </div>
-        
+
         <div class="dash-topbar__right">
           <input type="search" class="dash-topbar__search" placeholder="Search orders…" aria-label="Search">
           <div style="display:flex;align-items:center;gap:var(--space-2);">
-            <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--color-error);border-radius:50%;"></span></button>
+            <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-bell">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+              </svg><span
+                style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--color-error);border-radius:50%;"></span></button>
             <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-moon" style="display:none;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sun">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-moon"
+                style="display:none;">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
             </button>
             <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">LTR</button>
-            <img src="../assets/images/team/team-1.png" alt="Admin avatar" class="dash-topbar__avatar" width="36" height="36">
+            <img src="../assets/images/team/team-1.png" alt="Admin avatar" class="dash-topbar__avatar" width="36"
+              height="36">
           </div>
         </div>
       </header>
 
       <div class="dash-content">
-        <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Welcome back, Robert <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-hand-wave" style="display:inline; vertical-align: middle; color: #f1c40f;"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.82-2.82L7 15"/></svg></h1>
-        <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Here's what's happening at Vintage Vinyl today.</p>
+        <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Welcome back, Robert <svg
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-hand-wave"
+            style="display:inline; vertical-align: middle; color: #f1c40f;">
+            <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
+            <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
+            <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
+            <path
+              d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.82-2.82L7 15" />
+          </svg></h1>
+        <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Here's what's happening at Vintage Vinyl today.
+        </p>
 
         <!-- Stat Cards -->
         <div class="stat-cards">
           <div class="stat-card">
             <div class="stat-card__label">Total Revenue</div>
             <div class="stat-card__value">$12,480</div>
-            <div class="stat-card__change stat-card__change--up"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up"><path d="m18 15-6-6-6 6"/><path d="M12 19V5"/></svg> 12.5% from last month</div>
+            <div class="stat-card__change stat-card__change--up"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up">
+                <path d="m18 15-6-6-6 6" />
+                <path d="M12 19V5" />
+              </svg> 12.5% from last month</div>
           </div>
           <div class="stat-card">
             <div class="stat-card__label">Orders Today</div>
             <div class="stat-card__value">24</div>
-            <div class="stat-card__change stat-card__change--up"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up"><path d="m18 15-6-6-6 6"/><path d="M12 19V5"/></svg> 8 more than yesterday</div>
+            <div class="stat-card__change stat-card__change--up"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up">
+                <path d="m18 15-6-6-6 6" />
+                <path d="M12 19V5" />
+              </svg> 8 more than yesterday</div>
           </div>
           <div class="stat-card">
             <div class="stat-card__label">New Customers</div>
             <div class="stat-card__value">156</div>
-            <div class="stat-card__change stat-card__change--up"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up"><path d="m18 15-6-6-6 6"/><path d="M12 19V5"/></svg> 23% this week</div>
+            <div class="stat-card__change stat-card__change--up"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up">
+                <path d="m18 15-6-6-6 6" />
+                <path d="M12 19V5" />
+              </svg> 23% this week</div>
           </div>
           <div class="stat-card">
             <div class="stat-card__label">Low Stock Items</div>
             <div class="stat-card__value">7</div>
-            <div class="stat-card__change stat-card__change--down"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-down"><path d="m6 9 6 6 6-6"/><path d="M12 5v14"/></svg> Needs attention</div>
+            <div class="stat-card__change stat-card__change--down"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-down">
+                <path d="m6 9 6 6 6-6" />
+                <path d="M12 5v14" />
+              </svg> Needs attention</div>
           </div>
         </div>
 
@@ -372,9 +864,30 @@
           <div class="chart-card">
             <h2 class="chart-card__title">Top Selling Records</h2>
             <div style="margin-top:var(--space-4);">
-              <div class="top-product"><span class="top-product__rank">1</span><img src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Dark Side of the Moon</div><div style="font-size:11px;color:var(--text-muted);">Pink Floyd</div></div><span class="top-product__sales">42 sold</span></div>
-              <div class="top-product"><span class="top-product__rank">2</span><img src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Kind of Blue</div><div style="font-size:11px;color:var(--text-muted);">Miles Davis</div></div><span class="top-product__sales">38 sold</span></div>
-              <div class="top-product"><span class="top-product__rank">3</span><img src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40" height="40"><div><div class="top-product__name">Abbey Road</div><div style="font-size:11px;color:var(--text-muted);">The Beatles</div></div><span class="top-product__sales">31 sold</span></div>
+              <div class="top-product"><span class="top-product__rank">1</span><img
+                  src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40"
+                  height="40">
+                <div>
+                  <div class="top-product__name">Dark Side of the Moon</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Pink Floyd</div>
+                </div><span class="top-product__sales">42 sold</span>
+              </div>
+              <div class="top-product"><span class="top-product__rank">2</span><img
+                  src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40"
+                  height="40">
+                <div>
+                  <div class="top-product__name">Kind of Blue</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Miles Davis</div>
+                </div><span class="top-product__sales">38 sold</span>
+              </div>
+              <div class="top-product"><span class="top-product__rank">3</span><img
+                  src="../assets/images/products/products-grid.png" alt="" class="top-product__img" width="40"
+                  height="40">
+                <div>
+                  <div class="top-product__name">Abbey Road</div>
+                  <div style="font-size:11px;color:var(--text-muted);">The Beatles</div>
+                </div><span class="top-product__sales">31 sold</span>
+              </div>
             </div>
           </div>
         </div>
@@ -388,14 +901,56 @@
           <div class="dash-table-wrap">
             <table class="dash-table">
               <thead>
-                <tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td style="font-weight:600;">#VV-2847</td><td>Marcus Chen</td><td>Dark Side of the Moon, Abbey Road</td><td>$292.98</td><td><span class="status-badge status-badge--success">Delivered</span></td><td>Apr 2, 2026</td></tr>
-                <tr><td style="font-weight:600;">#VV-2846</td><td>Sophia Rodriguez</td><td>Kind of Blue</td><td>$34.99</td><td><span class="status-badge status-badge--info">Shipped</span></td><td>Apr 2, 2026</td></tr>
-                <tr><td style="font-weight:600;">#VV-2845</td><td>James Wright</td><td>Rumours, What's Going On</td><td>$304.99</td><td><span class="status-badge status-badge--warning">Processing</span></td><td>Apr 1, 2026</td></tr>
-                <tr><td style="font-weight:600;">#VV-2844</td><td>Emily Cooper</td><td>Blue Train (1st Press)</td><td>$890.00</td><td><span class="status-badge status-badge--success">Delivered</span></td><td>Apr 1, 2026</td></tr>
-                <tr><td style="font-weight:600;">#VV-2843</td><td>David Park</td><td>Listening Station Booking</td><td>$35.00</td><td><span class="status-badge status-badge--error">Cancelled</span></td><td>Mar 31, 2026</td></tr>
+                <tr>
+                  <td style="font-weight:600;">#VV-2847</td>
+                  <td>Marcus Chen</td>
+                  <td>Dark Side of the Moon, Abbey Road</td>
+                  <td>$292.98</td>
+                  <td><span class="status-badge status-badge--success">Delivered</span></td>
+                  <td>Apr 2, 2026</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;">#VV-2846</td>
+                  <td>Sophia Rodriguez</td>
+                  <td>Kind of Blue</td>
+                  <td>$34.99</td>
+                  <td><span class="status-badge status-badge--info">Shipped</span></td>
+                  <td>Apr 2, 2026</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;">#VV-2845</td>
+                  <td>James Wright</td>
+                  <td>Rumours, What's Going On</td>
+                  <td>$304.99</td>
+                  <td><span class="status-badge status-badge--warning">Processing</span></td>
+                  <td>Apr 1, 2026</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;">#VV-2844</td>
+                  <td>Emily Cooper</td>
+                  <td>Blue Train (1st Press)</td>
+                  <td>$890.00</td>
+                  <td><span class="status-badge status-badge--success">Delivered</span></td>
+                  <td>Apr 1, 2026</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600;">#VV-2843</td>
+                  <td>David Park</td>
+                  <td>Listening Station Booking</td>
+                  <td>$35.00</td>
+                  <td><span class="status-badge status-badge--error">Cancelled</span></td>
+                  <td>Mar 31, 2026</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -421,13 +976,5 @@
     }
   </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-

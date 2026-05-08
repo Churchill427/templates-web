@@ -61,11 +61,23 @@
     .social-btn--facebook .social-icon { color: #4267B2; }
     .form-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5); }
     .form-row label { font-size: var(--text-sm); color: var(--text-secondary); display: flex; align-items: center; gap: var(--space-2); cursor: pointer; }
-    .form-row a { font-size: var(--text-sm); color: var(--color-primary); font-weight: 500; }
+    .form-row a { font-size: var(--text-sm); color: var(--color-accent); font-weight: 500; }
     .auth-footer { text-align: center; margin-top: var(--space-6); font-size: var(--text-sm); color: var(--text-muted); }
-    .auth-footer a { color: var(--color-primary); font-weight: 600; }
+    .auth-footer a { color: var(--color-accent); font-weight: 600; }
     .theme-float-bar { position: absolute; top: var(--space-4); right: var(--space-4); z-index: 10; display: flex; gap: var(--space-2); }
-    .theme-float-bar button { padding: 10px; background: rgba(0,0,0,0.05); border-radius: 50%; border: 1px solid rgba(0,0,0,0.08); }
+    .theme-float-bar button { 
+      padding: 10px; 
+      background: var(--bg-card); 
+      border-radius: 50%; 
+      border: 1px solid var(--border-color); 
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+      opacity: 0.9;
+    }
+    .theme-float-bar button:hover {
+      background: var(--bg-secondary);
+      opacity: 1;
+    }
 
     @media (max-width: 640px) {
       .auth-left { padding: var(--space-4); }
@@ -94,12 +106,13 @@
           <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img" style="width:32px;height:32px;object-fit:contain;">
           <span class="navbar__logo-text">Vintage Vinyl</span>
         </a>
-        <h1 style="font-size:var(--text-2xl);text-align:center;margin-bottom:var(--space-2);">Welcome Back</h1>
+        <h1 style="font-size:var(--text-2xl);text-align:center;margin-bottom:var(--space-2);color:var(--text-primary);">Welcome Back</h1>
         <p style="text-align:center;color:var(--text-muted);font-size:var(--text-sm);margin-bottom:var(--space-6);">Sign in to access your collection and orders</p>
 
         <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-2);">
           <button class="social-btn social-btn--google"><span class="social-icon" style="font-size:1.1rem;">G</span> Google</button>
           <button class="social-btn social-btn--facebook"><span class="social-icon" style="font-size:1.1rem;">f</span> Facebook</button>
+          <button class="social-btn social-btn--apple"><span class="social-icon" style="display:flex;align-items:center;justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701z"/></svg></span> Apple</button>
         </div>
 
         <div class="auth-divider">or continue with email</div>
@@ -117,7 +130,7 @@
             </div>
           </div>
           <div class="form-row">
-            <label><input type="checkbox" style="accent-color:var(--color-primary);"> Remember me</label>
+            <label><input type="checkbox" style="accent-color:var(--color-accent);"> Remember me</label>
             <a href="#">Forgot password?</a>
           </div>
           <button type="submit" class="btn btn--primary btn--full btn--lg">Sign In</button>
@@ -129,8 +142,6 @@
     <div class="auth-right">
       <img src="../assets/images/hero/hero-store.png" alt="Vintage Vinyl store interior" width="960" height="1080">
       <div class="auth-right__content">
-        <h2 style="font-size:var(--text-3xl);margin-bottom:var(--space-3);">Discover Your Next Favorite Record</h2>
-        <p style="color:rgba(255,255,255,0.8);font-size:var(--text-base);">Join 8,000+ collectors who trust Vintage Vinyl for rare pressings and expert curation.</p>
       </div>
     </div>
   </div>

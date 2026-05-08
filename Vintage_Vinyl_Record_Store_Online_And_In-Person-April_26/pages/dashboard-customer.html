@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Dashboard — Vintage Vinyl</title>
-  
-  
+
+
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png?v=2">
   <link rel="shortcut icon" href="../assets/images/favicons/favicon-32x32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-touch-icon.png">
@@ -13,8 +14,16 @@
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
   <style>
-    body { overflow: hidden; height: 100vh; }
-    .dashboard { display: flex; height: 100vh; background: var(--bg-primary); }
+    body {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .dashboard {
+      display: flex;
+      height: 100vh;
+      background: var(--bg-primary);
+    }
 
     /* Sidebar */
     .dash-sidebar {
@@ -25,130 +34,370 @@
       flex-direction: column;
       flex-shrink: 0;
       position: fixed;
-      top: 0; left: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
       z-index: 1001;
       transform: translateX(-100%);
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: var(--shadow-xl);
     }
-    .dash-sidebar.open { transform: translateX(0); }
-    .dash-main { flex: 1; width: 100%; min-width: 0; transition: margin-left 0.3s ease; }
+
+    .dash-sidebar.open {
+      transform: translateX(0);
+    }
+
+    .dash-main {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      transition: margin-left 0.3s ease;
+    }
 
     .dash-sidebar__logo {
-      padding: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
-      text-decoration: none; border-bottom: 1px solid var(--border-color);
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-color);
     }
-    .dash-sidebar__logo span { color: var(--text-primary); }
-    .dash-sidebar__nav { padding: var(--space-4); display: flex; flex-direction: column; gap: 4px; }
-    
-    .dash-sidebar__section { margin-bottom: var(--space-6); }
-    .dash-sidebar__section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; padding: 0 12px; margin-bottom: 12px; }
+
+    .dash-sidebar__logo span {
+      color: var(--text-primary);
+    }
+
+    .dash-sidebar__nav {
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dash-sidebar__section {
+      margin-bottom: var(--space-6);
+    }
+
+    .dash-sidebar__section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0 12px;
+      margin-bottom: 12px;
+    }
 
     .dash-nav-link {
-      display: flex; align-items: center; gap: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
     }
-    .dash-nav-link:hover { background: var(--bg-primary); color: var(--text-primary); }
-    .dash-nav-link.active { background: var(--bg-card); color: var(--color-primary); border-left: 3px solid var(--color-accent); }
-    .dash-nav-link .nav-icon { width: 20px; text-align: center; }
+
+    .dash-nav-link:hover {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .dash-nav-link.active {
+      background: var(--bg-card);
+      color: var(--color-primary);
+      border-left: 3px solid var(--color-accent);
+    }
+
+    .dash-nav-link .nav-icon {
+      width: 20px;
+      text-align: center;
+    }
 
     /* Main Content */
-    .dash-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .dash-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
     /* Top Bar */
     .dash-topbar {
-      height: 60px; padding: 0 var(--space-6);
-      display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid var(--border-color); flex-shrink: 0;
+      height: 60px;
+      padding: 0 var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      flex-shrink: 0;
     }
-    .dash-topbar__left { display: flex; align-items: center; gap: var(--space-4); }
-    .dash-topbar__breadcrumb { font-size: var(--text-sm); color: var(--text-muted); }
-    .dash-topbar__breadcrumb span { color: var(--text-primary); }
-    .dash-topbar__right { display: flex; align-items: center; gap: var(--space-3); }
+
+    .dash-topbar__left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .dash-topbar__breadcrumb {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .dash-topbar__breadcrumb span {
+      color: var(--text-primary);
+    }
+
+    .dash-topbar__right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
     .dash-topbar__avatar {
-      width: 36px; height: 36px; border-radius: var(--radius-full); object-fit: cover;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
       border: 2px solid var(--color-accent);
     }
 
     /* Content Area */
-    .dash-content { flex: 1; overflow-y: auto; padding: var(--space-6); }
+    .dash-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-6);
+    }
 
     /* Stat Cards */
-    .stat-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
-    .stat-card {
-      background: var(--bg-card); border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg); padding: var(--space-5);
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
     }
-    .stat-card__label { font-size: var(--text-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2); }
-    .stat-card__value { font-family: var(--font-accent); font-size: var(--text-3xl); font-weight: 700; color: var(--text-primary); }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+
+    .stat-card__label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+
+    .stat-card__value {
+      font-family: var(--font-accent);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
 
     /* Wishlist & Order Grid */
     .layout-grid {
-      display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
     }
-    .panel {
-      background: var(--bg-card); border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg); padding: var(--space-5);
-    }
-    .panel__title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-4); }
 
-    .order-item { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid var(--border-color); }
-    .order-item:last-child { border-bottom: none; }
-    .order-item__left { display: flex; flex-direction: column; }
-    .order-item__title { font-size: var(--text-sm); font-weight: 500; }
-    .order-item__meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-    
-    .status-badge {
-      display: inline-flex; padding: 2px 10px; border-radius: var(--radius-full);
-      font-size: 11px; font-weight: 600;
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
     }
-    .status-badge--success { background: rgba(46,139,87,0.15); color: var(--color-success); }
-    .status-badge--info { background: rgba(70,130,180,0.15); color: var(--color-info); }
+
+    .panel__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .order-item__left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .order-item__title {
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+
+    .order-item__meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .status-badge--success {
+      background: rgba(46, 139, 87, 0.15);
+      color: var(--color-success);
+    }
+
+    .status-badge--info {
+      background: rgba(70, 130, 180, 0.15);
+      color: var(--color-info);
+    }
 
     /* Wishlist Items */
-    .wishlist-item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--border-color); }
-    .wishlist-item:last-child { border: none; }
-    .wishlist-item__img { width: 48px; height: 48px; border-radius: var(--radius-md); object-fit: cover; flex-shrink: 0; }
-    .wishlist-item__details { flex: 1; }
-    .wishlist-item__name { font-size: var(--text-sm); font-weight: 500; }
-    .wishlist-item__artist { font-size: 12px; color: var(--text-muted); }
-    .wishlist-item__price { font-size: var(--text-sm); font-weight: 600; margin-left: auto; }
+    .wishlist-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .wishlist-item:last-child {
+      border: none;
+    }
+
+    .wishlist-item__img {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .wishlist-item__details {
+      flex: 1;
+    }
+
+    .wishlist-item__name {
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+
+    .wishlist-item__artist {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .wishlist-item__price {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      margin-left: auto;
+    }
 
     @media (max-width: 1024px) {
       .dash-sidebar {
         display: flex !important;
         position: fixed;
-        top: 0; left: 0; bottom: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
         z-index: 1001;
         transform: translateX(-100%);
-        transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         width: 260px;
-        box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
       }
-      .dash-sidebar.open { transform: translateX(0); }
-      .stat-cards { grid-template-columns: repeat(2, 1fr); }
-      .layout-grid { grid-template-columns: 1fr; }
-      .dash-hamburger { display: flex !important; }
+
+      .dash-sidebar.open {
+        transform: translateX(0);
+      }
+
+      .stat-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .layout-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dash-hamburger {
+        display: flex !important;
+      }
     }
 
     @media (max-width: 768px) {
-      .dash-topbar__breadcrumb { display: none; }
-      .customer-viz-row { grid-template-columns: 1fr; }
+      .dash-topbar__breadcrumb {
+        display: none;
+      }
+
+      .customer-viz-row {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
-      .stat-cards { grid-template-columns: 1fr; }
-      .dash-main { width: 100vw; max-width: 100%; overflow-x: hidden; }
-      .dash-topbar { 
-        height: auto; padding: 12px var(--space-4); 
-        flex-direction: column; align-items: stretch; gap: var(--space-3); 
+      .stat-cards {
+        grid-template-columns: 1fr;
       }
-      .dash-topbar__left { width: 100%; justify-content: space-between; }
-      .dash-topbar__right { width: 100%; justify-content: flex-end; }
-      .dash-content { padding: var(--space-4); }
-      .panel { padding: var(--space-4); }
-      .order-item { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
-      .order-item > div:last-child { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-      .stat-card__value { font-size: var(--text-2xl); }
+
+      .dash-main {
+        width: 100vw;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .dash-topbar {
+        height: auto;
+        padding: 12px var(--space-4);
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+      }
+
+      .dash-topbar__left {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .dash-topbar__right {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .dash-content {
+        padding: var(--space-4);
+      }
+
+      .panel {
+        padding: var(--space-4);
+      }
+
+      .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+      }
+
+      .order-item>div:last-child {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .stat-card__value {
+        font-size: var(--text-2xl);
+      }
     }
 
     /* Hamburger Button */
@@ -163,13 +412,19 @@
       padding: 8px 10px;
       border-radius: var(--radius-md);
       color: var(--text-primary);
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       transition: all 0.2s;
     }
-    .dash-hamburger:hover { background: var(--bg-card); }
+
+    .dash-hamburger:hover {
+      background: var(--bg-card);
+    }
+
     .dash-hamburger span {
       display: block;
-      width: 20px; height: 2px;
+      width: 20px;
+      height: 2px;
       background: var(--text-primary);
       border-radius: 2px;
       transition: all 0.3s ease;
@@ -178,45 +433,135 @@
     /* Mobile Overlay */
     .dash-sidebar-overlay {
       display: none;
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background: var(--bg-overlay);
       z-index: 1000;
       backdrop-filter: blur(4px);
       cursor: pointer;
     }
-    .dash-sidebar-overlay.active { display: block; }
+
+    .dash-sidebar-overlay.active {
+      display: block;
+    }
 
     /* Personal Analytics Viz */
-    .customer-viz-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
-    
+    .customer-viz-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
     /* Activity Heatmap */
-    .heatmap { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 15px; }
-    .heatmap-cell { aspect-ratio: 1; border-radius: 2px; background: var(--bg-secondary); position: relative; }
-    .heatmap-cell:hover::after { content: attr(data-val); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #000; color: #fff; padding: 2px 5px; border-radius: 3px; font-size: 10px; white-space: nowrap; z-index: 5; }
-    .lvl-1 { background: rgba(212, 175, 55, 0.2); }
-    .lvl-2 { background: rgba(212, 175, 55, 0.5); }
-    .lvl-3 { background: rgba(212, 175, 55, 0.8); }
-    .lvl-4 { background: var(--color-accent); }
+    .heatmap {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 4px;
+      margin-top: 15px;
+    }
+
+    .heatmap-cell {
+      aspect-ratio: 1;
+      border-radius: 2px;
+      background: var(--bg-secondary);
+      position: relative;
+    }
+
+    .heatmap-cell:hover::after {
+      content: attr(data-val);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000;
+      color: #fff;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 10px;
+      white-space: nowrap;
+      z-index: 5;
+    }
+
+    .lvl-1 {
+      background: rgba(212, 175, 55, 0.2);
+    }
+
+    .lvl-2 {
+      background: rgba(212, 175, 55, 0.5);
+    }
+
+    .lvl-3 {
+      background: rgba(212, 175, 55, 0.8);
+    }
+
+    .lvl-4 {
+      background: var(--color-accent);
+    }
 
     /* Progress Stats */
-    .prog-stat { margin-bottom: 15px; }
-    .prog-bar-bg { height: 6px; background: var(--bg-secondary); border-radius: 10px; margin-top: 8px; overflow: hidden; }
-    .prog-bar-fill { height: 100%; border-radius: 10px; transition: width 1s ease; }
+    .prog-stat {
+      margin-bottom: 15px;
+    }
+
+    .prog-bar-bg {
+      height: 6px;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .prog-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1s ease;
+    }
 
     /* Tiny Donut */
-    .mini-donut { position: relative; width: 80px; height: 80px; }
-    .donut-text { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
-    
+    .mini-donut {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .donut-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
     /* New Charts */
-    .cust-chart-svg { width: 100%; height: 120px; overflow: visible; }
-    .spending-path { stroke-dasharray: 800; stroke-dashoffset: 800; animation: drawPath 2.5s ease-out forwards; }
-    @keyframes drawPath { to { stroke-dashoffset: 0; } }
-    
+    .cust-chart-svg {
+      width: 100%;
+      height: 120px;
+      overflow: visible;
+    }
+
+    .spending-path {
+      stroke-dasharray: 800;
+      stroke-dashoffset: 800;
+      animation: drawPath 2.5s ease-out forwards;
+    }
+
+    @keyframes drawPath {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
     @media (max-width: 768px) {
-      .customer-viz-row { grid-template-columns: 1fr; }
+      .customer-viz-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="dashboard">
     <!-- Mobile overlay -->
@@ -224,28 +569,73 @@
     <!-- Sidebar -->
     <aside class="dash-sidebar">
       <a href="../index.html" class="dash-sidebar__logo">
-        <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img" style="width:32px;height:32px;object-fit:contain;">
-        <span style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">Vintage Vinyl</span>
+        <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img"
+          style="width:32px;height:32px;object-fit:contain;">
+        <span
+          style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">Vintage
+          Vinyl</span>
       </a>
       <nav class="dash-sidebar__nav">
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Main</div>
-          <a href="#" class="dash-nav-link active"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> My Profile</a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-package"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.27 6.96 8.73 5.05 8.73-5.05"/><path d="M12 22.08V12"/></svg></span> My Orders <span class="nav-badge">2</span></a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span> Wishlist</a>
+          <a href="#" class="dash-nav-link active"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-user">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg></span> My Profile</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-package">
+                <path d="m7.5 4.27 9 5.15" />
+                <path
+                  d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                <path d="m3.27 6.96 8.73 5.05 8.73-5.05" />
+                <path d="M12 22.08V12" />
+              </svg></span> My Orders <span class="nav-badge">2</span></a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-heart">
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg></span> Wishlist</a>
         </div>
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Content</div>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-headphones"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></span> Listening Sessions</a>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-calendar"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></span> My Events</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-headphones">
+                <path
+                  d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+              </svg></span> Listening Sessions</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-calendar">
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                <line x1="16" x2="16" y1="2" y2="6" />
+                <line x1="8" x2="8" y1="2" y2="6" />
+                <line x1="3" x2="21" y1="10" y2="10" />
+              </svg></span> My Events</a>
         </div>
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Settings</div>
-          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.72V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span> Account Settings</a>
-          <a href="login.html" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg></span> Logout</a>
+          <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-settings">
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.72V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg></span> Account Settings</a>
+          <a href="login.html" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="icon-log-out">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" x2="9" y1="12" y2="12" />
+              </svg></span> Logout</a>
         </div>
       </nav>
-      
+
     </aside>
 
     <!-- Main -->
@@ -255,27 +645,55 @@
           <button class="dash-hamburger" id="dash-hamburger" aria-label="Open sidebar" onclick="openSidebar()">
             <span></span><span></span><span></span>
           </button>
-          <a href="../index.html" style="text-decoration:none;display:flex;align-items:center;padding:8px;margin-right:8px;background:var(--bg-secondary);border-radius:var(--radius-full);color:var(--text-primary);" title="Back to Store"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
           <span class="dash-topbar__breadcrumb">Dashboard / <span>Customer</span></span>
         </div>
-        
+
 
         <div class="dash-topbar__right">
           <div style="display:flex;align-items:center;gap:var(--space-2);">
-            <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></button>
+            <button class="navbar__icon-btn" style="position:relative;" aria-label="Notifications"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-bell">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+              </svg></button>
             <button class="navbar__icon-btn theme-toggle" aria-label="Toggle theme">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sun" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sun"
+                style="display:none;">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-moon">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
             </button>
             <button class="navbar__icon-btn dir-toggle" aria-label="Toggle RTL/LTR">LTR</button>
-            <img src="../assets/images/team/team-2.png" alt="Customer avatar" class="dash-topbar__avatar" width="36" height="36">
+            <img src="../assets/images/team/team-2.png" alt="Customer avatar" class="dash-topbar__avatar" width="36"
+              height="36">
           </div>
         </div>
       </header>
 
       <div class="dash-content">
-        <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Welcome, James <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-music" style="display:inline; vertical-align: middle; color: var(--color-accent);"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></h1>
-        <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Manage your collection, tracking and wishlist from here.</p>
+        <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-1);">Welcome, James <svg
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-music"
+            style="display:inline; vertical-align: middle; color: var(--color-accent);">
+            <path d="M9 18V5l12-2v13" />
+            <circle cx="6" cy="18" r="3" />
+            <circle cx="18" cy="16" r="3" />
+          </svg></h1>
+        <p style="color:var(--text-muted);margin-bottom:var(--space-6);">Manage your collection, tracking and wishlist
+          from here.</p>
 
         <!-- Personalized Analytics -->
         <div class="customer-viz-row">
@@ -297,7 +715,8 @@
               <div class="heatmap-cell lvl-3" data-val="20 sessions"></div>
               <div class="heatmap-cell lvl-2" data-val="12 sessions"></div>
             </div>
-            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text-muted);text-transform:uppercase;">
+            <div
+              style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text-muted);text-transform:uppercase;">
               <span>Jan</span><span>Mar</span><span>Jun</span><span>Sep</span><span>Dec</span>
             </div>
           </div>
@@ -307,19 +726,26 @@
             <div style="display:flex;align-items:center;gap:20px;">
               <div class="mini-donut">
                 <svg width="80" height="80" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="10"/>
-                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-accent)" stroke-width="10" stroke-dasharray="251" stroke-dashoffset="62.75" transform="rotate(-90 50 50)"/>
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="10" />
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--color-accent)" stroke-width="10"
+                    stroke-dasharray="251" stroke-dashoffset="62.75" transform="rotate(-90 50 50)" />
                 </svg>
                 <div class="donut-text">75%</div>
               </div>
               <div style="flex:1;">
                 <div class="prog-stat">
-                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span>Jazz & Soul</span><span>75%</span></div>
-                  <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:75%;background:var(--color-accent);"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span>Jazz &
+                      Soul</span><span>75%</span></div>
+                  <div class="prog-bar-bg">
+                    <div class="prog-bar-fill" style="width:75%;background:var(--color-accent);"></div>
+                  </div>
                 </div>
                 <div class="prog-stat">
-                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span>Rock Classics</span><span>15%</span></div>
-                  <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:15%;background:#FF4D4D;"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span>Rock
+                      Classics</span><span>15%</span></div>
+                  <div class="prog-bar-bg">
+                    <div class="prog-bar-fill" style="width:15%;background:#FF4D4D;"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -329,15 +755,22 @@
         <div class="customer-viz-row">
           <div class="panel">
             <h2 class="panel__title">Collection Value</h2>
-            <div style="margin-top:15px;display:flex;align-items:flex-end;gap:8px;height:100px;padding-bottom:10px;border-bottom:1px solid var(--border-color);">
-              <div style="flex:1;background:var(--color-primary);height:40%;border-radius:2px;opacity:0.6;" title="$420"></div>
-              <div style="flex:1;background:var(--color-primary);height:60%;border-radius:2px;opacity:0.6;" title="$600"></div>
-              <div style="flex:1;background:var(--color-primary);height:50%;border-radius:2px;opacity:0.6;" title="$520"></div>
-              <div style="flex:1;background:var(--color-primary);height:85%;border-radius:2px;opacity:1;" title="$890"></div>
-              <div style="flex:1;background:var(--color-primary);height:70%;border-radius:2px;opacity:0.8;" title="$740"></div>
+            <div
+              style="margin-top:15px;display:flex;align-items:flex-end;gap:8px;height:100px;padding-bottom:10px;border-bottom:1px solid var(--border-color);">
+              <div style="flex:1;background:var(--color-primary);height:40%;border-radius:2px;opacity:0.6;"
+                title="$420"></div>
+              <div style="flex:1;background:var(--color-primary);height:60%;border-radius:2px;opacity:0.6;"
+                title="$600"></div>
+              <div style="flex:1;background:var(--color-primary);height:50%;border-radius:2px;opacity:0.6;"
+                title="$520"></div>
+              <div style="flex:1;background:var(--color-primary);height:85%;border-radius:2px;opacity:1;" title="$890">
+              </div>
+              <div style="flex:1;background:var(--color-primary);height:70%;border-radius:2px;opacity:0.8;"
+                title="$740"></div>
               <div style="flex:1;background:var(--color-accent);height:95%;border-radius:2px;" title="$1,240"></div>
             </div>
-            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text-muted);text-transform:uppercase;">
+            <div
+              style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text-muted);text-transform:uppercase;">
               <span>Q1</span><span>Q2</span><span>Current</span>
             </div>
           </div>
@@ -345,19 +778,22 @@
           <div class="panel">
             <h2 class="panel__title">Spending History</h2>
             <div style="margin-top:15px;">
-            <div style="margin-top:15px;">
-              <svg class="cust-chart-svg" viewBox="0 0 300 120">
-                <path class="spending-path" d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10" fill="none" stroke="#2ECC71" stroke-width="2" />
-                <path d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10 L300,120 L0,120 Z" fill="url(#grad)" opacity="0.1" />
-                <defs>
-                  <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#2ECC71;" />
-                    <stop offset="100%" style="stop-color:transparent;" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:5px;">Your monthly investment in vinyl culture</p>
-            </div>
+              <div style="margin-top:15px;">
+                <svg class="cust-chart-svg" viewBox="0 0 300 120">
+                  <path class="spending-path" d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10" fill="none"
+                    stroke="#2ECC71" stroke-width="2" />
+                  <path d="M0,100 L50,85 L100,92 L150,60 L200,45 L250,55 L300,10 L300,120 L0,120 Z" fill="url(#grad)"
+                    opacity="0.1" />
+                  <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style="stop-color:#2ECC71;" />
+                      <stop offset="100%" style="stop-color:transparent;" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:5px;">Your monthly
+                  investment in vinyl culture</p>
+              </div>
             </div>
           </div>
         </div>
@@ -418,12 +854,13 @@
               <a href="#" class="btn btn--secondary btn--sm">View All History</a>
             </div>
           </div>
-          
+
           <div class="panel">
             <h2 class="panel__title">Your Wishlist</h2>
             <div class="wishlist">
               <div class="wishlist-item">
-                <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=100&h=100&fit=crop" alt="" class="wishlist-item__img">
+                <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=100&h=100&fit=crop" alt=""
+                  class="wishlist-item__img">
                 <div class="wishlist-item__details">
                   <div class="wishlist-item__name">Kind of Blue</div>
                   <div class="wishlist-item__artist">Miles Davis</div>
@@ -431,7 +868,8 @@
                 <div class="wishlist-item__price">$34.99</div>
               </div>
               <div class="wishlist-item">
-                <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=100&h=100&fit=crop" alt="" class="wishlist-item__img">
+                <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=100&h=100&fit=crop" alt=""
+                  class="wishlist-item__img">
                 <div class="wishlist-item__details">
                   <div class="wishlist-item__name">Dark Side of the Moon</div>
                   <div class="wishlist-item__artist">Pink Floyd</div>
@@ -462,14 +900,5 @@
     }
   </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-

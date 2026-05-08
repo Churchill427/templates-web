@@ -37,7 +37,7 @@
           <div class="navbar__dropdown-menu">
             <a href="services.html" class="navbar__dropdown-item">All Services</a>
             <a href="service-detail.html" class="navbar__dropdown-item">Record Cleaning</a>
-            <a href="service-detail.html" class="navbar__dropdown-item">Vinyl Appraisal</a>
+            <a href="service-detail.html" class="navbar__dropdown-item">Listening Stations</a>
           </div>
         </li>
         <li><a href="blog.html" class="navbar__link">Blog</a></li>
@@ -75,6 +75,7 @@
       <a href="contact.html" class="mobile-menu__link">Contact</a>
       <a href="dashboard-admin.html" class="mobile-menu__link">Admin Dashboard</a>
       <a href="dashboard-customer.html" class="mobile-menu__link">Customer Dashboard</a>
+      <a href="login.html" class="btn btn--primary btn--full" style="margin-top:1rem;">Sign In</a>
     </div>
   </div>
 
@@ -82,7 +83,7 @@
     <!-- PAGE HERO -->
     <section class="hero" style="min-height:50vh;">
       <div class="hero__bg">
-        <img src="../assets/images/hero/hero-albums.png" alt="Colorful vinyl album covers" width="1920" height="800" loading="eager">
+        <img src="../assets/images/hero/hero-browsing.png" alt="Browsing through rare records at Vintage Vinyl" width="1920" height="800" loading="eager">
       </div>
       <div class="hero__overlay"></div>
       <div class="hero__content" style="padding:var(--space-16) var(--space-6);">
@@ -97,10 +98,10 @@
       <div class="container">
         <div class="grid grid-2 reveal" style="gap:var(--space-16);align-items:center;">
           <div>
-            <h2>Keeping Vinyl Culture Alive</h2>
+            <h2 style="margin-bottom: var(--space-6);">Keeping Vinyl Culture Alive</h2>
             <p class="lead">Vintage Vinyl was born from a simple belief: music sounds best on vinyl. Since opening our doors in Brooklyn in 2001, we've grown from a small corner shop into the city's most beloved record destination.</p>
-            <p>We curate every record by hand, ensuring each piece meets our standards for quality and sound. Whether you're a seasoned collector or just discovering the magic of analog sound, our team is here to guide your journey.</p>
-            <p>Our store is more than a retail space — it's a community hub where music lovers gather, share stories, and discover new sounds together.</p>
+            <p class="lead">We curate every record by hand, ensuring each piece meets our standards for quality and sound. Whether you're a seasoned collector or just discovering the magic of analog sound, our team is here to guide your journey.</p>
+            <p class="lead">Our store is more than a retail space — it's a community hub where music lovers gather, share stories, and discover new sounds together.</p>
           </div>
           <div>
             <img src="../assets/images/hero/hero-store.png" alt="Inside Vintage Vinyl store" style="border-radius:var(--radius-xl);" width="600" height="400" loading="lazy">
@@ -110,39 +111,44 @@
     </section>
 
     <!-- VALUES -->
-    <section class="section" style="background:var(--bg-secondary);">
-      <div class="container">
+    <section class="section" style="position:relative; background:url('../assets/images/hero/hero-turntable.png') center/cover no-repeat fixed; color:#fff;">
+      <div style="position:absolute; inset:0; background:rgba(26, 26, 46, 0.9); z-index:1;"></div>
+      <div class="container" style="position:relative; z-index:2;">
         <div class="section-header reveal">
-          <h2 class="section-header__title">Our Core Values</h2>
+          <h2 class="section-header__title" style="color:#fff;">Our Core Values</h2>
         </div>
-        <div class="grid grid-4" style="gap:var(--space-4);">
-          <div class="card reveal reveal-delay-1" style="border-radius:var(--radius-lg); position:relative; overflow:hidden; aspect-ratio:1/1;">
-            <img src="../assets/images/services/services-browsing.png" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.5);">
-            <div class="card__body" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:var(--space-6);">
-              <h3 class="card__title" style="color:#fff; margin-bottom:var(--space-2);">Authenticity</h3>
-              <p class="card__subtitle mb-0" style="color:rgba(255,255,255,0.8); font-size:var(--text-xs);">Every record is graded and verified for guaranteed quality.</p>
+        <div class="grid grid-4" style="gap:var(--space-8);">
+          <!-- Value 1 -->
+          <div class="value-card reveal reveal-delay-1" style="background:rgba(255,255,255,0.9); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);">
+            <div class="value-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
+            <h3 class="value-card__title">Authenticity</h3>
+            <p class="value-card__desc">Every record is meticulously graded and verified for guaranteed analog quality.</p>
           </div>
-          <div class="card reveal reveal-delay-2" style="border-radius:var(--radius-lg); position:relative; overflow:hidden; aspect-ratio:1/1;">
-            <img src="../assets/images/services/services-listening.png" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.5);">
-            <div class="card__body" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:var(--space-6);">
-              <h3 class="card__title" style="color:#fff; margin-bottom:var(--space-2);">Community</h3>
-              <p class="card__subtitle mb-0" style="color:rgba(255,255,255,0.8); font-size:var(--text-xs);">We host listening parties and workshops to bring music lovers together.</p>
+          <!-- Value 2 -->
+          <div class="value-card reveal reveal-delay-2" style="background:rgba(255,255,255,0.9); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);">
+            <div class="value-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
+            <h3 class="value-card__title">Community</h3>
+            <p class="value-card__desc">A hub where music lovers gather to share stories and discover new sounds.</p>
           </div>
-          <div class="card reveal reveal-delay-3" style="border-radius:var(--radius-lg); position:relative; overflow:hidden; aspect-ratio:1/1;">
-            <img src="../assets/images/services/services-appraisal.png" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.5);">
-            <div class="card__body" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:var(--space-6);">
-              <h3 class="card__title" style="color:#fff; margin-bottom:var(--space-2);">Sustainability</h3>
-              <p class="card__subtitle mb-0" style="color:rgba(255,255,255,0.8); font-size:var(--text-xs);">We buy, sell, and trade records to reduce waste and promote longevity.</p>
+          <!-- Value 3 -->
+          <div class="value-card reveal reveal-delay-3" style="background:rgba(255,255,255,0.9); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);">
+            <div class="value-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 2 2 4h-2c-2 10-13.5 14.5-8 14z"/><path d="M11 20c-4.5 0-8-3.5-8-8s3.5-8 8-8"/></svg>
             </div>
+            <h3 class="value-card__title">Sustainability</h3>
+            <p class="value-card__desc">Promoting longevity through a circular economy of buying and trading.</p>
           </div>
-          <div class="card reveal reveal-delay-4" style="border-radius:var(--radius-lg); position:relative; overflow:hidden; aspect-ratio:1/1;">
-            <img src="../assets/images/services/services-cleaning.png" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.5);">
-            <div class="card__body" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:var(--space-6);">
-              <h3 class="card__title" style="color:#fff; margin-bottom:var(--space-2);">Sound Quality</h3>
-              <p class="card__subtitle mb-0" style="color:rgba(255,255,255,0.8); font-size:var(--text-xs);">We pursue sonic perfection through high-end pressings and equipment.</p>
+          <!-- Value 4 -->
+          <div class="value-card reveal reveal-delay-4" style="background:rgba(255,255,255,0.9); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);">
+            <div class="value-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
             </div>
+            <h3 class="value-card__title">Sound Quality</h3>
+            <p class="value-card__desc">Pursuing sonic perfection through high-end pressings and expert equipment.</p>
           </div>
         </div>
       </div>
@@ -156,39 +162,44 @@
           <p class="section-header__desc">Passionate vinyl enthusiasts with decades of combined experience in music curation and audio engineering.</p>
         </div>
         <div class="grid grid-4 reveal" style="justify-items:center;">
+          <!-- Member 1 -->
           <div class="team-card">
             <img src="../assets/images/team/team-1.png" alt="Robert Kelley — Founder" class="team-card__avatar" width="120" height="120" loading="lazy">
             <h3 class="team-card__name">Robert Kelley</h3>
             <p class="team-card__role">Founder & Head Curator</p>
             <div class="team-card__socials">
-              <a href="#" class="team-card__social" aria-label="Twitter">x</a>
-              <a href="#" class="team-card__social" aria-label="LinkedIn">in</a>
+               <a href="#" class="team-card__social" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+               <a href="#" class="team-card__social" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
             </div>
           </div>
+          <!-- Member 2 -->
           <div class="team-card">
             <img src="../assets/images/team/team-2.png" alt="Maya Johnson — Catalog Manager" class="team-card__avatar" width="120" height="120" loading="lazy">
             <h3 class="team-card__name">Maya Johnson</h3>
             <p class="team-card__role">Catalog Manager</p>
             <div class="team-card__socials">
-              <a href="#" class="team-card__social" aria-label="Instagram">ig</a>
-              <a href="#" class="team-card__social" aria-label="Twitter">x</a>
+               <a href="#" class="team-card__social" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+               <a href="#" class="team-card__social" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
             </div>
           </div>
+          <!-- Member 3 -->
           <div class="team-card">
             <img src="../assets/images/team/team-3.png" alt="David Chen — Restoration Tech" class="team-card__avatar" width="120" height="120" loading="lazy">
             <h3 class="team-card__name">David Chen</h3>
             <p class="team-card__role">Restoration Specialist</p>
             <div class="team-card__socials">
-              <a href="#" class="team-card__social" aria-label="LinkedIn">in</a>
+               <a href="#" class="team-card__social" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+               <a href="#" class="team-card__social" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
             </div>
           </div>
+          <!-- Member 4 -->
           <div class="team-card">
             <img src="../assets/images/team/team-4.png" alt="Sarah Mitchell — Events Coordinator" class="team-card__avatar" width="120" height="120" loading="lazy">
             <h3 class="team-card__name">Sarah Mitchell</h3>
             <p class="team-card__role">Events Coordinator</p>
             <div class="team-card__socials">
-              <a href="#" class="team-card__social" aria-label="Instagram">ig</a>
-              <a href="#" class="team-card__social" aria-label="Twitter">x</a>
+               <a href="#" class="team-card__social" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+               <a href="#" class="team-card__social" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
             </div>
           </div>
         </div>
@@ -198,29 +209,66 @@
     <!-- TIMELINE -->
     <section class="section" style="background:var(--bg-secondary);" id="history">
       <div class="container container--narrow">
-        <div class="section-header reveal">
+        <div class="section-header reveal text-center">
           <h2 class="section-header__title">25 Years of Vinyl</h2>
+          <p class="section-header__desc">A journey through time, sound, and the Brooklyn community.</p>
         </div>
-        <div class="reveal" style="display:flex;flex-direction:column;gap:var(--space-8);">
-          <div class="card" style="padding:var(--space-6);">
-            <span class="label" style="color:var(--color-primary);">2001</span>
-            <h3 style="font-size:var(--text-xl);margin:var(--space-2) 0;">The Beginning</h3>
-            <p class="mb-0" style="color:var(--text-muted);">Robert Kelley opens a small 500 sq ft record shop on Groove Street, Brooklyn, with a personal collection of 2,000 records.</p>
+        
+        <div class="timeline-v2 reveal">
+          <div class="timeline-v2__line"></div>
+          
+          <!-- Event 1 -->
+          <div class="timeline-v2__item">
+            <div class="timeline-v2__dot"></div>
+            <div class="timeline-v2__content card">
+              <span class="label" style="color:var(--color-primary);">2001</span>
+              <h3 class="timeline-v2__title">The Beginning</h3>
+              <p class="mb-0 text-muted">Robert Kelley opens a small 500 sq ft record shop on Groove Street, Brooklyn, with a personal collection of 2,000 records.</p>
+            </div>
           </div>
-          <div class="card" style="padding:var(--space-6);">
-            <span class="label" style="color:var(--color-primary);">2008</span>
-            <h3 style="font-size:var(--text-xl);margin:var(--space-2) 0;">Growing the Community</h3>
-            <p class="mb-0" style="color:var(--text-muted);">Launch of weekly listening parties and vinyl swap meets. Store expands to 2,000 sq ft.</p>
+
+          <!-- Event 2 -->
+          <div class="timeline-v2__item">
+            <div class="timeline-v2__dot"></div>
+            <div class="timeline-v2__content card">
+              <span class="label" style="color:var(--color-primary);">2008</span>
+              <h3 class="timeline-v2__title">Growing the Community</h3>
+              <p class="mb-0 text-muted">Launch of weekly listening parties and vinyl swap meets. The store expands to 2,000 sq ft to accommodate our growing family.</p>
+            </div>
           </div>
-          <div class="card" style="padding:var(--space-6);">
-            <span class="label" style="color:var(--color-primary);">2015</span>
-            <h3 style="font-size:var(--text-xl);margin:var(--space-2) 0;">The Audiophile Expansion</h3>
-            <p class="mb-0" style="color:var(--text-muted);">Added listening stations with high-end audio equipment and launched our professional cleaning service.</p>
+
+          <!-- Event 3 -->
+          <div class="timeline-v2__item">
+            <div class="timeline-v2__dot"></div>
+            <div class="timeline-v2__content card">
+              <span class="label" style="color:var(--color-primary);">2015</span>
+              <h3 class="timeline-v2__title">The Audiophile Expansion</h3>
+              <p class="mb-0 text-muted">Added custom-built listening stations and launched our professional cleaning service, setting a new standard for record care.</p>
+            </div>
           </div>
-          <div class="card" style="padding:var(--space-6);">
-            <span class="label" style="color:var(--color-primary);">2023</span>
-            <h3 style="font-size:var(--text-xl);margin:var(--space-2) 0;">Going Online</h3>
-            <p class="mb-0" style="color:var(--text-muted);">Launched our e-commerce platform, bringing our curated collection to vinyl lovers worldwide.</p>
+
+          <!-- Event 4 -->
+          <div class="timeline-v2__item">
+            <div class="timeline-v2__dot"></div>
+            <div class="timeline-v2__content card">
+              <span class="label" style="color:var(--color-primary);">2024</span>
+              <h3 class="timeline-v2__title">The Future is Analog</h3>
+              <p class="mb-0 text-muted">Launched our global e-commerce platform and expanded our restoration lab to preserve rare pressings for the next generation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="section section--dark" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../assets/images/hero/hero-audiophile-immersion_1778212663553.png') center/cover no-repeat fixed; text-align:center; padding: var(--space-24) 0;">
+      <div class="container container--narrow">
+        <div class="reveal">
+          <h2 class="display-2 mb-6" style="color:#fff;">Start Your Analog Journey</h2>
+          <p class="lead mb-10" style="color:rgba(255,255,255,0.8);">Whether you're hunting for a rare first pressing or buying your very first turntable, we're here to help you hear music as it was meant to be heard.</p>
+          <div class="cta-group" style="display:flex; gap:var(--space-4); justify-content:center; flex-wrap:wrap;">
+            <a href="services.html" class="btn btn--primary btn--lg">Explore Collection</a>
+            <a href="contact.html" class="btn btn--outline btn--lg" style="border-color:#fff; color:#fff;">Visit Our Store</a>
           </div>
         </div>
       </div>
@@ -238,11 +286,11 @@
           </a>
           <p class="footer__brand-desc">Brooklyn's premier destination for vinyl records, audiophile equipment, and a thriving community of music lovers since 2001.</p>
           <div class="footer__socials">
-            <a href="#" class="footer__social" aria-label="Facebook">f</a>
-            <a href="#" class="footer__social" aria-label="Instagram">ig</a>
-            <a href="#" class="footer__social" aria-label="Twitter">x</a>
-            <a href="#" class="footer__social" aria-label="YouTube">yt</a>
-            <a href="#" class="footer__social" aria-label="Spotify"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-music"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></a>
+            <a href="#" class="footer__social" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" class="footer__social" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" class="footer__social" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+            <a href="#" class="footer__social" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" class="footer__social" aria-label="Spotify"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.508 17.301c-.218.358-.679.473-1.037.254-2.858-1.747-6.456-2.142-10.693-1.173-.41.094-.821-.164-.915-.574-.094-.41.164-.821.574-.915 4.633-1.06 8.604-.611 11.817 1.353.358.218.473.679.254 1.037zm1.47-3.262c-.275.446-.856.589-1.302.314-3.272-2.011-8.257-2.593-12.124-1.419-.504.153-1.042-.132-1.196-.636-.153-.504.132-1.042.636-1.196 4.417-1.341 9.907-.698 13.672 1.619.446.275.589.856.314 1.302zm.126-3.411C15.228 8.218 8.82 8.006 5.093 9.138c-.58.176-1.194-.158-1.37-.738-.176-.58.158-1.194.738-1.37 4.275-1.298 11.355-1.053 15.82 1.6 12.124 1.353.358.218.473.679.254 1.037.358-.218.679-.473 1.037-.254 2.858 1.747 6.456 2.142 10.693 1.173.41-.094.821.164.915.574.094.41-.164.821-.574.915 4.633-1.06 8.604-.611 11.817 1.353z"/></svg></a>
           </div>
         </div>
         <div>
