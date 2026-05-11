@@ -26,7 +26,12 @@
 
     if (sidebarToggle && dashboard) {
       sidebarToggle.addEventListener('click', () => {
-        dashboard.classList.toggle('sidebar-open');
+        const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
+        if (isDesktop) {
+          dashboard.classList.toggle('sidebar-expanded');
+        } else {
+          dashboard.classList.toggle('sidebar-open');
+        }
       });
     }
 

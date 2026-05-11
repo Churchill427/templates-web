@@ -1,5 +1,6 @@
 /* ============================================
    INK STUDIO - Dashboard Styles
+   Gmail-style collapsible sidebar
    ============================================ */
 
 /* ---- Dashboard Layout ---- */
@@ -12,9 +13,10 @@
 
 /* ---- Sidebar ---- */
 .sidebar {
-  width: 280px;
-  background: var(--color-ink-black);
-  color: #fff;
+  width: 256px;
+  background: var(--bg-primary);
+  border-right: 1px solid var(--bg-tertiary);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -22,88 +24,147 @@
   left: 0;
   bottom: 0;
   z-index: var(--z-modal);
-  transform: translateX(-100%);
-  transition: transform var(--transition-base);
-  overflow-y: auto;
-  box-shadow: var(--shadow-lg);
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-.sidebar.mobile-open {
-  transform: translateX(0);
+/* Desktop collapsed state */
+.sidebar.collapsed {
+  width: 72px;
 }
 
-.sidebar-collapsed {
-  width: 80px;
-}
-
-.sidebar-header {
-  padding: var(--space-6);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  min-height: 72px;
-}
-
-.sidebar-header .brand-icon {
-  width: 36px;
-  height: 36px;
+/* Sidebar Header */
+.sidebar-header-area {
+  padding: var(--space-4) var(--space-4) 0;
   flex-shrink: 0;
 }
 
-.sidebar-header .brand-name {
-  font-family: var(--font-accent);
-  font-size: 1.375rem;
-  letter-spacing: 0.15em;
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+  padding: var(--space-2);
   white-space: nowrap;
-  overflow: hidden;
-  transition: opacity var(--transition-base);
+  min-height: 48px;
 }
 
-.sidebar-header .brand-name span {
-  color: var(--color-blood-red);
+.sidebar-brand .brand-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.sidebar-brand .brand-name {
+  font-family: var(--font-accent);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.sidebar.collapsed .sidebar-brand .brand-name {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Compose / New Booking Button */
+.sidebar-compose-area {
+  padding: var(--space-4) var(--space-4) var(--space-2);
+  flex-shrink: 0;
+}
+
+.btn-compose {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: #c2e7ff;
+  color: #001d35;
+  border: none;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  white-space: nowrap;
+  width: auto;
+}
+
+.btn-compose:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  background: #a8d9ff;
+}
+
+.btn-compose svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.sidebar.collapsed .btn-compose {
+  padding: var(--space-3);
+  justify-content: center;
+}
+
+.sidebar.collapsed .btn-compose .compose-text {
+  display: none;
 }
 
 /* Sidebar Navigation */
 .sidebar-nav {
   flex: 1;
-  padding: var(--space-4) 0;
+  padding: var(--space-2) var(--space-3);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sidebar-nav-title {
-  padding: var(--space-3) var(--space-6);
+  padding: var(--space-5) var(--space-3) var(--space-2);
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
   white-space: nowrap;
   overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-nav-title {
+  text-align: center;
+  font-size: 0;
+  padding: var(--space-4) 0 var(--space-1);
 }
 
 .sidebar-link {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-6);
-  color: rgba(255,255,255,0.6);
+  gap: var(--space-4);
+  padding: 0 var(--space-5);
+  height: 32px;
+  margin-bottom: 1px;
+  color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  transition: all var(--transition-fast);
-  border-left: 3px solid transparent;
+  border-radius: 20px;
+  transition: all 0.15s;
   white-space: nowrap;
+  position: relative;
 }
 
 .sidebar-link:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.05);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .sidebar-link.active {
-  color: #fff;
-  background: rgba(220, 38, 38, 0.1);
-  border-left-color: var(--color-blood-red);
+  background: #d3e3fd;
+  color: #041e49;
+  font-weight: 600;
 }
 
 .sidebar-link svg {
@@ -112,62 +173,80 @@
   flex-shrink: 0;
 }
 
-/* Sidebar Footer */
-.sidebar-footer {
-  padding: var(--space-4) var(--space-6);
-  border-top: 1px solid rgba(255,255,255,0.1);
+.sidebar-link .link-text {
+  flex: 1;
 }
 
-.sidebar-user {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.sidebar-user-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 2px solid rgba(255,255,255,0.2);
-}
-
-.sidebar-user-name {
-  font-size: 0.875rem;
+/* Badge (notification count) */
+.sidebar-link .badge {
+  font-size: 0.6875rem;
   font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
+  padding: 0 var(--space-2);
+  border-radius: 10px;
+  line-height: 1.5;
+  min-width: 20px;
+  text-align: center;
 }
 
-/* Toggle sidebar */
-.sidebar-toggle-btn {
-  position: absolute;
-  top: var(--space-6);
-  right: -14px;
-  width: 28px;
-  height: 28px;
+/* Collapsed: notification dot replaces badge text */
+.sidebar-link .notif-dot {
+  display: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--color-blood-red);
-  border: none;
-  border-radius: var(--radius-full);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+}
+
+/* Collapsed sidebar link styles */
+.sidebar.collapsed .sidebar-link {
   justify-content: center;
   padding: 0;
-  font-size: 0.875rem;
-  z-index: 10;
-  transition: all var(--transition-base);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  width: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  height: 48px;
+}
+
+.sidebar.collapsed .sidebar-link .link-text,
+.sidebar.collapsed .sidebar-link .badge {
+  display: none;
+}
+
+.sidebar.collapsed .sidebar-link .notif-dot {
+  display: block;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: var(--space-3);
+  border-top: 1px solid var(--bg-tertiary);
+  flex-shrink: 0;
+}
+
+.sidebar-footer .logout-link {
+  color: var(--color-blood-red);
+}
+
+.sidebar-footer .logout-link:hover {
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--color-blood-red);
 }
 
 /* ---- Main Content ---- */
 .dashboard-main {
   flex: 1;
-  margin-left: 0;
+  margin-left: 256px;
   min-height: 100vh;
   min-width: 0;
+  transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.collapsed ~ .dashboard-main {
+  margin-left: 72px;
 }
 
 /* Dashboard Header */
@@ -344,10 +423,20 @@
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .dashboard-grid-2-1,
   .dashboard-grid-1-1 {
     grid-template-columns: 1fr;
   }
+}
+
+/* Mobile Overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: calc(var(--z-modal) - 1);
 }
 
 /* Tablet & Mobile ( < 1024px) */
@@ -355,11 +444,17 @@
   .sidebar {
     transform: translateX(-100%);
     width: 280px;
+    box-shadow: var(--shadow-lg);
   }
+
   .sidebar.mobile-open {
     transform: translateX(0);
   }
-  
+
+  .sidebar-overlay.visible {
+    display: block;
+  }
+
   .dashboard-main {
     margin-left: 0 !important;
   }
@@ -385,7 +480,7 @@
     font-size: 1.125rem;
     white-space: nowrap;
   }
-  
+
   .dashboard-header-left .breadcrumb {
     display: none;
   }
@@ -394,17 +489,58 @@
     width: auto;
     gap: var(--space-2);
   }
-  
-  .profile-info-desktop { display: none !important; }
-  .header-profile { padding-left: var(--space-1) !important; border-left: none !important; }
+
+  .profile-info-desktop {
+    display: none !important;
+  }
+
+  .header-profile {
+    padding-left: var(--space-1) !important;
+    border-left: none !important;
+  }
 
   .chart-container {
     height: 200px;
   }
-  
+
   .dashboard-grid-2-1,
   .dashboard-grid-1-1 {
     grid-template-columns: 1fr;
+  }
+
+  /* Collapsed state doesn't apply on mobile */
+  .sidebar.collapsed {
+    width: 280px;
+  }
+
+  .sidebar.collapsed .sidebar-brand .brand-name,
+  .sidebar.collapsed .btn-compose .compose-text,
+  .sidebar.collapsed .sidebar-link .link-text,
+  .sidebar.collapsed .sidebar-link .badge {
+    display: revert;
+    opacity: 1;
+  }
+
+  .sidebar.collapsed .sidebar-nav-title {
+    font-size: 0.6875rem;
+    text-align: left;
+  }
+
+  .sidebar.collapsed .sidebar-link {
+    width: auto;
+    justify-content: flex-start;
+    padding: 0 var(--space-5);
+    height: 32px;
+    border-radius: 20px;
+  }
+
+  .sidebar.collapsed .sidebar-link .notif-dot {
+    display: none;
+  }
+
+  .sidebar.collapsed .btn-compose {
+    padding: var(--space-3) var(--space-5);
+    width: auto;
   }
 }
 
@@ -413,11 +549,11 @@
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .dashboard-header-left h1 {
     font-size: 0.9375rem;
   }
-  
+
   .dashboard-header-right .btn-icon {
     width: 36px;
     height: 36px;
@@ -429,9 +565,37 @@
   background: var(--bg-dark);
 }
 
+[data-theme="dark"] .sidebar {
+  background: var(--bg-dark-elevated);
+  border-color: var(--color-steel);
+}
+
+[data-theme="dark"] .btn-compose {
+  background: #394457;
+  color: #aecbfa;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .btn-compose:hover {
+  background: #4a5568;
+}
+
+[data-theme="dark"] .sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .sidebar-link.active {
+  background: #004a77;
+  color: #c2e7ff;
+}
+
 [data-theme="dark"] .dashboard-card,
 [data-theme="dark"] .stat-card,
 [data-theme="dark"] .dashboard-header {
   background: var(--bg-dark-elevated);
+  border-color: var(--color-steel);
+}
+
+[data-theme="dark"] .sidebar-footer {
   border-color: var(--color-steel);
 }

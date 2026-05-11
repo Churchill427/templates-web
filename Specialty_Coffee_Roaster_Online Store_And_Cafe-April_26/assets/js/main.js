@@ -333,7 +333,7 @@
         e.preventDefault();
         const input = form.querySelector('input[type="email"]');
         if (!input || !input.value.trim()) return;
-        
+
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
           showToast('Please enter a valid email address', 'error');
           return;

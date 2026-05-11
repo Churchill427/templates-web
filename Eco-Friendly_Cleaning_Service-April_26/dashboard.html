@@ -98,8 +98,180 @@
     }
 
     .dash-sidebar-link svg {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    /* Desktop Gmail-style Sidebar */
+    @media(min-width: 1024px) {
+      .dash-layout {
+        grid-template-columns: auto 1fr;
+        min-height: calc(100vh - var(--nav-height));
+      }
+
+      .dash-sidebar {
+        position: sticky;
+        top: var(--nav-height);
+        inset-inline-start: 0;
+        width: 72px;
+        height: calc(100vh - var(--nav-height));
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: var(--z-sticky);
+        box-shadow: none;
+        border-inline-start: none;
+        border-inline-end: 1px solid var(--border-light);
+        padding: var(--space-4) 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .dash-sidebar.expanded {
+        width: 260px;
+        padding: var(--space-4) var(--space-3);
+      }
+
+      .dash-sidebar-link {
+        padding: 0.625rem 12px;
+        border-radius: var(--radius-full);
+        white-space: nowrap;
+        gap: 20px;
+        transition: background 0.2s, color 0.2s, padding 0.3s;
+      }
+
+      .dash-sidebar.expanded .dash-sidebar-link {
+        padding: 0.625rem var(--space-4);
+      }
+
+      .dash-sidebar-link span:not(.badge) {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s;
+      }
+
+      .dash-sidebar.expanded .dash-sidebar-link span:not(.badge) {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .dash-sidebar-link .badge {
+        display: none;
+      }
+
+      .dash-sidebar.expanded .dash-sidebar-link .badge {
+        display: flex;
+      }
+
+      .dash-sidebar-labels {
+        display: none;
+        margin-top: var(--space-6);
+        padding: 0 var(--space-4);
+      }
+
+      .dash-sidebar.expanded .dash-sidebar-labels {
+        display: block;
+      }
+
+      .labels-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--space-2);
+        color: var(--text-muted);
+        font-size: 0.8125rem;
+        font-weight: 600;
+      }
+
+      .label-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: 0.5rem 0;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+
+      .label-item:hover {
+        color: var(--primary-green);
+      }
+
+      .label-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .dash-main {
+        padding: var(--space-8) var(--space-10);
+      }
+    }
+
+    /* Compose Button Styles */
+    .compose-btn-wrapper {
+      padding: var(--space-2) 0 var(--space-6);
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .compose-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: #C2E7FF;
+      color: #001D35;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+      min-width: 48px;
+      width: 48px;
+      height: 48px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    [data-theme="dark"] .compose-btn {
+      background: #004A77;
+      color: #C2E7FF;
+    }
+
+    .dash-sidebar.expanded .compose-btn {
+      width: auto;
+      padding: 16px 24px 16px 16px;
+      border-radius: 16px;
+    }
+
+    .compose-btn:hover {
+      box-shadow: var(--shadow-md);
+      background: #B3E0FF;
+    }
+
+    [data-theme="dark"] .compose-btn:hover {
+      background: #005B91;
+    }
+
+    .compose-btn span {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s;
+    }
+
+    .dash-sidebar.expanded .compose-btn span {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .compose-btn svg {
+      width: 24px;
+      height: 24px;
       flex-shrink: 0;
     }
 
@@ -612,38 +784,86 @@
   <div class="dash-layout">
     <!-- Sidebar -->
     <aside class="dash-sidebar" id="dash-sidebar">
-      <a href="#" class="dash-sidebar-link active" data-view="overview"><svg viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
+      <div class="compose-btn-wrapper">
+        <button class="compose-btn" aria-label="Compose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+          <span>Compose</span>
+        </button>
+      </div>
+
+      <a href="#" class="dash-sidebar-link active" data-view="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="3" width="7" height="7" />
           <rect x="14" y="3" width="7" height="7" />
           <rect x="3" y="14" width="7" height="7" />
           <rect x="14" y="14" width="7" height="7" />
-        </svg>Overview</a>
-      <a href="#" class="dash-sidebar-link" data-view="bookings"><svg viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
+        </svg>
+        <span>Overview</span>
+      </a>
+      <a href="#" class="dash-sidebar-link" data-view="bookings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="4" width="18" height="18" rx="2" />
           <path d="M16 2v4M8 2v4M3 10h18" />
-        </svg>Bookings</a>
-      <a href="#" class="dash-sidebar-link" data-view="messages"><svg viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
+        </svg>
+        <span>Bookings</span>
+      </a>
+      <a href="#" class="dash-sidebar-link" data-view="messages">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-        </svg>Messages <span class="badge badge-accent" style="margin-inline-start:auto;">3</span></a>
-      <a href="#" class="dash-sidebar-link" data-view="history"><svg viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
+        </svg>
+        <span>Messages</span>
+        <span class="badge badge-accent" style="margin-inline-start:auto;">3</span>
+      </a>
+      <a href="#" class="dash-sidebar-link" data-view="history">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10" />
           <path d="M12 6v6l4 2" />
-        </svg>History</a>
-      <a href="#" class="dash-sidebar-link" data-view="settings"><svg viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2">
+        </svg>
+        <span>History</span>
+      </a>
+      <a href="#" class="dash-sidebar-link" data-view="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="3" />
           <path
             d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.68 9c.1-.65-.06-1.32-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06c.5.27 1.17.43 1.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51c.65.1 1.32-.06 1.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06c-.27.5-.43 1.17-.33 1.82V9c.2.65.75 1.13 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
-        </svg>Settings</a>
+        </svg>
+        <span>Settings</span>
+      </a>
+
+      <div class="dash-sidebar-labels">
+        <div class="labels-header">
+          <span>Labels</span>
+          <button aria-label="Add label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="label-item">
+          <span class="label-dot" style="background:var(--success);"></span>
+          <span>Invoices</span>
+        </div>
+        <div class="label-item">
+          <span class="label-dot" style="background:var(--warning);"></span>
+          <span>Personal</span>
+        </div>
+        <div class="label-item">
+          <span class="label-dot" style="background:var(--info);"></span>
+          <span>Urgent</span>
+        </div>
+      </div>
+
       <div style="margin-top:auto;padding-top:var(--space-6);border-top:1px solid var(--border-light);">
-        <a href="login.html" class="dash-sidebar-link" style="color:var(--error);"><svg viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2">
+        <a href="login.html" class="dash-sidebar-link" style="color:var(--error);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" />
-          </svg>Logout</a>
+          </svg>
+          <span>Logout</span>
+        </a>
       </div>
     </aside>
 
@@ -964,15 +1184,27 @@
     const overlay = document.getElementById('sidebar-overlay');
 
     const toggleSidebar = (forceClose = false) => {
-      const isOpen = forceClose ? true : sidebar.classList.contains('open');
-      if (isOpen) {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('active');
-        sidebarToggle.classList.remove('active');
+      const isDesktop = window.innerWidth >= 1024;
+      
+      if (isDesktop) {
+        if (forceClose) {
+          sidebar.classList.remove('expanded');
+          sidebarToggle.classList.remove('active');
+        } else {
+          sidebar.classList.toggle('expanded');
+          sidebarToggle.classList.toggle('active');
+        }
       } else {
-        sidebar.classList.add('open');
-        overlay.classList.add('active');
-        sidebarToggle.classList.add('active');
+        const isOpen = forceClose ? true : sidebar.classList.contains('open');
+        if (isOpen) {
+          sidebar.classList.remove('open');
+          overlay.classList.remove('active');
+          sidebarToggle.classList.remove('active');
+        } else {
+          sidebar.classList.add('open');
+          overlay.classList.add('active');
+          sidebarToggle.classList.add('active');
+        }
       }
     };
 

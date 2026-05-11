@@ -17,18 +17,31 @@ const Dashboard = (() => {
   function initSidebar() {
     const sidebar = document.querySelector('.sidebar');
     const drawerToggle = document.querySelector('.dashboard-toggle-drawer');
+    const overlay = document.getElementById('sidebarOverlay');
 
     if (drawerToggle && sidebar) {
       drawerToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        sidebar.classList.toggle('mobile-open');
+        if (window.innerWidth > 1024) {
+          sidebar.classList.toggle('collapsed');
+        } else {
+          sidebar.classList.toggle('mobile-open');
+          if (overlay) overlay.classList.toggle('visible');
+        }
       });
 
-      // Close on outside click
+      // Close mobile drawer on outside click or overlay
+      const closeMobile = () => {
+        sidebar.classList.remove('mobile-open');
+        if (overlay) overlay.classList.remove('visible');
+      };
+
+      if (overlay) overlay.addEventListener('click', closeMobile);
+
       document.addEventListener('click', (e) => {
-        if (sidebar.classList.contains('mobile-open')) {
+        if (window.innerWidth <= 1024 && sidebar.classList.contains('mobile-open')) {
           if (!e.target.closest('.sidebar') && !e.target.closest('.dashboard-toggle-drawer')) {
-            sidebar.classList.remove('mobile-open');
+            closeMobile();
           }
         }
       });
