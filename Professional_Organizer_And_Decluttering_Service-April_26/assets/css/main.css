@@ -41,6 +41,7 @@
   --navbar-height: 72px;
   --container-max: 1800px;
   --sidebar-width: 260px;
+  --sidebar-collapsed: 72px;
 }
 
 /* --- Global Design Enhancements --- */
@@ -1856,6 +1857,28 @@ p {
   color: var(--text-muted);
   padding: 16px 16px 8px;
   font-weight: 600;
+}
+
+.sidebar-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity var(--transition-fast);
+}
+
+.sidebar-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.sidebar-link-logout {
+  color: var(--error);
 }
 
 .dashboard-main {

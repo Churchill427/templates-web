@@ -39,35 +39,60 @@ const Dashboard = {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebarOverlay');
 
-    const openSidebar = () => {
+    const isDesktop = () => window.innerWidth >= 1024;
+
+    // ── Mobile/tablet: slide-out drawer ──
+    const openDrawer = () => {
       sidebar?.classList.add('open');
       overlay?.classList.add('active');
       document.body.style.overflow = 'hidden';
     };
 
-    const closeSidebar = () => {
+    const closeDrawer = () => {
       sidebar?.classList.remove('open');
       overlay?.classList.remove('active');
       document.body.style.overflow = '';
     };
 
+    // ── Desktop: toggle expanded/collapsed ──
+    const toggleDesktopSidebar = () => {
+      sidebar?.classList.toggle('expanded');
+    };
+
     toggle?.addEventListener('click', () => {
-      sidebar?.classList.contains('open') ? closeSidebar() : openSidebar();
+      if (isDesktop()) {
+        toggleDesktopSidebar();
+      } else {
+        sidebar?.classList.contains('open') ? closeDrawer() : openDrawer();
+      }
     });
 
-    closeBtn?.addEventListener('click', closeSidebar);
-    overlay?.addEventListener('click', closeSidebar);
+    closeBtn?.addEventListener('click', () => {
+      if (isDesktop()) {
+        sidebar?.classList.remove('expanded');
+      } else {
+        closeDrawer();
+      }
+    });
+    overlay?.addEventListener('click', closeDrawer);
 
     sidebar?.querySelectorAll('.sidebar-link').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth < 1024) closeSidebar();
+        if (!isDesktop()) closeDrawer();
+        // On desktop, collapse sidebar after navigation click
+        if (isDesktop()) sidebar?.classList.remove('expanded');
       });
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024) {
+      if (isDesktop()) {
+        // Clean up mobile state when switching to desktop
+        sidebar?.classList.remove('open');
         overlay?.classList.remove('active');
         document.body.style.overflow = '';
+      } else {
+        // Clean up desktop state when switching to mobile
+        sidebar?.classList.remove('expanded');
       }
     });
   },
