@@ -33,25 +33,62 @@
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
+      position: relative;
       z-index: 1001;
-      transform: translateX(-100%);
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: var(--shadow-xl);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .dash-sidebar.open {
-      transform: translateX(0);
+    /* Desktop Collapsed State */
+    @media (min-width: 1025px) {
+      .dash-sidebar.collapsed {
+        width: 72px;
+      }
+      
+      .dash-sidebar.collapsed .dash-sidebar__logo span,
+      .dash-sidebar.collapsed .dash-sidebar__section-title,
+      .dash-sidebar.collapsed .dash-nav-link span:not(.nav-icon),
+      .dash-sidebar.collapsed .nav-badge {
+        display: none;
+      }
+
+      .dash-sidebar.collapsed .dash-sidebar__logo {
+        padding: var(--space-4) 0;
+        justify-content: center;
+      }
+
+      .dash-sidebar.collapsed .dash-nav-link {
+        justify-content: center;
+        padding: var(--space-3) 0;
+        margin: 0 var(--space-2);
+      }
+      
+      .dash-sidebar.collapsed .dash-sidebar__nav {
+        padding: var(--space-4) 0;
+      }
+    }
+
+    /* Mobile view */
+    @media (max-width: 1024px) {
+      .dash-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        box-shadow: var(--shadow-xl);
+      }
+      .dash-sidebar.open {
+        transform: translateX(0);
+      }
     }
 
     .dash-main {
       flex: 1;
       width: 100%;
       min-width: 0;
-      transition: margin-left 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
     .dash-sidebar__logo {
@@ -583,7 +620,7 @@
                 stroke-linecap="round" stroke-linejoin="round" class="icon-user">
                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />
-              </svg></span> My Profile</a>
+              </svg></span> <span>My Profile</span></a>
           <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
                 height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="icon-package">
@@ -592,13 +629,13 @@
                   d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
                 <path d="m3.27 6.96 8.73 5.05 8.73-5.05" />
                 <path d="M12 22.08V12" />
-              </svg></span> My Orders <span class="nav-badge">2</span></a>
+              </svg></span> <span>My Orders</span> <span class="nav-badge">2</span></a>
           <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
                 height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="icon-heart">
                 <path
                   d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-              </svg></span> Wishlist</a>
+              </svg></span> <span>Wishlist</span></a>
         </div>
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Content</div>
@@ -607,7 +644,7 @@
                 stroke-linecap="round" stroke-linejoin="round" class="icon-headphones">
                 <path
                   d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
-              </svg></span> Listening Sessions</a>
+              </svg></span> <span>Listening Sessions</span></a>
           <a href="#" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18"
                 height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="icon-calendar">
@@ -615,7 +652,7 @@
                 <line x1="16" x2="16" y1="2" y2="6" />
                 <line x1="8" x2="8" y1="2" y2="6" />
                 <line x1="3" x2="21" y1="10" y2="10" />
-              </svg></span> My Events</a>
+              </svg></span> <span>My Events</span></a>
         </div>
         <div class="dash-sidebar__section">
           <div class="dash-sidebar__section-title">Settings</div>
@@ -625,14 +662,14 @@
                 <path
                   d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.72V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
                 <circle cx="12" cy="12" r="3" />
-              </svg></span> Account Settings</a>
+              </svg></span> <span>Account Settings</span></a>
           <a href="login.html" class="dash-nav-link"><span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg"
                 width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="icon-log-out">
                 <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
                 <polyline points="16 17 21 12 16 7" />
                 <line x1="21" x2="9" y1="12" y2="12" />
-              </svg></span> Logout</a>
+              </svg></span> <span>Logout</span></a>
         </div>
       </nav>
 
@@ -642,7 +679,7 @@
     <div class="dash-main">
       <header class="dash-topbar">
         <div class="dash-topbar__left">
-          <button class="dash-hamburger" id="dash-hamburger" aria-label="Open sidebar" onclick="openSidebar()">
+          <button class="dash-hamburger" id="dash-hamburger" aria-label="Toggle sidebar" onclick="toggleSidebar()">
             <span></span><span></span><span></span>
           </button>
           <span class="dash-topbar__breadcrumb">Dashboard / <span>Customer</span></span>
@@ -888,11 +925,29 @@
   </div>
   <script src="../assets/js/theme-switcher.js"></script>
   <script>
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.dash-sidebar');
+      const overlay = document.getElementById('dash-overlay');
+      
+      if (window.innerWidth > 1024) {
+        sidebar.classList.toggle('collapsed');
+      } else {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('active');
+        if (sidebar.classList.contains('open')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      }
+    }
+
     function openSidebar() {
       document.querySelector('.dash-sidebar').classList.add('open');
       document.getElementById('dash-overlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+
     function closeSidebar() {
       document.querySelector('.dash-sidebar').classList.remove('open');
       document.getElementById('dash-overlay').classList.remove('active');

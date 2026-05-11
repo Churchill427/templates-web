@@ -28,6 +28,7 @@
   --bg-secondary: #F5F0E8;
   --bg-card: #FFFFFF;
   --bg-overlay: rgba(250, 247, 242, 0.85);
+  --bg-glass: rgba(255, 255, 255, 0.9);
   --text-primary: #2C1810;
   --text-secondary: #4D3119;
   --text-muted: #5D4B33;
@@ -356,6 +357,8 @@ p {
 
 .navbar.scrolled {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-md);
 }
 
@@ -442,6 +445,8 @@ p {
   left: 0;
   min-width: 220px;
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -532,6 +537,8 @@ p {
   width: 300px;
   height: 100vh;
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-xl);
   padding: var(--space-8) var(--space-6);
   z-index: 2000;
@@ -693,6 +700,8 @@ p {
    ============================================ */
 .card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -748,6 +757,8 @@ p {
   width: 36px;
   height: 36px;
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -798,6 +809,8 @@ p {
 /* Team Card */
 .team-card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--space-8) var(--space-6);
@@ -861,6 +874,8 @@ p {
 /* Testimonial Card */
 .testimonial-card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
@@ -1347,6 +1362,8 @@ p {
    ============================================ */
 .pricing-card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--space-10);
@@ -1448,6 +1465,8 @@ p {
    ============================================ */
 .blog-card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -1913,6 +1932,8 @@ p {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -1996,6 +2017,8 @@ p {
 /* Ensure Home 2 cards always have high contrast */
 .home-2 .card {
   background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: 0px;
   /* Sharp modern look preserved */
@@ -2089,7 +2112,9 @@ p {
 
 /* Value Card Redesign */
 .value-card {
-  background: var(--bg-card);
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: var(--space-10) var(--space-6);
   text-align: center;
   border-radius: var(--radius-xl);
@@ -2111,7 +2136,7 @@ p {
 .value-card__icon {
   width: 64px;
   height: 64px;
-  background: rgba(255, 215, 0, 0.1);
+  background: rgba(255, 215, 0, 0.15);
   color: var(--color-primary);
   border-radius: var(--radius-lg);
   display: flex;
@@ -2131,6 +2156,7 @@ p {
 .value-card__title {
   margin-bottom: var(--space-3);
   font-size: var(--text-xl);
+  color: var(--text-primary);
 }
 
 .value-card__desc {
@@ -2140,6 +2166,32 @@ p {
   margin: 0;
 }
 
+
+/* CTA Section */
+.cta-section {
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+}
+
+.cta-section .section-header__title,
+.cta-section h2 {
+  color: var(--text-primary) !important;
+}
+
+.cta-section .btn--secondary {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+/* Sidebar Card CTA */
+.sidebar-card-cta {
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+}
+
+.sidebar-card-cta h3 {
+  color: var(--text-primary) !important;
+}
 
 /* Timeline V2 */
 .timeline-v2 {
