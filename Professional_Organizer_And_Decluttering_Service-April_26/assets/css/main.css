@@ -1283,7 +1283,12 @@ p {
 }
 
 /* --- Pricing --- */
-.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; align-items: start; }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: start;
+}
 
 .pricing-card {
   padding: 32px 24px;
@@ -2078,9 +2083,10 @@ p {
 
 .auth-brand a {
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
 }
 
 .auth-brand .nav-brand-icon {
@@ -2712,7 +2718,9 @@ p {
 
 /* Desktop & Laptop (1024px - 1440px) */
 @media (max-width: 1440px) {
-  :root { --container-max: 1600px; }
+  :root {
+    --container-max: 1600px;
+  }
 }
 
 /* Desktop (1024px - 1280px) */
