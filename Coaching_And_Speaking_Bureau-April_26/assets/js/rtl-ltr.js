@@ -36,6 +36,7 @@ const RTLToggle = (() => {
     toggleBtns.forEach(btn => {
       btn.setAttribute('aria-label', dir === RTL ? 'Switch to LTR' : 'Switch to RTL');
       btn.setAttribute('title', dir === RTL ? 'Switch to LTR' : 'Switch to RTL');
+      btn.textContent = dir.toUpperCase();
     });
   }
 

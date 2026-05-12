@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Executive Coaching — Elevate Coaching & Speaking Bureau</title>
-  <meta name="description" content="Transform your leadership with world-class executive coaching. Personalized programs for C-suite executives and corporate leaders.">
+  <meta name="description"
+    content="Transform your leadership with world-class executive coaching. Personalized programs for C-suite executives and corporate leaders.">
 
   <meta property="og:title" content="Executive Coaching — Elevate Bureau">
   <meta property="og:description" content="Transform your leadership with world-class executive coaching.">
@@ -54,14 +56,19 @@
     }
 
     @keyframes subtleZoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.08);
+      }
     }
 
     .hero-home1__overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(79, 70, 229, 0.45));
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(15, 23, 42, 0.6) 100%);
       z-index: 1;
     }
 
@@ -82,7 +89,7 @@
 
     .hero-home1__subtitle {
       font-size: var(--text-xl);
-      color: rgba(255,255,255,0.9);
+      color: rgba(255, 255, 255, 0.9);
       line-height: var(--leading-relaxed);
       margin-bottom: var(--space-8);
     }
@@ -94,14 +101,17 @@
       flex-wrap: wrap;
     }
 
+    .hero-home1__actions .btn {
+      color: white !important;
+    }
+
     .hero-home1__actions .btn--secondary {
-      color: white;
-      border-color: rgba(255,255,255,0.5);
+      border-color: rgba(255, 255, 255, 0.5);
     }
 
     .hero-home1__actions .btn--secondary:hover {
       background: white;
-      color: var(--color-primary);
+      color: var(--color-primary) !important;
       border-color: white;
     }
 
@@ -138,6 +148,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
+      align-items: stretch;
     }
 
     /* CTA/Newsletter */
@@ -180,8 +191,8 @@
     .cta-newsletter-form input {
       flex: 1;
       padding: var(--space-3) var(--space-4);
-      border: 1px solid rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-lg);
       color: white;
       font-size: var(--text-base);
@@ -189,42 +200,47 @@
     }
 
     .cta-newsletter-form input::placeholder {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     .cta-newsletter-form input:focus {
       outline: none;
-      border-color: rgba(255,255,255,0.6);
+      border-color: rgba(255, 255, 255, 0.6);
     }
 
     @media (max-width: 1023px) {
       .coaches-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 639px) {
+
       .coaches-grid,
       .testimonials-grid {
         grid-template-columns: 1fr;
       }
+
       .hero-home1__title {
         font-size: clamp(2rem, 9vw, 3rem);
       }
+
       .cta-newsletter-form {
         flex-direction: column;
       }
     }
   </style>
 </head>
+
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Navigation Bar -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+  <nav class="navbar navbar--transparent-white" id="navbar" role="navigation" aria-label="Main Navigation">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" aria-label="Elevate - Home">
         <div class="navbar__logo-icon">E</div>
@@ -252,8 +268,6 @@
           <div class="navbar__dropdown-menu" role="menu">
             <a href="services.html" class="navbar__dropdown-item" role="menuitem">All Services</a>
             <a href="service-details.html" class="navbar__dropdown-item" role="menuitem">Coaching</a>
-            <a href="service-details.html" class="navbar__dropdown-item" role="menuitem">Speaking</a>
-            <a href="service-details.html" class="navbar__dropdown-item" role="menuitem">Workshops</a>
           </div>
         </div>
         <a href="blog.html" class="navbar__link">Blog</a>
@@ -267,11 +281,12 @@
             <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
             <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
           </div>
-        </div>      </div>
+        </div>
+      </div>
 
       <div class="navbar__utils">
         <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR" title="Toggle RTL/LTR">
-          <i class="ri-global-line"></i>
+          LTR
         </button>
         <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme" title="Toggle Theme">
           <i class="ri-moon-line"></i>
@@ -306,7 +321,8 @@
     <!-- Section 1: Hero -->
     <section class="hero-home1" id="hero" aria-label="Hero">
       <div class="hero-home1__bg">
-        <img src="assets/images/hero/hero-coaching.png" alt="Executive coaching session in a modern office" loading="eager">
+        <img src="assets/images/hero/hero-coaching.png" alt="Executive coaching session in a modern office"
+          loading="eager">
       </div>
       <div class="hero-home1__overlay"></div>
       <div class="hero-home1__content">
@@ -314,7 +330,8 @@
           Transform Your <br><span style="color: var(--color-secondary);">Leadership</span> Journey
         </h1>
         <p class="hero-home1__subtitle hero-animate hero-animate--delay-1">
-          Partner with world-class executive coaches to unlock your full potential, drive organizational change, and achieve extraordinary results.
+          Partner with world-class executive coaches to unlock your full potential, drive organizational change, and
+          achieve extraordinary results.
         </p>
         <div class="hero-home1__actions hero-animate hero-animate--delay-2">
           <a href="services.html" class="btn btn--primary btn--lg">Explore Coaching</a>
@@ -335,7 +352,8 @@
             <div class="stat-card__label">Clients Coached</div>
           </div>
           <div class="stat-card reveal">
-            <div class="stat-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);">
+            <div class="stat-card__icon"
+              style="background: var(--color-secondary-light); color: var(--color-secondary);">
               <i class="ri-bar-chart-grouped-line"></i>
             </div>
             <div class="stat-card__number counter" data-count="97" data-suffix="%">0</div>
@@ -365,7 +383,8 @@
         <div class="text-center reveal">
           <p class="section-subtitle">What We Offer</p>
           <h2 class="section-title">Coaching Services</h2>
-          <p class="section-desc">Tailored coaching programs designed to develop exceptional leaders at every level of your organization.</p>
+          <p class="section-desc">Tailored coaching programs designed to develop exceptional leaders at every level of
+            your organization.</p>
         </div>
 
         <div class="grid grid--2 reveal" style="margin-top: var(--space-12);" data-stagger="150">
@@ -374,15 +393,18 @@
               <i class="ri-user-star-line"></i>
             </div>
             <h3 class="service-card__title">Executive Coaching</h3>
-            <p class="service-card__desc">One-on-one coaching for senior leaders focused on strategic thinking, decision-making, and executive presence.</p>
+            <p class="service-card__desc">One-on-one coaching for senior leaders focused on strategic thinking,
+              decision-making, and executive presence.</p>
             <a href="service-details.html" class="service-card__link">Learn More <i class="ri-arrow-right-line"></i></a>
           </div>
           <div class="service-card reveal">
-            <div class="service-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);">
+            <div class="service-card__icon"
+              style="background: var(--color-secondary-light); color: var(--color-secondary);">
               <i class="ri-compass-discover-line"></i>
             </div>
             <h3 class="service-card__title">Leadership Development</h3>
-            <p class="service-card__desc">Comprehensive programs to build next-generation leaders with emotional intelligence, communication, and resilience.</p>
+            <p class="service-card__desc">Comprehensive programs to build next-generation leaders with emotional
+              intelligence, communication, and resilience.</p>
             <a href="service-details.html" class="service-card__link">Learn More <i class="ri-arrow-right-line"></i></a>
           </div>
           <div class="service-card reveal">
@@ -390,7 +412,8 @@
               <i class="ri-route-line"></i>
             </div>
             <h3 class="service-card__title">Career Transition</h3>
-            <p class="service-card__desc">Navigate career pivots with confidence through targeted coaching, personal branding, and strategic planning.</p>
+            <p class="service-card__desc">Navigate career pivots with confidence through targeted coaching, personal
+              branding, and strategic planning.</p>
             <a href="service-details.html" class="service-card__link">Learn More <i class="ri-arrow-right-line"></i></a>
           </div>
           <div class="service-card reveal">
@@ -398,7 +421,8 @@
               <i class="ri-team-line"></i>
             </div>
             <h3 class="service-card__title">Team Building</h3>
-            <p class="service-card__desc">Foster high-performing teams through collaborative workshops, trust-building exercises, and aligned goal setting.</p>
+            <p class="service-card__desc">Foster high-performing teams through collaborative workshops, trust-building
+              exercises, and aligned goal setting.</p>
             <a href="service-details.html" class="service-card__link">Learn More <i class="ri-arrow-right-line"></i></a>
           </div>
         </div>
@@ -411,13 +435,15 @@
         <div class="text-center reveal">
           <p class="section-subtitle">Meet Our Experts</p>
           <h2 class="section-title">Featured Coaches</h2>
-          <p class="section-desc">Certified professionals with decades of experience transforming leaders across Fortune 500 companies.</p>
+          <p class="section-desc">Certified professionals with decades of experience transforming leaders across Fortune
+            500 companies.</p>
         </div>
 
         <div class="coaches-grid reveal" style="margin-top: var(--space-12);" data-stagger="150">
           <div class="person-card reveal">
             <div class="person-card__image-wrap img-zoom">
-              <img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson - Executive Leadership Coach" class="person-card__image" loading="lazy">
+              <img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson - Executive Leadership Coach"
+                class="person-card__image" loading="lazy">
               <div class="person-card__socials">
                 <a href="#" class="person-card__social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
                 <a href="#" class="person-card__social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
@@ -427,13 +453,15 @@
             <div class="person-card__body">
               <h3 class="person-card__name">Marcus Thompson</h3>
               <p class="person-card__role">Executive Leadership Coach</p>
-              <p class="person-card__specialty">Specializes in C-suite transitions & strategy</p>
-              <a href="speaker-profile.html" class="card__link" style="margin-top: var(--space-3); display: inline-flex;">View Profile <i class="ri-arrow-right-line"></i></a>
+              <p class="person-card__specialty">Specializes in C-suite transitions</p>
+              <a href="speaker-profile.html" class="card__link">View Profile <i
+                  class="ri-arrow-right-line"></i></a>
             </div>
           </div>
           <div class="person-card reveal">
             <div class="person-card__image-wrap img-zoom">
-              <img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell - Performance Coach" class="person-card__image" loading="lazy">
+              <img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell - Performance Coach"
+                class="person-card__image" loading="lazy">
               <div class="person-card__socials">
                 <a href="#" class="person-card__social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
                 <a href="#" class="person-card__social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
@@ -444,12 +472,14 @@
               <h3 class="person-card__name">Sarah Mitchell</h3>
               <p class="person-card__role">Performance Coach</p>
               <p class="person-card__specialty">Specializes in high-performance teams</p>
-              <a href="speaker-profile.html" class="card__link" style="margin-top: var(--space-3); display: inline-flex;">View Profile <i class="ri-arrow-right-line"></i></a>
+              <a href="speaker-profile.html" class="card__link">View Profile <i
+                  class="ri-arrow-right-line"></i></a>
             </div>
           </div>
           <div class="person-card reveal">
             <div class="person-card__image-wrap img-zoom">
-              <img src="assets/images/coaches/coach-3.png" alt="David Chen - Career Strategist" class="person-card__image" loading="lazy">
+              <img src="assets/images/coaches/coach-3.png" alt="David Chen - Career Strategist"
+                class="person-card__image" loading="lazy">
               <div class="person-card__socials">
                 <a href="#" class="person-card__social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
                 <a href="#" class="person-card__social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
@@ -460,7 +490,8 @@
               <h3 class="person-card__name">David Chen</h3>
               <p class="person-card__role">Career Strategist</p>
               <p class="person-card__specialty">Specializes in career pivots & branding</p>
-              <a href="speaker-profile.html" class="card__link" style="margin-top: var(--space-3); display: inline-flex;">View Profile <i class="ri-arrow-right-line"></i></a>
+              <a href="speaker-profile.html" class="card__link">View Profile <i
+                  class="ri-arrow-right-line"></i></a>
             </div>
           </div>
         </div>
@@ -479,7 +510,8 @@
         <div class="testimonials-grid reveal" style="margin-top: var(--space-12);" data-stagger="150">
           <div class="testimonial-card reveal">
             <div class="testimonial-card__quote-icon">"</div>
-            <p class="testimonial-card__text">Working with Elevate transformed my leadership approach. Within 6 months, my team's productivity increased by 40% and engagement scores skyrocketed.</p>
+            <p class="testimonial-card__text">Working with Elevate transformed my leadership approach. Within 6 months,
+              my team's productivity increased by 40% and engagement scores skyrocketed.</p>
             <div class="testimonial-card__stars">
               <i class="ri-star-fill"></i>
               <i class="ri-star-fill"></i>
@@ -488,7 +520,8 @@
               <i class="ri-star-fill"></i>
             </div>
             <div class="testimonial-card__author">
-              <img src="assets/images/coaches/coach-1.png" alt="Jennifer Park" class="testimonial-card__avatar" loading="lazy">
+              <img src="assets/images/coaches/coach-1.png" alt="Jennifer Park" class="testimonial-card__avatar"
+                loading="lazy">
               <div>
                 <div class="testimonial-card__name">Jennifer Park</div>
                 <div class="testimonial-card__company">VP Engineering, TechScale Inc.</div>
@@ -497,7 +530,8 @@
           </div>
           <div class="testimonial-card reveal">
             <div class="testimonial-card__quote-icon">"</div>
-            <p class="testimonial-card__text">The executive coaching program gave me the clarity and confidence I needed to lead our company through a major transformation. Truly life-changing.</p>
+            <p class="testimonial-card__text">The executive coaching program gave me the clarity and confidence I needed
+              to lead our company through a major transformation. Truly life-changing.</p>
             <div class="testimonial-card__stars">
               <i class="ri-star-fill"></i>
               <i class="ri-star-fill"></i>
@@ -506,7 +540,8 @@
               <i class="ri-star-fill"></i>
             </div>
             <div class="testimonial-card__author">
-              <img src="assets/images/coaches/coach-2.png" alt="Robert Sullivan" class="testimonial-card__avatar" loading="lazy">
+              <img src="assets/images/coaches/coach-2.png" alt="Robert Sullivan" class="testimonial-card__avatar"
+                loading="lazy">
               <div>
                 <div class="testimonial-card__name">Robert Sullivan</div>
                 <div class="testimonial-card__company">CEO, Meridian Solutions</div>
@@ -515,7 +550,8 @@
           </div>
           <div class="testimonial-card reveal">
             <div class="testimonial-card__quote-icon">"</div>
-            <p class="testimonial-card__text">Elevate's team building workshop completely changed our department dynamics. We went from siloed teams to a collaborative powerhouse in just 3 months.</p>
+            <p class="testimonial-card__text">Elevate's team building workshop completely changed our department
+              dynamics. We went from siloed teams to a collaborative powerhouse in just 3 months.</p>
             <div class="testimonial-card__stars">
               <i class="ri-star-fill"></i>
               <i class="ri-star-fill"></i>
@@ -524,7 +560,8 @@
               <i class="ri-star-half-fill"></i>
             </div>
             <div class="testimonial-card__author">
-              <img src="assets/images/coaches/coach-3.png" alt="Lisa Wang" class="testimonial-card__avatar" loading="lazy">
+              <img src="assets/images/coaches/coach-3.png" alt="Lisa Wang" class="testimonial-card__avatar"
+                loading="lazy">
               <div>
                 <div class="testimonial-card__name">Lisa Wang</div>
                 <div class="testimonial-card__company">Director of HR, GlobalFirst</div>
@@ -548,13 +585,18 @@
       <div class="container cta-section__content text-center">
         <div class="reveal">
           <h2 class="section-title" style="color: white; margin-bottom: var(--space-4);">Start Your Transformation</h2>
-          <p style="color: rgba(255,255,255,0.85); font-size: var(--text-lg); margin-bottom: var(--space-8); max-width: 560px; margin-inline: auto;">Join thousands of leaders who have elevated their careers. Subscribe to receive exclusive insights and coaching tips.</p>
+          <p
+            style="color: rgba(255,255,255,0.85); font-size: var(--text-lg); margin-bottom: var(--space-8); max-width: 560px; margin-inline: auto;">
+            Join thousands of leaders who have elevated their careers. Subscribe to receive exclusive insights and
+            coaching tips.</p>
           <form class="cta-newsletter-form" data-validate aria-label="Newsletter subscription">
             <input type="email" placeholder="Enter your email address" required aria-label="Email address">
             <button type="submit" class="btn btn--accent">Subscribe</button>
           </form>
           <p style="color: rgba(255,255,255,0.5); font-size: var(--text-sm); margin-top: var(--space-4);">
-            Or <a href="contact.html" style="color: var(--color-secondary); font-weight: var(--weight-semibold);">Schedule a Free Consultation</a>
+            Or <a href="contact.html"
+              style="color: var(--color-secondary); font-weight: var(--weight-semibold);">Schedule a Free
+              Consultation</a>
           </p>
         </div>
       </div>
@@ -572,13 +614,19 @@
             <div class="navbar__logo-icon">E</div>
             <span class="footer__brand-name">Elevate</span>
           </div>
-          <p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance through world-class coaching and speaking services.</p>
+          <p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational
+            performance through world-class coaching and speaking services.</p>
           <div class="footer__socials">
-            <a href="#" class="footer__social-link footer__social-link--google" aria-label="Google"><i class="ri-google-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--facebook" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--linkedin" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--twitter" aria-label="Twitter/X"><i class="ri-twitter-x-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--instagram" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--google" aria-label="Google"><i
+                class="ri-google-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--facebook" aria-label="Facebook"><i
+                class="ri-facebook-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--linkedin" aria-label="LinkedIn"><i
+                class="ri-linkedin-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--twitter" aria-label="Twitter/X"><i
+                class="ri-twitter-x-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--instagram" aria-label="Instagram"><i
+                class="ri-instagram-line"></i></a>
           </div>
         </div>
 
@@ -598,10 +646,13 @@
         <div>
           <h3 class="footer__heading">Services</h3>
           <div class="footer__links">
-            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a>
-            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive
+              Coaching</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote
+              Speaking</a>
             <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a>
-            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate Training</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate
+              Training</a>
           </div>
         </div>
 
@@ -610,7 +661,8 @@
           <h3 class="footer__heading">Stay Connected</h3>
           <p class="footer__newsletter-text">Subscribe to get the latest insights on leadership and coaching.</p>
           <form class="footer__newsletter-form" aria-label="Footer newsletter">
-            <input type="email" class="footer__newsletter-input" placeholder="Your email" aria-label="Email for newsletter">
+            <input type="email" class="footer__newsletter-input" placeholder="Your email"
+              aria-label="Email for newsletter">
             <button type="submit" class="footer__newsletter-btn">Subscribe</button>
           </form>
           <div class="footer__contact-info">
@@ -643,4 +695,5 @@
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>

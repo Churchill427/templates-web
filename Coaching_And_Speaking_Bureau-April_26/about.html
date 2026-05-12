@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Elevate Coaching & Speaking Bureau</title>
-  <meta name="description" content="Discover Elevate's mission, leadership team, and commitment to transforming leaders through world-class coaching and speaking services.">
+  <meta name="description"
+    content="Discover Elevate's mission, leadership team, and commitment to transforming leaders through world-class coaching and speaking services.">
   <meta property="og:title" content="About Us — Elevate Bureau">
   <meta property="og:description" content="Our mission: Transform leaders. Inspire audiences. Elevate performance.">
   <meta property="og:type" content="website">
@@ -30,6 +32,7 @@
       gap: var(--space-12);
       align-items: center;
     }
+
     .about-story__image {
       width: 100%;
       border-radius: var(--radius-2xl);
@@ -37,19 +40,23 @@
       aspect-ratio: 4/3;
       box-shadow: var(--shadow-xl);
     }
+
     .about-story__text h2 {
       margin-bottom: var(--space-4);
     }
+
     .about-story__text p {
       color: var(--color-text-secondary);
       line-height: var(--leading-relaxed);
       margin-bottom: var(--space-4);
     }
+
     .mission-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
     }
+
     .mission-card {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
@@ -60,6 +67,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .mission-card::after {
       content: '';
       position: absolute;
@@ -71,37 +79,49 @@
       transform: scaleX(0);
       transition: transform var(--transition-base);
     }
-    .mission-card:hover::after { transform: scaleX(1); }
+
+    .mission-card:hover::after {
+      transform: scaleX(1);
+    }
+
     .mission-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-lg);
     }
+
     .mission-card__icon {
-      width: 64px; height: 64px;
+      width: 64px;
+      height: 64px;
       margin-inline: auto;
       margin-bottom: var(--space-5);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: var(--color-primary-light);
       border-radius: var(--radius-xl);
       font-size: var(--text-3xl);
       color: var(--color-primary);
     }
+
     .mission-card__title {
       font-size: var(--text-xl);
       font-weight: var(--weight-semibold);
       margin-bottom: var(--space-3);
     }
+
     .mission-card__desc {
       font-size: var(--text-sm);
       color: var(--color-text-secondary);
       line-height: var(--leading-relaxed);
     }
+
     .team-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: var(--space-6);
       justify-items: center;
     }
+
     .awards-grid {
       display: flex;
       gap: var(--space-6);
@@ -109,6 +129,7 @@
       justify-content: center;
       align-items: center;
     }
+
     .award-badge {
       display: flex;
       align-items: center;
@@ -119,27 +140,35 @@
       border-radius: var(--radius-xl);
       transition: all var(--transition-base);
     }
+
     .award-badge:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
       border-color: var(--color-primary);
     }
+
     .award-badge__icon {
-      width: 48px; height: 48px;
-      display: flex; align-items: center; justify-content: center;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: var(--color-primary-light);
       color: var(--color-primary);
       border-radius: var(--radius-lg);
       font-size: var(--text-xl);
     }
+
     .award-badge__text {
       font-size: var(--text-sm);
       font-weight: var(--weight-semibold);
     }
+
     .award-badge__sub {
       font-size: var(--text-xs);
       color: var(--color-text-muted);
     }
+
     .join-cta {
       position: relative;
       overflow: hidden;
@@ -148,35 +177,65 @@
       color: white;
       padding: var(--space-16) var(--space-8);
     }
+
     .join-cta__bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
+
     .join-cta__bg img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+
     .join-cta__overlay {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: linear-gradient(135deg, rgba(79, 70, 229, 0.9), rgba(124, 58, 237, 0.85));
       z-index: 1;
     }
-    .join-cta__content { position: relative; z-index: 2; }
+
+    .join-cta__content {
+      position: relative;
+      z-index: 2;
+    }
 
     @media (max-width: 1023px) {
-      .about-story { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-      .mission-cards { grid-template-columns: repeat(2, 1fr); }
+      .about-story {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mission-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
+
     @media (max-width: 639px) {
-      .mission-cards, .team-grid { grid-template-columns: 1fr; }
-      .awards-grid { flex-direction: column; align-items: stretch; }
+
+      .mission-cards,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .awards-grid {
+        flex-direction: column;
+        align-items: stretch;
+      }
     }
   </style>
 </head>
+
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Navigation -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+  <nav class="navbar navbar--transparent-white" role="navigation" aria-label="Main Navigation">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo" aria-label="Elevate - Home">
         <div class="navbar__logo-icon">E</div>
@@ -196,8 +255,6 @@
           <div class="navbar__dropdown-menu" role="menu">
             <a href="services.html" class="navbar__dropdown-item">All Services</a>
             <a href="service-details.html" class="navbar__dropdown-item">Coaching</a>
-            <a href="service-details.html" class="navbar__dropdown-item">Speaking</a>
-            <a href="service-details.html" class="navbar__dropdown-item">Workshops</a>
           </div>
         </div>
         <a href="blog.html" class="navbar__link">Blog</a>
@@ -211,11 +268,13 @@
             <a href="user-dashboard.html" class="navbar__dropdown-item" role="menuitem">User Dashboard</a>
             <a href="admin-dashboard.html" class="navbar__dropdown-item" role="menuitem">Admin Dashboard</a>
           </div>
-        </div>      </div>
+        </div>
+      </div>
 
       <div class="navbar__utils">
-        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
-        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+        <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR">LTR</button>
+        <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i
+            class="ri-moon-line"></i></button>
         <div class="navbar__user-dropdown">
           <button class="navbar__util-btn" aria-label="User Menu"><i class="ri-user-line"></i></button>
           <div class="navbar__user-menu" role="menu">
@@ -225,7 +284,8 @@
             <a href="admin-dashboard.html"><i class="ri-settings-3-line"></i> Admin Dashboard</a>
           </div>
         </div>
-        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+        <button class="navbar__hamburger" id="hamburger"
+          aria-label="Toggle Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
     <div class="navbar__mobile-menu" id="mobile-menu">
@@ -256,7 +316,8 @@
           <span class="breadcrumb__current">About Us</span>
         </div>
         <h1 class="page-hero__title hero-animate hero-animate--delay-1">About Elevate</h1>
-        <p class="page-hero__subtitle hero-animate hero-animate--delay-2">Transforming leaders and inspiring audiences since 2008</p>
+        <p class="page-hero__subtitle hero-animate hero-animate--delay-2">Transforming leaders and inspiring audiences
+          since 2008</p>
       </div>
     </section>
 
@@ -267,12 +328,18 @@
           <div class="about-story__text reveal">
             <p class="section-subtitle">Our Story</p>
             <h2 class="section-title" style="text-align: start;">Built on a Passion for Growth</h2>
-            <p>Founded in 2008, Elevate began with a simple but powerful idea: that every leader has untapped potential waiting to be unlocked. Our founders — seasoned executive coaches and keynote speakers — recognized a gap between traditional training programs and lasting behavioral change.</p>
-            <p>Today, Elevate stands as a premier coaching and speaking bureau, connecting organizations with transformative coaches and world-class speakers who deliver results that matter. We've grown from a team of 3 to a network of 250+ certified professionals operating across 45 countries.</p>
-            <p>Our methodology blends evidence-based coaching frameworks with real-world business acumen, ensuring every engagement produces measurable outcomes. We don't just inspire — we transform.</p>
+            <p>Founded in 2008, Elevate began with a simple but powerful idea: that every leader has untapped potential
+              waiting to be unlocked. Our founders — seasoned executive coaches and keynote speakers — recognized a gap
+              between traditional training programs and lasting behavioral change.</p>
+            <p>Today, Elevate stands as a premier coaching and speaking bureau, connecting organizations with
+              transformative coaches and world-class speakers who deliver results that matter. We've grown from a team
+              of 3 to a network of 250+ certified professionals operating across 45 countries.</p>
+            <p>Our methodology blends evidence-based coaching frameworks with real-world business acumen, ensuring every
+              engagement produces measurable outcomes. We don't just inspire — we transform.</p>
           </div>
           <div class="reveal reveal--right">
-            <img src="assets/images/team/team-meeting.png" alt="Elevate founding team collaborating in the early days" class="about-story__image" loading="lazy">
+            <img src="assets/images/team/team-meeting.png" alt="Elevate founding team collaborating in the early days"
+              class="about-story__image" loading="lazy">
           </div>
         </div>
       </div>
@@ -289,17 +356,23 @@
           <div class="mission-card reveal">
             <div class="mission-card__icon"><i class="ri-compass-3-line"></i></div>
             <h3 class="mission-card__title">Our Mission</h3>
-            <p class="mission-card__desc">To empower leaders at every level with the tools, mindset, and strategies to drive meaningful change in their organizations and communities.</p>
+            <p class="mission-card__desc">To empower leaders at every level with the tools, mindset, and strategies to
+              drive meaningful change in their organizations and communities.</p>
           </div>
           <div class="mission-card reveal">
-            <div class="mission-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-eye-line"></i></div>
+            <div class="mission-card__icon"
+              style="background: var(--color-secondary-light); color: var(--color-secondary);"><i
+                class="ri-eye-line"></i></div>
             <h3 class="mission-card__title">Our Vision</h3>
-            <p class="mission-card__desc">To be the world's most trusted coaching and speaking bureau, setting the standard for transformative leadership development and audience engagement.</p>
+            <p class="mission-card__desc">To be the world's most trusted coaching and speaking bureau, setting the
+              standard for transformative leadership development and audience engagement.</p>
           </div>
           <div class="mission-card reveal">
-            <div class="mission-card__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-heart-3-line"></i></div>
+            <div class="mission-card__icon" style="background: var(--color-accent-light); color: var(--color-accent);">
+              <i class="ri-heart-3-line"></i></div>
             <h3 class="mission-card__title">Our Values</h3>
-            <p class="mission-card__desc">Integrity, excellence, innovation, and impact guide everything we do — from selecting coaches to measuring client success and building lasting partnerships.</p>
+            <p class="mission-card__desc">Integrity, excellence, innovation, and impact guide everything we do — from
+              selecting coaches to measuring client success and building lasting partnerships.</p>
           </div>
         </div>
       </div>
@@ -316,7 +389,8 @@
         <div class="team-grid reveal" style="margin-top: var(--space-10);" data-stagger="150">
           <div class="person-card reveal">
             <div class="person-card__image-wrap img-zoom">
-              <img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson - CEO & Co-Founder" class="person-card__image" loading="lazy">
+              <img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson - CEO & Co-Founder"
+                class="person-card__image" loading="lazy">
               <div class="person-card__socials">
                 <a href="#" class="person-card__social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
                 <a href="#" class="person-card__social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
@@ -330,7 +404,8 @@
           </div>
           <div class="person-card reveal">
             <div class="person-card__image-wrap img-zoom">
-              <img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell - COO & Co-Founder" class="person-card__image" loading="lazy">
+              <img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell - COO & Co-Founder"
+                class="person-card__image" loading="lazy">
               <div class="person-card__socials">
                 <a href="#" class="person-card__social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
                 <a href="#" class="person-card__social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
@@ -344,7 +419,8 @@
           </div>
           <div class="person-card reveal">
             <div class="person-card__image-wrap img-zoom">
-              <img src="assets/images/coaches/coach-3.png" alt="David Chen - VP of Programs" class="person-card__image" loading="lazy">
+              <img src="assets/images/coaches/coach-3.png" alt="David Chen - VP of Programs" class="person-card__image"
+                loading="lazy">
               <div class="person-card__socials">
                 <a href="#" class="person-card__social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
                 <a href="#" class="person-card__social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
@@ -358,7 +434,8 @@
           </div>
           <div class="person-card reveal">
             <div class="person-card__image-wrap img-zoom">
-              <img src="assets/images/speakers/speaker-1.png" alt="Priya Sharma - Head of Speaker Relations" class="person-card__image" loading="lazy">
+              <img src="assets/images/speakers/speaker-1.png" alt="Priya Sharma - Head of Speaker Relations"
+                class="person-card__image" loading="lazy">
               <div class="person-card__socials">
                 <a href="#" class="person-card__social-link" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
                 <a href="#" class="person-card__social-link" aria-label="Twitter"><i class="ri-twitter-x-fill"></i></a>
@@ -391,28 +468,33 @@
             </div>
           </div>
           <div class="award-badge reveal">
-            <div class="award-badge__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-award-line"></i></div>
+            <div class="award-badge__icon"
+              style="background: var(--color-secondary-light); color: var(--color-secondary);"><i
+                class="ri-award-line"></i></div>
             <div>
               <div class="award-badge__text">Forbes Top 10</div>
               <div class="award-badge__sub">Coaching Companies 2025</div>
             </div>
           </div>
           <div class="award-badge reveal">
-            <div class="award-badge__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-trophy-line"></i></div>
+            <div class="award-badge__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i
+                class="ri-trophy-line"></i></div>
             <div>
               <div class="award-badge__text">Inc. 5000</div>
               <div class="award-badge__sub">Fastest Growing Company</div>
             </div>
           </div>
           <div class="award-badge reveal">
-            <div class="award-badge__icon" style="background: #ede9fe; color: #7c3aed;"><i class="ri-star-line"></i></div>
+            <div class="award-badge__icon" style="background: #ede9fe; color: #7c3aed;"><i class="ri-star-line"></i>
+            </div>
             <div>
               <div class="award-badge__text">NSA Member</div>
               <div class="award-badge__sub">National Speakers Association</div>
             </div>
           </div>
           <div class="award-badge reveal">
-            <div class="award-badge__icon" style="background: #fef3c7; color: #d97706;"><i class="ri-medal-line"></i></div>
+            <div class="award-badge__icon" style="background: #fef3c7; color: #d97706;"><i class="ri-medal-line"></i>
+            </div>
             <div>
               <div class="award-badge__text">G2 Leader 2026</div>
               <div class="award-badge__sub">Coaching & Development Category</div>
@@ -427,18 +509,22 @@
       <div class="container">
         <div class="join-cta reveal">
           <div class="join-cta__bg">
-            <img src="assets/images/events/conference-audience.png" alt="Elevate team culture and events" loading="lazy">
+            <img src="assets/images/events/conference-audience.png" alt="Elevate team culture and events"
+              loading="lazy">
           </div>
           <div class="join-cta__overlay"></div>
           <div class="join-cta__content">
             <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Grow With Us</p>
             <h2 class="section-title" style="color: white;">Partner With Elevate</h2>
-            <p style="color: rgba(255,255,255,0.85); max-width: 540px; margin-inline: auto; font-size: var(--text-lg); margin-bottom: var(--space-8);">
-              Whether you're a certified coach, an experienced speaker, or a visionary organization — let's create impact together.
+            <p
+              style="color: rgba(255,255,255,0.85); max-width: 540px; margin-inline: auto; font-size: var(--text-lg); margin-bottom: var(--space-8);">
+              Whether you're a certified coach, an experienced speaker, or a visionary organization — let's create
+              impact together.
             </p>
             <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
               <a href="contact.html" class="btn btn--accent btn--lg">Become a Partner</a>
-              <a href="contact.html" class="btn btn--secondary btn--lg" style="color: white; border-color: rgba(255,255,255,0.4);">View Open Roles</a>
+              <a href="contact.html" class="btn btn--secondary btn--lg"
+                style="color: white; border-color: rgba(255,255,255,0.4);">View Open Roles</a>
             </div>
           </div>
         </div>
@@ -451,14 +537,22 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <div class="footer__brand-logo"><div class="navbar__logo-icon">E</div><span class="footer__brand-name">Elevate</span></div>
-          <p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational performance through world-class coaching and speaking services.</p>
+          <div class="footer__brand-logo">
+            <div class="navbar__logo-icon">E</div><span class="footer__brand-name">Elevate</span>
+          </div>
+          <p class="footer__brand-desc">Transforming leaders, inspiring audiences, and elevating organizational
+            performance through world-class coaching and speaking services.</p>
           <div class="footer__socials">
-            <a href="#" class="footer__social-link footer__social-link--google" aria-label="Google"><i class="ri-google-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--facebook" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--linkedin" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--twitter" aria-label="Twitter/X"><i class="ri-twitter-x-fill"></i></a>
-            <a href="#" class="footer__social-link footer__social-link--instagram" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--google" aria-label="Google"><i
+                class="ri-google-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--facebook" aria-label="Facebook"><i
+                class="ri-facebook-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--linkedin" aria-label="LinkedIn"><i
+                class="ri-linkedin-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--twitter" aria-label="Twitter/X"><i
+                class="ri-twitter-x-fill"></i></a>
+            <a href="#" class="footer__social-link footer__social-link--instagram" aria-label="Instagram"><i
+                class="ri-instagram-line"></i></a>
           </div>
         </div>
         <div>
@@ -474,16 +568,21 @@
         <div>
           <h3 class="footer__heading">Services</h3>
           <div class="footer__links">
-            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive Coaching</a>
-            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote Speaking</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Executive
+              Coaching</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Keynote
+              Speaking</a>
             <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Workshops</a>
-            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate Training</a>
+            <a href="service-details.html" class="footer__link"><i class="ri-arrow-right-s-line"></i> Corporate
+              Training</a>
           </div>
         </div>
         <div>
           <h3 class="footer__heading">Stay Connected</h3>
           <p class="footer__newsletter-text">Subscribe to get the latest insights on leadership and coaching.</p>
-          <form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email" aria-label="Email"><button type="submit" class="footer__newsletter-btn">Subscribe</button></form>
+          <form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input"
+              placeholder="Your email" aria-label="Email"><button type="submit"
+              class="footer__newsletter-btn">Subscribe</button></form>
           <div class="footer__contact-info">
             <div class="footer__contact-item"><i class="ri-map-pin-line"></i> 100 Innovation Dr, Suite 800, NY</div>
             <div class="footer__contact-item"><i class="ri-phone-line"></i> +1 (555) 358-2836</div>
@@ -493,7 +592,8 @@
       </div>
       <div class="footer__bottom">
         <p class="footer__copyright">&copy; 2026 Elevate Coaching & Speaking Bureau. All rights reserved.</p>
-        <div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Sitemap</a></div>
+        <div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a
+            href="#">Sitemap</a></div>
       </div>
     </div>
   </footer>
@@ -503,4 +603,5 @@
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>

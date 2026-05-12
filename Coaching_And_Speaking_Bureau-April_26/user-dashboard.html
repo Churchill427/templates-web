@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Dashboard — Elevate Bureau</title>
-  <meta name="description" content="Manage your coaching sessions, track progress, and access resources from your Elevate dashboard.">
+  <meta name="description"
+    content="Manage your coaching sessions, track progress, and access resources from your Elevate dashboard.">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
   <meta name="theme-color" content="#4f46e5">
@@ -17,135 +19,501 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <style>
-    body { background: var(--color-surface-alt); }
-    .dashboard { display: flex; min-height: 100vh; }
+    body {
+      background: var(--color-surface-alt);
+    }
+
+    .dashboard {
+      display: flex;
+      min-height: 100vh;
+    }
+
     .dashboard__sidebar {
-      width: 260px; background: var(--color-surface); border-right: 1px solid var(--color-border);
-      display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; left: 0;
-      z-index: 50; transition: transform var(--transition-base);
+      width: 260px;
+      background: var(--color-surface);
+      border-right: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 50;
+      transition: transform var(--transition-base), width var(--transition-base);
       transform: translateX(-100%);
+      overflow-y: auto;
     }
-    .dashboard__sidebar.active { transform: translateX(0); }
+
+    .dashboard__sidebar.active {
+      transform: translateX(0);
+    }
+
     .dashboard__sidebar-header {
-      padding: var(--space-5) var(--space-6); border-bottom: 1px solid var(--color-border);
-      display: flex; align-items: center; gap: var(--space-3);
-    }
-    .dashboard__nav { flex: 1; padding: var(--space-4) var(--space-3); overflow-y: auto; }
-    .dashboard__nav-group { margin-bottom: var(--space-5); }
-    .dashboard__nav-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); padding: var(--space-2) var(--space-3); font-weight: var(--weight-semibold); }
-    .dashboard__nav-link {
-      display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3);
-      border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: var(--weight-medium);
-      color: var(--color-text-secondary); cursor: pointer; transition: all var(--transition-fast);
-      text-decoration: none; margin-bottom: var(--space-1);
-    }
-    .dashboard__nav-link:hover { background: var(--color-surface-alt); color: var(--color-text); }
-    .dashboard__nav-link.active { background: var(--color-primary-light); color: var(--color-primary); font-weight: var(--weight-semibold); }
-    .dashboard__nav-link i { font-size: var(--text-lg); width: 20px; text-align: center; }
-    .dashboard__sidebar-footer { padding: var(--space-4) var(--space-5); border-top: 1px solid var(--color-border); }
-    .dashboard__main { flex: 1; margin-left: 0; }
-    .dashboard__topbar {
-      position: sticky; top: 0; z-index: 40; background: var(--color-surface);
+      padding: var(--space-5) var(--space-6);
       border-bottom: 1px solid var(--color-border);
-      padding: var(--space-3) var(--space-6); display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
     }
-    .dashboard__topbar-left { display: flex; align-items: center; gap: var(--space-4); }
-    .dashboard__topbar-right { display: flex; align-items: center; gap: var(--space-3); }
-    .dashboard__topbar-title { font-size: var(--text-lg); font-weight: var(--weight-semibold); }
-    .dashboard__content { padding: var(--space-6); }
+
+    .dashboard__nav {
+      flex: 1;
+      padding: var(--space-4) var(--space-3);
+      overflow-y: auto;
+    }
+
+    .dashboard__nav-group {
+      margin-bottom: var(--space-5);
+    }
+
+    .dashboard__nav-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      padding: var(--space-2) var(--space-3);
+      font-weight: var(--weight-semibold);
+    }
+
+    .dashboard__nav-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      margin-bottom: var(--space-1);
+    }
+
+    .dashboard__nav-link:hover {
+      background: var(--color-surface-alt);
+      color: var(--color-text);
+    }
+
+    .dashboard__nav-link.active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+    }
+
+    .dashboard__nav-link i {
+      font-size: var(--text-lg);
+      width: 20px;
+      text-align: center;
+    }
+
+    .dashboard__sidebar-footer {
+      padding: var(--space-4) var(--space-5);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .dashboard__main {
+      flex: 1;
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      .dashboard__sidebar {
+        transform: translateX(0);
+        width: 260px;
+      }
+
+      .dashboard__main {
+        margin-left: 260px;
+        width: calc(100% - 260px);
+        flex: none;
+      }
+
+      .dashboard__sidebar.collapsed {
+        width: 72px;
+      }
+
+      .dashboard__sidebar.collapsed ~ .dashboard__main {
+        margin-left: 72px;
+        width: calc(100% - 72px);
+      }
+
+      .dashboard__sidebar.collapsed .dashboard__nav-link span,
+      .dashboard__sidebar.collapsed .dashboard__nav-label,
+      .dashboard__sidebar.collapsed .navbar__logo-text,
+      .dashboard__sidebar.collapsed .dashboard__sidebar-footer span {
+        display: none;
+      }
+
+      .dashboard__sidebar.collapsed .dashboard__nav-link {
+        justify-content: center;
+        padding: var(--space-2) 0;
+      }
+
+      .dashboard__sidebar.collapsed .dashboard__sidebar-header,
+      .dashboard__sidebar.collapsed .dashboard__sidebar-footer {
+        justify-content: center;
+        padding-inline: 0;
+      }
+
+      .dashboard__sidebar.collapsed .navbar__logo {
+        gap: 0 !important;
+      }
+    }
+
+    .dashboard__topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-3) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dashboard__topbar-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .dashboard__topbar-right {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .dashboard__topbar-title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+    }
+
+    .dashboard__content {
+      padding: var(--space-6);
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 1600px;
+      margin-inline: auto;
+    }
+
+    /* Global canvas constraint */
+    canvas {
+      max-width: 100%;
+      display: block;
+    }
+
     .dashboard__overlay {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 45;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 45;
     }
-    .dashboard__overlay.active { display: block; }
+
+    .dashboard__overlay.active {
+      display: block;
+    }
+
     .dashboard__hamburger {
-      display: flex; background: var(--color-primary-light); border: none; cursor: pointer;
-      width: 40px; height: 40px; border-radius: var(--radius-md); align-items: center; justify-content: center;
-      font-size: var(--text-xl); color: var(--color-primary);
+      display: flex;
+      background: var(--color-primary-light);
+      border: none;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xl);
+      color: var(--color-primary);
     }
+
     /* Stats Cards */
-    .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
     .dash-stat-card {
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl); padding: var(--space-5);
-      display: flex; align-items: center; gap: var(--space-4); transition: all var(--transition-base);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      transition: all var(--transition-base);
     }
-    .dash-stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+    .dash-stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
     .dash-stat-card__icon {
-      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
-      border-radius: var(--radius-lg); font-size: var(--text-xl); flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-lg);
+      font-size: var(--text-xl);
+      flex-shrink: 0;
     }
-    .dash-stat-card__number { font-size: var(--text-2xl); font-weight: var(--weight-bold); }
-    .dash-stat-card__label { font-size: var(--text-sm); color: var(--color-text-muted); }
-    .dash-stat-card__trend { font-size: var(--text-xs); font-weight: var(--weight-semibold); display: inline-flex; align-items: center; gap: 2px; }
-    .dash-stat-card__trend--up { color: var(--color-accent); }
-    .dash-stat-card__trend--down { color: var(--color-primary); }
+
+    .dash-stat-card__number {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+    }
+
+    .dash-stat-card__label {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .dash-stat-card__trend {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .dash-stat-card__trend--up {
+      color: var(--color-accent);
+    }
+
+    .dash-stat-card__trend--down {
+      color: var(--color-primary);
+    }
+
     /* Chart Cards */
     .dash-chart-card {
-      background: var(--color-surface); border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl); padding: var(--space-5); margin-bottom: var(--space-6);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      margin-bottom: var(--space-6);
     }
+
     .dash-chart-card__header {
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
     }
-    .dash-chart-card__title { font-size: var(--text-lg); font-weight: var(--weight-semibold); }
-    .charts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); margin-bottom: var(--space-6); }
+
+    .dash-chart-card__title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
     /* Sessions List */
     .session-item {
-      display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3) 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
       border-bottom: 1px solid var(--color-border);
     }
-    .session-item:last-child { border-bottom: none; }
-    .session-item__avatar { width: 40px; height: 40px; border-radius: var(--radius-full); object-fit: cover; }
-    .session-item__info { flex: 1; }
-    .session-item__name { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
-    .session-item__time { font-size: var(--text-xs); color: var(--color-text-muted); }
-    .session-item__status {
-      font-size: var(--text-xs); font-weight: var(--weight-semibold);
-      padding: var(--space-1) var(--space-2); border-radius: var(--radius-md);
+
+    .session-item:last-child {
+      border-bottom: none;
     }
-    .status--upcoming { background: var(--color-primary-light); color: var(--color-primary); }
-    .status--completed { background: var(--color-accent-light); color: var(--color-accent); }
-    .status--cancelled { background: #fee2e2; color: #ef4444; }
+
+    .session-item__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+    }
+
+    .session-item__info {
+      flex: 1;
+    }
+
+    .session-item__name {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+    }
+
+    .session-item__time {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .session-item__status {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-md);
+    }
+
+    .status--upcoming {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    .status--completed {
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+    }
+
+    .status--cancelled {
+      background: #fee2e2;
+      color: #ef4444;
+    }
+
     /* Dashboard section toggling */
-    .dashboard__section { display: none; }
-    .dashboard__section.active { display: block; }
+    .dashboard__section {
+      display: none;
+    }
+
+    .dashboard__section.active {
+      display: block;
+    }
+
     /* User profile card */
     .user-profile-card {
-      display: flex; align-items: center; gap: var(--space-3);
-      padding: var(--space-3); border-radius: var(--radius-lg); cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
     }
-    .user-profile-card img { width: 36px; height: 36px; border-radius: var(--radius-full); object-fit: cover; }
-    .user-profile-card__name { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
-    .user-profile-card__email { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    .user-profile-card img {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+    }
+
+    .user-profile-card__name {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+    }
+
+    .user-profile-card__email {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
 
     @media (max-width: 1023px) {
-      .dash-stats { grid-template-columns: repeat(2, 1fr); }
-      .charts-grid { grid-template-columns: 1fr; }
+      .dash-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
     }
+
     @media (max-width: 639px) {
-      .dash-stats { grid-template-columns: 1fr; gap: var(--space-3); }
-      .dashboard__content { padding: var(--space-3); }
-      .dashboard__topbar { padding: var(--space-2) var(--space-3); }
-      .dashboard__topbar-title { font-size: var(--text-base); }
-      .dashboard__topbar-right { gap: var(--space-1); }
+      .dash-stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .dashboard__content {
+        padding: var(--space-3);
+      }
+
+      .dashboard__topbar {
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .dashboard__topbar-title {
+        font-size: var(--text-base);
+      }
+
+      .dashboard__topbar-right {
+        gap: var(--space-1);
+      }
+
       .user-profile-card__name,
-      .user-profile-card__email { display: none; }
-      .user-profile-card { padding: 0; }
-      .navbar__util-btn { width: 34px; height: 34px; font-size: var(--text-base); }
-      .dash-stat-card { padding: var(--space-3); gap: var(--space-3); }
-      .dash-stat-card__icon { width: 36px; height: 36px; font-size: var(--text-base); }
-      .dash-stat-card__number { font-size: var(--text-lg); }
-      .dash-stat-card__label { font-size: var(--text-xs); }
-      .dash-chart-card { padding: var(--space-3); margin-bottom: var(--space-3); }
-      .dash-chart-card__header { flex-wrap: wrap; gap: var(--space-2); }
-      .dash-chart-card__title { font-size: var(--text-sm); }
-      .charts-grid { gap: var(--space-3); margin-bottom: var(--space-3); }
-      canvas { max-width: 100%; height: auto !important; }
-      .session-item { flex-wrap: wrap; gap: var(--space-2); }
-      h1 { font-size: var(--text-lg) !important; }
+      .user-profile-card__email {
+        display: none;
+      }
+
+      .user-profile-card {
+        padding: 0;
+      }
+
+      .navbar__util-btn {
+        width: 34px;
+        height: 34px;
+        font-size: var(--text-base);
+      }
+
+      .dash-stat-card {
+        padding: var(--space-3);
+        gap: var(--space-3);
+      }
+
+      .dash-stat-card__icon {
+        width: 36px;
+        height: 36px;
+        font-size: var(--text-base);
+      }
+
+      .dash-stat-card__number {
+        font-size: var(--text-lg);
+      }
+
+      .dash-stat-card__label {
+        font-size: var(--text-xs);
+      }
+
+      .dash-chart-card {
+        padding: var(--space-3);
+        margin-bottom: var(--space-3);
+      }
+
+      .dash-chart-card__header {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+      }
+
+      .dash-chart-card__title {
+        font-size: var(--text-sm);
+      }
+
+      .charts-grid {
+        gap: var(--space-3);
+        margin-bottom: var(--space-3);
+      }
+
+      canvas {
+        max-width: 100%;
+        height: auto !important;
+      }
+
+      .session-item {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+      }
+
+      h1 {
+        font-size: var(--text-lg) !important;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="dashboard">
     <!-- Overlay for mobile -->
@@ -156,36 +524,49 @@
       <div class="dashboard__sidebar-header">
         <a href="index.html" class="navbar__logo" style="gap: var(--space-2);">
           <div class="navbar__logo-icon" style="width: 32px; height: 32px; font-size: var(--text-sm);">E</div>
-          <div class="navbar__logo-text"><span style="font-size: var(--text-base);">Elevate</span></div>
+          <div class="navbar__logo-text">
+            <span>Elevate</span>
+            <span>Coaching & Speaking</span>
+          </div>
         </a>
       </div>
       <nav class="dashboard__nav" aria-label="Dashboard Navigation">
         <div class="dashboard__nav-group">
           <div class="dashboard__nav-label">Main</div>
-          <a href="#" class="dashboard__nav-link active" data-section="overview"><i class="ri-dashboard-line"></i> Overview</a>
-          <a href="#" class="dashboard__nav-link" data-section="sessions"><i class="ri-calendar-line"></i> My Sessions</a>
-          <a href="#" class="dashboard__nav-link" data-section="progress"><i class="ri-line-chart-line"></i> Progress</a>
-          <a href="#" class="dashboard__nav-link" data-section="resources"><i class="ri-book-open-line"></i> Resources</a>
+          <a href="#" class="dashboard__nav-link active" data-section="overview"><i class="ri-dashboard-line"></i>
+            <span>Overview</span></a>
+          <a href="#" class="dashboard__nav-link" data-section="sessions"><i class="ri-calendar-line"></i> <span>My
+              Sessions</span></a>
+          <a href="#" class="dashboard__nav-link" data-section="progress"><i class="ri-line-chart-line"></i>
+            <span>Progress</span></a>
+          <a href="#" class="dashboard__nav-link" data-section="resources"><i class="ri-book-open-line"></i>
+            <span>Resources</span></a>
         </div>
         <div class="dashboard__nav-group">
           <div class="dashboard__nav-label">Account</div>
-          <a href="#" class="dashboard__nav-link" data-section="profile"><i class="ri-user-settings-line"></i> My Profile</a>
-          <a href="#" class="dashboard__nav-link" data-section="billing"><i class="ri-bank-card-line"></i> Billing</a>
-          <a href="#" class="dashboard__nav-link" data-section="notifications"><i class="ri-notification-3-line"></i> Notifications</a>
+          <a href="#" class="dashboard__nav-link" data-section="profile"><i class="ri-user-settings-line"></i> <span>My
+              Profile</span></a>
+          <a href="#" class="dashboard__nav-link" data-section="billing"><i class="ri-bank-card-line"></i>
+            <span>Billing</span></a>
+          <a href="#" class="dashboard__nav-link" data-section="notifications"><i class="ri-notification-3-line"></i>
+            <span>Notifications</span></a>
         </div>
         <div class="dashboard__nav-group">
           <div class="dashboard__nav-label">Navigate</div>
-          <a href="home-1.html" class="dashboard__nav-link"><i class="ri-home-line"></i> Home 1</a>
-          <a href="home-2.html" class="dashboard__nav-link"><i class="ri-home-2-line"></i> Home 2</a>
-          <a href="about.html" class="dashboard__nav-link"><i class="ri-information-line"></i> About</a>
-          <a href="services.html" class="dashboard__nav-link"><i class="ri-briefcase-line"></i> Services</a>
-          <a href="blog.html" class="dashboard__nav-link"><i class="ri-article-line"></i> Blog</a>
-          <a href="pricing.html" class="dashboard__nav-link"><i class="ri-price-tag-3-line"></i> Pricing</a>
-          <a href="contact.html" class="dashboard__nav-link"><i class="ri-mail-line"></i> Contact</a>
+          <a href="home-1.html" class="dashboard__nav-link"><i class="ri-home-line"></i> <span>Home 1</span></a>
+          <a href="home-2.html" class="dashboard__nav-link"><i class="ri-home-2-line"></i> <span>Home 2</span></a>
+          <a href="about.html" class="dashboard__nav-link"><i class="ri-information-line"></i> <span>About</span></a>
+          <a href="services.html" class="dashboard__nav-link"><i class="ri-briefcase-line"></i>
+            <span>Services</span></a>
+          <a href="blog.html" class="dashboard__nav-link"><i class="ri-article-line"></i> <span>Blog</span></a>
+          <a href="pricing.html" class="dashboard__nav-link"><i class="ri-price-tag-3-line"></i>
+            <span>Pricing</span></a>
+          <a href="contact.html" class="dashboard__nav-link"><i class="ri-mail-line"></i> <span>Contact</span></a>
         </div>
       </nav>
       <div class="dashboard__sidebar-footer">
-        <a href="home-1.html" class="dashboard__nav-link" style="color: var(--color-primary);"><i class="ri-arrow-left-line"></i> Back to Site</a>
+        <a href="login.html" class="dashboard__nav-link" style="color: var(--color-error);"><i
+            class="ri-logout-box-line"></i> <span>Logout</span></a>
       </div>
     </aside>
 
@@ -194,15 +575,18 @@
       <!-- Top Bar -->
       <header class="dashboard__topbar">
         <div class="dashboard__topbar-left">
-          <button class="dashboard__hamburger" data-sidebar-toggle aria-label="Toggle Sidebar"><i class="ri-menu-line"></i></button>
+          <button class="dashboard__hamburger" data-sidebar-toggle aria-label="Toggle Sidebar"><i
+              class="ri-menu-line"></i></button>
           <div class="dashboard__topbar-title">User Dashboard</div>
         </div>
         <div class="dashboard__topbar-right">
-          <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR"><i class="ri-global-line"></i></button>
-          <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i class="ri-moon-line"></i></button>
+          <button class="navbar__util-btn" data-rtl-toggle aria-label="Toggle RTL/LTR">LTR</button>
+          <button class="navbar__util-btn" data-theme-toggle aria-label="Toggle Theme"><i
+              class="ri-moon-line"></i></button>
           <button class="navbar__util-btn" aria-label="Notifications" style="position: relative;">
             <i class="ri-notification-3-line"></i>
-            <span style="position: absolute; top: 2px; right: 2px; width: 8px; height: 8px; background: var(--color-error); border-radius: 50; border: 2px solid var(--color-surface);"></span>
+            <span
+              style="position: absolute; top: 2px; right: 2px; width: 8px; height: 8px; background: var(--color-error); border-radius: 50; border: 2px solid var(--color-surface);"></span>
           </button>
           <div class="user-profile-card">
             <img src="assets/images/coaches/coach-1.png" alt="User avatar">
@@ -219,27 +603,52 @@
         <section class="dashboard__section active" id="overview">
           <!-- Welcome -->
           <div style="margin-bottom: var(--space-6);">
-            <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-2);">Welcome back, John! 👋</h1>
+            <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-2);">
+              Welcome back, John! 👋</h1>
             <p style="color: var(--color-text-secondary);">Here's a summary of your coaching journey this month.</p>
           </div>
 
           <!-- Stats -->
           <div class="dash-stats">
             <div class="dash-stat-card">
-              <div class="dash-stat-card__icon" style="background: var(--color-primary-light); color: var(--color-primary);"><i class="ri-calendar-check-line"></i></div>
-              <div><div class="dash-stat-card__number">12</div><div class="dash-stat-card__label">Sessions Completed</div><span class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> +3 this month</span></div>
+              <div class="dash-stat-card__icon"
+                style="background: var(--color-primary-light); color: var(--color-primary);"><i
+                  class="ri-calendar-check-line"></i></div>
+              <div>
+                <div class="dash-stat-card__number">12</div>
+                <div class="dash-stat-card__label">Sessions Completed</div><span
+                  class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> +3 this
+                  month</span>
+              </div>
             </div>
             <div class="dash-stat-card">
-              <div class="dash-stat-card__icon" style="background: var(--color-secondary-light); color: var(--color-secondary);"><i class="ri-timer-line"></i></div>
-              <div><div class="dash-stat-card__number">18h</div><div class="dash-stat-card__label">Total Hours</div><span class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> +4.5h</span></div>
+              <div class="dash-stat-card__icon"
+                style="background: var(--color-secondary-light); color: var(--color-secondary);"><i
+                  class="ri-timer-line"></i></div>
+              <div>
+                <div class="dash-stat-card__number">18h</div>
+                <div class="dash-stat-card__label">Total Hours</div><span
+                  class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> +4.5h</span>
+              </div>
             </div>
             <div class="dash-stat-card">
-              <div class="dash-stat-card__icon" style="background: var(--color-accent-light); color: var(--color-accent);"><i class="ri-target-line"></i></div>
-              <div><div class="dash-stat-card__number">8/12</div><div class="dash-stat-card__label">Goals Achieved</div><span class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> +2</span></div>
+              <div class="dash-stat-card__icon"
+                style="background: var(--color-accent-light); color: var(--color-accent);"><i
+                  class="ri-target-line"></i></div>
+              <div>
+                <div class="dash-stat-card__number">8/12</div>
+                <div class="dash-stat-card__label">Goals Achieved</div><span
+                  class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> +2</span>
+              </div>
             </div>
             <div class="dash-stat-card">
-              <div class="dash-stat-card__icon" style="background: #ede9fe; color: #7c3aed;"><i class="ri-star-line"></i></div>
-              <div><div class="dash-stat-card__number">4.8</div><div class="dash-stat-card__label">Coach Rating</div><span class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> Top 5%</span></div>
+              <div class="dash-stat-card__icon" style="background: #ede9fe; color: #7c3aed;"><i
+                  class="ri-star-line"></i></div>
+              <div>
+                <div class="dash-stat-card__number">4.8</div>
+                <div class="dash-stat-card__label">Coach Rating</div><span
+                  class="dash-stat-card__trend dash-stat-card__trend--up"><i class="ri-arrow-up-line"></i> Top 5%</span>
+              </div>
             </div>
           </div>
 
@@ -248,8 +657,10 @@
             <div class="dash-chart-card">
               <div class="dash-chart-card__header">
                 <h2 class="dash-chart-card__title">Progress Over Time</h2>
-                <select class="form-select" style="width: auto; padding: var(--space-1) var(--space-3); font-size: var(--text-xs);">
-                  <option>Last 6 months</option><option>Last year</option>
+                <select class="form-select"
+                  style="width: auto; padding: var(--space-1) var(--space-3); font-size: var(--text-xs);">
+                  <option>Last 6 months</option>
+                  <option>Last year</option>
                 </select>
               </div>
               <canvas id="progressChart"></canvas>
@@ -265,8 +676,10 @@
             <div class="dash-chart-card">
               <div class="dash-chart-card__header">
                 <h2 class="dash-chart-card__title">Session Hours</h2>
-                <select class="form-select" style="width: auto; padding: var(--space-1) var(--space-3); font-size: var(--text-xs);">
-                  <option>This month</option><option>Last 3 months</option>
+                <select class="form-select"
+                  style="width: auto; padding: var(--space-1) var(--space-3); font-size: var(--text-xs);">
+                  <option>This month</option>
+                  <option>Last 3 months</option>
                 </select>
               </div>
               <canvas id="sessionHoursChart"></canvas>
@@ -285,68 +698,187 @@
           <div class="dash-chart-card">
             <div class="dash-chart-card__header">
               <h2 class="dash-chart-card__title">Upcoming Sessions</h2>
-              <a href="#" class="card__link" style="font-size: var(--text-sm);">View All <i class="ri-arrow-right-line"></i></a>
+              <a href="#" class="card__link" style="font-size: var(--text-sm);">View All <i
+                  class="ri-arrow-right-line"></i></a>
             </div>
-            <div class="session-item"><img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell" class="session-item__avatar"><div class="session-item__info"><div class="session-item__name">Sarah Mitchell — Performance Coaching</div><div class="session-item__time">Tomorrow, 10:00 AM EST</div></div><span class="session-item__status status--upcoming">Upcoming</span></div>
-            <div class="session-item"><img src="assets/images/coaches/coach-3.png" alt="David Chen" class="session-item__avatar"><div class="session-item__info"><div class="session-item__name">David Chen — Career Strategy Review</div><div class="session-item__time">April 16, 2:00 PM EST</div></div><span class="session-item__status status--upcoming">Upcoming</span></div>
-            <div class="session-item"><img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson" class="session-item__avatar"><div class="session-item__info"><div class="session-item__name">Marcus Thompson — 360° Assessment Debrief</div><div class="session-item__time">April 12 — Completed</div></div><span class="session-item__status status--completed">Completed</span></div>
+            <div class="session-item"><img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell"
+                class="session-item__avatar">
+              <div class="session-item__info">
+                <div class="session-item__name">Sarah Mitchell — Performance Coaching</div>
+                <div class="session-item__time">Tomorrow, 10:00 AM EST</div>
+              </div><span class="session-item__status status--upcoming">Upcoming</span>
+            </div>
+            <div class="session-item"><img src="assets/images/coaches/coach-3.png" alt="David Chen"
+                class="session-item__avatar">
+              <div class="session-item__info">
+                <div class="session-item__name">David Chen — Career Strategy Review</div>
+                <div class="session-item__time">April 16, 2:00 PM EST</div>
+              </div><span class="session-item__status status--upcoming">Upcoming</span>
+            </div>
+            <div class="session-item"><img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson"
+                class="session-item__avatar">
+              <div class="session-item__info">
+                <div class="session-item__name">Marcus Thompson — 360° Assessment Debrief</div>
+                <div class="session-item__time">April 12 — Completed</div>
+              </div><span class="session-item__status status--completed">Completed</span>
+            </div>
           </div>
         </section>
 
         <!-- Other dashboard sections (simplified) -->
         <section class="dashboard__section" id="sessions">
-          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">My Sessions</h1>
+          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">My
+            Sessions</h1>
           <div class="dash-chart-card">
-            <div class="dash-chart-card__header"><h2 class="dash-chart-card__title">Session History</h2></div>
-            <div class="session-item"><img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell" class="session-item__avatar"><div class="session-item__info"><div class="session-item__name">Sarah Mitchell — Goal Setting Workshop</div><div class="session-item__time">April 8, 10:00 AM</div></div><span class="session-item__status status--completed">Completed</span></div>
-            <div class="session-item"><img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson" class="session-item__avatar"><div class="session-item__info"><div class="session-item__name">Marcus Thompson — Executive Presence</div><div class="session-item__time">April 5, 2:00 PM</div></div><span class="session-item__status status--completed">Completed</span></div>
-            <div class="session-item"><img src="assets/images/coaches/coach-3.png" alt="David Chen" class="session-item__avatar"><div class="session-item__info"><div class="session-item__name">David Chen — Career Roadmap</div><div class="session-item__time">March 30, 11:00 AM</div></div><span class="session-item__status status--completed">Completed</span></div>
-            <div class="session-item"><img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell" class="session-item__avatar"><div class="session-item__info"><div class="session-item__name">Sarah Mitchell — Conflict Resolution</div><div class="session-item__time">March 25, 3:00 PM</div></div><span class="session-item__status status--cancelled">Cancelled</span></div>
+            <div class="dash-chart-card__header">
+              <h2 class="dash-chart-card__title">Session History</h2>
+            </div>
+            <div class="session-item"><img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell"
+                class="session-item__avatar">
+              <div class="session-item__info">
+                <div class="session-item__name">Sarah Mitchell — Goal Setting Workshop</div>
+                <div class="session-item__time">April 8, 10:00 AM</div>
+              </div><span class="session-item__status status--completed">Completed</span>
+            </div>
+            <div class="session-item"><img src="assets/images/coaches/coach-1.png" alt="Marcus Thompson"
+                class="session-item__avatar">
+              <div class="session-item__info">
+                <div class="session-item__name">Marcus Thompson — Executive Presence</div>
+                <div class="session-item__time">April 5, 2:00 PM</div>
+              </div><span class="session-item__status status--completed">Completed</span>
+            </div>
+            <div class="session-item"><img src="assets/images/coaches/coach-3.png" alt="David Chen"
+                class="session-item__avatar">
+              <div class="session-item__info">
+                <div class="session-item__name">David Chen — Career Roadmap</div>
+                <div class="session-item__time">March 30, 11:00 AM</div>
+              </div><span class="session-item__status status--completed">Completed</span>
+            </div>
+            <div class="session-item"><img src="assets/images/coaches/coach-2.png" alt="Sarah Mitchell"
+                class="session-item__avatar">
+              <div class="session-item__info">
+                <div class="session-item__name">Sarah Mitchell — Conflict Resolution</div>
+                <div class="session-item__time">March 25, 3:00 PM</div>
+              </div><span class="session-item__status status--cancelled">Cancelled</span>
+            </div>
           </div>
         </section>
 
         <section class="dashboard__section" id="progress">
-          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">Progress Tracking</h1>
+          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">
+            Progress Tracking</h1>
           <div class="charts-grid">
-            <div class="dash-chart-card"><div class="dash-chart-card__header"><h2 class="dash-chart-card__title">Leadership Score</h2></div><canvas id="leadershipChart"></canvas></div>
-            <div class="dash-chart-card"><div class="dash-chart-card__header"><h2 class="dash-chart-card__title">Goal Completion</h2></div><div style="display:flex;justify-content:center;"><canvas id="goalChart"></canvas></div></div>
+            <div class="dash-chart-card">
+              <div class="dash-chart-card__header">
+                <h2 class="dash-chart-card__title">Leadership Score</h2>
+              </div><canvas id="leadershipChart"></canvas>
+            </div>
+            <div class="dash-chart-card">
+              <div class="dash-chart-card__header">
+                <h2 class="dash-chart-card__title">Goal Completion</h2>
+              </div>
+              <div style="display:flex;justify-content:center;"><canvas id="goalChart"></canvas></div>
+            </div>
           </div>
         </section>
 
         <section class="dashboard__section" id="resources">
-          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">Resources</h1>
+          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">
+            Resources</h1>
           <div class="grid grid--3" style="gap: var(--space-4);">
-            <div class="dash-chart-card" style="margin-bottom: 0; text-align: center; padding: var(--space-8);"><i class="ri-file-pdf-2-line" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: var(--space-3);"></i><h3 style="font-weight: var(--weight-semibold); margin-bottom: var(--space-2);">Leadership Assessment Guide</h3><p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">PDF · 2.4MB</p><button class="btn btn--secondary btn--sm btn--full"><i class="ri-download-2-line"></i> Download</button></div>
-            <div class="dash-chart-card" style="margin-bottom: 0; text-align: center; padding: var(--space-8);"><i class="ri-video-line" style="font-size: 2.5rem; color: var(--color-secondary); margin-bottom: var(--space-3);"></i><h3 style="font-weight: var(--weight-semibold); margin-bottom: var(--space-2);">Coaching Techniques Masterclass</h3><p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">Video · 45 min</p><button class="btn btn--secondary btn--sm btn--full"><i class="ri-play-circle-line"></i> Watch</button></div>
-            <div class="dash-chart-card" style="margin-bottom: 0; text-align: center; padding: var(--space-8);"><i class="ri-file-text-line" style="font-size: 2.5rem; color: var(--color-accent); margin-bottom: var(--space-3);"></i><h3 style="font-weight: var(--weight-semibold); margin-bottom: var(--space-2);">Goal Setting Worksheet</h3><p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">Template · PDF</p><button class="btn btn--secondary btn--sm btn--full"><i class="ri-download-2-line"></i> Download</button></div>
+            <div class="dash-chart-card" style="margin-bottom: 0; text-align: center; padding: var(--space-8);"><i
+                class="ri-file-pdf-2-line"
+                style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: var(--space-3);"></i>
+              <h3 style="font-weight: var(--weight-semibold); margin-bottom: var(--space-2);">Leadership Assessment
+                Guide</h3>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">PDF ·
+                2.4MB</p><button class="btn btn--secondary btn--sm btn--full"><i class="ri-download-2-line"></i>
+                Download</button>
+            </div>
+            <div class="dash-chart-card" style="margin-bottom: 0; text-align: center; padding: var(--space-8);"><i
+                class="ri-video-line"
+                style="font-size: 2.5rem; color: var(--color-secondary); margin-bottom: var(--space-3);"></i>
+              <h3 style="font-weight: var(--weight-semibold); margin-bottom: var(--space-2);">Coaching Techniques
+                Masterclass</h3>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">Video
+                · 45 min</p><button class="btn btn--secondary btn--sm btn--full"><i class="ri-play-circle-line"></i>
+                Watch</button>
+            </div>
+            <div class="dash-chart-card" style="margin-bottom: 0; text-align: center; padding: var(--space-8);"><i
+                class="ri-file-text-line"
+                style="font-size: 2.5rem; color: var(--color-accent); margin-bottom: var(--space-3);"></i>
+              <h3 style="font-weight: var(--weight-semibold); margin-bottom: var(--space-2);">Goal Setting Worksheet
+              </h3>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);">
+                Template · PDF</p><button class="btn btn--secondary btn--sm btn--full"><i
+                  class="ri-download-2-line"></i> Download</button>
+            </div>
           </div>
         </section>
 
         <section class="dashboard__section" id="profile">
-          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">My Profile</h1>
-          <div class="dash-chart-card"><form>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
-              <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" value="John"></div>
-              <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" value="Doe"></div>
-            </div>
-            <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" value="john@company.com"></div>
-            <div class="form-group"><label class="form-label">Company</label><input type="text" class="form-input" value="TechScale Inc."></div>
-            <div class="form-group"><label class="form-label">Bio</label><textarea class="form-input" rows="3">VP of Engineering passionate about leadership growth and team development.</textarea></div>
-            <button type="submit" class="btn btn--primary">Save Changes</button>
-          </form></div>
+          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">My
+            Profile</h1>
+          <div class="dash-chart-card">
+            <form>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                <div class="form-group"><label class="form-label">First Name</label><input type="text"
+                    class="form-input" value="John"></div>
+                <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input"
+                    value="Doe"></div>
+              </div>
+              <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input"
+                  value="john@company.com"></div>
+              <div class="form-group"><label class="form-label">Company</label><input type="text" class="form-input"
+                  value="TechScale Inc."></div>
+              <div class="form-group"><label class="form-label">Bio</label><textarea class="form-input"
+                  rows="3">VP of Engineering passionate about leadership growth and team development.</textarea></div>
+              <button type="submit" class="btn btn--primary">Save Changes</button>
+            </form>
+          </div>
         </section>
 
         <section class="dashboard__section" id="billing">
-          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">Billing & Payments</h1>
-          <div class="dash-chart-card"><p style="color: var(--color-text-secondary);">Current Plan: <strong>Professional — $1,499/mo</strong></p><a href="pricing.html" class="btn btn--secondary btn--sm" style="margin-top: var(--space-4);">Upgrade Plan</a></div>
+          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">
+            Billing & Payments</h1>
+          <div class="dash-chart-card">
+            <p style="color: var(--color-text-secondary);">Current Plan: <strong>Professional — $1,499/mo</strong></p><a
+              href="pricing.html" class="btn btn--secondary btn--sm" style="margin-top: var(--space-4);">Upgrade
+              Plan</a>
+          </div>
         </section>
 
         <section class="dashboard__section" id="notifications">
-          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">Notifications</h1>
+          <h1 style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin-bottom: var(--space-6);">
+            Notifications</h1>
           <div class="dash-chart-card">
-            <div class="session-item"><div class="dash-stat-card__icon" style="width: 40px; height: 40px; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full);"><i class="ri-calendar-check-line"></i></div><div class="session-item__info"><div class="session-item__name">Session Reminder</div><div class="session-item__time">Your session with Sarah Mitchell is tomorrow at 10 AM</div></div><span class="session-item__time">2h ago</span></div>
-            <div class="session-item"><div class="dash-stat-card__icon" style="width: 40px; height: 40px; background: var(--color-accent-light); color: var(--color-accent); border-radius: var(--radius-full);"><i class="ri-check-double-line"></i></div><div class="session-item__info"><div class="session-item__name">Goal Achieved</div><div class="session-item__time">Congratulations! You've completed your Q1 leadership milestone.</div></div><span class="session-item__time">1 day ago</span></div>
-            <div class="session-item"><div class="dash-stat-card__icon" style="width: 40px; height: 40px; background: var(--color-secondary-light); color: var(--color-secondary); border-radius: var(--radius-full);"><i class="ri-book-open-line"></i></div><div class="session-item__info"><div class="session-item__name">New Resource Available</div><div class="session-item__time">A new coaching worksheet has been added to your library.</div></div><span class="session-item__time">2 days ago</span></div>
+            <div class="session-item">
+              <div class="dash-stat-card__icon"
+                style="width: 40px; height: 40px; background: var(--color-primary-light); color: var(--color-primary); border-radius: var(--radius-full);">
+                <i class="ri-calendar-check-line"></i></div>
+              <div class="session-item__info">
+                <div class="session-item__name">Session Reminder</div>
+                <div class="session-item__time">Your session with Sarah Mitchell is tomorrow at 10 AM</div>
+              </div><span class="session-item__time">2h ago</span>
+            </div>
+            <div class="session-item">
+              <div class="dash-stat-card__icon"
+                style="width: 40px; height: 40px; background: var(--color-accent-light); color: var(--color-accent); border-radius: var(--radius-full);">
+                <i class="ri-check-double-line"></i></div>
+              <div class="session-item__info">
+                <div class="session-item__name">Goal Achieved</div>
+                <div class="session-item__time">Congratulations! You've completed your Q1 leadership milestone.</div>
+              </div><span class="session-item__time">1 day ago</span>
+            </div>
+            <div class="session-item">
+              <div class="dash-stat-card__icon"
+                style="width: 40px; height: 40px; background: var(--color-secondary-light); color: var(--color-secondary); border-radius: var(--radius-full);">
+                <i class="ri-book-open-line"></i></div>
+              <div class="session-item__info">
+                <div class="session-item__name">New Resource Available</div>
+                <div class="session-item__time">A new coaching worksheet has been added to your library.</div>
+              </div><span class="session-item__time">2 days ago</span>
+            </div>
           </div>
         </section>
       </div>
@@ -359,7 +891,7 @@
   <script src="assets/js/dashboard.js"></script>
   <script>
     // Render user dashboard charts — 4 in overview + 2 in progress tab
-    window.renderDashboardCharts = function() {
+    window.renderDashboardCharts = function () {
       // Overview: Chart 1 — Line Chart (Progress Over Time)
       Dashboard.drawLineChart('progressChart', {
         labels: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
@@ -393,9 +925,10 @@
       Dashboard.drawProgressRing('goalChart', 67, { size: 180, color: '#10b981' });
     };
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       setTimeout(window.renderDashboardCharts, 100);
     });
   </script>
 </body>
+
 </html>

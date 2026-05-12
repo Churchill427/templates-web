@@ -14,10 +14,20 @@ const Dashboard = (() => {
     const overlay = document.querySelector('.dashboard__overlay');
     if (!toggle || !sidebar) return;
 
+    // Restore desktop collapsed state
+    if (window.innerWidth >= 1024 && localStorage.getItem('dashboardSidebarCollapsed') === 'true') {
+      sidebar.classList.add('collapsed');
+    }
+
     toggle.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-      if (overlay) overlay.classList.toggle('active');
-      document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+      if (window.innerWidth >= 1024) {
+        sidebar.classList.toggle('collapsed');
+        localStorage.setItem('dashboardSidebarCollapsed', sidebar.classList.contains('collapsed'));
+      } else {
+        sidebar.classList.toggle('active');
+        if (overlay) overlay.classList.toggle('active');
+        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+      }
     });
 
     if (overlay) {
@@ -73,8 +83,9 @@ const Dashboard = (() => {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width;
+    canvas.style.width = '100%';
+    const cw = canvas.offsetWidth || canvas.parentElement.clientWidth;
+    canvas.width = cw;
     canvas.height = options.height || 200;
 
     const w = canvas.width;
@@ -211,8 +222,9 @@ const Dashboard = (() => {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width;
+    canvas.style.width = '100%';
+    const cw = canvas.offsetWidth || canvas.parentElement.clientWidth;
+    canvas.width = cw;
     canvas.height = options.height || 200;
 
     const w = canvas.width;
@@ -280,8 +292,9 @@ const Dashboard = (() => {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width;
+    canvas.style.width = '100%';
+    const cw = canvas.offsetWidth || canvas.parentElement.clientWidth;
+    canvas.width = cw;
     canvas.height = options.height || 200;
 
     const w = canvas.width;
