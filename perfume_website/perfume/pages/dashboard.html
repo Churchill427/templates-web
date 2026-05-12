@@ -27,8 +27,8 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600">
-                        <i class="fas fa-globe text-xl"></i>
+                    <button onclick="toggleRTL()" class="rtl-toggle text-gray-700 hover:text-yellow-600 font-bold">
+                        RTL
                     </button>
                     <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600">
                         <i class="fas fa-moon text-xl"></i>
@@ -41,9 +41,6 @@
                         <img src="https://i.pravatar.cc/100?img=11" alt="Admin" class="w-10 h-10 rounded-full">
                         <span class="hidden md:inline font-semibold">Admin</span>
                     </div>
-                    <a href="index.html" class="text-gray-700 hover:text-yellow-600">
-                        <i class="fas fa-sign-out-alt text-xl"></i>
-                    </a>
                 </div>
             </div>
         </div>
@@ -56,9 +53,9 @@
         <!-- Sidebar -->
         <aside id="dashboardSidebar" class="dashboard-sidebar fixed left-0 top-16 w-64 transform -translate-x-full transition-transform duration-300 z-40">
             <div class="p-6 h-full flex flex-col">
-                <a href="index.html" class="flex items-center space-x-2 mb-8 hover:opacity-80 transition-opacity">
+                <a href="index.html" class="logo-brand flex items-center space-x-2 mb-8 hover:opacity-80 transition-opacity">
                     <i class="fas fa-spray-can text-2xl text-yellow-600"></i>
-                    <span class="text-xl font-bold font-serif text-gray-900">AromaLux</span>
+                    <span class="sidebar-brand-text text-xl font-bold font-serif text-yellow-600">AromaLux</span>
                 </a>
                 <h3 class="text-xs font-bold text-gray-500 uppercase mb-4">Main Menu</h3>
                 <nav class="space-y-2">
@@ -100,12 +97,18 @@
                     </a>
                 </nav>
 
-
+                <!-- Logout -->
+                <div class="mt-auto pt-4 border-t border-gray-100">
+                    <a href="index.html" class="sidebar-link flex items-center p-3 text-red-600 hover:bg-red-50 hover:text-red-700 rounded-xl transition-all font-medium">
+                        <i class="fas fa-sign-out-alt w-6 mr-3 text-center"></i>
+                        <span class="sidebar-brand-text">Logout</span>
+                    </a>
+                </div>
             </div>
         </aside>
         
         <!-- Main Content -->
-        <main class="flex-1 p-8">
+        <main class="dashboard-main-content flex-1 p-8">
             
             <!-- Stats Cards -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

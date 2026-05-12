@@ -12,29 +12,29 @@
 <text y='50' font-size='50'>🧴</text>
 </svg>">
 </head>
-<body class="antialiased bg-gradient-to-br from-yellow-50 via-white to-pink-50 min-h-screen flex items-center justify-center p-4">
+<body class="antialiased bg-gray-50 min-h-screen flex items-center justify-center p-4 transition-colors duration-300">
     
     <!-- Theme & RTL Toggles -->
-    <div class="fixed top-4 right-4 z-50 flex items-center gap-3">
-        <button onclick="toggleRTL()" class="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:text-yellow-600 hover:shadow-xl transition-all" title="Toggle RTL/LTR">
-            <i class="fas fa-globe text-lg"></i>
+    <div class="absolute top-4 right-4 z-50 flex flex-col items-center gap-2 sm:fixed sm:top-6 sm:right-6 sm:flex-row">
+        <button onclick="toggleRTL()" class="rtl-toggle w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center transition-all font-bold" title="Toggle RTL/LTR">
+            RTL
         </button>
-        <button onclick="toggleDarkMode()" class="dark-mode-toggle w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:text-yellow-600 hover:shadow-xl transition-all" title="Toggle Dark Mode">
+        <button onclick="toggleDarkMode()" class="dark-mode-toggle w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center transition-all" title="Toggle Dark Mode">
             <i class="fas fa-moon text-lg"></i>
         </button>
     </div>
     
-    <div class="max-w-md w-full">
+    <div class="max-w-md w-full mt-12 sm:mt-0">
         <div class="auth-intro text-center mb-8">
-            <a href="index.html" class="inline-flex items-center space-x-2 mb-6">
-                <i class="fas fa-spray-can text-4xl text-yellow-600"></i>
-                <span class="text-3xl font-bold font-serif text-gray-900">AromaLux</span>
+            <a href="index.html" class="logo-brand inline-flex items-center space-x-2 mb-6">
+                <i class="fas fa-spray-can text-4xl"></i>
+                <span class="text-2xl sm:text-3xl font-bold font-serif">AromaLux</span>
             </a>
             <h1 class="text-3xl font-bold mb-2 text-gray-900">Welcome Back</h1>
             <p class="text-gray-600">Sign in to your account</p>
         </div>
         
-        <div class="bg-white rounded-2xl shadow-xl p-8">
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 transition-all">
             <form id="loginForm" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
                 <div class="mb-6">
                     <label class="block text-gray-700 font-semibold mb-2">Email Address</label>
@@ -47,7 +47,7 @@
                 </div>
                 
                 <div class="flex items-center justify-between mb-6">
-                    <label class="flex items-center cursor-pointer">
+                    <label class="flex items-center cursor-pointer text-gray-600">
                         <input type="checkbox" class="mr-2">
                         <span class="text-sm text-gray-600">Remember me</span>
                     </label>
@@ -66,18 +66,28 @@
                 </div>
             </div>
             
-            <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 <button class="flex items-center justify-center px-4 py-3 border-2 border-gray-300 rounded-lg hover:border-yellow-500 transition-colors">
-                    <i class="fab fa-google text-red-500 mr-2"></i>
-                    <span class="text-sm font-medium">Google</span>
+                    <span class="inline-flex items-center w-[120px]">
+                        <i class="fab fa-google text-red-500 w-8 text-center mr-3"></i>
+                        <span class="text-sm font-medium">Google</span>
+                    </span>
                 </button>
                 <button class="flex items-center justify-center px-4 py-3 border-2 border-gray-300 rounded-lg hover:border-yellow-500 transition-colors">
-                    <i class="fab fa-facebook-f text-blue-600 mr-2"></i>
-                    <span class="text-sm font-medium">Facebook</span>
+                    <span class="inline-flex items-center w-[120px]">
+                        <i class="fab fa-facebook-f text-blue-600 w-8 text-center mr-3"></i>
+                        <span class="text-sm font-medium">Facebook</span>
+                    </span>
+                </button>
+                <button class="flex items-center justify-center px-4 py-3 border-2 border-gray-300 rounded-lg hover:border-yellow-500 transition-colors">
+                    <span class="inline-flex items-center w-[120px]">
+                        <i class="fa-brands fa-apple w-8 text-center mr-3"></i>
+                        <span class="text-sm font-medium">Apple</span>
+                    </span>
                 </button>
             </div>
             
-            <p class="text-center text-gray-600">
+            <p class="text-center text-gray-600 text-sm sm:text-base whitespace-nowrap">
                 Don't have an account? 
                 <a href="register.html" class="text-yellow-600 font-semibold hover:underline">Sign up</a>
             </p>

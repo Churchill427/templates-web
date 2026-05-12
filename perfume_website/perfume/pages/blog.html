@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,48 +13,58 @@
 <text y='50' font-size='50'>🧴</text>
 </svg>">
 </head>
+
 <body class="antialiased bg-gray-50">
-    
+
     <!-- Navbar -->
-    <nav class="navbar-luxury bg-white/95 shadow-md absolute top-0 left-0 right-0 z-[1200]">
+    <nav class="navbar-luxury shadow-md">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="flex items-center space-x-2">
                     <i class="fas fa-spray-can text-3xl text-yellow-600"></i>
                     <span class="text-2xl font-bold font-serif text-gray-900">AromaLux</span>
                 </a>
-                <div class="hidden lg:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center xl:space-x-8 lg:space-x-4">
                     <div class="relative group">
-                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                        <button
+                            class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
                             <span>Home</span><i class="fas fa-chevron-down text-xs"></i>
                         </button>
-                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div
+                            class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                             <a href="index.html" class="block px-4 py-3 hover:bg-yellow-50">Home 1</a>
                             <a href="index2.html" class="block px-4 py-3 hover:bg-yellow-50">Home 2</a>
                         </div>
                     </div>
-                    <a href="about.html" class="nav-link active text-gray-700 hover:text-yellow-600 font-medium">About</a>
-                    <a href="services.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Services</a>
+                    <a href="about.html"
+                        class="nav-link active text-gray-700 hover:text-yellow-600 font-medium">About</a>
+                    <a href="services.html"
+                        class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Services</a>
                     <a href="shop.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Shop</a>
                     <a href="blog.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Blog</a>
                     <a href="pricing.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Pricing</a>
                     <a href="contact.html" class="nav-link text-gray-700 hover:text-yellow-600 font-medium">Contact</a>
                     <div class="relative group">
-                        <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
+                        <button
+                            class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
                             <span>Dashboard</span><i class="fas fa-chevron-down text-xs"></i>
                         </button>
-                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div
+                            class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                             <a href="dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">Admin Dashboard</a>
                             <a href="user-dashboard.html" class="block px-4 py-3 hover:bg-yellow-50">User Dashboard</a>
                         </div>
                     </div>
                 </div>
-                <div class="hidden lg:flex items-center space-x-4">
-                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600"><i class="fas fa-globe text-xl"></i></button>
-                    <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600"><i class="fas fa-moon text-xl"></i></button>
+                <div class="hidden lg:flex items-center xl:space-x-4 lg:space-x-2">
+                    <button onclick="toggleRTL()"
+                        class="rtl-toggle text-gray-700 hover:text-yellow-600 font-bold">RTL</button>
+                    <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600"><i
+                            class="fas fa-moon text-xl"></i></button>
                     <a href="login.html" class="btn-luxury text-sm">Login</a>
                 </div>
-                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 text-2xl"><i class="fas fa-bars"></i></button>
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 text-2xl"><i
+                        class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
@@ -77,11 +88,12 @@
                 <a href="dashboard.html" class="block py-3 border-b">Admin Dashboard</a>
                 <a href="user-dashboard.html" class="block py-3 border-b">User Dashboard</a>
                 <div class="flex items-center gap-4 py-3 border-b border-gray-200">
-                    <button onclick="toggleRTL()" class="flex items-center gap-2 text-gray-700 hover:text-yellow-600">
-                        <i class="fas fa-globe"></i>
-                        <span>RTL</span>
+                    <button onclick="toggleRTL()"
+                        class="rtl-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600 font-bold">
+                        RTL
                     </button>
-                    <button onclick="toggleDarkMode()" class="dark-mode-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600">
+                    <button onclick="toggleDarkMode()"
+                        class="dark-mode-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600">
                         <i class="fas fa-moon"></i>
                         <span>Dark Mode</span>
                     </button>
@@ -92,9 +104,10 @@
     </div>
 
     <!-- Blog Header -->
-    <section class="relative py-32 overflow-hidden">
+    <section class="hero-standard">
         <div class="absolute inset-0">
-            <img src="../assets/images/heroes/hero-blog.png" alt="Perfume collection and notes" class="w-full h-full object-cover">
+            <img src="../assets/images/heroes/hero-blog.png" alt="Perfume collection and notes"
+                class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70"></div>
         </div>
         <div class="container mx-auto px-4 text-center relative z-10">
@@ -102,47 +115,53 @@
             <p class="text-xl text-gray-200">Fragrance guides, trends, and expert tips</p>
         </div>
     </section>
-    
+
     <!-- Blog Content -->
     <section class="py-12">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-4 gap-8">
-                
+
                 <!-- Sidebar -->
                 <aside class="lg:col-span-1">
                     <div class="space-y-6">
                         <!-- Search -->
                         <div class="bg-white p-6 rounded-xl shadow-md">
                             <h3 class="font-bold mb-4">Search</h3>
-                            <input type="text" placeholder="Search articles..." class="input-luxury" onkeypress="handleSearch(event)">
+                            <input type="text" placeholder="Search articles..." class="input-luxury"
+                                onkeypress="handleSearch(event)">
                         </div>
-                        
+
                         <!-- Categories -->
                         <div class="bg-white p-6 rounded-xl shadow-md">
                             <h3 class="font-bold mb-4">Categories</h3>
                             <ul class="space-y-2">
                                 <li><a href="#" class="text-gray-700 hover:text-yellow-600">Perfume Guides (12)</a></li>
-                                <li><a href="#" class="text-gray-700 hover:text-yellow-600">Fragrance Trends (8)</a></li>
+                                <li><a href="#" class="text-gray-700 hover:text-yellow-600">Fragrance Trends (8)</a>
+                                </li>
                                 <li><a href="#" class="text-gray-700 hover:text-yellow-600">Tips & Tricks (15)</a></li>
                                 <li><a href="#" class="text-gray-700 hover:text-yellow-600">Brand Stories (6)</a></li>
                             </ul>
                         </div>
-                        
+
                         <!-- Recent Posts -->
                         <div class="bg-white p-6 rounded-xl shadow-md">
                             <h3 class="font-bold mb-4">Recent Posts</h3>
                             <div class="space-y-4">
                                 <a href="blog-details.html" class="flex gap-3 group">
-                                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=100&h=100&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=100&h=100&fit=crop"
+                                        class="w-20 h-20 object-cover rounded-lg">
                                     <div>
-                                        <h4 class="font-semibold text-sm group-hover:text-yellow-600">How to Choose Your Signature Scent</h4>
+                                        <h4 class="font-semibold text-sm group-hover:text-yellow-600">How to Choose Your
+                                            Signature Scent</h4>
                                         <p class="text-xs text-gray-500 mt-1">Jan 15, 2026</p>
                                     </div>
                                 </a>
                                 <a href="blog-details.html" class="flex gap-3 group">
-                                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=100&h=100&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=100&h=100&fit=crop"
+                                        class="w-20 h-20 object-cover rounded-lg">
                                     <div>
-                                        <h4 class="font-semibold text-sm group-hover:text-yellow-600">Top 10 Perfumes for Winter</h4>
+                                        <h4 class="font-semibold text-sm group-hover:text-yellow-600">Top 10 Perfumes
+                                            for Winter</h4>
                                         <p class="text-xs text-gray-500 mt-1">Jan 10, 2026</p>
                                     </div>
                                 </a>
@@ -150,33 +169,38 @@
                         </div>
                     </div>
                 </aside>
-                
+
                 <!-- Blog Posts -->
                 <div class="lg:col-span-3">
                     <div class="grid md:grid-cols-2 gap-8">
-                        
+
                         <!-- Blog Post 1 -->
                         <article class="blog-card">
                             <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&h=400&fit=crop" alt="Blog Post">
+                                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&h=400&fit=crop"
+                                    alt="Blog Post">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-4 mb-3 text-sm text-gray-500">
                                     <span><i class="far fa-calendar mr-2"></i>Jan 15, 2026</span>
                                     <span><i class="far fa-clock mr-2"></i>5 min read</span>
                                 </div>
-                                <h2 class="text-2xl font-bold mb-3 text-gray-800 hover:text-yellow-600 transition-colors">
+                                <h2
+                                    class="text-2xl font-bold mb-3 text-gray-800 hover:text-yellow-600 transition-colors">
                                     <a href="blog-details.html">How to Choose Your Perfect Signature Scent</a>
                                 </h2>
-                                <p class="text-gray-600 mb-4">Discover the art of finding a fragrance that truly represents your personality and lifestyle...</p>
-                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read More</a>
+                                <p class="text-gray-600 mb-4">Discover the art of finding a fragrance that truly
+                                    represents your personality and lifestyle...</p>
+                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read
+                                    More</a>
                             </div>
                         </article>
-                        
+
                         <!-- Blog Post 2 -->
                         <article class="blog-card">
                             <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&h=400&fit=crop" alt="Blog Post">
+                                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&h=400&fit=crop"
+                                    alt="Blog Post">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-4 mb-3 text-sm text-gray-500">
@@ -186,15 +210,18 @@
                                 <h2 class="text-2xl font-bold mb-3 hover:text-yellow-600 transition-colors">
                                     <a href="blog-details.html">Top 10 Luxury Perfumes for Winter 2026</a>
                                 </h2>
-                                <p class="text-gray-600 mb-4">Explore our curated selection of warm, inviting fragrances perfect for the cold season...</p>
-                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read More</a>
+                                <p class="text-gray-600 mb-4">Explore our curated selection of warm, inviting fragrances
+                                    perfect for the cold season...</p>
+                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read
+                                    More</a>
                             </div>
                         </article>
-                        
+
                         <!-- Blog Post 3 -->
                         <article class="blog-card">
                             <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=600&h=400&fit=crop" alt="Blog Post">
+                                <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=600&h=400&fit=crop"
+                                    alt="Blog Post">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-4 mb-3 text-sm text-gray-500">
@@ -204,15 +231,18 @@
                                 <h2 class="text-2xl font-bold mb-3 hover:text-yellow-600 transition-colors">
                                     <a href="blog-details.html">Understanding Fragrance Notes: A Beginner's Guide</a>
                                 </h2>
-                                <p class="text-gray-600 mb-4">Learn about top, heart, and base notes to become a fragrance connoisseur...</p>
-                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read More</a>
+                                <p class="text-gray-600 mb-4">Learn about top, heart, and base notes to become a
+                                    fragrance connoisseur...</p>
+                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read
+                                    More</a>
                             </div>
                         </article>
-                        
+
                         <!-- Blog Post 4 -->
                         <article class="blog-card">
                             <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&h=400&fit=crop" alt="Blog Post">
+                                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&h=400&fit=crop"
+                                    alt="Blog Post">
                             </div>
                             <div class="p-6">
                                 <div class="flex items-center gap-4 mb-3 text-sm text-gray-500">
@@ -222,29 +252,37 @@
                                 <h2 class="text-2xl font-bold mb-3 hover:text-yellow-600 transition-colors">
                                     <a href="blog-details.html">The History of Oud: Liquid Gold in Perfumery</a>
                                 </h2>
-                                <p class="text-gray-600 mb-4">Dive into the fascinating history and cultural significance of oud in fragrances...</p>
-                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read More</a>
+                                <p class="text-gray-600 mb-4">Dive into the fascinating history and cultural
+                                    significance of oud in fragrances...</p>
+                                <a href="blog-details.html" class="btn-outline-luxury text-sm inline-block">Read
+                                    More</a>
                             </div>
                         </article>
-                        
+
                     </div>
-                    
+
                     <!-- Pagination -->
                     <div class="flex justify-center mt-12">
                         <div class="flex gap-2">
-                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors"><i class="fas fa-chevron-left"></i></button>
+                            <button
+                                class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-left"></i></button>
                             <button class="w-10 h-10 rounded-lg bg-yellow-500 text-white">1</button>
-                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors">2</button>
-                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors">3</button>
-                            <button class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors"><i class="fas fa-chevron-right"></i></button>
+                            <button
+                                class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors">2</button>
+                            <button
+                                class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors">3</button>
+                            <button
+                                class="pagination-btn w-10 h-10 rounded-lg border border-gray-300 bg-white text-gray-900 hover:bg-yellow-500 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-   <footer class="footer-luxury">
+
+    <footer class="footer-luxury">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div>
@@ -252,14 +290,21 @@
                         <i class="fas fa-spray-can text-3xl text-yellow-500"></i>
                         <span class="text-2xl font-bold font-serif">AromaLux</span>
                     </div>
-                    <p class="text-gray-400 mb-6">Your premier destination for rare, artisan fragrances and luxury scent experiences.</p>
+                    <p class="text-gray-400 mb-6">Your premier destination for rare, artisan fragrances and luxury scent
+                        experiences.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-yellow-500 transition-colors"><i
+                                class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
                     <ul class="space-y-3">
@@ -270,7 +315,7 @@
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-6">Resources</h3>
                     <ul class="space-y-3">
@@ -280,7 +325,7 @@
                         <li><a href="#" class="footer-link">Artisan Process</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
                     <ul class="space-y-3">
@@ -299,13 +344,14 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 pt-8 text-center">
                 <p class="text-gray-400 text-sm">&copy; 2026 AromaLux. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    
+
     <script src="../assets/js/main.js"></script>
 </body>
+
 </html>

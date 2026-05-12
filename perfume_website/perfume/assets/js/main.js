@@ -11,7 +11,8 @@ function toggleDarkMode() {
     
     // Update all dark mode toggle icons
     document.querySelectorAll('.dark-mode-toggle i').forEach(icon => {
-        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        icon.classList.remove('fa-moon', 'fa-sun');
+        icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
     });
 }
 
@@ -20,7 +21,8 @@ if (localStorage.getItem('darkMode') === 'true') {
     document.body.classList.add('dark-mode');
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.dark-mode-toggle i').forEach(icon => {
-            icon.className = 'fas fa-sun';
+            icon.classList.remove('fa-moon', 'fa-sun');
+            icon.classList.add('fa-sun');
         });
     });
 }
@@ -31,11 +33,27 @@ function toggleRTL() {
     document.body.classList.toggle('rtl');
     const isRTL = document.body.classList.contains('rtl');
     localStorage.setItem('rtl', isRTL);
+    
+    // Update all RTL toggle buttons
+    document.querySelectorAll('.rtl-toggle').forEach(btn => {
+        btn.textContent = isRTL ? 'LTR' : 'RTL';
+    });
 }
 
 // Check for saved RTL preference
 if (localStorage.getItem('rtl') === 'true') {
     document.body.classList.add('rtl');
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.rtl-toggle').forEach(btn => {
+            btn.textContent = 'LTR';
+        });
+    });
+} else {
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.rtl-toggle').forEach(btn => {
+            btn.textContent = 'RTL';
+        });
+    });
 }
 
 // ===== Mobile Menu Toggle =====

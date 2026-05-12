@@ -416,15 +416,30 @@ function initUserSeasonalChart() {
     });
 }
 
-// Reuse sidebar toggle from dashboard.js
+// ===== Dashboard Sidebar Toggle (Desktop Collapse / Mobile Drawer) =====
 function toggleDashboardSidebar() {
     const sidebar = document.getElementById('dashboardSidebar');
     const overlay = document.getElementById('dashboardOverlay');
     
-    if (sidebar && overlay) {
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+    if (window.innerWidth >= 1024) {
+        // Desktop: Toggle collapsed state
+        if (sidebar) {
+            sidebar.classList.toggle('collapsed');
+            
+            // Re-render charts
+            if (window.userCharts) {
+                setTimeout(() => {
+                    Object.values(window.userCharts).forEach(chart => chart.resize());
+                }, 300);
+            }
+        }
+    } else {
+        // Mobile: Toggle active drawer
+        if (sidebar && overlay) {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
     }
 }
 

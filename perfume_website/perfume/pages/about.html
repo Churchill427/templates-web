@@ -15,14 +15,14 @@
 <body class="antialiased">
     
     <!-- Navbar (Same structure) -->
-   <nav class="navbar-luxury bg-white/95 shadow-md absolute top-0 left-0 right-0 z-[1200]">
+   <nav class="navbar-luxury shadow-md">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="flex items-center space-x-2">
                     <i class="fas fa-spray-can text-3xl text-yellow-600"></i>
                     <span class="text-2xl font-bold font-serif text-gray-900">AromaLux</span>
                 </a>
-                <div class="hidden lg:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center xl:space-x-8 lg:space-x-4">
                     <div class="relative group">
                         <button class="nav-link flex items-center space-x-1 text-gray-700 hover:text-yellow-600 font-medium">
                             <span>Home</span><i class="fas fa-chevron-down text-xs"></i>
@@ -48,8 +48,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden lg:flex items-center space-x-4">
-                    <button onclick="toggleRTL()" class="text-gray-700 hover:text-yellow-600"><i class="fas fa-globe text-xl"></i></button>
+                <div class="hidden lg:flex items-center xl:space-x-4 lg:space-x-2">
+                    <button onclick="toggleRTL()" class="rtl-toggle text-gray-700 hover:text-yellow-600 font-bold">RTL</button>
                     <button onclick="toggleDarkMode()" class="dark-mode-toggle text-gray-700 hover:text-yellow-600"><i class="fas fa-moon text-xl"></i></button>
                     <a href="login.html" class="btn-luxury text-sm">Login</a>
                 </div>
@@ -59,7 +59,7 @@
     </nav>
     
     <!-- Hero Section -->
-    <section class="relative py-32 overflow-hidden">
+    <section class="hero-standard">
         <div class="absolute inset-0">
             <img src="../assets/images/heroes/hero-about.png" alt="Perfume crafting workshop" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/70"></div>
@@ -274,9 +274,8 @@
                 <a href="dashboard.html" class="block py-3 border-b">Admin Dashboard</a>
                 <a href="user-dashboard.html" class="block py-3 border-b">User Dashboard</a>
                 <div class="flex items-center gap-4 py-3 border-b border-gray-200">
-                    <button onclick="toggleRTL()" class="flex items-center gap-2 text-gray-700 hover:text-yellow-600">
-                        <i class="fas fa-globe"></i>
-                        <span>RTL</span>
+                    <button onclick="toggleRTL()" class="rtl-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600 font-bold">
+                        RTL
                     </button>
                     <button onclick="toggleDarkMode()" class="dark-mode-toggle flex items-center gap-2 text-gray-700 hover:text-yellow-600">
                         <i class="fas fa-moon"></i>
