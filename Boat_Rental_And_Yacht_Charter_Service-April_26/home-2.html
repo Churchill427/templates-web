@@ -41,8 +41,6 @@
 
     .hero-2__image {
       position: relative;
-      border-radius: var(--border-radius-xl);
-      overflow: hidden;
       box-shadow: var(--shadow-xl);
     }
 
@@ -51,6 +49,7 @@
       height: 100%;
       object-fit: cover;
       aspect-ratio: 4/3;
+      border-radius: var(--border-radius-xl);
     }
 
     .hero-2__float-card {
@@ -65,14 +64,14 @@
     }
 
     .hero-2__float-card--1 {
-      bottom: -20px;
-      left: -20px;
+      bottom: 20px;
+      left: 20px;
       animation: float 4s ease-in-out infinite;
     }
 
     .hero-2__float-card--2 {
-      top: -20px;
-      right: -20px;
+      top: 20px;
+      right: 20px;
       animation: float 4s ease-in-out 1s infinite;
     }
 
@@ -85,6 +84,27 @@
       .hero-2__float-card--2 {
         top: 10px;
         right: 10px;
+      }
+    }
+
+    @media(max-width: 480px) {
+      .hero-2__float-card {
+        padding: var(--space-2) var(--space-3);
+        gap: var(--space-2);
+      }
+
+      .hero-2__float-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+      }
+
+      .hero-2__float-number {
+        font-size: var(--fs-base);
+      }
+
+      .hero-2__float-label {
+        font-size: 10px;
       }
     }
 
@@ -199,9 +219,11 @@
       .section-title {
         font-size: var(--fs-3xl);
       }
+
       .hero__title {
         font-size: var(--fs-3xl);
       }
+
       .page-spacer {
         padding-top: var(--space-8);
       }
@@ -292,42 +314,137 @@
 
     .partners-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: var(--space-6);
-      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    @media(max-width:1023px) {
+    @media(max-width: 767px) {
       .partners-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+    }
+
+    @media(max-width: 480px) {
+      .partners-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     .partner-logo {
-      padding: var(--space-5);
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
+      height: 140px;
+      padding: var(--space-6);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius-xl);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 80px;
-      transition: all var(--transition-base);
+      gap: var(--space-3);
+      transition: all 0.3s ease-out;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
 
-    .partner-logo:hover {
-      border-color: var(--color-secondary);
-      box-shadow: var(--shadow);
+    /* Partners Section Overhaul */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      perspective: 1000px;
     }
-
-    .partner-logo i {
-      font-size: 2rem;
-      color: var(--text-muted);
-      transition: color var(--transition-fast);
+    @media(max-width: 768px) { .partners-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); } }
+    @media(max-width: 360px) { .partners-grid { grid-template-columns: 1fr; } }
+    
+    .partner-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--border-radius-xl);
+      padding: var(--space-6) var(--space-4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      height: 160px;
+      text-decoration: none;
     }
-
-    .partner-logo:hover i {
+    
+    .partner-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(49, 151, 149, 0.15), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .partner-card:hover, .partner-card:active, .partner-card:focus-within {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 20px rgba(49, 151, 149, 0.2);
+      outline: none;
+    }
+    
+    .partner-card:hover::before, .partner-card:active::before, .partner-card:focus-within::before { opacity: 1; }
+    
+    .partner-card__icon {
+      font-size: 3.5rem;
+      color: rgba(255, 255, 255, 0.35);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      filter: grayscale(1);
+    }
+    
+    .partner-card:hover .partner-card__icon, .partner-card:active .partner-card__icon, .partner-card:focus-within .partner-card__icon {
       color: var(--color-secondary);
+      transform: scale(1.15) translateY(-5px);
+      filter: grayscale(0) drop-shadow(0 0 15px rgba(49, 151, 149, 0.5));
+    }
+    
+    .partner-card__name {
+      font-family: var(--font-heading);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.5s ease;
+    }
+    
+    .partner-card:hover .partner-card__name, .partner-card:active .partner-card__name, .partner-card:focus-within .partner-card__name {
+      color: #fff;
+      letter-spacing: 3.5px;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+
+    /* CTA Shimmer Enhancement */
+    .btn--shimmer { position: relative; overflow: hidden; }
+    .btn--shimmer::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(45deg);
+      animation: shimmerBtn 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @keyframes shimmerBtn {
+      0% { transform: translate(-100%, -100%) rotate(45deg); }
+      100% { transform: translate(100%, 100%) rotate(45deg); }
     }
   </style>
 </head>
@@ -365,8 +482,8 @@
         </li>
       </ul>
       <div class="navbar__utils">
-        <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i
-            class="fas fa-globe"></i></button>
+        <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL"
+          aria-label="Toggle text direction">RTL</button>
         <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i
             class="fas fa-moon"></i></button>
         <a href="login.html" class="navbar__util-btn" aria-label="Login"><i class="fas fa-user"></i></a>
@@ -394,8 +511,9 @@
           class="fas fa-user-plus" style="margin-right:8px;"></i> Register</a>
       <hr class="divider">
       <div style="display:flex;gap:8px;padding:8px 16px;"><button class="navbar__util-btn rtl-toggle-btn"
-          aria-label="Toggle text direction"><i class="fas fa-globe"></i></button><button
-          class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+          aria-label="Toggle text direction">RTL</button>
+        <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i
+            class="fas fa-moon"></i></button>
       </div>
     </div>
   </nav>
@@ -449,7 +567,6 @@
     <section class="section section--gray" aria-label="Features">
       <div class="container">
         <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label reveal">Features</span>
           <h2 class="section-title reveal reveal-delay-1">Why Clients Choose AquaLux</h2>
           <p class="section-subtitle reveal reveal-delay-2">Everything you need for a flawless experience on the water.
           </p>
@@ -499,7 +616,6 @@
     <section class="section" aria-label="Booking process">
       <div class="container">
         <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label reveal">How It Works</span>
           <h2 class="section-title reveal reveal-delay-1">Book in 4 Simple Steps</h2>
           <p class="section-subtitle reveal reveal-delay-2">From inquiry to embarkation, we make the process seamless.
           </p>
@@ -552,7 +668,6 @@
     <section class="section section--dark" aria-label="Statistics" style="position:relative;overflow:hidden;">
       <div class="container" style="position:relative;z-index:1;">
         <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label" style="color:var(--color-accent);">Our Impact</span>
           <h2 class="section-title reveal reveal-delay-1">Trusted Worldwide</h2>
         </div>
         <div class="grid grid--4">
@@ -596,7 +711,6 @@
     <section class="section" aria-label="Recent charters gallery">
       <div class="container">
         <div class="text-center" style="margin-bottom:var(--space-8);">
-          <span class="section-label reveal">Gallery</span>
           <h2 class="section-title reveal reveal-delay-1">Recent Charter Moments</h2>
           <p class="section-subtitle reveal reveal-delay-2">Glimpses from our most memorable voyages and events.</p>
         </div>
@@ -636,24 +750,31 @@
     </section>
 
     <!-- SECTION 6: Partners -->
-    <section class="section section--gray" aria-label="Partners">
-      <div class="container">
-        <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label reveal">Partners</span>
-          <h2 class="section-title reveal reveal-delay-1">Trusted Partners & Integrations</h2>
-          <p class="section-subtitle reveal reveal-delay-2">Working with leading brands in luxury travel, marine
+    <section class="section" id="partners" aria-label="Partners" style="position:relative;overflow:hidden;padding:var(--space-12) 0;">
+      <div style="position:absolute;inset:0;z-index:0;">
+        <img src="assets/images/partners-bg.png" alt="" style="width:100%;height:100%;object-fit:cover;"
+          aria-hidden="true">
+        <div
+          style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(15,35,65,0.85), rgba(26,54,93,0.8));">
+        </div>
+      </div>
+      <div class="container" style="position:relative;z-index:1;">
+        <div class="text-center" style="margin-bottom:var(--space-8);">
+          <h2 class="section-title reveal reveal-delay-1" style="color:#fff;">Trusted Partners & Integrations</h2>
+          <p class="section-subtitle reveal reveal-delay-2" style="color:rgba(255,255,255,0.8);">Working with leading
+            brands in luxury travel, marine
             services, and hospitality.</p>
         </div>
         <div class="partners-grid reveal">
-          <div class="partner-logo"><i class="fas fa-hotel"></i></div>
-          <div class="partner-logo"><i class="fas fa-plane"></i></div>
-          <div class="partner-logo"><i class="fas fa-car"></i></div>
-          <div class="partner-logo"><i class="fas fa-wine-glass-alt"></i></div>
-          <div class="partner-logo"><i class="fas fa-camera"></i></div>
-          <div class="partner-logo"><i class="fas fa-music"></i></div>
+          <a href="#" class="partner-card"><i class="fas fa-hotel partner-card__icon"></i><span class="partner-card__name">Grand Marina</span></a>
+          <a href="#" class="partner-card"><i class="fas fa-plane partner-card__icon"></i><span class="partner-card__name">SkyJet Luxe</span></a>
+          <a href="#" class="partner-card"><i class="fas fa-car partner-card__icon"></i><span class="partner-card__name">Elite Drive</span></a>
+          <a href="#" class="partner-card"><i class="fas fa-wine-glass-alt partner-card__icon"></i><span class="partner-card__name">Ocean Lounge</span></a>
+          <a href="#" class="partner-card"><i class="fas fa-camera partner-card__icon"></i><span class="partner-card__name">Marine Lens</span></a>
+          <a href="#" class="partner-card"><i class="fas fa-music partner-card__icon"></i><span class="partner-card__name">Wave Beats</span></a>
         </div>
-        <div class="text-center" style="margin-top:var(--space-10);">
-          <a href="contact.html" class="btn btn--primary btn--lg reveal">Become a Partner <i
+        <div class="text-center" style="margin-top:var(--space-8);">
+          <a href="contact.html" class="btn btn--primary btn--lg reveal btn--shimmer">Become a Partner <i
               class="fas fa-handshake"></i></a>
         </div>
       </div>
@@ -670,7 +791,8 @@
             <div class="footer__logo-icon"><i class="fas fa-anchor"></i></div>
             <span class="footer__logo-text">AquaLux</span>
           </a>
-          <p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean adventurers. Sail with confidence, arrive in style.</p>
+          <p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean
+            adventurers. Sail with confidence, arrive in style.</p>
           <div class="footer__social">
             <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -709,13 +831,16 @@
         <!-- Column 4: Newsletter & Contact -->
         <div class="footer__newsletter">
           <h4 class="footer__heading">Newsletter</h4>
-          <p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers and sailing tips delivered to your inbox.</p>
+          <p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers and sailing tips delivered
+            to your inbox.</p>
           <form class="footer__newsletter-form" data-validate>
-            <input type="email" class="footer__newsletter-input" placeholder="Your email" required aria-label="Newsletter email">
+            <input type="email" class="footer__newsletter-input" placeholder="Your email" required
+              aria-label="Newsletter email">
             <button type="submit" class="footer__newsletter-btn">Join</button>
           </form>
           <div style="margin-top:var(--space-5);">
-            <div class="footer__contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Marina Bay Drive, Miami, FL 33139</span></div>
+            <div class="footer__contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Marina Bay Drive, Miami, FL
+                33139</span></div>
             <div class="footer__contact-item"><i class="fas fa-phone"></i><span>+1 (305) 555-0199</span></div>
             <div class="footer__contact-item"><i class="fas fa-envelope"></i><span>hello@aqualux.com</span></div>
           </div>

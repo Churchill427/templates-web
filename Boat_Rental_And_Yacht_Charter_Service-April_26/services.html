@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — AquaLux Yacht & Boat Charter</title>
-  <meta name="description" content="Explore AquaLux services: yacht charters, sailing adventures, event cruises, speedboat rentals, fishing trips, and island hopping tours.">
+  <meta name="description"
+    content="Explore AquaLux services: yacht charters, sailing adventures, event cruises, speedboat rentals, fishing trips, and island hopping tours.">
   <link rel="shortcut icon" href="assets/images/favicons/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,58 +16,220 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <style>
-    .how-it-works { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-8); position: relative; }
-    @media(max-width:768px) { .how-it-works { grid-template-columns: 1fr; } }
-    .how-step { text-align: center; position: relative; }
-    .how-step__number { width: 72px; height: 72px; border-radius: var(--border-radius-full); background: linear-gradient(135deg, var(--color-secondary), var(--color-primary)); color: #fff; font-size: var(--fs-3xl); font-weight: var(--fw-bold); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-5); box-shadow: 0 8px 24px rgba(49,151,149,0.3); }
-    .how-step__connector { display: none; }
-    @media(min-width:769px) {
-      .how-step__connector { display: block; position: absolute; top: 36px; left: calc(50% + 48px); width: calc(100% - 96px); height: 2px; background: repeating-linear-gradient(90deg, var(--border-color) 0, var(--border-color) 8px, transparent 8px, transparent 16px); }
-      .how-step:last-child .how-step__connector { display: none; }
+    .how-it-works {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      position: relative;
     }
-    .pricing-preview { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-6); }
-    @media(max-width:768px) { .pricing-preview { grid-template-columns: 1fr; } }
+
+    @media(max-width:768px) {
+      .how-it-works {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .how-step {
+      text-align: center;
+      position: relative;
+    }
+
+    .how-step__number {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--border-radius-full);
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+      color: #fff;
+      font-size: var(--fs-3xl);
+      font-weight: var(--fw-bold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-5);
+      box-shadow: 0 8px 24px rgba(49, 151, 149, 0.3);
+    }
+
+    .how-step__connector {
+      display: none;
+    }
+
+    @media(min-width:769px) {
+      .how-step__connector {
+        display: block;
+        position: absolute;
+        top: 36px;
+        left: calc(50% + 48px);
+        width: calc(100% - 96px);
+        height: 2px;
+        background: repeating-linear-gradient(90deg, var(--border-color) 0, var(--border-color) 8px, transparent 8px, transparent 16px);
+      }
+
+      .how-step:last-child .how-step__connector {
+        display: none;
+      }
+    }
+
+    .pricing-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    @media(max-width:768px) {
+      .pricing-preview {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* New Feature Card with Image */
+    .feature-card--image {
+      padding: 0;
+      text-align: left;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card__img-container {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .feature-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .feature-card--image:hover .feature-card__img {
+      transform: scale(1.1);
+    }
+
+    .feature-card__icon-badge {
+      position: absolute;
+      bottom: -20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: var(--color-secondary);
+      color: #fff;
+      border-radius: var(--border-radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-md);
+      z-index: 2;
+      border: 3px solid #fff;
+      transition: all var(--transition-base);
+    }
+
+    .feature-card__icon-badge i {
+      color: #fff !important;
+    }
+
+    .feature-card--image:hover .feature-card__icon-badge {
+      background: var(--color-primary);
+      transform: translateY(-5px);
+    }
+
+    .feature-card__body {
+      padding: var(--space-6);
+      padding-top: var(--space-8);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card__title {
+      font-size: var(--fs-xl);
+      margin-bottom: var(--space-2);
+    }
+
+    .feature-card__text {
+      margin-bottom: var(--space-4);
+      flex-grow: 1;
+    }
   </style>
 </head>
+
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
   <!-- NAVBAR -->
   <nav class="navbar navbar--transparent" data-transparent="true" aria-label="Main navigation">
     <div class="navbar__inner">
-      <a href="index.html" class="navbar__logo" aria-label="AquaLux Home"><div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div><span class="navbar__logo-text">AquaLux</span></a>
+      <a href="index.html" class="navbar__logo" aria-label="AquaLux Home">
+        <div class="navbar__logo-icon"><i class="fas fa-anchor"></i></div><span class="navbar__logo-text">AquaLux</span>
+      </a>
       <ul class="navbar__links">
-        <li class="navbar__dropdown"><a href="#" class="navbar__link">Home <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a href="home-2.html" class="navbar__dropdown-item">Home 2</a></div></li>
+        <li class="navbar__dropdown"><a href="#" class="navbar__link">Home <i class="fas fa-chevron-down"
+              style="font-size:0.65em;"></i></a>
+          <div class="navbar__dropdown-menu"><a href="home-1.html" class="navbar__dropdown-item">Home 1</a><a
+              href="home-2.html" class="navbar__dropdown-item">Home 2</a></div>
+        </li>
         <li><a href="about.html" class="navbar__link">About</a></li>
         <li><a href="services.html" class="navbar__link navbar__link--active">Services</a></li>
         <li><a href="blog.html" class="navbar__link">Blog</a></li>
         <li><a href="pricing.html" class="navbar__link">Pricing</a></li>
         <li><a href="contact.html" class="navbar__link">Contact</a></li>
-        <li class="navbar__dropdown"><a href="#" class="navbar__link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;"></i></a><div class="navbar__dropdown-menu"><a href="admin-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-tachometer-alt" style="margin-right:8px;"></i> Admin Panel</a><a href="user-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-user-circle" style="margin-right:8px;"></i> User Dashboard</a></div></li>
+        <li class="navbar__dropdown"><a href="#" class="navbar__link">Dashboard <i class="fas fa-chevron-down"
+              style="font-size:0.65em;"></i></a>
+          <div class="navbar__dropdown-menu"><a href="admin-dashboard.html" class="navbar__dropdown-item"><i
+                class="fas fa-tachometer-alt" style="margin-right:8px;"></i> Admin Panel</a><a
+              href="user-dashboard.html" class="navbar__dropdown-item"><i class="fas fa-user-circle"
+                style="margin-right:8px;"></i> User Dashboard</a></div>
+        </li>
       </ul>
       <div class="navbar__utils">
-        <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button>
-        <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+        <button class="navbar__util-btn rtl-toggle-btn" title="Switch to RTL"
+          aria-label="Toggle text direction">RTL</button>
+        <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i
+            class="fas fa-moon"></i></button>
         <a href="login.html" class="navbar__util-btn" aria-label="Login"><i class="fas fa-user"></i></a>
       </div>
       <button class="navbar__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
     <div class="navbar__mobile-overlay"></div>
     <div class="navbar__mobile-menu">
-      <a href="home-1.html" class="navbar__mobile-link">Home</a><a href="about.html" class="navbar__mobile-link">About</a><a href="services.html" class="navbar__mobile-link navbar__mobile-link--active">Services</a><a href="blog.html" class="navbar__mobile-link">Blog</a><a href="pricing.html" class="navbar__mobile-link">Pricing</a><a href="contact.html" class="navbar__mobile-link">Contact</a>
-      <div class="navbar__dropdown"><a href="#" class="navbar__mobile-link">Dashboard <i class="fas fa-chevron-down" style="font-size:0.65em;margin-left:4px;"></i></a><div class="navbar__mobile-submenu"><a href="admin-dashboard.html" class="navbar__mobile-link">Admin Panel</a><a href="user-dashboard.html" class="navbar__mobile-link">User Dashboard</a></div></div>
-      <hr class="divider"><a href="login.html" class="navbar__mobile-link"><i class="fas fa-sign-in-alt" style="margin-right:8px;"></i> Login</a><a href="register.html" class="navbar__mobile-link"><i class="fas fa-user-plus" style="margin-right:8px;"></i> Register</a>
-      <hr class="divider"><div style="display:flex;gap:8px;padding:8px 16px;"><button class="navbar__util-btn rtl-toggle-btn" aria-label="Toggle text direction"><i class="fas fa-globe"></i></button><button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button></div>
+      <a href="home-1.html" class="navbar__mobile-link">Home</a><a href="about.html"
+        class="navbar__mobile-link">About</a><a href="services.html"
+        class="navbar__mobile-link navbar__mobile-link--active">Services</a><a href="blog.html"
+        class="navbar__mobile-link">Blog</a><a href="pricing.html" class="navbar__mobile-link">Pricing</a><a
+        href="contact.html" class="navbar__mobile-link">Contact</a>
+      <div class="navbar__dropdown"><a href="#" class="navbar__mobile-link">Dashboard <i class="fas fa-chevron-down"
+            style="font-size:0.65em;margin-left:4px;"></i></a>
+        <div class="navbar__mobile-submenu"><a href="admin-dashboard.html" class="navbar__mobile-link">Admin Panel</a><a
+            href="user-dashboard.html" class="navbar__mobile-link">User Dashboard</a></div>
+      </div>
+      <hr class="divider"><a href="login.html" class="navbar__mobile-link"><i class="fas fa-sign-in-alt"
+          style="margin-right:8px;"></i> Login</a><a href="register.html" class="navbar__mobile-link"><i
+          class="fas fa-user-plus" style="margin-right:8px;"></i> Register</a>
+      <hr class="divider">
+      <div style="display:flex;gap:8px;padding:8px 16px;"><button class="navbar__util-btn rtl-toggle-btn"
+          aria-label="Toggle text direction">RTL</button>
+        <button class="navbar__util-btn theme-toggle-btn" aria-label="Toggle dark mode"><i
+            class="fas fa-moon"></i></button>
+      </div>
     </div>
   </nav>
 
   <main id="main-content">
     <!-- SECTION 1: Page Header -->
     <section class="hero hero--small" aria-label="Services hero">
-      <div class="hero__bg"><img src="assets/images/boats/luxury-yacht.png" alt="Our Services" width="1920" height="800"><div class="hero__overlay"></div></div>
+      <div class="hero__bg"><img src="assets/images/services/hero-bg.png" alt="Our Services" width="1920"
+          height="800">
+        <div class="hero__overlay"></div>
+      </div>
       <div class="container" style="position:relative;z-index:1;">
         <div class="text-center">
-          <nav class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><span class="breadcrumb__item"><a href="index.html">Home</a></span><span class="breadcrumb__separator"><i class="fas fa-chevron-right"></i></span><span class="breadcrumb__item breadcrumb__item--active">Services</span></nav>
+          <nav class="breadcrumb" style="justify-content:center;margin-bottom:var(--space-4);"><span
+              class="breadcrumb__item"><a href="index.html">Home</a></span><span class="breadcrumb__separator"><i
+                class="fas fa-chevron-right"></i></span><span
+              class="breadcrumb__item breadcrumb__item--active">Services</span></nav>
           <h1 class="hero__title" style="color:#fff;">Our Services</h1>
           <p class="hero__subtitle">Discover the perfect maritime experience tailored to your desires.</p>
         </div>
@@ -76,46 +240,83 @@
     <section class="section" aria-label="All services">
       <div class="container">
         <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label reveal">What We Offer</span>
           <h2 class="section-title reveal reveal-delay-1">Explore Our Services</h2>
-          <p class="section-subtitle reveal reveal-delay-2">A complete range of maritime experiences for every occasion and budget.</p>
+          <p class="section-subtitle reveal reveal-delay-2">A complete range of maritime experiences for every occasion
+            and budget.</p>
         </div>
         <div class="grid grid--3">
-          <div class="feature-card reveal reveal-delay-1">
-            <div class="feature-card__icon"><i class="fas fa-ship"></i></div>
-            <h3 class="feature-card__title">Luxury Yacht Charter</h3>
-            <p class="feature-card__text">Full-service luxury yachts with professional crew, gourmet catering, and bespoke itineraries for the ultimate sailing experience.</p>
-            <a href="service-details.html" class="btn btn--ghost btn--sm" style="margin-top:var(--space-4);">View Details <i class="fas fa-arrow-right"></i></a>
+          <div class="feature-card feature-card--image reveal reveal-delay-1">
+            <div class="feature-card__img-container">
+              <img src="assets/images/services/luxury-charter.png" alt="Luxury Yacht Charter" class="feature-card__img">
+            </div>
+            <div class="feature-card__body">
+              <h3 class="feature-card__title">Luxury Yacht Charter</h3>
+              <p class="feature-card__text">Full-service luxury yachts with professional crew, gourmet catering, and
+                bespoke itineraries for the ultimate sailing experience.</p>
+              <a href="service-details.html" class="btn btn--ghost btn--sm">View Details <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
           </div>
-          <div class="feature-card reveal reveal-delay-2">
-            <div class="feature-card__icon"><i class="fas fa-sailboat"></i></div>
-            <h3 class="feature-card__title">Sailing Adventures</h3>
-            <p class="feature-card__text">Wind-powered journeys with experienced skippers through Mediterranean gems and Caribbean paradises.</p>
-            <a href="service-details.html" class="btn btn--ghost btn--sm" style="margin-top:var(--space-4);">View Details <i class="fas fa-arrow-right"></i></a>
+          <div class="feature-card feature-card--image reveal reveal-delay-2">
+            <div class="feature-card__img-container">
+              <img src="assets/images/services/sailing-adventure.png" alt="Sailing Adventures"
+                class="feature-card__img">
+            </div>
+            <div class="feature-card__body">
+              <h3 class="feature-card__title">Sailing Adventures</h3>
+              <p class="feature-card__text">Wind-powered journeys with experienced skippers through Mediterranean gems
+                and Caribbean paradises.</p>
+              <a href="service-details.html" class="btn btn--ghost btn--sm">View Details <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
           </div>
-          <div class="feature-card reveal reveal-delay-3">
-            <div class="feature-card__icon"><i class="fas fa-champagne-glasses"></i></div>
-            <h3 class="feature-card__title">Event Cruises</h3>
-            <p class="feature-card__text">Celebrate special occasions aboard our event vessels — birthdays, weddings, corporate retreats, and more.</p>
-            <a href="service-details.html" class="btn btn--ghost btn--sm" style="margin-top:var(--space-4);">View Details <i class="fas fa-arrow-right"></i></a>
+          <div class="feature-card feature-card--image reveal reveal-delay-3">
+            <div class="feature-card__img-container">
+              <img src="assets/images/services/event-cruise.png" alt="Event Cruises" class="feature-card__img">
+            </div>
+            <div class="feature-card__body">
+              <h3 class="feature-card__title">Event Cruises</h3>
+              <p class="feature-card__text">Celebrate special occasions aboard our event vessels — birthdays, weddings,
+                corporate retreats, and more.</p>
+              <a href="service-details.html" class="btn btn--ghost btn--sm">View Details <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
           </div>
-          <div class="feature-card reveal reveal-delay-4">
-            <div class="feature-card__icon"><i class="fas fa-water"></i></div>
-            <h3 class="feature-card__title">Speedboat Rentals</h3>
-            <p class="feature-card__text">High-performance speedboats for thrilling water sports, fast island hopping, and adrenaline-fueled fun.</p>
-            <a href="service-details.html" class="btn btn--ghost btn--sm" style="margin-top:var(--space-4);">View Details <i class="fas fa-arrow-right"></i></a>
+          <div class="feature-card feature-card--image reveal reveal-delay-4">
+            <div class="feature-card__img-container">
+              <img src="assets/images/services/speedboat-rental.png" alt="Speedboat Rentals" class="feature-card__img">
+            </div>
+            <div class="feature-card__body">
+              <h3 class="feature-card__title">Speedboat Rentals</h3>
+              <p class="feature-card__text">High-performance speedboats for thrilling water sports, fast island hopping,
+                and adrenaline-fueled fun.</p>
+              <a href="service-details.html" class="btn btn--ghost btn--sm">View Details <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
           </div>
-          <div class="feature-card reveal reveal-delay-5">
-            <div class="feature-card__icon"><i class="fas fa-fish"></i></div>
-            <h3 class="feature-card__title">Deep Sea Fishing</h3>
-            <p class="feature-card__text">Professional fishing charters with expert guides, premium tackle, and the best spots for trophy catches.</p>
-            <a href="service-details.html" class="btn btn--ghost btn--sm" style="margin-top:var(--space-4);">View Details <i class="fas fa-arrow-right"></i></a>
+          <div class="feature-card feature-card--image reveal reveal-delay-5">
+            <div class="feature-card__img-container">
+              <img src="assets/images/services/fishing-charter.png" alt="Deep Sea Fishing" class="feature-card__img">
+            </div>
+            <div class="feature-card__body">
+              <h3 class="feature-card__title">Deep Sea Fishing</h3>
+              <p class="feature-card__text">Professional fishing charters with expert guides, premium tackle, and the
+                best spots for trophy catches.</p>
+              <a href="service-details.html" class="btn btn--ghost btn--sm">View Details <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
           </div>
-          <div class="feature-card reveal reveal-delay-6">
-            <div class="feature-card__icon"><i class="fas fa-island-tropical"></i></div>
-            <h3 class="feature-card__title">Island Hopping</h3>
-            <p class="feature-card__text">Multi-day island exploration tours with overnight anchoring, snorkeling, and hidden cove discoveries.</p>
-            <a href="service-details.html" class="btn btn--ghost btn--sm" style="margin-top:var(--space-4);">View Details <i class="fas fa-arrow-right"></i></a>
+          <div class="feature-card feature-card--image reveal reveal-delay-6">
+            <div class="feature-card__img-container">
+              <img src="assets/images/services/island-hopping.png" alt="Island Hopping" class="feature-card__img">
+            </div>
+            <div class="feature-card__body">
+              <h3 class="feature-card__title">Island Hopping</h3>
+              <p class="feature-card__text">Multi-day island exploration tours with overnight anchoring, snorkeling, and
+                hidden cove discoveries.</p>
+              <a href="service-details.html" class="btn btn--ghost btn--sm">View Details <i
+                  class="fas fa-arrow-right"></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -125,7 +326,6 @@
     <section class="section section--gray" aria-label="How it works">
       <div class="container">
         <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label reveal">Process</span>
           <h2 class="section-title reveal reveal-delay-1">How It Works</h2>
           <p class="section-subtitle reveal reveal-delay-2">Three simple steps to your perfect charter.</p>
         </div>
@@ -134,18 +334,21 @@
             <div class="how-step__number">1</div>
             <div class="how-step__connector"></div>
             <h3 style="font-size:var(--fs-2xl);margin-bottom:var(--space-3);">Browse & Select</h3>
-            <p style="color:var(--text-muted);font-size:var(--fs-sm);line-height:var(--lh-relaxed);">Explore our fleet of 85+ vessels. Filter by type, size, amenities, and budget to find your perfect match.</p>
+            <p style="color:var(--text-muted);font-size:var(--fs-sm);line-height:var(--lh-relaxed);">Explore our fleet
+              of 85+ vessels. Filter by type, size, amenities, and budget to find your perfect match.</p>
           </div>
           <div class="how-step reveal reveal-delay-2">
             <div class="how-step__number">2</div>
             <div class="how-step__connector"></div>
             <h3 style="font-size:var(--fs-2xl);margin-bottom:var(--space-3);">Customize & Book</h3>
-            <p style="color:var(--text-muted);font-size:var(--fs-sm);line-height:var(--lh-relaxed);">Choose your dates, route, and extras. Our team finalizes every detail to create your bespoke itinerary.</p>
+            <p style="color:var(--text-muted);font-size:var(--fs-sm);line-height:var(--lh-relaxed);">Choose your dates,
+              route, and extras. Our team finalizes every detail to create your bespoke itinerary.</p>
           </div>
           <div class="how-step reveal reveal-delay-3">
             <div class="how-step__number">3</div>
             <h3 style="font-size:var(--fs-2xl);margin-bottom:var(--space-3);">Set Sail & Enjoy</h3>
-            <p style="color:var(--text-muted);font-size:var(--fs-sm);line-height:var(--lh-relaxed);">Arrive at the marina, meet your crew, and embark on the adventure of a lifetime. We handle everything else.</p>
+            <p style="color:var(--text-muted);font-size:var(--fs-sm);line-height:var(--lh-relaxed);">Arrive at the
+              marina, meet your crew, and embark on the adventure of a lifetime. We handle everything else.</p>
           </div>
         </div>
       </div>
@@ -155,9 +358,9 @@
     <section class="section" aria-label="Pricing preview">
       <div class="container">
         <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label reveal">Pricing</span>
           <h2 class="section-title reveal reveal-delay-1">Charter Packages</h2>
-          <p class="section-subtitle reveal reveal-delay-2">Transparent pricing with no hidden fees. Choose the package that fits your adventure.</p>
+          <p class="section-subtitle reveal reveal-delay-2">Transparent pricing with no hidden fees. Choose the package
+            that fits your adventure.</p>
         </div>
         <div class="pricing-preview">
           <div class="pricing-card reveal reveal-delay-1">
@@ -169,7 +372,8 @@
               <div class="pricing-card__feature"><i class="fas fa-check"></i> Experienced skipper</div>
               <div class="pricing-card__feature"><i class="fas fa-check"></i> Safety equipment</div>
               <div class="pricing-card__feature"><i class="fas fa-check"></i> Fuel included</div>
-              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="fas fa-times"></i> Catering service</div>
+              <div class="pricing-card__feature pricing-card__feature--disabled"><i class="fas fa-times"></i> Catering
+                service</div>
             </div>
             <a href="pricing.html" class="btn btn--outline btn--full">Learn More</a>
           </div>
@@ -208,33 +412,62 @@
     <section class="section section--gray" aria-label="Frequently asked questions">
       <div class="container container--narrow">
         <div class="text-center" style="margin-bottom:var(--space-12);">
-          <span class="section-label reveal">FAQ</span>
           <h2 class="section-title reveal reveal-delay-1">Frequently Asked Questions</h2>
         </div>
         <div class="accordion reveal">
           <div class="accordion__item accordion__item--active">
-            <button class="accordion__header" aria-expanded="true"><span class="accordion__title">What types of boats are available for charter?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
-            <div class="accordion__content" style="max-height:200px;"><div class="accordion__body">We offer a diverse fleet including luxury motor yachts, sailing yachts, catamarans, speedboats, and fishing vessels. Our fleet ranges from 30ft to 120ft, accommodating 2 to 50 guests. Each vessel is maintained to the highest standards and regularly inspected for safety.</div></div>
+            <button class="accordion__header" aria-expanded="true"><span class="accordion__title">What types of boats
+                are available for charter?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
+            <div class="accordion__content" style="max-height:200px;">
+              <div class="accordion__body">We offer a diverse fleet including luxury motor yachts, sailing yachts,
+                catamarans, speedboats, and fishing vessels. Our fleet ranges from 30ft to 120ft, accommodating 2 to 50
+                guests. Each vessel is maintained to the highest standards and regularly inspected for safety.</div>
+            </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">Do I need boating experience to rent?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
-            <div class="accordion__content"><div class="accordion__body">No experience is necessary! All our charter packages include a professional skipper and crew. If you'd like to captain your own vessel, we also offer bareboat charters for those with valid sailing certifications.</div></div>
+            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">Do I need boating
+                experience to rent?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">No experience is necessary! All our charter packages include a professional
+                skipper and crew. If you'd like to captain your own vessel, we also offer bareboat charters for those
+                with valid sailing certifications.</div>
+            </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">What is your cancellation policy?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
-            <div class="accordion__content"><div class="accordion__body">We offer flexible cancellation. Cancel up to 14 days before for a full refund, 7-14 days for a 50% refund. Cancellations due to severe weather are always fully refunded. Trip insurance is available at booking.</div></div>
+            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">What is your
+                cancellation policy?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">We offer flexible cancellation. Cancel up to 14 days before for a full
+                refund, 7-14 days for a 50% refund. Cancellations due to severe weather are always fully refunded. Trip
+                insurance is available at booking.</div>
+            </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">Is food and drinks included?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
-            <div class="accordion__content"><div class="accordion__body">Our Voyager and Prestige packages include gourmet catering with a private chef. Explorer packages include basic refreshments. Custom catering can be arranged for any package at an additional cost.</div></div>
+            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">Is food and drinks
+                included?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">Our Voyager and Prestige packages include gourmet catering with a private
+                chef. Explorer packages include basic refreshments. Custom catering can be arranged for any package at
+                an additional cost.</div>
+            </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">What safety measures are in place?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
-            <div class="accordion__content"><div class="accordion__body">Safety is our top priority. All vessels carry life jackets, first aid kits, fire extinguishers, and emergency communication equipment. Our crews are trained in maritime safety and first aid. We hold ISO 9001 certification and comply with all Coast Guard requirements.</div></div>
+            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">What safety measures
+                are in place?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">Safety is our top priority. All vessels carry life jackets, first aid kits,
+                fire extinguishers, and emergency communication equipment. Our crews are trained in maritime safety and
+                first aid. We hold ISO 9001 certification and comply with all Coast Guard requirements.</div>
+            </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">Can I customize my route?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
-            <div class="accordion__content"><div class="accordion__body">Absolutely! While we offer curated itineraries, you're free to design your own route. Our team will work with you to plan the perfect journey, including stops for swimming, dining, and sightseeing along the way.</div></div>
+            <button class="accordion__header" aria-expanded="false"><span class="accordion__title">Can I customize my
+                route?</span><i class="accordion__icon fas fa-chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">Absolutely! While we offer curated itineraries, you're free to design your
+                own route. Our team will work with you to plan the perfect journey, including stops for swimming,
+                dining, and sightseeing along the way.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -242,11 +475,18 @@
 
     <!-- SECTION 6: Book Now CTA -->
     <section class="section" aria-label="Book now" style="position:relative;overflow:hidden;">
-      <div style="position:absolute;inset:0;z-index:0;"><img src="assets/images/hero/hero-2.png" alt="" style="width:100%;height:100%;object-fit:cover;" aria-hidden="true"><div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,35,65,0.92),rgba(26,54,93,0.85));"></div></div>
+      <div style="position:absolute;inset:0;z-index:0;"><img src="assets/images/hero/hero-2.png" alt=""
+          style="width:100%;height:100%;object-fit:cover;" aria-hidden="true">
+        <div
+          style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,35,65,0.92),rgba(26,54,93,0.85));">
+        </div>
+      </div>
       <div class="container" style="position:relative;z-index:1;">
         <div class="text-center" style="max-width:600px;margin:0 auto;">
           <h2 class="section-title reveal" style="color:#fff;">Ready to Book Your Charter?</h2>
-          <p class="reveal reveal-delay-1" style="color:rgba(255,255,255,0.8);font-size:var(--fs-lg);margin-bottom:var(--space-8);line-height:var(--lh-relaxed);">Contact our charter specialists to get a personalized quote or book instantly online.</p>
+          <p class="reveal reveal-delay-1"
+            style="color:rgba(255,255,255,0.8);font-size:var(--fs-lg);margin-bottom:var(--space-8);line-height:var(--lh-relaxed);">
+            Contact our charter specialists to get a personalized quote or book instantly online.</p>
           <div class="flex justify-center gap-4 flex-wrap reveal reveal-delay-2">
             <a href="contact.html" class="btn btn--accent btn--lg">Book Now <i class="fas fa-arrow-right"></i></a>
             <a href="pricing.html" class="btn btn--outline-light btn--lg">View Full Pricing</a>
@@ -266,7 +506,8 @@
             <div class="footer__logo-icon"><i class="fas fa-anchor"></i></div>
             <span class="footer__logo-text" style="color: #fff;">AquaLux</span>
           </a>
-          <p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean adventurers. Sail with confidence, arrive in style.</p>
+          <p class="footer__desc">Premium yacht charters and boat rentals crafted for luxury seekers and ocean
+            adventurers. Sail with confidence, arrive in style.</p>
           <div class="footer__social">
             <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -305,13 +546,16 @@
         <!-- Column 4: Newsletter & Contact -->
         <div class="footer__newsletter">
           <h4 class="footer__heading">Newsletter</h4>
-          <p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers and sailing tips delivered to your inbox.</p>
+          <p class="footer__desc" style="margin-bottom:var(--space-3);">Get exclusive offers and sailing tips delivered
+            to your inbox.</p>
           <form class="footer__newsletter-form" data-validate>
-            <input type="email" class="footer__newsletter-input" placeholder="Your email" required aria-label="Newsletter email">
+            <input type="email" class="footer__newsletter-input" placeholder="Your email" required
+              aria-label="Newsletter email">
             <button type="submit" class="footer__newsletter-btn">Join</button>
           </form>
           <div style="margin-top:var(--space-5);">
-            <div class="footer__contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Marina Bay Drive, Miami, FL 33139</span></div>
+            <div class="footer__contact-item"><i class="fas fa-map-marker-alt"></i><span>123 Marina Bay Drive, Miami, FL
+                33139</span></div>
             <div class="footer__contact-item"><i class="fas fa-phone"></i><span>+1 (305) 555-0199</span></div>
             <div class="footer__contact-item"><i class="fas fa-envelope"></i><span>hello@aqualux.com</span></div>
           </div>
@@ -334,4 +578,5 @@
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>

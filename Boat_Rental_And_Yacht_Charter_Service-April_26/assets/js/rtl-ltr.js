@@ -22,11 +22,10 @@ const RTLToggle = (() => {
 
   function updateToggleIcons(dir) {
     document.querySelectorAll('.rtl-toggle-btn').forEach(btn => {
-      const icon = btn.querySelector('i');
-      if (icon) {
-        // Visual indicator: globe stays but tooltip changes
-        btn.title = dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
-      }
+      btn.textContent = dir === 'rtl' ? 'LTR' : 'RTL';
+      btn.title = dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+      btn.style.fontSize = '0.75rem';
+      btn.style.fontWeight = 'bold';
     });
   }
 
