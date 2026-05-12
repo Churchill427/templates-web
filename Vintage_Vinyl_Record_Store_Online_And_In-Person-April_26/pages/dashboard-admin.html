@@ -127,6 +127,29 @@
       display: flex;
       align-items: center;
       gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      color: var(--text-secondary);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: var(--space-1);
+    }
+
+    .dash-nav-link:hover {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--color-primary-dark);
+    }
+
+    .dash-nav-link.active {
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--color-primary-dark);
+      font-weight: 600;
+    }
+
+    .dash-nav-link .nav-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
     }
 
     .dash-nav-link .nav-badge {
@@ -150,7 +173,7 @@
     /* Top Bar */
     .dash-topbar {
       height: 60px;
-      padding: 0 var(--space-6);
+      padding: 0 var(--container-padding);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -209,7 +232,7 @@
     .dash-content {
       flex: 1;
       overflow-y: auto;
-      padding: var(--space-6);
+      padding: var(--container-padding);
     }
 
     /* Stat Cards */
@@ -652,8 +675,7 @@
     <!-- Sidebar -->
     <aside class="dash-sidebar">
       <a href="../index.html" class="dash-sidebar__logo">
-        <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img"
-          style="width:32px;height:32px;object-fit:contain;">
+        <img src="../assets/images/logo/logo.png" alt="Vintage Vinyl Logo" class="navbar__logo-img">
         <span
           style="font-family:var(--font-heading);font-size:var(--text-base);font-weight:700;color:var(--text-primary);">Vintage
           Vinyl</span>

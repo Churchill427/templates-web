@@ -89,6 +89,13 @@
   --sidebar-collapsed: 80px;
   --container-max: 1280px;
   --container-narrow: 960px;
+  --container-padding: var(--space-6);
+}
+
+@media (min-width: 1025px) {
+  :root {
+    --container-padding: var(--space-12);
+  }
 }
 
 /* ============================================
@@ -246,19 +253,20 @@ p {
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--space-6);
+  padding-inline: var(--container-padding);
 }
 
 .container--full {
   max-width: 100%;
   width: 100%;
   margin-inline: auto;
-  padding-inline: var(--space-6);
+  padding-inline: var(--container-padding);
 }
 
 .container--narrow {
   max-width: var(--container-narrow);
   width: 100%;
+  padding-inline: var(--container-padding);
 }
 
 .section {
@@ -366,7 +374,7 @@ p {
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--space-6);
+  padding-inline: var(--container-padding);
   height: 100%;
   display: flex;
   align-items: center;
@@ -392,6 +400,18 @@ p {
   color: #fff;
   font-weight: 800;
   font-size: var(--text-lg);
+}
+
+.navbar__logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  transition: transform var(--transition-base);
+}
+
+.navbar__logo:hover .navbar__logo-img {
+  transform: scale(1.05);
 }
 
 .navbar__logo-text {
@@ -965,7 +985,7 @@ p {
   max-width: 800px;
   width: 100%;
   margin-inline: auto;
-  padding: var(--space-20) var(--space-6);
+  padding: var(--space-20) var(--container-padding);
   flex: 1 1 auto;
 }
 
@@ -1103,6 +1123,10 @@ p {
   margin-bottom: var(--space-16);
 }
 
+.values-section .section-header__title {
+  color: #fff;
+}
+
 .section-header__label {
   margin-bottom: var(--space-4);
 }
@@ -1219,8 +1243,9 @@ p {
 }
 
 .footer__logo-img {
-  width: 44px;
-  height: 44px;
+  height: 48px;
+  width: auto;
+  max-width: 180px;
   object-fit: contain;
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
 }
@@ -1925,7 +1950,7 @@ p {
    HOME 1 — CLASSIC & WARM THEME
    ============================================ */
 .home-1 {
-  --color-primary: #8B4513;
+  --color-primary: #FFD700;
 }
 
 .home-1 .card {
@@ -2170,7 +2195,7 @@ p {
 /* CTA Section */
 .cta-section {
   background: var(--bg-gradient);
-  color: var(--text-primary);
+  color: #fff;
 }
 
 .cta-section .section-header__title,
@@ -2179,8 +2204,8 @@ p {
 }
 
 .cta-section .btn--secondary {
-  border-color: var(--text-primary);
-  color: var(--text-primary);
+  border-color: #fff;
+  color: #fff;
 }
 
 .cta-section .form-input {
