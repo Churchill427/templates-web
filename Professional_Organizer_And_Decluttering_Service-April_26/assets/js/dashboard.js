@@ -136,10 +136,12 @@ const Dashboard = {
         path += (i === 0 ? 'M' : 'L') + x + ',' + y;
       });
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('width', w);
+      svg.setAttribute('width', '100%');
       svg.setAttribute('height', h);
       svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      svg.setAttribute('preserveAspectRatio', 'none');
       svg.innerHTML = `<path d="${path}" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>`;
+      chart.style.overflow = 'hidden';
       chart.appendChild(svg);
     });
   }
