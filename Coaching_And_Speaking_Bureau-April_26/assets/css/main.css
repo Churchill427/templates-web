@@ -910,10 +910,19 @@ h6,
 .navbar__mobile-menu .navbar__link {
   font-size: var(--text-xl);
   padding: var(--space-3) var(--space-6);
+  color: var(--color-text) !important;
 }
 
-/* Transparent state: white text for visibility over hero (Opt-in) */
-.navbar--transparent-white:not(.scrolled) .navbar__link,
+/* Mobile menu links always use dark text and primary on hover — overrides all hero rules */
+.navbar__mobile-menu .navbar__link:hover,
+.navbar__mobile-menu .navbar__link.active {
+  color: var(--color-primary) !important;
+  background: var(--color-primary-light);
+  border-radius: var(--radius-md);
+}
+
+/* Transparent state: white text for visibility over hero (Opt-in) — excludes mobile menu links */
+.navbar--transparent-white:not(.scrolled) .navbar__links .navbar__link,
 .navbar--transparent-white:not(.scrolled) .navbar__logo,
 .navbar--transparent-white:not(.scrolled) .navbar__logo-text span:first-child,
 .navbar--transparent-white:not(.scrolled) .navbar__util-btn,
@@ -925,8 +934,9 @@ h6,
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-.navbar:not(.scrolled) .navbar__link:hover,
-.navbar:not(.scrolled) .navbar__link.active {
+/* Hover/active accent colour only for desktop nav links, not mobile menu */
+.navbar:not(.scrolled) .navbar__links .navbar__link:hover,
+.navbar:not(.scrolled) .navbar__links .navbar__link.active {
   color: var(--color-secondary) !important;
 }
 
@@ -935,8 +945,14 @@ h6,
   color: white;
 }
 
-.navbar:not(.scrolled) .navbar__hamburger span {
+/* White hamburger bars only when overlaying a hero image (transparent-white variant) */
+.navbar--transparent-white:not(.scrolled) .navbar__hamburger span {
   background: white;
+}
+
+/* Light-mode non-hero pages: keep hamburger bars dark and visible */
+.navbar:not(.navbar--transparent-white) .navbar__hamburger span {
+  background: var(--color-text);
 }
 
 /* ============================================
