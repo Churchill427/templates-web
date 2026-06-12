@@ -1,0 +1,360 @@
+/* ============================================
+   WASH — Dark Mode Overrides
+   ============================================ */
+
+[data-theme="dark"] {
+  --bg-primary: #0F172A;
+  --bg-secondary: #1E293B;
+  --bg-tertiary: #283548;
+  --surface: #1E293B;
+  --surface-hover: #283548;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+  --text-inverse: #0F172A;
+  --border: #334155;
+  --border-light: #283548;
+  --divider: #334155;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.45), 0 8px 10px rgba(0, 0, 0, 0.2);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.5);
+
+  --overlay: rgba(0, 0, 0, 0.7);
+  --overlay-light: rgba(0, 0, 0, 0.4);
+}
+
+/* --- Smooth theme transitions --- */
+body,
+.navbar,
+.card,
+.footer,
+.section,
+.form-input,
+.form-select,
+.form-textarea,
+.accordion-trigger,
+.auth-card,
+.btn-ghost,
+.btn-outline,
+.filter-tab,
+.tag,
+.countdown-value,
+.table td,
+.table th,
+.badge,
+.social-login-btn,
+.booking-step .step-number,
+.toast,
+.map-container,
+.calculator,
+.video-container,
+.pagination-btn {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Dark mode specific component adjustments --- */
+[data-theme="dark"] .navbar {
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .hero-bg::after {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.85) 0%,
+    rgba(var(--primary-rgb), 0.6) 50%,
+    rgba(var(--secondary-rgb), 0.3) 100%
+  );
+}
+
+[data-theme="dark"] .card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .card:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .feature-card .card-icon {
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.2), rgba(var(--secondary-rgb), 0.2));
+}
+
+[data-theme="dark"] .stat-card {
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08), rgba(var(--secondary-rgb), 0.08));
+}
+
+[data-theme="dark"] .stat-card .stat-number {
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .form-textarea {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-input::placeholder,
+[data-theme="dark"] .form-select::placeholder,
+[data-theme="dark"] .form-textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .accordion-trigger {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .accordion-trigger:hover {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .filter-tab {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .filter-tab:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .filter-tab.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .tag {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .tag:hover {
+  background: var(--secondary);
+  color: var(--primary-dark);
+  border-color: var(--secondary);
+}
+
+[data-theme="dark"] .countdown-value {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .table th {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .table tr:hover td {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .cta-banner .cta-bg::after {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(var(--primary-rgb), 0.8));
+}
+
+[data-theme="dark"] .footer {
+  background: #080D1A;
+}
+
+[data-theme="dark"] .auth-page {
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+}
+
+[data-theme="dark"] .auth-page::before {
+  background: radial-gradient(circle, rgba(var(--secondary-rgb), 0.06), transparent);
+}
+
+[data-theme="dark"] .auth-page::after {
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.04), transparent);
+}
+
+[data-theme="dark"] .auth-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* brand-name uses unified style */
+
+[data-theme="dark"] .social-login-btn {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .social-divider::before,
+[data-theme="dark"] .social-divider::after {
+  background: var(--border);
+}
+
+[data-theme="dark"] .calculator {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .calculator .price-display {
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), rgba(var(--secondary-rgb), 0.15));
+}
+
+[data-theme="dark"] .calculator .price-value {
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .range-input {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .range-input::-webkit-slider-thumb {
+  background: var(--secondary);
+}
+
+[data-theme="dark"] .timeline::before {
+  background: var(--border);
+}
+
+[data-theme="dark"] .timeline-dot {
+  box-shadow: 0 0 0 6px var(--bg-primary);
+}
+
+[data-theme="dark"] .timeline-content {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .ba-slider .ba-handle {
+  background: var(--secondary);
+}
+
+[data-theme="dark"] .booking-step .step-number {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .map-container {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .video-container {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .pagination-btn {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .pagination-btn:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .pagination-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(90deg,
+    var(--bg-tertiary) 25%,
+    var(--surface) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+}
+
+[data-theme="dark"] .search-bar .form-input {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .mobile-menu {
+  background: var(--surface);
+}
+
+[data-theme="dark"] .nav-dropdown-menu {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .toast {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* Dark mode chart colors handled via JS (graphs.js reads theme) */
+
+/* --- Dashboard Dark Mode Overrides --- */
+[data-theme="dark"] .sidebar-item:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .sidebar-item.active {
+  background-color: rgba(78, 205, 196, 0.08);
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .appointment-date .month,
+[data-theme="dark"] .appointment-date .day,
+[data-theme="dark"] .appointment-date .weekday {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .card-icon svg {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .promo-card h3.promo-primary-title,
+[data-theme="dark"] .promo-card .promo-value {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .calculator .price-display span {
+  color: #FFFFFF !important;
+}
+
+/* Make inline primary blue colored text white in dark mode */
+[data-theme="dark"] [style*="color:var(--primary)"],
+[data-theme="dark"] [style*="color: var(--primary)"] {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .badge-primary {
+  color: #FFFFFF;
+  background: rgba(var(--primary-rgb), 0.25);
+}
+
+[data-theme="dark"] .certs-grid svg {
+  stroke: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .btn-accent,
+[data-theme="dark"] .btn-accent:hover {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .blog-read-more {
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .blog-read-more:hover {
+  color: var(--secondary-light);
+}
+
+
+
+

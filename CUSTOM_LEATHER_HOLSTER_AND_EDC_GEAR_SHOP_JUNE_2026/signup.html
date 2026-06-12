@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Create your HIDE Leather Works account to order custom leather holsters, upload gear dimensions, and track production.">
+  <title>HIDE — Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .auth-page {
+      background-image: radial-gradient(ellipse at bottom right, rgba(184, 115, 51, 0.06) 0%, transparent 50%), radial-gradient(ellipse at top left, rgba(139, 69, 19, 0.06) 0%, transparent 50%);
+    }
+
+    /* Slightly smaller padding for signup to fit viewport */
+    .auth-card {
+      padding: var(--space-6) var(--space-5);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-3);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-page" id="signup-page">
+    <!-- Theme & RTL Toggles -->
+    <div class="auth-page__toggles">
+      <button class="navbar__toggle-btn" data-toggle-rtl aria-label="Toggle text direction"><span
+          class="rtl-label">LTR</span></button>
+      <button class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i
+          class="ph ph-sun theme-icon--light"></i><i class="ph ph-moon theme-icon--dark"></i></button>
+    </div>
+
+    <!-- Signup Card -->
+    <div class="auth-card" id="signup-card">
+      <a href="index.html" class="auth-card__logo" style="text-decoration:none;display:block;color:inherit;">
+        <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px;margin:0 auto var(--space-1);display:block;fill:var(--text-primary);"><path d="M18 2C9.16 2 2 9.16 2 18s7.16 16 16 16 16-7.16 16-16S26.84 2 18 2zm0 4c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4s-4-1.8-4-4v-4c0-2.2 1.8-4 4-4zm-8 8h2v4c0 3.31 2.69 6 6 6s6-2.69 6-6v-4h2v4c0 4.42-3.58 8-8 8s-8-3.58-8-8v-4z"/></svg>
+        <p class="auth-card__logo-text" style="font-size:var(--font-size-xl);">HIDE</p>
+      </a>
+
+      <form id="signup-form" novalidate>
+        <div class="form-group">
+          <label for="signup-name" class="form-label">Full Name</label>
+          <input type="text" id="signup-name" class="form-input" placeholder="John Doe" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="signup-email" class="form-label">Email Address</label>
+          <input type="email" id="signup-email" class="form-input" placeholder="your@email.com" required
+            autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="signup-password" class="form-label">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="signup-password" class="form-input" placeholder="Create a password" required
+              autocomplete="new-password" data-password-strength style="padding-right:44px;">
+            <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+              <i class="ph ph-eye" style="font-size:18px;"></i>
+            </button>
+          </div>
+          <div class="password-strength" style="margin-top:var(--space-2);">
+            <div class="password-strength__bar"></div>
+            <div class="password-strength__bar"></div>
+            <div class="password-strength__bar"></div>
+            <div class="password-strength__bar"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-confirm-password" class="form-label">Confirm Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="signup-confirm-password" class="form-input" placeholder="Confirm your password"
+              required autocomplete="new-password" style="padding-right:44px;">
+            <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+              <i class="ph ph-eye" style="font-size:18px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-check">
+            <input type="checkbox" id="signup-terms" required>
+            <span class="form-check-label">I agree to the <a href="#" style="color:var(--color-accent);">Terms of
+                Service</a> and <a href="#" style="color:var(--color-accent);">Privacy Policy</a></span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--full" id="signup-submit" style="min-height:44px;">Create
+          Account</button>
+      </form>
+
+      <div class="auth-divider" style="margin:var(--space-3) 0;">Or continue with</div>
+
+      <div class="auth-social">
+        <button class="auth-social__btn" id="signup-google" aria-label="Continue with Google">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg>
+          Google
+        </button>
+        <button class="auth-social__btn" id="signup-apple" aria-label="Continue with Apple">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path
+              d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+          </svg>
+          Apple
+        </button>
+        <button class="auth-social__btn" id="signup-facebook" aria-label="Continue with Facebook">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#1877F2">
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+          Facebook
+        </button>
+      </div>
+
+      <div class="auth-footer" style="margin-top:var(--space-3);">
+        Already have an account? <a href="login.html">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+
+</html>

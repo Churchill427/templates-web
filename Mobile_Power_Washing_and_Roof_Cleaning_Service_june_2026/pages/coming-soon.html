@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — WASH Power Washing</title>
+  <meta name="description" content="WASH is launching something exciting. Sign up to be the first to know when our new services go live.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <style>
+    .coming-soon-page { min-height: 100vh; display: flex; flex-direction: column; }
+    .coming-soon-main { flex: 1; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .coming-soon-bg { position: absolute; inset: 0; z-index: 0; }
+    .coming-soon-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .coming-soon-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(27,77,114,0.92) 0%, rgba(27,77,114,0.7) 50%, rgba(78,205,196,0.6) 100%); }
+    .coming-soon-content { position: relative; z-index: 1; text-align: center; color: #fff; width: 100%; }
+    .coming-soon-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: var(--space-4); }
+    .coming-soon-content p { font-size: var(--text-lg); opacity: 0.9; max-width: 560px; margin: 0 auto; }
+    .water-animation { position: absolute; bottom: 0; left: 0; width: 100%; height: 120px; z-index: 1; }
+    .water-animation svg { width: 100%; height: 100%; }
+    .wave { animation: wave 8s ease-in-out infinite; }
+    .wave2 { animation: wave 6s ease-in-out infinite reverse; }
+    @keyframes wave { 0%, 100% { transform: translateX(0) translateY(0); } 50% { transform: translateX(-20px) translateY(-8px); } }
+  </style>
+</head>
+<body class="coming-soon-page">
+  <!-- SECTION 1: MINIMAL NAVBAR -->
+  <nav style="position:absolute;top:0;left:0;right:0;z-index:10;padding:var(--space-6)">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+      <a href="index.html" class="navbar-brand" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none">
+        <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <span class="brand-name" style="color:#fff">WASH</span>
+      </a>
+      <div style="display:flex;gap:var(--space-3)">
+        <button class="theme-toggle" aria-label="Toggle dark mode" style="color:#fff"><span class="icon-sun" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span><span class="icon-moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button>
+        <button class="rtl-toggle" style="color:#fff">LTR</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="coming-soon-main" id="main-content">
+    <div class="coming-soon-bg"><img src="../assets/images/hero/hero-coming-soon.png" alt="Water splash abstract" loading="eager"></div>
+
+    <div class="coming-soon-content container">
+      <!-- SECTION 2: MAIN HEADLINE -->
+      <div style="margin-bottom:var(--space-10)">
+        <span style="display:inline-block;padding:var(--space-2) var(--space-5);background:rgba(255,255,255,0.15);border-radius:var(--radius-full);font-size:var(--text-sm);margin-bottom:var(--space-4);backdrop-filter:blur(8px)">Something Big is Coming</span>
+        <h1>Coming Soon</h1>
+        <p>We are working hard on something exciting. A brand new service experience that will make your property shine like never before.</p>
+      </div>
+
+      <!-- SECTION 3: COUNTDOWN -->
+      <div class="countdown" data-countdown="2026-09-01T00:00:00" style="justify-content:center;margin-bottom:var(--space-10)">
+        <div class="countdown-unit">
+          <span class="countdown-value" data-unit="days" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2)">00</span>
+          <span class="countdown-label" style="color:rgba(255,255,255,0.7)">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-value" data-unit="hours" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2)">00</span>
+          <span class="countdown-label" style="color:rgba(255,255,255,0.7)">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-value" data-unit="minutes" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2)">00</span>
+          <span class="countdown-label" style="color:rgba(255,255,255,0.7)">Minutes</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-value" data-unit="seconds" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2)">00</span>
+          <span class="countdown-label" style="color:rgba(255,255,255,0.7)">Seconds</span>
+        </div>
+      </div>
+
+      <!-- SECTION 4: EMAIL SIGNUP -->
+      <div style="max-width:480px;margin:0 auto var(--space-10)">
+        <h2 style="font-size:var(--text-xl);margin-bottom:var(--space-4)">Get Notified</h2>
+        <form data-validate style="display:flex;gap:var(--space-3)">
+          <input type="email" class="form-input" placeholder="Enter your email" required aria-label="Email for notification" style="flex:1;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;backdrop-filter:blur(8px)">
+          <button type="submit" class="btn btn-accent btn-lg">Notify Me</button>
+        </form>
+      </div>
+
+      <!-- SECTION 5: SOCIAL LINKS -->
+      <div style="margin-bottom:var(--space-10)">
+        <p style="font-size:var(--text-sm);opacity:0.7;margin-bottom:var(--space-4)">Follow us for updates</p>
+        <div style="display:flex;justify-content:center;gap:var(--space-4)">
+          <a href="#" style="width:44px;height:44px;border-radius:var(--radius-full);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;transition:all 0.3s;backdrop-filter:blur(8px)" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" style="width:44px;height:44px;border-radius:var(--radius-full);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;transition:all 0.3s;backdrop-filter:blur(8px)" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" style="width:44px;height:44px;border-radius:var(--radius-full);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;transition:all 0.3s;backdrop-filter:blur(8px)" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- SECTION 6: BACK TO HOME -->
+      <div>
+        <a href="index.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.4);color:#fff">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- Animated water waves -->
+    <div class="water-animation" aria-hidden="true">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path class="wave" d="M0,60 C360,120 720,0 1080,60 C1260,90 1350,75 1440,60 L1440,120 L0,120 Z" fill="rgba(255,255,255,0.08)"/>
+        <path class="wave2" d="M0,80 C240,40 480,100 720,60 C960,20 1200,80 1440,60 L1440,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/>
+      </svg>
+    </div>
+  </main>
+
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/rtl.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

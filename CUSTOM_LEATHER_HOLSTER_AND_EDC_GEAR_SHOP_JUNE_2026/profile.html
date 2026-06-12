@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HIDE Leather Works User Profile — Manage your account, gear collection, and order preferences.">
+  <title>HIDE — My Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation"><div class="navbar__inner"><a href="index.html" class="navbar__logo"><svg class="navbar__logo-icon" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><path d="M18 2C9.16 2 2 9.16 2 18s7.16 16 16 16 16-7.16 16-16S26.84 2 18 2zm0 4c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4s-4-1.8-4-4v-4c0-2.2 1.8-4 4-4zm-8 8h2v4c0 3.31 2.69 6 6 6s6-2.69 6-6v-4h2v4c0 4.42-3.58 8-8 8s-8-3.58-8-8v-4z" fill="currentColor"/></svg><span>HIDE</span></a><ul class="navbar__menu"><li class="navbar__dropdown"><a href="#" class="navbar__link navbar__dropdown-trigger">Home <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a><div class="navbar__dropdown-menu"><a href="index.html" class="navbar__dropdown-item">Home 1</a><a href="home-alt.html" class="navbar__dropdown-item">Home 2</a></div></li><li><a href="about.html" class="navbar__link">About</a></li><li><a href="services.html" class="navbar__link">Services</a></li><li><a href="products.html" class="navbar__link">Products</a></li><li><a href="portfolio.html" class="navbar__link">Gallery</a></li><li><a href="blog.html" class="navbar__link">Journal</a></li><li><a href="contact.html" class="navbar__link">Contact</a></li></ul><div class="navbar__actions"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-label">LTR</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="ph ph-sun theme-icon--light"></i><i class="ph ph-moon theme-icon--dark"></i></button><a href="login.html" class="btn btn--outline btn--sm" style="padding:var(--space-2) var(--space-4);font-size:var(--font-size-sm);border-radius:var(--radius-md);height:36px;display:inline-flex;align-items:center;white-space:nowrap;">Login</a><button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button></div></div></nav>
+  <div class="mobile-nav" id="mobile-nav"><a href="index.html" class="mobile-nav__link">Home 1</a><a href="about.html" class="mobile-nav__link">About</a><a href="services.html" class="mobile-nav__link">Services</a><a href="products.html" class="mobile-nav__link">Products</a><a href="portfolio.html" class="mobile-nav__link">Gallery</a><a href="blog.html" class="mobile-nav__link">Journal</a><a href="contact.html" class="mobile-nav__link">Contact</a>
+    <a href="user-dashboard.html" class="mobile-nav__link">User Dashboard</a>
+    <a href="admin-dashboard.html" class="mobile-nav__link">Admin Dashboard</a><div class="mobile-nav__toggles"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-label">LTR</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="ph ph-sun theme-icon--light"></i><i class="ph ph-moon theme-icon--dark"></i></button></div></div>
+
+  <!-- SECTION 1: PROFILE HEADER -->
+  <section class="section" id="profile-header" style="padding-top:calc(var(--navbar-height) + var(--space-8));">
+    <div class="container">
+      <div class="card reveal reveal--up" style="overflow:hidden;">
+        <div style="height:120px;background:linear-gradient(135deg,#8B4513 0%,#B87333 50%,#4A4A4A 100%);"></div>
+        <div class="card__body" style="padding:var(--space-6);position:relative;">
+          <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#4A4A4A,#6B6B6B);border:4px solid var(--bg-card);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:28px;position:absolute;top:-48px;left:var(--space-6);">MR</div>
+          <div style="padding-top:var(--space-8);">
+            <div class="flex-between" style="flex-wrap:wrap;gap:var(--space-4);">
+              <div>
+                <h1 style="font-size:var(--font-size-2xl);margin-bottom:var(--space-1);">Marcus Reynolds</h1>
+                <p style="color:var(--text-secondary);font-size:var(--font-size-sm);margin:0;">Member since January 2025 &middot; 12 orders &middot; Premium Customer</p>
+              </div>
+              <div class="flex gap-3">
+                <a href="user-dashboard.html" class="btn btn--outline btn--sm"><i class="ph ph-squares-four" style="font-size:16px;"></i> Dashboard</a>
+                <button class="btn btn--primary btn--sm" id="edit-profile-btn"><i class="ph ph-pencil-simple" style="font-size:16px;"></i> Edit Profile</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: PERSONAL INFORMATION -->
+  <section class="section" id="personal-info" style="padding-top:0;">
+    <div class="container">
+      <div class="grid grid--2">
+        <div class="reveal reveal--left">
+          <h2 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Personal Information</h2>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-5);">
+            <div class="grid grid--2" style="margin-bottom:var(--space-4);">
+              <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" value="Marcus Reynolds" disabled></div>
+              <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" value="marcus.reynolds@email.com" disabled></div>
+            </div>
+            <div class="grid grid--2" style="margin-bottom:var(--space-4);">
+              <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" value="+1 (555) 234-5678" disabled></div>
+              <div class="form-group"><label class="form-label">Location</label><input type="text" class="form-input" value="Denver, CO" disabled></div>
+            </div>
+            <div class="form-group"><label class="form-label">Shipping Address</label><textarea class="form-input" rows="2" disabled>1247 Pine Street, Apt 4B, Denver, CO 80203</textarea></div>
+          </div>
+        </div>
+        <div class="reveal reveal--right">
+          <h2 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Preferences</h2>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-5);">
+            <div class="form-group"><label class="form-label">Dominant Hand</label><select class="form-input" disabled><option selected>Right-Handed</option><option>Left-Handed</option></select></div>
+            <div class="form-group"><label class="form-label">Preferred Carry Position</label><select class="form-input" disabled><option selected>4 O'Clock IWB</option><option>Appendix</option><option>3 O'Clock OWB</option><option>Shoulder</option></select></div>
+            <div class="form-group"><label class="form-label">Preferred Leather</label><select class="form-input" disabled><option selected>Full Grain — Saddle Brown</option><option>Full Grain — Dark Chocolate</option><option>Vegetable Tanned — Natural</option><option>Bridle — Black</option></select></div>
+            <div class="form-group"><label class="form-label">Communication</label>
+              <div class="flex flex-col gap-2">
+                <label class="form-check"><input type="checkbox" checked disabled><span class="form-check-label">Email notifications for order updates</span></label>
+                <label class="form-check"><input type="checkbox" checked disabled><span class="form-check-label">SMS notifications for shipping</span></label>
+                <label class="form-check"><input type="checkbox" disabled><span class="form-check-label">Newsletter (product news & tips)</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: GEAR COLLECTION -->
+  <section class="section section--alt" id="gear-collection">
+    <div class="container">
+      <div class="section-header reveal reveal--up"><h2>My Gear Collection</h2><p class="subtitle">Registered gear models for quick re-ordering</p></div>
+      <div class="grid grid--4 reveal-stagger">
+        <div class="card" style="text-align:center;" id="gear-glock19"><div class="card__body" style="padding:var(--space-4);"><i class="ph ph-crosshair" style="font-size:36px;color:var(--color-accent);display:block;margin-bottom:var(--space-2);"></i><h4 style="font-size:var(--font-size-sm);">Glock 19 Gen 5</h4><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Added Jan 2025</p></div></div>
+        <div class="card" style="text-align:center;" id="gear-sigp365"><div class="card__body" style="padding:var(--space-4);"><i class="ph ph-crosshair" style="font-size:36px;color:var(--color-accent);display:block;margin-bottom:var(--space-2);"></i><h4 style="font-size:var(--font-size-sm);">Sig P365 XL</h4><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Added Mar 2025</p></div></div>
+        <div class="card" style="text-align:center;" id="gear-benchmade"><div class="card__body" style="padding:var(--space-4);"><i class="ph ph-knife" style="font-size:36px;color:var(--color-accent);display:block;margin-bottom:var(--space-2);"></i><h4 style="font-size:var(--font-size-sm);">Benchmade Bugout</h4><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Added May 2025</p></div></div>
+        <div class="card" style="text-align:center;border-style:dashed;cursor:pointer;" id="gear-add-new"><div class="card__body" style="padding:var(--space-4);"><i class="ph ph-plus-circle" style="font-size:36px;color:var(--text-tertiary);display:block;margin-bottom:var(--space-2);"></i><h4 style="font-size:var(--font-size-sm);color:var(--text-tertiary);">Add New Gear</h4></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: ORDER HISTORY -->
+  <section class="section" id="order-history">
+    <div class="container">
+      <div class="section-header reveal reveal--up"><h2>Order History</h2></div>
+      <div class="data-table-wrapper reveal reveal--up">
+        <table class="data-table" id="history-table">
+          <thead><tr><th>Order ID</th><th>Product</th><th>Leather</th><th>Status</th><th>Date</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>#HLD-1042</td><td>IWB Holster — Sig P365</td><td>Full Grain Saddle</td><td><span class="badge badge--warning"><span class="badge__dot"></span> In Production</span></td><td>Jun 10, 2026</td><td>$225</td></tr>
+            <tr><td>#HLD-1035</td><td>EDC Pouch — Benchmade</td><td>Veg Tanned Natural</td><td><span class="badge badge--success"><span class="badge__dot"></span> Delivered</span></td><td>May 15, 2026</td><td>$85</td></tr>
+            <tr><td>#HLD-1028</td><td>IWB Holster — Glock 19</td><td>Full Grain Dark</td><td><span class="badge badge--success"><span class="badge__dot"></span> Delivered</span></td><td>Apr 22, 2026</td><td>$225</td></tr>
+            <tr><td>#HLD-1019</td><td>Gun Belt — 1.5" Bridle</td><td>Bridle Black</td><td><span class="badge badge--success"><span class="badge__dot"></span> Delivered</span></td><td>Mar 8, 2026</td><td>$145</td></tr>
+            <tr><td>#HLD-0998</td><td>Mag Carrier — Double 9mm</td><td>Full Grain Saddle</td><td><span class="badge badge--success"><span class="badge__dot"></span> Delivered</span></td><td>Feb 1, 2026</td><td>$65</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: SECURITY & PASSWORD -->
+  <section class="section section--alt" id="security">
+    <div class="container" style="max-width:600px;">
+      <div class="section-header reveal reveal--up"><h2>Security & Password</h2></div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-6);" class="reveal reveal--up">
+        <div class="form-group"><label class="form-label">Current Password</label><div class="password-wrapper"><input type="password" class="form-input" placeholder="Enter current password" style="padding-right:44px;"><button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="ph ph-eye" style="font-size:18px;"></i></button></div></div>
+        <div class="form-group"><label class="form-label">New Password</label><div class="password-wrapper"><input type="password" class="form-input" placeholder="Enter new password" data-password-strength style="padding-right:44px;"><button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="ph ph-eye" style="font-size:18px;"></i></button></div><div class="password-strength" style="margin-top:var(--space-2);"><div class="password-strength__bar"></div><div class="password-strength__bar"></div><div class="password-strength__bar"></div><div class="password-strength__bar"></div></div></div>
+        <div class="form-group"><label class="form-label">Confirm New Password</label><div class="password-wrapper"><input type="password" class="form-input" placeholder="Confirm new password" style="padding-right:44px;"><button type="button" class="password-toggle" aria-label="Toggle password visibility"><i class="ph ph-eye" style="font-size:18px;"></i></button></div></div>
+        <button class="btn btn--primary btn--full" id="update-password-btn">Update Password</button>
+        <hr style="margin:var(--space-5) 0;border-color:var(--border-color-light);">
+        <h4 style="font-size:var(--font-size-base);margin-bottom:var(--space-3);">Two-Factor Authentication</h4>
+        <div class="flex-between"><p style="font-size:var(--font-size-sm);color:var(--text-secondary);margin:0;">Add an extra layer of security to your account</p><button class="btn btn--outline btn--sm">Enable 2FA</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: ACCOUNT ACTIONS -->
+  <section class="section" id="account-actions">
+    <div class="container text-center">
+      <div class="reveal reveal--up">
+        <h2 style="margin-bottom:var(--space-5);">Account Actions</h2>
+        <div class="flex-center gap-4" style="flex-wrap:wrap;">
+          <a href="user-dashboard.html" class="btn btn--primary btn--lg"><i class="ph ph-squares-four" style="font-size:18px;"></i> Go to Dashboard</a>
+          <a href="contact.html" class="btn btn--accent btn--lg"><i class="ph ph-headset" style="font-size:18px;"></i> Contact Support</a>
+          <button class="btn btn--outline btn--lg" style="color:var(--color-error);border-color:var(--color-error);" id="delete-account-btn"><i class="ph ph-trash" style="font-size:18px;"></i> Delete Account</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo"><div class="container"><div class="footer__top"><a href="index.html" class="footer__logo" aria-label="HIDE — Home">
+          <svg class="footer__logo-icon" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 2C9.16 2 2 9.16 2 18s7.16 16 16 16 16-7.16 16-16S26.84 2 18 2zm0 4c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4s-4-1.8-4-4v-4c0-2.2 1.8-4 4-4zm-8 8h2v4c0 3.31 2.69 6 6 6s6-2.69 6-6v-4h2v4c0 4.42-3.58 8-8 8s-8-3.58-8-8v-4z"/>
+          </svg>
+          <span>HIDE</span>
+        </a></div><div class="footer__grid"><div><h4 class="footer__col-title">Navigation</h4><a href="index.html" class="footer__link">Home 1</a><a href="about.html" class="footer__link">About Us</a><a href="services.html" class="footer__link">Services</a><a href="products.html" class="footer__link">Products</a><a href="portfolio.html" class="footer__link">Gallery</a><a href="blog.html" class="footer__link">Journal</a><a href="contact.html" class="footer__link">Contact</a></div><div><h4 class="footer__col-title">Services</h4><a href="services.html" class="footer__link">Custom Holsters</a><a href="services.html" class="footer__link">EDC Pouches</a><a href="services.html" class="footer__link">Belt Accessories</a><a href="services.html" class="footer__link">Leather Restoration</a><a href="services.html" class="footer__link">Care & Conditioning</a><a href="services.html" class="footer__link">Corporate Orders</a></div><div><h4 class="footer__col-title">Contact</h4><div class="footer__contact-item"><i class="ph ph-map-pin"></i><span>247 Heritage Lane, Bozeman, MT 59715</span></div><div class="footer__contact-item"><i class="ph ph-phone"></i><span>+1 (406) 555-0174</span></div><div class="footer__contact-item"><i class="ph ph-envelope"></i><span>craft@hideleather.com</span></div><div class="footer__contact-item"><i class="ph ph-clock"></i><span>Mon — Fri: 8:00 AM — 6:00 PM MST</span></div><div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 20px; height: 20px; display: block;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 20px; height: 20px; display: block;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 20px; height: 20px; display: block;"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width: 20px; height: 20px; display: block;"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+          </div></div></div><hr class="footer__divider"><p class="footer__bottom">&copy; 2026 HIDE Leather Works. All rights reserved. Handcrafted in Bozeman, Montana.</p></div></footer>
+  <button id="back-to-top" class="btn btn--icon btn--accent" aria-label="Back to top" style="position:fixed;bottom:var(--space-6);right:var(--space-6);z-index:var(--z-toast);opacity:0;visibility:hidden;transition:opacity var(--transition-base),visibility var(--transition-base),transform var(--transition-base);border-radius:var(--radius-full);width:48px;height:48px;box-shadow:var(--shadow-lg);"><i class="ph ph-caret-up" style="font-size:20px;"></i></button>
+  <style>#back-to-top.visible{opacity:1;visibility:visible;}#back-to-top:hover{transform:translateY(-3px);}</style>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

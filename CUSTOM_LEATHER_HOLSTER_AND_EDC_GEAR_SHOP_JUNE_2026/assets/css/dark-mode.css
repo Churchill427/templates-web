@@ -1,0 +1,167 @@
+/* ============================================================
+   HIDE LEATHER WORKS — Dark Mode Overrides
+   Applied via [data-theme="dark"] on <html> element
+   ============================================================ */
+
+[data-theme="dark"] {
+  /* — Backgrounds — */
+  --bg-primary: #1A1A1A;
+  --bg-secondary: #222222;
+  --bg-tertiary: #2A2A2A;
+  --bg-card: #252525;
+  --bg-card-hover: #2E2E2E;
+  --bg-overlay: rgba(0, 0, 0, 0.75);
+  --bg-navbar: rgba(26, 26, 26, 0.92);
+  --bg-footer: #111111;
+
+  /* — Text — */
+  --text-primary: #E8E0D5;
+  --text-secondary: #A89F91;
+  --text-tertiary: #7A7268;
+  --text-inverse: #1A1A1A;
+  --text-accent: #CC8844;
+  --text-link: #CC8844;
+  --text-link-hover: #E0A060;
+
+  /* — Borders — */
+  --border-color: #3A3A3A;
+  --border-color-light: #2F2F2F;
+  --border-color-focus: #CC8844;
+
+  /* — Colors adjusted for dark — */
+  --color-primary: #A0622D;
+  --color-primary-light: #B87333;
+  --color-primary-dark: #8B5520;
+  --color-accent: #CC8844;
+  --color-accent-light: #DDA060;
+  --color-accent-dark: #AA7030;
+
+  /* — Status (adjusted for dark bg) — */
+  --color-success-light: rgba(46, 125, 50, 0.15);
+  --color-warning-light: rgba(255, 143, 0, 0.15);
+  --color-error-light: rgba(198, 40, 40, 0.15);
+  --color-info-light: rgba(21, 101, 192, 0.15);
+
+  /* — Shadows (darker, subtler) — */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.35);
+  --shadow-copper-glow: 0 4px 20px rgba(204, 136, 68, 0.3);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Dark mode scrollbar --- */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #3A3A3A;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #4A4A4A;
+}
+
+/* --- Dark mode selection --- */
+[data-theme="dark"] ::selection {
+  background-color: var(--color-accent);
+  color: #1A1A1A;
+}
+
+/* --- Dark hero adjustments --- */
+[data-theme="dark"] .hero__bg::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.4) 0%,
+    rgba(10, 10, 10, 0.65) 60%,
+    rgba(10, 10, 10, 0.9) 100%
+  );
+}
+
+/* --- Dark footer --- */
+[data-theme="dark"] .footer {
+  background: #0E0E0E;
+  border-top: 1px solid #2A2A2A;
+}
+
+/* --- Dark auth page subtle bg --- */
+[data-theme="dark"] .auth-page {
+  background: radial-gradient(ellipse at center, #222222 0%, #1A1A1A 70%);
+}
+
+/* --- Dark stat card icon backgrounds --- */
+[data-theme="dark"] .stat-card__icon--primary { background: rgba(160, 98, 45, 0.15); }
+[data-theme="dark"] .stat-card__icon--accent { background: rgba(204, 136, 68, 0.15); }
+[data-theme="dark"] .stat-card__icon--success { background: rgba(46, 125, 50, 0.15); }
+[data-theme="dark"] .stat-card__icon--warning { background: rgba(255, 143, 0, 0.15); }
+
+/* --- Dark kanban --- */
+[data-theme="dark"] .kanban__column {
+  background: #1E1E1E;
+}
+
+/* --- Dark skeleton --- */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    #2A2A2A 25%,
+    #333333 50%,
+    #2A2A2A 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* --- Dark form select arrow --- */
+[data-theme="dark"] select.form-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23A89F91' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* --- Dark upload zone --- */
+[data-theme="dark"] .upload-zone:hover,
+[data-theme="dark"] .upload-zone.dragover {
+  background: rgba(204, 136, 68, 0.06);
+}
+
+/* --- Dark data table --- */
+[data-theme="dark"] .data-table th {
+  background: #1E1E1E;
+}
+
+/* --- Dark comparison slider --- */
+[data-theme="dark"] .comparison-slider__handle::before {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- Dark accordion --- */
+[data-theme="dark"] .accordion__trigger:hover {
+  background: #2A2A2A;
+}
+
+/* --- Dark social login buttons --- */
+[data-theme="dark"] .auth-social__btn {
+  background: #2A2A2A;
+  border-color: #3A3A3A;
+}
+
+[data-theme="dark"] .auth-social__btn:hover {
+  background: #333333;
+  border-color: #4A4A4A;
+}
+
+/* --- Dark chat bubbles --- */
+[data-theme="dark"] .chat__bubble--received {
+  background: #2A2A2A;
+}
+
+/* --- Theme toggle icon swap --- */
+[data-theme="dark"] .theme-icon--light { display: none; }
+[data-theme="dark"] .theme-icon--dark { display: block; }
+.theme-icon--dark { display: none; }
+.theme-icon--light { display: block; }

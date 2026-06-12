@@ -1,0 +1,328 @@
+/* ============================================================
+   HIDE LEATHER WORKS — RTL Layout Overrides
+   Applied via dir="rtl" on <html> element
+   ============================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* --- Typography --- */
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+/* --- Navbar --- */
+[dir="rtl"] .navbar__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__menu {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__link.active::after {
+  left: var(--space-3);
+  right: var(--space-3);
+}
+
+[dir="rtl"] .navbar__dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .navbar__hamburger {
+  order: -1;
+}
+
+/* --- Mobile Nav --- */
+[dir="rtl"] .mobile-nav {
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .mobile-nav.open {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-nav__link {
+  text-align: right;
+}
+
+/* --- Hero --- */
+[dir="rtl"] .hero__content {
+  text-align: center;
+}
+
+/* --- Footer --- */
+[dir="rtl"] .footer__link:hover {
+  padding-left: 0;
+  padding-right: var(--space-2);
+}
+
+[dir="rtl"] .footer__contact-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* --- Grid aligned sections (text + image) --- */
+[dir="rtl"] .grid--2.grid--align-center {
+  direction: rtl;
+}
+
+/* --- Cards --- */
+[dir="rtl"] .card__body {
+  text-align: right;
+}
+
+[dir="rtl"] .card__footer {
+  flex-direction: row-reverse;
+}
+
+/* --- Forms --- */
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-input {
+  text-align: right;
+}
+
+[dir="rtl"] select.form-input {
+  background-position: left var(--space-3) center;
+  padding-left: var(--space-8);
+  padding-right: var(--space-4);
+}
+
+[dir="rtl"] .password-toggle {
+  right: auto;
+  left: var(--space-3);
+}
+
+[dir="rtl"] .form-success-icon {
+  right: auto;
+  left: var(--space-3);
+}
+
+[dir="rtl"] .form-check {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .form-error {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* --- Accordion --- */
+[dir="rtl"] .accordion__trigger {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .accordion__body {
+  text-align: right;
+}
+
+/* --- Timeline --- */
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+[dir="rtl"] .timeline__dot {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+[dir="rtl"] .timeline__item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .timeline__item:nth-child(even) {
+  flex-direction: row;
+}
+
+[dir="rtl"] .timeline__content {
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  [dir="rtl"] .timeline::before {
+    left: auto;
+    right: 20px;
+  }
+
+  [dir="rtl"] .timeline__item,
+  [dir="rtl"] .timeline__item:nth-child(even) {
+    flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 50px;
+  }
+
+  [dir="rtl"] .timeline__dot {
+    left: auto;
+    right: 20px;
+  }
+}
+
+/* --- Testimonials --- */
+[dir="rtl"] .testimonial-card__author {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .testimonial-card__text {
+  text-align: right;
+}
+
+/* --- Pricing --- */
+[dir="rtl"] .pricing-card__features {
+  text-align: right;
+}
+
+[dir="rtl"] .pricing-card__feature {
+  flex-direction: row-reverse;
+}
+
+/* --- Stats --- */
+[dir="rtl"] .stat-card {
+  text-align: right;
+}
+
+[dir="rtl"] .stat-card__change {
+  flex-direction: row-reverse;
+}
+
+/* --- Data Table --- */
+[dir="rtl"] .data-table th,
+[dir="rtl"] .data-table td {
+  text-align: right;
+}
+
+/* --- Dashboard Sidebar --- */
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--border-color-light);
+}
+
+[dir="rtl"] .dashboard-main {
+  margin-left: 0;
+  margin-right: 260px;
+}
+
+[dir="rtl"] .sidebar.collapsed ~ .dashboard-main {
+  margin-left: 0;
+  margin-right: 80px;
+}
+
+@media (max-width: 1024px) {
+  [dir="rtl"] .dashboard-main {
+    margin-right: 0;
+  }
+}
+
+/* --- Dashboard Header --- */
+[dir="rtl"] .dashboard-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dashboard-header__actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dashboard-header__search {
+  flex-direction: row-reverse;
+}
+
+/* --- Sidebar Links --- */
+[dir="rtl"] .sidebar__link {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .sidebar__header {
+  flex-direction: row-reverse;
+}
+
+/* --- Badges --- */
+[dir="rtl"] .badge {
+  flex-direction: row-reverse;
+}
+
+/* --- Notification List --- */
+[dir="rtl"] .notif-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* --- Chat --- */
+[dir="rtl"] .chat__bubble--sent {
+  align-self: flex-start;
+  border-bottom-right-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-sm);
+}
+
+[dir="rtl"] .chat__bubble--received {
+  align-self: flex-end;
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+[dir="rtl"] .chat__header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .chat__input {
+  flex-direction: row-reverse;
+}
+
+/* --- Kanban --- */
+[dir="rtl"] .kanban__column-header {
+  flex-direction: row-reverse;
+}
+
+/* --- Auth --- */
+[dir="rtl"] .auth-page__toggles {
+  right: auto;
+  left: var(--space-4);
+}
+
+[dir="rtl"] .auth-card__logo {
+  text-align: center;
+}
+
+/* --- Filter Bar --- */
+[dir="rtl"] .filter-bar {
+  flex-direction: row-reverse;
+}
+
+/* --- Tag Cloud --- */
+[dir="rtl"] .tag-cloud {
+  flex-direction: row-reverse;
+}
+
+/* --- Upload Zone --- */
+[dir="rtl"] .upload-zone {
+  text-align: center;
+}
+
+/* --- Progress Bar --- */
+[dir="rtl"] .progress-bar__fill {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* --- Comparison Slider — no flip needed --- */
+
+/* --- Section headers always centered --- */
+[dir="rtl"] .section-header {
+  text-align: center;
+}
+
+/* --- Social links --- */
+[dir="rtl"] .footer__social {
+  flex-direction: row-reverse;
+}

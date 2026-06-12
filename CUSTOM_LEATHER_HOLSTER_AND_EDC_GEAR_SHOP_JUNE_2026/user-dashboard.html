@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HIDE Leather Works User Dashboard — Track your orders, upload gear dimensions, approve designs, and message your craftsman.">
+  <title>HIDE — My Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+  <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body id="user-dashboard">
+
+  <div class="dashboard-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="user-sidebar">
+      <div class="sidebar__header">
+        <a href="index.html" class="sidebar__logo">
+          <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><path d="M18 2C9.16 2 2 9.16 2 18s7.16 16 16 16 16-7.16 16-16S26.84 2 18 2zm0 4c2.2 0 4 1.8 4 4v4c0 2.2-1.8 4-4 4s-4-1.8-4-4v-4c0-2.2 1.8-4 4-4zm-8 8h2v4c0 3.31 2.69 6 6 6s6-2.69 6-6v-4h2v4c0 4.42-3.58 8-8 8s-8-3.58-8-8v-4z" fill="currentColor"/></svg>
+          <span class="sidebar__logo-text">HIDE</span>
+        </a>
+        <button class="sidebar__toggle" aria-label="Toggle sidebar"><i class="ph ph-list"></i></button>
+      </div>
+      <nav class="sidebar__nav">
+        <a href="#" class="sidebar__link active"><i class="ph ph-squares-four"></i><span class="sidebar__link-text">My Orders</span></a>
+        <a href="#" class="sidebar__link"><i class="ph ph-upload-simple"></i><span class="sidebar__link-text">Upload Gear</span></a>
+        <a href="#" class="sidebar__link"><i class="ph ph-paint-brush"></i><span class="sidebar__link-text">Design Studio</span></a>
+        <a href="#" class="sidebar__link"><i class="ph ph-chat-circle-text"></i><span class="sidebar__link-text">Messages</span></a>
+        <a href="profile.html" class="sidebar__link"><i class="ph ph-user-circle"></i><span class="sidebar__link-text">Profile</span></a>
+        <a href="#" class="sidebar__link"><i class="ph ph-gear-six"></i><span class="sidebar__link-text">Settings</span></a>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="login.html" class="sidebar__link"><i class="ph ph-sign-out"></i><span class="sidebar__link-text">Logout</span></a>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <button id="sidebar-mobile-toggle" class="navbar__hamburger" style="display:none;" aria-label="Toggle sidebar"><i class="ph ph-list" style="font-size:22px;"></i></button>
+        <div class="dashboard-header__search"><i class="ph ph-magnifying-glass"></i><input type="text" placeholder="Search orders, designs..." aria-label="Search"></div>
+        <div class="dashboard-header__actions">
+          <button class="navbar__toggle-btn" data-toggle-rtl style="font-size:var(--font-size-xs);"><span class="rtl-label">LTR</span></button>
+          <button class="navbar__toggle-btn" data-toggle-theme><i class="ph ph-sun theme-icon--light" style="font-size:14px;"></i><i class="ph ph-moon theme-icon--dark" style="font-size:14px;"></i></button>
+          <div class="dashboard-header__profile">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4A4A4A,#6B6B6B);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;">MR</div>
+            <span style="font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);display:none;" class="profile-name">Marcus Reynolds</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+        <!-- SECTION 1: ORDER STATUS OVERVIEW -->
+        <section id="user-overview" style="margin-bottom:var(--space-6);">
+          <h2 style="font-size:var(--font-size-xl);margin-bottom:var(--space-5);">Welcome back, Marcus</h2>
+          <div class="grid grid--4" style="margin-bottom:var(--space-6);">
+            <div class="stat-card"><div class="stat-card__icon stat-card__icon--warning"><i class="ph ph-hourglass-medium"></i></div><p class="stat-card__value">2</p><p class="stat-card__label">Active Orders</p></div>
+            <div class="stat-card"><div class="stat-card__icon stat-card__icon--success"><i class="ph ph-check-circle"></i></div><p class="stat-card__value">10</p><p class="stat-card__label">Completed Orders</p></div>
+            <div class="stat-card"><div class="stat-card__icon stat-card__icon--accent"><i class="ph ph-pencil-simple"></i></div><p class="stat-card__value">1</p><p class="stat-card__label">Sketches Pending</p></div>
+            <div class="stat-card"><div class="stat-card__icon stat-card__icon--primary"><i class="ph ph-chat-circle-text"></i></div><p class="stat-card__value">3</p><p class="stat-card__label">Unread Messages</p></div>
+          </div>
+          <div class="chart-container">
+            <div class="chart-container__header"><h3 class="chart-container__title">Order History</h3><span class="badge badge--neutral">12 Months</span></div>
+            <div style="height:260px;"><canvas id="chart-order-history"></canvas></div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: UPLOAD GEAR DIMENSIONS -->
+        <section id="user-upload" style="margin-bottom:var(--space-6);">
+          <div class="grid grid--2">
+            <div>
+              <h3 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Upload Gear Dimensions</h3>
+              <div style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-5);">
+                <div class="form-group">
+                  <label for="gear-type" class="form-label">Gear Type</label>
+                  <select id="gear-type" class="form-input">
+                    <option value="" disabled selected>Select gear type</option>
+                    <option>Handgun — Glock 19</option><option>Handgun — Sig P365</option><option>Handgun — S&W M&P Shield</option>
+                    <option>Knife — Benchmade Bugout</option><option>Knife — Spyderco Para</option>
+                    <option>Flashlight — SureFire Stiletto</option><option>Flashlight — Olight Baton</option>
+                    <option>Multi-Tool — Leatherman Wave</option><option>Other (specify in notes)</option>
+                  </select>
+                </div>
+                <div class="grid grid--2">
+                  <div class="form-group"><label class="form-label">Length (inches)</label><input type="number" class="form-input" placeholder="0.0" step="0.1"></div>
+                  <div class="form-group"><label class="form-label">Width (inches)</label><input type="number" class="form-input" placeholder="0.0" step="0.1"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Photos / Diagrams</label>
+                  <div class="upload-zone" data-max-size="5" data-allowed-types="image/jpeg,image/png,image/webp,application/pdf">
+                    <input type="file" accept="image/*,.pdf" style="display:none;">
+                    <div class="upload-zone__icon"><i class="ph ph-camera" style="font-size:36px;color:var(--text-tertiary);"></i></div>
+                    <p class="upload-zone__text"><span>Upload gear photos</span> or drag here</p>
+                    <p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:var(--space-1) 0 0;">Max 5MB per file</p>
+                  </div>
+                </div>
+                <div class="form-group"><label class="form-label">Notes</label><textarea class="form-input" placeholder="Any special requirements, preferred carry position, etc." rows="3"></textarea></div>
+                <button class="btn btn--accent btn--full">Submit Dimensions</button>
+              </div>
+            </div>
+            <div>
+              <h3 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Gear Types Ordered</h3>
+              <div class="chart-container"><div style="height:300px;"><canvas id="chart-gear-types"></canvas></div></div>
+              <div style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-5);margin-top:var(--space-4);">
+                <h4 style="font-size:var(--font-size-base);margin-bottom:var(--space-3);display:flex;align-items:center;gap:var(--space-2);"><i class="ph ph-info" style="color:var(--color-accent);font-size:20px;"></i> Measurement Guidelines</h4>
+                <p style="font-size:var(--font-size-xs);color:var(--text-secondary);margin-bottom:var(--space-3);">To ensure a perfect custom fit, please follow these guidelines when measuring and photographing your gear:</p>
+                <ul style="font-size:var(--font-size-xs);color:var(--text-secondary);padding-left:var(--space-4);margin-bottom:var(--space-3);display:flex;flex-direction:column;gap:var(--space-2);">
+                  <li><strong>Use Precise Tools:</strong> Where possible, use a digital caliper or a clear ruler for measurements.</li>
+                  <li><strong>Clear Photos:</strong> Take photos on a flat, neutral background with a ruler or coin in the frame for scale.</li>
+                  <li><strong>Multiple Angles:</strong> Upload at least one side profile and one top-down view of the gear.</li>
+                  <li><strong>Specify Attachments:</strong> Mention any aftermarket sights, lights, or optics in the notes section.</li>
+                </ul>
+                <div style="background:rgba(184, 115, 51, 0.08);border-left:3px solid var(--color-accent);padding:var(--space-3);border-radius:var(--radius-sm);">
+                  <p style="font-size:var(--font-size-xs);color:var(--color-accent-dark);font-weight:var(--font-weight-medium);margin:0;">Need assistance? Send a message to our craftsman in the chat section below.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: DESIGN SKETCH APPROVAL -->
+        <section id="user-sketch" style="margin-bottom:var(--space-6);">
+          <h3 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Design Sketch Approval</h3>
+          <div class="grid grid--2">
+            <!-- Sketch Viewer -->
+            <div>
+              <div id="sketch-viewer" style="background:var(--bg-secondary);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);aspect-ratio:4/3;overflow:hidden;cursor:grab;display:flex;align-items:center;justify-content:center;">
+                <div style="text-align:center;padding:var(--space-6);">
+                  <i class="ph ph-paint-brush" style="font-size:64px;color:var(--text-tertiary);display:block;margin-bottom:var(--space-3);"></i>
+                  <p style="font-size:var(--font-size-base);font-weight:var(--font-weight-semibold);color:var(--text-primary);margin-bottom:var(--space-2);">IWB Holster — Sig P365</p>
+                  <p style="font-size:var(--font-size-sm);color:var(--text-tertiary);">Design sketch preview area</p>
+                  <p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin-top:var(--space-2);">Scroll to zoom &middot; Drag to pan</p>
+                </div>
+              </div>
+            </div>
+            <!-- Approval Controls -->
+            <div>
+              <div style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-5);">
+                <h4 style="margin-bottom:var(--space-3);">Order #HLD-1042</h4>
+                <p style="font-size:var(--font-size-sm);color:var(--text-secondary);margin-bottom:var(--space-4);">IWB Holster for Sig P365 — Full grain saddle brown, right-hand draw, 10-degree cant.</p>
+                <div class="flex gap-3" style="margin-bottom:var(--space-5);">
+                  <button class="btn btn--primary btn--full" id="approve-sketch"><i class="ph ph-check-circle" style="font-size:18px;"></i> Approve Design</button>
+                  <button class="btn btn--outline btn--full" id="request-changes"><i class="ph ph-pencil-simple" style="font-size:18px;"></i> Request Changes</button>
+                </div>
+                <div class="form-group"><label class="form-label">Feedback / Comments</label><textarea class="form-input" placeholder="Add any specific feedback about the design..." rows="4"></textarea></div>
+                <button class="btn btn--accent btn--sm">Submit Feedback</button>
+              </div>
+              <div class="chart-container" style="margin-top:var(--space-4);">
+                <div class="chart-container__header"><h4 class="chart-container__title" style="font-size:var(--font-size-sm);">Sketch Approval Status</h4></div>
+                <div style="height:180px;"><canvas id="chart-sketch-status"></canvas></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: PRODUCTION TRACKING -->
+        <section id="user-production" style="margin-bottom:var(--space-6);">
+          <h3 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Production Tracking</h3>
+          <div class="grid grid--2">
+            <!-- Vertical Timeline -->
+            <div style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-5);">
+              <h4 style="margin-bottom:var(--space-4);">Order #HLD-1042 Progress</h4>
+              <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+                <div class="flex gap-3" style="align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:var(--color-success);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ph-fill ph-check" style="color:#fff;font-size:12px;"></i></div><div><p style="font-weight:var(--font-weight-semibold);font-size:var(--font-size-sm);margin-bottom:2px;">Order Placed</p><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">June 10, 2026</p></div></div>
+                <div class="flex gap-3" style="align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:var(--color-success);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ph-fill ph-check" style="color:#fff;font-size:12px;"></i></div><div><p style="font-weight:var(--font-weight-semibold);font-size:var(--font-size-sm);margin-bottom:2px;">Sketch Sent</p><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">June 11, 2026</p></div></div>
+                <div class="flex gap-3" style="align-items:flex-start;"><div style="width:24px;height:24px;border-radius:50%;background:var(--color-warning);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ph ph-hourglass-medium" style="color:#fff;font-size:12px;"></i></div><div><p style="font-weight:var(--font-weight-semibold);font-size:var(--font-size-sm);margin-bottom:2px;color:var(--color-warning);">Awaiting Approval</p><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Pending your review</p></div></div>
+                <div class="flex gap-3" style="align-items:flex-start;opacity:0.4;"><div style="width:24px;height:24px;border-radius:50%;background:var(--border-color);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:10px;color:var(--text-tertiary);">4</span></div><div><p style="font-weight:var(--font-weight-semibold);font-size:var(--font-size-sm);margin-bottom:2px;">Production</p><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Est. June 14 — 25</p></div></div>
+                <div class="flex gap-3" style="align-items:flex-start;opacity:0.4;"><div style="width:24px;height:24px;border-radius:50%;background:var(--border-color);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:10px;color:var(--text-tertiary);">5</span></div><div><p style="font-weight:var(--font-weight-semibold);font-size:var(--font-size-sm);margin-bottom:2px;">Quality Check</p><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Est. June 26</p></div></div>
+                <div class="flex gap-3" style="align-items:flex-start;opacity:0.4;"><div style="width:24px;height:24px;border-radius:50%;background:var(--border-color);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:10px;color:var(--text-tertiary);">6</span></div><div><p style="font-weight:var(--font-weight-semibold);font-size:var(--font-size-sm);margin-bottom:2px;">Shipped</p><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Est. June 28</p></div></div>
+              </div>
+            </div>
+            <div class="chart-container" style="height:100%; display:flex; flex-direction:column;">
+              <div class="chart-container__header"><h4 class="chart-container__title">Production Progress</h4></div>
+              <div style="flex:1; min-height:260px;"><canvas id="chart-production-progress"></canvas></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: MATERIAL SELECTION -->
+        <section id="user-materials" style="margin-bottom:var(--space-6);">
+          <h3 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Material Selection</h3>
+          <div class="grid grid--2">
+            <div>
+              <h4 style="font-size:var(--font-size-base);margin-bottom:var(--space-3);">Leather Type</h4>
+              <div class="swatch-grid" style="grid-template-columns:repeat(3,1fr);">
+                <div class="swatch selected" data-material-select="leather" data-material-color="#8B5A2B" data-material-name="Full Grain"><div class="swatch__preview" style="background:#8B5A2B;height:60px;"></div><div class="swatch__info"><p class="swatch__name" style="font-size:var(--font-size-xs);">Full Grain</p></div></div>
+                <div class="swatch" data-material-select="leather" data-material-color="#D2691E" data-material-name="Top Grain"><div class="swatch__preview" style="background:#D2691E;height:60px;"></div><div class="swatch__info"><p class="swatch__name" style="font-size:var(--font-size-xs);">Top Grain</p></div></div>
+                <div class="swatch" data-material-select="leather" data-material-color="#4A3728" data-material-name="Bridle"><div class="swatch__preview" style="background:#4A3728;height:60px;"></div><div class="swatch__info"><p class="swatch__name" style="font-size:var(--font-size-xs);">Bridle</p></div></div>
+              </div>
+              <h4 style="font-size:var(--font-size-base);margin-top:var(--space-5);margin-bottom:var(--space-3);">Thread Color</h4>
+              <div class="swatch-grid" style="grid-template-columns:repeat(4,1fr);">
+                <div class="swatch selected" data-material-select="thread" data-material-color="#DEB887" data-material-name="Natural"><div class="swatch__preview" style="background:#DEB887;height:40px;"></div><div class="swatch__info"><p class="swatch__name" style="font-size:var(--font-size-xs);">Natural</p></div></div>
+                <div class="swatch" data-material-select="thread" data-material-color="#1A1A1A" data-material-name="Black"><div class="swatch__preview" style="background:#1A1A1A;height:40px;"></div><div class="swatch__info"><p class="swatch__name" style="font-size:var(--font-size-xs);">Black</p></div></div>
+                <div class="swatch" data-material-select="thread" data-material-color="#8B0000" data-material-name="Oxblood"><div class="swatch__preview" style="background:#8B0000;height:40px;"></div><div class="swatch__info"><p class="swatch__name" style="font-size:var(--font-size-xs);">Oxblood</p></div></div>
+                <div class="swatch" data-material-select="thread" data-material-color="#B87333" data-material-name="Copper"><div class="swatch__preview" style="background:#B87333;height:40px;"></div><div class="swatch__info"><p class="swatch__name" style="font-size:var(--font-size-xs);">Copper</p></div></div>
+              </div>
+            </div>
+            <!-- Material Preview -->
+            <div>
+              <h4 style="font-size:var(--font-size-base);margin-bottom:var(--space-3);">Combination Preview</h4>
+              <div id="material-preview" style="background:var(--bg-card);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center;">
+                <div style="width:200px;height:200px;margin:0 auto var(--space-4);border-radius:var(--radius-lg);position:relative;overflow:hidden;">
+                  <div data-preview="leather" style="background:#8B5A2B;width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+                    <div style="width:80%;height:2px;position:relative;" data-preview="thread"><div style="background:#DEB887;height:2px;width:100%;border-radius:1px;"></div><p class="preview-label" style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-size:var(--font-size-xs);color:rgba(255,255,255,0.8);white-space:nowrap;margin:0;">Natural Thread</p></div>
+                  </div>
+                </div>
+                <p style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);margin-bottom:var(--space-1);">Full Grain + Natural Thread</p>
+                <p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Click materials above to preview combinations</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 6: MESSAGES & SUPPORT -->
+        <section id="user-messages">
+          <h3 style="font-size:var(--font-size-lg);margin-bottom:var(--space-4);">Messages & Support</h3>
+          <div class="chat">
+            <div class="chat__header">
+              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#8B4513,#B87333);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;">DW</div>
+              <div><p style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);margin:0;">Duane Whitehorse</p><p style="font-size:var(--font-size-xs);color:var(--text-tertiary);margin:0;">Lead Holster Craftsman</p></div>
+              <span class="badge badge--success" style="margin-left:auto;"><span class="badge__dot"></span> Online</span>
+            </div>
+            <div class="chat__messages" id="chat-messages">
+              <div><div class="chat__bubble chat__bubble--received">Hey Marcus, I've uploaded the initial design sketch for your Sig P365 IWB holster. Take a look in the Design Studio section and let me know what you think.</div><p class="chat__bubble-time">10:15 AM</p></div>
+              <div><div class="chat__bubble chat__bubble--sent">Thanks Duane! I'll check it out now. Quick question — can we do a slightly deeper sweat guard on this one?</div><p class="chat__bubble-time" style="text-align:right;">10:22 AM</p></div>
+              <div><div class="chat__bubble chat__bubble--received">Absolutely, I can extend the sweat guard by about 1/4 inch. That'll give you better coverage without affecting comfort. I'll update the sketch and resend.</div><p class="chat__bubble-time">10:28 AM</p></div>
+            </div>
+            <form class="chat__input" id="chat-form">
+              <input type="text" class="form-input" id="chat-input" placeholder="Type a message..." style="min-height:40px;">
+              <button type="submit" class="btn btn--accent btn--sm"><i class="ph ph-paper-plane-tilt"></i></button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <style>
+    @media (max-width: 1024px) { #sidebar-mobile-toggle { display: flex !important; } .profile-name { display: none !important; } }
+    @media (min-width: 1025px) { .profile-name { display: inline !important; } }
+  </style>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

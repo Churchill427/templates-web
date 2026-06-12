@@ -1,0 +1,253 @@
+/* ============================================
+   WASH — RTL Layout Overrides
+   ============================================ */
+
+/* --- Global RTL direction --- */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* --- Logical property overrides for margin/padding --- */
+[dir="rtl"] .nav-dropdown-menu {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%) translateY(8px);
+}
+
+[dir="rtl"] .nav-dropdown.open .nav-dropdown-menu {
+  transform: translateX(50%) translateY(0);
+}
+
+/* --- Mobile Menu RTL --- */
+[dir="rtl"] .mobile-menu {
+  right: auto;
+  left: -100%;
+}
+
+[dir="rtl"] .mobile-menu.active {
+  left: 0;
+}
+
+
+/* --- Hero --- */
+[dir="rtl"] .hero-content {
+  text-align: center;
+}
+
+/* --- Card layouts --- */
+[dir="rtl"] .card {
+  text-align: right;
+}
+
+[dir="rtl"] .feature-card {
+  text-align: center;
+}
+
+/* --- Footer RTL --- */
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-links a:hover {
+  padding-inline-start: var(--space-2);
+  padding-inline-end: 0;
+}
+
+[dir="rtl"] .footer-social {
+  flex-direction: row-reverse;
+}
+
+/* --- Form alignment --- */
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-input,
+[dir="rtl"] .form-select,
+[dir="rtl"] .form-textarea {
+  text-align: right;
+}
+
+[dir="rtl"] .form-error {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .form-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .form-checkbox {
+  flex-direction: row-reverse;
+}
+
+/* --- Search bar --- */
+[dir="rtl"] .search-bar .form-input {
+  padding-inline-start: var(--space-12);
+  padding-inline-end: var(--space-4);
+}
+
+[dir="rtl"] .search-bar .search-icon {
+  left: auto;
+  right: var(--space-4);
+}
+
+/* --- Accordion --- */
+[dir="rtl"] .accordion-trigger {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .accordion-content-inner {
+  text-align: right;
+}
+
+/* --- Timeline --- */
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+[dir="rtl"] .timeline-item {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+/* --- Tables --- */
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+  text-align: right;
+}
+
+/* --- Testimonial --- */
+[dir="rtl"] .testimonial-card .author {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .testimonial-card .author-info {
+  text-align: right;
+}
+
+[dir="rtl"] .testimonial-card .stars {
+  flex-direction: row-reverse;
+}
+
+/* --- Contact info --- */
+[dir="rtl"] .footer-contact li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* --- Booking steps --- */
+[dir="rtl"] .booking-steps {
+  flex-direction: row-reverse;
+}
+
+/* --- Btn Group --- */
+[dir="rtl"] .btn-group {
+  flex-direction: row-reverse;
+}
+
+/* --- Before/After labels --- */
+[dir="rtl"] .ba-label.before {
+  left: auto;
+  right: var(--space-4);
+}
+
+[dir="rtl"] .ba-label.after {
+  right: auto;
+  left: var(--space-4);
+}
+
+/* --- Section header --- */
+[dir="rtl"] .section-header {
+  text-align: center;
+}
+
+/* --- Auth page --- */
+[dir="rtl"] .auth-card {
+  text-align: right;
+}
+
+[dir="rtl"] .auth-card .auth-header {
+  text-align: center;
+}
+
+/* --- Tag cloud keeps center alignment --- */
+[dir="rtl"] .tag-cloud {
+  justify-content: center;
+}
+
+/* --- Newsletter form --- */
+[dir="rtl"] .footer-newsletter .newsletter-form {
+  flex-direction: row-reverse;
+}
+
+/* --- Pagination --- */
+[dir="rtl"] .pagination {
+  flex-direction: row-reverse;
+}
+
+/* --- Social login button --- */
+/* Mirrored naturally using logical properties */
+
+/* --- Dashboard Sidebar RTL (handled separately in dashboard styles) --- */
+[dir="rtl"] .dashboard-layout .sidebar {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .dashboard-layout .dashboard-main {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+}
+
+[dir="rtl"] .dashboard-layout.collapsed .dashboard-main {
+  margin-right: var(--sidebar-collapsed);
+}
+
+[dir="rtl"] .sidebar-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .sidebar-item svg {
+  margin-right: 0;
+  margin-left: var(--space-3);
+}
+
+/* --- General icon mirroring for directional icons --- */
+[dir="rtl"] .icon-arrow,
+[dir="rtl"] .chevron,
+[dir="rtl"] .icon-forward {
+  transform: scaleX(-1);
+}
+
+/* --- Lightbox --- */
+[dir="rtl"] .lightbox-close {
+  right: auto;
+  left: var(--space-6);
+}
+
+/* --- Toast --- */
+[dir="rtl"] .toast {
+  right: auto;
+  left: var(--space-6);
+  transform: translateX(-120%);
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .toast.visible {
+  transform: translateX(0);
+}
