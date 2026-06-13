@@ -1,0 +1,384 @@
+/* ============================================================
+   BRAKE — Dark Mode Overrides
+   dark-mode.css
+   Applied when body has class "dark-mode"
+   ============================================================ */
+
+body.dark-mode {
+  /* — Backgrounds — */
+  --bg-body: #1A1A1A;
+  --bg-surface: #242424;
+  --bg-surface-alt: #2D2D2D;
+  --bg-card: #242424;
+  --bg-card-hover: #2A2A2A;
+  --bg-input: #2D2D2D;
+  --bg-topbar: #242424;
+  --bg-code: #2D2D2D;
+  --bg-skeleton: #333333;
+  --bg-skeleton-shine: #444444;
+
+  /* — Text Colors — */
+  --text-primary: #F0F0F0;
+  --text-secondary: #B0B0B0;
+  --text-tertiary: #808080;
+  --text-link: #E8344F;
+  --text-link-hover: #FF8A5C;
+
+  /* — Borders — */
+  --border-color: #3A3A3A;
+  --border-light: #333333;
+  --border-input: #444444;
+  --border-input-focus: #E8344F;
+
+  /* — Shadows (darker in dark mode) — */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.6);
+  --shadow-card-hover: 0 12px 36px rgba(0,0,0,0.5);
+
+  /* — Primary adjustments for dark bg — */
+  --color-primary-light: #FF4466;
+}
+
+/* Navbar dark mode */
+body.dark-mode .navbar {
+  background: #1E1E1E;
+  border-bottom-color: #333;
+}
+
+body.dark-mode .navbar.scrolled {
+  background: #1E1E1E;
+}
+
+/* Select dropdown arrow for dark mode */
+body.dark-mode select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B0B0B0' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Footer in dark mode (subtle change since footer is already dark) */
+body.dark-mode .footer {
+  background: #111111;
+  border-top: 1px solid #333;
+}
+
+/* Cards subtle glow on hover in dark */
+body.dark-mode .card:hover {
+  border-color: #444;
+}
+
+/* Pricing card featured border */
+body.dark-mode .pricing-card.featured {
+  border-color: var(--color-primary);
+}
+
+/* Accordion */
+body.dark-mode .accordion {
+  border-color: #3A3A3A;
+}
+
+body.dark-mode .accordion-item {
+  border-bottom-color: #3A3A3A;
+}
+
+body.dark-mode .accordion-header {
+  background: #242424;
+}
+
+body.dark-mode .accordion-header:hover {
+  background: #2D2D2D;
+}
+
+/* Tables */
+body.dark-mode .data-table th {
+  background: #2D2D2D;
+  border-bottom-color: #444;
+}
+
+body.dark-mode .data-table td {
+  border-bottom-color: #333;
+}
+
+body.dark-mode .data-table tr:hover td {
+  background: #2A2A2A;
+}
+
+body.dark-mode .data-table.striped tr:nth-child(even) td {
+  background: #2D2D2D;
+}
+
+/* Comparison table */
+body.dark-mode .comparison-table th {
+  background: #2D2D2D;
+}
+
+body.dark-mode .comparison-table th.highlight {
+  background: var(--color-primary);
+}
+
+body.dark-mode .comparison-table td.highlight {
+  background: rgba(196,30,58,0.1);
+}
+
+/* Calendar */
+body.dark-mode .calendar-header-cell {
+  background: #2D2D2D;
+}
+
+body.dark-mode .calendar-cell {
+  border-color: #333;
+}
+
+body.dark-mode .calendar-cell:hover {
+  background: #2D2D2D;
+}
+
+body.dark-mode .calendar-cell.today {
+  background: rgba(196,30,58,0.15);
+}
+
+/* Sidebar already dark, minor adjustments */
+body.dark-mode .sidebar {
+  background: #111111;
+  border-right: 1px solid #333;
+}
+
+[dir="rtl"] body.dark-mode .sidebar {
+  border-right: none;
+  border-left: 1px solid #333;
+}
+
+/* Topbar */
+body.dark-mode .topbar {
+  background: #1E1E1E;
+  border-bottom-color: #333;
+}
+
+body.dark-mode .topbar-search {
+  background: #2D2D2D;
+}
+
+/* Social buttons in auth */
+body.dark-mode .social-btn-google {
+  background: #2D2D2D;
+  border-color: #444;
+  color: var(--text-primary);
+}
+
+body.dark-mode .social-btn-google:hover {
+  border-color: var(--color-google);
+}
+
+/* Brand logos */
+body.dark-mode .brand-logo {
+  background: #2D2D2D;
+  border-color: #3A3A3A;
+}
+
+/* Contact info cards */
+body.dark-mode .contact-info-card {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+/* Map container */
+body.dark-mode .map-container {
+  background: #2D2D2D;
+  border-color: #3A3A3A;
+}
+
+/* Form progress */
+body.dark-mode .form-progress::before {
+  background: #444;
+}
+
+body.dark-mode .form-progress-step .step-circle {
+  background: #242424;
+  border-color: #555;
+}
+
+/* Dashboard tabs */
+body.dark-mode .dash-tabs {
+  border-bottom-color: #333;
+}
+
+/* Chart cards */
+body.dark-mode .chart-card {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+/* Stat cards */
+body.dark-mode .stat-card {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+/* Tags */
+body.dark-mode .tag {
+  background: #2D2D2D;
+  border-color: #444;
+  color: var(--text-secondary);
+}
+
+body.dark-mode .tag:hover {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+}
+
+/* Category tabs */
+body.dark-mode .category-tab {
+  background: #2D2D2D;
+  border-color: #444;
+  color: var(--text-secondary);
+}
+
+/* Quick link cards */
+body.dark-mode .quick-link-card {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+/* Countdown items */
+body.dark-mode .countdown-item {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+/* RTL toggle */
+body.dark-mode .rtl-toggle {
+  border-color: #444;
+  color: var(--text-primary);
+}
+
+body.dark-mode .rtl-toggle:hover {
+  background: #2D2D2D;
+}
+
+/* Filter tabs */
+body.dark-mode .filter-tab {
+  border-color: #444;
+  color: var(--text-secondary);
+}
+
+/* Guarantee cards */
+body.dark-mode .guarantee-card {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+/* Testimonial cards */
+body.dark-mode .testimonial-card {
+  background: #242424;
+}
+
+/* Mobile menu */
+body.dark-mode .mobile-menu {
+  background: #1E1E1E;
+}
+
+body.dark-mode .mobile-menu a:hover,
+body.dark-mode .mobile-menu a.active {
+  background: #2D2D2D;
+}
+
+body.dark-mode .mobile-menu-divider {
+  background: #333;
+}
+
+/* Dropdown menu */
+body.dark-mode .nav-dropdown-menu {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+body.dark-mode .nav-dropdown-menu a:hover {
+  background: #2D2D2D;
+}
+
+/* Auth page */
+body.dark-mode .auth-card {
+  background: #242424;
+  border-color: #3A3A3A;
+}
+
+/* Auth divider */
+body.dark-mode .auth-divider::before,
+body.dark-mode .auth-divider::after {
+  background: #444;
+}
+
+/* ============================================================
+   Certifications & Brand Logos Contrast Overrides
+   ============================================================ */
+
+/* General cert-logo opacity and filter in dark mode */
+body.dark-mode .cert-logo {
+  opacity: 0.75;
+  filter: grayscale(100%);
+}
+
+body.dark-mode .cert-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Override SVG inline text fills for cert-logo in dark mode */
+body.dark-mode .cert-logo svg text {
+  fill: #FFFFFF; /* Default brand name to white */
+}
+
+body.dark-mode .cert-logo svg text:last-of-type {
+  fill: #B0B0B0; /* Secondary text to readable light gray */
+}
+
+/* Custom high-contrast brand colors on hover in dark mode */
+body.dark-mode .cert-logo[title="ASE Certified"]:hover svg text:first-of-type {
+  fill: #60A5FA; /* Bright light blue */
+}
+body.dark-mode .cert-logo[title="BBB Accredited"]:hover svg text:first-of-type {
+  fill: #38BDF8; /* Sky blue */
+}
+body.dark-mode .cert-logo[title="NAPA Partner"]:hover svg text:first-of-type {
+  fill: #93C5FD; /* Light blue */
+}
+body.dark-mode .cert-logo[title="AAA Approved"]:hover svg text:first-of-type {
+  fill: var(--color-primary-light); /* Lighter red */
+}
+body.dark-mode .cert-logo[title="Wagner Certified"]:hover svg text:first-of-type {
+  fill: #F3F4F6; /* Light gray */
+}
+body.dark-mode .cert-logo:hover svg text:last-of-type {
+  fill: #FFFFFF; /* High-contrast active subtext */
+}
+
+/* Brand logos in dark mode */
+body.dark-mode .brand-logo {
+  opacity: 0.75;
+  filter: grayscale(100%);
+}
+
+body.dark-mode .brand-logo:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Override SVG inline text fills for brand-logo in dark mode */
+body.dark-mode .brand-logo svg text {
+  fill: #FFFFFF; /* Default brand name to white */
+}
+
+/* Custom high-contrast hover colors for brand-logo in dark mode */
+body.dark-mode .brand-logo[title="Ford"]:hover svg text { fill: #60A5FA; }
+body.dark-mode .brand-logo[title="Chevy"]:hover svg text { fill: #FBBF24; }
+body.dark-mode .brand-logo[title="Toyota"]:hover svg text { fill: #EF4444; }
+body.dark-mode .brand-logo[title="Honda"]:hover svg text { fill: #EF4444; }
+body.dark-mode .brand-logo[title="BMW"]:hover svg text { fill: #38BDF8; }
+body.dark-mode .brand-logo[title="Mercedes"]:hover svg text { fill: #E5E7EB; }
+body.dark-mode .brand-logo[title="Nissan"]:hover svg text { fill: #EF4444; }
+body.dark-mode .brand-logo[title="Hyundai"]:hover svg text { fill: #93C5FD; }
+body.dark-mode .brand-logo[title="Jeep"]:hover svg text { fill: #FFFFFF; }
+body.dark-mode .brand-logo[title="Ram"]:hover svg text { fill: #FFFFFF; }
+body.dark-mode .brand-logo[title="VW"]:hover svg text { fill: #60A5FA; }
+body.dark-mode .brand-logo[title="Subaru"]:hover svg text { fill: #38BDF8; }
+

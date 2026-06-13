@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRAKE — Brake Care Without The Shop Wait</title>
+  <meta name="description" content="Mobile brake service that saves you time. Check coverage zones, equipment, vehicle compatibility and compare us to traditional shops.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='56' stroke='%23C41E3A' stroke-width='6' fill='none'/%3E%3Ccircle cx='60' cy='60' r='18' fill='%23C41E3A'/%3E%3Ccircle cx='60' cy='60' r='8' fill='%23fff'/%3E%3C/svg%3E">
+</head>
+<body>
+  <!-- NAVBAR (identical) -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="BRAKE Home">
+        <svg width="40" height="40" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="56" stroke="#C41E3A" stroke-width="6"/><circle cx="60" cy="60" r="38" stroke="#C41E3A" stroke-width="3" stroke-dasharray="8 4"/><circle cx="60" cy="60" r="18" fill="#C41E3A"/><circle cx="60" cy="60" r="8" fill="#FAFAFA"/><line x1="60" y1="4" x2="60" y2="22" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/><line x1="60" y1="98" x2="60" y2="116" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/><line x1="4" y1="60" x2="22" y2="60" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/><line x1="98" y1="60" x2="116" y2="60" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/></svg>
+        <span class="logo-text">BRAKE</span>
+      </a>
+      <div class="nav-links">
+        <div class="nav-dropdown"><a href="#" class="nav-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu"><a href="index.html">Home A</a><a href="home-b.html">Home B</a></div></div>
+        <a href="about.html">About</a>
+        <div class="nav-dropdown"><a href="#" class="nav-dropdown-toggle">Services <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu"><a href="services.html">All Services</a><a href="services.html#rotor-resurfacing">Rotor Resurfacing</a><a href="services.html#brake-pads">Brake Pad Replacement</a><a href="services.html#drum-machining">Drum Machining</a><a href="services.html#mobile-service">Mobile Service</a></div></div>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle">Dashboard <i class="ph ph-caret-down"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="user-dashboard.html">User Dashboard</a>
+            <a href="admin-dashboard.html">Admin Dashboard</a>
+          </div>
+        </div>
+        <a href="booking.html">Book Now</a></div>
+      <div class="nav-actions">
+        <button class="rtl-toggle" aria-label="Toggle text direction">LTR</button>
+        <button class="nav-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-moon"></i></button>
+        <a href="login.html" class="nav-toggle-btn" id="login-btn" aria-label="Log in">
+          <i class="ph ph-user"></i>
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html">Home A</a>
+        <a href="home-b.html">Home B</a>
+      </div>
+    </div>
+    <a href="about.html">About</a><a href="services.html">Services</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><div class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Dashboard <i class="ph ph-caret-down"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="user-dashboard.html">User Dashboard</a>
+        <a href="admin-dashboard.html">Admin Dashboard</a>
+      </div>
+    </div><a href="booking.html">Book Now</a><div class="mobile-menu-divider"></div>
+    <a href="login.html">Login</a><a href="signup.html">Sign Up</a><div class="mobile-menu-divider"></div>
+    <div class="nav-actions-mobile"><button class="rtl-toggle">LTR</button><button class="nav-toggle-btn" id="theme-toggle-mobile"><i class="ph ph-moon"></i></button>
+      <a href="login.html" class="nav-toggle-btn" id="login-btn-mobile" aria-label="Log in">
+        <i class="ph ph-user"></i>
+      </a></div>
+  </div>
+
+  <main class="page-content">
+    <!-- SECTION 1: HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" style="background-image: url('../assets/images/hero/hero-home-b.png');" role="img" aria-label="Mobile service van and technician performing brake service on a car in a residential driveway"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="reveal">Brake Care Without The Shop Wait</h1>
+        <p class="reveal reveal-delay-1">Skip the waiting room. Our certified technicians bring professional-grade brake service directly to you — fast, convenient, and affordable.</p>
+        <div class="hero-ctas reveal reveal-delay-2">
+          <a href="booking.html" class="btn btn-primary btn-lg">Schedule Now</a>
+          <a href="#coverage" class="btn btn-outline btn-lg">Check Coverage</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: COVERAGE AREA -->
+    <section class="section" id="coverage">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Service Coverage Zones</h2>
+          <p class="reveal reveal-delay-1">We serve a growing network of communities across the metro area</p>
+        </div>
+        <div class="two-col">
+          <div class="reveal">
+            <div class="map-container">
+              <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-105.15%2C39.65%2C-104.75%2C39.85&amp;layer=mapnik" style="border: 0; border-radius: var(--radius-lg);"></iframe>
+            </div>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <h3 style="margin-bottom: var(--space-3);">Active Service Zones</h3>
+            <ul class="check-list">
+              <li><i class="ph ph-check-circle"></i><span>Downtown & City Center</span></li>
+              <li><i class="ph ph-check-circle"></i><span>North Suburbs (Maple, Oak Park, Riverside)</span></li>
+              <li><i class="ph ph-check-circle"></i><span>South Metro (Lakewood, Centennial)</span></li>
+              <li><i class="ph ph-check-circle"></i><span>East Side (Aurora, Parker, Castle Rock)</span></li>
+              <li><i class="ph ph-check-circle"></i><span>West Corridor (Golden, Arvada, Wheat Ridge)</span></li>
+              <li><i class="ph ph-check-circle"></i><span>Industrial District & Business Parks</span></li>
+            </ul>
+            <p style="margin-top: var(--space-3); font-size: 14px; color: var(--text-tertiary);"><i class="ph ph-info"></i> Coverage expanding monthly. Contact us for areas not listed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: EQUIPMENT SHOWCASE -->
+    <section class="section section-alt" id="equipment">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">State-of-The-Art Mobile Equipment</h2>
+          <p class="reveal reveal-delay-1">Professional-grade tools that travel to you</p>
+        </div>
+        <div class="grid grid-4">
+          <div class="card reveal reveal-delay-1">
+            <div class="card-img-wrapper">
+              <img src="../assets/images/equipment/brake-lathe.png" alt="Ammco precision brake lathe machine resurfacing a brake rotor" class="card-img" loading="lazy">
+            </div>
+            <div class="card-body"><h4>Brake Lathe</h4><p>Ammco precision brake lathe for smooth finishes</p></div>
+          </div>
+          <div class="card reveal reveal-delay-2">
+            <div class="card-img-wrapper">
+              <img src="../assets/images/equipment/precision-tools.png" alt="High precision tools including micrometers, calipers, and a torque wrench" class="card-img" loading="lazy">
+            </div>
+            <div class="card-body"><h4>Precision Tools</h4><p>Micrometers, calipers, and torque wrenches</p></div>
+          </div>
+          <div class="card reveal reveal-delay-3">
+            <div class="card-img-wrapper">
+              <img src="../assets/images/equipment/mobile-workshop.png" alt="Interior view of a fully-equipped mobile brake service workshop van" class="card-img" loading="lazy">
+            </div>
+            <div class="card-body"><h4>Mobile Workshop</h4><p>Fully-equipped van with everything on board</p></div>
+          </div>
+          <div class="card reveal reveal-delay-4">
+            <div class="card-img-wrapper">
+              <img src="../assets/images/equipment/diagnostics.png" alt="OBD-II scan tool and diagnostic testing equipment displaying vehicle metrics" class="card-img" loading="lazy">
+            </div>
+            <div class="card-body"><h4>Diagnostics</h4><p>OBD-II scanners and brake force testers</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: VEHICLE COMPATIBILITY -->
+    <section class="section" id="compatibility">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Vehicle Compatibility</h2>
+          <p class="reveal reveal-delay-1">Check if your vehicle is compatible with our mobile service</p>
+        </div>
+        <div class="reveal" style="max-width: 600px; margin: 0 auto;">
+          <div class="grid grid-3 mb-4">
+            <div class="form-group">
+              <label class="form-label" for="compat-make">Make</label>
+              <select id="compat-make"><option value="">Select Make</option><option>Ford</option><option>Chevrolet</option><option>Toyota</option><option>Honda</option><option>BMW</option><option>Mercedes-Benz</option><option>Nissan</option><option>Hyundai</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="compat-model">Model</label>
+              <select id="compat-model"><option value="">Select Model</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="compat-year">Year</label>
+              <select id="compat-year"><option value="">Select Year</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option></select>
+            </div>
+          </div>
+          <div id="compat-result" style="text-align: center; padding: var(--space-3); background: var(--bg-surface-alt); border-radius: var(--radius-lg); display: none;">
+            <i class="ph ph-check-circle" style="font-size: 48px; color: var(--color-success); display: block; margin-bottom: var(--space-1);"></i>
+            <h4>Compatible!</h4>
+            <p style="margin-bottom: 0;">Your vehicle is fully supported by our mobile service.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: COMPARISON TABLE -->
+    <section class="section section-alt" id="comparison">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Mobile vs Shop Service</h2>
+          <p class="reveal reveal-delay-1">See why more drivers are choosing BRAKE mobile service</p>
+        </div>
+        <div class="table-wrapper reveal reveal-delay-2" style="max-width: 800px; margin: 0 auto;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th class="highlight">BRAKE Mobile</th>
+                <th>Traditional Shop</th>
+                <th>DIY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Convenience</td>
+                <td class="highlight"><i class="ph ph-check-circle comparison-check"></i> At your location</td>
+                <td><i class="ph ph-x-circle comparison-x"></i> Drop off required</td>
+                <td><i class="ph ph-x-circle comparison-x"></i> You do the work</td>
+              </tr>
+              <tr>
+                <td>Time</td>
+                <td class="highlight"><i class="ph ph-check-circle comparison-check"></i> 1-2 hours</td>
+                <td><i class="ph ph-x-circle comparison-x"></i> 4-8 hours wait</td>
+                <td><i class="ph ph-minus-circle" style="color:var(--color-warning);font-size:20px;"></i> 3-5 hours</td>
+              </tr>
+              <tr>
+                <td>Price</td>
+                <td class="highlight"><i class="ph ph-check-circle comparison-check"></i> Competitive</td>
+                <td><i class="ph ph-minus-circle" style="color:var(--color-warning);font-size:20px;"></i> Premium markup</td>
+                <td><i class="ph ph-check-circle comparison-check"></i> Parts only</td>
+              </tr>
+              <tr>
+                <td>Quality</td>
+                <td class="highlight"><i class="ph ph-check-circle comparison-check"></i> ASE Certified</td>
+                <td><i class="ph ph-check-circle comparison-check"></i> Varies</td>
+                <td><i class="ph ph-x-circle comparison-x"></i> Risk of errors</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Common Questions</h2>
+        </div>
+        <div class="accordion reveal" style="max-width: 800px; margin: 0 auto;">
+          <div class="accordion-item">
+            <button class="accordion-header">How does the mobile service work? <i class="ph ph-caret-down"></i></button>
+            <div class="accordion-body"><div class="accordion-body-inner">We bring a fully-equipped service van to your location — home, office, or anywhere convenient. Our technician performs the brake service on-site using professional-grade equipment, just like a traditional shop but without the hassle of dropping off your car.</div></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">What warranty do you offer? <i class="ph ph-caret-down"></i></button>
+            <div class="accordion-body"><div class="accordion-body-inner">All our services come with a 12-month / 12,000-mile warranty covering both parts and labor. If you experience any issues within the warranty period, we'll come back and fix it at no additional cost.</div></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">How long does the service take? <i class="ph ph-caret-down"></i></button>
+            <div class="accordion-body"><div class="accordion-body-inner">Most brake services take between 1-2 hours depending on the scope. Rotor resurfacing for one axle typically takes about 45-60 minutes. A full vehicle service including all four rotors takes approximately 2 hours.</div></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">What payment methods do you accept? <i class="ph ph-caret-down"></i></button>
+            <div class="accordion-body"><div class="accordion-body-inner">We accept all major credit cards (Visa, Mastercard, American Express, Discover), debit cards, Apple Pay, Google Pay, and cash. Payment is collected after the service is completed to your satisfaction.</div></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">What types of vehicles do you service? <i class="ph ph-caret-down"></i></button>
+            <div class="accordion-body"><div class="accordion-body-inner">We service most passenger vehicles including sedans, SUVs, trucks, and minivans from all major manufacturers. This includes domestic (Ford, Chevy, Dodge), Japanese (Toyota, Honda, Nissan), and European (BMW, Mercedes, VW) brands. We service vehicles from 1998-present.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="nav-logo" style="margin-bottom: var(--space-2); display: inline-flex;">
+            <svg width="32" height="32" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="56" stroke="#C41E3A" stroke-width="6"/><circle cx="60" cy="60" r="38" stroke="#C41E3A" stroke-width="3" stroke-dasharray="8 4"/><circle cx="60" cy="60" r="18" fill="#C41E3A"/><circle cx="60" cy="60" r="8" fill="#FAFAFA"/></svg>
+            <span class="logo-text" style="font-size: 18px;">BRAKE</span>
+          </a>
+          <p class="footer-description">Professional mobile brake lathe and rotor resurfacing service. We bring precision braking to your doorstep.</p>
+          <div class="footer-social">
+            <a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+            <a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+            <a href="#" class="social-twitter" aria-label="X / Twitter"><i class="ph ph-x-logo"></i></a>
+            <a href="#" class="social-linkedin" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h5>Quick Links</h5><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h5>Services</h5><a href="services.html#rotor-resurfacing">Rotor Resurfacing</a><a href="services.html#brake-pads">Brake Pad Replacement</a><a href="services.html#drum-machining">Drum Machining</a><a href="services.html#mobile-service">Mobile Service</a></div>
+        <div class="footer-col">
+          <h5>Contact Info</h5>
+          <div class="footer-contact-item"><i class="ph ph-map-pin"></i><span>1234 Brake Avenue,<br>Auto City, AC 90210</span></div>
+          <div class="footer-contact-item"><i class="ph ph-phone"></i><a href="tel:+18005552743" style="padding:0;">(800) 555-BRAKE</a></div>
+          <div class="footer-contact-item"><i class="ph ph-envelope"></i><a href="mailto:info@brakeservice.com" style="padding:0;">info@brakeservice.com</a></div>
+          <div class="footer-contact-item"><i class="ph ph-clock"></i><span>Mon-Sat: 7AM - 7PM<br>Sun: 9AM - 5PM</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 BRAKE. All rights reserved.</span>
+        <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Vehicle compatibility checker
+    document.getElementById('compat-year')?.addEventListener('change', function() {
+      const make = document.getElementById('compat-make').value;
+      const year = this.value;
+      const result = document.getElementById('compat-result');
+      if (make && year && result) {
+        result.style.display = 'block';
+        result.style.animation = 'fadeInUp 0.4s ease';
+      }
+    });
+  </script>
+</body>
+</html>

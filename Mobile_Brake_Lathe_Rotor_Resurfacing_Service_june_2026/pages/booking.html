@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRAKE — Book Your Service</title>
+  <meta name="description" content="Schedule your mobile brake service appointment online. Easy multi-step booking with instant pricing.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='56' stroke='%23C41E3A' stroke-width='6' fill='none'/%3E%3Ccircle cx='60' cy='60' r='18' fill='%23C41E3A'/%3E%3Ccircle cx='60' cy='60' r='8' fill='%23fff'/%3E%3C/svg%3E">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar"><div class="container"><a href="index.html" class="nav-logo"><svg width="40" height="40" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="56" stroke="#C41E3A" stroke-width="6"/><circle cx="60" cy="60" r="38" stroke="#C41E3A" stroke-width="3" stroke-dasharray="8 4"/><circle cx="60" cy="60" r="18" fill="#C41E3A"/><circle cx="60" cy="60" r="8" fill="#FAFAFA"/><line x1="60" y1="4" x2="60" y2="22" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/><line x1="60" y1="98" x2="60" y2="116" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/><line x1="4" y1="60" x2="22" y2="60" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/><line x1="98" y1="60" x2="116" y2="60" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/></svg><span class="logo-text">BRAKE</span></a><div class="nav-links"><div class="nav-dropdown"><a href="#" class="nav-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu"><a href="index.html">Home A</a><a href="home-b.html">Home B</a></div></div><a href="about.html">About</a><div class="nav-dropdown"><a href="#" class="nav-dropdown-toggle">Services <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu"><a href="services.html">All Services</a></div></div><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle">Dashboard <i class="ph ph-caret-down"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="user-dashboard.html">User Dashboard</a>
+            <a href="admin-dashboard.html">Admin Dashboard</a>
+          </div>
+        </div>
+        <a href="booking.html" class="active">Book Now</a></div>
+      <div class="nav-actions"><button class="rtl-toggle">LTR</button><button class="nav-toggle-btn" id="theme-toggle"><i class="ph ph-moon"></i></button>
+        <a href="login.html" class="nav-toggle-btn" id="login-btn" aria-label="Log in">
+          <i class="ph ph-user"></i>
+        </a></div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
+  <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html">Home A</a>
+        <a href="home-b.html">Home B</a>
+      </div>
+    </div>
+    <a href="about.html">About</a><a href="services.html">Services</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    <div class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Dashboard <i class="ph ph-caret-down"></i></a>
+      <div class="nav-dropdown-menu">
+        <a href="user-dashboard.html">User Dashboard</a>
+        <a href="admin-dashboard.html">Admin Dashboard</a>
+      </div>
+    </div>
+    <a href="booking.html" class="active">Book Now</a><div class="mobile-menu-divider"></div><div class="nav-actions-mobile"><button class="rtl-toggle">LTR</button><button class="nav-toggle-btn" id="theme-toggle-mobile"><i class="ph ph-moon"></i></button>
+      <a href="login.html" class="nav-toggle-btn" id="login-btn-mobile" aria-label="Log in">
+        <i class="ph ph-user"></i>
+      </a></div></div>
+
+  <main class="page-content">
+    <!-- SECTION 1: HERO -->
+    <section class="hero" style="min-height: 350px;">
+      <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1504222490345-c075b6008014?w=1400&h=500&fit=crop');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content"><h1 class="reveal">Book Your Service</h1><p class="reveal reveal-delay-1">Schedule your appointment in just a few steps</p></div>
+    </section>
+
+    <!-- SECTION 2: BOOKING FORM -->
+    <section class="section">
+      <div class="container" style="max-width: 800px;">
+        <div class="section-header"><h2 class="reveal">Schedule Appointment</h2></div>
+
+        <!-- Progress -->
+        <div class="form-progress reveal">
+          <div class="form-progress-line" style="width: 0%;"></div>
+          <div class="form-progress-step active"><span class="step-circle">1</span><span class="step-label">Vehicle</span></div>
+          <div class="form-progress-step"><span class="step-circle">2</span><span class="step-label">Services</span></div>
+          <div class="form-progress-step"><span class="step-circle">3</span><span class="step-label">Date</span></div>
+          <div class="form-progress-step"><span class="step-circle">4</span><span class="step-label">Contact</span></div>
+          <div class="form-progress-step"><span class="step-circle">5</span><span class="step-label">Review</span></div>
+        </div>
+
+        <form id="booking-form" data-validate>
+          <!-- Step 1: Vehicle Info -->
+          <div class="form-step active">
+            <div class="card" style="padding: var(--space-4);">
+              <h3 style="margin-bottom: var(--space-3);"><i class="ph ph-car" style="color:var(--color-primary);margin-right:8px;"></i>Vehicle Information</h3>
+              <div class="grid grid-3">
+                <div class="form-group"><label class="form-label" for="vehicle-year">Year</label><select id="vehicle-year" required><option value="">Select Year</option></select><div class="form-error"></div></div>
+                <div class="form-group"><label class="form-label" for="vehicle-make">Make</label><select id="vehicle-make" required><option value="">Select Make</option></select><div class="form-error"></div></div>
+                <div class="form-group"><label class="form-label" for="vehicle-model">Model</label><select id="vehicle-model" required><option value="">Select Model</option></select><div class="form-error"></div></div>
+              </div>
+              <div class="form-navigation"><div></div><button type="button" class="btn btn-primary btn-next">Next <i class="ph ph-arrow-right"></i></button></div>
+            </div>
+          </div>
+
+          <!-- Step 2: Services -->
+          <div class="form-step">
+            <div class="card" style="padding: var(--space-4);">
+              <h3 style="margin-bottom: var(--space-3);"><i class="ph ph-wrench" style="color:var(--color-primary);margin-right:8px;"></i>Select Services</h3>
+              <div class="service-error" style="display:none;color:var(--color-error);font-size:14px;margin-bottom:16px;"><i class="ph ph-warning-circle"></i> Please select at least one service</div>
+              <div style="display:grid;gap:12px;">
+                <label class="checkbox-group" style="padding:12px;background:var(--bg-surface-alt);border-radius:var(--radius-md);cursor:pointer;"><input type="checkbox" class="service-checkbox" value="rotor-resurfacing"><span>Rotor Resurfacing — $89</span></label>
+                <label class="checkbox-group" style="padding:12px;background:var(--bg-surface-alt);border-radius:var(--radius-md);cursor:pointer;"><input type="checkbox" class="service-checkbox" value="brake-pad-replacement"><span>Brake Pad Replacement — $149</span></label>
+                <label class="checkbox-group" style="padding:12px;background:var(--bg-surface-alt);border-radius:var(--radius-md);cursor:pointer;"><input type="checkbox" class="service-checkbox" value="drum-machining"><span>Drum Machining — $79</span></label>
+                <label class="checkbox-group" style="padding:12px;background:var(--bg-surface-alt);border-radius:var(--radius-md);cursor:pointer;"><input type="checkbox" class="service-checkbox" value="caliper-service"><span>Caliper Service — $119</span></label>
+                <label class="checkbox-group" style="padding:12px;background:var(--bg-surface-alt);border-radius:var(--radius-md);cursor:pointer;"><input type="checkbox" class="service-checkbox" value="brake-fluid-flush"><span>Brake Fluid Flush — $69</span></label>
+                <label class="checkbox-group" style="padding:12px;background:var(--bg-surface-alt);border-radius:var(--radius-md);cursor:pointer;"><input type="checkbox" class="service-checkbox" value="mobile-inspection"><span>Mobile Inspection — $49</span></label>
+              </div>
+              <div class="form-navigation"><button type="button" class="btn btn-ghost btn-prev"><i class="ph ph-arrow-left"></i> Back</button><button type="button" class="btn btn-primary btn-next">Next <i class="ph ph-arrow-right"></i></button></div>
+            </div>
+          </div>
+
+          <!-- Step 3: Date/Time -->
+          <div class="form-step">
+            <div class="card" style="padding: var(--space-4);">
+              <h3 style="margin-bottom: var(--space-3);"><i class="ph ph-calendar" style="color:var(--color-primary);margin-right:8px;"></i>Preferred Date & Time</h3>
+              <div class="grid grid-2">
+                <div class="form-group"><label class="form-label" for="booking-date">Preferred Date</label><input type="date" id="booking-date" required><div class="form-error"></div></div>
+                <div class="form-group"><label class="form-label" for="booking-time">Preferred Time</label><select id="booking-time" required><option value="">Select Time</option><option>7:00 AM</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select><div class="form-error"></div></div>
+              </div>
+              <div class="form-navigation"><button type="button" class="btn btn-ghost btn-prev"><i class="ph ph-arrow-left"></i> Back</button><button type="button" class="btn btn-primary btn-next">Next <i class="ph ph-arrow-right"></i></button></div>
+            </div>
+          </div>
+
+          <!-- Step 4: Contact Info -->
+          <div class="form-step">
+            <div class="card" style="padding: var(--space-4);">
+              <h3 style="margin-bottom: var(--space-3);"><i class="ph ph-user" style="color:var(--color-primary);margin-right:8px;"></i>Contact Information</h3>
+              <div class="grid grid-2">
+                <div class="form-group"><label class="form-label" for="contact-name">Full Name</label><input type="text" id="contact-name" required placeholder="John Doe"><div class="form-error"></div></div>
+                <div class="form-group"><label class="form-label" for="contact-email">Email</label><input type="email" id="contact-email" required placeholder="john@example.com"><div class="form-error"></div></div>
+              </div>
+              <div class="grid grid-2">
+                <div class="form-group"><label class="form-label" for="contact-phone">Phone</label><input type="tel" id="contact-phone" required placeholder="(555) 123-4567"><div class="form-error"></div></div>
+                <div class="form-group"><label class="form-label" for="contact-address">Service Address</label><input type="text" id="contact-address" required placeholder="123 Main St, City"><div class="form-error"></div></div>
+              </div>
+              <div class="form-navigation"><button type="button" class="btn btn-ghost btn-prev"><i class="ph ph-arrow-left"></i> Back</button><button type="button" class="btn btn-primary btn-next">Next <i class="ph ph-arrow-right"></i></button></div>
+            </div>
+          </div>
+
+          <!-- Step 5: Review -->
+          <div class="form-step">
+            <div class="card" style="padding: var(--space-4);">
+              <h3 style="margin-bottom: var(--space-3);"><i class="ph ph-check-square" style="color:var(--color-primary);margin-right:8px;"></i>Review & Confirm</h3>
+              <div style="display:grid; gap: var(--space-3);">
+                <div style="padding: var(--space-2); background:var(--bg-surface-alt); border-radius:var(--radius-md);">
+                  <h4 style="font-size:14px;color:var(--text-tertiary);margin-bottom:4px;">Vehicle</h4>
+                  <p id="summary-vehicle" style="margin:0;font-weight:600;">—</p>
+                </div>
+                <div style="padding: var(--space-2); background:var(--bg-surface-alt); border-radius:var(--radius-md);">
+                  <h4 style="font-size:14px;color:var(--text-tertiary);margin-bottom:4px;">Services</h4>
+                  <p id="summary-services" style="margin:0;font-weight:600;">—</p>
+                </div>
+                <div style="padding: var(--space-2); background:var(--bg-surface-alt); border-radius:var(--radius-md);">
+                  <h4 style="font-size:14px;color:var(--text-tertiary);margin-bottom:4px;">Contact</h4>
+                  <p id="summary-contact" style="margin:0;">—</p>
+                </div>
+                <div style="padding: var(--space-3); background:var(--color-primary); color:#fff; border-radius:var(--radius-md); text-align:center;">
+                  <h4 style="font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:4px;">Estimated Total</h4>
+                  <span id="price-total" style="font-size:32px;font-weight:800;font-family:var(--font-heading);">$0</span>
+                </div>
+              </div>
+              <div class="form-navigation"><button type="button" class="btn btn-ghost btn-prev"><i class="ph ph-arrow-left"></i> Back</button><button type="submit" class="btn btn-primary btn-lg btn-submit">Confirm Booking <i class="ph ph-check"></i></button></div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="booking-success" style="display:none; text-align:center; padding: var(--space-6);">
+          <i class="ph ph-check-circle" style="font-size:72px;color:var(--color-success);display:block;margin-bottom:var(--space-3);"></i>
+          <h2>Booking Confirmed!</h2>
+          <p>Thank you! We'll send you a confirmation email shortly.</p>
+          <a href="index.html" class="btn btn-primary mt-4">Return Home</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PRICING CALCULATOR -->
+    <section class="section section-alt">
+      <div class="container" style="max-width: 600px;">
+        <div class="section-header"><h2 class="reveal">Estimate Your Cost</h2></div>
+        <div id="pricing-calculator" class="reveal">
+          <div style="display:grid;gap:12px;margin-bottom:var(--space-3);">
+            <label class="checkbox-group" style="padding:12px;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-light);"><input type="checkbox" class="calc-checkbox" data-price="89"><span>Rotor Resurfacing — $89</span></label>
+            <label class="checkbox-group" style="padding:12px;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-light);"><input type="checkbox" class="calc-checkbox" data-price="149"><span>Brake Pad Replacement — $149</span></label>
+            <label class="checkbox-group" style="padding:12px;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-light);"><input type="checkbox" class="calc-checkbox" data-price="79"><span>Drum Machining — $79</span></label>
+            <label class="checkbox-group" style="padding:12px;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-light);"><input type="checkbox" class="calc-checkbox" data-price="119"><span>Caliper Service — $119</span></label>
+            <label class="checkbox-group" style="padding:12px;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-light);"><input type="checkbox" class="calc-checkbox" data-price="69"><span>Brake Fluid Flush — $69</span></label>
+            <label class="checkbox-group" style="padding:12px;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-light);"><input type="checkbox" class="calc-checkbox" data-price="49"><span>Mobile Inspection — $49</span></label>
+          </div>
+          <div style="text-align:center;padding:var(--space-3);background:var(--bg-card);border-radius:var(--radius-lg);border:2px solid var(--color-primary);">
+            <span style="font-size:14px;color:var(--text-tertiary);">Estimated Total</span><br>
+            <span class="calc-total" style="font-size:40px;font-weight:800;color:var(--color-primary);font-family:var(--font-heading);">$0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: WHAT TO EXPECT -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header"><h2 class="reveal">Your Appointment Day</h2></div>
+        <div class="timeline-horizontal">
+          <div class="timeline-step reveal reveal-delay-1"><div class="timeline-step-icon"><i class="ph ph-bell-ringing"></i></div><h4>Confirmation</h4><p>You'll receive a text when your technician is on the way</p></div>
+          <div class="timeline-step reveal reveal-delay-2"><div class="timeline-step-icon"><i class="ph ph-van"></i></div><h4>Arrival</h4><p>Our service van arrives at your location at the scheduled time</p></div>
+          <div class="timeline-step reveal reveal-delay-3"><div class="timeline-step-icon"><i class="ph ph-wrench"></i></div><h4>Service</h4><p>Your technician performs the service and keeps you updated</p></div>
+          <div class="timeline-step reveal reveal-delay-4"><div class="timeline-step-icon"><i class="ph ph-thumbs-up"></i></div><h4>Complete</h4><p>Final inspection, test drive, and payment — you're all set!</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: AVAILABILITY -->
+    <section class="section section-alt" style="background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url('../assets/images/booking_availability_bg.png') center/cover no-repeat; color: #fff;">
+      <div class="container">
+        <div class="section-header"><h2 class="reveal">Real-Time Availability</h2><p class="reveal">Select a date above to see available time slots</p></div>
+        <div class="reveal" style="max-width:700px;margin:0 auto;text-align:center;">
+          <div style="padding:var(--space-5);background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border-light);">
+            <i class="ph ph-calendar-blank" style="font-size:48px;color:var(--text-tertiary);display:block;margin-bottom:var(--space-2);"></i>
+            <p style="color:var(--text-tertiary);">Calendar integration placeholder — available time slots will appear here based on your selected date.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: BOOKING SUMMARY SIDEBAR -->
+    <section class="section">
+      <div class="container" style="max-width: 600px;">
+        <div class="section-header"><h2 class="reveal">Booking Summary</h2></div>
+        <div class="card reveal" style="padding:var(--space-4);">
+          <div style="display:grid;gap:var(--space-2);">
+            <div class="flex-between" style="padding-bottom:var(--space-2);border-bottom:1px solid var(--border-light);"><span style="font-weight:600;">Selected Services</span><span style="font-weight:600;">Price</span></div>
+            <ul id="price-list" style="display:grid;gap:8px;"><li style="display:flex;justify-content:space-between;font-size:14px;"><span>No services selected</span><span>$0</span></li></ul>
+            <div class="flex-between" style="padding-top:var(--space-2);border-top:2px solid var(--color-primary);font-weight:800;font-size:18px;"><span>Total</span><span id="price-total-footer" style="color:var(--color-primary);">$0</span></div>
+          </div>
+          <p style="font-size:12px;color:var(--text-tertiary);margin-top:var(--space-2);margin-bottom:0;">* Final price confirmed after vehicle inspection. Technician notes may apply.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-col"><a href="index.html" class="nav-logo" style="margin-bottom:var(--space-2);display:inline-flex;"><svg width="32" height="32" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="56" stroke="#C41E3A" stroke-width="6"/><circle cx="60" cy="60" r="38" stroke="#C41E3A" stroke-width="3" stroke-dasharray="8 4"/><circle cx="60" cy="60" r="18" fill="#C41E3A"/><circle cx="60" cy="60" r="8" fill="#FAFAFA"/></svg><span class="logo-text" style="font-size:18px;">BRAKE</span></a><p class="footer-description">Professional mobile brake service.</p><div class="footer-social"><a href="#" class="social-facebook"><i class="ph ph-facebook-logo"></i></a><a href="#" class="social-instagram"><i class="ph ph-instagram-logo"></i></a><a href="#" class="social-twitter"><i class="ph ph-x-logo"></i></a><a href="#" class="social-linkedin"><i class="ph ph-linkedin-logo"></i></a></div></div><div class="footer-col"><h5>Quick Links</h5><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="blog.html">Blog</a></div><div class="footer-col"><h5>Services</h5><a href="services.html#rotor-resurfacing">Rotor Resurfacing</a><a href="services.html#brake-pads">Brake Pad Replacement</a><a href="services.html#drum-machining">Drum Machining</a><a href="services.html#mobile-service">Mobile Service</a></div><div class="footer-col"><h5>Contact</h5><div class="footer-contact-item"><i class="ph ph-phone"></i><a href="tel:+18005552743" style="padding:0;">(800) 555-BRAKE</a></div><div class="footer-contact-item"><i class="ph ph-envelope"></i><a href="mailto:info@brakeservice.com" style="padding:0;">info@brakeservice.com</a></div></div></div><div class="footer-bottom"><span>&copy; 2026 BRAKE. All rights reserved.</span><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+/* ============================================================
+   BRAKE — RTL Layout Overrides
+   rtl.css
+   Applied when html has dir="rtl"
+   ============================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* ---- General Text ---- */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* ---- Navigation ---- */
+[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-dropdown-menu {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%) translateY(8px);
+}
+
+[dir="rtl"] .nav-dropdown.open .nav-dropdown-menu {
+  transform: translateX(50%) translateY(0);
+}
+
+/* ---- Mobile Menu ---- */
+[dir="rtl"] .hamburger {
+  order: -1;
+}
+
+/* ---- Flex Direction Overrides ---- */
+[dir="rtl"] .flex-between {
+  flex-direction: row-reverse;
+}
+
+/* ---- Timeline Vertical ---- */
+[dir="rtl"] .timeline-vertical {
+  padding-left: 0;
+  padding-right: var(--space-5);
+}
+
+[dir="rtl"] .timeline-vertical::before {
+  left: auto;
+  right: 20px;
+}
+
+[dir="rtl"] .timeline-vertical .timeline-step-icon {
+  left: auto;
+  right: calc(-1 * var(--space-5));
+}
+
+[dir="rtl"] .timeline-vertical .timeline-step {
+  text-align: right;
+}
+
+/* ---- Timeline Horizontal (tablet fallback) ---- */
+@media (max-width: 1024px) {
+  [dir="rtl"] .timeline-horizontal {
+    padding-left: 0;
+    padding-right: var(--space-5);
+  }
+
+  [dir="rtl"] .timeline-horizontal::before {
+    left: auto;
+    right: 20px;
+  }
+
+  [dir="rtl"] .timeline-horizontal .timeline-step {
+    text-align: right;
+    padding-left: 0;
+    padding-right: var(--space-4);
+  }
+
+  [dir="rtl"] .timeline-horizontal .timeline-step .timeline-step-icon {
+    left: auto;
+    right: calc(-1 * var(--space-5));
+  }
+}
+
+/* ---- Cards ---- */
+[dir="rtl"] .card-link i {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .card-link:hover i {
+  transform: scaleX(-1) translateX(2px);
+}
+
+/* ---- Check List ---- */
+[dir="rtl"] .check-list li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* ---- Footer ---- */
+[dir="rtl"] .footer-col h5::after {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+[dir="rtl"] .footer-contact-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+@media (min-width: 640px) {
+  [dir="rtl"] .footer-bottom {
+    flex-direction: row-reverse;
+  }
+}
+
+/* ---- Testimonial ---- */
+[dir="rtl"] .testimonial-header {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .testimonial-text {
+  text-align: right;
+}
+
+[dir="rtl"] .testimonial-stars {
+  flex-direction: row-reverse;
+}
+
+/* ---- Pricing ---- */
+[dir="rtl"] .pricing-features li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* ---- Accordion ---- */
+[dir="rtl"] .accordion-header {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .accordion-body-inner {
+  text-align: right;
+}
+
+/* ---- Forms ---- */
+[dir="rtl"] input,
+[dir="rtl"] select,
+[dir="rtl"] textarea {
+  text-align: right;
+}
+
+[dir="rtl"] select {
+  background-position: left 16px center;
+  padding-left: 40px;
+  padding-right: 16px;
+}
+
+[dir="rtl"] .form-success-icon {
+  right: auto;
+  left: 12px;
+}
+
+[dir="rtl"] .form-error {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .checkbox-group {
+  flex-direction: row-reverse;
+}
+
+/* ---- Auth Extras ---- */
+[dir="rtl"] .auth-form-extras {
+  flex-direction: row-reverse;
+}
+
+/* ---- Dashboard Sidebar ---- */
+[dir="rtl"] .sidebar-nav a {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .sidebar-header {
+  flex-direction: row-reverse;
+}
+
+/* ---- Topbar ---- */
+[dir="rtl"] .topbar {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .topbar-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .topbar-notification-dot {
+  right: auto;
+  left: 8px;
+}
+
+/* ---- Stat Cards ---- */
+[dir="rtl"] .stat-card {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .stat-trend i {
+  transform: scaleX(-1);
+}
+
+/* ---- Tables ---- */
+[dir="rtl"] .data-table th,
+[dir="rtl"] .data-table td {
+  text-align: right;
+}
+
+[dir="rtl"] .comparison-table td:first-child {
+  text-align: right;
+}
+
+/* ---- Contact ---- */
+[dir="rtl"] .contact-info-card {
+  text-align: center;
+}
+
+[dir="rtl"] .footer-contact-item {
+  flex-direction: row-reverse;
+}
+
+/* ---- Blog ---- */
+[dir="rtl"] .article-meta {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .article-meta span {
+  flex-direction: row-reverse;
+}
+
+/* ---- Featured Article ---- */
+@media (min-width: 641px) {
+  [dir="rtl"] .featured-article {
+    grid-template-columns: 40% 60%;
+  }
+
+  [dir="rtl"] .featured-article-img {
+    order: 2;
+  }
+
+  [dir="rtl"] .featured-article-content {
+    order: 1;
+  }
+}
+
+/* ---- Search ---- */
+[dir="rtl"] .search-box {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .topbar-search {
+  flex-direction: row-reverse;
+}
+
+/* ---- Newsletter ---- */
+[dir="rtl"] .newsletter-form {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 639px) {
+  [dir="rtl"] .newsletter-form {
+    flex-direction: column;
+  }
+}
+
+/* ---- Two Col on RTL ---- */
+@media (min-width: 1025px) {
+  [dir="rtl"] .two-col {
+    direction: rtl;
+  }
+
+  [dir="rtl"] .two-col > *:first-child {
+    text-align: right;
+  }
+}
+
+/* ---- Form Navigation ---- */
+[dir="rtl"] .form-navigation {
+  flex-direction: row-reverse;
+}
+
+/* ---- Hero ---- */
+[dir="rtl"] .hero-overlay {
+  background: linear-gradient(to left, var(--bg-hero-overlay-start), var(--bg-hero-overlay-end));
+}
+
+/* ---- Section Header ---- */
+[dir="rtl"] .section-header {
+  text-align: center;
+}
+
+/* ---- Sidebar collapsed text hiding still works ---- */
+[dir="rtl"] .sidebar.collapsed .sidebar-nav a span {
+  opacity: 0;
+  width: 0;
+}
+
+/* ---- Mobile sidebar direction ---- */
+@media (max-width: 1024px) {
+  [dir="rtl"] .sidebar,
+  [dir="rtl"] .sidebar.collapsed {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .sidebar.mobile-open,
+  [dir="rtl"] .sidebar.collapsed.mobile-open {
+    transform: translateX(0);
+  }
+
+  [dir="rtl"] .sidebar.collapsed .sidebar-nav a span {
+    opacity: 1 !important;
+    width: auto !important;
+  }
+
+  /* Reset RTL desktop dropdown positioning on mobile */
+  [dir="rtl"] .mobile-menu .nav-dropdown-menu,
+  [dir="rtl"] .mobile-menu .nav-dropdown.open .nav-dropdown-menu {
+    transform: none !important;
+    right: auto !important;
+    left: auto !important;
+  }
+}
