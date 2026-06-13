@@ -352,8 +352,8 @@ const ComparisonSlider = {
 // ============================================================
 const FilterButtons = {
   init() {
-    document.querySelectorAll('.filter-bar').forEach(bar => {
-      const buttons = bar.querySelectorAll('.filter-btn');
+    document.querySelectorAll('.filter-bar, [data-filter-target]').forEach(bar => {
+      const buttons = bar.querySelectorAll('.filter-btn, .pill');
       const targetId = bar.getAttribute('data-filter-target');
       const target = targetId ? document.getElementById(targetId) : null;
 
@@ -378,7 +378,6 @@ const FilterButtons = {
     });
   }
 };
-
 // ============================================================
 // 10. BACK TO TOP
 // ============================================================

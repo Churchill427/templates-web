@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="HIDE Portfolio — Browse our gallery of custom leather holsters, EDC pouches, belts, and restored vintage pieces.">
   <title>HIDE — Gallery & Portfolio</title>
@@ -25,7 +26,8 @@
         </li></ul><div class="navbar__actions"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-label">LTR</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="ph ph-sun theme-icon--light"></i><i class="ph ph-moon theme-icon--dark"></i></button><a href="login.html" class="btn btn--outline btn--sm" style="padding:var(--space-2) var(--space-4);font-size:var(--font-size-sm);border-radius:var(--radius-md);height:36px;display:inline-flex;align-items:center;white-space:nowrap;">Login</a><button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button></div></div></nav>
   <div class="mobile-nav" id="mobile-nav"><a href="index.html" class="mobile-nav__link">Home 1</a><a href="about.html" class="mobile-nav__link">About</a><a href="services.html" class="mobile-nav__link">Services</a><a href="products.html" class="mobile-nav__link">Products</a><a href="portfolio.html" class="mobile-nav__link active">Gallery</a><a href="blog.html" class="mobile-nav__link">Journal</a><a href="contact.html" class="mobile-nav__link">Contact</a>
     <a href="user-dashboard.html" class="mobile-nav__link">User Dashboard</a>
-    <a href="admin-dashboard.html" class="mobile-nav__link">Admin Dashboard</a><div class="mobile-nav__toggles"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-label">LTR</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="ph ph-sun theme-icon--light"></i><i class="ph ph-moon theme-icon--dark"></i></button></div></div>
+    <a href="admin-dashboard.html" class="mobile-nav__link">Admin Dashboard</a>
+    <a href="login.html" class="mobile-nav__link mobile-nav__login">Login</a><div class="mobile-nav__toggles"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-label">LTR</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="ph ph-sun theme-icon--light"></i><i class="ph ph-moon theme-icon--dark"></i></button></div></div>
 
   <!-- HERO -->
   <section class="hero hero--short" id="hero-portfolio"><div class="hero__bg" style="background-image:url('assets/images/portfolio-hero.png');" role="img" aria-label="Collection of finished leather holsters and EDC gear"></div><div class="hero__content"><h1 class="hero__title" style="font-size:var(--font-size-4xl);">Our Portfolio</h1><p class="hero__subtitle">Showcasing the finest custom leather work from our workshop</p></div></section>
@@ -33,7 +35,7 @@
   <!-- SECTION 2: FILTER BAR -->
   <section class="section" id="gallery-filters" style="padding-top:var(--space-6);padding-bottom:var(--space-3);">
     <div class="container text-center">
-      <div class="flex-center gap-3" style="flex-wrap:wrap;">
+      <div class="flex-center gap-3" data-filter-target="portfolio-gallery-container" style="flex-wrap:wrap;">
         <button class="pill active" data-filter="all">All Work</button>
         <button class="pill" data-filter="holsters">Holsters</button>
         <button class="pill" data-filter="edc">EDC Gear</button>
@@ -47,7 +49,7 @@
   <!-- SECTION 3: MASONRY GALLERY -->
   <section class="section" id="gallery-masonry" style="padding-top:var(--space-3);">
     <div class="container">
-      <div class="masonry reveal reveal--up">
+      <div class="masonry reveal reveal--up" id="portfolio-gallery-container">
         <div class="masonry__item" data-category="holsters"><img src="assets/images/leather_holster_care.png" alt="IWB leather holster for Glock 19" loading="lazy"><div class="masonry__overlay"><span class="masonry__label">IWB Holster — Glock 19</span></div></div>
         <div class="masonry__item" data-category="holsters"><img src="assets/images/workshop-3.png" alt="OWB hand-tooled holster with floral border" loading="lazy"><div class="masonry__overlay"><span class="masonry__label">OWB Tooled — 1911</span></div></div>
         <div class="masonry__item" data-category="edc"><img src="assets/images/edc_gear_kit.png" alt="Leather EDC pouch for multi-tool and flashlight" loading="lazy"><div class="masonry__overlay"><span class="masonry__label">EDC Pouch — Leatherman + Olight</span></div></div>

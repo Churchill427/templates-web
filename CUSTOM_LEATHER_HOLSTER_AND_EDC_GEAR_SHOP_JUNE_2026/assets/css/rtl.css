@@ -214,7 +214,7 @@
   margin-right: 260px;
 }
 
-[dir="rtl"] .sidebar.collapsed ~ .dashboard-main {
+[dir="rtl"] .sidebar.collapsed~.dashboard-main {
   margin-left: 0;
   margin-right: 80px;
 }
@@ -290,8 +290,16 @@
   left: var(--space-4);
 }
 
-[dir="rtl"] .auth-card__logo {
-  text-align: center;
+[dir="rtl"] .auth-card__logo-area .auth-page__toggles {
+  right: auto;
+  left: var(--space-3);
+}
+
+@media (max-width: 480px) {
+  [dir="rtl"] .auth-card__logo-area .auth-page__toggles {
+    right: auto;
+    left: var(--space-2);
+  }
 }
 
 /* --- Filter Bar --- */
