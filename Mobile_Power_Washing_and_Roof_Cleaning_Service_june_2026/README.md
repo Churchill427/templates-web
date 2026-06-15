@@ -4,11 +4,10 @@ WASH is a premium, fully-responsive, tri-color website built for the exterior cl
 
 ## 🌟 Key Features
 
-- **14 Complete HTML Pages**: Handcrafted semantic layouts with unique designs.
+- **10 Complete HTML Pages**: Handcrafted semantic layouts with unique designs.
 - **Tri-Color Design System**: Curated brand colors (Deep Ocean Blue, Fresh Mint Green, Warm Amber) defined via CSS Custom Properties.
 - **Light & Dark Mode**: Persistent theme settings synced with system preferences.
 - **RTL & LTR Support**: Complete layout mirroring via CSS logical properties and script management.
-- **Zero-Dependency Charts**: custom Canvas-drawn charts in admin and user dashboards (Line, Bar, Doughnut, Progress).
 - **Interactive Tools**: Built-in pricing estimator (real-time surface area calculations) and multi-step booking form.
 - **Fully Accessible & Responsive**: Complies with keyboard navigation, aria-labels, touch targets (min 44px), and fluid breakpoints.
 - **SEO Ready**: Structured LocalBusiness JSON-LD, description tags, sitemap, and robots.txt.
@@ -26,9 +25,7 @@ WASH is a premium, fully-responsive, tri-color website built for the exterior cl
 │   │   ├── main.js             # General page functionality & validations
 │   │   ├── theme.js            # Light/dark theme toggle
 │   │   ├── rtl.js              # LTR/RTL layout toggle
-│   │   ├── animations.js       # Scroll reveal, counters, sliders
-│   │   ├── graphs.js           # Custom Canvas chart library
-│   │   └── dashboard.js        # Dashboard sidebar & notifications manager
+│   │   └── animations.js       # Scroll reveal, counters, sliders
 │   └── images/
 │       ├── hero/               # Page hero backgrounds and CTA images
 │       ├── services/           # Service-specific card photography
@@ -43,12 +40,8 @@ WASH is a premium, fully-responsive, tri-color website built for the exterior cl
 │   ├── booking.html            # Multi-step booking flow
 │   ├── blog.html               # Professional tips and articles
 │   ├── contact.html            # Interactive form, map, and FAQ
-│   ├── login.html              # Single viewport sign-in card
-│   ├── signup.html             # Single viewport register card
 │   ├── 404.html                # Custom animated error page
-│   ├── coming-soon.html        # Launch countdown landing page
-│   ├── dashboard-admin.html    # Admin management panel
-│   └── dashboard-user.html     # Client self-service portal
+│   └── coming-soon.html        # Launch countdown landing page
 ├── documentation/              # Technical integration sheets
 ├── robots.txt                  # Search engine directives
 └── sitemap.xml                 # XML sitemap index
