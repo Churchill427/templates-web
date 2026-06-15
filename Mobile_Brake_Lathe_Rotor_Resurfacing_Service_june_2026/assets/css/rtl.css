@@ -19,9 +19,6 @@
 }
 
 /* ---- Navigation ---- */
-[dir="rtl"] .nav-links {
-  flex-direction: row-reverse;
-}
 
 [dir="rtl"] .nav-dropdown-menu {
   left: auto;
@@ -98,7 +95,22 @@
 
 /* ---- Check List ---- */
 [dir="rtl"] .check-list li {
-  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .check-list li > div {
+  direction: ltr;
+  text-align: right;
+}
+
+/* Why Choose Us RTL English direction fix */
+[dir="rtl"] #why-choose-us h2 {
+  direction: ltr;
+  text-align: center;
+}
+
+[dir="rtl"] #why-choose-us p {
+  direction: ltr;
   text-align: right;
 }
 
@@ -109,19 +121,11 @@
 }
 
 [dir="rtl"] .footer-contact-item {
-  flex-direction: row-reverse;
   text-align: right;
-}
-
-@media (min-width: 640px) {
-  [dir="rtl"] .footer-bottom {
-    flex-direction: row-reverse;
-  }
 }
 
 /* ---- Testimonial ---- */
 [dir="rtl"] .testimonial-header {
-  flex-direction: row-reverse;
   text-align: right;
 }
 
@@ -129,19 +133,13 @@
   text-align: right;
 }
 
-[dir="rtl"] .testimonial-stars {
-  flex-direction: row-reverse;
-}
-
 /* ---- Pricing ---- */
 [dir="rtl"] .pricing-features li {
-  flex-direction: row-reverse;
   text-align: right;
 }
 
 /* ---- Accordion ---- */
 [dir="rtl"] .accordion-header {
-  flex-direction: row-reverse;
   text-align: right;
 }
 
@@ -167,13 +165,7 @@
   left: 12px;
 }
 
-[dir="rtl"] .form-error {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .checkbox-group {
-  flex-direction: row-reverse;
-}
+/* Form alignment overrides */
 
 /* ---- Auth Extras ---- */
 [dir="rtl"] .auth-form-extras {
@@ -289,8 +281,9 @@
 }
 
 /* ---- Form Navigation ---- */
-[dir="rtl"] .form-navigation {
-  flex-direction: row-reverse;
+[dir="rtl"] .form-navigation .btn-prev i,
+[dir="rtl"] .form-navigation .btn-next i {
+  transform: scaleX(-1);
 }
 
 /* ---- Hero ---- */
