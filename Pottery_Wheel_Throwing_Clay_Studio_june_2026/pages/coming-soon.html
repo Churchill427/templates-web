@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Coming Soon</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .coming-soon-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      color: #F9F7F4;
+      padding: var(--space-6);
+    }
+    .cs-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: blur(4px);
+       /* hide blurred edges */
+    }
+    .cs-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,24,22,0.7);
+      z-index: -1;
+    }
+    
+    .brand-large {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      margin-bottom: var(--space-8);
+      color: #F9F7F4;
+    }
+    
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+    }
+    .countdown-item {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: var(--space-4) var(--space-6);
+      min-width: 90px;
+    }
+    .countdown-number {
+      font-size: var(--text-4xl);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+      color: var(--primary-400);
+    }
+    .countdown-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #D4CFC8;
+    }
+
+    /* Newsletter */
+    .cs-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      max-width: 400px;
+      margin: 0 auto var(--space-10);
+    }
+    @media (min-width: 640px) {
+      .cs-form { flex-direction: row; }
+      .cs-form input { flex: 1; margin-bottom: 0; }
+    }
+    
+    .social-links {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+    }
+    .social-links a {
+      color: #D4CFC8;
+      font-size: 1.5rem;
+      transition: color var(--transition-color);
+    }
+    .social-links a:hover {
+      color: var(--primary-400);
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+
+  <main class="coming-soon-section fade-in-up visible">
+    <img src="../assets/images/hero-placeholder.png" alt="Clay spinning on wheel in motion blur" class="cs-bg">
+    <div class="cs-overlay"></div>
+    
+    <div class="relative z-10 w-full max-w-3xl mx-auto">
+      <div class="brand-large"><img src="../assets/images/logo.png" alt="KILN Logo" class="nav-logo">KILN</div>
+      
+      <h1 class="text-4xl md:text-5xl mb-8">Firing Up Something New</h1>
+      
+      <!-- Countdown Placeholder -->
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">14</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">08</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="mins">45</div>
+          <div class="countdown-label">Mins</div>
+        </div>
+      </div>
+      
+      <p class="text-lg mb-6" style="color: #D4CFC8;">Be the first to know when our new studio space opens.</p>
+      
+      <form class="cs-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+        <input type="email" class="form-control" placeholder="Enter your email" required style="background: rgba(255,255,255,0.9); border: none; color: #1A1816;">
+        <button type="submit" class="btn btn-primary">Notify Me</button>
+      </form>
+      
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+        <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="ph ph-pinterest-logo"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Simple mock countdown script
+    const updateCountdown = () => {
+      const minsEl = document.getElementById('mins');
+      if (minsEl) {
+        let mins = parseInt(minsEl.innerText, 10);
+        mins = mins - 1;
+        if (mins < 0) mins = 59;
+        minsEl.innerText = mins.toString().padStart(2, '0');
+      }
+    };
+    setInterval(updateCountdown, 60000); // update every minute just for show
+  </script>
+</body>
+</html>

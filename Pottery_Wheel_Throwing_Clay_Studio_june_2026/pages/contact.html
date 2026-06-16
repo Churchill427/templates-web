@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Get In Touch</title>
+  <meta name="description" content="Contact KILN pottery studio. Find our location, hours, or send us a message to inquire about classes and private events.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <style>
+    /* Hero Contact */
+    .hero-section {
+      height: 50vh;
+      min-height: 400px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #F9F7F4;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      animation: heroZoom 20s infinite alternate ease-in-out;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26,24,22,0.6);
+      z-index: -1;
+    }
+    @keyframes heroZoom {
+      0% {  }
+      100% {  }
+    }
+
+    /* Contact Info Cards */
+    .info-card {
+      padding: var(--space-8);
+      background: var(--surface-color);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      transition: transform var(--transition-transform);
+    }
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    }
+    .info-icon {
+      font-size: 2.5rem;
+      color: var(--primary-500);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Form Styles */
+    .contact-form {
+      background: var(--surface-color);
+      padding: var(--space-8);
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    @media (min-width: 768px) {
+      .form-row { flex-direction: row; }
+      .form-row .form-group { flex: 1; margin-bottom: 0; }
+    }
+    .error-message {
+      color: #d32f2f;
+      font-size: var(--text-xs);
+      margin-top: 4px;
+      display: none;
+    }
+    .form-control.invalid {
+      border-color: #d32f2f;
+    }
+    .form-control.invalid + .error-message {
+      display: block;
+    }
+    
+    /* Form Success State */
+    .success-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--surface-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+      z-index: 10;
+    }
+    .success-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .success-icon {
+      font-size: 4rem;
+      color: var(--secondary-500);
+      margin-bottom: var(--space-4);
+      
+      transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .success-overlay.active .success-icon {
+      
+    }
+
+    /* Location Section */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+    @media (min-width: 1024px) {
+      .location-grid { grid-template-columns: 3fr 2fr; align-items: stretch; }
+    }
+    .map-container {
+      height: 400px;
+      background: var(--neutral-200);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+    .location-details img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Social Media Grid */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2);
+    }
+    @media (min-width: 640px) {
+      .insta-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    
+    .insta-item {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .insta-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 300ms ease;
+    }
+    .insta-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+    .insta-item:hover img {  }
+    .insta-item:hover .insta-overlay { opacity: 1; }
+    
+    .social-login-btns {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-8);
+    }
+    .btn-social {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: 4px;
+      color: #fff;
+      font-weight: 500;
+      transition: opacity 200ms ease;
+    }
+    .btn-social:hover { opacity: 0.9; }
+    .btn-fb { background: #1877F2; }
+    .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .btn-pi { background: #E60023; }
+    .btn-yt { background: #FF0000; }
+
+    /* Newsletter Contact */
+    .newsletter-section {
+      background-color: var(--secondary-800);
+      color: #F9F7F4;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background-image: url('../assets/images/pottery-placeholder.png');
+      background-size: cover;
+      z-index: 0;
+      mix-blend-mode: overlay;
+    }
+    .newsletter-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    @media (min-width: 640px) {
+      .newsletter-form {
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .newsletter-form input {
+        flex: 1;
+        margin-bottom: 0;
+        height: auto;
+      }
+      .newsletter-form .btn {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        border: none;
+      }
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <button class="nav-mobile-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+      
+      <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo" class="nav-logo">KILN</a>
+      
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-b.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Dashboard <i class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+          </div>
+        </div>
+
+      </nav>
+      
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="ph ph-sun"></i></button>
+        <button class="rtl-toggle btn btn-outline" style="padding: 4px 8px; font-size: 12px;" aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+      <img src="../assets/images/avatar-placeholder.png" alt="Hands carefully glazing a ceramic bowl" class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="container relative z-10 fade-in-up d-flex flex-col justify-center align-center h-full">
+        <h1 class="hero-h1 m-0">Get in Touch</h1>
+      </div>
+    </section>
+
+    <!-- Section 2: Contact Information -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="info-card fade-in-up">
+            <i class="ph ph-map-pin info-icon"></i>
+            <h3 class="text-lg mb-2">Visit Us</h3>
+            <p class="text-sm text-muted">123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+          </div>
+          
+          <div class="info-card fade-in-up">
+            <i class="ph ph-phone info-icon"></i>
+            <h3 class="text-lg mb-2">Call Us</h3>
+            <p class="text-sm text-muted mb-1">(555) 123-4567</p>
+            <p class="text-xs text-muted">Tue-Sun: 10am - 8pm</p>
+          </div>
+          
+          <div class="info-card fade-in-up">
+            <i class="ph ph-envelope info-icon"></i>
+            <h3 class="text-lg mb-2">Email Us</h3>
+            <p class="text-sm text-muted mb-1">hello@kilnstudio.com</p>
+            <p class="text-xs text-muted">We reply within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Contact Form -->
+    <section class="section-padding">
+      <div class="container max-w-4xl">
+        <div class="text-center mb-10 fade-in-up">
+          <h2 class="mb-4">Send a Message</h2>
+          <p class="text-muted">Have a question about a class, firing, or hosting a private event?</p>
+        </div>
+        
+        <form class="contact-form fade-in-up" id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Your full name">
+              <span class="error-message">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com">
+              <span class="error-message">Please enter a valid email address.</span>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone (Optional)</label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="(555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <select id="subject" name="subject" class="form-control">
+                <option value="">Select a topic...</option>
+                <option value="classes">Classes & Workshops</option>
+                <option value="firing">Firing Services</option>
+                <option value="private_event">Private Events</option>
+                <option value="other">Other Inquiry</option>
+              </select>
+              <span class="error-message">Please select a subject.</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" class="form-control" rows="5" placeholder="How can we help you?"></textarea>
+            <span class="error-message">Please enter your message.</span>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-full mt-4">Send Message</button>
+          
+          <!-- Success Overlay -->
+          <div class="success-overlay" id="successState">
+            <i class="ph ph-check-circle success-icon"></i>
+            <h3 class="text-2xl mb-2">Message Sent!</h3>
+            <p class="text-muted mb-6">Thank you for reaching out. We'll get back to you shortly.</p>
+            <button type="button" class="btn btn-outline" onclick="resetForm()">Send Another Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Section 4: Studio Location -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container location-grid">
+        <div class="map-container fade-in-up">
+          <iframe 
+            src="https://maps.google.com/maps?q=Portland,%20OR&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        
+        <div class="location-details fade-in-up">
+          <img src="../assets/images/pottery-placeholder.png" alt="Exterior of KILN studio">
+          <h3 class="text-xl mb-4">Finding Us</h3>
+          <p class="text-sm text-muted mb-4">We are located in the historic red brick building next to the Artisan Coffee Roasters. Look for the large terracotta sign.</p>
+          
+          <h4 class="text-base mb-2 font-medium"><i class="ph ph-car text-primary mr-1"></i> Parking</h4>
+          <p class="text-sm text-muted mb-4">Free 2-hour street parking is available along Artisan Way. For longer sessions, there is a paid lot directly behind our building on 4th Ave.</p>
+          
+          <h4 class="text-base mb-2 font-medium"><i class="ph ph-wheelchair text-primary mr-1"></i> Accessibility</h4>
+          <p class="text-sm text-muted">Our studio is on the ground floor with zero steps from the sidewalk. We have two ADA-compliant adjustable height pottery wheels.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Social Media -->
+    <section class="section-padding">
+      <div class="container text-center">
+        <h2 class="mb-4 fade-in-up">Follow Our Journey</h2>
+        <p class="text-muted mb-10 fade-in-up">Tag @kilnstudio to be featured in our gallery.</p>
+        
+        <div class="insta-grid mb-12 fade-in-up">
+          <a href="#" class="insta-item">
+            <img src="../assets/images/journey_1.png" alt="Hand shaping a clay cup on a pottery wheel">
+            <div class="insta-overlay"><i class="ph ph-instagram-logo ph-2x"></i></div>
+          </a>
+          <a href="#" class="insta-item">
+            <img src="../assets/images/journey_2.png" alt="Unfired pottery pieces on studio kiln shelves">
+            <div class="insta-overlay"><i class="ph ph-instagram-logo ph-2x"></i></div>
+          </a>
+          <a href="#" class="insta-item">
+            <img src="../assets/images/journey_3.jpg" alt="Artisan throwing a large clay vase on wheel">
+            <div class="insta-overlay"><i class="ph ph-instagram-logo ph-2x"></i></div>
+          </a>
+          <a href="#" class="insta-item">
+            <img src="../assets/images/journey_4.jpg" alt="Close-up of hands shaping a clay bowl on wheel">
+            <div class="insta-overlay"><i class="ph ph-instagram-logo ph-2x"></i></div>
+          </a>
+          <a href="#" class="insta-item hidden sm:block">
+            <img src="../assets/images/journey_5.jpg" alt="Hands refining the shape of a clay jar on wheel">
+            <div class="insta-overlay"><i class="ph ph-instagram-logo ph-2x"></i></div>
+          </a>
+        </div>
+        
+        <div class="social-login-btns fade-in-up">
+          <a href="#" class="btn-social btn-fb"><i class="ph-fill ph-facebook-logo"></i> Facebook</a>
+          <a href="#" class="btn-social btn-ig"><i class="ph ph-instagram-logo"></i> Instagram</a>
+          <a href="#" class="btn-social btn-pi"><i class="ph-fill ph-pinterest-logo"></i> Pinterest</a>
+          <a href="#" class="btn-social btn-yt"><i class="ph-fill ph-youtube-logo"></i> YouTube</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Newsletter Contact -->
+    <section class="section-padding newsletter-section">
+      <div class="newsletter-bg"></div>
+      <div class="container newsletter-content text-center fade-in-up">
+        <h2 class="mb-4" style="color: #F9F7F4;">Stay in the Loop</h2>
+        <p class="mb-8 text-lg" style="color: #DCEBE0;">Subscribe to our monthly newsletter for glaze recipes, technique tips, and early access to workshop registration.</p>
+        
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" class="form-control" placeholder="Enter your email address" required style="border: none; border-radius: 4px;">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-brand mb-4" style="color: #F9F7F4; display: flex; align-items: center; gap: var(--space-2);"><img src="../assets/images/logo.png" alt="KILN Logo" class="footer-logo">KILN</a>
+          <p class="text-sm mb-6 max-w-sm">A community-focused ceramics studio dedicated to the art of clay, craftsmanship, and creativity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="ph ph-facebook-logo" style="color: #1877F2;"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="ph ph-instagram-logo" style="color: #E4405F;"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="ph ph-pinterest-logo" style="color: #E60023;"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="ph ph-youtube-logo" style="color: #FF0000;"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="booking.html" class="footer-link">Open Studio</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="about.html" class="footer-link">About</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <nav>
+            <a href="services.html" class="footer-link">Wheel Throwing</a>
+            <a href="services.html" class="footer-link">Hand Building</a>
+            <a href="services.html" class="footer-link">Glazing</a>
+            <a href="services.html" class="footer-link">Kiln Firing</a>
+            <a href="services.html" class="footer-link">Private Events</a>
+            <a href="services.html" class="footer-link">Corporate Workshops</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <div class="text-sm text-muted d-flex flex-col gap-2">
+            <p><i class="ph ph-map-pin mr-2"></i> 123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+            <p><i class="ph ph-phone mr-2"></i> (555) 123-4567</p>
+            <p><i class="ph ph-envelope mr-2"></i> hello@kilnstudio.com</p>
+            <p class="mt-2 text-primary font-medium">Hours:</p>
+            <p>Tue - Sun: 10am - 8pm</p>
+            <p>Mon: Closed for maintenance</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 KILN Studio. All rights reserved.</p>
+        <div class="d-flex gap-6">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Form Validation Logic
+    const form = document.getElementById('contactForm');
+    const successOverlay = document.getElementById('successState');
+    
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      let isValid = true;
+      const inputs = {
+        name: document.getElementById('name'),
+        email: document.getElementById('email'),
+        subject: document.getElementById('subject'),
+        message: document.getElementById('message')
+      };
+      
+      // Reset validation
+      Object.values(inputs).forEach(input => {
+        input.classList.remove('invalid');
+      });
+      
+      // Validate
+      if (!inputs.name.value.trim()) { inputs.name.classList.add('invalid'); isValid = false; }
+      if (!inputs.email.value.trim() || !inputs.email.value.includes('@')) { inputs.email.classList.add('invalid'); isValid = false; }
+      if (!inputs.subject.value) { inputs.subject.classList.add('invalid'); isValid = false; }
+      if (!inputs.message.value.trim()) { inputs.message.classList.add('invalid'); isValid = false; }
+      
+      if (isValid) {
+        // Simulate Formspree submission success
+        successOverlay.classList.add('active');
+        form.reset();
+      }
+    });
+    
+    window.resetForm = () => {
+      successOverlay.classList.remove('active');
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Our Story</title>
+  <meta name="description"
+    content="Learn about the history of KILN studio, our values, our team of instructors, and the pottery process.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* Hero About */
+    .hero-section {
+      height: 60vh;
+      min-height: 400px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #F9F7F4;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      animation: heroZoom 20s infinite alternate ease-in-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 24, 22, 0.6);
+      z-index: -1;
+    }
+
+    @keyframes heroZoom {
+      0% {}
+
+      100% {}
+    }
+
+    /* Split Layout */
+    .split-layout {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-12);
+    }
+
+    @media (min-width: 1024px) {
+      .split-layout {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .split-image,
+      .split-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .split-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+
+    /* Values Cards */
+    .value-card {
+      padding: var(--space-8) var(--space-6);
+      background: var(--surface-color);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      transition: transform var(--transition-transform);
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-300);
+    }
+
+    .value-icon {
+      font-size: 3rem;
+      color: var(--secondary-500);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Team Compact */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    @media (min-width: 640px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .team-card-compact {
+      text-align: center;
+    }
+
+    .team-card-compact img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto var(--space-4);
+      border: 4px solid var(--surface-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 300ms ease;
+    }
+
+    .team-card-compact:hover img {}
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+
+    .team-social a {
+      color: var(--neutral-400);
+    }
+
+    .team-social a:hover {
+      color: var(--primary-500);
+    }
+
+    /* Process Timeline */
+    .process-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    @media (min-width: 1024px) {
+      .process-timeline {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+    }
+
+    .process-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .process-img-container {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto var(--space-4);
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--primary-100);
+      position: relative;
+      z-index: 2;
+      background: var(--bg-color);
+    }
+
+    [data-theme="dark"] .process-img-container {
+      border-color: var(--primary-900);
+    }
+
+    .process-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (min-width: 1024px) {
+      .process-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background: var(--primary-200);
+        z-index: 1;
+      }
+
+      [data-theme="dark"] .process-step:not(:last-child)::after {
+        background: var(--primary-800);
+      }
+    }
+
+    /* CTA Section */
+    .cta-section {
+      position: relative;
+      padding: var(--space-20) 0;
+      color: #F9F7F4;
+      text-align: center;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 24, 22, 0.7);
+      z-index: -1;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <button class="nav-mobile-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+
+      <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo"
+          class="nav-logo">KILN</a>
+
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-b.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Dashboard <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+          </div>
+        </div>
+
+      </nav>
+
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="ph ph-sun"></i></button>
+        <button class="rtl-toggle btn btn-outline" style="padding: 4px 8px; font-size: 12px;"
+          aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+      <img src="../assets/images/hero-placeholder.png" alt="Close-up of wet clay texture with carving tools"
+        class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="container relative z-10 fade-in-up d-flex flex-col justify-center align-center h-full">
+        <h1 class="hero-h1 m-0">Our Story</h1>
+      </div>
+    </section>
+
+    <!-- Section 2: Studio Story -->
+    <section class="section-padding">
+      <div class="container split-layout">
+        <div class="split-image fade-in-up">
+          <img src="../assets/images/founder_story.png" alt="Founder of KILN studio working with clay">
+        </div>
+        <div class="split-text fade-in-up">
+          <h2 class="mb-6">From a Garage to a Community</h2>
+          <p class="mb-4 text-lg">KILN started in 2018 with a single used wheel in a drafty garage and a deep passion
+            for the therapeutic nature of clay.</p>
+          <p class="mb-4">Our founder, realizing how pottery provided a grounding escape from an increasingly digital
+            world, wanted to share that experience. What began as informal weekend workshops quickly blossomed as the
+            community grew.</p>
+          <p>Today, KILN is a 3,000 square foot haven for creators of all levels. We believe that everyone has an innate
+            desire to make things with their hands, and clay is the perfect medium for that expression. We're proud to
+            have guided thousands of students from their first lopsided bowl to confident, independent ceramicists.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Mission & Values -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container">
+        <h2 class="text-center mb-12 fade-in-up">Our Values</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="value-card fade-in-up">
+            <i class="ph ph-hand-heart value-icon"></i>
+            <h3 class="text-lg mb-3">Craftsmanship</h3>
+            <p class="text-sm text-muted">We honor traditional techniques while encouraging modern exploration and
+              personal style.</p>
+          </div>
+          <div class="value-card fade-in-up">
+            <i class="ph ph-users value-icon"></i>
+            <h3 class="text-lg mb-3">Community</h3>
+            <p class="text-sm text-muted">A studio is more than equipment; it's the people. We foster an inclusive,
+              supportive environment.</p>
+          </div>
+          <div class="value-card fade-in-up">
+            <i class="ph ph-leaf value-icon"></i>
+            <h3 class="text-lg mb-3">Sustainability</h3>
+            <p class="text-sm text-muted">We reclaim all scrap clay, use energy-efficient kilns, and source non-toxic
+              materials locally.</p>
+          </div>
+          <div class="value-card fade-in-up">
+            <i class="ph ph-lightbulb value-icon"></i>
+            <h3 class="text-lg mb-3">Creativity</h3>
+            <p class="text-sm text-muted">We believe there are no mistakes in clay, only unexpected learning
+              opportunities and new paths.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Team / Instructors -->
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="text-center mb-12 fade-in-up">Meet Our Instructors</h2>
+
+        <div class="team-grid">
+          <div class="team-card-compact fade-in-up">
+            <img src="../assets/images/team_sarah.png" alt="Sarah J.">
+            <h4 class="text-lg">Sarah Jenkins</h4>
+            <p class="text-xs text-primary font-medium mb-2">Head of Wheel Throwing</p>
+            <p class="text-sm text-muted px-4">Specializes in large-scale vessels and functional tableware.</p>
+            <div class="team-social">
+              <a href="#"><i class="ph ph-instagram-logo"></i></a>
+            </div>
+          </div>
+
+          <div class="team-card-compact fade-in-up">
+            <img src="../assets/images/team_marcus.png" alt="Marcus T.">
+            <h4 class="text-lg">Marcus Trent</h4>
+            <p class="text-xs text-primary font-medium mb-2">Hand Building Lead</p>
+            <p class="text-sm text-muted px-4">Focuses on organic sculptural forms and pinch techniques.</p>
+            <div class="team-social">
+              <a href="#"><i class="ph ph-instagram-logo"></i></a>
+            </div>
+          </div>
+
+          <div class="team-card-compact fade-in-up">
+            <img src="../assets/images/team_elena.png" alt="Elena R.">
+            <h4 class="text-lg">Elena Rodriguez</h4>
+            <p class="text-xs text-primary font-medium mb-2">Glaze Technician</p>
+            <p class="text-sm text-muted px-4">Our resident alchemist, creating all of KILN's custom glazes.</p>
+            <div class="team-social">
+              <a href="#"><i class="ph ph-instagram-logo"></i></a>
+            </div>
+          </div>
+
+          <div class="team-card-compact fade-in-up">
+            <img src="../assets/images/team_david.png" alt="David W.">
+            <h4 class="text-lg">David Wu</h4>
+            <p class="text-xs text-primary font-medium mb-2">Studio Manager</p>
+            <p class="text-sm text-muted px-4">Ensures kilns fire on time and teaches introductory workshops.</p>
+            <div class="team-social">
+              <a href="#"><i class="ph ph-instagram-logo"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Studio Timeline / Process -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container">
+        <div class="text-center mb-12 fade-in-up">
+          <h2 class="mb-4">The Journey of Clay</h2>
+          <p class="text-muted">From raw earth to finished art, the ceramic process requires patience.</p>
+        </div>
+
+        <div class="process-timeline fade-in-up">
+          <div class="process-step">
+            <div class="process-img-container">
+              <img src="../assets/images/pottery-placeholder.png" alt="Raw clay block">
+            </div>
+            <h4 class="text-base mb-1">1. Preparation</h4>
+            <p class="text-xs text-muted">Wedging raw clay to remove air bubbles</p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-img-container">
+              <img src="../assets/images/process_shaping.jpg" alt="Shaping clay">
+            </div>
+            <h4 class="text-base mb-1">2. Shaping</h4>
+            <p class="text-xs text-muted">Throwing or hand-building the form</p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-img-container">
+              <img src="../assets/images/process_drying.jpg" alt="Drying pots">
+            </div>
+            <h4 class="text-base mb-1">3. Drying</h4>
+            <p class="text-xs text-muted">Trimming and drying to leather hard</p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-img-container">
+              <img src="../assets/images/process_bisque.jpg" alt="Bisque firing">
+            </div>
+            <h4 class="text-base mb-1">4. Bisque Fire</h4>
+            <p class="text-xs text-muted">First firing hardens the piece</p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-img-container">
+              <img src="../assets/images/process_glazing.jpg" alt="Glazing pots">
+            </div>
+            <h4 class="text-base mb-1">5. Glazing</h4>
+            <p class="text-xs text-muted">Applying liquid glass surface decoration</p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-img-container">
+              <img src="../assets/images/process_final_fire.jpg" alt="Finished ceramic">
+            </div>
+            <h4 class="text-base mb-1">6. Final Fire</h4>
+            <p class="text-xs text-muted">High heat melts glaze to finished state</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Join the Community CTA -->
+    <section class="cta-section">
+      <img src="../assets/images/avatar-placeholder.png" alt="Group of students smiling in pottery studio"
+        class="cta-bg">
+      <div class="cta-overlay"></div>
+      <div class="container relative z-10 fade-in-up">
+        <h2 class="mb-4" style="color: #F9F7F4;">Ready to Join Our Community?</h2>
+        <p class="text-lg mb-8 max-w-2xl mx-auto" style="color: #D4CFC8;">Whether you want to take a single class or
+          become a full-time member, we have a spot for you at the wheel.</p>
+        <a href="booking.html" class="btn btn-primary">Sign Up Today</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1 -->
+        <div>
+          <a href="index.html" class="nav-brand mb-4"
+            style="color: #F9F7F4; display: flex; align-items: center; gap: var(--space-2);"><img
+              src="../assets/images/logo.png" alt="KILN Logo" class="footer-logo">KILN</a>
+          <p class="text-sm mb-6 max-w-sm">A community-focused ceramics studio dedicated to the art of clay,
+            craftsmanship, and creativity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="ph ph-facebook-logo"
+                style="color: #1877F2;"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="ph ph-instagram-logo"
+                style="color: #E4405F;"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="ph ph-pinterest-logo"
+                style="color: #E60023;"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="ph ph-youtube-logo"
+                style="color: #FF0000;"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="booking.html" class="footer-link">Open Studio</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="about.html" class="footer-link">About</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <nav>
+            <a href="services.html" class="footer-link">Wheel Throwing</a>
+            <a href="services.html" class="footer-link">Hand Building</a>
+            <a href="services.html" class="footer-link">Glazing</a>
+            <a href="services.html" class="footer-link">Kiln Firing</a>
+            <a href="services.html" class="footer-link">Private Events</a>
+            <a href="services.html" class="footer-link">Corporate Workshops</a>
+          </nav>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <div class="text-sm text-muted d-flex flex-col gap-2">
+            <p><i class="ph ph-map-pin mr-2"></i> 123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+            <p><i class="ph ph-phone mr-2"></i> (555) 123-4567</p>
+            <p><i class="ph ph-envelope mr-2"></i> hello@kilnstudio.com</p>
+            <p class="mt-2 text-primary font-medium">Hours:</p>
+            <p>Tue - Sun: 10am - 8pm</p>
+            <p>Mon: Closed for maintenance</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 KILN Studio. All rights reserved.</p>
+        <div class="d-flex gap-6">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

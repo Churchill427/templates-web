@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Our Classes & Services</title>
+  <meta name="description" content="Explore pottery classes at KILN studio. From beginner wheel throwing to advanced glazing and private events.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <style>
+    /* Hero Services */
+    .hero-section {
+      height: 60vh;
+      min-height: 400px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #F9F7F4;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      animation: heroZoom 20s infinite alternate ease-in-out;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26,24,22,0.6);
+      z-index: -1;
+    }
+    @keyframes heroZoom {
+      0% {  }
+      100% {  }
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-8);
+    }
+    .filter-btn {
+      padding: var(--space-2) var(--space-4);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-color);
+      color: var(--text-primary);
+      font-weight: 500;
+      transition: all var(--transition-color);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary-500);
+      color: #fff;
+      border-color: var(--primary-500);
+    }
+    [data-theme="dark"] .filter-btn:hover, [data-theme="dark"] .filter-btn.active {
+      background: var(--primary-600);
+      border-color: var(--primary-600);
+    }
+
+    /* Class Card */
+    .class-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .class-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .level-badge {
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      background: var(--surface-color);
+      color: var(--primary-600);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    [data-theme="dark"] .level-badge { color: var(--primary-400); }
+    .class-content {
+      padding: var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .class-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+    .card-footer {
+      margin-top: auto;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Accordion (Details & FAQ) */
+    .accordion-item {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: var(--space-4);
+      background: var(--surface-color);
+      overflow: hidden;
+    }
+    .accordion-header {
+      width: 100%;
+      text-align: left;
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      font-weight: 600;
+      font-size: var(--text-lg);
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+    }
+    [dir="rtl"] .accordion-header { text-align: right; }
+    .accordion-icon {
+      transition: transform 300ms ease;
+      color: var(--primary-500);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease;
+    }
+    .accordion-inner {
+      padding: 0 var(--space-6) var(--space-6);
+      border-top: 1px solid transparent;
+    }
+    .accordion-item.active .accordion-content {
+      max-height: 1000px;
+    }
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+    .accordion-item.active .accordion-inner {
+      border-top-color: var(--border-color);
+      padding-top: var(--space-4);
+    }
+
+    /* Open Studio Calendar Placeholder */
+    .calendar-placeholder {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: var(--space-6);
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background: var(--border-color);
+      border: 1px solid var(--border-color);
+    }
+    .cal-header {
+      background: var(--elevated-color);
+      text-align: center;
+      padding: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+    .cal-cell {
+      background: var(--surface-color);
+      min-height: 80px;
+      padding: var(--space-2);
+      position: relative;
+    }
+    .cal-date {
+      position: absolute;
+      top: var(--space-2);
+      right: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+    .cal-event {
+      margin-top: var(--space-6);
+      background: var(--secondary-100);
+      color: var(--secondary-800);
+      font-size: 10px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      text-align: center;
+    }
+    [data-theme="dark"] .cal-event { background: var(--secondary-800); color: var(--secondary-100); }
+
+    /* Private Events */
+    .event-card {
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+    }
+    @media (min-width: 768px) {
+      .event-card { flex-direction: row; }
+      .event-card-img { width: 40%; }
+      .event-card-content { width: 60%; }
+    }
+    .event-card-img img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
+    }
+    .event-card-content {
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <button class="nav-mobile-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+      
+      <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo" class="nav-logo">KILN</a>
+      
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-b.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Dashboard <i class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+          </div>
+        </div>
+
+      </nav>
+      
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="ph ph-sun"></i></button>
+        <button class="rtl-toggle btn btn-outline" style="padding: 4px 8px; font-size: 12px;" aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+      <img src="../assets/images/hero_services.jpg" alt="Array of finished pottery pieces on shelves" class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="container relative z-10 fade-in-up d-flex flex-col justify-center align-center h-full">
+        <h1 class="hero-h1 m-0">Our Classes & Services</h1>
+      </div>
+    </section>
+
+    <!-- Section 2: Class Categories -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="filter-tabs fade-in-up">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="beginner">Beginner</button>
+          <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+          <button class="filter-btn" data-filter="advanced">Advanced</button>
+          <button class="filter-btn" data-filter="kids">Kids</button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 class-grid fade-in-up">
+          <!-- Class Card -->
+          <article class="card class-card" data-category="beginner">
+            <span class="level-badge">Beginner</span>
+            <img src="../assets/images/service_wheel.png" alt="Intro to Wheel Throwing" class="class-img">
+            <div class="class-content">
+              <h3 class="mb-2 text-xl">Intro to Wheel Throwing</h3>
+              <p class="text-sm text-muted mb-4 flex-1">Learn the fundamentals of centering, pulling, and shaping clay on the potter's wheel.</p>
+              <div class="class-meta">
+                <span><i class="ph ph-clock mr-1"></i> 6 Weeks</span>
+                <span class="text-primary font-medium">$240</span>
+              </div>
+              <div class="class-meta text-xs">
+                <span><i class="ph ph-calendar-blank mr-1"></i> Next: Oct 12</span>
+              </div>
+              <div class="card-footer">
+                <a href="#class-details" class="footer-link">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Class Card -->
+          <article class="card class-card" data-category="intermediate">
+            <span class="level-badge">Intermediate</span>
+            <img src="../assets/images/gallery_vase.png" alt="Throwing Taller Forms" class="class-img">
+            <div class="class-content">
+              <h3 class="mb-2 text-xl">Throwing Taller Forms</h3>
+              <p class="text-sm text-muted mb-4 flex-1">Advance your skills by throwing cylinders, vases, and working with larger amounts of clay.</p>
+              <div class="class-meta">
+                <span><i class="ph ph-clock mr-1"></i> 4 Weeks</span>
+                <span class="text-primary font-medium">$180</span>
+              </div>
+              <div class="class-meta text-xs">
+                <span><i class="ph ph-calendar-blank mr-1"></i> Next: Oct 15</span>
+              </div>
+              <div class="card-footer">
+                <a href="#class-details" class="footer-link">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Class Card -->
+          <article class="card class-card" data-category="beginner">
+            <span class="level-badge">Beginner</span>
+            <img src="../assets/images/service_hand.png" alt="Hand Building Basics" class="class-img">
+            <div class="class-content">
+              <h3 class="mb-2 text-xl">Hand Building Basics</h3>
+              <p class="text-sm text-muted mb-4 flex-1">Explore pinch pots, coil building, and slab construction. No wheel required.</p>
+              <div class="class-meta">
+                <span><i class="ph ph-clock mr-1"></i> 4 Weeks</span>
+                <span class="text-primary font-medium">$160</span>
+              </div>
+              <div class="class-meta text-xs">
+                <span><i class="ph ph-calendar-blank mr-1"></i> Next: Oct 18</span>
+              </div>
+              <div class="card-footer">
+                <a href="#class-details" class="footer-link">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Class Card -->
+          <article class="card class-card" data-category="advanced">
+            <span class="level-badge">Advanced</span>
+            <img src="../assets/images/gallery_matcha.png" alt="Teapots & Lids" class="class-img">
+            <div class="class-content">
+              <h3 class="mb-2 text-xl">Teapots & Lids</h3>
+              <p class="text-sm text-muted mb-4 flex-1">Master complex forms including galleries, fitted lids, and pulling spouts.</p>
+              <div class="class-meta">
+                <span><i class="ph ph-clock mr-1"></i> 6 Weeks</span>
+                <span class="text-primary font-medium">$280</span>
+              </div>
+              <div class="class-meta text-xs">
+                <span><i class="ph ph-calendar-blank mr-1"></i> Next: Nov 02</span>
+              </div>
+              <div class="card-footer">
+                <a href="#class-details" class="footer-link">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Class Card -->
+          <article class="card class-card" data-category="all">
+            <span class="level-badge">All Levels</span>
+            <img src="../assets/images/service_glaze.png" alt="Glaze Alchemy" class="class-img">
+            <div class="class-content">
+              <h3 class="mb-2 text-xl">Glaze Alchemy</h3>
+              <p class="text-sm text-muted mb-4 flex-1">Learn to mix your own glazes and understand the chemistry behind the colors.</p>
+              <div class="class-meta">
+                <span><i class="ph ph-clock mr-1"></i> 2 Weeks</span>
+                <span class="text-primary font-medium">$120</span>
+              </div>
+              <div class="class-meta text-xs">
+                <span><i class="ph ph-calendar-blank mr-1"></i> Next: Nov 10</span>
+              </div>
+              <div class="card-footer">
+                <a href="#class-details" class="footer-link">View Details</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Class Card -->
+          <article class="card class-card" data-category="kids">
+            <span class="level-badge">Kids 8-12</span>
+            <img src="../assets/images/gallery_mug.png" alt="Kids Clay Play" class="class-img">
+            <div class="class-content">
+              <h3 class="mb-2 text-xl">Kids Clay Play</h3>
+              <p class="text-sm text-muted mb-4 flex-1">A fun, messy introduction to clay for young creators using hand-building techniques.</p>
+              <div class="class-meta">
+                <span><i class="ph ph-clock mr-1"></i> 4 Weeks</span>
+                <span class="text-primary font-medium">$140</span>
+              </div>
+              <div class="class-meta text-xs">
+                <span><i class="ph ph-calendar-blank mr-1"></i> Next: Oct 20</span>
+              </div>
+              <div class="card-footer">
+                <a href="#class-details" class="footer-link">View Details</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Class Details Modal/Accordion -->
+    <section id="class-details" class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container max-w-4xl">
+        <div class="text-center mb-10 fade-in-up">
+          <h2 class="mb-4">Class Details & Curriculum</h2>
+          <p class="text-muted">Deep dive into what you'll learn in our most popular programs.</p>
+        </div>
+        
+        <div class="accordion fade-in-up">
+          <!-- Accordion Item -->
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              <span>Intro to Wheel Throwing</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="mb-4 text-sm">This comprehensive 6-week course is designed for absolute beginners. We cover the entire process from raw clay to finished, glazed pieces. Expect to make cylinders, bowls, and simple cups.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <h5 class="font-medium mb-2">Curriculum:</h5>
+                    <ul class="text-sm text-muted d-flex flex-col gap-1">
+                      <li>Week 1: Wedging and Centering</li>
+                      <li>Week 2: Pulling Cylinders</li>
+                      <li>Week 3: Shaping Bowls</li>
+                      <li>Week 4: Trimming and Footing</li>
+                      <li>Week 5: Handles and Attachments</li>
+                      <li>Week 6: Glazing Techniques</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5 class="font-medium mb-2">What's Included:</h5>
+                    <ul class="text-sm text-muted d-flex flex-col gap-1">
+                      <li><i class="ph ph-check mr-1 text-secondary"></i> 25 lbs of stoneware clay</li>
+                      <li><i class="ph ph-check mr-1 text-secondary"></i> Use of studio tools</li>
+                      <li><i class="ph ph-check mr-1 text-secondary"></i> Firing for up to 8 pieces</li>
+                      <li><i class="ph ph-check mr-1 text-secondary"></i> Open studio access during course</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="d-flex align-center justify-between border-t pt-4" style="border-color: var(--border-color);">
+                  <div class="text-sm">
+                    <strong>Instructor:</strong> Sarah Jenkins
+                  </div>
+                  <a href="booking.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Accordion Item -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Hand Building Basics</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="mb-4 text-sm">Discover the freedom of hand building. This 4-week class teaches pinch, coil, and slab techniques to create functional and sculptural forms.</p>
+                <div class="d-flex align-center justify-between border-t pt-4" style="border-color: var(--border-color);">
+                  <div class="text-sm"><strong>Instructor:</strong> Marcus Trent</div>
+                  <a href="booking.html" class="btn btn-primary">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Open Studio Time -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 align-center">
+          <div class="fade-in-up">
+            <h2 class="mb-4 text-4xl">Open Studio Time</h2>
+            <h3 class="mb-6 text-xl text-primary font-medium">Practice Makes Perfect</h3>
+            <p class="mb-8 text-muted" style="font-size: 1.1rem; line-height: 1.8;">Open studio time is available for members and drop-in students who have completed at least one beginner class. It's uninstructed time to practice your skills at your own pace.</p>
+            <div class="card p-6 mb-6" style="border-left: 4px solid var(--primary-500);">
+              <h4 class="mb-2 text-lg">Drop-in Rate</h4>
+              <p class="text-3xl font-heading text-primary mb-2">$35<span class="text-sm text-muted font-normal"> / day</span></p>
+              <p class="text-sm text-muted mb-6">Includes use of house glazes. Clay and firing are purchased separately.</p>
+              <a href="booking.html" class="btn btn-primary w-full text-center">Book Studio Time</a>
+            </div>
+          </div>
+          
+          <div class="fade-in-up">
+            <div class="calendar-placeholder" style="box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: none;">
+              <div class="d-flex justify-between align-center mb-4">
+                <h4 class="font-medium">October 2026</h4>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-outline" style="padding: 4px 8px;"><i class="ph ph-caret-left"></i></button>
+                  <button class="btn btn-outline" style="padding: 4px 8px;"><i class="ph ph-caret-right"></i></button>
+                </div>
+              </div>
+              <div class="calendar-grid">
+                <div class="cal-header">Sun</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div>
+                <div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div><div class="cal-header">Sat</div>
+                
+                <!-- Week 1 -->
+                <div class="cal-cell" style="background: var(--elevated-color);"><span class="cal-date">27</span></div>
+                <div class="cal-cell" style="background: var(--elevated-color);"><span class="cal-date">28</span></div>
+                <div class="cal-cell" style="background: var(--elevated-color);"><span class="cal-date">29</span></div>
+                <div class="cal-cell" style="background: var(--elevated-color);"><span class="cal-date">30</span></div>
+                <div class="cal-cell"><span class="cal-date">1</span><div class="cal-event">4 Slots</div></div>
+                <div class="cal-cell"><span class="cal-date">2</span><div class="cal-event">Full</div></div>
+                <div class="cal-cell"><span class="cal-date">3</span><div class="cal-event">2 Slots</div></div>
+                <!-- Simulating more days... -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Private Events & Corporate -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container">
+        <h2 class="text-center mb-10 fade-in-up">Host Your Event</h2>
+        
+        <div class="d-flex flex-col gap-8">
+          <!-- Event 1 -->
+          <div class="event-card fade-in-up">
+            <div class="event-card-img">
+              <img src="../assets/images/studio_experience.png" alt="Group laughing at private pottery party">
+            </div>
+            <div class="event-card-content">
+              <h3 class="text-2xl mb-2">Private Parties</h3>
+              <p class="text-muted mb-4">Perfect for birthdays, bachelorette parties, or just a unique night out with friends. 2-hour guided hand-building session where everyone makes a piece to keep.</p>
+              <ul class="d-flex flex-col gap-2 mb-6 text-sm">
+                <li><i class="ph ph-users text-primary mr-2"></i> Groups of 6 to 16 people</li>
+                <li><i class="ph ph-wine text-primary mr-2"></i> BYOB friendly</li>
+                <li><i class="ph ph-package text-primary mr-2"></i> All materials and firing included</li>
+              </ul>
+              <div><a href="contact.html" class="btn btn-outline">Inquire Now</a></div>
+            </div>
+          </div>
+          
+          <!-- Event 2 -->
+          <div class="event-card fade-in-up">
+            <div class="event-card-img">
+              <img src="../assets/images/hero_home1.png" alt="Corporate team building workshop">
+            </div>
+            <div class="event-card-content">
+              <h3 class="text-2xl mb-2">Corporate Workshops</h3>
+              <p class="text-muted mb-4">Get your team out of the office and into the studio. Clay naturally encourages mindfulness and breaks down hierarchical barriers.</p>
+              <ul class="d-flex flex-col gap-2 mb-6 text-sm">
+                <li><i class="ph ph-users text-primary mr-2"></i> Up to 30 people</li>
+                <li><i class="ph ph-coffee text-primary mr-2"></i> Catering options available</li>
+                <li><i class="ph ph-hand-heart text-primary mr-2"></i> Collaborative or individual projects</li>
+              </ul>
+              <div><a href="contact.html" class="btn btn-outline">Inquire Now</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: FAQ -->
+    <section class="section-padding">
+      <div class="container max-w-4xl">
+        <h2 class="text-center mb-10 fade-in-up">Frequently Asked Questions</h2>
+        
+        <div class="accordion fade-in-up">
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What should I wear to class?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner pt-4">
+                <p class="text-sm text-muted">Wear comfortable clothes that you don't mind getting dirty. Clay does wash out of most fabrics, but we recommend avoiding white. Please wear closed-toe shoes and tie back long hair. We provide aprons.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Do I need to buy my own clay or tools?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner pt-4">
+                <p class="text-sm text-muted">For all beginner classes, your first bag of clay (25 lbs) and use of studio tools are included in the price. Advanced students and open studio members must purchase clay from the studio (which covers the cost of firing).</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>How long does firing take?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner pt-4">
+                <p class="text-sm text-muted">The entire process takes time. After your piece is formed, it must dry for 1-2 weeks before bisque firing. After glazing, the final fire takes another week. Expect a minimum of 3-4 weeks from wet clay to finished piece.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What is your cancellation policy?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner pt-4">
+                <p class="text-sm text-muted">Full refunds are provided for cancellations made at least 7 days before a class begins. Cancellations within 7 days receive studio credit. No-shows will not be refunded or credited.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1 -->
+        <div>
+          <a href="index.html" class="nav-brand mb-4" style="color: #F9F7F4; display: flex; align-items: center; gap: var(--space-2);"><img src="../assets/images/logo.png" alt="KILN Logo" class="footer-logo">KILN</a>
+          <p class="text-sm mb-6 max-w-sm">A community-focused ceramics studio dedicated to the art of clay, craftsmanship, and creativity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="ph ph-facebook-logo" style="color: #1877F2;"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="ph ph-instagram-logo" style="color: #E4405F;"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="ph ph-pinterest-logo" style="color: #E60023;"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="ph ph-youtube-logo" style="color: #FF0000;"></i></a>
+          </div>
+        </div>
+        <!-- Col 2, 3, 4 ... -->
+        <!-- Since footer must be identical, I am keeping it identical structure as before -->
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="booking.html" class="footer-link">Open Studio</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="about.html" class="footer-link">About</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <nav>
+            <a href="services.html" class="footer-link">Wheel Throwing</a>
+            <a href="services.html" class="footer-link">Hand Building</a>
+            <a href="services.html" class="footer-link">Glazing</a>
+            <a href="services.html" class="footer-link">Kiln Firing</a>
+            <a href="services.html" class="footer-link">Private Events</a>
+            <a href="services.html" class="footer-link">Corporate Workshops</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <div class="text-sm text-muted d-flex flex-col gap-2">
+            <p><i class="ph ph-map-pin mr-2"></i> 123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+            <p><i class="ph ph-phone mr-2"></i> (555) 123-4567</p>
+            <p><i class="ph ph-envelope mr-2"></i> hello@kilnstudio.com</p>
+            <p class="mt-2 text-primary font-medium">Hours:</p>
+            <p>Tue - Sun: 10am - 8pm</p>
+            <p>Mon: Closed for maintenance</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 KILN Studio. All rights reserved.</p>
+        <div class="d-flex gap-6">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Accordion Logic
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all other accordions in the same group (optional, but good UX)
+        item.parentElement.querySelectorAll('.accordion-item').forEach(sibling => {
+          sibling.classList.remove('active');
+        });
+        
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Simple Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const classCards = document.querySelectorAll('.class-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active class on buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Filter cards
+        const filter = btn.getAttribute('data-filter');
+        classCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

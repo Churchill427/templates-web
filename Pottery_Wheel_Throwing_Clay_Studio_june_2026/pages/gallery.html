@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Student Gallery</title>
+  <meta name="description"
+    content="Explore the beautiful creations from the students and artists at KILN pottery studio.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* Hero Gallery */
+    .hero-section {
+      height: 60vh;
+      min-height: 400px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #F9F7F4;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      animation: heroZoom 20s infinite alternate ease-in-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 24, 22, 0.6);
+      z-index: -1;
+    }
+
+    @keyframes heroZoom {
+      0% {}
+
+      100% {}
+    }
+
+    /* Filter Ribbon */
+    .filter-ribbon {
+      background-color: var(--surface-color);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 72px;
+      /* Below navbar */
+      z-index: 40;
+      padding: var(--space-4) 0;
+    }
+
+    .filter-btn {
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: all var(--transition-color);
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary-50);
+      color: var(--primary-600);
+      border-color: var(--primary-200);
+    }
+
+    [data-theme="dark"] .filter-btn:hover,
+    [data-theme="dark"] .filter-btn.active {
+      background: rgba(198, 93, 59, 0.1);
+      border-color: rgba(198, 93, 59, 0.3);
+    }
+
+    .ribbon-scroll {
+      display: flex;
+      gap: var(--space-2);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 var(--space-4);
+    }
+
+    .ribbon-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .ribbon-scroll {
+        justify-content: center;
+      }
+    }
+
+    /* Masonry Grid */
+    .masonry-grid {
+      column-count: 1;
+      column-gap: var(--space-6);
+      padding: var(--space-8) 0;
+    }
+
+    @media (min-width: 640px) {
+      .masonry-grid {
+        column-count: 2;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .masonry-grid {
+        column-count: 4;
+      }
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: var(--space-6);
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 500ms ease;
+    }
+
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 80%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-6);
+      color: #fff;
+    }
+
+    .mi-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .mi-artist {
+      font-size: var(--text-sm);
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .mi-class {
+      font-size: var(--text-xs);
+      color: var(--primary-300);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Featured Artist */
+    .featured-artist {
+      background-color: var(--elevated-color);
+    }
+
+    .artist-split {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    @media (min-width: 1024px) {
+      .artist-split {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .artist-info {
+        width: 40%;
+      }
+
+      .artist-work {
+        width: 60%;
+      }
+    }
+
+    .artist-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: var(--space-4);
+      border: 4px solid var(--surface-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .artist-work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    .artist-work-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Submit CTA */
+    .submit-cta {
+      background: linear-gradient(135deg, var(--primary-700), var(--primary-900));
+      color: #F9F7F4;
+      border-radius: 12px;
+      padding: var(--space-10) var(--space-6);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/images/pottery-placeholder.png');
+      opacity: 0.1;
+      mix-blend-mode: overlay;
+    }
+
+    /* Interactive Community Board Styles */
+    .guestbook-section {
+      background-color: var(--elevated-color);
+      border-radius: 12px;
+      padding: var(--space-8);
+      margin-top: var(--space-8);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .guestbook-layout {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    @media (min-width: 1024px) {
+      .guestbook-layout {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .guestbook-form-container {
+        width: 35%;
+        position: sticky;
+        top: 100px;
+      }
+
+      .guestbook-board-container {
+        width: 65%;
+      }
+    }
+
+    .guestbook-form-container {
+      background: var(--surface-color);
+      padding: var(--space-6);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .guestbook-form-container h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+      color: var(--text-heading);
+    }
+
+    .guestbook-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .guestbook-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .guestbook-form label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .guestbook-form input,
+    .guestbook-form select,
+    .guestbook-form textarea {
+      width: 100%;
+      padding: 10px var(--space-3);
+      border: 1.5px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--surface-color);
+      color: var(--text-primary);
+      font-size: var(--text-sm);
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .guestbook-form input::placeholder,
+    .guestbook-form textarea::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
+
+    .guestbook-form input:focus,
+    .guestbook-form select:focus,
+    .guestbook-form textarea:focus {
+      outline: none;
+      border-color: var(--primary-500);
+    }
+
+    .guestbook-form textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .guestbook-board {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 640px) {
+      .guestbook-board {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .guestbook-card {
+      background: var(--surface-color);
+      border: 1.5px dashed var(--border-color);
+      border-radius: 8px;
+      padding: var(--space-5);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .guestbook-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-300);
+      border-style: solid;
+    }
+
+    .card-tech-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--primary-600);
+      background-color: var(--primary-50);
+      padding: 2px var(--space-2);
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-bottom: var(--space-2);
+    }
+
+    [data-theme="dark"] .card-tech-tag {
+      background-color: rgba(226, 114, 91, 0.15);
+      color: var(--primary-300);
+    }
+
+    .card-message {
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--text-primary);
+      font-style: italic;
+      margin-bottom: var(--space-4);
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color);
+      padding-top: var(--space-2);
+      font-size: var(--text-xs);
+    }
+
+    .card-author {
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .btn-like {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      opacity: 0.8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s, opacity 0.2s;
+    }
+
+    .btn-like:hover {
+      color: #e25c5c;
+      opacity: 1;
+      background: rgba(226, 92, 92, 0.05);
+    }
+
+    .btn-like.liked {
+      color: #e25c5c;
+    }
+
+    .btn-like.liked i {
+      font-weight: bold;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <button class="nav-mobile-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+
+      <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo"
+          class="nav-logo">KILN</a>
+
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-b.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link active">Gallery</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Dashboard <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+          </div>
+        </div>
+
+      </nav>
+
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="ph ph-sun"></i></button>
+        <button class="rtl-toggle btn btn-outline" style="padding: 4px 8px; font-size: 12px;"
+          aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+      <img src="../assets/images/avatar-placeholder.png" alt="Studio shelves full of pottery" class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="container relative z-10 fade-in-up d-flex flex-col justify-center align-center h-full">
+        <h1 class="hero-h1 m-0">Student Gallery</h1>
+        <p class="text-xl mt-4 max-w-2xl text-center" style="color: #DCEBE0;">Celebrating the creativity and progress of
+          our KILN studio community.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Filter Ribbon -->
+    <div class="filter-ribbon">
+      <div class="container">
+        <div class="ribbon-scroll">
+          <button class="filter-btn active" data-filter="all">All Work</button>
+          <button class="filter-btn" data-filter="wheel">Wheel Thrown</button>
+          <button class="filter-btn" data-filter="hand">Hand Built</button>
+          <button class="filter-btn" data-filter="sculpt">Sculptural</button>
+          <button class="filter-btn" data-filter="glaze">Glaze Tests</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Masonry Grid -->
+    <section class="section-padding pt-0">
+      <div class="container">
+        <div class="masonry-grid" id="galleryGrid">
+          <!-- Masonry Items -->
+          <div class="masonry-item fade-in-up" data-category="wheel">
+            <img src="../assets/images/gallery_vase.png" alt="Tall Vase">
+            <div class="masonry-overlay">
+              <div class="mi-title">Speckled Tall Vase</div>
+              <div class="mi-artist">By Emma J.</div>
+              <div class="mi-class">Intermediate Wheel</div>
+            </div>
+          </div>
+
+          <div class="masonry-item fade-in-up" data-category="hand">
+            <img src="../assets/images/gallery_matcha.png" alt="Coil Bowl">
+            <div class="masonry-overlay">
+              <div class="mi-title">Organic Coil Bowl</div>
+              <div class="mi-artist">By Marcus T.</div>
+              <div class="mi-class">Hand Building Basics</div>
+            </div>
+          </div>
+
+          <div class="masonry-item fade-in-up" data-category="sculpt">
+            <img src="../assets/images/gallery_bust.png" alt="Abstract Bust">
+            <div class="masonry-overlay">
+              <div class="mi-title">Abstract Bust</div>
+              <div class="mi-artist">By Sarah D.</div>
+              <div class="mi-class">Sculpting Studio</div>
+            </div>
+          </div>
+
+          <div class="masonry-item fade-in-up" data-category="wheel">
+            <img src="../assets/images/gallery_mug.png" alt="Espresso Cups">
+            <div class="masonry-overlay">
+              <div class="mi-title">Espresso Set</div>
+              <div class="mi-artist">By Alex P.</div>
+              <div class="mi-class">Intro to Wheel</div>
+            </div>
+          </div>
+
+          <div class="masonry-item fade-in-up" data-category="glaze">
+            <img src="../assets/images/gallery_platter.png" alt="Glaze Test Plate">
+            <div class="masonry-overlay">
+              <div class="mi-title">Rutile Blue Overlap</div>
+              <div class="mi-artist">By Jenna K.</div>
+              <div class="mi-class">Glaze Alchemy</div>
+            </div>
+          </div>
+
+          <div class="masonry-item fade-in-up" data-category="hand">
+            <img src="../assets/images/gallery_planter.png" alt="Planter">
+            <div class="masonry-overlay">
+              <div class="mi-title">Slab Built Planter</div>
+              <div class="mi-artist">By David L.</div>
+              <div class="mi-class">Hand Building</div>
+            </div>
+          </div>
+
+          <div class="masonry-item fade-in-up" data-category="wheel">
+            <img src="../assets/images/gallery_pitcher.png" alt="Pitcher">
+            <div class="masonry-overlay">
+              <div class="mi-title">Classic Pitcher</div>
+              <div class="mi-artist">By Maria G.</div>
+              <div class="mi-class">Throwing Taller Forms</div>
+            </div>
+          </div>
+
+          <div class="masonry-item fade-in-up" data-category="sculpt">
+            <img src="../assets/images/gallery_fox.png" alt="Ceramic Fox">
+            <div class="masonry-overlay">
+              <div class="mi-title">Sleeping Fox</div>
+              <div class="mi-artist">By Chloe B.</div>
+              <div class="mi-class">Kids Clay Play</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Featured Artist Highlight -->
+    <section class="section-padding featured-artist">
+      <div class="container">
+        <h2 class="mb-10 text-center fade-in-up">Featured Artist of the Month</h2>
+
+        <div class="artist-split fade-in-up">
+          <div class="artist-info">
+            <img
+              src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=500&h=500&q=80"
+              alt="Elena Rostova Portrait" class="artist-photo">
+            <h3 class="mb-2">Elena Rostova</h3>
+            <span class="category-tag mb-4" style="color: var(--secondary-600);">Advanced Member</span>
+            <p class="text-muted mb-4">Elena has been throwing with us for over two years. Her recent exploration into
+              crystalline glazes on porcelain bodies has produced some of the most stunning, intricate surfaces we've
+              seen in the studio.</p>
+            <a href="#" class="btn btn-outline">Read Full Interview</a>
+          </div>
+
+          <div class="artist-work">
+            <div class="artist-work-grid">
+              <img
+                src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=600&h=600&q=80"
+                alt="Elena's Work 1 - Glazed Vase" class="artist-work-img">
+              <img
+                src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&h=600&q=80"
+                alt="Elena's Work 2 - Clay Crafting" class="artist-work-img">
+              <img
+                src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&h=600&q=80"
+                alt="Elena's Work 3 - Finished Ceramics" class="artist-work-img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Upload/Submit CTA -->
+    <section class="section-padding">
+      <div class="container fade-in-up">
+        <div class="submit-cta">
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <i class="ph ph-camera text-5xl mb-4" style="color: var(--primary-300);"></i>
+            <h2 class="text-3xl mb-4" style="color: #F9F7F4;">Showcase Your Work</h2>
+            <p class="text-lg mb-8" style="color: rgba(249, 247, 244, 0.8);">Are you a current student or studio member?
+              We'd love to feature your latest creations in our online gallery. Submit photos of your finished pieces
+              today.</p>
+            <a href="#" class="btn" style="background: #F9F7F4; color: var(--primary-800);">Submit Photo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Community Guestbook (Interactive Board) -->
+    <section class="section-padding pt-0">
+      <div class="container">
+        <div class="text-center mb-10">
+          <h2 class="mb-4 fade-in-up">Follow Our Journey</h2>
+          <p class="text-muted fade-in-up">Leave your mark on our studio community board and share your clay milestones.
+          </p>
+        </div>
+
+        <div class="guestbook-section fade-in-up">
+          <div class="guestbook-layout">
+            <!-- Left: Add Your Story Form -->
+            <div class="guestbook-form-container">
+              <h3>Leave a Message</h3>
+              <form class="guestbook-form" id="guestbookForm">
+                <div class="guestbook-group">
+                  <label for="guestName">Name or Handle</label>
+                  <input type="text" id="guestName" placeholder="@yourhandle or Name" required maxlength="20">
+                </div>
+                <div class="guestbook-group">
+                  <label for="guestTech">Favorite Clay Style</label>
+                  <select id="guestTech">
+                    <option value="Wheel Throwing">Wheel Throwing</option>
+                    <option value="Hand Building">Hand Building</option>
+                    <option value="Glazing">Glazing & Firing</option>
+                    <option value="Sculpting">Sculpting</option>
+                  </select>
+                </div>
+                <div class="guestbook-group">
+                  <label for="guestMsg">Your Message</label>
+                  <textarea id="guestMsg" placeholder="Share your experience, goals, or breakthrough in the studio..."
+                    required maxlength="120"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-full mt-2"
+                  style="background-color: var(--primary-600); border-color: var(--primary-600);">Post on Board</button>
+              </form>
+            </div>
+
+            <!-- Right: Interactive Live Board -->
+            <div class="guestbook-board-container">
+              <div class="guestbook-board" id="guestbookBoard">
+                <!-- Card 1 -->
+                <div class="guestbook-card">
+                  <span class="card-tech-tag">Wheel Throwing</span>
+                  <p class="card-message">"Centering finally clicked today! It feels amazing to pull a symmetric bowl on
+                    the wheel. Thanks for the tips!"</p>
+                  <div class="card-footer">
+                    <span class="card-author">@pottery_pete</span>
+                    <div class="card-actions">
+                      <button class="btn-like" onclick="likeCard(this)">
+                        <i class="ph ph-heart"></i> <span class="like-count">14</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="guestbook-card">
+                  <span class="card-tech-tag">Glazing</span>
+                  <p class="card-message">"The new Rutile Blue over Oatmeal glaze combo turned out outstanding. Our kiln
+                    is truly magical! "</p>
+                  <div class="card-footer">
+                    <span class="card-author">@ceramic_jane</span>
+                    <div class="card-actions">
+                      <button class="btn-like" onclick="likeCard(this)">
+                        <i class="ph ph-heart"></i> <span class="like-count">28</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="guestbook-card">
+                  <span class="card-tech-tag">Hand Building</span>
+                  <p class="card-message">"Slab building a multi-tiered succulent planter this weekend. Infinite
+                    possibilities with raw clay!"</p>
+                  <div class="card-footer">
+                    <span class="card-author">@slab_master</span>
+                    <div class="card-actions">
+                      <button class="btn-like" onclick="likeCard(this)">
+                        <i class="ph ph-heart"></i> <span class="like-count">19</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="guestbook-card">
+                  <span class="card-tech-tag">Sculpting</span>
+                  <p class="card-message">"Finished my sleeping fox figurine today. Love the inclusive vibes at KILN
+                    classes!"</p>
+                  <div class="card-footer">
+                    <span class="card-author">@clay_explorer</span>
+                    <div class="card-actions">
+                      <button class="btn-like" onclick="likeCard(this)">
+                        <i class="ph ph-heart"></i> <span class="like-count">22</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1 -->
+        <div>
+          <a href="index.html" class="nav-brand mb-4"
+            style="color: #F9F7F4; display: flex; align-items: center; gap: var(--space-2);"><img
+              src="../assets/images/logo.png" alt="KILN Logo" class="footer-logo">KILN</a>
+          <p class="text-sm mb-6 max-w-sm">A community-focused ceramics studio dedicated to the art of clay,
+            craftsmanship, and creativity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="ph ph-facebook-logo"
+                style="color: #1877F2;"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="ph ph-instagram-logo"
+                style="color: #E4405F;"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="ph ph-pinterest-logo"
+                style="color: #E60023;"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="ph ph-youtube-logo"
+                style="color: #FF0000;"></i></a>
+          </div>
+        </div>
+        <!-- Col 2 -->
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="booking.html" class="footer-link">Open Studio</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="about.html" class="footer-link">About</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+        <!-- Col 3 -->
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <nav>
+            <a href="services.html" class="footer-link">Wheel Throwing</a>
+            <a href="services.html" class="footer-link">Hand Building</a>
+            <a href="services.html" class="footer-link">Glazing</a>
+            <a href="services.html" class="footer-link">Kiln Firing</a>
+            <a href="services.html" class="footer-link">Private Events</a>
+            <a href="services.html" class="footer-link">Corporate Workshops</a>
+          </nav>
+        </div>
+        <!-- Col 4 -->
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <div class="text-sm text-muted d-flex flex-col gap-2">
+            <p><i class="ph ph-map-pin mr-2"></i> 123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+            <p><i class="ph ph-phone mr-2"></i> (555) 123-4567</p>
+            <p><i class="ph ph-envelope mr-2"></i> hello@kilnstudio.com</p>
+            <p class="mt-2 text-primary font-medium">Hours:</p>
+            <p>Tue - Sun: 10am - 8pm</p>
+            <p>Mon: Closed for maintenance</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 KILN Studio. All rights reserved.</p>
+        <div class="d-flex gap-6">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Gallery Filter Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.masonry-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Guestbook Interactive Logic
+    const guestbookForm = document.getElementById('guestbookForm');
+    const guestbookBoard = document.getElementById('guestbookBoard');
+
+    if (guestbookForm && guestbookBoard) {
+      guestbookForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('guestName');
+        const techSelect = document.getElementById('guestTech');
+        const msgTextarea = document.getElementById('guestMsg');
+
+        const name = nameInput.value.trim();
+        const tech = techSelect.value;
+        const message = msgTextarea.value.trim();
+
+        if (!name || !message) return;
+
+        // Format handle styling if not already present
+        const authorHandle = name.startsWith('@') ? name : '@' + name;
+
+        // Create new guestbook card
+        const card = document.createElement('div');
+        card.className = 'guestbook-card fade-in-up visible';
+        card.innerHTML = `
+          <span class="card-tech-tag">${tech}</span>
+          <p class="card-message">"${escapeHTML(message)}"</p>
+          <div class="card-footer">
+            <span class="card-author">${escapeHTML(authorHandle)}</span>
+            <div class="card-actions">
+              <button class="btn-like" onclick="likeCard(this)">
+                <i class="ph ph-heart"></i> <span class="like-count">0</span>
+              </button>
+            </div>
+          </div>
+        `;
+
+        // Prepend to board
+        guestbookBoard.insertBefore(card, guestbookBoard.firstChild);
+
+        // Reset form
+        nameInput.value = '';
+        msgTextarea.value = '';
+      });
+    }
+
+    function likeCard(btn) {
+      const countSpan = btn.querySelector('.like-count');
+      let count = parseInt(countSpan.textContent, 10);
+
+      if (btn.classList.contains('liked')) {
+        btn.classList.remove('liked');
+        btn.querySelector('i').className = 'ph ph-heart';
+        countSpan.textContent = count - 1;
+      } else {
+        btn.classList.add('liked');
+        btn.querySelector('i').className = 'ph-fill ph-heart';
+        countSpan.textContent = count + 1;
+      }
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>'"]/g,
+        tag => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[tag] || tag)
+      );
+    }
+  </script>
+</body>
+
+</html>

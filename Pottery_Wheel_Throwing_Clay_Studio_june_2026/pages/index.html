@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Pottery Wheel Throwing & Clay Studio</title>
+  <meta name="description"
+    content="KILN is a creative arts and educational studio focusing on pottery, ceramics, and clay work. Shape your creativity with us.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* Page Specific Styles */
+    .hero-section {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #F9F7F4;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      animation: heroZoom 20s infinite alternate ease-in-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(26, 24, 22, 0.3) 0%, rgba(26, 24, 22, 0.8) 100%);
+      z-index: -1;
+    }
+
+    @keyframes heroZoom {
+      0% {}
+
+      100% {}
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      color: #F9F7F4;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0) translateX(-50%);
+      }
+
+      40% {
+        transform: translateY(-15px) translateX(-50%);
+      }
+
+      60% {
+        transform: translateY(-7px) translateX(-50%);
+      }
+    }
+
+    .class-card-img {
+      height: 240px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .class-card-content {
+      padding: var(--space-6);
+    }
+
+    .split-layout {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-12);
+    }
+
+    @media (min-width: 1024px) {
+      .split-layout {
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .split-text,
+      .split-image {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .split-image img {
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--space-4);
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 24, 22, 0.7);
+      color: #F9F7F4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .testimonial-card {
+      padding: var(--space-6);
+      text-align: center;
+    }
+
+    .stars {
+      color: var(--primary-500);
+      margin-bottom: var(--space-4);
+      font-size: 1.25rem;
+    }
+
+    .newsletter-section {
+      background-color: var(--primary-600);
+      color: #F9F7F4;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: url('../assets/images/pottery-placeholder.png');
+      background-size: cover;
+      z-index: 0;
+    }
+
+      .newsletter-content {
+        position: relative;
+        z-index: 1;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        margin-top: var(--space-6);
+      }
+
+      @media (min-width: 640px) {
+        .newsletter-form {
+          flex-direction: row;
+          align-items: stretch;
+        }
+
+        .newsletter-form input {
+          flex: 1;
+          height: auto;
+        }
+        
+        .newsletter-form .btn {
+          margin: 0;
+          display: flex;
+          align-items: center;
+          border: none;
+        }
+      }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <button class="nav-mobile-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+
+      <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo"
+          class="nav-logo">KILN</a>
+
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle active" aria-haspopup="true" aria-expanded="false">Home <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item active">Home 1</a>
+            <a href="home-b.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Dashboard <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+          </div>
+        </div>
+
+      </nav>
+
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="ph ph-sun"></i></button>
+        <button class="rtl-toggle btn btn-outline" style="padding: 4px 8px; font-size: 12px;"
+          aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+      <img src="../assets/images/hero_home1.png" alt="Hands shaping wet clay on a spinning wheel" class="hero-bg">
+      <div class="hero-overlay"></div>
+
+      <div class="container relative z-10 fade-in-up">
+        <h1 class="hero-h1 mb-6" style="color: #F9F7F4; margin-top: auto; margin-bottom: var(--space-6);">Shape Your
+          Creativity</h1>
+        <p class="text-xl mb-8 max-w-2xl mx-auto"
+          style="color: #D4CFC8; max-width: 600px; margin-left: auto; margin-right: auto;">Discover the grounding art of
+          ceramics in our welcoming studio. Expert guidance, professional equipment, and a community of creators.</p>
+        <div class="d-flex justify-center gap-4 flex-wrap">
+          <a href="services.html" class="btn btn-primary">Explore Classes</a>
+          <a href="about.html" class="btn btn-outline" style="color: #F9F7F4; border-color: #F9F7F4;">Visit Studio</a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <i class="ph ph-caret-down ph-2x"></i>
+      </div>
+    </section>
+
+    <!-- Section 2: Featured Classes -->
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="text-center mb-12 fade-in-up">What We Offer</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Class 1 -->
+          <article class="card fade-in-up">
+            <img src="../assets/images/service_wheel.png" alt="Wheel throwing class" class="class-card-img">
+            <div class="class-card-content">
+              <h3 class="mb-2">Wheel Throwing</h3>
+              <p class="text-muted mb-4 text-sm">Learn to center, pull, and shape clay on the potter's wheel. Perfect
+                for beginners and intermediate artists.</p>
+              <div class="d-flex justify-between align-center mb-6 text-sm font-medium">
+                <span><i class="ph ph-clock mr-1"></i> 6 Weeks</span>
+                <span class="text-primary">$240</span>
+              </div>
+              <div class="text-center">
+                <a href="services.html" class="footer-link" style="margin: 0 auto;">Learn More</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Class 2 -->
+          <article class="card fade-in-up">
+            <img src="../assets/images/service_hand.png" alt="Hand building class" class="class-card-img">
+            <div class="class-card-content">
+              <h3 class="mb-2">Hand Building</h3>
+              <p class="text-muted mb-4 text-sm">Create organic forms using pinch, coil, and slab techniques. No wheel
+                required, infinite possibilities.</p>
+              <div class="d-flex justify-between align-center mb-6 text-sm font-medium">
+                <span><i class="ph ph-clock mr-1"></i> 4 Weeks</span>
+                <span class="text-primary">$180</span>
+              </div>
+              <div class="text-center">
+                <a href="services.html" class="footer-link" style="margin: 0 auto;">Learn More</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Class 3 -->
+          <article class="card fade-in-up">
+            <img src="../assets/images/service_glaze.png" alt="Glazing and firing" class="class-card-img">
+            <div class="class-card-content">
+              <h3 class="mb-2">Glazing & Firing</h3>
+              <p class="text-muted mb-4 text-sm">Master the alchemy of surface decoration. Learn dip, pour, and brush
+                techniques for stunning finishes.</p>
+              <div class="d-flex justify-between align-center mb-6 text-sm font-medium">
+                <span><i class="ph ph-clock mr-1"></i> 2 Weeks</span>
+                <span class="text-primary">$95</span>
+              </div>
+              <div class="text-center">
+                <a href="services.html" class="footer-link" style="margin: 0 auto;">Learn More</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Studio Experience -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container split-layout">
+        <div class="split-text fade-in-up">
+          <h2 class="mb-6">The Studio Experience</h2>
+          <p class="mb-6 text-lg">Our sunlit, 3,000 sq ft studio is designed to inspire. Whether you're a seasoned
+            ceramicist or touching clay for the first time, you'll find a supportive environment equipped with
+            everything you need.</p>
+          <ul class="mb-8 d-flex flex-col gap-4">
+            <li class="d-flex align-center gap-3"><i class="ph ph-check-circle text-secondary"
+                style="font-size: 1.5rem;"></i> 20 Professional Shimpo Wheels</li>
+            <li class="d-flex align-center gap-3"><i class="ph ph-check-circle text-secondary"
+                style="font-size: 1.5rem;"></i> 3 Large capacity electric kilns</li>
+            <li class="d-flex align-center gap-3"><i class="ph ph-check-circle text-secondary"
+                style="font-size: 1.5rem;"></i> Dedicated glazing room with 40+ custom house glazes</li>
+            <li class="d-flex align-center gap-3"><i class="ph ph-check-circle text-secondary"
+                style="font-size: 1.5rem;"></i> Open studio access for members 7 days a week</li>
+          </ul>
+          <div>
+            <a href="contact.html" class="btn btn-primary">Book a Tour</a>
+          </div>
+        </div>
+        <div class="split-image fade-in-up">
+          <img src="../assets/images/studio_experience.png"
+            alt="Student working at a pottery wheel in our bright studio">
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Student Gallery Preview -->
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="text-center mb-12 fade-in-up">Creations from Our Kiln</h2>
+
+        <div class="gallery-grid mb-10">
+          <div class="gallery-item fade-in-up">
+            <img src="../assets/images/gallery_matcha.png" alt="Handcrafted ceramic bowl">
+            <div class="gallery-overlay">
+              <h4 style="color:#fff">Speckled Matcha Bowl</h4>
+              <p class="text-sm">by Sarah J.</p>
+            </div>
+          </div>
+          <div class="gallery-item fade-in-up">
+            <img src="../assets/images/gallery_vase.png" alt="Tall ceramic vase">
+            <div class="gallery-overlay">
+              <h4 style="color:#fff">Textured Stoneware Vase</h4>
+              <p class="text-sm">by Marcus T.</p>
+            </div>
+          </div>
+          <div class="gallery-item fade-in-up">
+            <img src="../assets/images/gallery_mug.png" alt="Ceramic mug">
+            <div class="gallery-overlay">
+              <h4 style="color:#fff">Dipped Espresso Mug</h4>
+              <p class="text-sm">by Elena R.</p>
+            </div>
+          </div>
+          <div class="gallery-item fade-in-up">
+            <img src="../assets/images/gallery_platter.png" alt="Ceramic plate">
+            <div class="gallery-overlay">
+              <h4 style="color:#fff">Fluted Serving Platter</h4>
+              <p class="text-sm">by David W.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center fade-in-up">
+          <a href="gallery.html" class="btn btn-outline">View Full Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Testimonials -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container">
+        <h2 class="text-center mb-12 fade-in-up">What Our Students Say</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+          <div class="card testimonial-card fade-in-up">
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <p class="mb-6 italic">"Taking the beginner wheel throwing class was the best thing I did for my mental
+              health this year. The instructors are so patient and the studio vibe is incredibly."</p>
+            <h4 class="text-base mb-1">Amanda L.</h4>
+            <span class="text-xs text-muted">Intro to Wheel Throwing</span>
+          </div>
+
+          <div class="card testimonial-card fade-in-up">
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <p class="mb-6 italic">"I've been a member for two years now. The glaze selection is fantastic and the
+              community is so supportive. It's truly my home away from home."</p>
+            <h4 class="text-base mb-1">James P.</h4>
+            <span class="text-xs text-muted">Monthly Member</span>
+          </div>
+
+          <div class="card testimonial-card fade-in-up">
+            <div class="stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <p class="mb-6 italic">"We booked a private hand-building session for my sister's bachelorette. It was
+              intimate, creative, and we all left with mugs we actually use! Highly."</p>
+            <h4 class="text-base mb-1">Chloe S.</h4>
+            <span class="text-xs text-muted">Private Event</span>
+          </div>
+        </div>
+
+        <div class="text-center fade-in-up">
+          <a href="about.html" class="btn btn-outline">Read More Reviews</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Call to Action / Newsletter -->
+    <section class="section-padding newsletter-section">
+      <div class="newsletter-bg"></div>
+      <div class="container newsletter-content text-center fade-in-up">
+        <h2 class="mb-4" style="color: #F9F7F4;">Ready to Get Your Hands Dirty?</h2>
+        <p class="mb-8 text-lg" style="color: #F4E2D8;">Join our newsletter to receive updates on new class schedules,
+          open studio hours, and special events.</p>
+
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" class="form-control" placeholder="Enter your email address" required
+            style="border: none; border-radius: 4px;">
+          <button type="submit" class="btn"
+            style="background-color: var(--neutral-900); color: #F9F7F4;">Subscribe</button>
+        </form>
+        <p class="text-xs mt-4" style="color: #ECC3B2;">We respect your inbox. Unsubscribe at any time. Read our <a
+            href="#" style="text-decoration: underline; color: #F9F7F4;">Privacy Policy</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1 -->
+        <div>
+          <a href="index.html" class="nav-brand mb-4"
+            style="color: #F9F7F4; display: flex; align-items: center; gap: var(--space-2);"><img
+              src="../assets/images/logo.png" alt="KILN Logo" class="footer-logo">KILN</a>
+          <p class="text-sm mb-6 max-w-sm">A community-focused ceramics studio dedicated to the art of clay,
+            craftsmanship, and creativity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="ph ph-facebook-logo"
+                style="color: #1877F2;"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="ph ph-instagram-logo"
+                style="color: #E4405F;"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="ph ph-pinterest-logo"
+                style="color: #E60023;"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="ph ph-youtube-logo"
+                style="color: #FF0000;"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="booking.html" class="footer-link">Open Studio</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="about.html" class="footer-link">About</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <nav>
+            <a href="services.html" class="footer-link">Wheel Throwing</a>
+            <a href="services.html" class="footer-link">Hand Building</a>
+            <a href="services.html" class="footer-link">Glazing</a>
+            <a href="services.html" class="footer-link">Kiln Firing</a>
+            <a href="services.html" class="footer-link">Private Events</a>
+            <a href="services.html" class="footer-link">Corporate Workshops</a>
+          </nav>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <div class="text-sm text-muted d-flex flex-col gap-2">
+            <p><i class="ph ph-map-pin mr-2"></i> 123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+            <p><i class="ph ph-phone mr-2"></i> (555) 123-4567</p>
+            <p><i class="ph ph-envelope mr-2"></i> hello@kilnstudio.com</p>
+            <p class="mt-2 text-primary font-medium">Hours:</p>
+            <p>Tue - Sun: 10am - 8pm</p>
+            <p>Mon: Closed for maintenance</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 KILN Studio. All rights reserved.</p>
+        <div class="d-flex gap-6">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

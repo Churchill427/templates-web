@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Page Not Found</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .minimal-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: var(--space-6);
+      z-index: 10;
+      text-align: center;
+    }
+    .minimal-nav .nav-brand {
+      color: #F9F7F4;
+    }
+    .error-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      color: #F9F7F4;
+      padding: var(--space-6);
+    }
+    .error-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .error-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,24,22,0.8);
+      z-index: -1;
+    }
+    .error-h1 {
+      font-size: 8rem;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+      color: var(--primary-400);
+    }
+    @media (min-width: 768px) {
+      .error-h1 { font-size: 12rem; }
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+
+  <header class="minimal-nav">
+    <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo" class="nav-logo">KILN</a>
+  </header>
+
+  <main class="error-section fade-in-up visible">
+    <img src="../assets/images/avatar-placeholder.png" alt="Broken pottery pieces" class="error-bg">
+    <div class="error-overlay"></div>
+    
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <h1 class="error-h1">404</h1>
+      <h2 class="text-3xl mb-4 text-white">This page shattered like unfired clay</h2>
+      <p class="text-lg mb-8 text-muted" style="color: #D4CFC8;">We can't seem to find the page you're looking for. It might have been moved or never existed.</p>
+      
+      <div class="d-flex justify-center gap-4 flex-wrap">
+        <a href="index.html" class="btn btn-primary">Return to Home</a>
+        <a href="services.html" class="btn btn-outline" style="color: #F9F7F4; border-color: #F9F7F4;">View Our Classes</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

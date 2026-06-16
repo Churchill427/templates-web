@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Book Your Time</title>
+  <meta name="description" content="Book your pottery class, open studio time, or kiln firing services.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <style>
+    /* Hero */
+    .hero-section {
+      height: 40vh;
+      min-height: 300px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #F9F7F4;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      animation: heroZoom 20s infinite alternate ease-in-out;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,24,22,0.6);
+      z-index: -1;
+    }
+    @keyframes heroZoom { 0% {  } 100% {  } }
+
+    /* Layout */
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      padding: var(--space-10) 0;
+    }
+    @media (min-width: 1024px) {
+      .booking-layout { grid-template-columns: 1fr 380px; align-items: start; }
+    }
+    .booking-main { display: flex; flex-direction: column; gap: var(--space-8); }
+
+    /* Booking Sections Common */
+    .booking-section {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: var(--space-6);
+    }
+    .bs-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .bs-step {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-500);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+    .bs-title { font-size: var(--text-xl); font-weight: 600; color: var(--text-heading); margin: 0; }
+
+    /* Service Selection */
+    .service-options {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--space-4);
+    }
+    @media (min-width: 640px) { .service-options { grid-template-columns: repeat(3, 1fr); } }
+    .service-card {
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: var(--space-4);
+      text-align: center;
+      cursor: pointer;
+      transition: all 200ms ease;
+    }
+    .service-card:hover { border-color: var(--primary-300); }
+    .service-card.active { border-color: var(--primary-500); background: var(--primary-50); }
+    [data-theme="dark"] .service-card.active { background: rgba(198,93,59,0.1); }
+    .sc-icon { font-size: 2rem; color: var(--text-secondary); margin-bottom: var(--space-2); }
+    .service-card.active .sc-icon { color: var(--primary-500); }
+    .sc-title { font-weight: 600; margin-bottom: 4px; }
+    .sc-price { font-size: var(--text-sm); color: var(--text-muted); }
+
+    /* Calendar Placeholder */
+    .calendar-mockup {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: var(--space-4);
+    }
+    .cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); font-weight: 600; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+    .cal-day-label { font-size: var(--text-xs); color: var(--text-muted); padding-bottom: 8px; }
+    .cal-date {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; cursor: pointer; font-size: var(--text-sm);
+      transition: all 200ms ease;
+    }
+    .cal-date:hover:not(.disabled) { background: var(--neutral-200); }
+    .cal-date.disabled { color: var(--neutral-300); cursor: not-allowed; text-decoration: line-through; }
+    .cal-date.active { background: var(--primary-500); color: #fff; }
+    
+    .time-slots { margin-top: var(--space-6); display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+    .time-slot {
+      padding: var(--space-2); text-align: center; border: 1px solid var(--border-color);
+      border-radius: 4px; cursor: pointer; font-size: var(--text-sm);
+    }
+    .time-slot:hover { border-color: var(--primary-300); }
+    .time-slot.active { background: var(--primary-500); color: #fff; border-color: var(--primary-500); }
+
+    /* Add-ons */
+    .addon-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: var(--space-3) var(--space-4); border: 1px solid var(--border-color);
+      border-radius: 4px; margin-bottom: var(--space-3);
+    }
+    .addon-label { display: flex; align-items: center; gap: var(--space-3); cursor: pointer; font-weight: 500; }
+    .addon-price { font-size: var(--text-sm); color: var(--text-muted); }
+
+    /* Payment Sticky */
+    .summary-sticky {
+      position: sticky;
+      top: 90px;
+    }
+    .summary-item { display: flex; justify-content: space-between; margin-bottom: var(--space-2); font-size: var(--text-sm); color: var(--text-secondary); }
+    .summary-total { display: flex; justify-content: space-between; margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border-color); font-weight: 700; font-size: var(--text-lg); color: var(--text-heading); }
+    
+    .payment-form { margin-top: var(--space-6); }
+    .cc-mockup {
+      background: linear-gradient(135deg, #1A1816, #3E3B37);
+      color: #fff; padding: var(--space-4); border-radius: 8px; margin-bottom: var(--space-4);
+      display: flex; flex-direction: column; gap: var(--space-4);
+    }
+    .cc-row { display: flex; justify-content: space-between; }
+    .cc-input { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 4px; width: 100%; outline: none; }
+    .cc-input::placeholder { color: rgba(255,255,255,0.5); }
+
+    /* FAQ */
+    .accordion-item { border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: var(--space-4); background: var(--surface-color); overflow: hidden; }
+    .accordion-header { width: 100%; text-align: left; padding: var(--space-4) var(--space-6); display: flex; justify-content: space-between; align-items: center; background: transparent; font-weight: 600; font-size: var(--text-base); color: var(--text-heading); }
+    [dir="rtl"] .accordion-header { text-align: right; }
+    .accordion-icon { transition: transform 300ms ease; color: var(--primary-500); }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 300ms ease; }
+    .accordion-inner { padding: 0 var(--space-6) var(--space-6); border-top: 1px solid transparent; font-size: var(--text-sm); color: var(--text-muted); }
+    .accordion-item.active .accordion-content { max-height: 500px; }
+    .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <button class="nav-mobile-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+      
+      <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo" class="nav-logo">KILN</a>
+      
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-b.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Dashboard <i class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+          </div>
+        </div>
+
+      </nav>
+      
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="ph ph-sun"></i></button>
+        <button class="rtl-toggle btn btn-outline" style="padding: 4px 8px; font-size: 12px;" aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+      <img src="../assets/images/hero-placeholder.png" alt="Person planning calendar" class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="container relative z-10 fade-in-up d-flex flex-col justify-center align-center h-full">
+        <h1 class="hero-h1 m-0">Book Your Time</h1>
+        <p class="text-xl mt-4 max-w-2xl text-center" style="color: #DCEBE0;">Reserve classes, open studio hours, and kiln firings.</p>
+      </div>
+    </section>
+
+    <!-- Main Booking Layout -->
+    <div class="container">
+      <div class="booking-layout">
+        
+        <div class="booking-main">
+          <!-- Section 2: Service Selection -->
+          <section class="booking-section fade-in-up">
+            <div class="bs-header">
+              <div class="bs-step">1</div>
+              <h2 class="bs-title">Select Service</h2>
+            </div>
+            
+            <div class="service-options">
+              <div class="service-card active" onclick="selectService(this, 'Class Enrollment', 240)">
+                <i class="ph ph-chalkboard-teacher sc-icon"></i>
+                <div class="sc-title">Classes</div>
+                <div class="sc-price">From $120</div>
+              </div>
+              <div class="service-card" onclick="selectService(this, 'Open Studio Session', 35)">
+                <i class="ph ph-clock sc-icon"></i>
+                <div class="sc-title">Open Studio</div>
+                <div class="sc-price">$35 / Day</div>
+              </div>
+              <div class="service-card" onclick="selectService(this, 'Kiln Firing', 15)">
+                <i class="ph ph-fire sc-icon"></i>
+                <div class="sc-title">Kiln Firing</div>
+                <div class="sc-price">By Weight</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3: Date & Time -->
+          <section class="booking-section fade-in-up">
+            <div class="bs-header">
+              <div class="bs-step">2</div>
+              <h2 class="bs-title">Choose Date & Time</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Calendar -->
+              <div class="calendar-mockup">
+                <div class="cal-header">
+                  <button class="btn btn-outline" style="padding: 2px 6px;"><i class="ph ph-caret-left"></i></button>
+                  <span>October 2026</span>
+                  <button class="btn btn-outline" style="padding: 2px 6px;"><i class="ph ph-caret-right"></i></button>
+                </div>
+                <div class="cal-grid">
+                  <div class="cal-day-label">Su</div><div class="cal-day-label">Mo</div><div class="cal-day-label">Tu</div><div class="cal-day-label">We</div><div class="cal-day-label">Th</div><div class="cal-day-label">Fr</div><div class="cal-day-label">Sa</div>
+                  <div class="cal-date disabled">27</div><div class="cal-date disabled">28</div><div class="cal-date disabled">29</div><div class="cal-date disabled">30</div>
+                  <div class="cal-date">1</div><div class="cal-date">2</div><div class="cal-date">3</div>
+                  <div class="cal-date disabled">4</div><div class="cal-date">5</div><div class="cal-date">6</div><div class="cal-date">7</div><div class="cal-date">8</div><div class="cal-date">9</div><div class="cal-date">10</div>
+                  <div class="cal-date disabled">11</div><div class="cal-date active">12</div><div class="cal-date">13</div><div class="cal-date">14</div><div class="cal-date">15</div><div class="cal-date">16</div><div class="cal-date">17</div>
+                  <div class="cal-date disabled">18</div><div class="cal-date">19</div><div class="cal-date">20</div><div class="cal-date">21</div><div class="cal-date">22</div><div class="cal-date">23</div><div class="cal-date">24</div>
+                  <div class="cal-date disabled">25</div><div class="cal-date">26</div><div class="cal-date">27</div><div class="cal-date">28</div><div class="cal-date">29</div><div class="cal-date">30</div><div class="cal-date">31</div>
+                </div>
+              </div>
+              
+              <!-- Time Slots -->
+              <div>
+                <h4 class="font-medium mb-2">Available on Oct 12</h4>
+                <p class="text-sm text-muted">All times in Pacific Time (PT)</p>
+                
+                <div class="time-slots">
+                  <div class="time-slot disabled" style="opacity: 0.5; cursor: not-allowed; text-decoration: line-through;">10:00 AM</div>
+                  <div class="time-slot">12:30 PM</div>
+                  <div class="time-slot active">2:00 PM</div>
+                  <div class="time-slot">4:30 PM</div>
+                  <div class="time-slot">6:00 PM</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 4: Add-ons -->
+          <section class="booking-section fade-in-up">
+            <div class="bs-header">
+              <div class="bs-step">3</div>
+              <h2 class="bs-title">Add-ons & Upgrades</h2>
+            </div>
+            
+            <div>
+              <div class="addon-item">
+                <label class="addon-label">
+                  <input type="checkbox" onchange="toggleAddon(this, 'Tool Kit Rental', 15)">
+                  Basic Tool Kit Rental
+                </label>
+                <div class="addon-price">+$15.00</div>
+              </div>
+              
+              <div class="addon-item">
+                <label class="addon-label">
+                  <input type="checkbox" onchange="toggleAddon(this, 'Extra Clay (25lbs)', 25)">
+                  Extra Clay (25 lbs Stoneware)
+                </label>
+                <div class="addon-price">+$25.00</div>
+              </div>
+              
+              <div class="addon-item">
+                <label class="addon-label">
+                  <input type="checkbox" onchange="toggleAddon(this, 'Premium Glaze Pack', 20)">
+                  Premium Glaze Access
+                </label>
+                <div class="addon-price">+$20.00</div>
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        <!-- Section 5: Order Summary & Payment -->
+        <div class="right-col">
+          <section class="booking-section summary-sticky fade-in-up">
+            <h3 class="mb-4 text-xl">Order Summary</h3>
+            
+            <div id="summaryItems">
+              <div class="summary-item" id="summaryService">
+                <span class="font-medium text-text-primary">Class Enrollment</span>
+                <span>$240.00</span>
+              </div>
+              <div class="summary-item">
+                <span>Date:</span>
+                <span class="text-text-primary">Oct 12, 2026 at 2:00 PM</span>
+              </div>
+            </div>
+            
+            <div class="summary-total">
+              <span>Total</span>
+              <span id="summaryTotal">$240.00</span>
+            </div>
+            
+            <form class="payment-form" onsubmit="event.preventDefault(); alert('Booking Confirmed!');">
+              <h4 class="font-medium mb-3">Payment Details</h4>
+              
+              <div class="cc-mockup">
+                <div class="cc-row">
+                  <input type="text" class="cc-input" placeholder="Card Number" style="letter-spacing: 2px;">
+                </div>
+                <div class="cc-row gap-4">
+                  <input type="text" class="cc-input" placeholder="MM/YY">
+                  <input type="text" class="cc-input" placeholder="CVC">
+                </div>
+                <div class="cc-row">
+                  <input type="text" class="cc-input" placeholder="Cardholder Name">
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary w-full">Complete Booking</button>
+              <p class="text-xs text-muted mt-3 text-center"><i class="ph ph-lock mr-1"></i> Payments are secure and encrypted.</p>
+            </form>
+          </section>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Section 6: FAQ -->
+    <section class="section-padding" style="background-color: var(--elevated-color);">
+      <div class="container max-w-4xl">
+        <h2 class="text-center mb-10 fade-in-up">Booking Policies & FAQ</h2>
+        
+        <div class="accordion fade-in-up">
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              <span>What is the cancellation policy?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner pt-4">
+                Full refunds are provided for class or open studio cancellations made at least 7 days in advance. Cancellations within 7 days receive studio credit. No-shows are not eligible for refunds or credit.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Can I reschedule my studio time?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner pt-4">
+                Yes, you can reschedule open studio time up to 24 hours before your booked slot via your student dashboard. Classes cannot be rescheduled individually as they follow a set curriculum.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Do I need to pay for kiln firing upfront?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner pt-4">
+                Kiln firing is purchased by weight. You can buy a firing credit during booking, and any unused portion will remain in your account. You can also pay directly at the studio when dropping off your pieces.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-brand mb-4" style="color: #F9F7F4; display: flex; align-items: center; gap: var(--space-2);"><img src="../assets/images/logo.png" alt="KILN Logo" class="footer-logo">KILN</a>
+          <p class="text-sm mb-6 max-w-sm">A community-focused ceramics studio dedicated to the art of clay, craftsmanship, and creativity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon"><i class="ph ph-facebook-logo" style="color: #1877F2;"></i></a>
+            <a href="#" class="social-icon"><i class="ph ph-instagram-logo" style="color: #E4405F;"></i></a>
+            <a href="#" class="social-icon"><i class="ph ph-pinterest-logo" style="color: #E60023;"></i></a>
+            <a href="#" class="social-icon"><i class="ph ph-youtube-logo" style="color: #FF0000;"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="booking.html" class="footer-link">Open Studio</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="about.html" class="footer-link">About</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <nav>
+            <a href="services.html" class="footer-link">Wheel Throwing</a>
+            <a href="services.html" class="footer-link">Hand Building</a>
+            <a href="services.html" class="footer-link">Glazing</a>
+            <a href="services.html" class="footer-link">Kiln Firing</a>
+            <a href="services.html" class="footer-link">Private Events</a>
+            <a href="services.html" class="footer-link">Corporate Workshops</a>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <div class="text-sm text-muted d-flex flex-col gap-2">
+            <p><i class="ph ph-map-pin mr-2"></i> 123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+            <p><i class="ph ph-phone mr-2"></i> (555) 123-4567</p>
+            <p><i class="ph ph-envelope mr-2"></i> hello@kilnstudio.com</p>
+            <p class="mt-2 text-primary font-medium">Hours:</p>
+            <p>Tue - Sun: 10am - 8pm</p>
+            <p>Mon: Closed for maintenance</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 KILN Studio. All rights reserved.</p>
+        <div class="d-flex gap-6">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Accordion
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        item.parentElement.querySelectorAll('.accordion-item').forEach(sibling => {
+          sibling.classList.remove('active');
+        });
+        if (!isActive) { item.classList.add('active'); }
+      });
+    });
+
+    // Mock Booking Logic for UI demonstration
+    let basePrice = 240;
+    let addonsTotal = 0;
+    
+    window.selectService = function(el, name, price) {
+      document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      basePrice = price;
+      
+      document.getElementById('summaryService').innerHTML = `
+        <span class="font-medium text-text-primary">${name}</span>
+        <span>$${price.toFixed(2)}</span>
+      `;
+      updateTotal();
+    }
+    
+    window.toggleAddon = function(cb, name, price) {
+      const summaryItems = document.getElementById('summaryItems');
+      const id = 'addon-' + name.replace(/\s+/g, '-');
+      
+      if (cb.checked) {
+        addonsTotal += price;
+        const div = document.createElement('div');
+        div.className = 'summary-item';
+        div.id = id;
+        div.innerHTML = `<span>+ ${name}</span><span>$${price.toFixed(2)}</span>`;
+        summaryItems.appendChild(div);
+      } else {
+        addonsTotal -= price;
+        const el = document.getElementById(id);
+        if (el) el.remove();
+      }
+      updateTotal();
+    }
+    
+    function updateTotal() {
+      const total = basePrice + addonsTotal;
+      document.getElementById('summaryTotal').innerText = `$${total.toFixed(2)}`;
+    }
+    
+    // Time slot toggle
+    document.querySelectorAll('.time-slot:not(.disabled)').forEach(slot => {
+      slot.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('active'));
+        slot.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
