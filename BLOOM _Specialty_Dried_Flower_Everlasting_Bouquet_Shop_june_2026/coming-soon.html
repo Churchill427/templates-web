@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | Coming Soon</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  
+  <style>
+    .hero-coming-soon {
+      background-image: url('https://placehold.co/1920x1080/D4A574/2C2416?text=Silhouette+of+Dried+Flowers+Sunset');
+      min-height: 70vh;
+    }
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .countdown-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      min-width: 100px;
+    }
+    .countdown-number {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .countdown-label {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+    /* Number Flip Animation */
+    @keyframes flipIn {
+      0% { transform: rotateX(-90deg); opacity: 0; }
+      100% { transform: rotateX(0); opacity: 1; }
+    }
+    .flip-animate {
+      animation: flipIn 0.5s ease-out;
+    }
+    .blur-img-wrapper {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .blur-img-wrapper img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      filter: blur(8px);
+      transition: filter 500ms ease;
+    }
+    .blur-img-wrapper:hover img {
+      filter: blur(4px);
+    }
+    .coming-soon-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .feature-preview-card {
+      text-align: center;
+      padding: 2rem;
+    }
+    .feature-preview-icon {
+      font-size: 3rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+    .early-access-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+    }
+    html[data-theme="dark"] .early-access-card { background: var(--card-bg); }
+    .social-follow {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .social-follow a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: all 300ms ease;
+    }
+    .social-follow a:hover {
+      background: var(--secondary-color);
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#">Home</a>
+          <div class="nav-dropdown-content">
+            <a href="index.html">Home A</a>
+            <a href="home-b.html">Home B</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Journal</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="toggle-btn theme-toggle"><i class="ph ph-moon"></i></button>
+        <button class="toggle-btn rtl-toggle">LTR</button>
+        <a href="booking.html" class="btn btn-primary">Book Now</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay"></div>
+  <div class="mobile-menu">
+    <button class="close-menu-btn">
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home A</a>
+      <a href="home-b.html">Home B</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </div>
+          <div class="nav-controls">
+      <a href="booking.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Section 1: Hero -->
+  <header class="hero hero-coming-soon">
+    <div class="hero-content fade-in" style="max-width: 900px;">
+      <h1>Something Beautiful is Blooming</h1>
+      <p>A new collection of everlasting botanical art is on the horizon.</p>
+      
+      <div class="countdown-container" id="countdown">
+        <div class="countdown-item">
+          <span class="countdown-number" id="days">00</span>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="hours">00</span>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="minutes">00</span>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="seconds">00</span>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 2: Launch Details -->
+  <section class="container" style="text-align: center;">
+    <div class="reveal-up" style="max-width: 600px; margin: 0 auto;">
+      <h2 style="margin-bottom: 1rem;">The Heritage Collection</h2>
+      <p style="margin-bottom: 2rem;">We are thrilled to announce our upcoming collection featuring rare, heirloom varieties of dried botanicals, carefully preserved using a centuries-old technique refined by our artisans.</p>
+      <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); alert('We will notify you!');">
+        <input type="email" placeholder="Email address" required style="margin: 0; flex: 1;">
+        <button type="submit" class="btn btn-secondary">Notify Me</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Section 3: Sneak Peek -->
+  <section class="container">
+    <div class="grid-3 reveal-up">
+      <div class="blur-img-wrapper">
+        <img src="https://placehold.co/600x600/2D5016/F5F0E8?text=Sneak+Peek+1" alt="Sneak Peek 1">
+        <div class="coming-soon-badge">Coming Soon</div>
+      </div>
+      <div class="blur-img-wrapper">
+        <img src="https://placehold.co/600x600/D4A574/2C2416?text=Sneak+Peek+2" alt="Sneak Peek 2">
+        <div class="coming-soon-badge">Coming Soon</div>
+      </div>
+      <div class="blur-img-wrapper">
+        <img src="https://placehold.co/600x600/2D5016/F5F0E8?text=Sneak+Peek+3" alt="Sneak Peek 3">
+        <div class="coming-soon-badge">Coming Soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Features Preview -->
+  <section class="container" style="background-color: rgba(212, 165, 116, 0.05); padding: 4rem 2rem; border-radius: 8px;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 2rem;">
+      <h2>What to Expect</h2>
+    </div>
+    <div class="grid-4 reveal-up">
+      <div class="feature-preview-card">
+        <i class="ph ph-flower-lotus feature-preview-icon"></i>
+        <h4>Rare Varieties</h4>
+        <p style="font-size: 0.875rem;">Heirloom blooms sourced globally.</p>
+      </div>
+      <div class="feature-preview-card">
+        <i class="ph ph-palette feature-preview-icon"></i>
+        <h4>New Colors</h4>
+        <p style="font-size: 0.875rem;">Deep burgundies and muted golds.</p>
+      </div>
+      <div class="feature-preview-card">
+        <i class="ph ph-jar feature-preview-icon"></i>
+        <h4>Bespoke Vessels</h4>
+        <p style="font-size: 0.875rem;">Hand-thrown ceramic pairings.</p>
+      </div>
+      <div class="feature-preview-card">
+        <i class="ph ph-star feature-preview-icon"></i>
+        <h4>Limited Run</h4>
+        <p style="font-size: 0.875rem;">Only 50 pieces available worldwide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Early Access -->
+  <section class="container">
+    <div class="early-access-card reveal-up">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2>Get Early Access</h2>
+        <p>Join the waitlist to shop the collection 24 hours before the public release.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('You are on the list!');">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <select required>
+          <option value="" disabled selected>Primary Interest</option>
+          <option value="bouquets">Bouquets</option>
+          <option value="vases">Vase Arrangements</option>
+          <option value="gifts">Gifting</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Get Early Access</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Section 6: Social Links -->
+  <section class="container" style="text-align: center; padding-bottom: 4rem;">
+    <div class="reveal-up">
+      <h2 style="font-family: var(--font-accent); font-style: italic;">Follow the Journey</h2>
+      <div class="social-follow">
+        <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+        <a href="#"><i class="ph-fill ph-pinterest-logo"></i></a>
+        <a href="#"><i class="ph-fill ph-tiktok-logo"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
+          <p>Preserved Beauty, Timeless Elegance</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="about.html">Our Story</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="blog.html">Journal</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Everlasting Bouquets</a>
+          <a href="services.html">Wedding Florals</a>
+          <a href="services.html">Corporate Gifting</a>
+          <a href="booking.html">Book Consultation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
+          <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your Email" required style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
+            <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BLOOM. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Countdown Timer Logic
+    const countDownDate = new Date().getTime() + (14 * 24 * 60 * 60 * 1000); // 14 days from now
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "LAUNCHED";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      const elDays = document.getElementById("days");
+      const elHours = document.getElementById("hours");
+      const elMins = document.getElementById("minutes");
+      const elSecs = document.getElementById("seconds");
+
+      // Flip animation helper
+      const updateVal = (el, val) => {
+        const strVal = val < 10 ? "0" + val : val;
+        if(el.innerText !== strVal) {
+          el.classList.remove('flip-animate');
+          void el.offsetWidth; // trigger reflow
+          el.innerText = strVal;
+          el.classList.add('flip-animate');
+        }
+      };
+
+      updateVal(elDays, days);
+      updateVal(elHours, hours);
+      updateVal(elMins, minutes);
+      updateVal(elSecs, seconds);
+    };
+
+    const x = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>

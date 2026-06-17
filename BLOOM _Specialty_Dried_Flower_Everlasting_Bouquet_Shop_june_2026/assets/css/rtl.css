@@ -1,0 +1,39 @@
+/* RTL Complex Overrides */
+html[dir="rtl"] {
+  /* Most layout is handled by CSS logical properties in style.css */
+}
+
+/* Example: flip icons that imply direction (e.g., back arrows) */
+html[dir="rtl"] .icon-flip {
+  transform: scaleX(-1);
+}
+
+/* Adjust mobile menu slide direction */
+html[dir="rtl"] .mobile-menu {
+  right: auto;
+  left: -100%;
+  transition: left var(--transition-speed) ease;
+}
+
+html[dir="rtl"] .mobile-menu.open {
+  right: auto;
+  left: 0;
+}
+
+/* Adjust timeline or steps if they are absolute positioned */
+html[dir="rtl"] .timeline-line {
+  left: auto;
+  right: 20px;
+}
+
+/* Adjust any floated elements or non-logical margin/padding */
+html[dir="rtl"] .nav-links a.active::after {
+  left: auto;
+  right: 0;
+}
+
+/* Update nav dropdown placement */
+html[dir="rtl"] .nav-dropdown-content {
+  left: auto;
+  right: 0;
+}

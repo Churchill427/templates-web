@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | Dashboard</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  
+  <style>
+    body {
+      background-color: #f0ebe1; /* Slightly darker than normal bg for dashboard contrast */
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    html[data-theme="dark"] body { background-color: #121212; }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+      transition: width 300ms ease;
+      display: flex;
+      flex-direction: column;
+    }
+    html[data-theme="dark"] .sidebar { background: var(--card-bg); }
+    
+    .sidebar.collapsed { width: 80px; }
+    
+    .sidebar-header {
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(44, 36, 22, 0.1);
+    }
+    html[data-theme="dark"] .sidebar-header { border-color: rgba(232, 224, 213, 0.1); }
+    
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      transition: opacity 300ms;
+    }
+    .sidebar-brand img {
+      height: 24px;
+      margin-right: 10px;
+    }
+    .sidebar.collapsed .sidebar-brand { opacity: 0; display: none; }
+    
+    .sidebar-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+    
+    .sidebar-nav {
+      padding: 1.5rem 0;
+      flex: 1;
+    }
+    
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 300ms ease;
+      white-space: nowrap;
+    }
+    .sidebar-item:hover, .sidebar-item.active {
+      background: rgba(45, 80, 22, 0.05);
+      color: var(--primary-color);
+    }
+    .sidebar-item.active {
+      border-left: 4px solid var(--primary-color);
+    }
+    .sidebar.collapsed .sidebar-item.active {
+      border-left: none;
+    }
+    
+    .sidebar-icon {
+      font-size: 1.5rem;
+      min-width: 1.5rem;
+      margin-right: 1rem;
+    }
+    .sidebar.collapsed .sidebar-icon { margin-right: 0; }
+    .sidebar.collapsed .sidebar-item { justify-content: center; padding: 1rem; }
+    .sidebar.collapsed .sidebar-item.active {
+      background: var(--primary-color);
+      color: #fff;
+      border-radius: 8px;
+      margin: 0 0.5rem;
+    }
+    .sidebar.collapsed .sidebar-text { display: none; }
+    
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 250px;
+      transition: margin-left 300ms ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar.collapsed ~ .main-content { margin-left: 80px; }
+    
+    @media(max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .main-content { margin-left: 0 !important; }
+    }
+    
+    /* Top Bar */
+    .topbar {
+      height: 70px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+    html[data-theme="dark"] .topbar { background: var(--card-bg); }
+    
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(44, 36, 22, 0.05);
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      width: 300px;
+    }
+    html[data-theme="dark"] .search-box { background: rgba(232, 224, 213, 0.05); }
+    .search-box input {
+      border: none; background: none; margin: 0; padding: 0 0.5rem; width: 100%; font-size: 0.875rem;
+    }
+    .search-box input:focus { outline: none; }
+    
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .notification-btn {
+      position: relative; background: none; border: none; font-size: 1.5rem; color: var(--text-color); cursor: pointer;
+    }
+    .notification-badge {
+      position: absolute; top: 0; right: -2px; width: 10px; height: 10px; background: #E4405F; border-radius: 50%;
+    }
+    .profile-dropdown {
+      display: flex; align-items: center; gap: 0.5rem; cursor: pointer;
+    }
+    .profile-img {
+      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
+    }
+    
+    /* Dashboard Grid */
+    .dash-container {
+      padding: 2rem;
+      flex: 1;
+    }
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    html[data-theme="dark"] .stat-card { background: var(--card-bg); }
+    .stat-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; color: var(--secondary-color);
+    }
+    .stat-value {
+      font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .stat-trend {
+      font-size: 0.875rem; display: flex; align-items: center; gap: 0.25rem;
+    }
+    .trend-up { color: #2D5016; }
+    .trend-down { color: #D32F2F; }
+    
+    /* Charts Grid */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    @media(min-width: 1024px) {
+      .charts-grid { grid-template-columns: 2fr 1fr; }
+    }
+    .chart-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    html[data-theme="dark"] .chart-card { background: var(--card-bg); }
+    .chart-title {
+      font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 1.5rem;
+    }
+    
+    /* Canvas Containers */
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+    }
+    
+    /* Data Tables & Lists */
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media(min-width: 1024px) {
+      .data-grid { grid-template-columns: 2fr 1fr; }
+    }
+    
+    .table-container {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(44, 36, 22, 0.1);
+    }
+    html[data-theme="dark"] th, html[data-theme="dark"] td { border-color: rgba(232, 224, 213, 0.1); }
+    th { font-weight: 600; color: var(--secondary-color); }
+    
+    .status-badge {
+      padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 500;
+    }
+    .status-delivered { background: #E8F5E9; color: #2E7D32; }
+    .status-processing { background: #FFF3E0; color: #E65100; }
+    .status-pending { background: #E3F2FD; color: #1565C0; }
+    
+    .inventory-list, .activity-list {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .inventory-item, .activity-item {
+      display: flex; align-items: center; justify-content: space-between; padding: 1rem 0;
+      border-bottom: 1px solid rgba(44, 36, 22, 0.1);
+    }
+    html[data-theme="dark"] .inventory-item, html[data-theme="dark"] .activity-item { border-color: rgba(232, 224, 213, 0.1); }
+    
+    .inventory-info { display: flex; align-items: center; gap: 1rem; }
+    .inventory-img { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; }
+    
+    .quick-actions {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 2rem;
+    }
+    .action-card {
+      background: #fff; padding: 1.5rem; border-radius: 8px; text-align: center; cursor: pointer;
+      transition: transform 300ms ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid transparent;
+    }
+    html[data-theme="dark"] .action-card { background: var(--card-bg); }
+    .action-card:hover { transform: translateY(-4px); border-color: var(--primary-color); }
+    .action-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</span>
+      <button class="sidebar-toggle" id="sidebarToggle"><i class="ph ph-list"></i></button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-item active">
+        <i class="ph ph-squares-four sidebar-icon"></i>
+        <span class="sidebar-text">Dashboard</span>
+      </a>
+      <a href="#" class="sidebar-item">
+        <i class="ph ph-chart-line-up sidebar-icon"></i>
+        <span class="sidebar-text">Analytics</span>
+      </a>
+      <a href="#" class="sidebar-item">
+        <i class="ph ph-shopping-cart sidebar-icon"></i>
+        <span class="sidebar-text">Orders</span>
+      </a>
+      <a href="#" class="sidebar-item">
+        <i class="ph ph-package sidebar-icon"></i>
+        <span class="sidebar-text">Inventory</span>
+      </a>
+      <a href="#" class="sidebar-item">
+        <i class="ph ph-users sidebar-icon"></i>
+        <span class="sidebar-text">Customers</span>
+      </a>
+      <a href="#" class="sidebar-item">
+        <i class="ph ph-gear sidebar-icon"></i>
+        <span class="sidebar-text">Settings</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="search-box">
+        <i class="ph ph-magnifying-glass"></i>
+        <input type="text" placeholder="Search orders, products...">
+      </div>
+      <div class="topbar-right">
+        <button class="toggle-btn theme-toggle" style="margin-right: 1rem;"><i class="ph ph-moon"></i></button>
+        <button class="notification-btn">
+          <i class="ph ph-bell"></i>
+          <span class="notification-badge"></span>
+        </button>
+        <div class="profile-dropdown">
+          <img src="https://placehold.co/100x100?text=Admin" alt="Admin" class="profile-img">
+          <span style="font-weight: 500;">Admin</span>
+          <i class="ph ph-caret-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dash-container">
+      <h1 style="font-family: var(--font-heading); margin-bottom: 2rem;">Overview</h1>
+      
+      <!-- Section 1: Stat Cards -->
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>Total Orders</span>
+            <i class="ph ph-shopping-cart" style="font-size: 1.5rem;"></i>
+          </div>
+          <div class="stat-value">1,248</div>
+          <div class="stat-trend trend-up">
+            <i class="ph-bold ph-trend-up"></i> 12.5% from last month
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>Revenue</span>
+            <i class="ph ph-currency-dollar" style="font-size: 1.5rem;"></i>
+          </div>
+          <div class="stat-value">$42,500</div>
+          <div class="stat-trend trend-up">
+            <i class="ph-bold ph-trend-up"></i> 8.2% from last month
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>Active Customers</span>
+            <i class="ph ph-users" style="font-size: 1.5rem;"></i>
+          </div>
+          <div class="stat-value">842</div>
+          <div class="stat-trend trend-up">
+            <i class="ph-bold ph-trend-up"></i> 5.4% from last month
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>Stock Alerts</span>
+            <i class="ph ph-warning-circle" style="font-size: 1.5rem;"></i>
+          </div>
+          <div class="stat-value" style="color: #E65100;">14</div>
+          <div class="stat-trend trend-down">
+            <i class="ph-bold ph-trend-down"></i> Needs attention
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Analytics Charts -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="chart-title">Revenue Trend (12 Months)</h3>
+          <div class="canvas-container">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">Sales by Category</h3>
+          <div class="canvas-container">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+      
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="chart-title">Top Selling Products</h3>
+          <div class="canvas-container">
+            <canvas id="productsChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">Visitor Traffic (30 Days)</h3>
+          <div class="canvas-container">
+            <canvas id="trafficChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 & 4: Data Tables -->
+      <div class="data-grid">
+        <!-- Recent Orders -->
+        <div class="chart-card">
+          <h3 class="chart-title">Recent Orders</h3>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#ORD-7842</td>
+                  <td>Sarah Mitchell</td>
+                  <td>Oct 24, 2026</td>
+                  <td>$125.00</td>
+                  <td><span class="status-badge status-delivered">Delivered</span></td>
+                </tr>
+                <tr>
+                  <td>#ORD-7843</td>
+                  <td>James Taylor</td>
+                  <td>Oct 24, 2026</td>
+                  <td>$85.00</td>
+                  <td><span class="status-badge status-processing">Processing</span></td>
+                </tr>
+                <tr>
+                  <td>#ORD-7844</td>
+                  <td>Elena Rodriguez</td>
+                  <td>Oct 25, 2026</td>
+                  <td>$210.00</td>
+                  <td><span class="status-badge status-pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>#ORD-7845</td>
+                  <td>Michael Chang</td>
+                  <td>Oct 25, 2026</td>
+                  <td>$65.00</td>
+                  <td><span class="status-badge status-processing">Processing</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Inventory Status -->
+        <div class="chart-card">
+          <h3 class="chart-title">Inventory Alerts</h3>
+          <ul class="inventory-list">
+            <li class="inventory-item">
+              <div class="inventory-info">
+                <img src="https://placehold.co/40x40?text=P" alt="Pampas" class="inventory-img">
+                <div>
+                  <div style="font-weight: 500;">Pampas Grass Bundle</div>
+                  <div style="font-size: 0.75rem; color: var(--secondary-color);">Stems</div>
+                </div>
+              </div>
+              <div style="color: #E65100; font-weight: 600;">8 left</div>
+            </li>
+            <li class="inventory-item">
+              <div class="inventory-info">
+                <img src="https://placehold.co/40x40?text=E" alt="Eucalyptus" class="inventory-img">
+                <div>
+                  <div style="font-weight: 500;">Silver Drop Eucalyptus</div>
+                  <div style="font-size: 0.75rem; color: var(--secondary-color);">Stems</div>
+                </div>
+              </div>
+              <div style="color: #E65100; font-weight: 600;">12 left</div>
+            </li>
+            <li class="inventory-item">
+              <div class="inventory-info">
+                <img src="https://placehold.co/40x40?text=B" alt="Bouquet" class="inventory-img">
+                <div>
+                  <div style="font-weight: 500;">Autumn Glow Bouquet</div>
+                  <div style="font-size: 0.75rem; color: var(--secondary-color);">Arrangements</div>
+                </div>
+              </div>
+              <div style="color: #E65100; font-weight: 600;">3 left</div>
+            </li>
+          </ul>
+          <a href="#" style="display: block; text-align: center; margin-top: 1rem; font-size: 0.875rem; color: var(--primary-color);">View All Inventory</a>
+        </div>
+      </div>
+
+      <!-- Section 5: Quick Actions -->
+      <div class="quick-actions">
+        <div class="action-card">
+          <i class="ph ph-plus-circle action-icon"></i>
+          <h4>Add Product</h4>
+        </div>
+        <div class="action-card">
+          <i class="ph ph-receipt action-icon"></i>
+          <h4>Process Order</h4>
+        </div>
+        <div class="action-card">
+          <i class="ph ph-envelope-simple action-icon"></i>
+          <h4>Newsletter</h4>
+        </div>
+        <div class="action-card">
+          <i class="ph ph-file-text action-icon"></i>
+          <h4>Generate Report</h4>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

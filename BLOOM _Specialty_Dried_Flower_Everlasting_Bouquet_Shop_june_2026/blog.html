@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | The Journal</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <meta name="description" content="The Bloom Journal - Care tips, styling guides, and floral inspiration.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  
+  <style>
+    .hero-blog {
+      background-image: url('assets/images/hero-bg-blog.jpg');
+    }
+    .featured-post-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 400px;
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+      color: #fff;
+    }
+    @media(min-width: 768px) { .featured-post-card { padding: 4rem; min-height: 500px; } }
+    .featured-post-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
+      z-index: 1;
+    }
+    .featured-post-card img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform 500ms ease;
+    }
+    .featured-post-card:hover img { transform: scale(1.05); }
+    .featured-post-content { position: relative; z-index: 2; max-width: 800px; }
+    
+    .blog-tag {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .blog-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width: 768px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
+    
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .blog-card-img {
+      height: 250px;
+      overflow: hidden;
+      border-radius: 8px 8px 0 0;
+    }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease; }
+    .blog-card:hover .blog-card-img img { transform: scale(1.05); }
+    .blog-card-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-meta {
+      font-size: 0.875rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .blog-excerpt { margin-bottom: 1.5rem; flex: 1; }
+    
+    .category-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width: 768px) { .category-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width: 1024px) { .category-grid { grid-template-columns: repeat(4, 1fr); } }
+    
+    .category-card {
+      position: relative;
+      height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+    }
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+      transition: background 300ms ease;
+    }
+    .category-card img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform 500ms ease;
+    }
+    .category-card:hover::before { background: rgba(0,0,0,0.6); }
+    .category-card:hover img { transform: scale(1.05); }
+    .category-card h3 { position: relative; z-index: 2; margin: 0; opacity: 0.9; transition: opacity 300ms ease, transform 300ms ease; }
+    .category-card:hover h3 { opacity: 1; transform: translateY(-4px); }
+    
+    .newsletter-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      background: var(--bg-color);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    html[data-theme="dark"] .newsletter-split { background: var(--card-bg); }
+    @media(min-width: 768px) { .newsletter-split { grid-template-columns: 1fr 1fr; } }
+    
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .tag {
+      background: #fff;
+      border: 1px solid rgba(44, 36, 22, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.875rem;
+      color: var(--text-color);
+      transition: all 300ms ease;
+    }
+    html[data-theme="dark"] .tag { background: var(--card-bg); border-color: rgba(232, 224, 213, 0.1); }
+    .tag:hover {
+      background: var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
+    }
+    .tag.large { font-size: 1.25rem; padding: 0.75rem 1.5rem; }
+    .tag.medium { font-size: 1rem; padding: 0.5rem 1.25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#">Home</a>
+          <div class="nav-dropdown-content">
+            <a href="index.html">Home A</a>
+            <a href="home-b.html">Home B</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html" class="active">Journal</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="toggle-btn theme-toggle"><i class="ph ph-moon"></i></button>
+        <button class="toggle-btn rtl-toggle">LTR</button>
+        <a href="booking.html" class="btn btn-primary">Book Now</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay"></div>
+  <div class="mobile-menu">
+    <button class="close-menu-btn">
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home A</a>
+      <a href="home-b.html">Home B</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html" class="active">Journal</a>
+      <a href="contact.html">Contact</a>
+    </div>
+          <div class="nav-controls">
+      <a href="booking.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Section 1: Hero -->
+  <header class="hero hero-blog">
+    <div class="hero-content fade-in">
+      <h1>The Bloom Journal</h1>
+      <p>Inspiration, care tips, and stories from the studio.</p>
+    </div>
+  </header>
+
+  <!-- Section 2: Featured Post -->
+  <section class="container" style="margin-top: -4rem; position: relative; z-index: 2;">
+    <div class="featured-post-card reveal-up">
+      <img src="assets/images/blog-featured-preservation.jpg" alt="Featured Post">
+      <div class="featured-post-content">
+        <span class="blog-tag">Preservation</span>
+        <h2 style="color: #fff; margin-bottom: 1rem;">How to Preserve Your Wedding Bouquet: A Step-by-Step Guide</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.125rem; opacity: 0.9;">Don't let your wedding florals fade. Learn our studio's secrets to preserving your most important blooms so they can be cherished for years to come.</p>
+        <a href="#" class="btn btn-primary" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">Read Full Article</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Recent Posts Grid -->
+  <section class="container">
+    <div class="reveal-up" style="margin-bottom: 2rem;">
+      <h2>Recent Articles</h2>
+    </div>
+    <div class="blog-grid reveal-up">
+      <!-- Card 1 -->
+      <div class="card blog-card">
+        <div class="blog-card-img">
+          <img src="assets/images/blog-post-styling-pampas.png" alt="Styling Pampas">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span style="text-transform: uppercase; letter-spacing: 1px;">Styling</span>
+            <span>&bull;</span>
+            <span>Oct 12, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem;">5 Ways to Style Pampas Grass in a Modern Minimalist Home</h3>
+          <p class="blog-excerpt">Pampas grass brings warmth and texture to any space. Here are our favorite ways to incorporate it without overwhelming your decor.</p>
+          <div><a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Read More</a></div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card blog-card">
+        <div class="blog-card-img">
+          <img src="assets/images/blog-post-autumn-colors.png" alt="Autumn Colors">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span style="text-transform: uppercase; letter-spacing: 1px;">Seasonal</span>
+            <span>&bull;</span>
+            <span>Sep 28, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem;">Embracing the Deep, Rich Tones of Autumn Botanicals</h3>
+          <p class="blog-excerpt">As the seasons change, so do our palettes. Explore the burgundy amaranthus and golden yarrow dominating this season.</p>
+          <div><a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Read More</a></div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card blog-card">
+        <div class="blog-card-img">
+          <img src="assets/images/blog-post-behind-scenes.png" alt="Behind the Scenes">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span style="text-transform: uppercase; letter-spacing: 1px;">Behind the Scenes</span>
+            <span>&bull;</span>
+            <span>Sep 15, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem;">A Day in the Studio: Crafting the Signature Collection</h3>
+          <p class="blog-excerpt">Take a peek behind the curtain and see exactly what goes into designing and assembling our most popular everlasting bouquets.</p>
+          <div><a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Read More</a></div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="card blog-card">
+        <div class="blog-card-img">
+          <img src="assets/images/blog-post-care-tips.png" alt="Care Tips">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span style="text-transform: uppercase; letter-spacing: 1px;">Care Tips</span>
+            <span>&bull;</span>
+            <span>Aug 30, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem;">Dusting Dried Flowers: Do's and Don'ts</h3>
+          <p class="blog-excerpt">Keep your arrangements looking fresh year after year with these simple, damage-free cleaning techniques.</p>
+          <div><a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Read More</a></div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="card blog-card">
+        <div class="blog-card-img">
+          <img src="assets/images/blog-post-sustainability.png" alt="Sustainable Floristry">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span style="text-transform: uppercase; letter-spacing: 1px;">Sustainability</span>
+            <span>&bull;</span>
+            <span>Aug 12, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem;">Why Dried Flowers are the Eco-Friendly Choice</h3>
+          <p class="blog-excerpt">Understanding the carbon footprint of fresh vs. dried florals, and why making the switch matters.</p>
+          <div><a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Read More</a></div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="card blog-card">
+        <div class="blog-card-img">
+          <img src="assets/images/blog-post-choosing-vase.jpg" alt="Choosing a Vase">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span style="text-transform: uppercase; letter-spacing: 1px;">Styling</span>
+            <span>&bull;</span>
+            <span>Jul 22, 2026</span>
+          </div>
+          <h3 style="font-size: 1.25rem;">Pairing Your Arrangement with the Perfect Vessel</h3>
+          <p class="blog-excerpt">The vase is just as important as the flowers. Learn how to choose shapes and materials that elevate your display.</p>
+          <div><a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Read More</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-up" style="text-align: center; margin-top: 3rem;">
+      <a href="#" class="btn btn-primary">Load More Articles</a>
+    </div>
+  </section>
+
+  <!-- Section 4: Categories -->
+  <section class="container">
+    <div class="reveal-up" style="margin-bottom: 2rem;">
+      <h2>Explore by Category</h2>
+    </div>
+    <div class="category-grid reveal-up">
+      <a href="#" class="category-card">
+        <img src="assets/images/cat-care-tips.png" alt="Care Tips">
+        <h3>Care Tips</h3>
+      </a>
+      <a href="#" class="category-card">
+        <img src="assets/images/cat-styling.png" alt="Styling Guides">
+        <h3>Styling Guides</h3>
+      </a>
+      <a href="#" class="category-card">
+        <img src="assets/images/cat-behind-scenes.png" alt="Behind the Scenes">
+        <h3>Behind the Scenes</h3>
+      </a>
+      <a href="#" class="category-card">
+        <img src="assets/images/cat-seasonal.png" alt="Seasonal">
+        <h3>Seasonal</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 5: Newsletter -->
+  <section class="container">
+    <div class="newsletter-split reveal-up">
+      <div style="padding: 4rem; display: flex; flex-direction: column; justify-content: center;">
+        <h2 style="margin-bottom: 1rem;">Get the Latest</h2>
+        <p style="margin-bottom: 2rem;">Join 15,000+ botanical enthusiasts. Receive our weekly digest of styling tips, DIY tutorials, and new collection previews.</p>
+        <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" placeholder="Your email address" required style="margin: 0; flex: 1;">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+      <div>
+        <img src="assets/images/newsletter-signup.jpg" alt="Newsletter Signup" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Popular Tags -->
+  <section class="container" style="text-align: center; margin-bottom: 4rem;">
+    <div class="reveal-up" style="margin-bottom: 2rem;">
+      <h2>Popular Topics</h2>
+    </div>
+    <div class="tag-cloud reveal-up">
+      <a href="#" class="tag large">Pampas Grass</a>
+      <a href="#" class="tag medium">Weddings</a>
+      <a href="#" class="tag">Preservation</a>
+      <a href="#" class="tag large">Eucalyptus</a>
+      <a href="#" class="tag">Ceramics</a>
+      <a href="#" class="tag medium">Home Decor</a>
+      <a href="#" class="tag">Gifting</a>
+      <a href="#" class="tag large">Sustainability</a>
+      <a href="#" class="tag medium">DIY Floristry</a>
+      <a href="#" class="tag">Autumn</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
+          <p>Preserved Beauty, Timeless Elegance</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="about.html">Our Story</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="blog.html">Journal</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Everlasting Bouquets</a>
+          <a href="services.html">Wedding Florals</a>
+          <a href="services.html">Corporate Gifting</a>
+          <a href="booking.html">Book Consultation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
+          <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your Email" required style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
+            <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BLOOM. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | Sign In</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      background: linear-gradient(135deg, var(--bg-color) 0%, rgba(212, 165, 116, 0.2) 100%);
+    }
+    html[data-theme="dark"] body {
+      background: linear-gradient(135deg, var(--bg-color) 0%, #000 100%);
+    }
+    
+    .login-container {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width: 1024px) {
+      .login-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    /* Left Side: Brand Highlight (Desktop Only) */
+    .brand-side {
+      display: none;
+      position: relative;
+      background-image: url('https://placehold.co/1000x1200/2D5016/F5F0E8?text=Dried+Flower+Art');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    @media(min-width: 1024px) {
+      .brand-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4rem;
+      }
+    }
+    .brand-side::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to right, rgba(45, 80, 22, 0.9), rgba(45, 80, 22, 0.4));
+      z-index: 1;
+    }
+    .brand-content {
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+    }
+    .brand-logo-large {
+      display: flex;
+      align-items: center;
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      margin-bottom: 1rem;
+    }
+    .brand-logo-large img {
+      height: 1em;
+      margin-right: 16px;
+    }
+    .brand-tagline {
+      font-family: var(--font-accent);
+      font-size: 2rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+    
+    /* Right Side: Form Card */
+    .form-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 450px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    }
+    html[data-theme="dark"] .login-card {
+      background: var(--card-bg);
+    }
+    
+    .mobile-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+    .mobile-logo img {
+      height: 1em;
+      margin-right: 12px;
+    }
+    @media(min-width: 1024px) { .mobile-logo { display: none; } }
+    
+    .form-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+    .form-group input { margin-bottom: 0; }
+    
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      font-size: 0.875rem;
+    }
+    .form-options a { color: var(--primary-color); font-weight: 500; }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 2rem 0;
+      color: rgba(44, 36, 22, 0.5);
+      font-size: 0.875rem;
+    }
+    html[data-theme="dark"] .divider { color: rgba(232, 224, 213, 0.5); }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid rgba(44, 36, 22, 0.1);
+    }
+    html[data-theme="dark"] .divider::before, html[data-theme="dark"] .divider::after {
+      border-color: rgba(232, 224, 213, 0.1);
+    }
+    .divider:not(:empty)::before { margin-right: .5em; }
+    .divider:not(:empty)::after { margin-left: .5em; }
+    
+    .social-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 4px;
+      border: 1px solid rgba(44, 36, 22, 0.2);
+      background: #fff;
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: background 300ms ease;
+    }
+    .social-btn:hover { background: #f9f9f9; }
+    .social-google i { color: #DB4437; }
+    .social-apple i { color: #000; }
+    .social-facebook i { color: #1877F2; }
+    
+    .signup-link {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.875rem;
+    }
+    .signup-link a { color: var(--primary-color); font-weight: 600; }
+    
+    /* Theme Toggle absolute position for testing if needed, though strictly we just need standard layout */
+    .theme-toggle-fixed {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden Theme Toggle for usability if needed by the user testing the page -->
+  <button class="toggle-btn theme-toggle theme-toggle-fixed" style="border-color:var(--text-color); color:var(--text-color); background:transparent;"><i class="ph ph-moon"></i></button>
+
+  <div class="login-container">
+    
+    <!-- Left Side: Brand Highlight -->
+    <div class="brand-side reveal-up">
+      <div class="brand-content">
+        <div class="brand-logo-large"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</div>
+        <div class="brand-tagline">Preserved Beauty, Timeless Elegance.</div>
+        <p style="margin-top: 2rem; max-width: 400px; opacity: 0.8;">Sign in to manage your custom orders, track shipments, and view your consultation details.</p>
+      </div>
+    </div>
+    
+    <!-- Right Side: Form -->
+    <div class="form-side">
+      <div class="login-card reveal-up">
+        
+        <div class="mobile-logo"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</div>
+        
+        <div class="form-title">
+          <h2>Welcome Back</h2>
+          <p style="color: var(--secondary-color); font-size: 0.875rem;">Please enter your details to sign in.</p>
+        </div>
+        
+        <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" required placeholder="name@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required placeholder="••••••••">
+          </div>
+          
+          <div class="form-options">
+            <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0; cursor: pointer;">
+              <input type="checkbox" style="width: auto; margin: 0;"> Remember me
+            </label>
+            <a href="#">Forgot Password?</a>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+        </form>
+        
+        <div class="divider">Or continue with</div>
+        
+        <button class="social-btn social-google">
+          <i class="ph-fill ph-google-logo" style="font-size: 1.25rem;"></i> Google
+        </button>
+        <div style="display: flex; gap: 1rem;">
+          <button class="social-btn social-apple" style="flex: 1;">
+            <i class="ph-fill ph-apple-logo" style="font-size: 1.25rem;"></i> Apple
+          </button>
+          <button class="social-btn social-facebook" style="flex: 1;">
+            <i class="ph-fill ph-facebook-logo" style="font-size: 1.25rem;"></i> Facebook
+          </button>
+        </div>
+        
+        <div class="signup-link">
+          Don't have an account? <a href="#">Sign up</a>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | Contact</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <meta name="description" content="Get in touch with BLOOM Specialty Dried Flower Shop.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <style>
+    .hero-contact {
+      background-image: url('assets/images/hero-bg-contact.jpg');
+    }
+
+    .contact-info-card {
+      text-align: center;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    html[data-theme="dark"] .contact-info-card {
+      background: var(--card-bg);
+    }
+
+    .contact-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    @media(min-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .error-msg {
+      color: #D32F2F;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .input-error {
+      border-color: #D32F2F !important;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 400px;
+      background-color: #e5e3df;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    html[data-theme="dark"] .map-placeholder {
+      background-color: #242f3e;
+      color: #fff;
+    }
+
+    .map-pin {
+      position: absolute;
+      font-size: 3rem;
+      color: var(--secondary-color);
+    }
+
+    .visit-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media(min-width: 768px) {
+      .visit-split {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    .social-newsletter {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 4rem 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .social-newsletter input {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+    }
+
+    .social-newsletter input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .large-social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .large-social-links a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 300ms ease;
+    }
+
+    .large-social-links a.instagram:hover {
+      background: #E4405F;
+      color: #fff;
+      transform: translateY(-4px);
+    }
+
+    .large-social-links a.pinterest:hover {
+      background: #BD081C;
+      color: #fff;
+      transform: translateY(-4px);
+    }
+
+    .large-social-links a.facebook:hover {
+      background: #1877F2;
+      color: #fff;
+      transform: translateY(-4px);
+    }
+
+    .large-social-links a.tiktok:hover {
+      background: #010101;
+      color: #fff;
+      transform: translateY(-4px);
+    }
+
+    .social-login-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 300ms ease;
+      font-size: 0.875rem;
+    }
+
+    .social-login-btn:hover {
+      background: #f0f0f0;
+    }
+
+    /* Accordion styles */
+    .accordion-item {
+      background: #fff;
+      border: 1px solid rgba(44, 36, 22, 0.1);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    html[data-theme="dark"] .accordion-item {
+      background: var(--card-bg);
+      border-color: rgba(232, 224, 213, 0.1);
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--text-color);
+      text-align: left;
+    }
+
+    .accordion-header i {
+      transition: transform 300ms ease;
+    }
+
+    .accordion-header.active i {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease;
+      padding: 0 1.5rem;
+    }
+
+    .accordion-content p {
+      padding-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#">Home</a>
+          <div class="nav-dropdown-content">
+            <a href="index.html">Home A</a>
+            <a href="home-b.html">Home B</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Journal</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="toggle-btn theme-toggle"><i class="ph ph-moon"></i></button>
+        <button class="toggle-btn rtl-toggle">LTR</button>
+        <a href="booking.html" class="btn btn-primary">Book Now</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay"></div>
+  <div class="mobile-menu">
+    <button class="close-menu-btn">
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home A</a>
+      <a href="home-b.html">Home B</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+          <div class="nav-controls">
+      <a href="booking.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Section 1: Hero -->
+  <header class="hero hero-contact">
+    <div class="hero-content fade-in">
+      <h1>Get in Touch</h1>
+      <p>We'd love to hear from you.</p>
+    </div>
+  </header>
+
+  <!-- Section 2: Contact Information -->
+  <section class="container">
+    <div class="grid-3 reveal-up">
+      <div class="contact-info-card">
+        <i class="ph ph-map-pin contact-icon"></i>
+        <h3>Visit Us</h3>
+        <p>123 Botanical Lane<br>Portland, OR 97204</p>
+        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--secondary-color);">Mon-Fri: 10am - 6pm</p>
+      </div>
+      <div class="contact-info-card">
+        <i class="ph ph-phone contact-icon"></i>
+        <h3>Call Us</h3>
+        <p>+1 (555) 123-4567</p>
+        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--secondary-color);">Available during shop hours</p>
+      </div>
+      <div class="contact-info-card">
+        <i class="ph ph-envelope-simple contact-icon"></i>
+        <h3>Email Us</h3>
+        <p>hello@bloomshop.com</p>
+        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--secondary-color);">We reply within 24 hours</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Our Process -->
+  <section class="container" style="padding-top: 0;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="margin-bottom: 1rem;">Our Bespoke Process</h2>
+      <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;">From the initial consultation to the final placement, we work closely with you to curate everlasting botanicals that complement your space perfectly.</p>
+    </div>
+    <div class="grid-3 reveal-up">
+      <div class="contact-info-card" style="text-align: center; padding: 2.5rem 2rem;">
+        <i class="ph ph-chat-centered-dots contact-icon" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; display: block;"></i>
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem;">01. Consultation</h3>
+        <p style="font-size: 0.95rem; opacity: 0.85;">Share your vision, color palettes, and space requirements with us. We'll discuss custom sizing, vase options, and preferred botanicals to match your aesthetic.</p>
+      </div>
+      <div class="contact-info-card" style="text-align: center; padding: 2.5rem 2rem;">
+        <i class="ph ph-paint-brush-broad contact-icon" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; display: block;"></i>
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem;">02. Design & Proposal</h3>
+        <p style="font-size: 0.95rem; opacity: 0.85;">Our artisans curate a custom selection of high-quality dried florals, presenting a detailed design proposal and color board for your approval.</p>
+      </div>
+      <div class="contact-info-card" style="text-align: center; padding: 2.5rem 2rem;">
+        <i class="ph ph-flower-lotus contact-icon" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; display: block;"></i>
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem;">03. Handcraft & Delivery</h3>
+        <p style="font-size: 0.95rem; opacity: 0.85;">Upon approval, we meticulously assemble your arrangement by hand. We safely pack and deliver your order, offering installation support for larger works.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Contact Form -->
+  <section class="container">
+    <div class="contact-grid reveal-up">
+      <div>
+        <h2 style="margin-bottom: 1rem;">Let's Start a Conversation</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.125rem; opacity: 0.9; line-height: 1.6;">Whether you are styling a
+          private space, planning a milestone event, or looking to discuss corporate gifting, our artisans are ready to
+          bring your vision to life.</p>
+
+        <div class="department-contacts" style="display: flex; flex-direction: column; gap: 1.5rem; text-align: left;">
+          <div style="border-left: 2px solid var(--primary-color); padding-left: 1rem;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.25rem;">Custom Commissions
+            </h4>
+            <p style="color: var(--secondary-color); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">
+              design@bloomshop.com</p>
+            <p style="font-size: 0.875rem; opacity: 0.8;">For custom residential arrangements and single commissions.
+            </p>
+          </div>
+          <div style="border-left: 2px solid var(--primary-color); padding-left: 1rem;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.25rem;">Weddings & Events
+            </h4>
+            <p style="color: var(--secondary-color); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">
+              events@bloomshop.com</p>
+            <p style="font-size: 0.875rem; opacity: 0.8;">For full-service floral design, wedding arches, and venue
+              setups.</p>
+          </div>
+          <div style="border-left: 2px solid var(--primary-color); padding-left: 1rem;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.25rem;">Corporate &
+              Partnerships</h4>
+            <p style="color: var(--secondary-color); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">
+              partners@bloomshop.com</p>
+            <p style="font-size: 0.875rem; opacity: 0.8;">For commercial installations, retail visual displays, and
+              brand gifting.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="padding: 2rem;">
+        <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST" novalidate>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+            <div class="error-msg" id="nameError">Please enter your name.</div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            <div class="error-msg" id="emailError">Please enter a valid email address.</div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Select a subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="order">Order Issue</option>
+              <option value="custom">Custom Arrangement</option>
+              <option value="press">Press/Media</option>
+            </select>
+            <div class="error-msg" id="subjectError">Please select a subject.</div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+            <div class="error-msg" id="messageError">Please enter your message.</div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Map -->
+  <section class="container">
+    <div class="reveal-up">
+      <iframe
+        src="https://maps.google.com/maps?q=123%20Botanical%20Lane,%20Portland,%20OR%2097204&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+        width="100%" height="400" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Section 5: Inquiry FAQs -->
+  <section class="container" style="max-width: 800px; margin: 0 auto; padding-top: 0;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="margin-bottom: 0.5rem;">Inquiry FAQs</h2>
+      <p style="opacity: 0.8;">Answers to common questions about our custom arrangements and services</p>
+    </div>
+    
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>How far in advance should I book for events or weddings?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>For custom weddings and large installations, we recommend reaching out 3 to 6 months prior to your date. This allows ample time for custom design, botanical selection, and securing dates on our calendar.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>Can I provide my own vase or vessel for a custom commission?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>Absolutely! We love creating arrangements in clients' favorite vases, antique vessels, or custom containers. You can drop off your vessel at our studio or ship it to us, and we will design something specifically tailored to its size and shape.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>Is there a design deposit required for custom commissions?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>Yes. For custom orders, we require a 50% non-refundable design deposit before sourcing specific materials and beginning the design phase. This deposit is applied toward your final purchase balance.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>Do you handle on-site installations for corporate spaces?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>Yes, we design and install custom dried floral arrangements for retail, hospitality, corporate offices, and private homes. We also offer seasonal refresh packages to update the installations throughout the year.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Visit the Studio -->
+  <section class="container">
+    <div class="visit-split reveal-up">
+      <div>
+        <img src="assets/images/studio-exterior.png" alt="Studio Exterior" style="border-radius: 8px; width: 100%;">
+      </div>
+      <div>
+        <h2>Visit the Studio</h2>
+        <p style="margin-bottom: 1.5rem;">We'd love to welcome you to our creative space. Browse our pre-made
+          collections in person, or sit down with an artisan to design something bespoke.</p>
+        <div style="background: rgba(212, 165, 116, 0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;"><i class="ph ph-clock"
+              style="vertical-align: middle; margin-right: 0.5rem; color: var(--primary-color);"></i> Studio Hours</h4>
+          <p>Monday - Friday: 10:00 AM - 6:00 PM</p>
+          <p>Saturday: 11:00 AM - 4:00 PM</p>
+          <p>Sunday: Closed</p>
+        </div>
+        <form style="display: flex; gap: 1rem;">
+          <input type="date" style="margin: 0; flex: 1;">
+          <button type="button" class="btn btn-primary">Request Appointment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Newsletter + Social -->
+  <section class="container" style="margin-bottom: 4rem;">
+    <div class="social-newsletter reveal-up">
+      <h2 style="color: #fff;">Follow Our Journey</h2>
+      <p style="margin-bottom: 2rem;">Join our community for styling tips, new collection drops, and exclusive workshop
+        invites.</p>
+
+      <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 1rem;"
+        onsubmit="event.preventDefault(); alert('Subscribed');">
+        <input type="email" placeholder="Enter your email" required style="margin: 0; flex: 1;">
+        <button type="submit" class="btn btn-secondary" style="border-color: #fff; color: #fff;">Subscribe</button>
+      </form>
+
+      <div class="large-social-links">
+        <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+        <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+        <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+        <a href="https://www.tiktok.com/@bloom" target="_blank" rel="noopener noreferrer" class="tiktok"><i class="ph-fill ph-tiktok-logo"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
+          <p>Preserved Beauty, Timeless Elegance</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="about.html">Our Story</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="blog.html">Journal</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Everlasting Bouquets</a>
+          <a href="services.html">Wedding Florals</a>
+          <a href="services.html">Corporate Gifting</a>
+          <a href="booking.html">Book Consultation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
+          <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your Email" required
+              style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
+            <button type="submit" class="btn btn-secondary"
+              style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BLOOM. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Form Validation Logic
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+
+      // Name
+      const name = document.getElementById('name');
+      const nameError = document.getElementById('nameError');
+      if (!name.value.trim()) {
+        name.classList.add('input-error');
+        nameError.style.display = 'block';
+        isValid = false;
+      } else {
+        name.classList.remove('input-error');
+        nameError.style.display = 'none';
+      }
+
+      // Email
+      const email = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value.trim())) {
+        email.classList.add('input-error');
+        emailError.style.display = 'block';
+        isValid = false;
+      } else {
+        email.classList.remove('input-error');
+        emailError.style.display = 'none';
+      }
+
+      // Subject
+      const subject = document.getElementById('subject');
+      const subjectError = document.getElementById('subjectError');
+      if (!subject.value) {
+        subject.classList.add('input-error');
+        subjectError.style.display = 'block';
+        isValid = false;
+      } else {
+        subject.classList.remove('input-error');
+        subjectError.style.display = 'none';
+      }
+
+      // Message
+      const message = document.getElementById('message');
+      const messageError = document.getElementById('messageError');
+      if (!message.value.trim()) {
+        message.classList.add('input-error');
+        messageError.style.display = 'block';
+        isValid = false;
+      } else {
+        message.classList.remove('input-error');
+        messageError.style.display = 'none';
+      }
+
+      if (isValid) {
+        // If it were a real form, we'd submit it here.
+        // form.submit();
+        alert('Message sent successfully! (Formspree placeholder)');
+        form.reset();
+      }
+    });
+
+    // Remove error styling on input
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('input-error');
+        const errorMsg = document.getElementById(input.id + 'Error');
+        if (errorMsg) errorMsg.style.display = 'none';
+      });
+    });
+
+    // Accordion Logic
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const accordionContent = button.nextElementSibling;
+        button.classList.toggle('active');
+        if (button.classList.contains('active')) {
+          accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+        } else {
+          accordionContent.style.maxHeight = 0;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

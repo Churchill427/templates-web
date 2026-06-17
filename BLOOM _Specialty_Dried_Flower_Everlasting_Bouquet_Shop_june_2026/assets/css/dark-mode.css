@@ -1,0 +1,66 @@
+/* Dark Mode Theme Variables */
+html[data-theme="dark"] {
+  --bg-color: #1A1A1A; /* Charcoal Black */
+  --text-color: #E8E0D5; /* Warm Ivory */
+  --navbar-bg: rgba(26, 26, 26, 0.95);
+  --card-bg: #262626;
+  --border-color: rgba(232, 224, 213, 0.1);
+}
+
+/* Base Adjustments */
+html[data-theme="dark"] body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Navbar Dark Mode */
+html[data-theme="dark"] .navbar {
+  background-color: var(--navbar-bg);
+}
+
+html[data-theme="dark"] .nav-dropdown-content,
+html[data-theme="dark"] .mobile-menu {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Cards Dark Mode */
+html[data-theme="dark"] .card {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+html[data-theme="dark"] .card:hover {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.5);
+}
+
+/* Form Inputs Dark Mode */
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select {
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] textarea:focus,
+html[data-theme="dark"] select:focus {
+  border-color: var(--primary-color);
+}
+
+/* Toggle Buttons */
+html[data-theme="dark"] .toggle-btn {
+  border-color: var(--text-color);
+  color: var(--text-color);
+}
+
+html[data-theme="dark"] .toggle-btn:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Dark mode specific overlay adjustments */
+html[data-theme="dark"] .hero::before {
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker overlay for better contrast */
+}

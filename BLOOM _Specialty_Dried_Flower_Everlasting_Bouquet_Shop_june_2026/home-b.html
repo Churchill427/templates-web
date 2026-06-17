@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | The Boutique</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <meta name="description" content="BLOOM Specialty Dried Flower & Everlasting Bouquet Shop. Gifts That Last Forever.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  
+  <style>
+    .hero-home-b {
+      background-image: url('assets/images/hero-bg-b.jpg');
+    }
+    .product-card {
+      position: relative;
+    }
+    .product-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px 8px 0 0;
+    }
+    .product-img-wrapper img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+    .quick-view-btn {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: all 300ms ease;
+      white-space: nowrap;
+    }
+    .product-card:hover .product-img-wrapper img {
+      transform: scale(1.05);
+    }
+    .product-card:hover .quick-view-btn {
+      bottom: 20px;
+      opacity: 1;
+    }
+    .features-section {
+      background-color: rgba(212, 165, 116, 0.05);
+      border-radius: 8px;
+    }
+    html[data-theme="dark"] .features-section {
+      background-color: rgba(212, 165, 116, 0.02);
+    }
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    .custom-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media(min-width: 768px) {
+      .custom-split { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    }
+    .accordion-item {
+      background: #fff;
+      border: 1px solid rgba(44, 36, 22, 0.1);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    html[data-theme="dark"] .accordion-item {
+      background: var(--card-bg);
+      border-color: rgba(232, 224, 213, 0.1);
+    }
+    .accordion-header {
+      width: 100%;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--text-color);
+      text-align: left;
+    }
+    .accordion-header i { transition: transform 300ms ease; }
+    .accordion-header.active i { transform: rotate(180deg); }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease;
+      padding: 0 1.5rem;
+    }
+    .accordion-content p { padding-bottom: 1.5rem; }
+    .masonry-grid {
+      column-count: 2;
+      column-gap: 1rem;
+    }
+    @media(min-width: 1024px) { .masonry-grid { column-count: 3; } }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      transition: transform 500ms ease;
+    }
+    .instagram-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(45, 80, 22, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 300ms ease;
+      color: #fff;
+      font-size: 2.5rem;
+    }
+    .masonry-item:hover img { transform: scale(1.05); }
+    .masonry-item:hover .instagram-overlay { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar (Same as Index) -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="active">Home</a>
+          <div class="nav-dropdown-content">
+            <a href="index.html">Home A</a>
+            <a href="home-b.html">Home B</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Journal</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="toggle-btn theme-toggle"><i class="ph ph-moon"></i></button>
+        <button class="toggle-btn rtl-toggle">LTR</button>
+        <a href="booking.html" class="btn btn-primary">Book Now</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay"></div>
+  <div class="mobile-menu">
+    <button class="close-menu-btn">
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home A</a>
+      <a href="home-b.html" class="active">Home B</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </div>
+          <div class="nav-controls">
+      <a href="booking.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Section 1: Hero -->
+  <header class="hero hero-home-b">
+    <div class="hero-content fade-in">
+      <h1>BLOOM</h1>
+      <p>Gifts That Last Forever</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="services.html" class="btn btn-primary">Shop Seasonal</a>
+        <a href="services.html" class="btn btn-secondary" style="border-color:#fff; color:#fff;">Custom Orders</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 2: Seasonal Picks -->
+  <section class="container">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
+      <h2>Seasonal Picks</h2>
+      <p>Our favorite arrangements for this season.</p>
+    </div>
+    <div class="grid-4 reveal-up">
+      <!-- Product 1 -->
+      <div class="card product-card">
+        <div class="product-img-wrapper">
+          <img src="assets/images/product-autumn-glow.jpg" alt="Autumn Glow Bouquet">
+          <button class="btn btn-secondary quick-view-btn" style="background:#fff; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.1);">Quick View</button>
+        </div>
+        <div class="card-content" style="text-align: center;">
+          <h4 style="margin-bottom: 0.5rem;">Autumn Glow</h4>
+          <p style="color: var(--secondary-color); font-weight: 600;">$85.00</p>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="card product-card">
+        <div class="product-img-wrapper">
+          <img src="assets/images/product-autumn-glow-2.jpg" alt="Winter White">
+          <button class="btn btn-secondary quick-view-btn" style="background:#fff; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.1);">Quick View</button>
+        </div>
+        <div class="card-content" style="text-align: center;">
+          <h4 style="margin-bottom: 0.5rem;">Winter White</h4>
+          <p style="color: var(--secondary-color); font-weight: 600;">$95.00</p>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="card product-card">
+        <div class="product-img-wrapper">
+          <img src="assets/images/product-blush-romance.jpg" alt="Blush Romance">
+          <button class="btn btn-secondary quick-view-btn" style="background:#fff; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.1);">Quick View</button>
+        </div>
+        <div class="card-content" style="text-align: center;">
+          <h4 style="margin-bottom: 0.5rem;">Blush Romance</h4>
+          <p style="color: var(--secondary-color); font-weight: 600;">$75.00</p>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="card product-card">
+        <div class="product-img-wrapper">
+          <img src="assets/images/product-wild-meadow.jpg" alt="Wild Meadow">
+          <button class="btn btn-secondary quick-view-btn" style="background:#fff; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.1);">Quick View</button>
+        </div>
+        <div class="card-content" style="text-align: center;">
+          <h4 style="margin-bottom: 0.5rem;">Wild Meadow</h4>
+          <p style="color: var(--secondary-color); font-weight: 600;">$110.00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Why Dried Flowers -->
+  <section class="container">
+    <div class="features-section" style="padding: 4rem 2rem;">
+      <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
+        <h2>Why Everlasting Blooms?</h2>
+        <p>Discover the natural beauty and sustainable choice of dried flowers.</p>
+      </div>
+      <div class="grid-3 reveal-up" style="text-align: center;">
+        <div>
+          <i class="ph ph-hourglass-high feature-icon"></i>
+          <h3>Longevity</h3>
+          <p>Our carefully preserved blooms last for years, providing enduring beauty unlike fresh cut flowers.</p>
+        </div>
+        <div>
+          <i class="ph ph-drop-slash feature-icon"></i>
+          <h3>Zero Maintenance</h3>
+          <p>No water, no pruning, no fuss. Simply place them in your favorite vase and enjoy.</p>
+        </div>
+        <div>
+          <i class="ph ph-leaf feature-icon"></i>
+          <h3>Eco-Friendly</h3>
+          <p>A sustainable alternative that reduces floral waste and carbon footprint from constant shipping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Custom Arrangements -->
+  <section class="container">
+    <div class="custom-split reveal-up">
+      <div>
+        <img src="assets/images/custom-bouquet.jpg" alt="Custom Bouquet Creation" style="border-radius: 8px; width: 100%;">
+      </div>
+      <div>
+        <h2>Custom Arrangements</h2>
+        <p style="margin-bottom: 1.5rem;">Looking for something specific? Work with our artisans to design a bespoke piece that perfectly matches your vision, color palette, or special occasion.</p>
+        <form class="card" style="padding: 1.5rem;" onsubmit="event.preventDefault();">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <select required>
+            <option value="" disabled selected>Select Arrangement Size</option>
+            <option value="small">Petite</option>
+            <option value="medium">Signature</option>
+            <option value="large">Grand</option>
+          </select>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Create Your Own</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Care Guide Preview -->
+  <section class="container">
+    <div class="reveal-up" style="max-width: 800px; margin: 0 auto;">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Care Guide</h2>
+      
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span><i class="ph ph-sun" style="margin-right: 0.5rem; color: var(--primary-color);"></i> Sunlight</span>
+          <i class="ph ph-caret-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>Keep your dried flowers away from direct sunlight to prevent colors from fading over time. Indirect, natural light is perfectly fine.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span><i class="ph ph-drop" style="margin-right: 0.5rem; color: var(--primary-color);"></i> Humidity</span>
+          <i class="ph ph-caret-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>Avoid placing arrangements in highly humid areas like bathrooms. Moisture can cause the stems to mold or droop.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span><i class="ph ph-wind" style="margin-right: 0.5rem; color: var(--primary-color);"></i> Cleaning</span>
+          <i class="ph ph-caret-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>To remove dust, use a hairdryer on the lowest, cool setting held at a distance, or gently brush with a soft makeup brush.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span><i class="ph ph-clock" style="margin-right: 0.5rem; color: var(--primary-color);"></i> Longevity</span>
+          <i class="ph ph-caret-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>With proper care, your everlasting bouquet will maintain its beauty for 1 to 3 years or even longer.</p>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="#" class="btn btn-secondary">Full Care Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Instagram Gallery -->
+  <section class="container">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 2rem;">
+      <h2>@bloom</h2>
+      <p>Follow our journey on Instagram</p>
+    </div>
+    <div class="masonry-grid reveal-up">
+      <div class="masonry-item"><img src="assets/images/insta-1.jpg" alt="Insta 1"><div class="instagram-overlay"><i class="ph ph-instagram-logo"></i></div></div>
+      <div class="masonry-item"><img src="assets/images/insta-2.jpg" alt="Insta 2"><div class="instagram-overlay"><i class="ph ph-instagram-logo"></i></div></div>
+      <div class="masonry-item"><img src="assets/images/insta-3.jpg" alt="Insta 3"><div class="instagram-overlay"><i class="ph ph-instagram-logo"></i></div></div>
+      <div class="masonry-item"><img src="assets/images/insta-4.jpg" alt="Insta 4"><div class="instagram-overlay"><i class="ph ph-instagram-logo"></i></div></div>
+      <div class="masonry-item"><img src="assets/images/insta-5.jpg" alt="Insta 5"><div class="instagram-overlay"><i class="ph ph-instagram-logo"></i></div></div>
+      <div class="masonry-item"><img src="assets/images/insta-6.jpg" alt="Insta 6"><div class="instagram-overlay"><i class="ph ph-instagram-logo"></i></div></div>
+    </div>
+    <div class="reveal-up" style="text-align: center; margin-top: 2rem;">
+      <a href="#" class="btn btn-primary"><i class="ph ph-instagram-logo" style="margin-right: 0.5rem;"></i> Follow @bloom</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
+          <p>Preserved Beauty, Timeless Elegance</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="about.html">Our Story</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="blog.html">Journal</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Everlasting Bouquets</a>
+          <a href="services.html">Wedding Florals</a>
+          <a href="services.html">Corporate Gifting</a>
+          <a href="booking.html">Book Consultation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
+          <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your Email" required style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
+            <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BLOOM. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Accordion Logic
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const accordionContent = button.nextElementSibling;
+        button.classList.toggle('active');
+        if (button.classList.contains('active')) {
+          accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+        } else {
+          accordionContent.style.maxHeight = 0;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

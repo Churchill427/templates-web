@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | Book a Consultation</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  
+  <style>
+    .hero-booking {
+      background-image: url('assets/images/booking-hero.jpg');
+    }
+    .service-card {
+      background: #fff;
+      border: 1px solid rgba(44, 36, 22, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 300ms ease;
+    }
+    html[data-theme="dark"] .service-card { background: var(--card-bg); border-color: rgba(232, 224, 213, 0.1); }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .service-card.selected { border: 2px solid var(--primary-color); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(45, 80, 22, 0.1); }
+    .service-card img { width: 100%; height: 200px; object-fit: cover; }
+    .service-content { padding: 1.5rem; text-align: center; }
+    
+    /* Booking Form Steps */
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeIn 400ms ease-out; }
+    
+    .progress-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .progress-bar::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0; transform: translateY(-50%);
+      width: 100%; height: 2px;
+      background: rgba(44, 36, 22, 0.1);
+      z-index: 0;
+    }
+    .progress-step {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bg-color);
+      border: 2px solid rgba(44, 36, 22, 0.2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+      font-weight: 600; color: var(--text-color);
+      transition: all 300ms ease;
+    }
+    .progress-step.active { border-color: var(--primary-color); background: var(--primary-color); color: #fff; }
+    
+    /* Custom Calendar */
+    .calendar { background: #fff; border: 1px solid rgba(44, 36, 22, 0.1); border-radius: 8px; padding: 1.5rem; }
+    html[data-theme="dark"] .calendar { background: var(--card-bg); border-color: rgba(232, 224, 213, 0.1); }
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .calendar-btn { background: none; border: none; cursor: pointer; color: var(--text-color); font-size: 1.25rem; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; text-align: center; }
+    .calendar-day-header { font-size: 0.75rem; font-weight: 600; color: var(--secondary-color); text-transform: uppercase; }
+    .calendar-day {
+      padding: 0.5rem; border-radius: 4px; cursor: pointer; transition: all 200ms ease; font-size: 0.875rem;
+    }
+    .calendar-day:hover:not(.disabled) { background: rgba(45, 80, 22, 0.1); }
+    .calendar-day.selected { background: var(--primary-color); color: #fff; }
+    .calendar-day.disabled { opacity: 0.3; cursor: not-allowed; }
+    
+    .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem; }
+    .time-slot {
+      padding: 0.5rem; text-align: center; border: 1px solid rgba(44, 36, 22, 0.2); border-radius: 4px;
+      cursor: pointer; font-size: 0.875rem; transition: all 200ms ease;
+    }
+    .time-slot:hover { border-color: var(--primary-color); }
+    .time-slot.selected { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+    
+    .info-card { display: flex; gap: 1rem; padding: 1.5rem; background: #fff; border-radius: 8px; align-items: flex-start; }
+    html[data-theme="dark"] .info-card { background: var(--card-bg); }
+    .info-icon { font-size: 2rem; color: var(--secondary-color); }
+    
+    /* Accordion styles */
+    .accordion-item {
+      background: #fff; border: 1px solid rgba(44, 36, 22, 0.1); border-radius: 4px; margin-bottom: 1rem; overflow: hidden;
+    }
+    html[data-theme="dark"] .accordion-item { background: var(--card-bg); border-color: rgba(232, 224, 213, 0.1); }
+    .accordion-header {
+      width: 100%; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center;
+      background: none; border: none; cursor: pointer; font-family: var(--font-heading); font-size: 1.25rem;
+      color: var(--text-color); text-align: left;
+    }
+    .accordion-header i { transition: transform 300ms ease; }
+    .accordion-header.active i { transform: rotate(180deg); }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 300ms ease; padding: 0 1.5rem; }
+    .accordion-content p { padding-bottom: 1.5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#">Home</a>
+          <div class="nav-dropdown-content">
+            <a href="index.html">Home A</a>
+            <a href="home-b.html">Home B</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Journal</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="toggle-btn theme-toggle"><i class="ph ph-moon"></i></button>
+        <button class="toggle-btn rtl-toggle">LTR</button>
+        <a href="booking.html" class="btn btn-primary" style="background:#244012;">Book Now</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay"></div>
+  <div class="mobile-menu">
+    <button class="close-menu-btn">
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home A</a>
+      <a href="home-b.html">Home B</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </div>
+          <div class="nav-controls">
+      <a href="booking.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Section 1: Hero -->
+  <header class="hero hero-booking">
+    <div class="hero-content fade-in">
+      <h1>Book a Consultation</h1>
+      <p>Let's create something beautiful together.</p>
+    </div>
+  </header>
+
+  <!-- Main Booking Form Area -->
+  <section class="container" style="margin-top: -3rem; position: relative; z-index: 2; margin-bottom: 4rem;">
+    <div style="background: var(--bg-color); padding: 2rem; border-radius: 8px; box-shadow: 0 12px 24px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto;">
+      
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress-step active" id="step-indicator-1">1</div>
+        <div class="progress-step" id="step-indicator-2">2</div>
+        <div class="progress-step" id="step-indicator-3">3</div>
+      </div>
+
+      <!-- STEP 1: Service Selection -->
+      <div class="form-step active" id="step-1">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Select a Service</h2>
+        <div class="grid-3">
+          <div class="service-card" onclick="selectService('private', this)">
+            <img src="assets/images/service-private.png" alt="Private">
+            <div class="service-content">
+              <h4>Private Consultation</h4>
+              <p style="font-size: 0.875rem; margin-bottom: 1rem;">1 Hour &bull; Custom Arrangement</p>
+              <button class="btn btn-secondary" style="width: 100%;">Select</button>
+            </div>
+          </div>
+          <div class="service-card" onclick="selectService('wedding', this)">
+            <img src="assets/images/service-wedding-new.png" alt="Wedding">
+            <div class="service-content">
+              <h4>Wedding Planning</h4>
+              <p style="font-size: 0.875rem; margin-bottom: 1rem;">2 Hours &bull; Full Event</p>
+              <button class="btn btn-secondary" style="width: 100%;">Select</button>
+            </div>
+          </div>
+          <div class="service-card" onclick="selectService('corporate', this)">
+            <img src="assets/images/service-corporate-new.png" alt="Corporate">
+            <div class="service-content">
+              <h4>Corporate Event</h4>
+              <p style="font-size: 0.875rem; margin-bottom: 1rem;">1.5 Hours &bull; Installations</p>
+              <button class="btn btn-secondary" style="width: 100%;">Select</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right; margin-top: 2rem;">
+          <button class="btn btn-primary" onclick="nextStep(2)">Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Calendar & Details -->
+      <div class="form-step" id="step-2">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Choose Date & Time</h2>
+        <div class="grid-2">
+          <!-- Calendar -->
+          <div class="calendar">
+            <div class="calendar-header">
+              <button class="calendar-btn" onclick="prevMonth()"><i class="ph ph-caret-left"></i></button>
+              <h4 id="monthYear" style="margin: 0;">October 2026</h4>
+              <button class="calendar-btn" onclick="nextMonth()"><i class="ph ph-caret-right"></i></button>
+            </div>
+            <div class="calendar-grid" style="margin-bottom: 0.5rem;">
+              <div class="calendar-day-header">Su</div>
+              <div class="calendar-day-header">Mo</div>
+              <div class="calendar-day-header">Tu</div>
+              <div class="calendar-day-header">We</div>
+              <div class="calendar-day-header">Th</div>
+              <div class="calendar-day-header">Fr</div>
+              <div class="calendar-day-header">Sa</div>
+            </div>
+            <div class="calendar-grid" id="calendarDays">
+              <!-- JS Injected -->
+            </div>
+          </div>
+          
+          <!-- Details -->
+          <div>
+            <h4 style="margin-bottom: 1rem;">Available Times</h4>
+            <div class="time-slots" id="timeSlots">
+              <div class="time-slot disabled" style="opacity:0.5;">Select a date</div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Guest Count (Optional)</label>
+              <input type="number" id="guestCount" min="1" max="10" placeholder="e.g. 2" style="background:#fff;">
+              
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Notes for the Artisan</label>
+              <textarea id="bookingNotes" rows="3" placeholder="Any specific colors or vibes you have in mind?" style="background:#fff;"></textarea>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+          <button class="btn btn-secondary" onclick="prevStep(1)">Back</button>
+          <button class="btn btn-primary" onclick="nextStep(3)">Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Confirm -->
+      <div class="form-step" id="step-3">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Your Details</h2>
+        <form onsubmit="event.preventDefault(); alert('Booking Confirmed!'); window.location.reload();">
+          <div class="grid-2">
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">First Name *</label>
+              <input type="text" required style="background:#fff;">
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Last Name *</label>
+              <input type="text" required style="background:#fff;">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email Address *</label>
+              <input type="email" required style="background:#fff;">
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Phone Number</label>
+              <input type="tel" style="background:#fff;">
+            </div>
+          </div>
+          
+          <div style="background: rgba(45, 80, 22, 0.05); padding: 1.5rem; border-radius: 8px; margin: 2rem 0; border: 1px solid rgba(45, 80, 22, 0.2);">
+            <h4 style="margin-bottom: 1rem;">Booking Summary</h4>
+            <p><strong>Service:</strong> <span id="summaryService">Wedding Planning</span></p>
+            <p><strong>Date & Time:</strong> <span id="summaryDate">Oct 15, 2026 at 2:00 PM</span></p>
+            <p style="font-size: 0.875rem; margin-top: 1rem; color: var(--secondary-color);">Payment is not required until the consultation is completed.</p>
+          </div>
+
+          <div style="display: flex; justify-content: space-between;">
+            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 5: What to Expect -->
+  <section class="container" style="margin-bottom: 4rem;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 2rem;">
+      <h2>What to Expect</h2>
+    </div>
+    <div class="grid-2 reveal-up">
+      <div class="info-card">
+        <i class="ph ph-clock info-icon"></i>
+        <div>
+          <h4>Duration</h4>
+          <p style="font-size: 0.875rem;">Consultations typically last between 1 to 2 hours depending on the scope of the project. We take our time to understand your vision.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <i class="ph ph-palette info-icon"></i>
+        <div>
+          <h4>What's Included</h4>
+          <p style="font-size: 0.875rem;">You'll get hands-on access to our botanical library, color swatching, and a preliminary sketched design proposal.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <i class="ph ph-camera info-icon"></i>
+        <div>
+          <h4>Preparation</h4>
+          <p style="font-size: 0.875rem;">Feel free to bring mood boards, fabric swatches, or photos of the space where the arrangement will reside.</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <i class="ph ph-x-circle info-icon"></i>
+        <div>
+          <h4>Cancellation</h4>
+          <p style="font-size: 0.875rem;">We kindly ask for 48 hours notice if you need to reschedule or cancel your consultation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: FAQ -->
+  <section class="container" style="max-width: 800px; margin: 0 auto; margin-bottom: 4rem;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 2rem;">
+      <h2>Booking FAQ</h2>
+    </div>
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>Is the consultation fee applied to my order?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>Yes, 100% of the consultation fee serves as a deposit and is applied directly to the final cost of your bespoke arrangement.</p>
+      </div>
+    </div>
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>How far in advance should I book for a wedding?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>We recommend booking a consultation at least 3-6 months prior to your wedding date to ensure we can source specific botanical varieties for you.</p>
+      </div>
+    </div>
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>Can I bring someone with me?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>Absolutely! You are welcome to bring up to 2 guests to the consultation.</p>
+      </div>
+    </div>
+    <div class="accordion-item reveal-up">
+      <button class="accordion-header">
+        <span>Do you offer virtual consultations?</span>
+        <i class="ph ph-caret-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>Yes, we offer consultations via Zoom for clients who cannot visit our Portland studio. Just add a note in the booking form.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
+          <p>Preserved Beauty, Timeless Elegance</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="about.html">Our Story</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="blog.html">Journal</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Everlasting Bouquets</a>
+          <a href="services.html">Wedding Florals</a>
+          <a href="services.html">Corporate Gifting</a>
+          <a href="booking.html">Book Consultation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
+          <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your Email" required style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
+            <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BLOOM. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Multi-step Form Logic
+    let currentStep = 1;
+    let selectedServiceName = "None";
+    let selectedDateStr = "None";
+
+    function selectService(type, el) {
+      document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedServiceName = el.querySelector('h4').innerText;
+      document.getElementById('summaryService').innerText = selectedServiceName;
+    }
+
+    function nextStep(step) {
+      if(step === 2 && selectedServiceName === "None") {
+        alert("Please select a service first.");
+        return;
+      }
+      if(step === 3 && selectedDateStr === "None") {
+        alert("Please select a date and time first.");
+        return;
+      }
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.getElementById(`step-${step}`).classList.add('active');
+      document.getElementById(`step-indicator-${step}`).classList.add('active');
+      currentStep = step;
+    }
+
+    function prevStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.getElementById(`step-${step}`).classList.add('active');
+      document.getElementById(`step-indicator-${step+1}`).classList.remove('active');
+      currentStep = step;
+    }
+
+    // Custom Calendar Logic (Simplified)
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let currMonth = new Date().getMonth();
+    let currYear = new Date().getFullYear();
+
+    function renderCalendar() {
+      const firstDay = new Date(currYear, currMonth, 1).getDay();
+      const daysInMonth = new Date(currYear, currMonth + 1, 0).getDate();
+      
+      document.getElementById('monthYear').innerText = `${monthNames[currMonth]} ${currYear}`;
+      const daysGrid = document.getElementById('calendarDays');
+      daysGrid.innerHTML = '';
+      
+      for(let i=0; i<firstDay; i++) {
+        daysGrid.innerHTML += `<div></div>`;
+      }
+      
+      for(let i=1; i<=daysInMonth; i++) {
+        const isPast = (currYear === new Date().getFullYear() && currMonth === new Date().getMonth() && i < new Date().getDate());
+        const isWeekend = new Date(currYear, currMonth, i).getDay() === 0; // Disable Sundays
+        
+        const div = document.createElement('div');
+        div.className = `calendar-day ${isPast || isWeekend ? 'disabled' : ''}`;
+        div.innerText = i;
+        
+        if(!isPast && !isWeekend) {
+          div.addEventListener('click', () => {
+            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+            div.classList.add('selected');
+            generateTimeSlots(i, monthNames[currMonth], currYear);
+          });
+        }
+        daysGrid.appendChild(div);
+      }
+    }
+
+    function prevMonth() {
+      currMonth--;
+      if(currMonth < 0) { currMonth = 11; currYear--; }
+      renderCalendar();
+    }
+    function nextMonth() {
+      currMonth++;
+      if(currMonth > 11) { currMonth = 0; currYear++; }
+      renderCalendar();
+    }
+
+    function generateTimeSlots(day, month, year) {
+      const times = ["10:00 AM", "11:30 AM", "1:00 PM", "2:30 PM", "4:00 PM"];
+      const slotsContainer = document.getElementById('timeSlots');
+      slotsContainer.innerHTML = '';
+      
+      times.forEach(time => {
+        const div = document.createElement('div');
+        div.className = 'time-slot';
+        div.innerText = time;
+        div.addEventListener('click', () => {
+          document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('selected'));
+          div.classList.add('selected');
+          selectedDateStr = `${month} ${day}, ${year} at ${time}`;
+          document.getElementById('summaryDate').innerText = selectedDateStr;
+        });
+        slotsContainer.appendChild(div);
+      });
+    }
+
+    renderCalendar();
+
+    // Accordion
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const accordionContent = button.nextElementSibling;
+        button.classList.toggle('active');
+        if (button.classList.contains('active')) {
+          accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+        } else {
+          accordionContent.style.maxHeight = 0;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

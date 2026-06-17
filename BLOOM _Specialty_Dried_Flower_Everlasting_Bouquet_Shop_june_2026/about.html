@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOOM | About Us</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <meta name="description" content="Our Story. BLOOM Specialty Dried Flower Shop.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  
+  <style>
+    .hero-about {
+      background-image: url('assets/images/hero-bg-about.jpg');
+    }
+    .pull-quote {
+      font-family: var(--font-accent);
+      font-size: 2rem;
+      font-style: italic;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      color: var(--primary-color);
+    }
+    .journey-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 2rem;
+    }
+    .journey-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 100%;
+      background-color: var(--secondary-color);
+      opacity: 0.5;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 6px; left: -2.35rem;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: 3px solid var(--bg-color);
+    }
+    .team-card {
+      text-align: center;
+    }
+    .team-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    html[data-theme="dark"] .team-img { border-color: var(--card-bg); }
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .team-social a { color: var(--text-color); font-size: 1.25rem; }
+    .team-social a:hover { color: var(--primary-color); }
+    .values-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    html[data-theme="dark"] .values-card { background: var(--card-bg); }
+    .value-icon {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+    .workshop-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media(min-width: 768px) {
+      .workshop-gallery { grid-template-columns: 2fr 1fr; }
+      .workshop-img-large { grid-row: span 2; }
+    }
+    .workshop-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      min-height: 250px;
+    }
+    .workshop-text-overlay {
+      background: linear-gradient(rgba(45, 80, 22, 0.82), rgba(45, 80, 22, 0.82)), url('assets/images/workshop-text-bg.jpg') no-repeat center/cover;
+      color: #fff;
+      padding: 3rem;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .press-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+    }
+    .press-logo {
+      font-size: 1.4rem;
+      opacity: 0.55;
+      transition: all 300ms ease;
+      color: var(--text-color);
+      letter-spacing: 2px;
+      user-select: none;
+      font-weight: 500;
+    }
+    html[data-theme="dark"] .press-logo {
+      color: #fff;
+      opacity: 0.65;
+    }
+    .press-logo:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+    }
+    .press-logo.vogue {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: 4px;
+    }
+    .press-logo.botanical {
+      font-family: var(--font-accent);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .press-logo.ad {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 5px;
+    }
+    .press-logo.florist {
+      font-family: var(--font-heading);
+      font-style: italic;
+      text-transform: lowercase;
+      letter-spacing: 0px;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a>
+      <div class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#">Home</a>
+          <div class="nav-dropdown-content">
+            <a href="index.html">Home A</a>
+            <a href="home-b.html">Home B</a>
+          </div>
+        </div>
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Journal</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="toggle-btn theme-toggle"><i class="ph ph-moon"></i></button>
+        <button class="toggle-btn rtl-toggle">LTR</button>
+        <a href="booking.html" class="btn btn-primary">Book Now</a>
+      </div>
+      <button class="mobile-menu-btn">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="menu-overlay"></div>
+  <div class="mobile-menu">
+    <button class="close-menu-btn">
+      <i class="ph ph-x"></i>
+    </button>
+    <div class="nav-links">
+      <a href="index.html">Home A</a>
+      <a href="home-b.html">Home B</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </div>
+          <div class="nav-controls">
+      <a href="booking.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Section 1: Hero -->
+  <header class="hero hero-about">
+    <div class="hero-content fade-in">
+      <h1>Our Story</h1>
+      <p>Rooted in passion, grown with purpose.</p>
+    </div>
+  </header>
+
+  <!-- Section 2: The Journey -->
+  <section class="container">
+    <div class="reveal-up">
+      <p class="pull-quote">"We saw beauty where others saw an end. A dried flower is a memory kept alive, a moment suspended in time."</p>
+    </div>
+    
+    <div class="journey-timeline reveal-up">
+      <div class="timeline-item">
+        <h4 style="color: var(--secondary-color);">2018</h4>
+        <h3>Founded in a small kitchen</h3>
+        <p>BLOOM started as a passion project, experimenting with hanging flowers from ceiling beams and perfecting the natural air-drying process to retain vibrant colors.</p>
+      </div>
+      <div class="timeline-item">
+        <h4 style="color: var(--secondary-color);">2020</h4>
+        <h3>The First Workshop</h3>
+        <p>Outgrowing the kitchen, we moved into our first official studio space—a rustic barn where we could scale our preservation techniques and start offering custom wedding florals.</p>
+      </div>
+      <div class="timeline-item">
+        <h4 style="color: var(--secondary-color);">2022</h4>
+        <h3>Online Launch</h3>
+        <p>We expanded our reach, launching our online boutique to ship our everlasting bouquets nationwide, bringing sustainable beauty to homes everywhere.</p>
+      </div>
+      <div class="timeline-item">
+        <h4 style="color: var(--secondary-color);">Today</h4>
+        <h3>A Thriving Atelier</h3>
+        <p>Now a team of dedicated floral artisans, we continue to innovate in sustainable floristry, offering bespoke arrangements, large-scale event styling, and workshops.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Meet the Team -->
+  <section class="container" style="background-color: rgba(212, 165, 116, 0.05); border-radius: 8px;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
+      <h2>Meet the Artisans</h2>
+      <p>The hands behind the beauty.</p>
+    </div>
+    <div class="grid-4 reveal-up">
+      <div class="team-card">
+        <img src="assets/images/team-eleanor.jpg" alt="Eleanor Vance" class="team-img">
+        <h4>Eleanor Vance</h4>
+        <p style="color: var(--secondary-color); font-size: 0.875rem; margin-bottom: 0.5rem;">Founder & Creative Director</p>
+        <p style="font-size: 0.875rem;">Mastermind behind our signature aesthetic.</p>
+        <div class="team-social">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="assets/images/team-marcus.jpg" alt="Marcus Chen" class="team-img">
+        <h4>Marcus Chen</h4>
+        <p style="color: var(--secondary-color); font-size: 0.875rem; margin-bottom: 0.5rem;">Lead Florist</p>
+        <p style="font-size: 0.875rem;">Specializes in large-scale event installations.</p>
+        <div class="team-social">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="assets/images/team-sophie.jpg" alt="Sophie Laurent" class="team-img">
+        <h4>Sophie Laurent</h4>
+        <p style="color: var(--secondary-color); font-size: 0.875rem; margin-bottom: 0.5rem;">Head Preservationist</p>
+        <p style="font-size: 0.875rem;">Expert in color retention and botanical science.</p>
+        <div class="team-social">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="assets/images/team-david.jpg" alt="David Wright" class="team-img">
+        <h4>David Wright</h4>
+        <p style="color: var(--secondary-color); font-size: 0.875rem; margin-bottom: 0.5rem;">Studio Manager</p>
+        <p style="font-size: 0.875rem;">Ensures every stem reaches you perfectly.</p>
+        <div class="team-social">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Our Values -->
+  <section class="container">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
+      <h2>Our Core Values</h2>
+    </div>
+    <div class="grid-4 reveal-up">
+      <div class="values-card">
+        <i class="ph ph-leaf value-icon"></i>
+        <h3>Sustainability</h3>
+        <p style="font-size: 0.875rem;">Eco-friendly sourcing and packaging to minimize our footprint.</p>
+      </div>
+      <div class="values-card">
+        <i class="ph ph-scissors value-icon"></i>
+        <h3>Craftsmanship</h3>
+        <p style="font-size: 0.875rem;">Meticulous attention to detail in every single arrangement.</p>
+      </div>
+      <div class="values-card">
+        <i class="ph ph-users value-icon"></i>
+        <h3>Community</h3>
+        <p style="font-size: 0.875rem;">Supporting local flower farmers and sharing our knowledge.</p>
+      </div>
+      <div class="values-card">
+        <i class="ph ph-lightbulb value-icon"></i>
+        <h3>Innovation</h3>
+        <p style="font-size: 0.875rem;">Constantly exploring new preservation techniques and designs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Workshop -->
+  <section class="container">
+    <div class="workshop-gallery reveal-up">
+      <img src="assets/images/workshop-large.jpg" alt="Studio Workshop" class="workshop-img workshop-img-large">
+      <img src="assets/images/workshop-small.jpg" alt="Drying Flowers" class="workshop-img">
+      <div class="workshop-text-overlay">
+        <h3 style="color: #fff; margin-bottom: 1rem;">Experience the Magic</h3>
+        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Curious about our process? We regularly host workshops teaching the art of arranging dried botanicals.</p>
+        <a href="contact.html" class="btn btn-secondary" style="border-color: #fff; color: #fff;">Visit Our Studio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Press & Features -->
+  <section class="container" style="border-top: 1px solid rgba(44, 36, 22, 0.1); padding-top: 4rem;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 2.5rem;">
+      <h2 style="font-size: 1.5rem; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase;">As Featured In</h2>
+    </div>
+    <div class="press-logos reveal-up">
+      <span class="press-logo vogue">VOGUE LIVING</span>
+      <span class="press-logo botanical">Botanical Magazine</span>
+      <span class="press-logo ad">ARCHITECTURAL DIGEST</span>
+      <span class="press-logo florist">the florist</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
+          <p>Preserved Beauty, Timeless Elegance</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="about.html">Our Story</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="blog.html">Journal</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Everlasting Bouquets</a>
+          <a href="services.html">Wedding Florals</a>
+          <a href="services.html">Corporate Gifting</a>
+          <a href="booking.html">Book Consultation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
+          <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your Email" required style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
+            <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BLOOM. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
