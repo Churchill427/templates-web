@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BLOOM | Our Offerings</title>
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <meta name="description" content="Explore our everlasting bouquets, wedding florals, and corporate gifting options.">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  
+
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
-  
+
   <style>
     .hero-services {
       background-image: url('assets/images/hero-bg-services.jpg');
     }
+
     .service-category-card {
       position: relative;
       height: 400px;
@@ -32,27 +36,38 @@
       padding: 2rem;
       color: #fff;
     }
+
     .service-category-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
       z-index: 1;
     }
+
     .service-category-card img {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       z-index: 0;
       transition: transform 500ms ease;
     }
+
     .service-category-card:hover img {
       transform: scale(1.05);
     }
+
     .service-category-content {
       position: relative;
       z-index: 2;
     }
+
     .filter-tabs {
       display: flex;
       justify-content: center;
@@ -60,6 +75,7 @@
       flex-wrap: wrap;
       margin-bottom: 2rem;
     }
+
     .filter-btn {
       background: none;
       border: 1px solid rgba(44, 36, 22, 0.2);
@@ -71,27 +87,44 @@
       color: var(--text-color);
       transition: all 300ms ease;
     }
-    html[data-theme="dark"] .filter-btn { border-color: rgba(232, 224, 213, 0.2); }
-    .filter-btn.active, .filter-btn:hover {
+
+    html[data-theme="dark"] .filter-btn {
+      border-color: rgba(232, 224, 213, 0.2);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
       background: var(--primary-color);
       color: #fff;
       border-color: var(--primary-color);
     }
+
     .product-grid {
       display: grid;
       gap: 2rem;
       grid-template-columns: 1fr;
     }
-    @media(min-width: 768px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media(min-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
-    
+
+    @media(min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     .product-item {
       transition: opacity 300ms ease, transform 300ms ease;
     }
+
     .product-item.hidden {
       display: none;
     }
-    
+
     .custom-services-section {
       background-image: url('assets/images/bespoke-bg.jpg');
       background-size: cover;
@@ -100,49 +133,146 @@
       color: #fff;
       text-align: center;
     }
+
     .custom-services-section::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
     }
+
     .custom-content {
       position: relative;
       z-index: 1;
     }
-    
+
+    .pricing-toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto 3rem;
+    }
+    .pricing-toggle-label {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: color 300ms ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .pricing-toggle-label.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    html[data-theme="dark"] .pricing-toggle-label.active {
+      color: var(--secondary-color);
+    }
+    .pricing-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+    .pricing-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .pricing-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(44, 36, 22, 0.15);
+      transition: .4s;
+      border-radius: 28px;
+    }
+    html[data-theme="dark"] .pricing-slider {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .pricing-slider::before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: var(--primary-color);
+      transition: .4s;
+      border-radius: 50%;
+    }
+    html[data-theme="dark"] .pricing-slider::before {
+      background-color: var(--secondary-color);
+    }
+    .pricing-switch input:checked + .pricing-slider::before {
+      transform: translateX(22px);
+    }
+    .discount-badge {
+      background-color: rgba(45, 80, 22, 0.1);
+      color: var(--primary-color);
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+    html[data-theme="dark"] .discount-badge {
+      background-color: rgba(212, 165, 116, 0.2);
+      color: var(--secondary-color);
+    }
+    .price-value {
+      display: inline-block;
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+    .price-period {
+      display: inline-block;
+      transition: opacity 150ms ease;
+    }
+
     .pricing-card {
       background: #fff;
       border-radius: 8px;
       padding: 3rem 2rem;
       text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(44, 36, 22, 0.1);
       transition: transform 300ms ease;
     }
+
     html[data-theme="dark"] .pricing-card {
       background: var(--card-bg);
       border-color: rgba(232, 224, 213, 0.1);
     }
+
     .pricing-card.highlighted {
       border: 2px solid var(--primary-color);
       transform: scale(1.05);
       box-shadow: 0 12px 24px rgba(45, 80, 22, 0.15);
     }
+
     .pricing-features {
       list-style: none;
       padding: 0;
       margin: 2rem 0;
       text-align: left;
     }
+
     .pricing-features li {
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-    .pricing-features i { color: var(--primary-color); }
-    
+
+    .pricing-features i {
+      color: var(--primary-color);
+    }
+
     .accordion-item {
       background: #fff;
       border: 1px solid rgba(44, 36, 22, 0.1);
@@ -150,10 +280,12 @@
       margin-bottom: 1rem;
       overflow: hidden;
     }
+
     html[data-theme="dark"] .accordion-item {
       background: var(--card-bg);
       border-color: rgba(232, 224, 213, 0.1);
     }
+
     .accordion-header {
       width: 100%;
       padding: 1.5rem;
@@ -168,17 +300,28 @@
       color: var(--text-color);
       text-align: left;
     }
-    .accordion-header i { transition: transform 300ms ease; }
-    .accordion-header.active i { transform: rotate(180deg); }
+
+    .accordion-header i {
+      transition: transform 300ms ease;
+    }
+
+    .accordion-header.active i {
+      transform: rotate(180deg);
+    }
+
     .accordion-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 300ms ease;
       padding: 0 1.5rem;
     }
-    .accordion-content p { padding-bottom: 1.5rem; }
+
+    .accordion-content p {
+      padding-bottom: 1.5rem;
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -224,7 +367,7 @@
       <a href="blog.html">Journal</a>
       <a href="contact.html">Contact</a>
     </div>
-          <div class="nav-controls">
+    <div class="nav-controls">
       <a href="booking.html" class="btn btn-primary" style="width: 100%;">Book Now</a>
     </div>
   </div>
@@ -249,7 +392,8 @@
         <div class="service-category-content">
           <h3>Everlasting Bouquets</h3>
           <p style="margin-bottom: 1rem;">Curated arrangements for your home.</p>
-          <a href="#products" class="btn btn-primary" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">Learn More</a>
+          <a href="#products" class="btn btn-primary"
+            style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">Learn More</a>
         </div>
       </div>
       <div class="service-category-card">
@@ -257,7 +401,8 @@
         <div class="service-category-content">
           <h3>Wedding Florals</h3>
           <p style="margin-bottom: 1rem;">Timeless designs for your special day.</p>
-          <a href="booking.html" class="btn btn-primary" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">Learn More</a>
+          <a href="booking.html" class="btn btn-primary"
+            style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">Learn More</a>
         </div>
       </div>
       <div class="service-category-card">
@@ -265,7 +410,8 @@
         <div class="service-category-content">
           <h3>Corporate Gifting</h3>
           <p style="margin-bottom: 1rem;">Memorable gifts for clients and teams.</p>
-          <a href="contact.html" class="btn btn-primary" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">Learn More</a>
+          <a href="contact.html" class="btn btn-primary"
+            style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">Learn More</a>
         </div>
       </div>
     </div>
@@ -276,7 +422,7 @@
     <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
       <h2>Shop the Collection</h2>
     </div>
-    
+
     <div class="filter-tabs reveal-up">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="bouquets">Bouquets</button>
@@ -290,7 +436,8 @@
       <div class="card product-item" data-category="bouquets">
         <img src="assets/images/product-rustic-charm.jpg" alt="Rustic Charm Bouquet">
         <div class="card-content" style="text-align: center;">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Bouquets</span>
+          <span
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Bouquets</span>
           <h4 style="margin: 0.5rem 0;">Rustic Charm</h4>
           <p>From $65.00</p>
         </div>
@@ -299,7 +446,9 @@
       <div class="card product-item" data-category="stems">
         <img src="assets/images/product-pampas-bundle.jpg" alt="Pampas Bundle">
         <div class="card-content" style="text-align: center;">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Single Stems</span>
+          <span
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Single
+            Stems</span>
           <h4 style="margin: 0.5rem 0;">Pampas Bundle</h4>
           <p>From $35.00</p>
         </div>
@@ -308,7 +457,8 @@
       <div class="card product-item" data-category="arrangements">
         <img src="assets/images/product-ceramic-vase.jpg" alt="Ceramic Vase Display">
         <div class="card-content" style="text-align: center;">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Arrangements</span>
+          <span
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Arrangements</span>
           <h4 style="margin: 0.5rem 0;">Ceramic Vase Display</h4>
           <p>From $120.00</p>
         </div>
@@ -317,7 +467,8 @@
       <div class="card product-item" data-category="bouquets">
         <img src="assets/images/product-lavender-dream.jpg" alt="Lavender Dream">
         <div class="card-content" style="text-align: center;">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Bouquets</span>
+          <span
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Bouquets</span>
           <h4 style="margin: 0.5rem 0;">Lavender Dream</h4>
           <p>From $55.00</p>
         </div>
@@ -326,7 +477,9 @@
       <div class="card product-item" data-category="sets">
         <img src="assets/images/product-housewarming.jpg" alt="Housewarming Set">
         <div class="card-content" style="text-align: center;">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Gift Sets</span>
+          <span
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Gift
+            Sets</span>
           <h4 style="margin: 0.5rem 0;">Housewarming Set</h4>
           <p>From $150.00</p>
         </div>
@@ -335,7 +488,8 @@
       <div class="card product-item" data-category="arrangements">
         <img src="assets/images/product-minimalist-arch.jpg" alt="Minimalist Arch">
         <div class="card-content" style="text-align: center;">
-          <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Arrangements</span>
+          <span
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color);">Arrangements</span>
           <h4 style="margin: 0.5rem 0;">Minimalist Arch</h4>
           <p>From $180.00</p>
         </div>
@@ -347,8 +501,9 @@
   <section class="custom-services-section">
     <div class="container custom-content reveal-up" style="padding-block: 6rem;">
       <h2 style="color: #fff;">Bespoke Arrangements</h2>
-      <p style="max-width: 600px; margin: 0 auto 3rem;">Work with our floral designers to create a piece that perfectly captures your vision.</p>
-      
+      <p style="max-width: 600px; margin: 0 auto 3rem;">Work with our floral designers to create a piece that perfectly
+        captures your vision.</p>
+
       <div class="grid-3" style="margin-bottom: 3rem;">
         <div>
           <i class="ph ph-chats" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
@@ -366,22 +521,35 @@
           <p>Your custom piece is securely packaged and delivered.</p>
         </div>
       </div>
-      
+
       <a href="booking.html" class="btn btn-primary">Book Consultation</a>
     </div>
   </section>
 
   <!-- Section 5: Pricing Tiers -->
   <section class="container">
-    <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
+    <div class="reveal-up" style="text-align: center; margin-bottom: 2rem;">
       <h2>Event Florals Pricing</h2>
       <p>Transparent packages for your special day.</p>
     </div>
+
+    <div class="pricing-toggle-container reveal-up">
+      <span class="pricing-toggle-label active" id="monthly-label">Monthly</span>
+      <label class="pricing-switch">
+        <input type="checkbox" id="billing-toggle">
+        <span class="pricing-slider"></span>
+      </label>
+      <span class="pricing-toggle-label" id="annual-label">Annual <span class="discount-badge">Save 20%</span></span>
+    </div>
+
     <div class="grid-3 reveal-up" style="align-items: center;">
       <!-- Tier 1 -->
       <div class="pricing-card">
         <h3>Simple</h3>
-        <p style="color: var(--secondary-color); font-size: 2rem; font-weight: 600; margin: 1rem 0;">$450</p>
+        <p style="margin: 1.5rem 0; display: flex; align-items: baseline; justify-content: center; gap: 0.25rem;">
+          <span class="price-value" data-monthly="$450" data-annual="$360" style="color: var(--secondary-color); font-size: 2.5rem; font-weight: 600;">$450</span>
+          <span class="price-period" style="font-size: 1rem; color: var(--text-color); opacity: 0.7;">/mo</span>
+        </p>
         <p style="font-size: 0.875rem;">Perfect for elopements and intimate gatherings.</p>
         <ul class="pricing-features">
           <li><i class="ph-bold ph-check"></i> 1 Bridal Bouquet</li>
@@ -393,9 +561,13 @@
       </div>
       <!-- Tier 2 (Highlighted) -->
       <div class="pricing-card highlighted">
-        <span style="background: var(--primary-color); color: #fff; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; display: inline-block; margin-bottom: 1rem;">Signature</span>
+        <span
+          style="background: var(--primary-color); color: #fff; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; display: inline-block; margin-bottom: 1rem;">Signature</span>
         <h3>Classic</h3>
-        <p style="color: var(--primary-color); font-size: 2.5rem; font-weight: 700; margin: 1rem 0;">$1,200</p>
+        <p style="margin: 1.5rem 0; display: flex; align-items: baseline; justify-content: center; gap: 0.25rem;">
+          <span class="price-value" data-monthly="$1,200" data-annual="$960" style="color: var(--primary-color); font-size: 3rem; font-weight: 700;">$1,200</span>
+          <span class="price-period" style="font-size: 1.125rem; color: var(--text-color); opacity: 0.7;">/mo</span>
+        </p>
         <p style="font-size: 0.875rem;">Our most popular package for traditional weddings.</p>
         <ul class="pricing-features">
           <li><i class="ph-bold ph-check"></i> 1 Bridal Bouquet</li>
@@ -409,7 +581,9 @@
       <!-- Tier 3 -->
       <div class="pricing-card">
         <h3>Luxe</h3>
-        <p style="color: var(--secondary-color); font-size: 2rem; font-weight: 600; margin: 1rem 0;">Custom</p>
+        <p style="margin: 1.5rem 0; display: flex; align-items: baseline; justify-content: center; gap: 0.25rem;">
+          <span class="price-value" style="color: var(--secondary-color); font-size: 2.5rem; font-weight: 600;">Custom</span>
+        </p>
         <p style="font-size: 0.875rem;">Fully bespoke design for grand celebrations.</p>
         <ul class="pricing-features">
           <li><i class="ph-bold ph-check"></i> Unlimited Consultations</li>
@@ -427,14 +601,15 @@
     <div class="reveal-up" style="text-align: center; margin-bottom: 3rem;">
       <h2>Frequently Asked Questions</h2>
     </div>
-    
+
     <div class="accordion-item reveal-up">
       <button class="accordion-header">
         <span>Do dried flowers smell?</span>
         <i class="ph ph-caret-down"></i>
       </button>
       <div class="accordion-content">
-        <p>Most dried flowers have a very subtle, natural earthy scent. Some botanicals like lavender and eucalyptus retain their natural fragrance quite well after the drying process.</p>
+        <p>Most dried flowers have a very subtle, natural earthy scent. Some botanicals like lavender and eucalyptus
+          retain their natural fragrance quite well after the drying process.</p>
       </div>
     </div>
 
@@ -444,7 +619,8 @@
         <i class="ph ph-caret-down"></i>
       </button>
       <div class="accordion-content">
-        <p>With proper care (kept out of direct sunlight and high humidity), our arrangements can last anywhere from 1 to 3 years, and sometimes even longer.</p>
+        <p>With proper care (kept out of direct sunlight and high humidity), our arrangements can last anywhere from 1
+          to 3 years, and sometimes even longer.</p>
       </div>
     </div>
 
@@ -454,7 +630,8 @@
         <i class="ph ph-caret-down"></i>
       </button>
       <div class="accordion-content">
-        <p>Currently, we only ship within the continental US due to customs regulations regarding agricultural products and the delicate nature of shipping dried botanicals internationally.</p>
+        <p>Currently, we only ship within the continental US due to customs regulations regarding agricultural products
+          and the delicate nature of shipping dried botanicals internationally.</p>
       </div>
     </div>
 
@@ -464,7 +641,8 @@
         <i class="ph ph-caret-down"></i>
       </button>
       <div class="accordion-content">
-        <p>Due to the fragile and often custom nature of our products, all sales are final. However, if your arrangement arrives damaged, please contact us within 48 hours of delivery with photos, and we will make it right.</p>
+        <p>Due to the fragile and often custom nature of our products, all sales are final. However, if your arrangement
+          arrives damaged, please contact us within 48 hours of delivery with photos, and we will make it right.</p>
       </div>
     </div>
 
@@ -474,7 +652,8 @@
         <i class="ph ph-caret-down"></i>
       </button>
       <div class="accordion-content">
-        <p>While we cannot alter the pre-made collections listed in our shop, we welcome custom orders! Please book a consultation or use the custom order form to start the design process.</p>
+        <p>While we cannot alter the pre-made collections listed in our shop, we welcome custom orders! Please book a
+          consultation or use the custom order form to start the design process.</p>
       </div>
     </div>
   </section>
@@ -484,13 +663,16 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <h4><a href="index.html" class="footer-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a></h4>
           <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
           <p>Preserved Beauty, Timeless Elegance</p>
           <div class="social-icons">
-            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i class="ph-fill ph-facebook-logo"></i></a>
-            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i class="ph-fill ph-instagram-logo"></i></a>
-            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i class="ph-fill ph-pinterest-logo"></i></a>
+            <a href="https://www.facebook.com/bloom" target="_blank" rel="noopener noreferrer" class="facebook"><i
+                class="ph-fill ph-facebook-logo"></i></a>
+            <a href="https://www.instagram.com/bloom" target="_blank" rel="noopener noreferrer" class="instagram"><i
+                class="ph-fill ph-instagram-logo"></i></a>
+            <a href="https://www.pinterest.com/bloom" target="_blank" rel="noopener noreferrer" class="pinterest"><i
+                class="ph-fill ph-pinterest-logo"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -511,8 +693,10 @@
           <h4>Stay Updated</h4>
           <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
           <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
-            <input type="email" placeholder="Your Email" required style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
-            <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+            <input type="email" placeholder="Your Email" required
+              style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
+            <button type="submit" class="btn btn-secondary"
+              style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
           </form>
         </div>
       </div>
@@ -561,6 +745,51 @@
         });
       });
     });
+
+    // Billing Toggle logic
+    const billingToggle = document.getElementById('billing-toggle');
+    const priceValues = document.querySelectorAll('.price-value');
+    const pricePeriods = document.querySelectorAll('.price-period');
+    const monthlyLabel = document.getElementById('monthly-label');
+    const annualLabel = document.getElementById('annual-label');
+
+    if (billingToggle) {
+      billingToggle.addEventListener('change', () => {
+        const isAnnual = billingToggle.checked;
+        
+        // Update label active status
+        if (isAnnual) {
+          monthlyLabel.classList.remove('active');
+          annualLabel.classList.add('active');
+        } else {
+          monthlyLabel.classList.add('active');
+          annualLabel.classList.remove('active');
+        }
+
+        // Animate price change
+        priceValues.forEach((el) => {
+          const targetValue = isAnnual ? el.getAttribute('data-annual') : el.getAttribute('data-monthly');
+          if (targetValue) {
+            el.style.opacity = 0;
+            el.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              el.textContent = targetValue;
+              el.style.opacity = 1;
+              el.style.transform = 'scale(1)';
+            }, 150);
+          }
+        });
+
+        pricePeriods.forEach(el => {
+          el.style.opacity = 0;
+          setTimeout(() => {
+            el.textContent = isAnnual ? '/mo (billed annually)' : '/mo';
+            el.style.opacity = 0.7;
+          }, 150);
+        });
+      });
+    }
   </script>
 </body>
+
 </html>

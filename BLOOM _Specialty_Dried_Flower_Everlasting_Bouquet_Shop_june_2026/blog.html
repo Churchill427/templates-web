@@ -18,6 +18,26 @@
   <link rel="stylesheet" href="assets/css/rtl.css">
   
   <style>
+    section {
+      padding-block: 3.5rem;
+    }
+    @media(min-width: 768px) {
+      section {
+        padding-block: 4.5rem;
+      }
+    }
+    .newsletter-text-col {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media(min-width: 768px) {
+      .newsletter-text-col {
+        padding: 4rem;
+      }
+    }
+
     .hero-blog {
       background-image: url('assets/images/hero-bg-blog.jpg');
     }
@@ -381,7 +401,7 @@
   <!-- Section 5: Newsletter -->
   <section class="container">
     <div class="newsletter-split reveal-up">
-      <div style="padding: 4rem; display: flex; flex-direction: column; justify-content: center;">
+      <div class="newsletter-text-col">
         <h2 style="margin-bottom: 1rem;">Get the Latest</h2>
         <p style="margin-bottom: 2rem;">Join 15,000+ botanical enthusiasts. Receive our weekly digest of styling tips, DIY tutorials, and new collection previews.</p>
         <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); alert('Subscribed!');">
@@ -396,7 +416,7 @@
   </section>
 
   <!-- Section 6: Popular Tags -->
-  <section class="container" style="text-align: center; margin-bottom: 4rem;">
+  <section class="container" style="text-align: center; padding-bottom: 2rem;">
     <div class="reveal-up" style="margin-bottom: 2rem;">
       <h2>Popular Topics</h2>
     </div>
@@ -419,7 +439,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <h4><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</h4>
+          <h4><a href="index.html" class="footer-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a></h4>
           <p>Specialty Dried Flower & Everlasting Bouquet Shop</p>
           <p>Preserved Beauty, Timeless Elegance</p>
           <div class="social-icons">

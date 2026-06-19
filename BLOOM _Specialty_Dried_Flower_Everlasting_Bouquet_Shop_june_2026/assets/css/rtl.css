@@ -21,9 +21,24 @@ html[dir="rtl"] .mobile-menu.open {
 }
 
 /* Adjust timeline or steps if they are absolute positioned */
-html[dir="rtl"] .timeline-line {
+html[dir="rtl"] .journey-timeline {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+
+html[dir="rtl"] .journey-timeline::before {
   left: auto;
-  right: 20px;
+  right: 0;
+}
+
+html[dir="rtl"] .timeline-item {
+  direction: ltr;
+  text-align: right;
+}
+
+html[dir="rtl"] .timeline-item::before {
+  left: auto;
+  right: -2.35rem;
 }
 
 /* Adjust any floated elements or non-logical margin/padding */
