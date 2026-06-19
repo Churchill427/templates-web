@@ -3102,8 +3102,35 @@ select.form-input {
     z-index: var(--z-modal);
   }
 
-  .dashboard-main {
+  .sidebar__toggle {
+    display: none;
+  }
+
+  .sidebar.collapsed {
+    width: 260px;
+  }
+
+  .sidebar.collapsed .sidebar__logo-text {
+    display: inline;
+  }
+
+  .sidebar.collapsed .sidebar__link-text {
+    opacity: 1;
+    width: auto;
+  }
+
+  .sidebar.collapsed .sidebar__link {
+    justify-content: flex-start;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .dashboard-main,
+  .sidebar.collapsed~.dashboard-main {
     margin-left: 0;
+  }
+
+  [dir="rtl"] .sidebar.collapsed~.dashboard-main {
+    margin-right: 0;
   }
 }
 

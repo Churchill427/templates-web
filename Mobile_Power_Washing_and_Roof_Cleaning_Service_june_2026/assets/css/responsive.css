@@ -84,7 +84,7 @@
   }
 
   .navbar-actions {
-    margin-left: auto;
+    margin-inline-start: auto;
     gap: var(--space-1);
   }
 
@@ -153,6 +153,7 @@
   [dir="rtl"] .timeline::before {
     left: auto;
     right: 24px;
+    transform: none;
   }
 
   [dir="rtl"] .timeline-item,
@@ -165,6 +166,7 @@
   [dir="rtl"] .timeline-dot {
     left: auto;
     right: 0;
+    transform: none;
   }
 
   /* Booking steps */
@@ -224,8 +226,8 @@
   /* Navbar */
   .navbar-actions {
     display: flex;
-    margin-left: auto;
-    margin-right: var(--space-2);
+    margin-inline-start: auto;
+    margin-inline-end: var(--space-2);
     gap: var(--space-2);
   }
 
@@ -658,12 +660,19 @@
   [dir="rtl"] .timeline::before {
     left: auto;
     right: 20px;
+    transform: none;
   }
 
   [dir="rtl"] .timeline-item,
   [dir="rtl"] .timeline-item:nth-child(odd) {
     padding-left: 0;
     padding-right: 56px;
+  }
+
+  [dir="rtl"] .timeline-dot {
+    left: auto;
+    right: 0;
+    transform: none;
   }
 
   /* Booking steps */
