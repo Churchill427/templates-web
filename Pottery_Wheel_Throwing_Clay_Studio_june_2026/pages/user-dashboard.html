@@ -66,7 +66,7 @@
     .sidebar.collapsed .sidebar-text { display: none; }
     
     /* Main Content */
-    .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
     
     /* Header */
     .top-header { height: 72px; background-color: var(--surface-color); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-6); }
@@ -99,8 +99,8 @@
     
     /* Charts Grid */
     .charts-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); margin-bottom: var(--space-6); }
-    @media (min-width: 1024px) { .charts-grid { grid-template-columns: 2fr 1fr; } }
-    .chart-card { background: var(--surface-color); padding: var(--space-6); border-radius: 8px; border: 1px solid var(--border-color); }
+    @media (min-width: 1200px) { .charts-grid { grid-template-columns: 2fr 1fr; } }
+    .chart-card { background: var(--surface-color); padding: var(--space-6); border-radius: 8px; border: 1px solid var(--border-color); min-width: 0; }
     .chart-title { font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-4); color: var(--text-heading); }
     .chart-container { position: relative; height: 250px; width: 100%; }
     
@@ -114,6 +114,53 @@
     [data-theme="dark"] .badge-info { background: rgba(21,101,192,0.2); color: #64B5F6; }
     .badge-warning { background: #FFF4E5; color: #ED6C02; }
     [data-theme="dark"] .badge-warning { background: rgba(237,108,2,0.2); color: #ED6C02; }
+
+    /* Responsive Adjustments to prevent horizontal overflow */
+    @media (max-width: 767px) {
+      .top-header {
+        padding: 0 var(--space-3);
+      }
+      .header-left {
+        gap: var(--space-2);
+      }
+      .header-right {
+        gap: var(--space-2);
+      }
+      .header-title {
+        font-size: var(--text-base);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 110px;
+      }
+      .dashboard-scroll {
+        padding: var(--space-4);
+      }
+      .stat-cards {
+        gap: var(--space-4);
+        margin-bottom: var(--space-4);
+      }
+      .stat-card {
+        padding: var(--space-4);
+        gap: var(--space-3);
+      }
+      .charts-grid {
+        gap: var(--space-4);
+        margin-bottom: var(--space-4);
+      }
+      .chart-card {
+        padding: var(--space-4);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .header-title {
+        max-width: 80px;
+      }
+      .header-right .rtl-toggle {
+        display: none;
+      }
+    }
   </style>
 
   <!-- Favicon -->
@@ -128,7 +175,7 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-brand"><img src="../assets/images/logo.png" alt="KILN Logo" class="nav-logo">KILN</div>
+        <a href="index.html" class="sidebar-brand"><img src="../assets/images/logo.png" alt="KILN Logo" class="nav-logo">KILN</a>
       </div>
       <nav class="sidebar-nav">
         <a href="#" class="sidebar-link active">
