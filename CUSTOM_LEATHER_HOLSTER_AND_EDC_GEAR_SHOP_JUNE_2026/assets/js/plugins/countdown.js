@@ -1,5 +1,5 @@
 /* ============================================================
-   HIDE LEATHER WORKS — Countdown Timer Plugin
+   GRAIN LEATHER WORKS — Countdown Timer Plugin
    Targets 30 days from now by default
    ============================================================ */
 

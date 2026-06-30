@@ -1,5 +1,5 @@
 /* ============================================
-   WASH — Animations Module
+   SHINE — Animations Module
    ============================================ */
 'use strict';
 

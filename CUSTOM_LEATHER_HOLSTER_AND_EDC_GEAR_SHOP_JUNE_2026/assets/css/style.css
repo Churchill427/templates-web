@@ -1,5 +1,5 @@
 /* ============================================================
-   HIDE LEATHER WORKS — Main Stylesheet
+   GRAIN LEATHER WORKS — Main Stylesheet
    Design System: Tri-color (Saddle Brown, Gunmetal Gray, Burnished Copper)
    Fonts: Playfair Display (headings), Inter (body)
    Base unit: 8px | Container: 1280px max
@@ -250,6 +250,8 @@ h6 {
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: var(--space-4);
 }
 
 h1 {
@@ -471,7 +473,7 @@ p {
 .navbar__menu {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-3);
 }
 
 .navbar__link {
@@ -572,7 +574,7 @@ p {
 .navbar__actions {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .navbar__toggle-btn {
@@ -1333,10 +1335,44 @@ select.form-input {
   padding: var(--space-12) 0 var(--space-6);
 }
 
+.footer > .container {
+  display: grid;
+  grid-template-areas:
+    "brand"
+    "grid"
+    "divider"
+    "bottom";
+  gap: var(--space-6);
+}
+
+@media (min-width: 1025px) {
+  .footer > .container {
+    grid-template-areas:
+      "brand grid"
+      "divider divider"
+      "bottom bottom";
+    grid-template-columns: 1fr 3fr;
+    gap: var(--space-8);
+  }
+}
+
 .footer__top {
+  grid-area: brand;
   display: flex;
-  justify-content: center;
-  margin-bottom: var(--space-10);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+
+.footer__top::after {
+  content: "Precision-crafted custom leather holsters and EDC gear. Handmade in Bozeman, Montana from premium American hides.";
+  display: block;
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin-top: var(--space-4);
+  max-width: 280px;
 }
 
 .footer__logo {
@@ -1362,10 +1398,11 @@ select.form-input {
 }
 
 .footer__grid {
+  grid-area: grid;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-8);
-  margin-bottom: var(--space-10);
+  margin-bottom: 0;
 }
 
 .footer__col-title {
@@ -1447,12 +1484,14 @@ select.form-input {
 }
 
 .footer__divider {
+  grid-area: divider;
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: var(--space-6);
+  margin: 0;
 }
 
 .footer__bottom {
+  grid-area: bottom;
   text-align: center;
   font-size: var(--font-size-xs);
   color: rgba(255, 255, 255, 0.4);
@@ -2261,6 +2300,24 @@ select.form-input {
   background: var(--bg-primary);
   padding: var(--space-4);
   position: relative;
+}
+
+.auth-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-4);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.auth-header .auth-page__toggles {
+  position: static;
+  pointer-events: auto;
 }
 
 .auth-page__toggles {
@@ -3300,7 +3357,7 @@ select.form-input {
   gap: var(--space-2);
 }
 
-/* Hide login button in mobile-nav drawer on screens > 768px */
+/* Grain login button in mobile-nav drawer on screens > 768px */
 .mobile-nav__login {
   display: none !important;
 }
@@ -3308,7 +3365,7 @@ select.form-input {
 /* Mobile adjustments for 360px and 768px (screen widths <= 768px) */
 @media (max-width: 768px) {
 
-  /* Hide the login button in navbar */
+  /* Grain the login button in navbar */
   .navbar__actions .btn {
     display: none !important;
   }
@@ -3318,7 +3375,7 @@ select.form-input {
     display: flex !important;
   }
 
-  /* Hide toggles in mobile-nav drawer */
+  /* Grain toggles in mobile-nav drawer */
   .mobile-nav__toggles {
     display: none !important;
   }
@@ -3374,19 +3431,36 @@ select.form-input {
     margin-bottom: 0;
   }
 
-  .auth-card__logo-area .auth-page__toggles {
-    gap: var(--space-1);
-    right: var(--space-2);
+  .auth-page {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--space-4);
   }
 
-  .auth-card__logo-area .auth-page__toggles .navbar__toggle-btn {
+  .auth-header {
+    position: static;
+    width: 100%;
+    max-width: 420px;
+    padding: 0;
+    margin-bottom: var(--space-4);
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: auto;
+  }
+
+  .auth-page__toggles {
+    gap: var(--space-1);
+  }
+
+  .auth-page__toggles .navbar__toggle-btn {
     min-width: 32px;
     min-height: 32px;
     font-size: var(--font-size-xs);
     padding: var(--space-1);
   }
 
-  .auth-card__logo-area .auth-page__toggles .navbar__toggle-btn svg {
+  .auth-page__toggles .navbar__toggle-btn svg {
     width: 14px;
     height: 14px;
   }

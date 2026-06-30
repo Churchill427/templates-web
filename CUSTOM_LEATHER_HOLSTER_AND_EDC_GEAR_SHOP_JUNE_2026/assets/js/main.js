@@ -1,5 +1,5 @@
 /* ============================================================
-   HIDE LEATHER WORKS — Main JavaScript
+   GRAIN LEATHER WORKS — Main JavaScript
    Handles: Theme Toggle, RTL Toggle, Navigation, Scroll Reveals
    ============================================================ */
 
@@ -9,7 +9,7 @@
 // 1. THEME MANAGEMENT
 // ============================================================
 const ThemeManager = {
-  STORAGE_KEY: 'hide-theme',
+  STORAGE_KEY: 'grain-theme',
   DARK: 'dark',
   LIGHT: 'light',
 
@@ -62,7 +62,7 @@ const ThemeManager = {
 // 2. RTL / LTR MANAGEMENT
 // ============================================================
 const RTLManager = {
-  STORAGE_KEY: 'hide-dir',
+  STORAGE_KEY: 'grain-dir',
   RTL: 'rtl',
   LTR: 'ltr',
 

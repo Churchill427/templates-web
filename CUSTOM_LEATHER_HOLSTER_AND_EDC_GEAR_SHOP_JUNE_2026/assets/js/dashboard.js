@@ -1,5 +1,5 @@
 /* ============================================================
-   HIDE LEATHER WORKS — Dashboard JavaScript
+   GRAIN LEATHER WORKS — Dashboard JavaScript
    Handles: Sidebar Toggle, Charts (Chart.js), Drag-Drop,
    File Upload, Sketch Viewer, Material Preview, Chat
    ============================================================ */

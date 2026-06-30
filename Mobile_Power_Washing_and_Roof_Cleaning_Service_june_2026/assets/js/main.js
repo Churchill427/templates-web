@@ -1,5 +1,5 @@
 /* ============================================
-   WASH — Main JavaScript Module
+   SHINE — Main JavaScript Module
    Global navigation, forms, utilities
    ============================================ */
 'use strict';

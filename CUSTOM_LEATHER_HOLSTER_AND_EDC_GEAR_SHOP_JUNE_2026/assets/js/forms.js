@@ -1,5 +1,5 @@
 /* ============================================================
-   HIDE LEATHER WORKS — Form Validation & File Upload
+   GRAIN LEATHER WORKS — Form Validation & File Upload
    ============================================================ */
 
 'use strict';
@@ -62,32 +62,39 @@ const FormValidator = {
     this.setupPasswordStrength();
   },
 
-  // --- Validation Helpers ---
   showError(input, message) {
     input.classList.add('form-input--error');
     input.classList.remove('form-input--success');
-    let errorEl = input.parentElement.querySelector('.form-error');
-    if (!errorEl) {
-      errorEl = document.createElement('p');
-      errorEl.className = 'form-error';
-      // Insert after the input (or after password wrapper)
-      const parent = input.closest('.password-wrapper') || input;
-      parent.insertAdjacentElement('afterend', errorEl);
+    const formGroup = input.closest('.form-group');
+    if (formGroup) {
+      let errorEl = formGroup.querySelector('.form-error');
+      if (!errorEl) {
+        errorEl = document.createElement('p');
+        errorEl.className = 'form-error';
+        const parent = input.closest('.password-wrapper') || input;
+        parent.insertAdjacentElement('afterend', errorEl);
+      }
+      errorEl.innerHTML = `<i class="ph ph-warning-circle" style="font-size:14px;"></i> ${message}`;
     }
-    errorEl.innerHTML = `<i class="ph ph-warning-circle" style="font-size:14px;"></i> ${message}`;
   },
 
   showSuccess(input) {
     input.classList.remove('form-input--error');
     input.classList.add('form-input--success');
-    const errorEl = input.parentElement.querySelector('.form-error');
-    if (errorEl) errorEl.remove();
+    const formGroup = input.closest('.form-group');
+    if (formGroup) {
+      const errorEl = formGroup.querySelector('.form-error');
+      if (errorEl) errorEl.remove();
+    }
   },
 
   clearValidation(input) {
     input.classList.remove('form-input--error', 'form-input--success');
-    const errorEl = input.parentElement.querySelector('.form-error');
-    if (errorEl) errorEl.remove();
+    const formGroup = input.closest('.form-group');
+    if (formGroup) {
+      const errorEl = formGroup.querySelector('.form-error');
+      if (errorEl) errorEl.remove();
+    }
   },
 
   validateField(input, validations) {

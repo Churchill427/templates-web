@@ -1,5 +1,5 @@
 /* ============================================
-   WASH — Theme Toggle (Dark/Light Mode)
+   SHINE — Theme Toggle (Dark/Light Mode)
    ============================================ */
 'use strict';
 

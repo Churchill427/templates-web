@@ -1,6 +1,6 @@
-# WASH — Mobile Power Washing & Roof Cleaning Service Website
+# SHINE — Mobile Power Washing & Roof Cleaning Service Website
 
-WASH is a premium, fully-responsive, tri-color website built for the exterior cleaning industry. It features a complete design system with custom CSS variables, dark/light mode toggle, RTL/LTR support, local SEO optimizations, Canvas-based animated data visualizations, and interactive widgets.
+SHINE is a premium, fully-responsive, tri-color website built for the exterior cleaning industry. It features a complete design system with custom CSS variables, dark/light mode toggle, RTL/LTR support, local SEO optimizations, Canvas-based animated data visualizations, and interactive widgets.
 
 ## 🌟 Key Features
 

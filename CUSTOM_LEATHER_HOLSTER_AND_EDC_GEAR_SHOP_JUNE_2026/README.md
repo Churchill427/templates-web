@@ -1,4 +1,4 @@
-# HIDE Leather Works — Custom Leather Holster & EDC Gear Shop
+# GRAIN Leather Works — Custom Leather Holster & EDC Gear Shop
 
 A 14-page static website built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools. Handcrafted code for a handcrafted leather brand.
 
@@ -14,7 +14,7 @@ CUSTOM_LEATHER_HOLSTER_AND_EDC_GEAR_SHOP_JUNE_2026/
 |-- services.html           # Services & Pricing
 |-- products.html           # Product Listing
 |-- portfolio.html          # Gallery & Portfolio
-|-- blog.html               # The HIDE Journal
+|-- blog.html               # The GRAIN Journal
 |-- contact.html            # Contact Us
 |-- login.html              # Login (no nav/footer)
 |-- signup.html             # Sign Up (no nav/footer)
@@ -140,4 +140,4 @@ User Dashboard:
 
 ---
 
-*Handcrafted in Bozeman, Montana. &copy; 2026 HIDE Leather Works.*
+*Handcrafted in Bozeman, Montana. &copy; 2026 GRAIN Leather Works.*
