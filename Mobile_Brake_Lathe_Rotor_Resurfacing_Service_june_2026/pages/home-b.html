@@ -12,7 +12,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='56' stroke='%23C41E3A' stroke-width='6' fill='none'/%3E%3Ccircle cx='60' cy='60' r='18' fill='%23C41E3A'/%3E%3Ccircle cx='60' cy='60' r='8' fill='%23fff'/%3E%3C/svg%3E">
 </head>
 <body>
-  <!-- NAVBAR (identical) -->
+        <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo" aria-label="BRAKE Home">
@@ -20,33 +20,52 @@
         <span class="logo-text">BRAKE</span>
       </a>
       <div class="nav-links">
-        <div class="nav-dropdown"><a href="#" class="nav-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu"><a href="index.html">Home A</a><a href="home-b.html">Home B</a></div></div>
-        <a href="about.html">About</a>
-        <div class="nav-dropdown"><a href="#" class="nav-dropdown-toggle">Services <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu"><a href="services.html">All Services</a><a href="services.html#rotor-resurfacing">Rotor Resurfacing</a><a href="services.html#brake-pads">Brake Pad Replacement</a><a href="services.html#drum-machining">Drum Machining</a><a href="services.html#mobile-service">Mobile Service</a></div></div>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
-        <a href="booking.html">Book Now</a></div>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle active">Home <i class="ph ph-caret-down"></i></a>
+          <div class="nav-dropdown-menu">
+            <a href="index.html" class="">Home A</a>
+            <a href="home-b.html" class="active">Home B</a>
+          </div>
+        </div>
+        <a href="about.html" class="">About</a>
+        <a href="services.html" class="">Services</a>
+        <a href="pricing.html" class="">Pricing</a>
+        <a href="blog.html" class="">Blog</a>
+        <a href="contact.html" class="">Contact</a>
+      </div>
       <div class="nav-actions">
         <button class="rtl-toggle" aria-label="Toggle text direction">LTR</button>
-        <button class="nav-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-moon"></i></button>
+        <button class="nav-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
+          <i class="ph ph-moon"></i>
+        </button>
+        <a href="booking.html" class="btn btn-primary btn-sm nav-booking-btn ">Book Now</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
   <div class="mobile-menu-overlay" id="mobile-overlay"></div>
   <div class="mobile-menu" id="mobile-menu">
     <div class="nav-dropdown">
-      <a href="#" class="nav-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+      <a href="#" class="nav-dropdown-toggle active">Home <i class="ph ph-caret-down"></i></a>
       <div class="nav-dropdown-menu">
-        <a href="index.html">Home A</a>
-        <a href="home-b.html">Home B</a>
+        <a href="index.html" class="">Home A</a>
+        <a href="home-b.html" class="active">Home B</a>
       </div>
     </div>
-    <a href="about.html">About</a><a href="services.html">Services</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="booking.html">Book Now</a><div class="mobile-menu-divider"></div>
-    <div class="nav-actions-mobile"><button class="rtl-toggle">LTR</button><button class="nav-toggle-btn" id="theme-toggle-mobile"><i class="ph ph-moon"></i></button>
-      </div>
+    <a href="about.html" class="">About</a>
+    <a href="services.html" class="">Services</a>
+    <a href="pricing.html" class="">Pricing</a>
+    <a href="blog.html" class="">Blog</a>
+    <a href="contact.html" class="">Contact</a>
+    <a href="booking.html" class="">Book Now</a>
+    <div class="mobile-menu-divider"></div>
+    <div class="nav-actions-mobile">
+      <button class="rtl-toggle">LTR</button>
+      <button class="nav-toggle-btn" id="theme-toggle-mobile"><i class="ph ph-moon"></i></button>
+    </div>
   </div>
-
   <main class="page-content">
     <!-- SECTION 1: HERO -->
     <section class="hero" id="hero">
@@ -138,21 +157,52 @@
           <div class="grid grid-3 mb-4">
             <div class="form-group">
               <label class="form-label" for="compat-make">Make</label>
-              <select id="compat-make"><option value="">Select Make</option><option>Ford</option><option>Chevrolet</option><option>Toyota</option><option>Honda</option><option>BMW</option><option>Mercedes-Benz</option><option>Nissan</option><option>Hyundai</option></select>
+              <select id="compat-make">
+                <option value="">Select Make</option>
+                <option value="Ford">Ford</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Honda">Honda</option>
+                <option value="BMW">BMW</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Kia">Kia</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Subaru">Subaru</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Ram">Ram</option>
+                <option value="GMC">GMC</option>
+                <option value="Dodge">Dodge</option>
+              </select>
             </div>
             <div class="form-group">
               <label class="form-label" for="compat-model">Model</label>
-              <select id="compat-model"><option value="">Select Model</option></select>
+              <select id="compat-model">
+                <option value="">Select Model</option>
+              </select>
             </div>
             <div class="form-group">
               <label class="form-label" for="compat-year">Year</label>
-              <select id="compat-year"><option value="">Select Year</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option></select>
+              <select id="compat-year">
+                <option value="">Select Year</option>
+                <option>2026</option>
+                <option>2025</option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+                <option>2021</option>
+                <option>2020</option>
+                <option>2019</option>
+                <option>2018</option>
+              </select>
             </div>
           </div>
           <div id="compat-result" style="text-align: center; padding: var(--space-3); background: var(--bg-surface-alt); border-radius: var(--radius-lg); display: none;">
             <i class="ph ph-check-circle" style="font-size: 48px; color: var(--color-success); display: block; margin-bottom: var(--space-1);"></i>
             <h4>Compatible!</h4>
-            <p style="margin-bottom: 0;">Your vehicle is fully supported by our mobile service.</p>
+            <p style="margin-bottom: var(--space-3); font-size: 15px; line-height: 1.5;">Your vehicle is fully supported by our mobile service.</p>
+            <a href="booking.html" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 8px;">Book Service Now <i class="ph ph-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -255,7 +305,7 @@
             <a href="#" class="social-linkedin" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
           </div>
         </div>
-        <div class="footer-col"><h5>Quick Links</h5><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="blog.html">Blog</a></div>
+        <div class="footer-col"><h5>Quick Links</h5><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a><a href="blog.html">Blog</a></div>
         <div class="footer-col"><h5>Services</h5><a href="services.html#rotor-resurfacing">Rotor Resurfacing</a><a href="services.html#brake-pads">Brake Pad Replacement</a><a href="services.html#drum-machining">Drum Machining</a><a href="services.html#mobile-service">Mobile Service</a></div>
         <div class="footer-col">
           <h5>Contact Info</h5>
@@ -274,16 +324,79 @@
 
   <script src="../assets/js/main.js"></script>
   <script>
-    // Vehicle compatibility checker
-    document.getElementById('compat-year')?.addEventListener('change', function() {
-      const make = document.getElementById('compat-make').value;
-      const year = this.value;
-      const result = document.getElementById('compat-result');
-      if (make && year && result) {
-        result.style.display = 'block';
-        result.style.animation = 'fadeInUp 0.4s ease';
+    // Vehicle compatibility data
+    const vehicleData = {
+      models: {
+        'Ford': ['F-150', 'Mustang', 'Explorer', 'Escape', 'Bronco', 'Edge', 'Fusion'],
+        'Chevrolet': ['Silverado', 'Camaro', 'Equinox', 'Malibu', 'Tahoe', 'Traverse', 'Colorado'],
+        'Toyota': ['Camry', 'Corolla', 'RAV4', 'Tacoma', 'Highlander', '4Runner', 'Tundra'],
+        'Honda': ['Civic', 'Accord', 'CR-V', 'Pilot', 'HR-V', 'Odyssey', 'Ridgeline'],
+        'BMW': ['3 Series', '5 Series', 'X3', 'X5', 'M3', 'M5', '7 Series'],
+        'Mercedes-Benz': ['C-Class', 'E-Class', 'GLC', 'GLE', 'S-Class', 'A-Class', 'CLA'],
+        'Nissan': ['Altima', 'Sentra', 'Rogue', 'Pathfinder', 'Frontier', 'Maxima', 'Kicks'],
+        'Hyundai': ['Elantra', 'Sonata', 'Tucson', 'Santa Fe', 'Kona', 'Palisade', 'Venue'],
+        'Kia': ['Forte', 'K5', 'Sportage', 'Telluride', 'Sorento', 'Soul', 'Seltos'],
+        'Volkswagen': ['Jetta', 'Passat', 'Tiguan', 'Atlas', 'Golf', 'ID.4', 'Taos'],
+        'Subaru': ['Outback', 'Forester', 'Crosstrek', 'Impreza', 'WRX', 'Legacy', 'Ascent'],
+        'Jeep': ['Wrangler', 'Grand Cherokee', 'Cherokee', 'Compass', 'Gladiator', 'Renegade'],
+        'Ram': ['1500', '2500', '3500', 'ProMaster'],
+        'GMC': ['Sierra', 'Yukon', 'Terrain', 'Acadia', 'Canyon'],
+        'Dodge': ['Charger', 'Challenger', 'Durango', 'Hornet']
       }
+    };
+
+    const makeSelect = document.getElementById('compat-make');
+    const modelSelect = document.getElementById('compat-model');
+    const yearSelect = document.getElementById('compat-year');
+    const resultDiv = document.getElementById('compat-result');
+    const resultText = resultDiv?.querySelector('p');
+
+    function updateModels() {
+      const selectedMake = makeSelect.value;
+      
+      // Clear models dropdown
+      modelSelect.innerHTML = '<option value="">Select Model</option>';
+      modelSelect.disabled = !selectedMake;
+      
+      // Reset year and hide result
+      yearSelect.value = '';
+      if (resultDiv) resultDiv.style.display = 'none';
+
+      if (selectedMake && vehicleData.models[selectedMake]) {
+        vehicleData.models[selectedMake].forEach(model => {
+          const option = document.createElement('option');
+          option.value = model;
+          option.textContent = model;
+          modelSelect.appendChild(option);
+        });
+      }
+    }
+
+    function checkCompatibility() {
+      const make = makeSelect.value;
+      const model = modelSelect.value;
+      const year = yearSelect.value;
+
+      if (make && model && year && resultDiv) {
+        if (resultText) {
+          resultText.innerHTML = `Your <strong>${year} ${make} ${model}</strong> is fully supported by our mobile service.`;
+        }
+        resultDiv.style.display = 'block';
+        resultDiv.style.animation = 'fadeInUp 0.4s ease';
+      } else {
+        if (resultDiv) resultDiv.style.display = 'none';
+      }
+    }
+
+    makeSelect?.addEventListener('change', updateModels);
+    modelSelect?.addEventListener('change', () => {
+      yearSelect.value = '';
+      if (resultDiv) resultDiv.style.display = 'none';
     });
+    yearSelect?.addEventListener('change', checkCompatibility);
+
+    // Initial load: disable model selector until make is chosen
+    if (modelSelect) modelSelect.disabled = true;
   </script>
 </body>
 </html>

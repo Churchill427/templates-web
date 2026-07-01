@@ -36,7 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const dark = isDarkTheme();
     return {
       text: dark ? '#E8E0D5' : '#2C2416',
-      grid: dark ? 'rgba(232, 224, 213, 0.1)' : 'rgba(44, 36, 22, 0.1)'
+      grid: dark ? 'rgba(232, 224, 213, 0.1)' : 'rgba(44, 36, 22, 0.1)',
+      cardBg: dark ? '#262626' : '#fff',
+      primary: dark ? '#8EAA7E' : '#2D5016',
+      secondary: dark ? '#E2B98E' : '#D4A574',
+      tertiary: dark ? '#5C7A4E' : '#8b9a7c',
+      quaternary: dark ? '#4A4A4A' : '#e6c8ab',
+      areaGradientStart: dark ? 'rgba(142, 170, 126, 0.5)' : 'rgba(45, 80, 22, 0.5)',
+      areaGradientEnd: dark ? 'rgba(142, 170, 126, 0.0)' : 'rgba(45, 80, 22, 0.0)'
     };
   }
 
@@ -80,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Draw Line
       ctx.beginPath();
-      ctx.strokeStyle = colors.primary;
+      ctx.strokeStyle = theme.primary;
       ctx.lineWidth = 3;
       
       data.forEach((val, i) => {
@@ -102,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const x = padding + i * stepX;
         const y = padding + chartH - (val / maxVal) * chartH;
         ctx.beginPath();
-        ctx.fillStyle = '#fff';
-        ctx.strokeStyle = colors.primary;
+        ctx.fillStyle = theme.cardBg;
+        ctx.strokeStyle = theme.primary;
         ctx.lineWidth = 2;
         ctx.arc(x, y, 4, 0, Math.PI * 2);
         ctx.fill();
@@ -156,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const barH = (val / maxVal) * chartH;
         const y = padding + chartH - barH;
 
-        ctx.fillStyle = colors.secondary;
+        ctx.fillStyle = theme.secondary;
         // Draw-in animation simulation by just drawing it normally for now
         ctx.fillRect(x, y, barW, barH);
 
@@ -194,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = data.reduce((sum, val) => sum + val, 0);
       let startAngle = -0.5 * Math.PI;
 
-      const chartColors = [colors.primary, colors.secondary, colors.tertiary, colors.quaternary];
+      const chartColors = [theme.primary, theme.secondary, theme.tertiary, theme.quaternary];
 
       data.forEach((val, i) => {
         const sliceAngle = (val / total) * 2 * Math.PI;
@@ -210,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Inner circle for donut
       ctx.beginPath();
-      ctx.fillStyle = isDarkTheme() ? '#262626' : '#fff'; // card bg
+      ctx.fillStyle = theme.cardBg; // card bg
       ctx.arc(cx, cy, radius * 0.6, 0, 2 * Math.PI);
       ctx.fill();
 
@@ -272,15 +279,15 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.closePath();
 
       const gradient = ctx.createLinearGradient(0, padding, 0, padding + chartH);
-      gradient.addColorStop(0, 'rgba(45, 80, 22, 0.5)'); // Primary color with opacity
-      gradient.addColorStop(1, 'rgba(45, 80, 22, 0.0)');
+      gradient.addColorStop(0, theme.areaGradientStart); // Dynamic start
+      gradient.addColorStop(1, theme.areaGradientEnd); // Dynamic end
 
       ctx.fillStyle = gradient;
       ctx.fill();
 
       // Line
       ctx.beginPath();
-      ctx.strokeStyle = colors.primary;
+      ctx.strokeStyle = theme.primary;
       ctx.lineWidth = 2;
       data.forEach((val, i) => {
         const x = padding + i * stepX;

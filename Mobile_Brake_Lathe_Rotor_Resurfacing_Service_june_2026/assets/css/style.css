@@ -38,7 +38,7 @@
   /* — Text Colors — */
   --text-primary: #1A1A1A;
   --text-secondary: #555555;
-  --text-tertiary: #888888;
+  --text-tertiary: #666666;
   --text-inverse: #FFFFFF;
   --text-link: #C41E3A;
   --text-link-hover: #FF6B35;
@@ -261,6 +261,22 @@ p {
 .text-center { text-align: center; }
 .text-left   { text-align: left; }
 .text-right  { text-align: right; }
+
+.bg-dark {
+  color: var(--text-inverse) !important;
+}
+.bg-dark h1,
+.bg-dark h2,
+.bg-dark h3,
+.bg-dark h4,
+.bg-dark h5,
+.bg-dark h6 {
+  color: var(--text-inverse) !important;
+}
+.bg-dark p,
+.bg-dark .section-header p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
 
 .section-header {
   text-align: center;
@@ -751,14 +767,15 @@ p {
   font-family: var(--font-heading);
   font-size: var(--fs-body-sm);
   font-weight: var(--font-weight-semibold);
-  padding: 12px 28px;
+  padding: 0 28px;
+  height: 48px;
   border-radius: var(--radius-md);
   border: 2px solid transparent;
   cursor: pointer;
   transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
   white-space: nowrap;
   text-decoration: none;
-  line-height: 1.4;
+  line-height: 1;
 }
 
 .btn:hover {
@@ -828,12 +845,14 @@ p {
 }
 
 .btn-sm {
-  padding: 8px 18px;
+  padding: 0 18px;
+  height: 38px;
   font-size: var(--fs-caption);
 }
 
 .btn-lg {
-  padding: 16px 36px;
+  padding: 0 36px;
+  height: 56px;
   font-size: var(--fs-body);
 }
 
@@ -2523,6 +2542,12 @@ p {
   margin-bottom: var(--space-2);
 }
 
+.card-img-wrapper .article-category {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
 .article-meta {
   display: flex;
   align-items: center;
@@ -3304,7 +3329,8 @@ p {
     margin-left: auto;
     margin-right: var(--space-2);
   }
-  .nav-actions #login-btn {
+  .nav-actions #login-btn,
+  .nav-actions .nav-booking-btn {
     display: none;
   }
 
@@ -3714,6 +3740,56 @@ p {
   /* Brand Grid */
   .brand-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+
+  .brand-logo {
+    padding: var(--space-1) var(--space-2);
+    height: 60px;
+  }
+
+  .brand-logo svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Filter Tabs */
+  .filter-tabs {
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+
+  .filter-tab {
+    padding: 6px 12px;
+    font-size: var(--fs-caption);
+  }
+
+  /* Timeline vertical adjustments */
+  .timeline-vertical {
+    padding-left: var(--space-5);
+  }
+
+  .timeline-vertical::before {
+    left: 20px;
+  }
+
+  .timeline-vertical .timeline-step-icon {
+    left: calc(-1 * var(--space-5));
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  /* Navbar Adjustments */
+  .navbar .rtl-toggle {
+    display: none;
+  }
+
+  .mobile-menu .nav-actions-mobile {
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+    margin-top: var(--space-2);
   }
 
   /* Guarantee */

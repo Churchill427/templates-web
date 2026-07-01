@@ -5,12 +5,24 @@ html[data-theme="dark"] {
   --navbar-bg: rgba(26, 26, 26, 0.95);
   --card-bg: #262626;
   --border-color: rgba(232, 224, 213, 0.1);
+  --primary-color: #8EAA7E; /* Sage Green - light and crisp (6.9:1 contrast) */
+  --secondary-color: #E2B98E; /* Warm Sand - high contrast (9:1 contrast) */
 }
 
 /* Base Adjustments */
 html[data-theme="dark"] body {
   background-color: var(--bg-color);
   color: var(--text-color);
+}
+
+/* Brand Text Logo */
+html[data-theme="dark"] .nav-brand {
+  color: var(--primary-color) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] .nav-brand img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) !important;
 }
 
 /* Navbar Dark Mode */
@@ -34,18 +46,91 @@ html[data-theme="dark"] .card:hover {
   box-shadow: 0 12px 24px rgba(0,0,0,0.5);
 }
 
-/* Form Inputs Dark Mode */
-html[data-theme="dark"] input,
+/* Form Inputs Dark Mode: Overrides white-bg inline style issues on forms */
+html[data-theme="dark"] input:not([type="checkbox"]),
 html[data-theme="dark"] textarea,
 html[data-theme="dark"] select {
-  border-color: var(--border-color);
-  color: var(--text-color);
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
 }
 
 html[data-theme="dark"] input:focus,
 html[data-theme="dark"] textarea:focus,
 html[data-theme="dark"] select:focus {
-  border-color: var(--primary-color);
+  border-color: var(--primary-color) !important;
+}
+
+/* Button & Active States Text Contrast Overrides */
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .filter-btn.active,
+html[data-theme="dark"] .filter-btn:hover,
+html[data-theme="dark"] .calendar-day.selected,
+html[data-theme="dark"] .time-slot.selected,
+html[data-theme="dark"] .progress-step.active {
+  color: #1A1A1A !important;
+  font-weight: 600;
+}
+
+html[data-theme="dark"] .btn-primary:hover {
+  background-color: #A3C997; /* Lighter sage green */
+  color: #1A1A1A !important;
+}
+
+html[data-theme="dark"] .btn-secondary:hover {
+  background-color: rgba(142, 170, 126, 0.1);
+  box-shadow: 0 4px 12px rgba(142, 170, 126, 0.15);
+}
+
+/* Inline Green Boxes (e.g. Booking Summary) */
+html[data-theme="dark"] div[style*="background: rgba(45, 80, 22, 0.05)"] {
+  background-color: rgba(142, 170, 126, 0.05) !important;
+  border-color: rgba(142, 170, 126, 0.2) !important;
+}
+
+/* Login Social Buttons */
+html[data-theme="dark"] .social-btn {
+  background: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+html[data-theme="dark"] .social-btn:hover {
+  background: #333333 !important;
+}
+
+html[data-theme="dark"] .social-apple i {
+  color: #fff !important;
+}
+
+/* Dashboard Badges & Indicators */
+html[data-theme="dark"] .trend-up {
+  color: #81C784 !important; /* Soft vibrant green */
+}
+
+html[data-theme="dark"] .trend-down {
+  color: #E57373 !important; /* Soft vibrant red */
+}
+
+html[data-theme="dark"] .status-delivered {
+  background-color: rgba(129, 199, 132, 0.15) !important;
+  color: #81C784 !important;
+}
+
+html[data-theme="dark"] .status-processing {
+  background-color: rgba(255, 183, 77, 0.15) !important;
+  color: #FFB74D !important;
+}
+
+html[data-theme="dark"] .status-pending {
+  background-color: rgba(100, 181, 246, 0.15) !important;
+  color: #64B5F6 !important;
+}
+
+/* Stock Warnings & Alerts */
+html[data-theme="dark"] .stat-value[style*="color: #E65100"],
+html[data-theme="dark"] .inventory-item div[style*="color: #E65100"] {
+  color: #FFB74D !important;
 }
 
 /* Toggle Buttons */
@@ -57,7 +142,7 @@ html[data-theme="dark"] .toggle-btn {
 html[data-theme="dark"] .toggle-btn:hover {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
-  color: #fff;
+  color: #1A1A1A;
 }
 
 /* Dark mode specific overlay adjustments */

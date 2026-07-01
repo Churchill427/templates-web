@@ -13,8 +13,7 @@
   const ThemeManager = {
     init() {
       this.body = document.body;
-      this.toggleBtn = document.getElementById('theme-toggle');
-      this.toggleIcon = this.toggleBtn?.querySelector('i');
+      this.toggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
 
       // Check saved preference or system preference
       const saved = localStorage.getItem('brake-theme');
@@ -29,12 +28,14 @@
       }
 
       // Toggle button click
-      this.toggleBtn?.addEventListener('click', () => {
-        if (this.body.classList.contains('dark-mode')) {
-          this.setLight();
-        } else {
-          this.setDark();
-        }
+      this.toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (this.body.classList.contains('dark-mode')) {
+            this.setLight();
+          } else {
+            this.setDark();
+          }
+        });
       });
 
       // Listen for system preference changes
@@ -47,18 +48,24 @@
 
     setDark() {
       this.body.classList.add('dark-mode');
-      if (this.toggleIcon) {
-        this.toggleIcon.className = 'ph ph-sun';
-      }
+      this.toggleBtns.forEach(btn => {
+        const icon = btn.querySelector('i');
+        if (icon) {
+          icon.className = 'ph ph-sun';
+        }
+      });
       localStorage.setItem('brake-theme', 'dark');
       document.dispatchEvent(new CustomEvent('themeChanged', { detail: 'dark' }));
     },
 
     setLight() {
       this.body.classList.remove('dark-mode');
-      if (this.toggleIcon) {
-        this.toggleIcon.className = 'ph ph-moon';
-      }
+      this.toggleBtns.forEach(btn => {
+        const icon = btn.querySelector('i');
+        if (icon) {
+          icon.className = 'ph ph-moon';
+        }
+      });
       localStorage.setItem('brake-theme', 'light');
       document.dispatchEvent(new CustomEvent('themeChanged', { detail: 'light' }));
     }

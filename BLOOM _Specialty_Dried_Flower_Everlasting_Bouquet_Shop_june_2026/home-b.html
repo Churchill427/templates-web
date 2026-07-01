@@ -71,6 +71,13 @@
     @media(min-width: 768px) {
       .custom-split { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     }
+    .custom-img {
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 400px;
+    }
     .accordion-item {
       background: #fff;
       border: 1px solid rgba(44, 36, 22, 0.1);
@@ -151,14 +158,14 @@
       <a href="index.html" class="nav-brand"><img src="assets/images/logo.png" alt="BLOOM Logo">BLOOM</a>
       <div class="nav-links">
         <div class="nav-dropdown">
-          <a href="#" class="active">Home</a>
+          <a href="#" class="active">Home <i class="ph ph-caret-down" style="font-size: 0.75rem; margin-left: 2px; vertical-align: middle;"></i></a>
           <div class="nav-dropdown-content">
             <a href="index.html">Home A</a>
             <a href="home-b.html">Home B</a>
           </div>
         </div>
         <a href="about.html">About</a>
-        <a href="services.html">Services</a>
+        <a href="collections.html">Collections</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="blog.html">Journal</a>
         <a href="contact.html">Contact</a>
@@ -183,7 +190,7 @@
       <a href="index.html">Home A</a>
       <a href="home-b.html" class="active">Home B</a>
       <a href="about.html">About</a>
-      <a href="services.html">Services</a>
+      <a href="collections.html">Collections</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="blog.html">Journal</a>
       <a href="contact.html">Contact</a>
@@ -199,8 +206,8 @@
       <h1>BLOOM</h1>
       <p>Gifts That Last Forever</p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="services.html" class="btn btn-primary">Shop Seasonal</a>
-        <a href="services.html" class="btn btn-secondary" style="border-color:#fff; color:#fff;">Custom Orders</a>
+        <a href="collections.html" class="btn btn-primary">Shop Seasonal</a>
+        <a href="collections.html" class="btn btn-secondary" style="border-color:#fff; color:#fff;">Custom Orders</a>
       </div>
     </div>
   </header>
@@ -290,7 +297,7 @@
   <section class="container">
     <div class="custom-split reveal-up">
       <div>
-        <img src="assets/images/custom-bouquet.jpg" alt="Custom Bouquet Creation" style="border-radius: 8px; width: 100%;">
+        <img src="assets/images/custom-bouquet.jpg" alt="Custom Bouquet Creation" class="custom-img">
       </div>
       <div>
         <h2>Custom Arrangements</h2>
@@ -397,23 +404,23 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <a href="about.html">Our Story</a>
-          <a href="services.html">Services</a>
+          <a href="collections.html">Collections</a>
           <a href="portfolio.html">Portfolio</a>
           <a href="blog.html">Journal</a>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
-          <a href="services.html">Everlasting Bouquets</a>
-          <a href="services.html">Wedding Florals</a>
-          <a href="services.html">Corporate Gifting</a>
+          <h4>Collections</h4>
+          <a href="collections.html">Everlasting Bouquets</a>
+          <a href="collections.html">Wedding Florals</a>
+          <a href="collections.html">Corporate Gifting</a>
           <a href="booking.html">Book Consultation</a>
         </div>
         <div class="footer-col">
           <h4>Stay Updated</h4>
           <p>Subscribe to our newsletter for seasonal updates and care tips.</p>
-          <form style="display:flex; margin-top:1rem; gap:0.5rem;" onsubmit="event.preventDefault();">
-            <input type="email" placeholder="Your Email" required style="margin:0; background:rgba(255,255,255,0.1); color:#fff; border:none;">
-            <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.5); color:#fff; padding: 0.5rem 1rem;">Subscribe</button>
+          <form style="display: flex; margin-top: 1rem; gap: 0.5rem;" onsubmit="event.preventDefault(); alert(\'Subscribed!\');">
+            <input type="email" placeholder="Your Email" required style="margin: 0; flex: 1;">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.5rem;">Subscribe</button>
           </form>
         </div>
       </div>

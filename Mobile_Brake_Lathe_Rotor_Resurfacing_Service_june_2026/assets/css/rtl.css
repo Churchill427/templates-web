@@ -32,7 +32,7 @@
 
 /* ---- Mobile Menu ---- */
 [dir="rtl"] .hamburger {
-  order: -1;
+  /* Removed order override to allow standard far-left alignment in RTL */
 }
 
 /* ---- Flex Direction Overrides ---- */
@@ -330,5 +330,11 @@
     transform: none !important;
     right: auto !important;
     left: auto !important;
+  }
+
+  /* Reset navbar actions margin under RTL mobile */
+  [dir="rtl"] .nav-actions {
+    margin-left: var(--space-2) !important;
+    margin-right: auto !important;
   }
 }

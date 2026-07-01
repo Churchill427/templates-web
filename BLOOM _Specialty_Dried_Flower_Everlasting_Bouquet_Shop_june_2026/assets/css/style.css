@@ -8,6 +8,8 @@
   /* Raw Linen */
   --text-color: #2C2416;
   /* Dark Espresso */
+  --card-bg: #ffffff;
+  --border-color: rgba(44, 36, 22, 0.1);
   --overlay-color: rgba(0, 0, 0, 0.3);
 
   /* Typography */
@@ -229,15 +231,17 @@ section {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #3C612B;
+  color: #2D5016; /* Darker green for higher contrast in light mode */
   text-transform: uppercase;
   letter-spacing: 2px;
+  text-shadow: 0 1px 2px rgba(45, 80, 22, 0.1);
 }
 
 .nav-brand img {
   height: 1.5em;
   width: auto;
   margin: 0;
+  filter: drop-shadow(0 2px 4px rgba(45, 80, 22, 0.15));
 }
 
 .nav-links {
@@ -276,9 +280,10 @@ section {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: var(--bg-color);
+  background-color: #ffffff; /* Pure white background to stand out from raw linen navbar */
+  border: 1px solid rgba(44, 36, 22, 0.1); /* Add distinct border */
   min-width: 160px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); /* Enhanced drop shadow */
   border-radius: 4px;
   padding: 0.5rem 0;
   z-index: 100;
@@ -407,8 +412,9 @@ section {
 
 /* Footer */
 footer {
-  background-color: #244012;
-  color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-top: 1px solid var(--border-color);
   padding-block: var(--section-spacing-tablet) 2rem;
 }
 
@@ -434,12 +440,12 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
 }
 
 .footer-col h4 a.footer-brand {
-  color: #3C612B;
+  color: var(--primary-color);
   display: inline-flex;
   align-items: center;
   gap: inherit;
@@ -454,13 +460,15 @@ footer {
 
 .footer-col p,
 .footer-col a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-color);
+  opacity: 0.8;
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .footer-col a:hover {
-  color: var(--secondary-color);
+  color: var(--primary-color);
+  opacity: 1;
 }
 
 .social-icons {
@@ -471,11 +479,13 @@ footer {
 
 .social-icons a {
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .social-icons a:hover {
-  color: var(--secondary-color);
+  color: var(--primary-color);
+  opacity: 1;
 }
 
 .social-icons a.facebook:hover {
@@ -493,9 +503,10 @@ footer {
 .footer-bottom {
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
   text-align: center;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-color);
+  opacity: 0.6;
   font-size: 0.875rem;
 }
 
