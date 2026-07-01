@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KILN | Pricing & Memberships</title>
+  <meta name="description"
+    content="Explore flexible pricing plans and memberships at KILN pottery studio. From single classes to unlimited studio access.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* ====== Hero Section ====== */
+    .hero-section {
+      height: 50vh;
+      min-height: 360px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #F9F7F4;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      animation: heroZoom 20s infinite alternate ease-in-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 24, 22, 0.75), rgba(84, 33, 17, 0.55));
+      z-index: -1;
+    }
+
+    @keyframes heroZoom {
+      0% {}
+      100% {}
+    }
+
+    .hero-subtitle {
+      color: rgba(249, 247, 244, 0.85);
+      max-width: 560px;
+      margin: var(--space-4) auto 0;
+    }
+
+    /* ====== Billing Toggle ====== */
+    .billing-toggle-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-10);
+    }
+
+    .billing-label {
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .billing-label.active {
+      color: var(--text-heading);
+      font-weight: 600;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 52px;
+      height: 28px;
+      background: var(--neutral-300);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: none;
+      padding: 0;
+    }
+
+    .toggle-switch.active {
+      background: var(--primary-500);
+    }
+
+    .toggle-knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .toggle-switch.active .toggle-knob {
+      transform: translateX(24px);
+    }
+
+    .save-badge {
+      background: var(--secondary-100);
+      color: var(--secondary-700);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    [data-theme="dark"] .save-badge {
+      background: rgba(90, 138, 106, 0.2);
+      color: var(--secondary-300);
+    }
+
+    /* ====== Pricing Cards ====== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    @media (min-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .pricing-card {
+      background: var(--surface-color);
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary-400);
+      box-shadow: 0 8px 30px rgba(198, 93, 59, 0.12);
+    }
+
+    [data-theme="dark"] .pricing-card.featured {
+      border-color: var(--primary-500);
+      box-shadow: 0 8px 30px rgba(198, 93, 59, 0.15);
+    }
+
+    .pricing-card.featured:hover {
+      box-shadow: 0 20px 50px rgba(198, 93, 59, 0.18);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .plan-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: var(--space-4);
+    }
+
+    .plan-icon.starter {
+      background: var(--accent-100);
+      color: var(--accent-700);
+    }
+
+    .plan-icon.studio {
+      background: var(--primary-100);
+      color: var(--primary-600);
+    }
+
+    .plan-icon.master {
+      background: var(--secondary-100);
+      color: var(--secondary-600);
+    }
+
+    [data-theme="dark"] .plan-icon.starter {
+      background: rgba(218, 197, 164, 0.15);
+      color: var(--accent-300);
+    }
+
+    [data-theme="dark"] .plan-icon.studio {
+      background: rgba(198, 93, 59, 0.12);
+      color: var(--primary-400);
+    }
+
+    [data-theme="dark"] .plan-icon.master {
+      background: rgba(90, 138, 106, 0.12);
+      color: var(--secondary-300);
+    }
+
+    .plan-name {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: var(--space-1);
+    }
+
+    .plan-desc {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-6);
+      line-height: 1.5;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: var(--space-1);
+    }
+
+    .price-amount {
+      font-family: var(--font-heading);
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1;
+    }
+
+    .price-period {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .price-annual-note {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-6);
+      min-height: 18px;
+    }
+
+    .plan-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin-bottom: var(--space-6);
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-8) 0;
+      flex-grow: 1;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      font-size: var(--text-sm);
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .feature-list li i {
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 1rem;
+    }
+
+    .feature-list li i.ph-check-circle {
+      color: var(--secondary-500);
+    }
+
+    .feature-list li i.ph-x-circle {
+      color: var(--neutral-400);
+    }
+
+    .feature-list li.disabled {
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
+
+    .plan-cta {
+      width: 100%;
+      padding: var(--space-3) var(--space-6);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: var(--text-base);
+      text-align: center;
+      transition: all 0.3s ease;
+      display: block;
+      border: 2px solid transparent;
+    }
+
+    .plan-cta.primary {
+      background: var(--primary-500);
+      color: #fff;
+    }
+
+    .plan-cta.primary:hover {
+      background: var(--primary-600);
+      box-shadow: 0 6px 20px rgba(198, 93, 59, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .plan-cta.outline {
+      background: transparent;
+      border-color: var(--primary-500);
+      color: var(--primary-500);
+    }
+
+    .plan-cta.outline:hover {
+      background: var(--primary-50);
+      color: var(--primary-600);
+    }
+
+    [data-theme="dark"] .plan-cta.outline:hover {
+      background: rgba(198, 93, 59, 0.1);
+    }
+
+    /* ====== Add-Ons Section ====== */
+    .addons-section {
+      background-color: var(--elevated-color);
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .addons-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .addon-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: stretch;
+      gap: var(--space-4);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .addon-card:hover {
+      border-color: var(--primary-300);
+      transform: translateY(-2px);
+    }
+
+    .addon-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--primary-50);
+      color: var(--primary-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    [data-theme="dark"] .addon-icon {
+      background: rgba(198, 93, 59, 0.12);
+      color: var(--primary-400);
+    }
+
+    .addon-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .addon-name {
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 2px;
+    }
+
+    .addon-desc {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: var(--space-2);
+      flex-grow: 1;
+    }
+
+    .addon-price {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--primary-600);
+      font-size: var(--text-sm);
+    }
+
+    [data-theme="dark"] .addon-price {
+      color: var(--primary-400);
+    }
+
+    /* ====== Comparison Table ====== */
+    .comparison-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+    }
+
+    .comparison-table thead th {
+      background: var(--elevated-color);
+      padding: var(--space-4) var(--space-4);
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-heading);
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .comparison-table thead th:first-child {
+      text-align: left;
+      min-width: 200px;
+    }
+
+    .comparison-table tbody td {
+      padding: var(--space-3) var(--space-4);
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .comparison-table tbody td:first-child {
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .comparison-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tbody tr:hover {
+      background-color: var(--elevated-color);
+    }
+
+    .table-check {
+      color: var(--secondary-500);
+      font-size: 1.1rem;
+    }
+
+    .table-x {
+      color: var(--neutral-400);
+      font-size: 1.1rem;
+    }
+
+    .table-text {
+      font-weight: 500;
+      color: var(--text-heading);
+    }
+
+    /* ====== FAQ Accordion ====== */
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: var(--space-3);
+      overflow: hidden;
+      background: var(--surface-color);
+      transition: border-color 0.2s;
+    }
+
+    .accordion-item:hover {
+      border-color: var(--primary-200);
+    }
+
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-4) var(--space-5);
+      font-weight: 600;
+      font-size: var(--text-base);
+      color: var(--text-heading);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-body);
+      transition: color 0.2s;
+    }
+
+    .accordion-header:hover {
+      color: var(--primary-600);
+    }
+
+    .accordion-icon {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+      color: var(--text-secondary);
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 300px;
+    }
+
+    .accordion-inner {
+      padding: 0 var(--space-5) var(--space-5);
+    }
+
+    /* ====== CTA Banner ====== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary-700), var(--primary-900));
+      color: #F9F7F4;
+      border-radius: 16px;
+      padding: var(--space-12) var(--space-6);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.06), transparent 70%);
+    }
+
+    .cta-banner h2 {
+      color: #F9F7F4;
+    }
+
+    .cta-btn-group {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn-light {
+      background: #F9F7F4;
+      color: var(--primary-800);
+      padding: var(--space-3) var(--space-8);
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .cta-btn-light:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      color: var(--primary-800);
+    }
+
+    .cta-btn-ghost {
+      background: transparent;
+      color: #F9F7F4;
+      border: 1.5px solid rgba(249, 247, 244, 0.4);
+      padding: var(--space-3) var(--space-8);
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .cta-btn-ghost:hover {
+      border-color: #F9F7F4;
+      background: rgba(249, 247, 244, 0.1);
+      color: #F9F7F4;
+    }
+
+    /* ====== Responsive: 360px (Mobile) ====== */
+    @media (max-width: 480px) {
+      .hero-section {
+        height: 45vh;
+        min-height: 300px;
+      }
+
+      .pricing-card {
+        padding: var(--space-6);
+      }
+
+      .price-amount {
+        font-size: var(--text-3xl);
+      }
+
+      .addon-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .comparison-table thead th,
+      .comparison-table tbody td {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--text-xs);
+      }
+
+      .cta-banner {
+        padding: var(--space-8) var(--space-4);
+        border-radius: 12px;
+      }
+
+      .cta-btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-btn-light,
+      .cta-btn-ghost {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* ====== Responsive: 768px (Tablet) ====== */
+    @media (min-width: 768px) {
+      .billing-toggle-wrapper {
+        margin-bottom: var(--space-12);
+      }
+    }
+
+    /* ====== Responsive: 1024px (Desktop) ====== */
+    @media (min-width: 1024px) {
+      .hero-section {
+        height: 50vh;
+      }
+
+      .pricing-grid {
+        gap: var(--space-8);
+      }
+
+      .addons-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <button class="nav-mobile-toggle" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+
+      <a href="index.html" class="nav-brand"><img src="../assets/images/logo.png" alt="KILN Logo"
+          class="nav-logo">KILN</a>
+
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dropdown-item">Home 1</a>
+            <a href="home-b.html" class="dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="pricing.html" class="nav-link active">Pricing</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Dashboard <i
+              class="ph ph-caret-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+          <div class="dropdown-menu">
+            <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="nav-right">
+        <button class="theme-toggle" aria-label="Toggle Theme"><i class="ph ph-sun"></i></button>
+        <button class="rtl-toggle btn btn-outline" style="padding: 4px 8px; font-size: 12px;"
+          aria-label="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="hero-section">
+      <img src="../assets/images/hero_services.jpg" alt="Pottery shelves with finished pieces" class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="container relative z-10 fade-in-up d-flex flex-col justify-center align-center h-full">
+        <h1 class="hero-h1 m-0">Pricing & Memberships</h1>
+        <p class="text-xl hero-subtitle">Flexible plans crafted for every skill level. From casual explorers to
+          dedicated clay artists.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Pricing Plans -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center mb-6 fade-in-up">
+          <h2 class="mb-4">Choose Your Plan</h2>
+          <p class="text-muted">Start your pottery journey with a plan that fits your pace and ambition.</p>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="billing-toggle-wrapper fade-in-up">
+          <span class="billing-label active" id="monthlyLabel">Monthly</span>
+          <button class="toggle-switch" id="billingToggle" aria-label="Toggle annual billing">
+            <span class="toggle-knob"></span>
+          </button>
+          <span class="billing-label" id="annualLabel">Annual</span>
+          <span class="save-badge">Save 20%</span>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-grid fade-in-up">
+          <!-- Starter Plan -->
+          <div class="pricing-card" id="starterCard">
+            <div class="plan-icon starter">
+              <i class="ph ph-flower-lotus"></i>
+            </div>
+            <div class="plan-name">Starter</div>
+            <p class="plan-desc">Perfect for beginners curious about clay. Explore at your own pace with guided
+              sessions.</p>
+            <div class="price-row">
+              <span class="price-amount" data-monthly="49" data-annual="39">$49</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <p class="price-annual-note annual-note"></p>
+            <div class="plan-divider"></div>
+            <ul class="feature-list">
+              <li><i class="ph-fill ph-check-circle"></i> 4 group classes per month</li>
+              <li><i class="ph-fill ph-check-circle"></i> Basic tool kit provided</li>
+              <li><i class="ph-fill ph-check-circle"></i> 2 lbs clay per session included</li>
+              <li><i class="ph-fill ph-check-circle"></i> Community gallery access</li>
+              <li><i class="ph-fill ph-check-circle"></i> Bisque firing included</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Open studio hours</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Personal storage shelf</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Glaze workshop access</li>
+            </ul>
+            <a href="booking.html" class="plan-cta outline">Get Started</a>
+          </div>
+
+          <!-- Studio Plan (Featured) -->
+          <div class="pricing-card featured" id="studioCard">
+            <span class="popular-badge">Most Popular</span>
+            <div class="plan-icon studio">
+              <i class="ph ph-hand-heart"></i>
+            </div>
+            <div class="plan-name">Studio</div>
+            <p class="plan-desc">Our most popular plan for committed potters. Unlimited access and dedicated
+              workspace.</p>
+            <div class="price-row">
+              <span class="price-amount" data-monthly="99" data-annual="79">$99</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <p class="price-annual-note annual-note"></p>
+            <div class="plan-divider"></div>
+            <ul class="feature-list">
+              <li><i class="ph-fill ph-check-circle"></i> 8 group classes per month</li>
+              <li><i class="ph-fill ph-check-circle"></i> Full tool kit & apron</li>
+              <li><i class="ph-fill ph-check-circle"></i> 5 lbs clay per session included</li>
+              <li><i class="ph-fill ph-check-circle"></i> Community gallery access</li>
+              <li><i class="ph-fill ph-check-circle"></i> Bisque + glaze firing included</li>
+              <li><i class="ph-fill ph-check-circle"></i> 12 hrs open studio per month</li>
+              <li><i class="ph-fill ph-check-circle"></i> Personal storage shelf</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Private one-on-one sessions</li>
+            </ul>
+            <a href="booking.html" class="plan-cta primary">Choose Studio</a>
+          </div>
+
+          <!-- Master Plan -->
+          <div class="pricing-card" id="masterCard">
+            <div class="plan-icon master">
+              <i class="ph ph-crown-simple"></i>
+            </div>
+            <div class="plan-name">Master</div>
+            <p class="plan-desc">The ultimate pottery experience. Unlimited everything, plus private mentoring and
+              exhibition access.</p>
+            <div class="price-row">
+              <span class="price-amount" data-monthly="179" data-annual="143">$179</span>
+              <span class="price-period">/ month</span>
+            </div>
+            <p class="price-annual-note annual-note"></p>
+            <div class="plan-divider"></div>
+            <ul class="feature-list">
+              <li><i class="ph-fill ph-check-circle"></i> Unlimited group classes</li>
+              <li><i class="ph-fill ph-check-circle"></i> Premium tool kit & apron</li>
+              <li><i class="ph-fill ph-check-circle"></i> Unlimited clay supply</li>
+              <li><i class="ph-fill ph-check-circle"></i> Priority gallery features</li>
+              <li><i class="ph-fill ph-check-circle"></i> All firing types included</li>
+              <li><i class="ph-fill ph-check-circle"></i> Unlimited open studio access</li>
+              <li><i class="ph-fill ph-check-circle"></i> Large personal storage locker</li>
+              <li><i class="ph-fill ph-check-circle"></i> 2 private sessions per month</li>
+            </ul>
+            <a href="booking.html" class="plan-cta outline">Go Master</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Add-Ons -->
+    <section class="section-padding addons-section">
+      <div class="container">
+        <div class="text-center mb-10 fade-in-up">
+          <h2 class="mb-4">Enhance Your Experience</h2>
+          <p class="text-muted">Add these extras to any membership plan.</p>
+        </div>
+
+        <div class="addons-grid fade-in-up">
+          <div class="addon-card">
+            <div class="addon-icon">
+              <i class="ph ph-fire"></i>
+            </div>
+            <div class="addon-info">
+              <div class="addon-name">Extra Kiln Firing</div>
+              <p class="addon-desc">Additional bisque or glaze firing beyond your plan allowance.</p>
+              <div class="addon-price">$15 / firing</div>
+            </div>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <i class="ph ph-chalkboard-teacher"></i>
+            </div>
+            <div class="addon-info">
+              <div class="addon-name">Private Session</div>
+              <p class="addon-desc">One-on-one 90-minute session with a master potter.</p>
+              <div class="addon-price">$85 / session</div>
+            </div>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <i class="ph ph-package"></i>
+            </div>
+            <div class="addon-info">
+              <div class="addon-name">Extra Clay Pack</div>
+              <p class="addon-desc">10 lbs of premium stoneware or porcelain clay.</p>
+              <div class="addon-price">$25 / pack</div>
+            </div>
+          </div>
+
+          <div class="addon-card">
+            <div class="addon-icon">
+              <i class="ph ph-gift"></i>
+            </div>
+            <div class="addon-info">
+              <div class="addon-name">Gift a Class</div>
+              <p class="addon-desc">Share the joy of pottery with a single-session gift voucher.</p>
+              <div class="addon-price">$65 / voucher</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Feature Comparison Table -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="text-center mb-10 fade-in-up">
+          <h2 class="mb-4">Compare Plans</h2>
+          <p class="text-muted">See exactly what's included in each membership tier.</p>
+        </div>
+
+        <div class="comparison-wrapper fade-in-up">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Starter</th>
+                <th>Studio</th>
+                <th>Master</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Group Classes</td>
+                <td class="table-text">4 / month</td>
+                <td class="table-text">8 / month</td>
+                <td class="table-text">Unlimited</td>
+              </tr>
+              <tr>
+                <td>Open Studio Hours</td>
+                <td><i class="ph ph-x-circle table-x"></i></td>
+                <td class="table-text">12 hrs</td>
+                <td class="table-text">Unlimited</td>
+              </tr>
+              <tr>
+                <td>Clay Allowance</td>
+                <td class="table-text">2 lbs / session</td>
+                <td class="table-text">5 lbs / session</td>
+                <td class="table-text">Unlimited</td>
+              </tr>
+              <tr>
+                <td>Tool Kit</td>
+                <td class="table-text">Basic</td>
+                <td class="table-text">Full + Apron</td>
+                <td class="table-text">Premium + Apron</td>
+              </tr>
+              <tr>
+                <td>Bisque Firing</td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+              </tr>
+              <tr>
+                <td>Glaze Firing</td>
+                <td><i class="ph ph-x-circle table-x"></i></td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+              </tr>
+              <tr>
+                <td>Personal Storage</td>
+                <td><i class="ph ph-x-circle table-x"></i></td>
+                <td class="table-text">Shelf</td>
+                <td class="table-text">Large Locker</td>
+              </tr>
+              <tr>
+                <td>Private Sessions</td>
+                <td><i class="ph ph-x-circle table-x"></i></td>
+                <td><i class="ph ph-x-circle table-x"></i></td>
+                <td class="table-text">2 / month</td>
+              </tr>
+              <tr>
+                <td>Gallery Features</td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+                <td class="table-text">Priority</td>
+              </tr>
+              <tr>
+                <td>Glaze Workshop</td>
+                <td><i class="ph ph-x-circle table-x"></i></td>
+                <td><i class="ph ph-x-circle table-x"></i></td>
+                <td><i class="ph-fill ph-check-circle table-check"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: FAQ -->
+    <section class="section-padding pt-0">
+      <div class="container">
+        <div class="text-center mb-10 fade-in-up">
+          <h2 class="mb-4">Frequently Asked Questions</h2>
+          <p class="text-muted">Everything you need to know about our pricing and memberships.</p>
+        </div>
+
+        <div class="faq-grid fade-in-up">
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Can I switch plans at any time?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="text-sm text-muted">Yes! You can upgrade or downgrade your plan at any time. Upgrades take
+                  effect immediately with a prorated charge, while downgrades take effect at the start of your next
+                  billing cycle.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Is there a commitment or contract?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="text-sm text-muted">Monthly plans are billed month-to-month with no long-term commitment. You
+                  can cancel anytime. Annual plans are billed yearly and offer a 20% discount compared to paying monthly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What's included in open studio hours?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="text-sm text-muted">Open studio gives you unstructured time to work on personal projects
+                  using our wheels, tools, and equipment. A studio technician is always available for basic assistance.
+                  Clay and firing are separate unless included in your plan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Can I try a class before committing to a plan?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="text-sm text-muted">Absolutely! We offer a single drop-in trial class for $65. It's a full
+                  2-hour session where you'll learn to center and pull a bowl on the wheel. No membership required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Do you offer student or group discounts?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="text-sm text-muted">Yes! We offer a 15% student discount on all plans with a valid student
+                  ID. Groups of 4+ signing up together receive 10% off. Corporate team-building packages are also
+                  available — contact us for a custom quote.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What happens to my pieces if I cancel?</span>
+              <i class="ph ph-caret-down accordion-icon"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p class="text-sm text-muted">After cancellation, you have 30 days to pick up any pieces still in
+                  progress or in storage. We'll fire any pieces currently in the kiln cycle at no extra charge. After 30
+                  days, unclaimed items may be recycled.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: CTA Banner -->
+    <section class="section-padding pt-0">
+      <div class="container fade-in-up">
+        <div class="cta-banner">
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <i class="ph ph-hand-waving text-5xl mb-4" style="color: var(--primary-300);"></i>
+            <h2 class="text-3xl mb-4">Not Sure Which Plan Is Right?</h2>
+            <p class="text-lg mb-8" style="color: rgba(249, 247, 244, 0.8);">Book a free studio tour and chat with our
+              team. We'll help you find the perfect fit for your creative goals.</p>
+            <div class="cta-btn-group">
+              <a href="contact.html" class="cta-btn-light">Book a Free Tour</a>
+              <a href="services.html" class="cta-btn-ghost">View All Classes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1 -->
+        <div>
+          <a href="index.html" class="nav-brand mb-4"
+            style="color: #F9F7F4; display: flex; align-items: center; gap: var(--space-2);"><img
+              src="../assets/images/logo.png" alt="KILN Logo" class="footer-logo">KILN</a>
+          <p class="text-sm mb-6 max-w-sm">A community-focused ceramics studio dedicated to the art of clay,
+            craftsmanship, and creativity.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook"><i class="ph ph-facebook-logo"
+                style="color: #1877F2;"></i></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><i class="ph ph-instagram-logo"
+                style="color: #E4405F;"></i></a>
+            <a href="#" class="social-icon" aria-label="Pinterest"><i class="ph ph-pinterest-logo"
+                style="color: #E60023;"></i></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><i class="ph ph-youtube-logo"
+                style="color: #FF0000;"></i></a>
+          </div>
+        </div>
+        <!-- Col 2 -->
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <nav>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="services.html" class="footer-link">Services</a>
+            <a href="booking.html" class="footer-link">Open Studio</a>
+            <a href="gallery.html" class="footer-link">Gallery</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+            <a href="about.html" class="footer-link">About</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+        <!-- Col 3 -->
+        <div>
+          <h4 class="footer-title">Services</h4>
+          <nav>
+            <a href="services.html" class="footer-link">Wheel Throwing</a>
+            <a href="services.html" class="footer-link">Hand Building</a>
+            <a href="services.html" class="footer-link">Glazing</a>
+            <a href="services.html" class="footer-link">Kiln Firing</a>
+            <a href="services.html" class="footer-link">Private Events</a>
+            <a href="services.html" class="footer-link">Corporate Workshops</a>
+          </nav>
+        </div>
+        <!-- Col 4 -->
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <div class="text-sm text-muted d-flex flex-col gap-2">
+            <p><i class="ph ph-map-pin mr-2"></i> 123 Artisan Way, Clay District<br>Portland, OR 97204</p>
+            <p><i class="ph ph-phone mr-2"></i> (555) 123-4567</p>
+            <p><i class="ph ph-envelope mr-2"></i> hello@kilnstudio.com</p>
+            <p class="mt-2 text-primary font-medium">Hours:</p>
+            <p>Tue - Sun: 10am - 8pm</p>
+            <p>Mon: Closed for maintenance</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 KILN Studio. All rights reserved.</p>
+        <div class="d-flex gap-6">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Billing Toggle Logic
+    const billingToggle = document.getElementById('billingToggle');
+    const monthlyLabel = document.getElementById('monthlyLabel');
+    const annualLabel = document.getElementById('annualLabel');
+    const priceAmounts = document.querySelectorAll('.price-amount');
+    const annualNotes = document.querySelectorAll('.annual-note');
+    let isAnnual = false;
+
+    billingToggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      billingToggle.classList.toggle('active', isAnnual);
+      monthlyLabel.classList.toggle('active', !isAnnual);
+      annualLabel.classList.toggle('active', isAnnual);
+
+      priceAmounts.forEach(el => {
+        const monthly = el.getAttribute('data-monthly');
+        const annual = el.getAttribute('data-annual');
+        el.textContent = isAnnual ? `$${annual}` : `$${monthly}`;
+      });
+
+      annualNotes.forEach(el => {
+        if (isAnnual) {
+          const card = el.closest('.pricing-card');
+          const annualPrice = card.querySelector('.price-amount').getAttribute('data-annual');
+          el.textContent = `Billed $${annualPrice * 12} annually`;
+        } else {
+          el.textContent = '';
+        }
+      });
+    });
+
+    // Accordion Logic
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+
+        // Close all accordions in the same group
+        item.parentElement.querySelectorAll('.accordion-item').forEach(sibling => {
+          sibling.classList.remove('active');
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
