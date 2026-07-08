@@ -222,11 +222,24 @@
     <!-- SECTION 5: AVAILABILITY -->
     <section class="section section-alt bg-dark" style="background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url('../assets/images/booking_availability_bg.png') center/cover no-repeat;">
       <div class="container">
-        <div class="section-header"><h2 class="reveal">Real-Time Availability</h2><p class="reveal">Select a date above to see available time slots</p></div>
-        <div class="reveal" style="max-width:700px;margin:0 auto;text-align:center;">
-          <div style="padding:var(--space-5);background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border-light);">
-            <i class="ph ph-calendar-blank" style="font-size:48px;color:var(--text-tertiary);display:block;margin-bottom:var(--space-2);"></i>
-            <p style="color:var(--text-tertiary);">Calendar integration placeholder — available time slots will appear here based on your selected date.</p>
+        <div class="section-header"><h2 class="reveal">Real-Time Availability</h2><p class="reveal">Select a date below to see available time slots and click a slot to update your preference.</p></div>
+        <div class="reveal" style="max-width:700px;margin:0 auto;">
+          <div style="padding:var(--space-4);background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border-light);">
+            <div class="calendar-widget">
+              <div class="calendar-header">
+                <button type="button" class="calendar-btn" id="calendar-prev-btn" aria-label="Previous Month"><i class="ph ph-caret-left"></i></button>
+                <h3 id="calendar-month-year" class="calendar-month-title">—</h3>
+                <button type="button" class="calendar-btn" id="calendar-next-btn" aria-label="Next Month"><i class="ph ph-caret-right"></i></button>
+              </div>
+              <div class="calendar-weekdays">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+              </div>
+              <div class="calendar-days" id="calendar-days-grid"></div>
+              <div class="slots-container" id="calendar-slots-container" style="display:none;">
+                <h4 class="slots-title">Available Slots for <span id="selected-date-str">—</span>:</h4>
+                <div class="slots-grid" id="calendar-slots-grid"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

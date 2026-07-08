@@ -312,12 +312,194 @@
     }
   };
 
+
   /* --------------------------------------------------------
-     5. INITIALIZATION
+     5. INTERACTIVE CALENDAR WIDGET
+     -------------------------------------------------------- */
+  const CalendarWidget = {
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    slots: ['7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'],
+    
+    init() {
+      this.monthYearEl = document.getElementById('calendar-month-year');
+      this.daysGridEl = document.getElementById('calendar-days-grid');
+      this.prevBtn = document.getElementById('calendar-prev-btn');
+      this.nextBtn = document.getElementById('calendar-next-btn');
+      
+      this.slotsContainer = document.getElementById('calendar-slots-container');
+      this.selectedDateStr = document.getElementById('selected-date-str');
+      this.slotsGrid = document.getElementById('calendar-slots-grid');
+      
+      if (!this.daysGridEl) return;
+      
+      const today = new Date();
+      this.currentMonth = today.getMonth();
+      this.currentYear = today.getFullYear();
+      this.selectedDate = null;
+      
+      this.prevBtn.addEventListener('click', () => this.changeMonth(-1));
+      this.nextBtn.addEventListener('click', () => this.changeMonth(1));
+      
+      this.render();
+      
+      // Also sync when the user manually changes the form's Date input
+      const bookingDateInput = document.getElementById('booking-date');
+      if (bookingDateInput) {
+        bookingDateInput.addEventListener('change', () => {
+          if (bookingDateInput.value) {
+            const dateParts = bookingDateInput.value.split('-');
+            const date = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
+            this.selectedDate = date;
+            this.currentMonth = date.getMonth();
+            this.currentYear = date.getFullYear();
+            this.render();
+            
+            this.selectedDateStr.textContent = `${this.months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+            this.slotsContainer.style.display = 'block';
+            this.renderSlots(date);
+          }
+        });
+      }
+    },
+    
+    changeMonth(direction) {
+      this.currentMonth += direction;
+      if (this.currentMonth < 0) {
+        this.currentMonth = 11;
+        this.currentYear--;
+      } else if (this.currentMonth > 11) {
+        this.currentMonth = 0;
+        this.currentYear++;
+      }
+      this.render();
+    },
+    
+    render() {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Ignore time
+      
+      // Update header text
+      this.monthYearEl.textContent = `${this.months[this.currentMonth]} ${this.currentYear}`;
+      
+      // Clear grid
+      this.daysGridEl.innerHTML = '';
+      
+      const firstDayIndex = new Date(this.currentYear, this.currentMonth, 1).getDay();
+      const totalDays = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
+      
+      // Render empty slots for padding
+      for (let i = 0; i < firstDayIndex; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.classList.add('calendar-day', 'empty');
+        this.daysGridEl.appendChild(emptyCell);
+      }
+      
+      // Render days
+      for (let day = 1; day <= totalDays; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.classList.add('calendar-day');
+        dayCell.textContent = day;
+        
+        const cellDate = new Date(this.currentYear, this.currentMonth, day);
+        
+        // If it is today
+        if (cellDate.getTime() === today.getTime()) {
+          dayCell.classList.add('today');
+        }
+        
+        // If it is selected
+        if (this.selectedDate && cellDate.getTime() === this.selectedDate.getTime()) {
+          dayCell.classList.add('active');
+        }
+        
+        // If it is in the past, disable it
+        if (cellDate < today) {
+          dayCell.classList.add('disabled');
+        } else {
+          dayCell.addEventListener('click', () => this.selectDate(cellDate, dayCell));
+        }
+        
+        this.daysGridEl.appendChild(dayCell);
+      }
+    },
+    
+    selectDate(date, cellElement) {
+      // Remove active class from previous active day
+      this.daysGridEl.querySelectorAll('.calendar-day.active').forEach(el => el.classList.remove('active'));
+      
+      // Set new active day
+      cellElement.classList.add('active');
+      this.selectedDate = date;
+      
+      // Sync date with the booking form Date input!
+      const bookingDateInput = document.getElementById('booking-date');
+      if (bookingDateInput) {
+        const offset = date.getTimezoneOffset();
+        const adjustedDate = new Date(date.getTime() - (offset*60*1000));
+        const dateStr = adjustedDate.toISOString().split('T')[0];
+        bookingDateInput.value = dateStr;
+        
+        // Trigger change event to validate
+        bookingDateInput.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      
+      // Display available slots
+      this.selectedDateStr.textContent = `${this.months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+      this.slotsContainer.style.display = 'block';
+      this.renderSlots(date);
+    },
+    
+    renderSlots(date) {
+      this.slotsGrid.innerHTML = '';
+      
+      const dayOfWeek = date.getDay();
+      
+      // Sundays closed
+      if (dayOfWeek === 0) {
+        this.slotsGrid.innerHTML = '<p style="grid-column: 1 / -1; color: var(--text-tertiary); text-align: center; width: 100%;">No slots available on Sundays. Please select another date.</p>';
+        return;
+      }
+      
+      // Generate some available slots
+      const daySlots = dayOfWeek % 2 === 0 
+        ? ['9:00 AM', '11:00 AM', '1:00 PM', '3:00 PM']
+        : ['8:00 AM', '10:00 AM', '12:00 PM', '2:00 PM', '4:00 PM'];
+        
+      daySlots.forEach(time => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.classList.add('slot-btn');
+        btn.textContent = time;
+        
+        // Check if this slot matches current selected form time
+        const bookingTimeSelect = document.getElementById('booking-time');
+        if (bookingTimeSelect && bookingTimeSelect.value === time) {
+          btn.classList.add('selected');
+        }
+        
+        btn.addEventListener('click', () => {
+          this.slotsGrid.querySelectorAll('.slot-btn.selected').forEach(el => el.classList.remove('selected'));
+          btn.classList.add('selected');
+          
+          // Sync with form time select
+          if (bookingTimeSelect) {
+            bookingTimeSelect.value = time;
+            bookingTimeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+        
+        this.slotsGrid.appendChild(btn);
+      });
+    }
+  };
+
+  /* --------------------------------------------------------
+     6. INITIALIZATION
      -------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
     BookingForm.init();
     PricingCalculator.init();
+    CalendarWidget.init();
   });
 
 })();
