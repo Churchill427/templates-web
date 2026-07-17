@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery — Page not found. Let us help you find what you're looking for.">
+  <title>CRUM — 404 Page Not Found</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    /* === 404 PAGE SPECIFIC STYLES === */
+
+    /* Crumbs Scatter Animation */
+    .crumbs-container {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .crumb {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--color-secondary);
+      border-radius: 50% 30% 50% 30%;
+      opacity: 0;
+    }
+
+    @keyframes crumbFall {
+      0% { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+      20% { opacity: 0.8; }
+      100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+    }
+
+    .crumb:nth-child(1) { left: 10%; animation: crumbFall 4s 0.2s infinite; width: 6px; height: 6px; }
+    .crumb:nth-child(2) { left: 25%; animation: crumbFall 5s 0.8s infinite; width: 10px; height: 10px; }
+    .crumb:nth-child(3) { left: 40%; animation: crumbFall 3.5s 0.4s infinite; width: 5px; height: 5px; }
+    .crumb:nth-child(4) { left: 55%; animation: crumbFall 4.5s 1.2s infinite; width: 8px; height: 8px; }
+    .crumb:nth-child(5) { left: 70%; animation: crumbFall 3.8s 0.6s infinite; width: 7px; height: 7px; }
+    .crumb:nth-child(6) { left: 85%; animation: crumbFall 4.2s 1s infinite; width: 9px; height: 9px; }
+    .crumb:nth-child(7) { left: 15%; animation: crumbFall 5.2s 1.5s infinite; width: 4px; height: 4px; }
+    .crumb:nth-child(8) { left: 65%; animation: crumbFall 3.2s 0.3s infinite; width: 6px; height: 6px; }
+
+    /* Error Code Display */
+    .error-code-display {
+      font-family: var(--font-heading);
+      font-size: clamp(6rem, 15vw, 14rem);
+      font-weight: var(--fw-extrabold);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-secondary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: var(--space-md);
+      position: relative;
+      text-shadow: none;
+    }
+
+    .error-code-display::after {
+      content: '404';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(139,69,19,0.15), rgba(210,105,30,0.15));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Error Content Card */
+    .error-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .error-content .error-icon {
+      font-size: 4rem;
+      color: var(--color-accent);
+      margin-bottom: var(--space-lg);
+      display: inline-block;
+      animation: iconWobble 2s ease-in-out infinite;
+    }
+
+    @keyframes iconWobble {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-8deg); }
+      75% { transform: rotate(8deg); }
+    }
+
+    .error-illustration {
+      max-width: 280px;
+      margin: 0 auto var(--space-2xl);
+      position: relative;
+    }
+
+    .error-illustration img {
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .oven-timer {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 16px rgba(210,105,30,0.4);
+      animation: timerPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes timerPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Nav Help Cards */
+    .nav-help-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .nav-help-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      text-align: center;
+      transition: all var(--transition-base);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-help-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent);
+    }
+
+    .nav-help-card .nav-help-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(210,105,30,0.1), rgba(139,69,19,0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-lg);
+      font-size: 1.5rem;
+      color: var(--color-accent);
+      transition: all var(--transition-base);
+    }
+
+    .nav-help-card:hover .nav-help-icon {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+      color: #fff;
+      animation: iconBounce 0.4s ease;
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-6px); }
+      60% { transform: translateY(-3px); }
+    }
+
+    .nav-help-card h3 {
+      font-size: var(--fs-h4);
+      margin-bottom: var(--space-xs);
+    }
+
+    .nav-help-card p {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Popular Pages Mini Sitemap */
+    .popular-pages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .popular-page-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      border-radius: var(--radius-lg);
+      transition: all var(--transition-base);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .popular-page-item:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .popular-page-item .page-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-small);
+      flex-shrink: 0;
+    }
+
+    .popular-page-item h4 {
+      font-size: var(--fs-body);
+      margin-bottom: var(--space-2xs);
+    }
+
+    .popular-page-item p {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Search Section */
+    .search-section-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .search-bar-404 {
+      display: flex;
+      gap: 0;
+      margin-top: var(--space-xl);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--border-color);
+      transition: border-color var(--transition-base);
+    }
+
+    .search-bar-404:focus-within {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg), 0 0 0 4px rgba(210,105,30,0.1);
+    }
+
+    .search-bar-404 input {
+      flex: 1;
+      border: none;
+      padding: var(--space-md) var(--space-xl);
+      font-size: var(--fs-body);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      outline: none;
+      min-height: 52px;
+    }
+
+    .search-bar-404 input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-bar-404 button {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+      color: #fff;
+      border: none;
+      padding: var(--space-md) var(--space-xl);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: opacity var(--transition-fast);
+      min-width: 56px;
+    }
+
+    .search-bar-404 button:hover {
+      opacity: 0.9;
+    }
+
+    .popular-terms {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .popular-term {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+      padding: 0.4rem 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      border-radius: var(--radius-full);
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .popular-term:hover {
+      background: var(--color-accent);
+      color: #fff;
+      border-color: var(--color-accent);
+    }
+
+    /* Contact CTA Banner */
+    .contact-cta-banner {
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-4xl) var(--page-padding);
+      text-align: center;
+    }
+
+    .contact-cta-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .contact-cta-bg {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent), #8B4513, #D2691E, var(--color-primary));
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    .contact-cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-cta-content h2 {
+      color: #fff;
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-cta-content p {
+      color: rgba(255,255,255,0.85);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      margin-bottom: var(--space-xl);
+    }
+
+    .contact-cta-actions {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive Overrides */
+    @media (max-width: 1023px) {
+      .nav-help-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .popular-pages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 639px) {
+      .nav-help-grid {
+        grid-template-columns: 1fr;
+      }
+      .popular-pages-grid {
+        grid-template-columns: 1fr;
+      }
+      .search-bar-404 {
+        flex-direction: column;
+        border-radius: var(--radius-lg);
+      }
+      .search-bar-404 input {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      }
+      .search-bar-404 button {
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        min-height: 48px;
+      }
+      .contact-cta-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .crumb { animation: none !important; }
+      .error-content .error-icon { animation: none; }
+      .oven-timer { animation: none; }
+      .contact-cta-bg { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       SCROLL PROGRESS BAR
+       ============================================ -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============================================
+       NAVBAR
+       ============================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="CRUM Home">
+        <div class="logo-icon">
+          <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+        </div>
+        <span class="logo-text">CRUM</span>
+      </a>
+
+      <div class="navbar-links">
+        <div class="nav-dropdown" id="home-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a>
+            <a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="book-now.html" class="nav-link nav-cta">Book Now</a>
+      </div>
+
+      <div class="navbar-controls">
+        <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction">
+          <span class="rtl-label">LTR</span>
+        </button>
+        <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode">
+          <i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       MOBILE MENU
+       ============================================ -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-nav-links">
+      <a href="#" class="mobile-nav-link mobile-dropdown-toggle">
+        <i class="ph ph-house" aria-hidden="true"></i>
+        Home
+        <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i>
+      </a>
+      <div class="mobile-dropdown-content">
+        <a href="index.html" class="mobile-dropdown-item">Home 1</a>
+        <a href="home-b.html" class="mobile-dropdown-item">Home 2</a>
+      </div>
+      <a href="about.html" class="mobile-nav-link">
+        <i class="ph ph-info" aria-hidden="true"></i> About
+      </a>
+      <a href="services.html" class="mobile-nav-link">
+        <i class="ph ph-storefront" aria-hidden="true"></i> Services
+      </a>
+      <a href="portfolio.html" class="mobile-nav-link">
+        <i class="ph ph-images" aria-hidden="true"></i> Portfolio
+      </a>
+      <a href="blog.html" class="mobile-nav-link">
+        <i class="ph ph-newspaper" aria-hidden="true"></i> Blog
+      </a>
+      <a href="contact.html" class="mobile-nav-link">
+        <i class="ph ph-envelope" aria-hidden="true"></i> Contact
+      </a>
+      <a href="book-now.html" class="mobile-nav-link">
+        <i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now
+      </a>
+    </div>
+    <div class="mobile-controls">
+      <button class="mobile-toggle-btn" data-toggle-rtl>
+        <i class="ph ph-arrows-left-right" aria-hidden="true"></i>
+        <span class="rtl-label">LTR</span>
+      </button>
+      <button class="mobile-toggle-btn" data-toggle-theme>
+        <i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i>
+        <span>Theme</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============================================
+         SECTION 1: HERO — "This Batch is Missing"
+         ============================================ -->
+    <section class="hero-mini" id="hero-404" aria-label="404 error hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?w=1600&q=80"
+             alt="Empty baking tray with scattered crumbs on a flour-dusted surface"
+             loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="crumbs-container" aria-hidden="true">
+        <div class="crumb"></div>
+        <div class="crumb"></div>
+        <div class="crumb"></div>
+        <div class="crumb"></div>
+        <div class="crumb"></div>
+        <div class="crumb"></div>
+        <div class="crumb"></div>
+        <div class="crumb"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-animate-in">Oops! This Batch is Missing</h1>
+        <p class="hero-animate-in-delay-1">The page you're looking for seems to have slipped out of the oven. Let us help you find something delicious instead.</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: ERROR MESSAGE & ILLUSTRATION
+         ============================================ -->
+    <section class="section" id="error-message" aria-label="Error message">
+      <div class="container">
+        <div class="error-content reveal">
+          <div class="error-code-display" aria-label="Error 404">404</div>
+          <div class="error-illustration">
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80"
+                 alt="Empty wooden baking tray with a few scattered crumbs"
+                 loading="lazy">
+            <div class="oven-timer" aria-hidden="true">
+              <i class="ph ph-timer"></i>
+            </div>
+          </div>
+          <i class="ph ph-cookie error-icon" aria-hidden="true"></i>
+          <h2>This Recipe Doesn't Exist</h2>
+          <p class="mt-md">The page you requested may have been moved, removed, or simply never baked. But don't worry — we have plenty of fresh offerings waiting for you.</p>
+          <a href="index.html" class="btn btn-primary mt-xl" id="error-home-cta">
+            <i class="ph ph-house" aria-hidden="true"></i> Return Home
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: NAVIGATION HELP
+         ============================================ -->
+    <section class="section section-alt" id="nav-help" aria-label="Navigation help">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Quick Navigation</span>
+          <h2>Where Would You Like to Go?</h2>
+          <hr class="section-divider">
+          <p>Here are some helpful links to get you back on track.</p>
+        </div>
+
+        <div class="nav-help-grid">
+          <a href="index.html" class="nav-help-card reveal stagger-1" id="nav-help-home">
+            <div class="nav-help-icon">
+              <i class="ph ph-house" aria-hidden="true"></i>
+            </div>
+            <h3>Home</h3>
+            <p>Back to our bakery homepage</p>
+          </a>
+          <a href="services.html" class="nav-help-card reveal stagger-2" id="nav-help-menu">
+            <div class="nav-help-icon">
+              <i class="ph ph-bread" aria-hidden="true"></i>
+            </div>
+            <h3>Our Menu</h3>
+            <p>Browse cakes, pastries & breads</p>
+          </a>
+          <a href="contact.html" class="nav-help-card reveal stagger-3" id="nav-help-contact">
+            <div class="nav-help-icon">
+              <i class="ph ph-chat-circle-dots" aria-hidden="true"></i>
+            </div>
+            <h3>Contact Us</h3>
+            <p>Get in touch with our team</p>
+          </a>
+          <a href="book-now.html" class="nav-help-card reveal stagger-4" id="nav-help-book">
+            <div class="nav-help-icon">
+              <i class="ph ph-calendar-check" aria-hidden="true"></i>
+            </div>
+            <h3>Book Now</h3>
+            <p>Place an order or reservation</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: POPULAR PAGES
+         ============================================ -->
+    <section class="section" id="popular-pages" aria-label="Popular pages">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Most Visited</span>
+          <h2>Popular Pages</h2>
+          <hr class="section-divider">
+          <p>These are the pages our visitors love the most.</p>
+        </div>
+
+        <div class="popular-pages-grid">
+          <a href="services.html" class="popular-page-item reveal stagger-1" id="pop-services">
+            <span class="page-num">1</span>
+            <div>
+              <h4>Our Creations</h4>
+              <p>Full catalog of cakes, pastries, and daily bakes with pricing.</p>
+            </div>
+          </a>
+          <a href="portfolio.html" class="popular-page-item reveal stagger-2" id="pop-portfolio">
+            <span class="page-num">2</span>
+            <div>
+              <h4>Gallery</h4>
+              <p>Stunning photography of our wedding, celebration, and custom cakes.</p>
+            </div>
+          </a>
+          <a href="book-now.html" class="popular-page-item reveal stagger-3" id="pop-book">
+            <span class="page-num">3</span>
+            <div>
+              <h4>Book Now</h4>
+              <p>Schedule a pickup, delivery, or start your custom order today.</p>
+            </div>
+          </a>
+          <a href="about.html" class="popular-page-item reveal stagger-4" id="pop-about">
+            <span class="page-num">4</span>
+            <div>
+              <h4>Our Story</h4>
+              <p>Meet the team and learn about our heritage and mission.</p>
+            </div>
+          </a>
+          <a href="blog.html" class="popular-page-item reveal stagger-5" id="pop-blog">
+            <span class="page-num">5</span>
+            <div>
+              <h4>Blog</h4>
+              <p>Recipes, baking tips, and behind-the-scenes stories from our oven.</p>
+            </div>
+          </a>
+          <a href="contact.html" class="popular-page-item reveal stagger-6" id="pop-contact">
+            <span class="page-num">6</span>
+            <div>
+              <h4>Contact</h4>
+              <p>Find us, call us, or send a message — we'd love to hear from you.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: SEARCH SUGGESTION
+         ============================================ -->
+    <section class="section section-alt" id="search-section" aria-label="Search suggestion">
+      <div class="container">
+        <div class="search-section-inner reveal">
+          <i class="ph ph-magnifying-glass" style="font-size:2.5rem; color:var(--color-accent); margin-bottom:var(--space-lg); display:block;" aria-hidden="true"></i>
+          <h2>Search Our Bakery</h2>
+          <p class="mt-md">Try searching for what you were looking for — we might have just moved it to a new shelf.</p>
+
+          <div class="search-bar-404" id="search-bar-404">
+            <input type="text" placeholder="Search for cakes, pastries, recipes..." id="search-input-404" aria-label="Search CRUM bakery">
+            <button type="button" id="search-btn-404" aria-label="Search">
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="popular-terms" aria-label="Popular search terms">
+            <a href="services.html" class="popular-term">
+              <i class="ph ph-fire" aria-hidden="true"></i> Wedding Cakes
+            </a>
+            <a href="services.html" class="popular-term">
+              <i class="ph ph-fire" aria-hidden="true"></i> Custom Orders
+            </a>
+            <a href="services.html" class="popular-term">
+              <i class="ph ph-fire" aria-hidden="true"></i> Sourdough Bread
+            </a>
+            <a href="blog.html" class="popular-term">
+              <i class="ph ph-fire" aria-hidden="true"></i> Recipes
+            </a>
+            <a href="services.html" class="popular-term">
+              <i class="ph ph-fire" aria-hidden="true"></i> Birthday Cakes
+            </a>
+            <a href="book-now.html" class="popular-term">
+              <i class="ph ph-fire" aria-hidden="true"></i> Catering
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: CONTACT CTA
+         ============================================ -->
+    <section class="contact-cta-banner" id="contact-cta-404" aria-label="Contact us">
+      <div class="contact-cta-bg" aria-hidden="true"></div>
+      <div class="contact-cta-content reveal">
+        <i class="ph ph-lifebuoy" style="font-size:3rem; color:#fff; margin-bottom:var(--space-lg); display:block;" aria-hidden="true"></i>
+        <h2>Can't Find What You Need?</h2>
+        <p>Our team is always happy to help. Reach out and we'll point you in the right direction — or bake you something special.</p>
+        <div class="contact-cta-actions">
+          <a href="contact.html" class="btn btn-outline-white btn-lg" id="cta-contact-btn">
+            <i class="ph ph-envelope" aria-hidden="true"></i> Contact Us
+          </a>
+          <a href="tel:+15035552786" class="btn btn-outline-white btn-lg" id="cta-call-btn">
+            <i class="ph ph-phone" aria-hidden="true"></i> Call Now
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="CRUM Home">
+          <div class="logo-icon">
+            <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+          </div>
+          <span class="logo-text">CRUM</span>
+        </a>
+        <p>Handcrafted artisan breads, pastries, and celebration cakes. Baking with love and tradition since 2012.</p>
+        <div class="footer-social">
+          <a href="#" class="social-instagram" aria-label="Follow us on Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-facebook" aria-label="Follow us on Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-pinterest" aria-label="Follow us on Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-tiktok" aria-label="Follow us on TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <div class="footer-links">
+          <a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a>
+          <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a>
+          <a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a>
+          <a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a>
+          <a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item">
+          <i class="ph ph-map-pin" aria-hidden="true"></i>
+          <span>128 Flour Lane, Baker's Quarter, Portland, OR 97201</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph ph-phone" aria-hidden="true"></i>
+          <span>+1 (503) 555-CRUM</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+          <span>hello@crumbakery.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph ph-clock" aria-hidden="true"></i>
+          <span>Mon–Fri: 6AM–7PM</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Newsletter</h4>
+        <p style="color:rgba(245,222,179,0.7); font-size:var(--fs-small); margin-bottom:var(--space-md);">
+          Get fresh updates on new flavors, seasonal specials, and exclusive offers.
+        </p>
+        <div class="footer-newsletter">
+          <form class="newsletter-form" id="footer-newsletter-form" aria-label="Newsletter signup">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email address">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+              <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 CRUM Bakery. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="login.html">Admin Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="ph ph-caret-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+
+  <!-- Page-Specific Script: Search & Interactions -->
+  <script>
+    (function() {
+      // Search functionality
+      const searchInput = document.getElementById('search-input-404');
+      const searchBtn = document.getElementById('search-btn-404');
+
+      function handleSearch() {
+        const query = searchInput.value.trim();
+        if (query) {
+          // Redirect to services as a mock search result
+          window.location.href = 'services.html';
+        } else {
+          searchInput.focus();
+          searchInput.classList.add('shake');
+          setTimeout(() => searchInput.classList.remove('shake'), 600);
+        }
+      }
+
+      if (searchBtn) {
+        searchBtn.addEventListener('click', handleSearch);
+      }
+      if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') handleSearch();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery — Home 2 crafted with precision and passion. Discover our signature cakes, custom designs, and artisan pastries.">
+  <title>CRUM — Home 2 | Premium Bakery & Cake Shop</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    /* === HOME B SPECIFIC STYLES === */
+
+    /* Hero B: Modern */
+    .hero-b {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-b .hero-bg img {
+      animation: heroSlowZoom 25s ease alternate infinite;
+    }
+
+    .hero-b .hero-content {
+      max-width: 700px;
+    }
+
+    .hero-b .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+      font-weight: var(--fw-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-b .hero-btns {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Process Timeline */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-primary), var(--color-accent));
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-h4);
+      margin: 0 auto var(--space-lg);
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(210, 105, 30, 0.3);
+    }
+
+    .process-step-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin: 0 auto var(--space-md);
+    }
+
+    .process-step-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 1023px) {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .process-grid::before { display: none; }
+    }
+
+    @media (max-width: 639px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+    }
+
+    /* Signature Collection Slider */
+    .signature-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+    }
+
+    .signature-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .signature-slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+      padding: var(--space-2xl);
+    }
+
+    .signature-img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      height: 400px;
+    }
+
+    .signature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .signature-info h3 {
+      font-size: var(--fs-h2);
+      margin-bottom: var(--space-sm);
+    }
+
+    .signature-info .sig-price {
+      font-family: var(--font-heading);
+      font-size: var(--fs-h3);
+      color: var(--color-accent);
+      margin-bottom: var(--space-lg);
+    }
+
+    .signature-flavors {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-xl);
+    }
+
+    .signature-flavors .flavor-tag {
+      padding: 0.3rem 0.8rem;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-full);
+      font-size: var(--fs-xs);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .carousel-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .carousel-nav-btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .carousel-dots-custom {
+      display: flex;
+      gap: var(--space-xs);
+    }
+
+    .carousel-dot-custom {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-color);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      padding: 0;
+    }
+
+    .carousel-dot-custom.active {
+      background: var(--color-accent);
+      width: 24px;
+      border-radius: var(--radius-full);
+    }
+
+    @media (max-width: 1023px) {
+      .signature-slide {
+        grid-template-columns: 1fr;
+        padding: var(--space-xl);
+        gap: var(--space-xl);
+      }
+      .signature-img { height: 320px; }
+    }
+
+    @media (max-width: 639px) {
+      .signature-slide {
+        padding: var(--space-lg);
+      }
+      .signature-img { height: 250px; }
+    }
+
+    /* Flavor Lab */
+    .flavor-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .flavor-card {
+      text-align: center;
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      transition: all var(--transition-base);
+      cursor: pointer;
+    }
+
+    .flavor-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .flavor-card-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto var(--space-md);
+    }
+
+    .flavor-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .flavor-card h4 {
+      margin-bottom: var(--space-xs);
+    }
+
+    .flavor-card .flavor-type {
+      font-size: var(--fs-xs);
+      color: var(--color-accent);
+      font-weight: var(--fw-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 1023px) {
+      .flavor-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 639px) {
+      .flavor-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: var(--space-md);
+        padding-bottom: var(--space-sm);
+        scrollbar-width: none;
+      }
+      .flavor-grid::-webkit-scrollbar { display: none; }
+      .flavor-card {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        width: 200px;
+      }
+    }
+
+    /* Client Stories */
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .story-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-lg);
+      padding: var(--space-xl);
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color-light);
+      transition: all var(--transition-base);
+    }
+
+    .story-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .story-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-secondary);
+    }
+
+    @media (max-width: 639px) {
+      .stories-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Newsletter + Social Section */
+    .newsletter-social-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: start;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xs);
+    }
+
+    .social-grid-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+
+    .social-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+
+    .social-grid-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .newsletter-card {
+      padding: var(--space-2xl);
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-color-light);
+    }
+
+    @media (max-width: 1023px) {
+      .newsletter-social-split { grid-template-columns: 1fr; gap: var(--space-xl); }
+    }
+    @media (max-width: 639px) {
+      .social-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body class="page-hero">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- NAVBAR (same as Home A) -->
+  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="CRUM Home">
+        <div class="logo-icon">
+          <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+        </div>
+        <span class="logo-text">CRUM</span>
+      </a>
+      <div class="navbar-links">
+        <div class="nav-dropdown" id="home-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle active" aria-haspopup="true" aria-expanded="false">
+            Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a>
+            <a href="home-b.html" class="nav-dropdown-item active" role="menuitem">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="book-now.html" class="nav-link nav-cta">Book Now</a>
+      </div>
+      <div class="navbar-controls">
+        <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button>
+        <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-nav-links">
+      <a href="#" class="mobile-nav-link mobile-dropdown-toggle active">
+        <i class="ph ph-house" aria-hidden="true"></i> Home
+        <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i>
+      </a>
+      <div class="mobile-dropdown-content">
+        <a href="index.html" class="mobile-dropdown-item">Home 1</a>
+        <a href="home-b.html" class="mobile-dropdown-item active">Home 2</a>
+      </div>
+      <a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a>
+      <a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a>
+      <a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a>
+      <a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a>
+      <a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a>
+      <a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a>
+    </div>
+    <div class="mobile-controls">
+      <button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button>
+      <button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============================================
+         SECTION 1: HERO — Home 2
+         ============================================ -->
+    <section class="hero hero-b" id="hero" aria-label="Hero banner">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1600&q=80"
+             alt="Minimalist white marble surface with single perfect pastry under dramatic side lighting"
+             loading="eager">
+      </div>
+      <div class="hero-overlay" style="background:linear-gradient(135deg, rgba(26,18,11,0.7) 0%, rgba(44,24,16,0.4) 100%);"></div>
+      <div class="hero-content">
+        <p class="hero-subtitle hero-animate-in">Where Precision Meets Passion</p>
+        <h1 class="hero-animate-in-delay-1" data-char-reveal data-char-delay="40" style="font-size:var(--fs-display);margin-bottom:var(--space-xl);">
+          <span class="font-logo" style="display:block;font-size:1.2em;">CRUM</span>
+        </h1>
+        <div class="hero-btns hero-animate-in-delay-2">
+          <a href="services.html" class="btn btn-primary btn-lg" id="hero-cta-menu">View Menu</a>
+          <a href="book-now.html" class="btn btn-outline-white btn-lg" id="hero-cta-book">Book Now</a>
+        </div>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Discover</span>
+        <i class="ph ph-caret-double-down"></i>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: THE PROCESS
+         ============================================ -->
+    <section class="section" id="process" aria-label="Our process">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">How It Works</span>
+          <h2>The Process</h2>
+          <hr class="section-divider">
+          <p>From your first idea to the final masterpiece — four simple steps to your dream creation.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step reveal stagger-1" id="step-select">
+            <div class="process-step-num">1</div>
+            <div class="process-step-icon">
+              <img src="assets/images/process-step-1.png" alt="Chef browsing cake designs on tablet" loading="lazy">
+            </div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Select</h3>
+            <p class="text-small text-muted">Browse our collection or describe your dream cake.</p>
+          </div>
+          <div class="process-step reveal stagger-2" id="step-customize">
+            <div class="process-step-num">2</div>
+            <div class="process-step-icon">
+              <img src="assets/images/process-step-2.png" alt="Baker decorating cake with precision" loading="lazy">
+            </div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Customize</h3>
+            <p class="text-small text-muted">Choose flavors, sizes, and personal touches.</p>
+          </div>
+          <div class="process-step reveal stagger-3" id="step-bake">
+            <div class="process-step-num">3</div>
+            <div class="process-step-icon">
+              <img src="assets/images/process-step-3.png" alt="Fresh baked goods coming out of oven" loading="lazy">
+            </div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Bake</h3>
+            <p class="text-small text-muted">Artisans handcraft with premium ingredients.</p>
+          </div>
+          <div class="process-step reveal stagger-4" id="step-deliver">
+            <div class="process-step-num">4</div>
+            <div class="process-step-icon">
+              <img src="assets/images/process-step-4.png" alt="Packaged bakery box ready for delivery" loading="lazy">
+            </div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Deliver</h3>
+            <p class="text-small text-muted">Carefully packaged to your door, celebration-ready.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: SIGNATURE COLLECTION
+         ============================================ -->
+    <section class="section section-alt" id="signature" aria-label="Signature collection">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Premium Selection</span>
+          <h2>Signature Collection</h2>
+          <hr class="section-divider">
+          <p>Our most celebrated creations, each a testament to the art of confection.</p>
+        </div>
+
+        <div class="signature-carousel" id="sig-carousel">
+          <div class="signature-track" id="sig-track">
+            <!-- Slide 1 -->
+            <div class="signature-slide">
+              <div class="signature-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80" alt="Midnight Velvet dark chocolate cake with gold leaf" loading="lazy"></div>
+              <div class="signature-info">
+                <span class="badge badge-accent">Bestseller</span>
+                <h3>Midnight Velvet</h3>
+                <div class="sig-price">$65.00</div>
+                <p class="text-secondary">Dark chocolate ganache layers with blackberry compote and edible gold leaf. Rich, indulgent, and utterly stunning.</p>
+                <div class="signature-flavors">
+                  <span class="flavor-tag">Dark Chocolate</span>
+                  <span class="flavor-tag">Blackberry</span>
+                  <span class="flavor-tag">Vanilla</span>
+                </div>
+                <a href="book-now.html" class="btn btn-primary btn-inline">Order This Cake</a>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="signature-slide">
+              <div class="signature-img"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=700&q=80" alt="Rose Garden cake with pistachio cream and crystallized petals" loading="lazy"></div>
+              <div class="signature-info">
+                <span class="badge badge-secondary">New</span>
+                <h3>Rose Garden</h3>
+                <div class="sig-price">$72.00</div>
+                <p class="text-secondary">Delicate rosewater sponge with Persian pistachio cream and crystallized rose petals. A romantic masterpiece.</p>
+                <div class="signature-flavors">
+                  <span class="flavor-tag">Rosewater</span>
+                  <span class="flavor-tag">Pistachio</span>
+                  <span class="flavor-tag">White Chocolate</span>
+                </div>
+                <a href="book-now.html" class="btn btn-primary btn-inline">Order This Cake</a>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="signature-slide">
+              <div class="signature-img"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=700&q=80" alt="Tropical Sunrise mango mousse cake" loading="lazy"></div>
+              <div class="signature-info">
+                <span class="badge badge-warning">Seasonal</span>
+                <h3>Tropical Sunrise</h3>
+                <div class="sig-price">$58.00</div>
+                <p class="text-secondary">Mango mousse layers with passion fruit curd and toasted coconut flakes. Summer in every bite.</p>
+                <div class="signature-flavors">
+                  <span class="flavor-tag">Mango</span>
+                  <span class="flavor-tag">Passion Fruit</span>
+                  <span class="flavor-tag">Coconut</span>
+                </div>
+                <a href="book-now.html" class="btn btn-primary btn-inline">Order This Cake</a>
+              </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="signature-slide">
+              <div class="signature-img"><img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=700&q=80" alt="Caramel Royale cake with hazelnut praline" loading="lazy"></div>
+              <div class="signature-info">
+                <span class="badge badge-accent">Popular</span>
+                <h3>Caramel Royale</h3>
+                <div class="sig-price">$68.00</div>
+                <p class="text-secondary">Salted caramel drizzle over hazelnut praline layers with Belgian chocolate. Decadently irresistible.</p>
+                <div class="signature-flavors">
+                  <span class="flavor-tag">Caramel</span>
+                  <span class="flavor-tag">Hazelnut</span>
+                  <span class="flavor-tag">Belgian Chocolate</span>
+                </div>
+                <a href="book-now.html" class="btn btn-primary btn-inline">Order This Cake</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-nav" id="sig-nav">
+          <button class="carousel-nav-btn" id="sig-prev" aria-label="Previous slide"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+          <div class="carousel-dots-custom" id="sig-dots"></div>
+          <button class="carousel-nav-btn" id="sig-next" aria-label="Next slide"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: FLAVOR LAB
+         ============================================ -->
+    <section class="section" id="flavor-lab" aria-label="Flavor lab">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Explore Flavors</span>
+          <h2>The Flavor Lab</h2>
+          <hr class="section-divider">
+          <p>Our palette of flavors spans the globe. From classic vanilla to exotic yuzu — discover your next favorite.</p>
+        </div>
+
+        <div class="flavor-grid">
+          <div class="flavor-card reveal stagger-1" id="flavor-chocolate">
+            <div class="flavor-card-img"><img src="assets/images/flavor-chocolate-new.png" alt="Rich dark chocolate pieces" loading="lazy"></div>
+            <h4>Dark Chocolate</h4>
+            <p class="text-small text-muted mb-sm">70% Belgian cacao, deep and rich</p>
+            <span class="flavor-type">Core Flavor</span>
+          </div>
+          <div class="flavor-card reveal stagger-2" id="flavor-vanilla">
+            <div class="flavor-card-img"><img src="assets/images/flavor-vanilla-new.png" alt="Fresh vanilla pods on wooden surface" loading="lazy"></div>
+            <h4>Madagascar Vanilla</h4>
+            <p class="text-small text-muted mb-sm">Real bean extract, smooth and aromatic</p>
+            <span class="flavor-type">Core Flavor</span>
+          </div>
+          <div class="flavor-card reveal stagger-3" id="flavor-strawberry">
+            <div class="flavor-card-img"><img src="assets/images/flavor-strawberry-new.png" alt="Fresh red strawberries in a bowl" loading="lazy"></div>
+            <h4>Wild Strawberry</h4>
+            <p class="text-small text-muted mb-sm">Hand-picked berries, naturally sweet</p>
+            <span class="flavor-type">Seasonal</span>
+          </div>
+          <div class="flavor-card reveal stagger-4" id="flavor-pistachio">
+            <div class="flavor-card-img"><img src="assets/images/flavor-pistachio-new.png" alt="Green pistachio nuts and paste" loading="lazy"></div>
+            <h4>Persian Pistachio</h4>
+            <p class="text-small text-muted mb-sm">Roasted and ground, nutty perfection</p>
+            <span class="flavor-type">Premium</span>
+          </div>
+          <div class="flavor-card reveal stagger-5" id="flavor-matcha">
+            <div class="flavor-card-img"><img src="assets/images/flavor-matcha-new.png" alt="Matcha green tea powder in ceramic bowl" loading="lazy"></div>
+            <h4>Kyoto Matcha</h4>
+            <p class="text-small text-muted mb-sm">Ceremonial grade, earthy and vibrant</p>
+            <span class="flavor-type">Premium</span>
+          </div>
+          <div class="flavor-card reveal stagger-6" id="flavor-lavender">
+            <div class="flavor-card-img"><img src="assets/images/flavor-lavender-new.png" alt="Fresh lavender sprigs in bloom" loading="lazy"></div>
+            <h4>French Lavender</h4>
+            <p class="text-small text-muted mb-sm">Floral and delicate, pairs with honey</p>
+            <span class="flavor-type">Seasonal</span>
+          </div>
+          <div class="flavor-card reveal stagger-7" id="flavor-caramel">
+            <div class="flavor-card-img"><img src="assets/images/flavor-caramel-new.png" alt="Golden salted caramel drizzle" loading="lazy"></div>
+            <h4>Salted Caramel</h4>
+            <p class="text-small text-muted mb-sm">Sea salt meets burnt sugar perfection</p>
+            <span class="flavor-type">Core Flavor</span>
+          </div>
+          <div class="flavor-card reveal stagger-8" id="flavor-lemon">
+            <div class="flavor-card-img"><img src="assets/images/flavor-lemon-new.png" alt="Fresh yellow lemons on vine" loading="lazy"></div>
+            <h4>Amalfi Lemon</h4>
+            <p class="text-small text-muted mb-sm">Bright, zesty, sunshine in a bite</p>
+            <span class="flavor-type">Seasonal</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: CLIENT STORIES
+         ============================================ -->
+    <section class="section section-alt" id="stories" aria-label="Client stories">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Happy Customers</span>
+          <h2>Client Stories</h2>
+          <hr class="section-divider">
+          <p>Real people, real celebrations, real love for CRUM.</p>
+        </div>
+
+        <div class="stories-grid">
+          <div class="story-card reveal stagger-1" id="story-1">
+            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=200&q=80" alt="Emma and Liam, wedding couple" class="story-avatar" loading="lazy">
+            <div>
+              <div class="star-rating mb-sm">
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+              </div>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"CRUM created the most stunning five-tier cake for our wedding. Every guest asked about it. Truly a masterpiece!"</p>
+              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Emma & Liam</p>
+              <p class="text-xs text-muted" style="margin:0;">Wedding Couple</p>
+            </div>
+          </div>
+          <div class="story-card reveal stagger-2" id="story-2">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Sarah Mitchell, regular customer" class="story-avatar" loading="lazy">
+            <div>
+              <div class="star-rating mb-sm">
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+              </div>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"The sourdough here has ruined me for all other bread. I'm here every Saturday morning without fail."</p>
+              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Sarah Mitchell</p>
+              <p class="text-xs text-muted" style="margin:0;">Regular Customer</p>
+            </div>
+          </div>
+          <div class="story-card reveal stagger-3" id="story-3">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Michael Torres, corporate client" class="story-avatar" loading="lazy">
+            <div>
+              <div class="star-rating mb-sm">
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+              </div>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"We order from CRUM for every company event. Professional, reliable, and the quality is unmatched."</p>
+              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Michael Torres</p>
+              <p class="text-xs text-muted" style="margin:0;">Corporate Client</p>
+            </div>
+          </div>
+          <div class="story-card reveal stagger-4" id="story-4">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" alt="Aisha Patel, birthday client" class="story-avatar" loading="lazy">
+            <div>
+              <div class="star-rating mb-sm">
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+              </div>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"My daughter's unicorn cake was absolute perfection. The attention to detail is incredible."</p>
+              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Aisha Patel</p>
+              <p class="text-xs text-muted" style="margin:0;">Birthday Client</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: NEWSLETTER + SOCIAL
+         ============================================ -->
+    <section class="section" id="newsletter-social" aria-label="Newsletter and social media">
+      <div class="container">
+        <div class="newsletter-social-split">
+          <!-- Newsletter -->
+          <div class="newsletter-card reveal-left">
+            <span class="section-label">Stay Updated</span>
+            <h2 style="margin-top:var(--space-sm);margin-bottom:var(--space-sm);">Join the CRUM Family</h2>
+            <p class="text-secondary mb-xl">Be the first to know about new flavors, seasonal specials, exclusive recipes, and limited-time offers.</p>
+            <form class="newsletter-form" id="home-b-newsletter" data-validate aria-label="Newsletter signup">
+              <div class="form-group" style="margin-bottom:var(--space-md);">
+                <input type="email" class="form-input" placeholder="Enter your email address" data-rules="required|email" required aria-label="Email address">
+              </div>
+              <button type="submit" class="btn btn-primary w-full">
+                <i class="ph ph-envelope-simple" aria-hidden="true"></i> Subscribe
+              </button>
+            </form>
+            <p class="text-xs text-muted mt-md">We respect your privacy. Unsubscribe anytime.</p>
+          </div>
+
+          <!-- Social Grid -->
+          <div class="reveal-right">
+            <span class="section-label">Follow @crumbakery</span>
+            <h2 style="margin-top:var(--space-sm);margin-bottom:var(--space-xl);">Behind the Counter</h2>
+            <div class="social-grid">
+              <div class="social-grid-item">
+                <img src="assets/images/behind-counter-1.png" alt="Behind the scenes bakery flour work" loading="lazy">
+              </div>
+              <div class="social-grid-item">
+                <img src="assets/images/behind-counter-2.png" alt="Baker decorating cupcakes" loading="lazy">
+              </div>
+              <div class="social-grid-item">
+                <img src="assets/images/behind-counter-3.png" alt="Colorful macarons in a row" loading="lazy">
+              </div>
+              <div class="social-grid-item">
+                <img src="assets/images/behind-counter-4.png" alt="Fresh bread loaves cooling on rack" loading="lazy">
+              </div>
+              <div class="social-grid-item">
+                <img src="assets/images/behind-counter-5.png" alt="Blueberry scones on baking sheet" loading="lazy">
+              </div>
+              <div class="social-grid-item">
+                <img src="assets/images/behind-counter-6.png" alt="Chocolate chip cookies fresh from oven" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (identical to Home A) -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="CRUM Home">
+          <div class="logo-icon">
+            <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+          </div>
+          <span class="logo-text">CRUM</span>
+        </a>
+        <p>Handcrafted artisan breads, pastries, and celebration cakes. Baking with love and tradition since 2012.</p>
+        <div class="footer-social">
+          <a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-tiktok" aria-label="TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <div class="footer-links">
+          <a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a>
+          <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a>
+          <a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a>
+          <a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a>
+          <a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Baker's Quarter, Portland, OR 97201</span></div>
+        <div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span></div>
+        <div class="footer-contact-item"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>hello@crumbakery.com</span></div>
+        <div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span></div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Newsletter</h4>
+        <p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh updates on new flavors, seasonal specials, and exclusive offers.</p>
+        <div class="footer-newsletter">
+          <form class="newsletter-form" aria-label="Footer newsletter signup">
+            <input type="email" class="newsletter-input" placeholder="Your email" required aria-label="Email address">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 CRUM Bakery. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="login.html">Admin Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up" aria-hidden="true"></i></button>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+
+  <!-- Signature Carousel Script -->
+  <script>
+    (function() {
+      const track = document.getElementById('sig-track');
+      const slides = track.querySelectorAll('.signature-slide');
+      const prevBtn = document.getElementById('sig-prev');
+      const nextBtn = document.getElementById('sig-next');
+      const dotsContainer = document.getElementById('sig-dots');
+      let current = 0;
+
+      // Create dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot-custom ${i === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+
+      function goTo(index) {
+        current = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsContainer.querySelectorAll('.carousel-dot-custom').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      // Auto-advance
+      let auto = setInterval(() => goTo(current + 1), 6000);
+      const carousel = document.getElementById('sig-carousel');
+      carousel.addEventListener('mouseenter', () => clearInterval(auto));
+      carousel.addEventListener('mouseleave', () => { auto = setInterval(() => goTo(current + 1), 6000); });
+
+      // Touch support
+      let startX = 0;
+      track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) diff > 0 ? goTo(current + 1) : goTo(current - 1);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery — Login to your account to manage orders, view history, and access exclusive offers.">
+  <title>CRUM — Login</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <style>
+    /* === LOGIN PAGE: NO SCROLL, NO NAV, NO FOOTER === */
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .login-page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      height: 100%;
+    }
+
+    /* Left: Bakery Image */
+    .login-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .login-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(139,69,19,0.6) 0%, rgba(44,24,16,0.8) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-3xl);
+      text-align: center;
+    }
+
+    .login-image-overlay .login-brand {
+      font-family: var(--font-logo);
+      font-size: 3.5rem;
+      color: #FFFFFF;
+      margin-bottom: var(--space-md);
+    }
+
+    .login-image-overlay p {
+      color: rgba(255,255,255,0.8);
+      font-size: var(--fs-body);
+      max-width: 320px;
+      margin: 0;
+    }
+
+    /* Right: Login Form */
+    .login-form-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-2xl);
+      background: var(--bg-base);
+      overflow-y: auto;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-card-header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .login-card-header .login-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    .login-card-header .login-logo .logo-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    .login-card-header .login-logo .logo-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .login-card-header .login-logo .logo-text {
+      font-family: var(--font-logo);
+      font-size: 2rem;
+      color: var(--color-primary);
+    }
+
+    .login-card-header h1 {
+      font-size: var(--fs-h3);
+      margin-bottom: var(--space-xs);
+    }
+
+    .login-card-header p {
+      color: var(--text-muted);
+      font-size: var(--fs-small);
+      margin: 0;
+    }
+
+    /* Social Buttons */
+    .social-login-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    /* Form */
+    .login-form .form-group {
+      margin-bottom: var(--space-md);
+    }
+
+    .login-form .form-group .form-label {
+      margin-bottom: var(--space-2xs);
+    }
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .form-row .form-check {
+      min-height: auto;
+    }
+
+    .forgot-link {
+      font-size: var(--fs-small);
+      color: var(--color-accent);
+      font-weight: var(--fw-medium);
+      transition: color var(--transition-fast);
+    }
+
+    .forgot-link:hover {
+      color: var(--color-accent-dark);
+      text-decoration: underline;
+    }
+
+    .login-footer {
+      text-align: center;
+      margin-top: var(--space-xl);
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+    }
+
+    .login-footer a {
+      color: var(--color-accent);
+      font-weight: var(--fw-semibold);
+    }
+
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Theme/RTL controls on login page */
+    .login-controls {
+      position: fixed;
+      top: var(--space-lg);
+      right: var(--space-lg);
+      display: flex;
+      gap: var(--space-sm);
+      z-index: 10;
+    }
+
+    .login-controls .toggle-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Password visibility toggle */
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper .form-input {
+      padding-right: 2.75rem;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.15rem;
+      padding: var(--space-2xs);
+      transition: color var(--transition-fast);
+    }
+
+    .password-toggle:hover {
+      color: var(--color-accent);
+    }
+
+    /* Tablet & Mobile: stack layout */
+    @media (max-width: 1023px) {
+      .login-page {
+        grid-template-columns: 1fr;
+      }
+
+      .login-image {
+        display: none;
+      }
+
+      .login-form-side {
+        padding: var(--space-xl) var(--page-padding);
+      }
+
+      .login-controls {
+        top: var(--space-md);
+        right: var(--space-md);
+      }
+    }
+
+    /* RTL */
+    [dir="rtl"] .login-controls {
+      right: auto;
+      left: var(--space-lg);
+    }
+
+    [dir="rtl"] .password-toggle {
+      right: auto;
+      left: 0.75rem;
+    }
+
+    [dir="rtl"] .password-wrapper .form-input {
+      padding-right: 1rem;
+      padding-left: 2.75rem;
+    }
+
+    [dir="rtl"] .form-row {
+      flex-direction: row-reverse;
+    }
+
+    /* Animation */
+    @keyframes loginCardFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .login-card {
+      animation: loginCardFloat 4s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .login-card { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme/RTL Controls (floating) -->
+  <div class="login-controls">
+    <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction">
+      <span class="rtl-label">LTR</span>
+    </button>
+    <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode">
+      <i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="login-page">
+    <!-- Left: Image Side -->
+    <div class="login-image">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=80"
+           alt="Warm bakery interior with fresh bread and pastries on display"
+           loading="eager">
+      <div class="login-image-overlay">
+        <div class="login-brand">CRUM</div>
+        <p>Where every crumb tells a story of craft, passion, and perfection.</p>
+      </div>
+    </div>
+
+    <!-- Right: Login Form -->
+    <div class="login-form-side">
+      <div class="login-card">
+        <!-- Header with Logo -->
+        <div class="login-card-header">
+          <div class="login-logo">
+            <div class="logo-icon">
+              <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+            </div>
+            <span class="logo-text">CRUM</span>
+          </div>
+          <h1>Welcome Back</h1>
+          <p>Sign in to your account to continue</p>
+        </div>
+
+        <!-- Social Login Buttons -->
+        <div class="social-login-group">
+          <button class="social-btn social-btn-google" type="button" id="login-google">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.02 10.02 0 0 0 2 12c0 1.61.39 3.14 1.08 4.49l3.76-2.4z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </button>
+          <button class="social-btn social-btn-apple" type="button" id="login-apple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+            </svg>
+            Continue with Apple
+          </button>
+          <button class="social-btn social-btn-facebook" type="button" id="login-facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+            </svg>
+            Continue with Facebook
+          </button>
+        </div>
+
+        <div class="auth-divider">or sign in with email</div>
+
+        <!-- Email/Password Form -->
+        <form class="login-form" id="login-form" data-validate>
+          <div class="form-group">
+            <label for="login-email" class="form-label">Email Address</label>
+            <input type="email" id="login-email" class="form-input" placeholder="you@example.com" data-rules="required|email" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="login-password" class="form-label">Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="login-password" class="form-input" placeholder="Enter your password" data-rules="required|minLength:8" autocomplete="current-password">
+              <button type="button" class="password-toggle" id="password-toggle" aria-label="Show password">
+                <i class="ph ph-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="form-check">
+              <input type="checkbox" name="remember" id="remember-me">
+              Remember me
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary w-full" id="login-submit">
+            Sign In
+          </button>
+        </form>
+
+        <div class="login-footer">
+          <p>Don't have an account? <a href="#">Create Account</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/forms.js"></script>
+
+  <script>
+    // Password visibility toggle
+    const toggleBtn = document.getElementById('password-toggle');
+    const passwordInput = document.getElementById('login-password');
+    
+    if (toggleBtn && passwordInput) {
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        const icon = toggleBtn.querySelector('i');
+        icon.className = isPassword ? 'ph ph-eye-slash' : 'ph ph-eye';
+      });
+    }
+
+    // Login form handler
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+      loginForm.addEventListener('form-success', (e) => {
+        if (window.CrumApp?.Toast) {
+          window.CrumApp.Toast.success('Login successful! Redirecting...');
+        }
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
+

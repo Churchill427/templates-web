@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery — Get in touch with us. Contact form, location, social media, and more.">
+  <title>CRUM — Contact Us | Get in Touch</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/components.css"><link rel="stylesheet" href="assets/css/layout.css"><link rel="stylesheet" href="assets/css/animations.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css"><link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .contact-split{display:grid;grid-template-columns:1.2fr 0.8fr;gap:var(--space-3xl);align-items:start;}
+    .contact-info-card{background:var(--bg-surface);border:1px solid var(--border-color-light);border-radius:var(--radius-xl);padding:var(--space-2xl);}
+    .contact-info-item{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md) 0;border-bottom:1px solid var(--border-color-light);}
+    .contact-info-item:last-child{border-bottom:none;}
+    .contact-info-item .ci-icon{width:44px;height:44px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--color-secondary),var(--color-secondary-light));color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;}
+    .map-section{border-radius:var(--radius-xl);overflow:hidden;height:400px;background:var(--bg-elevated);display:flex;align-items:stretch;justify-content:stretch;position:relative;}
+    .map-section iframe{width:100%;height:100%;border:none;filter:grayscale(0.1) contrast(1.05);}
+    .map-overlay-card{position:absolute;bottom:var(--space-lg);left:var(--space-lg);background:rgba(255,255,255,0.95);border:1px solid rgba(0,0,0,0.1);border-radius:var(--radius-lg);padding:var(--space-lg);max-width:320px;box-shadow:var(--shadow-lg);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10;}
+    [data-theme="dark"] .map-overlay-card{background:rgba(30,24,20,0.95);border-color:rgba(255,255,255,0.1);}
+    @media(max-width:639px){
+      .map-section{flex-direction:column;height:auto;}
+      .map-section iframe{height:300px;}
+      .map-overlay-card{position:relative;bottom:auto;left:auto;margin:var(--space-md);max-width:none;}
+    }
+    .social-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-lg);}
+    .social-card{text-align:center;padding:var(--space-xl);border-radius:var(--radius-lg);background:var(--bg-surface);border:1px solid var(--border-color-light);transition:all var(--transition-base);}
+    .social-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+    .social-card .social-icon{font-size:2.5rem;margin-bottom:var(--space-sm);}
+    .social-card .social-count{font-family:var(--font-heading);font-size:var(--fs-h3);font-weight:var(--fw-bold);color:var(--text-primary);display:block;}
+    .newsletter-section{max-width:560px;margin:0 auto;text-align:center;background:var(--bg-surface);border:1px solid var(--border-color-light);border-radius:var(--radius-xl);padding:var(--space-3xl);}
+    .contact-form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);}
+    @media(max-width:1023px){.contact-split{grid-template-columns:1fr;}.social-cards{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:639px){.social-cards{grid-template-columns:1fr 1fr;}.contact-form-row{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body class="page-hero">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation"><div class="navbar-inner"><a href="index.html" class="navbar-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><div class="navbar-links"><div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a></div></div><a href="about.html" class="nav-link">About</a><a href="services.html" class="nav-link">Services</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link active">Contact</a><a href="book-now.html" class="nav-link nav-cta">Book Now</a></div><div class="navbar-controls"><button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button><button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button></div><button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu"><div class="mobile-nav-links"><a href="#" class="mobile-nav-link mobile-dropdown-toggle"><i class="ph ph-house" aria-hidden="true"></i> Home <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i></a><div class="mobile-dropdown-content"><a href="index.html" class="mobile-dropdown-item">Home 1</a><a href="home-b.html" class="mobile-dropdown-item">Home 2</a></div><a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a><a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a><a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a><a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a><a href="contact.html" class="mobile-nav-link active"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a><a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a></div><div class="mobile-controls"><button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button><button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button></div></div>
+
+  <main>
+    <section class="hero hero-mini" id="hero" aria-label="Contact hero"><div class="hero-bg"><img src="assets/images/contact-hero-bg.jpg" alt="Bakery counter with display case, inviting atmosphere" loading="eager" data-parallax="0.3"></div><div class="hero-overlay"></div><div class="hero-content"><h1 class="hero-animate-in">Get in Touch</h1><p class="hero-animate-in-delay-1">We'd love to hear from you. Reach out for orders, inquiries, or just to say hello.</p></div></section>
+
+    <section class="section" id="contact-form" aria-label="Contact form">
+      <div class="container">
+        <div class="contact-split">
+          <div class="reveal-left">
+            <h2 style="margin-bottom:var(--space-lg);">Send Us a Message</h2>
+            <form data-validate id="contact-main-form">
+              <div class="contact-form-row">
+                <div class="form-group"><label class="form-label" for="c-name">Full Name</label><input type="text" id="c-name" class="form-input" placeholder="Your name" data-rules="required"></div>
+                <div class="form-group"><label class="form-label" for="c-email">Email</label><input type="email" id="c-email" class="form-input" placeholder="you@example.com" data-rules="required|email"></div>
+              </div>
+              <div class="contact-form-row">
+                <div class="form-group"><label class="form-label" for="c-phone">Phone</label><input type="tel" id="c-phone" class="form-input" placeholder="+1 (555) 000-0000" data-rules="phone"></div>
+                <div class="form-group"><label class="form-label" for="c-subject">Subject</label><select id="c-subject" class="form-select" data-rules="required"><option value="">Select subject</option><option>General Inquiry</option><option>Custom Order</option><option>Catering</option><option>Feedback</option><option>Partnership</option></select></div>
+              </div>
+              <div class="form-group"><label class="form-label" for="c-date">Preferred Pickup Date (if applicable)</label><input type="date" id="c-date" class="form-input" data-min-today="true"></div>
+              <div class="form-group"><label class="form-label" for="c-message">Message</label><textarea id="c-message" class="form-textarea" placeholder="Tell us how we can help..." data-rules="required" rows="5"></textarea></div>
+              <button type="submit" class="btn btn-primary btn-lg"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i> Send Message</button>
+            </form>
+          </div>
+          <div class="reveal-right">
+            <div class="contact-info-card">
+              <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-lg);">Contact Information</h3>
+              <div class="contact-info-item"><div class="ci-icon"><i class="ph ph-map-pin" aria-hidden="true"></i></div><div><p class="text-bold text-small" style="margin-bottom:2px;">Address</p><p class="text-small text-muted" style="margin:0;">128 Flour Lane, Baker's Quarter<br>Portland, OR 97201</p></div></div>
+              <div class="contact-info-item"><div class="ci-icon"><i class="ph ph-phone" aria-hidden="true"></i></div><div><p class="text-bold text-small" style="margin-bottom:2px;">Phone</p><p class="text-small text-muted" style="margin:0;">+1 (503) 555-CRUM</p></div></div>
+              <div class="contact-info-item"><div class="ci-icon"><i class="ph ph-envelope-simple" aria-hidden="true"></i></div><div><p class="text-bold text-small" style="margin-bottom:2px;">Email</p><p class="text-small text-muted" style="margin:0;">hello@crumbakery.com</p></div></div>
+              <div class="contact-info-item"><div class="ci-icon"><i class="ph ph-clock" aria-hidden="true"></i></div><div><p class="text-bold text-small" style="margin-bottom:2px;">Hours</p><p class="text-small text-muted" style="margin:0;">Mon-Fri: 6AM-7PM<br>Sat: 7AM-8PM<br>Sun: 8AM-5PM</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="find-us" aria-label="Find us">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Visit Our Bakery</span><h2>Find Us</h2><hr class="section-divider"></div>
+        <div class="map-section reveal">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.7335686036127!2d-122.68478468444062!3d45.51522297909983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a0f8eb6f1e9%3A0x9330a84d4fa7df!2sPortland%2C%20OR!5e0!3m2!1sen!2sus!4v1625619183984!5m2!1sen!2sus" allowfullscreen="" loading="lazy" title="Interactive map of CRUM Bakery location"></iframe>
+          <div class="map-overlay-card">
+            <i class="ph ph-map-pin" aria-hidden="true" style="font-size:1.75rem; color:var(--color-accent); margin-bottom:var(--space-xs); display:block;"></i>
+            <h3 style="font-size:var(--fs-medium); margin-bottom:var(--space-xs); font-family:var(--font-heading); color:var(--text-primary);">128 Flour Lane, Portland, OR 97201</h3>
+            <p class="text-xs text-muted" style="margin-bottom:var(--space-md);">Free parking available behind the building</p>
+            <a href="https://maps.google.com/?q=128+Flour+Lane,+Portland,+OR+97201" target="_blank" rel="noopener" class="btn btn-primary btn-xs btn-inline" style="font-size: var(--fs-xs); padding: 0.5rem 1rem;"><i class="ph ph-navigation-arrow" aria-hidden="true"></i> Open in Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="social-connect" aria-label="Social media">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Follow Along</span><h2>Social Connect</h2><hr class="section-divider"><p>Join our community for behind-the-scenes, recipes, and daily inspiration.</p></div>
+        <div class="social-cards">
+          <div class="social-card reveal stagger-1" style="border-bottom:3px solid #E4405F;"><div class="social-icon" style="color:#E4405F;"><i class="ph ph-instagram-logo" aria-hidden="true"></i></div><span class="social-count" data-count="12500">0</span><p class="text-xs text-muted">Followers</p><p class="text-bold text-small mt-sm" style="color:#E4405F;">@crumbakery</p></div>
+          <div class="social-card reveal stagger-2" style="border-bottom:3px solid #1877F2;"><div class="social-icon" style="color:#1877F2;"><i class="ph ph-facebook-logo" aria-hidden="true"></i></div><span class="social-count" data-count="8200">0</span><p class="text-xs text-muted">Followers</p><p class="text-bold text-small mt-sm" style="color:#1877F2;">CRUM Bakery</p></div>
+          <div class="social-card reveal stagger-3" style="border-bottom:3px solid #BD081C;"><div class="social-icon" style="color:#BD081C;"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></div><span class="social-count" data-count="5600">0</span><p class="text-xs text-muted">Followers</p><p class="text-bold text-small mt-sm" style="color:#BD081C;">@crumbakery</p></div>
+          <div class="social-card reveal stagger-4" style="border-bottom:3px solid #000;"><div class="social-icon"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></div><span class="social-count" data-count="15800">0</span><p class="text-xs text-muted">Followers</p><p class="text-bold text-small mt-sm">@crumbakery</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="newsletter" aria-label="Newsletter subscription">
+      <div class="container"><div class="newsletter-section reveal-scale">
+        <i class="ph ph-envelope-simple" aria-hidden="true" style="font-size:2.5rem;color:var(--color-accent);margin-bottom:var(--space-md);display:block;"></i>
+        <h2 style="margin-bottom:var(--space-sm);">Stay in the Loop</h2><p class="text-secondary mb-xl">Subscribe for exclusive recipes, seasonal menus, and special offers delivered to your inbox.</p>
+        <form class="newsletter-form" data-validate style="max-width:400px;margin:0 auto;"><div class="form-group"><input type="email" class="form-input" placeholder="Your email address" data-rules="required|email" required style="text-align:center;"></div><button type="submit" class="btn btn-primary w-full"><i class="ph ph-bell-ringing" aria-hidden="true"></i> Subscribe</button></form>
+        <p class="text-xs text-muted mt-md">We respect your privacy. Unsubscribe anytime. No spam, ever.</p>
+      </div></div>
+    </section>
+
+    <section class="section" id="quick-enquiry" aria-label="Quick enquiry">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Need Help Fast?</span>
+          <h2>Quick Enquiry</h2>
+          <hr class="section-divider">
+          <p>Get instant access to our most common contact methods.</p>
+        </div>
+        <div class="quick-enquiry-buttons reveal" style="display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-xl);">
+          <a href="tel:+15035552786" class="btn btn-outline" style="min-width: 160px;"><i class="ph ph-phone" aria-hidden="true"></i> Call Now</a>
+          <a href="https://wa.me/15035552786" class="btn btn-outline" target="_blank" rel="noopener" style="min-width: 160px;"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i> WhatsApp</a>
+          <a href="mailto:hello@crumbakery.com" class="btn btn-outline" style="min-width: 160px;"><i class="ph ph-envelope-simple" aria-hidden="true"></i> Email Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="footer-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><p>Handcrafted artisan breads, pastries, and cakes.</p><div class="footer-social"><a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a><a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a><a href="#" class="social-tiktok" aria-label="TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a></div></div><div><h4 class="footer-heading">Quick Links</h4><div class="footer-links"><a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a><a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a><a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a><a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a><a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a></div></div><div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Portland, OR 97201</span></div><div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span></div><div class="footer-contact-item"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>hello@crumbakery.com</span></div><div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span></div></div><div><h4 class="footer-heading">Newsletter</h4><p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh updates.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter"><input type="email" class="newsletter-input" placeholder="Your email" required aria-label="Email"><button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></button></form></div></div></div><div class="footer-bottom"><p>&copy; 2025 CRUM Bakery. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="login.html">Admin Login</a></div></div></footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up" aria-hidden="true"></i></button>
+  <script src="assets/js/data.js"></script><script src="assets/js/main.js"></script><script src="assets/js/navigation.js"></script><script src="assets/js/animations.js"></script><script src="assets/js/forms.js"></script>
+</body>
+</html>
+

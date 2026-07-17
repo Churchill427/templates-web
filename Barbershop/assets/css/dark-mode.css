@@ -1,0 +1,142 @@
+/* ============================================================
+   SHARP — Dark Mode Overrides
+   Applied via [data-theme="dark"] on <html>
+   ============================================================ */
+
+[data-theme="dark"] {
+  /* --- Backgrounds --- */
+  --bg-primary: #0F0F1A;
+  --bg-secondary: #1A1A2E;
+  --bg-card: #16213E;
+  --bg-card-alt: #1A1A2E;
+  --bg-navbar: rgba(15, 15, 26, 0.85);
+  --bg-footer: #0A0A14;
+  --bg-overlay: rgba(15, 15, 26, 0.8);
+
+  /* --- Text --- */
+  --text-primary: #FFFFFF;
+  --text-secondary: #F5F0E8;
+  --text-sub: #A0A0A0;
+  --text-card: #B0B0B0;
+  --text-inverse: #1A1A2E;
+  --text-accent: #D4AF37;
+
+  /* --- Accent --- */
+  --accent-primary: #D4AF37;
+  --accent-hover: #E0C050;
+  --accent-glow: rgba(212, 175, 55, 0.25);
+
+  /* --- Borders --- */
+  --border-color: rgba(245, 240, 232, 0.12);
+  --border-accent: #D4AF37;
+
+  /* --- Shadows (more prominent in dark mode) --- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-accent: 0 8px 24px rgba(212, 175, 55, 0.3);
+}
+
+/* --- Dark Mode Navbar Scrolled --- */
+[data-theme="dark"] .navbar.scrolled {
+  background: rgba(15, 15, 26, 0.92);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Dark Mode Hamburger Lines --- */
+[data-theme="dark"] .navbar__hamburger-line {
+  background: var(--text-primary);
+}
+
+/* --- Dark Mode Form Select Chevron --- */
+[data-theme="dark"] .form__select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23A0A0A0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* --- Dark Mode Footer (even darker) --- */
+[data-theme="dark"] .footer {
+  background: var(--bg-footer);
+}
+
+/* --- Dark Mode Google Social Button --- */
+[data-theme="dark"] .btn--google {
+  background: #1A1A2E;
+  color: #F5F0E8;
+  border-color: rgba(245, 240, 232, 0.2);
+}
+
+/* --- Dark Mode Scrollbar --- */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 10px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0F0F1A;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 5px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* --- Light Mode Scrollbar --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 162, 39, 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 162, 39, 0.5);
+}
+
+/* --- Dark Mode Skeleton Loader --- */
+[data-theme="dark"] .skeleton {
+  background: #1A1A2E;
+}
+
+[data-theme="dark"] .skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.06),
+    transparent
+  );
+}
+
+/* --- Dark Mode Calendar --- */
+[data-theme="dark"] .calendar__day.booked {
+  color: rgba(245, 240, 232, 0.3);
+}
+
+/* --- Dark Mode Dashboard Table Hover --- */
+[data-theme="dark"] .dashboard-table tbody tr:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+/* --- Dark Mode Pricing Table Hover --- */
+[data-theme="dark"] .pricing-table tbody tr:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+/* --- Dark Mode Auth Page Form Side --- */
+[data-theme="dark"] .auth-page__form-side {
+  background: var(--bg-secondary);
+}
+
+/* --- Dark Mode Focus Ring --- */
+[data-theme="dark"] *:focus-visible {
+  outline-color: var(--accent-primary);
+}

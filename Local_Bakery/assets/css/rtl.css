@@ -1,0 +1,266 @@
+/* ============================================
+   CRUM BAKERY — RTL SUPPORT
+   Right-to-Left layout overrides
+   ============================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* --- Typography --- */
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .text-right { text-align: left; }
+
+/* --- Navigation --- */
+[dir="rtl"] .navbar-logo,
+[dir="rtl"] .footer-logo {
+  direction: ltr;
+}
+
+[dir="rtl"] .nav-cta {
+  margin-left: 0 !important;
+  margin-right: var(--space-xs) !important;
+}
+
+[dir="rtl"] .nav-dropdown-menu {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%) translateY(-8px);
+}
+
+[dir="rtl"] .nav-dropdown.open .nav-dropdown-menu {
+  transform: translateX(50%) translateY(0);
+}
+
+/* --- Hamburger --- */
+[dir="rtl"] .mobile-menu {
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .mobile-menu.active {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-dropdown-content {
+  padding-left: 0;
+  padding-right: calc(var(--space-md) + 24px + var(--space-md));
+}
+
+/* --- Footer --- */
+[dir="rtl"] .footer-links a:hover {
+  padding-left: 0;
+  padding-right: var(--space-xs);
+}
+
+[dir="rtl"] .footer-bottom {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer p,
+[dir="rtl"] .footer-bottom p {
+  direction: ltr;
+  text-align: right;
+}
+
+/* --- Cards --- */
+[dir="rtl"] .product-card .card-badge {
+  left: auto;
+  right: var(--space-md);
+}
+
+[dir="rtl"] .card-meta {
+  flex-direction: row-reverse;
+}
+
+/* --- Testimonials --- */
+[dir="rtl"] .testimonial-card::before {
+  left: auto;
+  right: var(--space-lg);
+}
+
+[dir="rtl"] .quote-author {
+  flex-direction: row-reverse;
+}
+
+/* --- Forms --- */
+[dir="rtl"] .form-select {
+  background-position: left 1rem center;
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .form-float .float-label {
+  left: auto;
+  right: 1rem;
+}
+
+[dir="rtl"] .form-error {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .form-check {
+  flex-direction: row-reverse;
+}
+
+/* --- Two Column Layouts --- */
+[dir="rtl"] .two-col {
+  direction: rtl;
+}
+
+[dir="rtl"] .split-layout {
+  direction: rtl;
+}
+
+/* --- Scroll Reveal --- */
+[dir="rtl"] .reveal-left {
+  transform: translateX(40px);
+}
+
+[dir="rtl"] .reveal-right {
+  transform: translateX(-40px);
+}
+
+[dir="rtl"] .reveal-left.revealed,
+[dir="rtl"] .reveal-right.revealed {
+  transform: translateX(0);
+}
+
+/* --- Mask Reveal --- */
+[dir="rtl"] .mask-reveal {
+  clip-path: inset(0 0 0 100%);
+}
+
+[dir="rtl"] .mask-reveal.revealed {
+  animation: maskWipeLeft 0.8s ease forwards;
+}
+
+/* --- Back to Top --- */
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: var(--space-xl);
+}
+
+/* --- Toast --- */
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: var(--space-xl);
+}
+
+[dir="rtl"] .toast {
+  transform: translateX(-120%);
+  border-left: none;
+  border-right: 4px solid var(--color-accent);
+}
+
+[dir="rtl"] .toast.show {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .toast-success { border-right-color: #22C55E; }
+[dir="rtl"] .toast-error { border-right-color: #EF4444; }
+
+/* --- Pricing --- */
+[dir="rtl"] .pricing-card .pricing-features li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* --- Accordion --- */
+[dir="rtl"] .accordion-header {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+/* --- Footer Contact --- */
+[dir="rtl"] .footer-contact-item {
+  display: flex;
+  direction: rtl;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+[dir="rtl"] .footer-contact-item span {
+  direction: ltr;
+  text-align: right;
+  display: inline-block;
+}
+
+/* --- Step Indicator --- */
+[dir="rtl"] .step-indicator {
+  flex-direction: row-reverse;
+}
+
+/* --- Chevrons/Arrows --- */
+[dir="rtl"] .chevron,
+[dir="rtl"] .ph-caret-right {
+  transform: scaleX(-1);
+}
+
+/* --- Modal Close --- */
+[dir="rtl"] .modal-close {
+  right: auto;
+  left: var(--space-md);
+}
+
+/* --- Badge positioning --- */
+[dir="rtl"] .badge {
+  flex-direction: row-reverse;
+}
+
+/* --- Newsletter --- */
+[dir="rtl"] .footer-newsletter .newsletter-form {
+  flex-direction: row;
+}
+
+[dir="rtl"] .footer-newsletter .newsletter-input {
+  direction: ltr;
+  text-align: right;
+}
+
+/* --- Social Links --- */
+[dir="rtl"] .footer-social {
+  direction: ltr;
+  justify-content: flex-end;
+}
+
+/* --- Section Header (keep centered) --- */
+[dir="rtl"] .section-header {
+  text-align: center;
+}
+
+/* --- Hero Content (keep centered) --- */
+[dir="rtl"] .hero-content {
+  text-align: center;
+}
+
+/* --- Scroll Container (flip direction) --- */
+[dir="rtl"] .scroll-container {
+  direction: rtl;
+}
+
+/* --- Asymmetric Grid --- */
+[dir="rtl"] .asymmetric-grid {
+  direction: rtl;
+}
+
+/* --- Auth Divider --- */
+[dir="rtl"] .auth-divider {
+  flex-direction: row-reverse;
+}
+
+/* --- Social Buttons --- */
+[dir="rtl"] .social-btn {
+  flex-direction: row-reverse;
+}
+
+/* --- Contact Items --- */
+[dir="rtl"] .contact-card {
+  text-align: right;
+}
+
+/* --- Filter Pills (keep centered) --- */
+[dir="rtl"] .filter-pills {
+  flex-direction: row-reverse;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery Blog — Recipes, baking tips, trends, and behind-the-scenes stories from Portland's artisan bakery.">
+  <title>CRUM — From the Oven | Blog & Recipes</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/components.css"><link rel="stylesheet" href="assets/css/layout.css"><link rel="stylesheet" href="assets/css/animations.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css"><link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .featured-article{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-3xl);align-items:center;}
+    .featured-img{border-radius:var(--radius-xl);overflow:hidden;height:400px;}
+    .featured-img img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);}
+    .featured-img:hover img{transform:scale(1.03);}
+    .recipe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-xl);}
+    .recipe-card{position:relative;overflow:hidden;border-radius:var(--radius-lg);background:var(--bg-surface);border:1px solid var(--border-color-light);transition:all var(--transition-base);}
+    .recipe-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+    .recipe-card-img{height:200px;overflow:hidden;}
+    .recipe-card-img img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);}
+    .recipe-card:hover .recipe-card-img img{transform:scale(1.05);}
+    .recipe-card-body{padding:var(--space-lg);}
+    .recipe-meta{display:flex;gap:var(--space-md);font-size:var(--fs-xs);color:var(--text-muted);margin-top:var(--space-sm);}
+    .recipe-meta span{display:flex;align-items:center;gap:var(--space-2xs);}
+    .tips-list{max-width:700px;margin:0 auto;}
+    .tip-item{display:flex;gap:var(--space-lg);padding:var(--space-lg) 0;border-bottom:1px solid var(--border-color-light);align-items:flex-start;}
+    .tip-item:last-child{border-bottom:none;}
+    .tip-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--color-accent),var(--color-primary));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:var(--fw-bold);font-family:var(--font-heading);flex-shrink:0;}
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);}
+    .video-thumb{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:16/9;cursor:pointer;}
+    .video-thumb img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-base);}
+    .video-thumb:hover img{transform:scale(1.05);}
+    .video-thumb .play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);transition:background var(--transition-fast);}
+    .video-thumb:hover .play-btn{background:rgba(0,0,0,0.5);}
+    .play-btn i{font-size:3rem;color:#fff;}
+    .tags-cloud{display:flex;flex-wrap:wrap;gap:var(--space-sm);justify-content:center;margin-bottom:var(--space-xl);}
+    .tag-item{padding:0.4rem 1rem;border:1px solid var(--border-color);border-radius:var(--radius-full);font-size:var(--fs-small);color:var(--text-secondary);transition:all var(--transition-fast);cursor:pointer;}
+    .tag-item:hover{background:var(--color-accent);color:#fff;border-color:var(--color-accent);transform:scale(1.05);}
+    @media(max-width:1023px){
+      .featured-article{grid-template-columns:1fr; gap:var(--space-xl);}
+      .featured-img{height:320px;}
+      .recipe-grid{grid-template-columns:1fr;}
+      .video-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:639px){
+      .featured-img{height:260px;}
+      .video-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body class="page-hero">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation"><div class="navbar-inner"><a href="index.html" class="navbar-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><div class="navbar-links"><div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a></div></div><a href="about.html" class="nav-link">About</a><a href="services.html" class="nav-link">Services</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="blog.html" class="nav-link active">Blog</a><a href="contact.html" class="nav-link">Contact</a><a href="book-now.html" class="nav-link nav-cta">Book Now</a></div><div class="navbar-controls"><button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button><button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button></div><button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu"><div class="mobile-nav-links"><a href="#" class="mobile-nav-link mobile-dropdown-toggle"><i class="ph ph-house" aria-hidden="true"></i> Home <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i></a><div class="mobile-dropdown-content"><a href="index.html" class="mobile-dropdown-item">Home 1</a><a href="home-b.html" class="mobile-dropdown-item">Home 2</a></div><a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a><a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a><a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a><a href="blog.html" class="mobile-nav-link active"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a><a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a><a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a></div><div class="mobile-controls"><button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button><button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button></div></div>
+
+  <main>
+    <section class="hero hero-mini" id="hero" aria-label="Blog hero"><div class="hero-bg"><img src="https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=1600&q=80" alt="Overhead shot of baking ingredients on rustic wood" loading="eager" data-parallax="0.3"></div><div class="hero-overlay"></div><div class="hero-content"><h1 class="hero-animate-in">From the Oven</h1><p class="hero-animate-in-delay-1">Recipes, tips, trends, and stories from behind the counter.</p></div></section>
+
+    <section class="section" id="featured" aria-label="Featured article">
+      <div class="container"><div class="featured-article">
+        <div class="featured-img reveal-left"><img src="https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=900&q=80" alt="The secret to perfect sourdough starter" loading="lazy"></div>
+        <div class="reveal-right">
+          <span class="badge badge-accent mb-md">Featured</span>
+          <h2 style="margin-bottom:var(--space-sm);">The Secret to Perfect Sourdough Starter</h2>
+          <div class="recipe-meta mb-lg"><span><i class="ph ph-calendar" aria-hidden="true"></i> Jan 15, 2025</span><span><i class="ph ph-clock" aria-hidden="true"></i> 8 min read</span><span><i class="ph ph-tag" aria-hidden="true"></i> Recipes</span></div>
+          <p class="text-secondary">Learn the time-honored techniques for creating and maintaining a vibrant sourdough starter that will transform your home baking forever.</p>
+          <a href="#" class="btn btn-primary mt-lg btn-inline"><i class="ph ph-article" aria-hidden="true"></i> Read More</a>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="section section-alt" id="recipes" aria-label="Recipe corner">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Try at Home</span><h2>Recipe Corner</h2><hr class="section-divider"><p>Tested recipes from our kitchen to yours.</p></div>
+        <div class="recipe-grid">
+          <div class="recipe-card reveal stagger-1"><div class="recipe-card-img"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80" alt="Classic chocolate lava cake" loading="lazy"></div><div class="recipe-card-body"><span class="badge badge-secondary mb-sm">Intermediate</span><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Classic Chocolate Lava Cake</h3><p class="text-small text-muted">Molten center, crisp shell — the ultimate indulgence.</p><div class="recipe-meta"><span><i class="ph ph-timer" aria-hidden="true"></i> 45 min</span><span><i class="ph ph-star-fill" style="color:#F59E0B;" aria-hidden="true"></i> 4.8</span></div></div></div>
+          <div class="recipe-card reveal stagger-2"><div class="recipe-card-img"><img src="assets/images/recipe-artisan-bread.jpg" alt="No-knead artisan bread" loading="lazy"></div><div class="recipe-card-body"><span class="badge badge-success mb-sm">Beginner</span><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">No-Knead Artisan Bread</h3><p class="text-small text-muted">Bakery-quality bread with minimal effort.</p><div class="recipe-meta"><span><i class="ph ph-timer" aria-hidden="true"></i> 24 hrs</span><span><i class="ph ph-star-fill" style="color:#F59E0B;" aria-hidden="true"></i> 4.9</span></div></div></div>
+          <div class="recipe-card reveal stagger-3"><div class="recipe-card-img"><img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=600&q=80" alt="French macarons in assorted colors" loading="lazy"></div><div class="recipe-card-body"><span class="badge badge-accent mb-sm">Advanced</span><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">French Macarons</h3><p class="text-small text-muted">Master the art of the perfect macaron shell.</p><div class="recipe-meta"><span><i class="ph ph-timer" aria-hidden="true"></i> 3 hrs</span><span><i class="ph ph-star-fill" style="color:#F59E0B;" aria-hidden="true"></i> 4.6</span></div></div></div>
+          <div class="recipe-card reveal stagger-4"><div class="recipe-card-img"><img src="assets/images/recipe-blueberry-scones.jpg" alt="Blueberry scones on parchment" loading="lazy"></div><div class="recipe-card-body"><span class="badge badge-success mb-sm">Beginner</span><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Blueberry Scones</h3><p class="text-small text-muted">Tender, buttery scones bursting with berries.</p><div class="recipe-meta"><span><i class="ph ph-timer" aria-hidden="true"></i> 35 min</span><span><i class="ph ph-star-fill" style="color:#F59E0B;" aria-hidden="true"></i> 4.7</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tips" aria-label="Baking tips">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Pro Secrets</span><h2>Baking Tips</h2><hr class="section-divider"><p>Quick tips from our chefs to level up your baking game.</p></div>
+        <div class="tips-list">
+          <div class="tip-item reveal stagger-1"><div class="tip-num">1</div><div><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Room Temperature Ingredients</h4><p class="text-small text-muted" style="margin:0;">Always bring butter, eggs, and dairy to room temperature before mixing for smoother batters.</p></div></div>
+          <div class="tip-item reveal stagger-2"><div class="tip-num">2</div><div><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Measure by Weight</h4><p class="text-small text-muted" style="margin:0;">Use a kitchen scale for precise measurements. Baking is chemistry — accuracy matters.</p></div></div>
+          <div class="tip-item reveal stagger-3"><div class="tip-num">3</div><div><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Don't Overmix</h4><p class="text-small text-muted" style="margin:0;">Mix until just combined. Overworking gluten makes cakes tough and breads dense.</p></div></div>
+          <div class="tip-item reveal stagger-4"><div class="tip-num">4</div><div><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Preheat Your Oven</h4><p class="text-small text-muted" style="margin:0;">Always preheat for at least 15 minutes. Use an oven thermometer for accuracy.</p></div></div>
+          <div class="tip-item reveal stagger-5"><div class="tip-num">5</div><div><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">The Toothpick Test</h4><p class="text-small text-muted" style="margin:0;">Insert a toothpick in the center — it should come out with moist crumbs, not batter.</p></div></div>
+          <div class="tip-item reveal stagger-6"><div class="tip-num">6</div><div><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Cool Before Frosting</h4><p class="text-small text-muted" style="margin:0;">Let cakes cool completely before decorating. Warm cakes melt frosting and cause sliding.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="behind-scenes" aria-label="Behind the scenes">
+      <div class="container"><div class="section-header reveal"><span class="section-label">See How It's Made</span><h2>Behind the Scenes</h2><hr class="section-divider"><p>A peek into the daily magic at CRUM.</p></div>
+        <div class="video-grid">
+          <div class="video-thumb reveal stagger-1"><img src="assets/images/bts-piping.jpg" alt="Piping frosting onto cake" loading="lazy"><div class="play-btn"><i class="ph ph-play-circle" aria-hidden="true"></i></div></div>
+          <div class="video-thumb reveal stagger-2"><img src="assets/images/bts-chocolate-drip.jpg" alt="Decorating chocolate drip cake" loading="lazy"><div class="play-btn"><i class="ph ph-play-circle" aria-hidden="true"></i></div></div>
+          <div class="video-thumb reveal stagger-3"><img src="assets/images/bts-floral-cake.jpg" alt="Decorating cake with fresh flowers and macarons" loading="lazy"><div class="play-btn"><i class="ph ph-play-circle" aria-hidden="true"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="archives" aria-label="Archives and categories">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Explore More</span><h2>Archives & Categories</h2><hr class="section-divider"><p>Browse by topic or search through our collection.</p></div>
+        <div class="tags-cloud reveal">
+          <span class="tag-item">Recipes</span><span class="tag-item">Sourdough</span><span class="tag-item">Cake Design</span><span class="tag-item">Gluten-Free</span><span class="tag-item">Chocolate</span><span class="tag-item">Wedding</span><span class="tag-item">Seasonal</span><span class="tag-item">Tips & Tricks</span><span class="tag-item">Behind the Scenes</span><span class="tag-item">Ingredients</span><span class="tag-item">Vegan</span><span class="tag-item">Bread</span>
+        </div>
+        <div class="text-center reveal">
+          <div style="max-width:400px;margin:0 auto;">
+            <div class="form-group" style="position:relative;">
+              <input type="search" class="form-input" placeholder="Search articles..." aria-label="Search blog" style="padding-left:2.75rem;">
+              <i class="ph ph-magnifying-glass" aria-hidden="true" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text-muted);"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="footer-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><p>Handcrafted artisan breads, pastries, and cakes.</p><div class="footer-social"><a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a><a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a><a href="#" class="social-tiktok" aria-label="TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a></div></div><div><h4 class="footer-heading">Quick Links</h4><div class="footer-links"><a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a><a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a><a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a><a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a><a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a></div></div><div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Portland, OR 97201</span></div><div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span></div><div class="footer-contact-item"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>hello@crumbakery.com</span></div><div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span></div></div><div><h4 class="footer-heading">Newsletter</h4><p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh updates.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter"><input type="email" class="newsletter-input" placeholder="Your email" required aria-label="Email"><button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></button></form></div></div></div><div class="footer-bottom"><p>&copy; 2025 CRUM Bakery. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="login.html">Admin Login</a></div></div></footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up" aria-hidden="true"></i></button>
+  <script src="assets/js/data.js"></script><script src="assets/js/main.js"></script><script src="assets/js/navigation.js"></script><script src="assets/js/animations.js"></script><script src="assets/js/forms.js"></script>
+</body>
+</html>
+

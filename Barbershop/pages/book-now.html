@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment — SHARP Barbershop</title>
+  <meta name="description" content="Book your grooming appointment at SHARP. Choose your service, preferred barber, date and time. Walk-ins also welcome.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/icons/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <header class="navbar navbar--hero" id="navbar" role="banner">
+    <div class="navbar__inner">
+      <button class="navbar__hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"><span class="navbar__hamburger-line"></span><span class="navbar__hamburger-line"></span><span class="navbar__hamburger-line"></span></button>
+      <a href="index.html" class="navbar__logo" aria-label="SHARP - Go to homepage"><img src="../assets/images/icons/logo.svg" alt="SHARP Logo" class="navbar__logo-icon" width="40" height="40"><span class="navbar__logo-text">SHARP</span></a>
+      <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__dropdown"><a href="index.html" class="nav__link">Home <span style="font-size: 0.8em; margin-left: 4px; display: inline-block; vertical-align: middle;">▼</span></a><div class="nav__dropdown-menu"><a href="index.html" class="nav__dropdown-item">Home 1</a><a href="home-b.html" class="nav__dropdown-item">Home 2</a></div></div>
+        <a href="services.html" class="nav__link">Services</a><a href="about.html" class="nav__link">About</a>
+        <a href="blog.html" class="nav__link">Blog</a>
+        <a href="contact.html" class="nav__link">Contact</a>      </nav>
+      <div class="navbar__controls">
+        <a href="book-now.html" class="btn btn--primary" style="padding: 8px 16px; font-size: 14px; margin-right: 12px;">Book Now</a>
+        <button class="navbar__toggle-btn" id="rtl-toggle" aria-label="Toggle text direction"><span class="rtl-toggle-label">LTR</span></button>
+        <button class="navbar__toggle-btn" id="theme-toggle" aria-label="Toggle dark mode"><svg class="theme-icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation"><div class="mobile-menu__dropdown">
+      <div class="mobile-menu__link" style="cursor: pointer;" onclick="this.parentElement.classList.toggle('open')">Home <span style="font-size: 0.8em; margin-left: 4px;">▼</span></div>
+      <div class="mobile-menu__dropdown-content">
+        <a href="index.html" class="mobile-menu__sublink">Home 1</a>
+        <a href="home-b.html" class="mobile-menu__sublink">Home 2</a>
+      </div>
+    </div><a href="services.html" class="mobile-menu__link">Services</a><a href="about.html" class="mobile-menu__link">About</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a><a href="contact.html" class="mobile-menu__link">Contact</a><div class="mobile-menu__controls"><a href="book-now.html" class="btn btn--primary" style="padding: 8px 16px; font-size: 14px; margin-right: 12px; width: 100%; text-align: center; margin-bottom: 16px;">Book Now</a>
+      <button class="navbar__toggle-btn" id="rtl-toggle-mobile" aria-label="Toggle text direction"><span class="rtl-toggle-label">LTR</span></button><button class="navbar__toggle-btn" id="theme-toggle-mobile" aria-label="Toggle dark mode"><svg class="theme-icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div>
+
+  <main id="main-content">
+
+    <!-- Section 1: Hero -->
+    <section class="hero" id="booking-hero" aria-label="Booking hero">
+      <div class="hero__bg" data-parallax="0.3"><img src="../assets/images/heroes/hero-booking.png" alt="Premium barber chair from above" loading="eager"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="hero__title reveal">BOOK YOUR APPOINTMENT</h1>
+        <p class="hero__subtitle reveal">Secure your spot with our master barbers</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Booking Form -->
+    <section class="section" id="booking-form-section" aria-label="Booking form">
+      <div class="container">
+        <div class="grid grid-60-40 reveal" style="gap: var(--space-2xl); align-items: flex-start;">
+          <!-- Form -->
+          <form data-validate id="booking-form" aria-label="Appointment booking form">
+            <h2 style="margin-bottom: var(--space-lg);">APPOINTMENT DETAILS</h2>
+            <div class="grid grid-2" style="gap: var(--space-md) var(--space-lg);">
+              <div class="form__group">
+                <label class="form__label" for="book-name">Full Name <span class="required">*</span></label>
+                <input type="text" class="form__input" id="book-name" placeholder="John Doe" required>
+                <span class="form__error"></span>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="book-phone">Phone <span class="required">*</span></label>
+                <input type="tel" class="form__input" id="book-phone" placeholder="+1 (555) 000-0000" required>
+                <span class="form__error"></span>
+              </div>
+              <div class="form__group" style="grid-column: 1 / -1;">
+                <label class="form__label" for="book-email">Email <span class="required">*</span></label>
+                <input type="email" class="form__input" id="book-email" placeholder="john@example.com" required>
+                <span class="form__error"></span>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="book-service">Service Type <span class="required">*</span></label>
+                <select class="form__select" id="book-service" required>
+                  <option value="" disabled selected>Select a service</option>
+                  <option value="haircut">Classic Haircut — $35</option>
+                  <option value="executive">Executive Cut — $50</option>
+                  <option value="beard">Beard Trim & Shape — $25</option>
+                  <option value="shave">Hot Towel Shave — $40</option>
+                  <option value="coloring">Hair Coloring — $65</option>
+                  <option value="gentleman">The Gentleman Package — $55</option>
+                  <option value="executive-pkg">The Executive Package — $85</option>
+                  <option value="royal">The Royal Package — $120</option>
+                </select>
+                <span class="form__error"></span>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="book-barber">Preferred Barber</label>
+                <select class="form__select" id="book-barber">
+                  <option value="" disabled selected>Any available</option>
+                  <option value="marcus">Marcus Cole</option>
+                  <option value="alex">Alex Rivera</option>
+                  <option value="thomas">Thomas Wright</option>
+                  <option value="kai">Kai Nakamura</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="book-date">Date <span class="required">*</span></label>
+                <input type="date" class="form__input" id="book-date" required>
+                <span class="form__error"></span>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="book-time">Time <span class="required">*</span></label>
+                <select class="form__select" id="book-time" required>
+                  <option value="" disabled selected>Select a time</option>
+                  <option value="09:00">9:00 AM</option>
+                  <option value="09:30">9:30 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="10:30">10:30 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="11:30">11:30 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="12:30">12:30 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="13:30">1:30 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="14:30">2:30 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="15:30">3:30 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="16:30">4:30 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                  <option value="17:30">5:30 PM</option>
+                  <option value="18:00">6:00 PM</option>
+                  <option value="18:30">6:30 PM</option>
+                  <option value="19:00">7:00 PM</option>
+                  <option value="19:30">7:30 PM</option>
+                </select>
+                <span class="form__error"></span>
+              </div>
+            </div>
+            <div class="form__group" style="margin-top: var(--space-md);">
+              <label class="form__label" for="book-notes">Additional Notes</label>
+              <textarea class="form__textarea" id="book-notes" placeholder="Any special requests or preferences..." rows="3"></textarea>
+            </div>
+          </form>
+          <!-- Summary Card -->
+          <div class="card reveal" style="padding: var(--space-2xl); position: sticky; top: calc(var(--navbar-height) + var(--space-lg));">
+            <h3 style="margin-bottom: var(--space-lg);">Booking Summary</h3>
+            <div style="display: flex; flex-direction: column; gap: var(--space-md); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border-color);">
+              <div style="display: flex; justify-content: space-between;"><span class="text-small">Service</span><span class="text-small" style="font-weight: var(--fw-semibold);" id="summary-service">Select a service</span></div>
+              <div style="display: flex; justify-content: space-between;"><span class="text-small">Duration</span><span class="text-small" style="font-weight: var(--fw-semibold);" id="summary-duration">—</span></div>
+              <div style="display: flex; justify-content: space-between;"><span class="text-small">Barber</span><span class="text-small" style="font-weight: var(--fw-semibold);" id="summary-barber">Any Available</span></div>
+              <div style="display: flex; justify-content: space-between;"><span class="text-small">Date</span><span class="text-small" style="font-weight: var(--fw-semibold);" id="summary-date">—</span></div>
+              <div style="display: flex; justify-content: space-between;"><span class="text-small">Time</span><span class="text-small" style="font-weight: var(--fw-semibold);" id="summary-time">—</span></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-top: var(--space-lg); margin-bottom: var(--space-lg);">
+              <span style="font-weight: var(--fw-semibold);">Estimated Total</span>
+              <span style="font-family: var(--font-heading); font-size: var(--fs-h3); color: var(--accent-primary);" id="summary-price">$0</span>
+            </div>
+            <button type="submit" form="booking-form" class="btn btn--primary btn--full" id="confirm-booking-cta">Confirm Booking</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Availability Calendar -->
+    <section class="section" id="availability" aria-label="Availability calendar" style="background: var(--bg-card-alt);">
+      <div class="container" style="max-width: 500px;">
+        <div class="section-header reveal">
+          <h2 class="section-header__title">AVAILABILITY</h2>
+          <p class="section-header__subtitle">Check open slots this month</p>
+          <div class="section-header__line"></div>
+        </div>
+        <div class="calendar reveal" id="booking-calendar">
+          <div class="calendar__header">
+            <button class="calendar__nav-btn" aria-label="Previous month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <h4 id="calendar-month">July 2026</h4>
+            <button class="calendar__nav-btn" aria-label="Next month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+          <div class="calendar__grid">
+            <span class="calendar__day-name">Sun</span><span class="calendar__day-name">Mon</span><span class="calendar__day-name">Tue</span><span class="calendar__day-name">Wed</span><span class="calendar__day-name">Thu</span><span class="calendar__day-name">Fri</span><span class="calendar__day-name">Sat</span>
+            <span class="calendar__day"></span><span class="calendar__day"></span><span class="calendar__day"></span><span class="calendar__day available">1</span><span class="calendar__day available">2</span><span class="calendar__day available">3</span><span class="calendar__day booked">4</span>
+            <span class="calendar__day available">5</span><span class="calendar__day available">6</span><span class="calendar__day available">7</span><span class="calendar__day booked">8</span><span class="calendar__day available">9</span><span class="calendar__day available">10</span><span class="calendar__day available">11</span>
+            <span class="calendar__day available">12</span><span class="calendar__day available">13</span><span class="calendar__day available">14</span><span class="calendar__day available">15</span><span class="calendar__day today available">16</span><span class="calendar__day available">17</span><span class="calendar__day available">18</span>
+            <span class="calendar__day booked">19</span><span class="calendar__day available">20</span><span class="calendar__day available">21</span><span class="calendar__day available">22</span><span class="calendar__day available">23</span><span class="calendar__day booked">24</span><span class="calendar__day available">25</span>
+            <span class="calendar__day available">26</span><span class="calendar__day available">27</span><span class="calendar__day available">28</span><span class="calendar__day available">29</span><span class="calendar__day available">30</span><span class="calendar__day available">31</span><span class="calendar__day"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Walk-In Info -->
+    <section class="section" id="walk-in-info" aria-label="Walk-in information">
+      <div class="container">
+        <div class="grid grid-2 stagger" style="max-width: 800px; margin: 0 auto;">
+          <div class="card card--icon reveal" id="walk-in-card" style="padding: var(--space-2xl);">
+            <div class="card__icon" style="width: 48px; height: 48px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="card__title">Walk-Ins Welcome</h3>
+            <p class="card__text" style="font-size: var(--fs-body);">No appointment? No problem. Walk-ins are accepted Monday through Saturday during business hours.</p>
+            <p class="text-small" style="color: var(--accent-primary); font-weight: var(--fw-semibold);">Average wait: 15-25 min</p>
+          </div>
+          <div class="card card--icon reveal" id="new-client-card" style="padding: var(--space-2xl); border-color: var(--accent-primary);">
+            <div class="card__icon" style="width: 48px; height: 48px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+            <h3 class="card__title">New Client Special</h3>
+            <p class="card__text" style="font-size: var(--fs-body);">First time at SHARP? Enjoy 20% off your first service. Use code <strong>FIRST20</strong> when booking.</p>
+            <p class="text-small" style="color: var(--accent-primary); font-weight: var(--fw-semibold);">Save up to $24</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Location & Hours -->
+    <section class="section" id="location-hours" aria-label="Location and hours" style="background: var(--bg-card-alt);">
+      <div class="container">
+        <div class="split split--50-50">
+          <!-- Map -->
+          <div class="reveal" style="border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-card); border: 1px solid var(--border-color); height: 400px; display: flex; align-items: center; justify-content: center; position: relative;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6175437812165!2d-74.00845308459418!3d40.71887377933182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2598a87b089c1%3A0xc33a18a99477e7a8!2sNew%20York%20City%20Hall!5e0!3m2!1sen!2sus!4v1716301234567!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <!-- Hours -->
+          <div class="reveal">
+            <h2 style="margin-bottom: var(--space-lg);">HOURS & LOCATION</h2>
+            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+              <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-color);">
+                <span>Monday</span><span style="font-weight: var(--fw-semibold);">9:00 AM — 8:00 PM</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-color);">
+                <span>Tuesday</span><span style="font-weight: var(--fw-semibold);">9:00 AM — 8:00 PM</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-color); color: var(--accent-primary); font-weight: var(--fw-semibold);">
+                <span>Wednesday (Today)</span><span>9:00 AM — 8:00 PM</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-color);">
+                <span>Thursday</span><span style="font-weight: var(--fw-semibold);">9:00 AM — 8:00 PM</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-color);">
+                <span>Friday</span><span style="font-weight: var(--fw-semibold);">9:00 AM — 9:00 PM</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--border-color);">
+                <span>Saturday</span><span style="font-weight: var(--fw-semibold);">8:00 AM — 6:00 PM</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0;">
+                <span>Sunday</span><span style="color: var(--color-error); font-weight: var(--fw-semibold);">Closed</span>
+              </div>
+            </div>
+            <div style="margin-top: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm);">
+              <div class="flex items-center gap-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="text-small">42 Heritage Lane, New York, NY 10012</span></div>
+              <div class="flex items-center gap-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="text-small">+1 (555) 742-7701</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Confirmation Steps -->
+    <section class="section" id="confirmation-steps" aria-label="What happens after booking">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-header__title">WHAT HAPPENS NEXT</h2>
+          <p class="section-header__subtitle">Your booking journey in 4 simple steps</p>
+          <div class="section-header__line"></div>
+        </div>
+        <div class="timeline reveal">
+          <div class="timeline__step">
+            <div class="timeline__connector"></div>
+            <div class="timeline__dot">1</div>
+            <h4 class="timeline__title">Confirmation Email</h4>
+            <p class="timeline__text">Instant booking confirmation with all details sent to your inbox.</p>
+          </div>
+          <div class="timeline__step">
+            <div class="timeline__connector"></div>
+            <div class="timeline__dot">2</div>
+            <h4 class="timeline__title">Reminder SMS</h4>
+            <p class="timeline__text">A friendly reminder text sent 2 hours before your appointment.</p>
+          </div>
+          <div class="timeline__step">
+            <div class="timeline__connector"></div>
+            <div class="timeline__dot">3</div>
+            <h4 class="timeline__title">Arrive 10 Min Early</h4>
+            <p class="timeline__text">Arrive early to relax with a complimentary drink before your session.</p>
+          </div>
+          <div class="timeline__step">
+            <div class="timeline__dot">4</div>
+            <h4 class="timeline__title">Enjoy the Experience</h4>
+            <p class="timeline__text">Sit back, relax, and let our master barbers work their magic.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div class="footer__brand"><a href="index.html" class="footer__logo" aria-label="SHARP - Go to homepage"><img src="../assets/images/icons/logo.svg" alt="SHARP Logo" width="36" height="36"><span class="footer__logo-text">SHARP</span></a><p class="footer__tagline">Premium men's grooming since 2015. Where precision meets style.</p><div class="footer__social"><a href="#" class="footer__social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a><a href="#" class="footer__social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" class="footer__social-link" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a></div></div>
+      <div><h4 class="footer__heading">Quick Links</h4><nav class="footer__links" aria-label="Footer quick links"><a href="index.html" class="footer__link">Home</a><a href="services.html" class="footer__link">Services</a><a href="about.html" class="footer__link">About</a><a href="book-now.html" class="footer__link">Book Now</a><a href="contact.html" class="footer__link">Contact</a><a href="dashboard.html" class="footer__link">Dashboard</a></nav></div>
+      <div><h4 class="footer__heading">Services</h4><nav class="footer__links" aria-label="Footer services"><a href="services.html" class="footer__link">Haircuts</a><a href="services.html" class="footer__link">Beard Grooming</a><a href="services.html" class="footer__link">Hot Towel Shave</a><a href="services.html" class="footer__link">Hair Coloring</a></nav></div>
+      <div><h4 class="footer__heading">Contact</h4><div class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>42 Heritage Lane, New York, NY 10012</span></div><div class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+1 (555) 742-7701</span></div><div class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>hello@sharpbarbershop.com</span></div><div class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon - Sat: 9AM - 8PM</span></div></div>
+    </div>
+    <div class="footer__bottom"><p class="footer__copyright">&copy; 2025 SHARP. All Rights Reserved.</p></div>
+  </footer>
+
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script>
+    // Booking form summary update
+    (function() {
+      const prices = { haircut: 35, executive: 50, beard: 25, shave: 40, coloring: 65, gentleman: 55, 'executive-pkg': 85, royal: 120 };
+      const durations = { haircut: '45 min', executive: '60 min', beard: '30 min', shave: '45 min', coloring: '90 min', gentleman: '90 min', 'executive-pkg': '120 min', royal: '150 min' };
+      const serviceEl = document.getElementById('book-service');
+      const barberEl = document.getElementById('book-barber');
+      const dateEl = document.getElementById('book-date');
+      const timeEl = document.getElementById('book-time');
+      if (serviceEl) serviceEl.addEventListener('change', function() {
+        document.getElementById('summary-service').textContent = this.options[this.selectedIndex].text.split('—')[0].trim();
+        document.getElementById('summary-price').textContent = '$' + (prices[this.value] || 0);
+        document.getElementById('summary-duration').textContent = durations[this.value] || '—';
+      });
+      if (barberEl) barberEl.addEventListener('change', function() {
+        document.getElementById('summary-barber').textContent = this.options[this.selectedIndex].text;
+      });
+      if (dateEl) dateEl.addEventListener('change', function() {
+        document.getElementById('summary-date').textContent = new Date(this.value).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+      });
+      if (timeEl) timeEl.addEventListener('change', function() {
+        document.getElementById('summary-time').textContent = this.options[this.selectedIndex].text;
+      });
+    })();
+  </script>
+</body>
+</html>

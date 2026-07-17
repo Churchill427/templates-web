@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery — Something delicious is baking. Sign up to be the first to know when we launch new offerings.">
+  <title>CRUM — Coming Soon | Something Delicious is Baking</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    /* === COMING SOON PAGE SPECIFIC STYLES === */
+
+    /* Countdown Timer */
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin-top: var(--space-2xl);
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .countdown-value {
+      width: 90px;
+      height: 100px;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: var(--fw-extrabold);
+      color: var(--color-accent);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-base);
+    }
+
+    .countdown-value::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      background: var(--border-color-light);
+    }
+
+    .countdown-value.flip {
+      animation: flipNumber 0.4s ease;
+    }
+
+    @keyframes flipNumber {
+      0% { transform: perspective(400px) rotateX(0deg); }
+      50% { transform: perspective(400px) rotateX(-10deg); }
+      100% { transform: perspective(400px) rotateX(0deg); }
+    }
+
+    .countdown-label {
+      font-family: var(--font-body);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .countdown-separator {
+      display: flex;
+      align-items: center;
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: var(--fw-bold);
+      color: var(--color-accent);
+      padding-bottom: 1.5rem;
+      animation: separatorPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes separatorPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Notify Form */
+    .notify-section-inner {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .notify-form {
+      display: flex;
+      gap: 0;
+      margin-top: var(--space-xl);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--border-color);
+      transition: border-color var(--transition-base);
+    }
+
+    .notify-form:focus-within {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-xl), 0 0 0 4px rgba(210,105,30,0.12);
+    }
+
+    .notify-form input {
+      flex: 1;
+      border: none;
+      padding: var(--space-md) var(--space-xl);
+      font-size: var(--fs-body);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      outline: none;
+      min-height: 52px;
+    }
+
+    .notify-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .notify-form button {
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+      color: #fff;
+      border: none;
+      padding: var(--space-md) var(--space-xl);
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: opacity var(--transition-fast);
+      min-width: 140px;
+    }
+
+    .notify-form button:hover {
+      opacity: 0.9;
+    }
+
+    .notify-success {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-xl);
+      background: rgba(34, 139, 34, 0.08);
+      border: 1px solid rgba(34, 139, 34, 0.2);
+      border-radius: var(--radius-full);
+      margin-top: var(--space-lg);
+      color: #228B22;
+      font-weight: var(--fw-medium);
+      font-size: var(--fs-small);
+    }
+
+    .notify-success.show {
+      display: flex;
+      animation: slideDown 0.4s ease;
+    }
+
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .notify-success .check-draw {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #228B22;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Sneak Peek Grid */
+    .sneak-peek-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .sneak-peek-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      height: 280px;
+      cursor: pointer;
+    }
+
+    .sneak-peek-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(8px) saturate(0.6);
+      transition: filter 0.6s ease;
+    }
+
+    .sneak-peek-card:hover img {
+      filter: blur(2px) saturate(1);
+    }
+
+    .sneak-peek-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(44,24,16,0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      transition: background var(--transition-base);
+    }
+
+    .sneak-peek-card:hover .sneak-peek-overlay {
+      background: rgba(44,24,16,0.35);
+    }
+
+    .sneak-peek-overlay i {
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .sneak-peek-overlay span {
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: var(--fs-h4);
+      font-weight: var(--fw-semibold);
+      text-align: center;
+      padding: 0 var(--space-md);
+    }
+
+    .sneak-peek-badge {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+      color: #fff;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      z-index: 2;
+    }
+
+    /* Testimonial Slider */
+    .testimonial-slider-container {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .testimonial-slides {
+      position: relative;
+      min-height: 200px;
+    }
+
+    .testimonial-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .testimonial-slide.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-heading);
+      font-size: var(--fs-h3);
+      font-style: italic;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xl);
+      line-height: var(--lh-relaxed);
+      position: relative;
+    }
+
+    .testimonial-quote::before {
+      content: '\201C';
+      font-size: 4rem;
+      color: var(--color-accent);
+      position: absolute;
+      top: -1.5rem;
+      left: -1rem;
+      font-family: var(--font-heading);
+      line-height: 1;
+      opacity: 0.3;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .testimonial-author-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--color-accent);
+    }
+
+    .testimonial-author-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-author-info h4 {
+      font-size: var(--fs-body);
+      margin-bottom: var(--space-2xs);
+    }
+
+    .testimonial-author-info p {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+    }
+
+    .testimonial-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-color);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      padding: 0;
+    }
+
+    .testimonial-dot.active {
+      background: var(--color-accent);
+      transform: scale(1.3);
+    }
+
+    /* Social Connect Section */
+    .social-connect-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .social-connect-card {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-lg);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      border-radius: var(--radius-xl);
+      transition: all var(--transition-base);
+      text-decoration: none;
+      display: block;
+    }
+
+    .social-connect-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .social-connect-card .social-connect-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-lg);
+      font-size: 1.75rem;
+      transition: all var(--transition-base);
+    }
+
+    .social-connect-card:hover .social-connect-icon {
+      transform: rotate(10deg) scale(1.05);
+    }
+
+    .social-instagram-card .social-connect-icon {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+    }
+
+    .social-facebook-card .social-connect-icon {
+      background: #1877F2;
+      color: #fff;
+    }
+
+    .social-pinterest-card .social-connect-icon {
+      background: #BD081C;
+      color: #fff;
+    }
+
+    .social-tiktok-card .social-connect-icon {
+      background: #000000;
+      color: #fff;
+    }
+
+    .social-connect-card h3 {
+      font-size: var(--fs-h4);
+      margin-bottom: var(--space-xs);
+    }
+
+    .social-connect-card p {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Contact row in social section */
+    .connect-contact-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2xl);
+      margin-top: var(--space-3xl);
+      flex-wrap: wrap;
+    }
+
+    .connect-contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--text-secondary);
+      font-size: var(--fs-small);
+    }
+
+    .connect-contact-item i {
+      color: var(--color-accent);
+      font-size: 1.25rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1023px) {
+      .sneak-peek-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .sneak-peek-grid .sneak-peek-card:nth-child(3) {
+        grid-column: span 2;
+        height: 220px;
+      }
+      .social-connect-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 639px) {
+      .countdown-container {
+        gap: var(--space-sm);
+      }
+      .countdown-value {
+        width: 70px;
+        height: 80px;
+        font-size: 1.75rem;
+      }
+      .countdown-separator {
+        font-size: 1.25rem;
+        padding-bottom: 1rem;
+      }
+      .sneak-peek-grid {
+        grid-template-columns: 1fr;
+      }
+      .sneak-peek-grid .sneak-peek-card:nth-child(3) {
+        grid-column: span 1;
+      }
+      .sneak-peek-card {
+        height: 220px;
+      }
+      .notify-form {
+        flex-direction: column;
+        border-radius: var(--radius-lg);
+      }
+      .notify-form input {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      }
+      .notify-form button {
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        min-height: 48px;
+      }
+      .social-connect-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .connect-contact-row {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-md);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .countdown-value.flip { animation: none; }
+      .countdown-separator { animation: none; }
+      .sneak-peek-card img { filter: blur(6px) saturate(0.7); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       SCROLL PROGRESS BAR
+       ============================================ -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============================================
+       NAVBAR
+       ============================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <!-- Logo -->
+      <a href="index.html" class="navbar-logo" aria-label="CRUM Home">
+        <div class="logo-icon">
+          <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+        </div>
+        <span class="logo-text">CRUM</span>
+      </a>
+
+      <div class="navbar-links">
+        <div class="nav-dropdown" id="home-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a>
+            <a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="book-now.html" class="nav-link nav-cta">Book Now</a>
+      </div>
+
+      <div class="navbar-controls">
+        <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction">
+          <span class="rtl-label">LTR</span>
+        </button>
+        <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode">
+          <i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       MOBILE MENU
+       ============================================ -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-nav-links">
+      <a href="#" class="mobile-nav-link mobile-dropdown-toggle">
+        <i class="ph ph-house" aria-hidden="true"></i>
+        Home
+        <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i>
+      </a>
+      <div class="mobile-dropdown-content">
+        <a href="index.html" class="mobile-dropdown-item">Home 1</a>
+        <a href="home-b.html" class="mobile-dropdown-item">Home 2</a>
+      </div>
+      <a href="about.html" class="mobile-nav-link">
+        <i class="ph ph-info" aria-hidden="true"></i> About
+      </a>
+      <a href="services.html" class="mobile-nav-link">
+        <i class="ph ph-storefront" aria-hidden="true"></i> Services
+      </a>
+      <a href="portfolio.html" class="mobile-nav-link">
+        <i class="ph ph-images" aria-hidden="true"></i> Portfolio
+      </a>
+      <a href="blog.html" class="mobile-nav-link">
+        <i class="ph ph-newspaper" aria-hidden="true"></i> Blog
+      </a>
+      <a href="contact.html" class="mobile-nav-link">
+        <i class="ph ph-envelope" aria-hidden="true"></i> Contact
+      </a>
+      <a href="book-now.html" class="mobile-nav-link">
+        <i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now
+      </a>
+    </div>
+    <div class="mobile-controls">
+      <button class="mobile-toggle-btn" data-toggle-rtl>
+        <i class="ph ph-arrows-left-right" aria-hidden="true"></i>
+        <span class="rtl-label">LTR</span>
+      </button>
+      <button class="mobile-toggle-btn" data-toggle-theme>
+        <i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i>
+        <span>Theme</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============================================
+         SECTION 1: HERO — "Something Delicious is Baking"
+         ============================================ -->
+    <section class="hero-mini" id="hero-coming-soon" aria-label="Coming soon hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=1600&q=80"
+             alt="Flour-dusted rustic wooden surface with scattered baking tools and ingredients"
+             loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="font-logo text-display text-white hero-animate-in" style="display:block; margin-bottom:var(--space-md); text-shadow: 0 4px 20px rgba(0,0,0,0.4);">CRUM</span>
+        <h1 class="hero-animate-in-delay-1">Something Delicious is Baking</h1>
+        <p class="hero-animate-in-delay-2">We're working on something truly special behind the scenes. Stay tuned for our latest creation.</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: COUNTDOWN TIMER
+         ============================================ -->
+    <section class="section" id="countdown" aria-label="Countdown timer">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Launching Soon</span>
+          <h2>The Countdown is On</h2>
+          <hr class="section-divider">
+          <p>Mark your calendar — something extraordinary arrives soon.</p>
+        </div>
+
+        <div class="countdown-container reveal" id="countdown-timer" role="timer" aria-label="Launch countdown">
+          <div class="countdown-unit">
+            <div class="countdown-value" id="cd-days" aria-label="Days">00</div>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-separator" aria-hidden="true">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="cd-hours" aria-label="Hours">00</div>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-separator" aria-hidden="true">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="cd-minutes" aria-label="Minutes">00</div>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-separator" aria-hidden="true">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="cd-seconds" aria-label="Seconds">00</div>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: NOTIFY ME FORM
+         ============================================ -->
+    <section class="section section-alt" id="notify-me" aria-label="Notification signup">
+      <div class="container">
+        <div class="notify-section-inner reveal">
+          <i class="ph ph-bell-ringing" style="font-size:3rem; color:var(--color-accent); margin-bottom:var(--space-lg); display:block;" aria-hidden="true"></i>
+          <h2>Be the First to Know</h2>
+          <p class="mt-md">Sign up to receive an exclusive notification when we launch. Early subscribers get special perks and first access.</p>
+
+          <form class="notify-form" id="notify-form" aria-label="Launch notification signup">
+            <input type="email" placeholder="Enter your email address" id="notify-email" required aria-label="Email address for notifications">
+            <button type="submit" id="notify-submit">
+              <i class="ph ph-bell" aria-hidden="true" style="margin-right:var(--space-2xs);"></i> Notify Me
+            </button>
+          </form>
+
+          <div class="notify-success" id="notify-success">
+            <div class="check-draw" aria-hidden="true">
+              <i class="ph ph-check"></i>
+            </div>
+            <span>You're on the list! We'll notify you when we launch.</span>
+          </div>
+
+          <p style="margin-top:var(--space-lg); font-size:var(--fs-xs); color:var(--text-muted);">
+            <i class="ph ph-lock-simple" aria-hidden="true" style="margin-right:var(--space-2xs);"></i>
+            We respect your privacy. Unsubscribe anytime.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: SNEAK PEEK
+         ============================================ -->
+    <section class="section" id="sneak-peek" aria-label="Sneak peek preview">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Exclusive Preview</span>
+          <h2>Sneak Peek</h2>
+          <hr class="section-divider">
+          <p>A taste of what's coming — hover to unveil hints of our latest creations.</p>
+        </div>
+
+        <div class="sneak-peek-grid">
+          <div class="sneak-peek-card reveal stagger-1" id="peek-1">
+            <span class="sneak-peek-badge">New Flavors</span>
+            <img src="https://images.unsplash.com/photo-1464195244916-405fa0a82545?w=600&q=80"
+                 alt="Blurred preview of artisan pastries with new flavor combinations"
+                 loading="lazy">
+            <div class="sneak-peek-overlay">
+              <i class="ph ph-eye-slash" aria-hidden="true"></i>
+              <span>Coming Soon</span>
+            </div>
+          </div>
+          <div class="sneak-peek-card reveal stagger-2" id="peek-2">
+            <span class="sneak-peek-badge">New Collection</span>
+            <img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df6e?w=600&q=80"
+                 alt="Blurred preview of elegant new cake collection designs"
+                 loading="lazy">
+            <div class="sneak-peek-overlay">
+              <i class="ph ph-eye-slash" aria-hidden="true"></i>
+              <span>Coming Soon</span>
+            </div>
+          </div>
+          <div class="sneak-peek-card reveal stagger-3" id="peek-3">
+            <span class="sneak-peek-badge">New Experience</span>
+            <img src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=600&q=80"
+                 alt="Blurred preview of premium bakery experience and new services"
+                 loading="lazy">
+            <div class="sneak-peek-overlay">
+              <i class="ph ph-eye-slash" aria-hidden="true"></i>
+              <span>Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: SOCIAL PROOF / TESTIMONIALS
+         ============================================ -->
+    <section class="section section-alt" id="social-proof" aria-label="Early excitement testimonials">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">What People Are Saying</span>
+          <h2>Early Excitement</h2>
+          <hr class="section-divider">
+          <p>Our community can't wait — here's what they're saying.</p>
+        </div>
+
+        <div class="testimonial-slider-container reveal" id="testimonial-slider">
+          <div class="testimonial-slides">
+            <div class="testimonial-slide active" data-slide="0">
+              <p class="testimonial-quote">I've been following CRUM since day one. Every new creation is better than the last — I can't wait to see what's next!</p>
+              <div class="testimonial-author">
+                <div class="testimonial-author-img">
+                  <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=120&q=80" alt="Portrait of Sarah Mitchell" loading="lazy">
+                </div>
+                <div class="testimonial-author-info">
+                  <h4>Sarah Mitchell</h4>
+                  <p>Loyal Customer since 2018</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide" data-slide="1">
+              <p class="testimonial-quote">CRUM's cakes made our wedding unforgettable. Whatever they're baking next, sign me up immediately!</p>
+              <div class="testimonial-author">
+                <div class="testimonial-author-img">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Portrait of James Rodriguez" loading="lazy">
+                </div>
+                <div class="testimonial-author-info">
+                  <h4>James Rodriguez</h4>
+                  <p>Happy Groom, Summer 2024</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-slide" data-slide="2">
+              <p class="testimonial-quote">The attention to detail and quality at CRUM is unmatched. Their sourdough changed my morning routine forever.</p>
+              <div class="testimonial-author">
+                <div class="testimonial-author-img">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&q=80" alt="Portrait of Emily Chen" loading="lazy">
+                </div>
+                <div class="testimonial-author-info">
+                  <h4>Emily Chen</h4>
+                  <p>Food Blogger &amp; Pastry Enthusiast</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-dots" aria-label="Testimonial navigation">
+            <button class="testimonial-dot active" data-dot="0" aria-label="Show testimonial 1"></button>
+            <button class="testimonial-dot" data-dot="1" aria-label="Show testimonial 2"></button>
+            <button class="testimonial-dot" data-dot="2" aria-label="Show testimonial 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: STAY CONNECTED — SOCIAL + CONTACT
+         ============================================ -->
+    <section class="section" id="stay-connected" aria-label="Stay connected with us">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Stay Connected</span>
+          <h2>Follow the Journey</h2>
+          <hr class="section-divider">
+          <p>Follow us on social media for behind-the-scenes sneak peeks, recipe hints, and launch updates.</p>
+        </div>
+
+        <div class="social-connect-grid">
+          <a href="#" class="social-connect-card social-instagram-card reveal stagger-1" id="social-ig" aria-label="Follow CRUM on Instagram">
+            <div class="social-connect-icon">
+              <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+            </div>
+            <h3>Instagram</h3>
+            <p>Daily inspiration & behind-the-scenes</p>
+          </a>
+          <a href="#" class="social-connect-card social-facebook-card reveal stagger-2" id="social-fb" aria-label="Follow CRUM on Facebook">
+            <div class="social-connect-icon">
+              <i class="ph ph-facebook-logo" aria-hidden="true"></i>
+            </div>
+            <h3>Facebook</h3>
+            <p>Community updates & events</p>
+          </a>
+          <a href="#" class="social-connect-card social-pinterest-card reveal stagger-3" id="social-pin" aria-label="Follow CRUM on Pinterest">
+            <div class="social-connect-icon">
+              <i class="ph ph-pinterest-logo" aria-hidden="true"></i>
+            </div>
+            <h3>Pinterest</h3>
+            <p>Cake ideas & baking boards</p>
+          </a>
+          <a href="#" class="social-connect-card social-tiktok-card reveal stagger-4" id="social-tt" aria-label="Follow CRUM on TikTok">
+            <div class="social-connect-icon">
+              <i class="ph ph-tiktok-logo" aria-hidden="true"></i>
+            </div>
+            <h3>TikTok</h3>
+            <p>Quick baking videos & fun content</p>
+          </a>
+        </div>
+
+        <div class="connect-contact-row reveal">
+          <div class="connect-contact-item">
+            <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+            <span>hello@crumbakery.com</span>
+          </div>
+          <div class="connect-contact-item">
+            <i class="ph ph-phone" aria-hidden="true"></i>
+            <span>+1 (503) 555-CRUM</span>
+          </div>
+          <div class="connect-contact-item">
+            <i class="ph ph-map-pin" aria-hidden="true"></i>
+            <span>128 Flour Lane, Portland, OR</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="CRUM Home">
+          <div class="logo-icon">
+            <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+          </div>
+          <span class="logo-text">CRUM</span>
+        </a>
+        <p>Handcrafted artisan breads, pastries, and celebration cakes. Baking with love and tradition since 2012.</p>
+        <div class="footer-social">
+          <a href="#" class="social-instagram" aria-label="Follow us on Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-facebook" aria-label="Follow us on Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-pinterest" aria-label="Follow us on Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-tiktok" aria-label="Follow us on TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <div class="footer-links">
+          <a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a>
+          <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a>
+          <a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a>
+          <a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a>
+          <a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item">
+          <i class="ph ph-map-pin" aria-hidden="true"></i>
+          <span>128 Flour Lane, Baker's Quarter, Portland, OR 97201</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph ph-phone" aria-hidden="true"></i>
+          <span>+1 (503) 555-CRUM</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+          <span>hello@crumbakery.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="ph ph-clock" aria-hidden="true"></i>
+          <span>Mon–Fri: 6AM–7PM</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Newsletter</h4>
+        <p style="color:rgba(245,222,179,0.7); font-size:var(--fs-small); margin-bottom:var(--space-md);">
+          Get fresh updates on new flavors, seasonal specials, and exclusive offers.
+        </p>
+        <div class="footer-newsletter">
+          <form class="newsletter-form" id="footer-newsletter-form" aria-label="Newsletter signup">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email address">
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+              <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 CRUM Bakery. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="login.html">Admin Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="ph ph-caret-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+
+  <!-- Page-Specific Script: Countdown & Interactions -->
+  <script>
+    (function() {
+      // ============================================
+      // COUNTDOWN TIMER
+      // ============================================
+      // Set launch date to 30 days from now
+      const launchDate = new Date();
+      launchDate.setDate(launchDate.getDate() + 30);
+      launchDate.setHours(9, 0, 0, 0);
+
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minutesEl = document.getElementById('cd-minutes');
+      const secondsEl = document.getElementById('cd-seconds');
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = launchDate - now;
+
+        if (diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          secondsEl.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const newDays = String(days).padStart(2, '0');
+        const newHours = String(hours).padStart(2, '0');
+        const newMinutes = String(minutes).padStart(2, '0');
+        const newSeconds = String(seconds).padStart(2, '0');
+
+        // Flip animation on change
+        if (daysEl.textContent !== newDays) {
+          daysEl.classList.add('flip');
+          setTimeout(() => daysEl.classList.remove('flip'), 400);
+        }
+        if (hoursEl.textContent !== newHours) {
+          hoursEl.classList.add('flip');
+          setTimeout(() => hoursEl.classList.remove('flip'), 400);
+        }
+        if (minutesEl.textContent !== newMinutes) {
+          minutesEl.classList.add('flip');
+          setTimeout(() => minutesEl.classList.remove('flip'), 400);
+        }
+        if (secondsEl.textContent !== newSeconds) {
+          secondsEl.classList.add('flip');
+          setTimeout(() => secondsEl.classList.remove('flip'), 400);
+        }
+
+        daysEl.textContent = newDays;
+        hoursEl.textContent = newHours;
+        minutesEl.textContent = newMinutes;
+        secondsEl.textContent = newSeconds;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+
+      // ============================================
+      // NOTIFY ME FORM
+      // ============================================
+      const notifyForm = document.getElementById('notify-form');
+      const notifySuccess = document.getElementById('notify-success');
+
+      if (notifyForm) {
+        notifyForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = document.getElementById('notify-email');
+          if (email && email.value.trim()) {
+            notifyForm.style.display = 'none';
+            notifySuccess.classList.add('show');
+
+            if (window.CrumApp?.Toast) {
+              window.CrumApp.Toast.success('You\'re on the notification list!');
+            }
+          }
+        });
+      }
+
+
+      // ============================================
+      // TESTIMONIAL SLIDER
+      // ============================================
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.testimonial-dot');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function showSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+
+      // Auto-play
+      function startAutoPlay() {
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+
+      function stopAutoPlay() {
+        clearInterval(slideInterval);
+      }
+
+      // Dot navigation
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          stopAutoPlay();
+          showSlide(parseInt(dot.dataset.dot));
+          startAutoPlay();
+        });
+      });
+
+      if (slides.length > 0) {
+        startAutoPlay();
+      }
+    })();
+  </script>
+</body>
+</html>
+

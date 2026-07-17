@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery — Explore our full menu of artisan breads, pastries, celebration cakes, and custom order services with pricing.">
+  <title>CRUM — Our Creations | Menu & Services</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/components.css"><link rel="stylesheet" href="assets/css/layout.css"><link rel="stylesheet" href="assets/css/animations.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css"><link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-xl);transition:all .3s ease;}
+    .catalog-grid .product-card{transition:all .3s ease;}
+    .menu-table{width:100%;}
+    /* Split Interactive Menu Styling */
+    .menu-split-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+      margin-top: var(--space-xl);
+    }
+    
+    .menu-spotlight {
+      position: sticky;
+      top: 100px;
+      z-index: 10;
+    }
+    
+    .spotlight-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transition: all var(--transition-normal);
+    }
+    
+    .spotlight-img-wrap {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .spotlight-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.3s ease;
+    }
+    
+    .spotlight-badge {
+      position: absolute;
+      top: var(--space-md);
+      left: var(--space-md);
+      background: #10B981;
+      color: #FFFFFF;
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-bold);
+      padding: var(--space-2xs) var(--space-sm);
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    
+    .spotlight-badge.status-soldout {
+      background: #EF4444 !important;
+    }
+    
+    .spotlight-body {
+      padding: var(--space-lg);
+    }
+    
+    .spotlight-body h3 {
+      font-size: var(--fs-h4);
+      margin-bottom: var(--space-xs);
+      color: var(--text-primary);
+    }
+    
+    .spotlight-body p {
+      font-size: var(--fs-small);
+      line-height: 1.5;
+      margin-bottom: var(--space-lg);
+      min-height: 42px;
+      color: var(--text-muted);
+    }
+    
+    .spotlight-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-color-light);
+      padding-top: var(--space-md);
+    }
+    
+    .spotlight-price {
+      font-family: var(--font-heading);
+      font-size: var(--fs-h3);
+      font-weight: var(--fw-bold);
+      color: var(--color-accent);
+    }
+    
+    /* Menu List */
+    .menu-table-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+    }
+    
+    .category-title {
+      font-size: var(--fs-h3);
+      margin-top: 0;
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      border-bottom: 2px solid var(--border-color-light);
+      padding-bottom: var(--space-xs);
+      color: var(--text-primary);
+    }
+    
+    .category-title i {
+      color: var(--color-accent);
+    }
+    
+    .menu-list-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      grid-template-rows: auto auto;
+      column-gap: var(--space-md);
+      row-gap: var(--space-3xs);
+      align-items: center;
+      padding: var(--space-md);
+      border: 1px solid transparent;
+      border-radius: var(--radius-lg);
+      background: transparent;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .menu-list-item:hover, .menu-list-item.active {
+      background: var(--bg-elevated);
+      border-color: var(--border-color-light);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+    
+    .menu-list-item.active {
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 12px rgba(139, 69, 19, 0.08);
+    }
+    
+    .item-thumb {
+      grid-row: span 2;
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color-light);
+    }
+    
+    .item-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .item-details {
+      display: flex;
+      align-items: center;
+      grid-column: 2 / 3;
+      height: 24px;
+    }
+    
+    .item-name {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-semibold);
+      color: var(--text-primary);
+      margin: 0;
+    }
+    
+    .leader-line {
+      flex-grow: 1;
+      border-bottom: 1.5px dotted var(--border-color-light);
+      margin: 0 var(--space-sm);
+      align-self: flex-end;
+      position: relative;
+      bottom: 4px;
+    }
+    
+    .item-price {
+      font-family: var(--font-heading);
+      font-size: var(--fs-body);
+      font-weight: var(--fw-bold);
+      color: var(--color-accent);
+    }
+    
+    .item-desc {
+      grid-column: 2 / 3;
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+    
+    .item-status-badge {
+      grid-column: 3 / 4;
+      grid-row: span 2;
+      font-size: 0.65rem !important;
+      padding: var(--space-2xs) var(--space-sm) !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--fw-semibold);
+      border-radius: var(--radius-md);
+    }
+    
+    .badge-success {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .sold-out-badge {
+      background: rgba(239, 68, 68, 0.1);
+      color: #EF4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    
+    .menu-list-item.sold-out {
+      opacity: 0.7;
+    }
+    
+    .menu-list-item.sold-out .item-name {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    
+    /* Filtering Animation Class */
+    .menu-category-section {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .menu-category-section.hidden {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    
+    /* Responsive Split Menu */
+    @media(max-width: 900px) {
+      .menu-split-container {
+        grid-template-columns: 1fr;
+      }
+      .menu-spotlight {
+        position: static;
+        margin-bottom: var(--space-xl);
+      }
+      .spotlight-card {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+      }
+      .spotlight-img-wrap {
+        height: 100%;
+        min-height: 200px;
+      }
+    }
+    @media(max-width: 600px) {
+      .spotlight-card {
+        grid-template-columns: 1fr;
+      }
+      .spotlight-img-wrap {
+        height: 180px;
+        min-height: auto;
+      }
+    }
+    .custom-services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--space-xl);}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-xl);align-items:stretch;}
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card .btn {
+      margin-top: auto;
+    }
+    .pricing-card.featured {
+      position: relative;
+    }
+    .pricing-card.featured .badge-accent {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin-bottom: 0 !important;
+      z-index: 10;
+      white-space: nowrap;
+    }
+    /* Bulk split catering section styling */
+    .bulk-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.1fr;
+      gap: var(--space-2xl);
+      align-items: stretch;
+    }
+    
+    .bulk-details-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-xl);
+    }
+    
+    .bulk-feature {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    
+    .bulk-feature-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    
+    .bulk-feature-header i {
+      font-size: 1.5rem;
+      color: var(--color-accent);
+    }
+    
+    .bulk-feature-header h3 {
+      font-size: var(--fs-h4);
+      margin: 0;
+      color: var(--text-primary);
+    }
+    
+    .bulk-details-col p {
+      margin: 0;
+      font-size: var(--fs-body);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    .bulk-image-col {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color-light);
+      min-height: 0;
+    }
+    
+    .bulk-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    
+    .bulk-image-col:hover .bulk-image {
+      transform: scale(1.03);
+    }
+    
+    .bulk-form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      box-shadow: var(--shadow-lg);
+      height: 100%;
+    }
+    
+    .bulk-form-card h3 {
+      font-size: var(--fs-h4);
+      margin-top: 0;
+      margin-bottom: var(--space-lg);
+      color: var(--text-primary);
+    }
+    
+    @media(max-width: 1023px){
+      .pricing-grid{grid-template-columns:1fr; max-width:480px; margin-inline:auto;}
+      .bulk-split {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+      .bulk-image-col {
+        height: 320px;
+      }
+    }
+    @media(max-width:639px){
+      .pricing-grid{grid-template-columns:1fr;}
+      .bulk-split{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body class="page-hero">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <!-- NAVBAR -->
+  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation"><div class="navbar-inner"><a href="index.html" class="navbar-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><div class="navbar-links"><div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a></div></div><a href="about.html" class="nav-link">About</a><a href="services.html" class="nav-link active">Services</a><a href="portfolio.html" class="nav-link">Portfolio</a><a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a><a href="book-now.html" class="nav-link nav-cta">Book Now</a></div><div class="navbar-controls"><button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button><button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button></div><button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu"><div class="mobile-nav-links"><a href="#" class="mobile-nav-link mobile-dropdown-toggle"><i class="ph ph-house" aria-hidden="true"></i> Home <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i></a><div class="mobile-dropdown-content"><a href="index.html" class="mobile-dropdown-item">Home 1</a><a href="home-b.html" class="mobile-dropdown-item">Home 2</a></div><a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a><a href="services.html" class="mobile-nav-link active"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a><a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a><a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a><a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a><a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a></div><div class="mobile-controls"><button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button><button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button></div></div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero hero-mini" id="hero" aria-label="Services hero">
+      <div class="hero-bg"><img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=1600&q=80" alt="Colorful array of macarons and cupcakes, overhead shot" loading="eager" data-parallax="0.3"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content"><h1 class="hero-animate-in">Our Creations</h1><p class="hero-animate-in-delay-1">From daily fresh bakes to show-stopping custom cakes — discover everything we craft.</p></div>
+    </section>
+
+    <!-- SECTION 2: CAKE CATALOG -->
+    <section class="section" id="catalog" aria-label="Cake catalog">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-label">Browse & Order</span><h2>Cake Catalog</h2><hr class="section-divider"><p>Filter by occasion to find the perfect cake for your celebration.</p></div>
+        <div class="filter-pills mb-2xl reveal" data-filter-group="catalog-grid">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="birthday">Birthday</button>
+          <button class="filter-pill" data-filter="wedding">Wedding</button>
+          <button class="filter-pill" data-filter="custom">Custom</button>
+          <button class="filter-pill" data-filter="seasonal">Seasonal</button>
+        </div>
+        <div class="catalog-grid" id="catalog-grid">
+          <div class="card product-card reveal stagger-1" data-filter-category="birthday"><div class="card-img"><img src="assets/images/cake-celestial.jpg" alt="Rainbow birthday cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">Rainbow Birthday</h3><p class="card-text">Layered rainbow sponge with vanilla buttercream.</p><div class="card-actions"><span class="card-price">$45.00</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+          <div class="card product-card reveal stagger-2" data-filter-category="wedding"><div class="card-img"><img src="assets/images/cake-white-floral.jpg" alt="Elegant white wedding cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">Classic Elegance</h3><p class="card-text">Three-tier white fondant with sugar flowers.</p><div class="card-actions"><span class="card-price">$180.00</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+          <div class="card product-card reveal stagger-3" data-filter-category="custom"><div class="card-img"><img src="assets/images/bts-floral-cake.jpg" alt="Custom 3D sculpted cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">3D Sculpture</h3><p class="card-text">Custom sculpted design, any theme imaginable.</p><div class="card-actions"><span class="card-price">From $120</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+          <div class="card product-card reveal stagger-4" data-filter-category="seasonal"><div class="card-img"><img src="assets/images/recipe-blueberry-scones.jpg" alt="Festive holiday cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">Holiday Special</h3><p class="card-text">Seasonal spiced cake with cinnamon frosting.</p><div class="card-actions"><span class="card-price">$55.00</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+          <div class="card product-card reveal stagger-5" data-filter-category="birthday"><div class="card-img"><img src="assets/images/cake-chocolate-drip.png" alt="Chocolate drip birthday cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">Chocolate Drip</h3><p class="card-text">Triple chocolate layers with ganache drip.</p><div class="card-actions"><span class="card-price">$52.00</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+          <div class="card product-card reveal stagger-6" data-filter-category="wedding"><div class="card-img"><img src="assets/images/cake-rustic-romance.png" alt="Rustic naked wedding cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">Rustic Romance</h3><p class="card-text">Semi-naked cake with fresh florals and berries.</p><div class="card-actions"><span class="card-price">$155.00</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+          <div class="card product-card reveal stagger-7" data-filter-category="custom"><div class="card-img"><img src="assets/images/cake-mirror-glaze.png" alt="Mirror glaze cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">Mirror Glaze</h3><p class="card-text">Galaxy-inspired mirror glaze finish.</p><div class="card-actions"><span class="card-price">$85.00</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+          <div class="card product-card reveal stagger-8" data-filter-category="seasonal"><div class="card-img"><img src="assets/images/cake-spring-garden.png" alt="Spring floral cake" loading="lazy"></div><div class="card-body"><h3 class="card-title">Spring Garden</h3><p class="card-text">Lemon elderflower with edible flowers.</p><div class="card-actions"><span class="card-price">$62.00</span><a href="book-now.html" class="btn btn-primary btn-sm btn-inline">Order</a></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DAILY FRESH MENU -->
+    <section class="section section-alt" id="daily-menu" aria-label="Daily fresh menu">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-label">Available Today</span><h2>Daily Fresh Menu</h2><hr class="section-divider"><p>Freshly baked every morning. Subject to availability.</p></div>
+        
+        <!-- Interactive Category Selectors -->
+        <div class="filter-pills mb-2xl reveal" style="display:flex;justify-content:center;" data-filter-group="menu-table">
+          <button class="filter-pill active" data-menu-filter="all">All Items</button>
+          <button class="filter-pill" data-menu-filter="bread">Artisan Breads</button>
+          <button class="filter-pill" data-menu-filter="pastry">Pastries</button>
+          <button class="filter-pill" data-menu-filter="savory">Savories</button>
+        </div>
+
+        <!-- Menu Split Layout -->
+        <div class="menu-split-container reveal">
+          <!-- Left: Live Spotlight Card -->
+          <div class="menu-spotlight">
+            <div class="spotlight-card">
+              <div class="spotlight-img-wrap">
+                <img id="spotlight-img" src="assets/images/sourdough.jpg" alt="Featured Menu Item">
+                <div class="spotlight-badge" id="spotlight-status">Available</div>
+              </div>
+              <div class="spotlight-body">
+                <h3 id="spotlight-title">Sourdough Boule</h3>
+                <p id="spotlight-desc">Traditional 48-hr ferment, crusty exterior</p>
+                <div class="spotlight-footer">
+                  <span class="spotlight-price" id="spotlight-price">$8.50</span>
+                  <a href="book-now.html" class="btn btn-primary btn-sm btn-inline" id="spotlight-cta">Order Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Menu List -->
+          <div class="menu-table-list">
+            
+            <!-- Category: Artisan Breads -->
+            <div class="menu-category-section" data-menu-category="bread">
+              <h3 class="category-title"><i class="ph ph-bread" aria-hidden="true"></i> Artisan Breads</h3>
+              
+              <div class="menu-list-item active" 
+                   data-image="assets/images/bread-loaf.png" 
+                   data-title="Sourdough Boule" 
+                   data-desc="Traditional 48-hr ferment, crusty exterior" 
+                   data-price="$8.50" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/bread-loaf.png" alt="Sourdough Boule"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Sourdough Boule</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$8.50</span>
+                </div>
+                <p class="item-desc">Traditional 48-hr ferment, crusty exterior</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+
+              <div class="menu-list-item" 
+                   data-image="assets/images/bread-baguette.png" 
+                   data-title="Whole Wheat Batard" 
+                   data-desc="Nutty, wholesome, hearty slicing loaf" 
+                   data-price="$7.00" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/bread-baguette.png" alt="Whole Wheat Batard"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Whole Wheat Batard</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$7.00</span>
+                </div>
+                <p class="item-desc">Nutty, wholesome, hearty slicing loaf</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+
+              <div class="menu-list-item" 
+                   data-image="assets/images/bread-pita.png" 
+                   data-title="Olive Focaccia" 
+                   data-desc="Rosemary, Kalamata olives, sea salt" 
+                   data-price="$9.00" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/bread-pita.png" alt="Olive Focaccia"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Olive Focaccia</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$9.00</span>
+                </div>
+                <p class="item-desc">Rosemary, Kalamata olives, sea salt</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+
+              <div class="menu-list-item sold-out" 
+                   data-image="assets/images/bread-rolls.png" 
+                   data-title="Rye & Caraway" 
+                   data-desc="Dense, aromatic, Eastern European style" 
+                   data-price="$8.00" 
+                   data-status="Sold Out">
+                <div class="item-thumb"><img src="assets/images/bread-rolls.png" alt="Rye & Caraway"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Rye & Caraway</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$8.00</span>
+                </div>
+                <p class="item-desc">Dense, aromatic, Eastern European style</p>
+                <span class="item-status-badge sold-out-badge">Sold Out</span>
+              </div>
+            </div>
+
+            <!-- Category: Pastries -->
+            <div class="menu-category-section" data-menu-category="pastry">
+              <h3 class="category-title"><i class="ph ph-cookie" aria-hidden="true"></i> Pastries</h3>
+              
+              <div class="menu-list-item" 
+                   data-image="assets/images/croissant.jpg" 
+                   data-title="Butter Croissant" 
+                   data-desc="Classic French, imported butter" 
+                   data-price="$4.25" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/croissant.jpg" alt="Butter Croissant"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Butter Croissant</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$4.25</span>
+                </div>
+                <p class="item-desc">Classic French, imported butter</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+
+              <div class="menu-list-item" 
+                   data-image="assets/images/pain-au-chocolat.png" 
+                   data-title="Pain au Chocolat" 
+                   data-desc="Dark chocolate-filled croissant" 
+                   data-price="$4.75" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/pain-au-chocolat.png" alt="Pain au Chocolat"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Pain au Chocolat</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$4.75</span>
+                </div>
+                <p class="item-desc">Dark chocolate-filled croissant</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+
+              <div class="menu-list-item" 
+                   data-image="assets/images/danish.jpg" 
+                   data-title="Almond Danish" 
+                   data-desc="Frangipane filling, flaked almonds" 
+                   data-price="$5.00" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/danish.jpg" alt="Almond Danish"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Almond Danish</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$5.00</span>
+                </div>
+                <p class="item-desc">Frangipane filling, flaked almonds</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+            </div>
+
+            <!-- Category: Savories -->
+            <div class="menu-category-section" data-menu-category="savory">
+              <h3 class="category-title"><i class="ph ph-knife" aria-hidden="true"></i> Savories</h3>
+              
+              <div class="menu-list-item" 
+                   data-image="assets/images/visit-bg.jpg" 
+                   data-title="Spinach & Feta Quiche" 
+                   data-desc="Buttery crust, creamy egg filling" 
+                   data-price="$6.50" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/visit-bg.jpg" alt="Spinach & Feta Quiche"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Spinach & Feta Quiche</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$6.50</span>
+                </div>
+                <p class="item-desc">Buttery crust, creamy egg filling</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+
+              <div class="menu-list-item" 
+                   data-image="assets/images/cinnamon.jpg" 
+                   data-title="Sausage Roll" 
+                   data-desc="Puff pastry, herb-seasoned pork" 
+                   data-price="$5.00" 
+                   data-status="Available">
+                <div class="item-thumb"><img src="assets/images/cinnamon.jpg" alt="Sausage Roll"></div>
+                <div class="item-details">
+                  <h4 class="item-name">Sausage Roll</h4>
+                  <div class="leader-line"></div>
+                  <span class="item-price">$5.00</span>
+                </div>
+                <p class="item-desc">Puff pastry, herb-seasoned pork</p>
+                <span class="item-status-badge badge-success">Available</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CUSTOM ORDER SERVICES -->
+    <section class="section" id="custom-services" aria-label="Custom order services">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-label">Tailored to You</span><h2>Custom Order Services</h2><hr class="section-divider"><p>Whatever you dream, we can bake. Our custom services bring your vision to life.</p></div>
+        <div class="custom-services-grid">
+          <div class="feature-card reveal stagger-1"><div class="feature-icon"><i class="ph ph-cake" aria-hidden="true"></i></div><h3 style="font-size:var(--fs-h4);">Tiered Cakes</h3><p class="text-small text-muted">Multi-tier elegance for weddings & galas. Up to 10 tiers available.</p></div>
+          <div class="feature-card reveal stagger-2"><div class="feature-icon"><i class="ph ph-cube" aria-hidden="true"></i></div><h3 style="font-size:var(--fs-h4);">3D Designs</h3><p class="text-small text-muted">Sculpted cakes shaped to any theme — cars, castles, characters.</p></div>
+          <div class="feature-card reveal stagger-3"><div class="feature-icon"><i class="ph ph-leaf" aria-hidden="true"></i></div><h3 style="font-size:var(--fs-h4);">Dietary Options</h3><p class="text-small text-muted">Vegan, gluten-free, nut-free, and sugar-free alternatives.</p></div>
+          <div class="feature-card reveal stagger-4"><div class="feature-icon"><i class="ph ph-buildings" aria-hidden="true"></i></div><h3 style="font-size:var(--fs-h4);">Corporate Branding</h3><p class="text-small text-muted">Logo cakes, branded treats, and event catering for businesses.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PRICING TIERS -->
+    <section class="section section-alt" id="pricing" aria-label="Pricing tiers">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-label">Transparent Pricing</span><h2>Choose Your Tier</h2><hr class="section-divider"><p>From simple elegance to elaborate masterpieces — a tier for every budget.</p></div>
+        <div class="pricing-grid">
+          <div class="pricing-card reveal stagger-1"><div class="pricing-tier">Simple</div><div class="pricing-price">$35–$60</div><ul class="pricing-features"><li><i class="ph ph-check" aria-hidden="true"></i> Single tier design</li><li><i class="ph ph-check" aria-hidden="true"></i> Classic flavors</li><li><i class="ph ph-check" aria-hidden="true"></i> Buttercream finish</li><li><i class="ph ph-check" aria-hidden="true"></i> Standard decorations</li><li><i class="ph ph-check" aria-hidden="true"></i> Serves up to 20</li></ul><a href="book-now.html" class="btn btn-outline w-full">Get Started</a></div>
+          <div class="pricing-card featured reveal stagger-2"><span class="badge badge-accent" style="margin-bottom:var(--space-md);">Most Popular</span><div class="pricing-tier">Signature</div><div class="pricing-price">$65–$120</div><ul class="pricing-features"><li><i class="ph ph-check" aria-hidden="true"></i> Up to 3 tiers</li><li><i class="ph ph-check" aria-hidden="true"></i> Premium flavors</li><li><i class="ph ph-check" aria-hidden="true"></i> Fondant or ganache</li><li><i class="ph ph-check" aria-hidden="true"></i> Custom decorations</li><li><i class="ph ph-check" aria-hidden="true"></i> Serves up to 50</li><li><i class="ph ph-check" aria-hidden="true"></i> Free delivery</li></ul><a href="book-now.html" class="btn btn-primary w-full">Choose Signature</a></div>
+          <div class="pricing-card reveal stagger-3"><div class="pricing-tier">Elite</div><div class="pricing-price">$150+</div><ul class="pricing-features"><li><i class="ph ph-check" aria-hidden="true"></i> Unlimited tiers</li><li><i class="ph ph-check" aria-hidden="true"></i> Exotic flavors</li><li><i class="ph ph-check" aria-hidden="true"></i> Sculpted designs</li><li><i class="ph ph-check" aria-hidden="true"></i> 3D cake art</li><li><i class="ph ph-check" aria-hidden="true"></i> Serves 50+</li><li><i class="ph ph-check" aria-hidden="true"></i> Free delivery & setup</li><li><i class="ph ph-check" aria-hidden="true"></i> Tasting included</li></ul><a href="book-now.html" class="btn btn-outline w-full">Go Elite</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: BULK ORDERS & CATERING -->
+    <section class="section" id="bulk-orders" aria-label="Bulk orders and catering">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-label">Events & More</span><h2>Bulk Orders & Catering</h2><hr class="section-divider"><p>Planning a big event? We handle everything from corporate functions to wedding receptions.</p></div>
+        <div class="bulk-split">
+          <!-- Text details -->
+          <div class="reveal-left bulk-details-col">
+            <div class="bulk-feature">
+              <div class="bulk-feature-header">
+                <i class="ph ph-champagne" aria-hidden="true"></i>
+                <h3>Event Catering</h3>
+              </div>
+              <p>From intimate gatherings to grand celebrations, our catering team delivers a complete bakery experience. Minimum 20 guests.</p>
+            </div>
+            
+            <div class="bulk-feature">
+              <div class="bulk-feature-header">
+                <i class="ph ph-buildings" aria-hidden="true"></i>
+                <h3>Corporate Orders</h3>
+              </div>
+              <p>Regular office deliveries, conference pastries, branded treats, and team celebration cakes. Volume discounts available.</p>
+            </div>
+            
+            <div class="bulk-feature">
+              <div class="bulk-feature-header">
+                <i class="ph ph-heart" aria-hidden="true"></i>
+                <h3>Wedding Packages</h3>
+              </div>
+              <p>Complete wedding dessert tables including the main cake, cupcakes, cookies, and a dessert bar. Tasting included.</p>
+            </div>
+          </div>
+
+          <!-- Image spotlight (equal size to text) -->
+          <div class="reveal-left bulk-image-col">
+            <img src="assets/images/visit-bg.jpg" alt="CRUM Bakery catering display" class="bulk-image" loading="lazy">
+          </div>
+
+          <!-- Form column -->
+          <div class="reveal-right bulk-form-col">
+            <div class="bulk-form-card">
+              <h3>Request a Quote</h3>
+              <form data-validate id="quote-form">
+                <div class="form-group"><label class="form-label" for="quote-name">Full Name</label><input type="text" id="quote-name" class="form-input" placeholder="Your name" data-rules="required"></div>
+                <div class="form-group"><label class="form-label" for="quote-email">Email</label><input type="email" id="quote-email" class="form-input" placeholder="you@example.com" data-rules="required|email"></div>
+                <div class="form-group"><label class="form-label" for="quote-type">Event Type</label><select id="quote-type" class="form-select" data-rules="required"><option value="">Select event type</option><option>Corporate Event</option><option>Wedding</option><option>Birthday Party</option><option>Conference</option><option>Other</option></select></div>
+                <div class="form-group"><label class="form-label" for="quote-guests">Estimated Guests</label><input type="number" id="quote-guests" class="form-input" placeholder="50" data-rules="required" min="10"></div>
+                <div class="form-group"><label class="form-label" for="quote-message">Details</label><textarea id="quote-message" class="form-textarea" placeholder="Tell us about your event..." data-rules="required" rows="3"></textarea></div>
+                <button type="submit" class="btn btn-primary w-full"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i> Request Quote</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="footer-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><p>Handcrafted artisan breads, pastries, and celebration cakes.</p><div class="footer-social"><a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a><a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a><a href="#" class="social-tiktok" aria-label="TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a></div></div><div><h4 class="footer-heading">Quick Links</h4><div class="footer-links"><a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a><a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a><a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a><a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a><a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a></div></div><div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Portland, OR 97201</span></div><div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span></div><div class="footer-contact-item"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>hello@crumbakery.com</span></div><div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span></div></div><div><h4 class="footer-heading">Newsletter</h4><p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh updates on specials.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter"><input type="email" class="newsletter-input" placeholder="Your email" required aria-label="Email"><button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></button></form></div></div></div><div class="footer-bottom"><p>&copy; 2025 CRUM Bakery. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="login.html">Admin Login</a></div></div></footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up" aria-hidden="true"></i></button>
+  <script src="assets/js/data.js"></script><script src="assets/js/main.js"></script><script src="assets/js/navigation.js"></script><script src="assets/js/animations.js"></script><script src="assets/js/forms.js"></script><script src="assets/js/menu.js"></script>
+</body>
+</html>
+

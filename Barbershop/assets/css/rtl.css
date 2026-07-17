@@ -1,0 +1,228 @@
+/* ============================================================
+   SHARP — RTL (Right-to-Left) Layout Overrides
+   Applied via dir="rtl" on <html>
+   ============================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+}
+
+/* --- Text Alignment --- */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* --- Navbar --- */
+[dir="rtl"] .navbar__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav__link::after {
+  left: auto;
+  right: 0;
+}
+
+/* RTL Hamburger stays on right */
+[dir="rtl"] .navbar__hamburger {
+  order: -1;
+}
+
+/* --- Mobile Menu --- */
+[dir="rtl"] .mobile-menu {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* --- Dropdown --- */
+[dir="rtl"] .nav__dropdown-menu {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%) translateY(8px);
+}
+
+[dir="rtl"] .nav__dropdown:hover .nav__dropdown-menu,
+[dir="rtl"] .nav__dropdown.open .nav__dropdown-menu {
+  transform: translateX(50%) translateY(0);
+}
+
+/* --- Form Select Arrow --- */
+[dir="rtl"] .form__select {
+  background-position: left 16px center;
+  padding-right: 16px;
+  padding-left: 44px;
+}
+
+/* --- Form Validation Icons --- */
+[dir="rtl"] .form__success-icon,
+[dir="rtl"] .form__error-icon {
+  right: auto;
+  left: 16px;
+}
+
+/* --- Form Password Toggle --- */
+[dir="rtl"] .form__password-toggle {
+  right: auto;
+  left: 16px;
+}
+
+/* --- Footer Link Hover --- */
+[dir="rtl"] .footer__link:hover {
+  padding-inline-start: var(--space-sm);
+  padding-inline-end: 0;
+}
+
+/* --- Card Link Arrow --- */
+[dir="rtl"] .card__link {
+  flex-direction: row-reverse;
+}
+
+/* --- Split Sections (Image/Text swap on RTL) --- */
+[dir="rtl"] .split--60-40 {
+  grid-template-columns: 2fr 3fr;
+}
+
+[dir="rtl"] .split--40-60 {
+  grid-template-columns: 3fr 2fr;
+}
+
+/* --- Split list item icon --- */
+[dir="rtl"] .split__list-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* --- Timeline (Horizontal) --- */
+[dir="rtl"] .timeline {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .timeline__connector {
+  left: auto;
+  right: 50%;
+}
+
+/* --- Stats Card Border --- */
+[dir="rtl"] .card--stat {
+  border-left: none;
+  border-right: 3px solid var(--accent-primary);
+}
+
+/* --- Dashboard Sidebar --- */
+[dir="rtl"] .dashboard__sidebar {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .dashboard__main {
+  margin-inline-start: 0;
+  margin-inline-end: var(--sidebar-width);
+}
+
+[dir="rtl"] .dashboard__sidebar.collapsed ~ .dashboard__main,
+[dir="rtl"] .dashboard.sidebar-collapsed .dashboard__main {
+  margin-inline-end: var(--sidebar-collapsed);
+}
+
+/* Sidebar active indicator */
+[dir="rtl"] .dashboard__nav-item.active {
+  border-inline-start: none;
+  border-inline-end: 3px solid var(--accent-primary);
+}
+
+/* Sidebar tooltip */
+[dir="rtl"] .dashboard__sidebar.collapsed .dashboard__nav-item[data-tooltip]::after {
+  left: auto;
+  right: calc(100% + 8px);
+}
+
+/* Sidebar mobile */
+@media (max-width: 1024px) {
+  [dir="rtl"] .dashboard__sidebar {
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .dashboard__sidebar.open {
+    transform: translateX(0);
+  }
+
+  [dir="rtl"] .dashboard__main {
+    margin-inline-end: 0;
+  }
+}
+
+/* --- Testimonial --- */
+[dir="rtl"] .testimonial__header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .testimonial__stars {
+  flex-direction: row-reverse;
+}
+
+/* --- Contact Item --- */
+[dir="rtl"] .footer__contact-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* --- Auth Page Toggles --- */
+[dir="rtl"] .auth-page__toggles {
+  right: auto;
+  left: var(--space-lg);
+}
+
+/* --- Auth Page Feature --- */
+[dir="rtl"] .auth-page__feature {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* --- Scroll Top Button --- */
+[dir="rtl"] .scroll-top {
+  right: auto;
+  left: var(--space-lg);
+}
+
+/* --- Accordion --- */
+[dir="rtl"] .accordion__trigger {
+  text-align: right;
+}
+
+/* --- Pricing Table --- */
+[dir="rtl"] .pricing-table thead th {
+  text-align: right;
+}
+
+/* --- Gallery Item Label --- */
+[dir="rtl"] .gallery-item__label {
+  direction: rtl;
+}
+
+/* --- Badge --- */
+[dir="rtl"] .badge {
+  flex-direction: row-reverse;
+}
+
+/* --- Dashboard Table --- */
+[dir="rtl"] .dashboard-table thead th {
+  text-align: right;
+}
+
+/* --- Notification Dot --- */
+[dir="rtl"] .dashboard__topbar-btn .notification-dot {
+  right: auto;
+  left: 8px;
+}

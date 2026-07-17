@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery Portfolio — Browse our gallery of custom cakes, wedding creations, and artisan masterpieces.">
+  <title>CRUM — Portfolio | Our Finest Creations</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/components.css"><link rel="stylesheet" href="assets/css/layout.css"><link rel="stylesheet" href="assets/css/animations.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css"><link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    /* Clean Portfolio Grid Styles */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      width: 100%;
+    }
+    
+    .portfolio-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      aspect-ratio: 1 / 1;
+      width: 100%;
+    }
+    
+    .portfolio-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter var(--transition-base);
+    }
+    
+    .portfolio-item:hover img {
+      filter: brightness(0.85);
+    }
+    
+    .portfolio-item .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--space-lg);
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+      color: #FFFFFF;
+      transform: translateY(100%);
+      transition: transform var(--transition-base);
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      transform: translateY(0);
+    }
+    
+    .portfolio-overlay h4 {
+      color: #FFFFFF;
+      font-size: var(--fs-body);
+      font-weight: var(--fw-semibold);
+      margin: 0 0 var(--space-3xs) 0;
+    }
+    
+    .portfolio-overlay p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--fs-xs);
+      margin: 0;
+    }
+    .spotlight-split{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3xl);align-items:center;}
+    .spotlight-img{border-radius:var(--radius-xl);overflow:hidden;height:500px;}
+    .spotlight-img img{width:100%;height:100%;object-fit:cover;}
+    .comparison-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-xl);}
+    .comparison-card{border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-surface);border:1px solid var(--border-color-light);transition:all var(--transition-base);}
+    .comparison-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+    .comparison-slider{position:relative;height:240px;overflow:hidden;cursor:col-resize;}
+    .comparison-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .comparison-slider .slider-before{clip-path:inset(0 50% 0 0);}
+    .comparison-card-body{padding:var(--space-lg);}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-xl);max-width:800px;margin:0 auto;}
+    .stat-box{text-align:center;}
+    .stat-num{font-family:var(--font-heading);font-size:var(--fs-display);font-weight:var(--fw-bold);color:var(--color-accent);display:block;line-height:1;}
+    .stat-label{font-size:var(--fs-small);color:var(--text-muted);margin-top:var(--space-xs);}
+    .upcoming-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-xl);}
+    .upcoming-card{display:grid;grid-template-columns:120px 1fr;gap:var(--space-lg);padding:var(--space-lg);background:var(--bg-surface);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);transition:all var(--transition-base);}
+    .upcoming-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+    .upcoming-card img{width:100%;height:100px;object-fit:cover;border-radius:var(--radius-md);}
+    .countdown-strip{background:linear-gradient(135deg,var(--color-primary),var(--color-accent));color:#fff;padding:var(--space-2xl);border-radius:var(--radius-xl);text-align:center;margin-top:var(--space-2xl);}
+    .countdown-nums{display:flex;gap:var(--space-xl);justify-content:center;margin-top:var(--space-lg);}
+    .countdown-box{background:rgba(255,255,255,0.15);border-radius:var(--radius-lg);padding:var(--space-md) var(--space-lg);min-width:70px;}
+    .countdown-box .num{font-family:var(--font-heading);font-size:var(--fs-h2);font-weight:var(--fw-bold);display:block;line-height:1.2;}
+    .countdown-box .label{font-size:var(--fs-xs);opacity:0.8;text-transform:uppercase;letter-spacing:0.05em;}
+    @media(max-width:1024px){
+      .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+      .spotlight-split{grid-template-columns:1fr; gap:var(--space-xl);}
+      .spotlight-img{height:360px;}
+      .comparison-grid{grid-template-columns:1fr;max-width:500px;margin-left:auto;margin-right:auto;}
+      .stats-row{grid-template-columns:repeat(2,1fr);}
+      .upcoming-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:768px){
+      .portfolio-grid{grid-template-columns:repeat(2,1fr);gap:var(--space-sm);}
+      .spotlight-img{height:300px;}
+      .stats-row{grid-template-columns:1fr; gap:var(--space-lg);}
+      .upcoming-card{grid-template-columns:100px 1fr;}
+    }
+    @media(max-width:480px){
+      .portfolio-grid{grid-template-columns:1fr;}
+      .spotlight-img{height:240px;}
+      .countdown-nums{flex-wrap:wrap;gap:var(--space-md);}
+    }
+  </style>
+</head>
+<body class="page-hero">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation"><div class="navbar-inner"><a href="index.html" class="navbar-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><div class="navbar-links"><div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a></div></div><a href="about.html" class="nav-link">About</a><a href="services.html" class="nav-link">Services</a><a href="portfolio.html" class="nav-link active">Portfolio</a><a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a><a href="book-now.html" class="nav-link nav-cta">Book Now</a></div><div class="navbar-controls"><button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button><button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button></div><button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu"><div class="mobile-nav-links"><a href="#" class="mobile-nav-link mobile-dropdown-toggle"><i class="ph ph-house" aria-hidden="true"></i> Home <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i></a><div class="mobile-dropdown-content"><a href="index.html" class="mobile-dropdown-item">Home 1</a><a href="home-b.html" class="mobile-dropdown-item">Home 2</a></div><a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a><a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a><a href="portfolio.html" class="mobile-nav-link active"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a><a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a><a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a><a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a></div><div class="mobile-controls"><button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button><button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button></div></div>
+
+  <main>
+    <section class="hero hero-mini" id="hero" aria-label="Portfolio hero"><div class="hero-bg"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=1600&q=80" alt="Artistic cake display with dramatic lighting" loading="eager" data-parallax="0.3"></div><div class="hero-overlay"></div><div class="hero-content"><h1 class="hero-animate-in">Our Portfolio</h1><p class="hero-animate-in-delay-1">A curated collection of our finest creations — each one tells a unique story.</p></div></section>
+
+    <!-- S2: MASONRY GALLERY -->
+    <section class="section" id="gallery" aria-label="Gallery">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Browse Our Work</span><h2>Gallery</h2><hr class="section-divider"></div>
+        <div class="filter-pills mb-2xl reveal" data-filter-group="masonry-gallery">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="wedding">Wedding</button>
+          <button class="filter-pill" data-filter="birthday">Birthday</button>
+          <button class="filter-pill" data-filter="custom">Custom</button>
+          <button class="filter-pill" data-filter="bread">Bread</button>
+        </div>
+        <div class="portfolio-grid" id="masonry-gallery">
+          <div class="portfolio-item reveal" data-filter-category="wedding"><img src="assets/images/cake-white-floral.jpg" alt="White Floral Elegance cake" loading="lazy"><div class="portfolio-overlay"><h4>White Floral Elegance</h4><p>Delicate baby's breath decoration</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="birthday"><img src="assets/images/portfolio-birthday-new.png" alt="Golden Birthday cake" loading="lazy"><div class="portfolio-overlay"><h4>Golden Birthday</h4><p>Elegant macaron drip cake</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="custom"><img src="assets/images/cake-chocolate-drip.png" alt="Chocolate and wine cake" loading="lazy"><div class="portfolio-overlay"><h4>Chocolate & Wine</h4><p>Ganache drip masterpiece</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="birthday"><img src="assets/images/portfolio-teddy-bear.png" alt="Teddy Bear Delight cake" loading="lazy"><div class="portfolio-overlay"><h4>Teddy Bear Delight</h4><p>Cute pink first birthday cake</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="custom"><img src="assets/images/portfolio-champagne.png" alt="Celebration Gold cake" loading="lazy"><div class="portfolio-overlay"><h4>Celebration Gold</h4><p>Elegant two-tier champagne cake</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="custom"><img src="assets/images/portfolio-oreo.png" alt="Oreo Drip Masterpiece cake" loading="lazy"><div class="portfolio-overlay"><h4>Oreo Drip Masterpiece</h4><p>Decadent cookies & cream drip cake</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="birthday"><img src="assets/images/portfolio-rainbow-new.png" alt="Rainbow Splendor cake" loading="lazy"><div class="portfolio-overlay"><h4>Rainbow Splendor</h4><p>Vibrant multi-color piped frosting</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="bread"><img src="assets/images/recipe-artisan-bread.jpg" alt="Artisan batard bread" loading="lazy"><div class="portfolio-overlay"><h4>Artisan Batard</h4><p>Daily fresh-baked loaf</p></div></div>
+          <div class="portfolio-item reveal" data-filter-category="custom"><img src="assets/images/bts-chocolate-drip.jpg" alt="Chocolate drip cake decorating" loading="lazy"><div class="portfolio-overlay"><h4>Behind the Scenes</h4><p>Chocolate drip decorating</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3: SPOTLIGHT PROJECT -->
+    <section class="section section-alt" id="spotlight" aria-label="Spotlight project">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Project Spotlight</span><h2>The Victoria Collection</h2><hr class="section-divider"></div>
+        <div class="spotlight-split">
+          <div class="spotlight-img reveal-left"><img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=900&q=80" alt="The Victoria Collection wedding cake in full detail" loading="lazy"></div>
+          <div class="reveal-right">
+            <span class="badge badge-accent mb-md">Wedding Showcase</span>
+            <h3 style="margin-bottom:var(--space-md);">A Five-Tier Masterpiece</h3>
+            <p class="text-secondary">Created for Emma & Liam's garden wedding, The Victoria Collection features hand-piped royal icing, sugar flowers, and an intricate lace pattern inspired by the bride's dress.</p>
+            <div style="margin-top:var(--space-xl);">
+              <div style="display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) 0;color:var(--text-secondary);font-size:var(--fs-small);"><i class="ph ph-users" style="color:var(--color-accent);" aria-hidden="true"></i> 200 servings</div>
+              <div style="display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) 0;color:var(--text-secondary);font-size:var(--fs-small);"><i class="ph ph-clock" style="color:var(--color-accent);" aria-hidden="true"></i> 40 hours of work</div>
+              <div style="display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) 0;color:var(--text-secondary);font-size:var(--fs-small);"><i class="ph ph-flower-lotus" style="color:var(--color-accent);" aria-hidden="true"></i> 120 handmade sugar flowers</div>
+              <div style="display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) 0;color:var(--text-secondary);font-size:var(--fs-small);"><i class="ph ph-star-fill" style="color:#F59E0B;" aria-hidden="true"></i> "Beyond our wildest dreams" — Emma</div>
+            </div>
+            <a href="book-now.html" class="btn btn-primary mt-xl btn-inline">Create Your Masterpiece</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: BEFORE/AFTER COMPARISON -->
+    <section class="section" id="comparison" aria-label="Before and after">
+      <div class="container"><div class="section-header reveal"><span class="section-label">Design to Reality</span><h2>Before & After</h2><hr class="section-divider"><p>See how client sketches and ideas come to life in our kitchen.</p></div>
+        <div class="comparison-grid">
+          <div class="comparison-card reveal stagger-1"><div class="comparison-slider"><img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=500&q=80" alt="Finished birthday cake" loading="lazy"><img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=500&q=80" alt="Birthday cake sketch" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.8);"></div><div class="comparison-card-body"><h4>Birthday Bliss</h4><p class="text-small text-muted">From mood board to masterpiece</p></div></div>
+          <div class="comparison-card reveal stagger-2"><div class="comparison-slider"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=500&q=80" alt="Finished wedding cake" loading="lazy"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=500&q=80" alt="Wedding cake concept" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.8);"></div><div class="comparison-card-body"><h4>Wedding Elegance</h4><p class="text-small text-muted">Client sketch to tiered perfection</p></div></div>
+          <div class="comparison-card reveal stagger-3"><div class="comparison-slider"><img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=500&q=80" alt="Finished mirror glaze" loading="lazy"><img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=500&q=80" alt="Mirror glaze concept" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.8);"></div><div class="comparison-card-body"><h4>Mirror Magic</h4><p class="text-small text-muted">Reference photo to reality</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5: STATS + COUNTDOWN -->
+    <section class="section section-alt" id="stats" aria-label="Portfolio statistics">
+      <div class="container"><div class="section-header reveal"><span class="section-label">In Numbers</span><h2>Our Impact</h2><hr class="section-divider"></div>
+        <div class="stats-row reveal">
+          <div class="stat-box"><span class="stat-num" data-count="500">0</span><p class="stat-label">Cakes Delivered</p></div>
+          <div class="stat-box"><span class="stat-num" data-count="120">0</span><p class="stat-label">Weddings Served</p></div>
+          <div class="stat-box"><span class="stat-num" data-count="50">0</span><p class="stat-label">Corporate Clients</p></div>
+          <div class="stat-box"><span class="stat-num" data-count="98">0</span><p class="stat-label">% Satisfaction</p></div>
+        </div>
+        <div class="countdown-strip reveal" id="countdown-section">
+          <h3 style="color:#fff;margin-bottom:var(--space-xs);">Spring Collection Launching Soon</h3>
+          <p style="color:rgba(255,255,255,0.8);font-size:var(--fs-small);">New seasonal designs arriving with fresh flavors and floral inspirations.</p>
+          <div class="countdown-nums" id="countdown">
+            <div class="countdown-box"><span class="num" id="cd-days">30</span><span class="label">Days</span></div>
+            <div class="countdown-box"><span class="num" id="cd-hours">00</span><span class="label">Hours</span></div>
+            <div class="countdown-box"><span class="num" id="cd-mins">00</span><span class="label">Min</span></div>
+            <div class="countdown-box"><span class="num" id="cd-secs">00</span><span class="label">Sec</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: UPCOMING PROJECTS -->
+    <section class="section" id="upcoming" aria-label="Upcoming projects">
+      <div class="container"><div class="section-header reveal"><span class="section-label">What's Next</span><h2>Upcoming Projects</h2><hr class="section-divider"><p>A sneak peek at what's currently in the works.</p></div>
+        <div class="upcoming-grid">
+          <div class="upcoming-card reveal stagger-1"><img src="https://images.unsplash.com/photo-1607478900766-efe13248b125?w=300&q=80" alt="Holiday collection preview" loading="lazy"><div><span class="badge badge-warning mb-xs">In Progress</span><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Holiday Collection 2025</h4><p class="text-xs text-muted" style="margin:0;">Gingerbread, stollen, and festive cakes for the season.</p></div></div>
+          <div class="upcoming-card reveal stagger-2"><img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=300&q=80" alt="Grand wedding project" loading="lazy"><div><span class="badge badge-accent mb-xs">Designing</span><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Grand Wedding Project</h4><p class="text-xs text-muted" style="margin:0;">A 7-tier extravaganza for a celebrity wedding.</p></div></div>
+          <div class="upcoming-card reveal stagger-3"><img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=300&q=80" alt="Corporate partnership" loading="lazy"><div><span class="badge badge-secondary mb-xs">Confirmed</span><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Tech Corp Partnership</h4><p class="text-xs text-muted" style="margin:0;">Monthly catering for Portland's largest tech company.</p></div></div>
+          <div class="upcoming-card reveal stagger-4"><img src="https://images.unsplash.com/photo-1608830597604-619220679440?w=300&q=80" alt="Vegan collection" loading="lazy"><div><span class="badge badge-success mb-xs">Coming Soon</span><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2xs);">Vegan Collection Launch</h4><p class="text-xs text-muted" style="margin:0;">Plant-based cakes that don't compromise on taste.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="footer-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><p>Handcrafted artisan breads, pastries, and cakes.</p><div class="footer-social"><a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a><a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a><a href="#" class="social-tiktok" aria-label="TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a></div></div><div><h4 class="footer-heading">Quick Links</h4><div class="footer-links"><a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a><a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a><a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a><a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a><a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a></div></div><div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Portland, OR 97201</span></div><div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span></div><div class="footer-contact-item"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>hello@crumbakery.com</span></div><div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span></div></div><div><h4 class="footer-heading">Newsletter</h4><p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh updates.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter"><input type="email" class="newsletter-input" placeholder="Your email" required aria-label="Email"><button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></button></form></div></div></div><div class="footer-bottom"><p>&copy; 2025 CRUM Bakery. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="login.html">Admin Login</a></div></div></footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up" aria-hidden="true"></i></button>
+  <script src="assets/js/data.js"></script><script src="assets/js/main.js"></script><script src="assets/js/navigation.js"></script><script src="assets/js/animations.js"></script><script src="assets/js/forms.js"></script>
+  <script>
+    // Countdown Timer (30 days from now)
+    (function(){
+      const target = new Date();
+      target.setDate(target.getDate() + 30);
+      function update(){
+        const now = new Date();
+        const diff = target - now;
+        if(diff <= 0) return;
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+        document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+        document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+        document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+      }
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUM Bakery — Learn about our heritage, mission, and the passionate team behind Portland's finest artisan baked goods.">
+  <title>CRUM — About Us | Our Story & Team</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    /* About-specific */
+    .heritage-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: stretch; }
+    .heritage-split .heritage-img { border-radius: var(--radius-xl); overflow: hidden; min-height: 400px; }
+    .heritage-split .heritage-img img { width: 100%; height: 100%; object-fit: cover; }
+    .heritage-split .heritage-text { display: flex; flex-direction: column; justify-content: center; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+
+    .process-timeline { position: relative; max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-xl); }
+    .process-timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--border-color-light); transform: translateX(-50%); }
+    .timeline-step { display: grid; grid-template-columns: 1fr 44px 1fr; gap: var(--space-lg); align-items: center; position: relative; width: 100%; }
+    .timeline-step-content { grid-column: auto; background: var(--bg-surface); border: 1px solid var(--border-color-light); border-radius: var(--radius-lg); padding: var(--space-xl); transition: transform var(--transition-normal), box-shadow var(--transition-normal); text-align: left !important; }
+    .timeline-step-content:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .timeline-step-num { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--color-accent), var(--color-primary)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: var(--fw-bold); font-family: var(--font-heading); z-index: 2; box-shadow: 0 4px 12px rgba(210,105,30,0.3); margin: 0 auto; }
+    .timeline-empty { grid-column: auto; }
+
+    .awards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+    .award-card { text-align: center; padding: var(--space-xl); border: 1px solid var(--border-color-light); border-radius: var(--radius-lg); transition: all var(--transition-base); background: var(--bg-surface); }
+    .award-card:hover { transform: rotate(2deg); box-shadow: var(--shadow-md); }
+    .award-icon { font-size: 2.5rem; color: var(--color-accent); margin-bottom: var(--space-md); }
+
+    .join-cta { position: relative; padding: var(--section-padding-y) var(--page-padding); background-size: cover; background-position: center; background-attachment: fixed; text-align: center; }
+    .join-cta::before { content: ''; position: absolute; inset: 0; background: rgba(44,24,16,0.8); }
+    .join-cta-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+
+    @media (max-width: 1023px) {
+      .heritage-split { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .team-grid, .awards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 800px) {
+      .process-timeline::before { left: 22px; transform: none; }
+      .timeline-step { grid-template-columns: 44px 1fr; gap: var(--space-md); }
+      .timeline-step-num { grid-column: 1; grid-row: 1; }
+      .timeline-step-content { grid-column: 2; grid-row: 1; }
+      .timeline-empty { display: none; }
+    }
+    @media (max-width: 639px) {
+      .heritage-split .heritage-img { min-height: 280px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .join-cta { background-attachment: scroll; }
+    }
+  </style>
+</head>
+<body class="page-hero">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo" aria-label="CRUM Home">
+        <div class="logo-icon">
+          <img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;">
+        </div>
+        <span class="logo-text">CRUM</span>
+      </a>
+      <div class="navbar-links">
+        <div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a></div></div>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="book-now.html" class="nav-link nav-cta">Book Now</a>
+      </div>
+      <div class="navbar-controls">
+        <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button>
+        <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-nav-links">
+      <a href="#" class="mobile-nav-link mobile-dropdown-toggle"><i class="ph ph-house" aria-hidden="true"></i> Home <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i></a>
+      <div class="mobile-dropdown-content"><a href="index.html" class="mobile-dropdown-item">Home 1</a><a href="home-b.html" class="mobile-dropdown-item">Home 2</a></div>
+      <a href="about.html" class="mobile-nav-link active"><i class="ph ph-info" aria-hidden="true"></i> About</a>
+      <a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a>
+      <a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a>
+      <a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a>
+      <a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a>
+      <a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a>
+    </div>
+    <div class="mobile-controls">
+      <button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button>
+      <button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero hero-mini" id="hero" aria-label="About us hero">
+      <div class="hero-bg"><img src="assets/images/visit-bg.jpg" alt="CRUM Bakery counter and display case, warm tones" loading="eager" data-parallax="0.3"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-animate-in">Our Story</h1>
+        <p class="hero-animate-in-delay-1">A journey of passion, flour, and fire — crafting memories since 2012.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: HERITAGE & MISSION -->
+    <section class="section" id="heritage" aria-label="Heritage and mission">
+      <div class="container">
+        <div class="heritage-split">
+          <div class="heritage-text reveal-left">
+            <span class="section-label">Our Heritage</span>
+            <h2>A Legacy of Craft</h2>
+            <hr class="section-divider" style="margin-left:0;">
+            <p class="mt-lg">CRUM was born in 2012 from a simple belief: that honest baking can bring people together. What started as a small kitchen experiment has grown into Portland's most beloved artisan bakery.</p>
+            <p>Our founder, Marie Laurent, trained at Le Cordon Bleu before returning home with a vision — to create a bakery where every loaf, every pastry, every cake tells a story of care and craftsmanship.</p>
+            <p>Today, we serve thousands of customers each week, but our promise remains the same: real ingredients, traditional methods, and an unwavering commitment to quality.</p>
+            <div style="display:flex;gap:var(--space-2xl);margin-top:var(--space-xl);">
+              <div><span data-count="12" style="font-family:var(--font-heading);font-size:var(--fs-h2);font-weight:var(--fw-bold);color:var(--color-accent);display:block;">0</span><span class="text-small text-muted">Years of Baking</span></div>
+              <div><span data-count="50" data-count-suffix="K+" style="font-family:var(--font-heading);font-size:var(--fs-h2);font-weight:var(--fw-bold);color:var(--color-accent);display:block;">0</span><span class="text-small text-muted">Happy Customers</span></div>
+              <div><span data-count="200" data-count-suffix="+" style="font-family:var(--font-heading);font-size:var(--fs-h2);font-weight:var(--fw-bold);color:var(--color-accent);display:block;">0</span><span class="text-small text-muted">Recipes Crafted</span></div>
+            </div>
+          </div>
+          <div class="heritage-img reveal-right">
+            <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=80" alt="Vintage-style interior of CRUM bakery with warm lighting and wooden shelves" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE TEAM -->
+    <section class="section section-alt" id="team" aria-label="Our team">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">The People Behind the Bakes</span>
+          <h2>Meet Our Team</h2>
+          <hr class="section-divider">
+          <p>Passionate artisans who pour heart into every creation.</p>
+        </div>
+        <div class="team-grid">
+          <div class="card team-card reveal stagger-1" id="team-marie">
+            <div class="card-img"><img src="assets/images/team-marie.jpg" alt="Marie Laurent, Head Pastry Chef" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-role">Head Pastry Chef</span>
+              <h3 class="card-title">Marie Laurent</h3>
+              <p class="card-text">Trained at Le Cordon Bleu, Marie brings 15 years of artisan baking expertise.</p>
+              <div class="social-links"><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
+          <div class="card team-card reveal stagger-2" id="team-james">
+            <div class="card-img"><img src="assets/images/team-james.jpg" alt="James Chen, Cake Designer" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-role">Cake Designer</span>
+              <h3 class="card-title">James Chen</h3>
+              <p class="card-text">Award-winning sugar artist specializing in sculptural and 3D cake designs.</p>
+              <div class="social-links"><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
+          <div class="card team-card reveal stagger-3" id="team-sofia">
+            <div class="card-img"><img src="assets/images/team-sofia.jpg" alt="Stefano Rossi, Bread Artisan" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-role">Bread Artisan</span>
+              <h3 class="card-title">Stefano Rossi</h3>
+              <p class="card-text">Sourdough specialist who sources heritage grains from local organic farms.</p>
+              <div class="social-links"><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
+          <div class="card team-card reveal stagger-4" id="team-david">
+            <div class="card-img"><img src="assets/images/team-david.jpg" alt="David Chen, Operations Manager" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-role">Operations Manager</span>
+              <h3 class="card-title">David Chen</h3>
+              <p class="card-text">Keeps the ovens running and the team inspired with a passion for quality.</p>
+              <div class="social-links"><a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: OUR PROCESS -->
+    <section class="section" id="our-process" aria-label="Our baking process">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Craft & Care</span>
+          <h2>Our Process</h2>
+          <hr class="section-divider">
+          <p>Every creation follows a journey of quality, from source to table.</p>
+        </div>
+        <div class="process-timeline">
+          <div class="timeline-step reveal stagger-1">
+            <div class="timeline-step-content"><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Sourcing</h3><p class="text-small text-secondary">We partner with local organic farms and premium suppliers. Every ingredient is hand-selected for freshness, flavor, and ethical sourcing.</p></div>
+            <div class="timeline-step-num">1</div>
+            <div class="timeline-empty"></div>
+          </div>
+          <div class="timeline-step reveal stagger-2">
+            <div class="timeline-empty"></div>
+            <div class="timeline-step-num">2</div>
+            <div class="timeline-step-content"><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Preparation</h3><p class="text-small text-secondary">Our artisans measure, mix, and shape each item by hand. No shortcuts, no mass production — just honest, careful preparation.</p></div>
+          </div>
+          <div class="timeline-step reveal stagger-3">
+            <div class="timeline-step-content"><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Baking</h3><p class="text-small text-secondary">Traditional stone ovens bring out the best in every recipe. We monitor temperature and timing to achieve the perfect golden finish.</p></div>
+            <div class="timeline-step-num">3</div>
+            <div class="timeline-empty"></div>
+          </div>
+          <div class="timeline-step reveal stagger-4">
+            <div class="timeline-empty"></div>
+            <div class="timeline-step-num">4</div>
+            <div class="timeline-step-content"><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-xs);">Quality Check</h3><p class="text-small text-secondary">Every item passes our quality inspection. Taste, texture, appearance — nothing leaves the bakery unless it meets our exacting standards.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: AWARDS & RECOGNITION -->
+    <section class="section section-alt" id="awards" aria-label="Awards and recognition">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Recognized Excellence</span>
+          <h2>Awards & Recognition</h2>
+          <hr class="section-divider">
+          <p>We're humbled by the recognition from the baking community and our loyal customers.</p>
+        </div>
+        <div class="awards-grid">
+          <div class="award-card reveal stagger-1"><div class="award-icon"><i class="ph ph-trophy" aria-hidden="true"></i></div><h4>Best Bakery 2024</h4><p class="text-small text-muted">Portland Food Awards</p></div>
+          <div class="award-card reveal stagger-2"><div class="award-icon"><i class="ph ph-medal" aria-hidden="true"></i></div><h4>Gold Medal Sourdough</h4><p class="text-small text-muted">National Bread Competition</p></div>
+          <div class="award-card reveal stagger-3"><div class="award-icon"><i class="ph ph-star" aria-hidden="true"></i></div><h4>Top 10 Cake Artists</h4><p class="text-small text-muted">Confectionery Magazine</p></div>
+          <div class="award-card reveal stagger-4"><div class="award-icon"><i class="ph ph-heart" aria-hidden="true"></i></div><h4>Customer's Choice</h4><p class="text-small text-muted">3 Years Running (2022-2024)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: JOIN OUR JOURNEY -->
+    <section class="join-cta" id="join" style="background-image:url('https://images.unsplash.com/photo-1600617952827-f14e3db93e17?w=1600&q=80');" aria-label="Join our journey">
+      <div class="join-cta-content reveal-scale">
+        <h2 style="color:#fff;margin-bottom:var(--space-md);">Join Our Journey</h2>
+        <p style="color:rgba(255,255,255,0.85);margin-bottom:var(--space-xl);">Whether you want to join our team, partner with us for wholesale, or collaborate on special events — we'd love to hear from you.</p>
+        <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch</a>
+          <a href="#" class="btn btn-outline-white btn-lg">View Careers</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="footer-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><p>Handcrafted artisan breads, pastries, and celebration cakes. Baking with love and tradition since 2012.</p><div class="footer-social"><a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a><a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a><a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a><a href="#" class="social-tiktok" aria-label="TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a></div></div>
+      <div><h4 class="footer-heading">Quick Links</h4><div class="footer-links"><a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About Us</a><a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Our Menu</a><a href="book-now.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Book Now</a><a href="portfolio.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a><a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a></div></div>
+      <div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Baker's Quarter, Portland, OR 97201</span></div><div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span></div><div class="footer-contact-item"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>hello@crumbakery.com</span></div><div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span></div></div>
+      <div><h4 class="footer-heading">Newsletter</h4><p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh updates on new flavors and specials.</p><div class="footer-newsletter"><form class="newsletter-form" aria-label="Newsletter signup"><input type="email" class="newsletter-input" placeholder="Your email" required aria-label="Email"><button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></button></form></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 CRUM Bakery. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="login.html">Admin Login</a></div></div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up" aria-hidden="true"></i></button>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>
+
