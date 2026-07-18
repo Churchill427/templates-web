@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover featured shoe brands at SOLE. From high-performance sportswear to luxury lifestyle labels. We partner with the best.">
+  <title>Featured Brands — SOLE Premium Footwear</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .brand-hero-collage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      opacity: 0.08;
+      z-index: 0;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+    }
+    .collage-item {
+      font-size: 28px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .partner-card-glow:hover {
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.3);
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#c41e3a"/>
+          <path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="12" r="3" fill="#ffd700"/>
+        </svg>
+        <span class="nav-logo-text">SOLE</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Home</a>
+          <div class="dropdown-menu">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home A</a>
+            <a href="home-b.html"><i class="fa-solid fa-gem"></i> Home B</a>
+          </div>
+        </div>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="brands.html" class="nav-link active">Brands</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="size-guide.html" class="nav-link">Size Guide</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="products.html" class="nav-link nav-cta">Order</a>
+      </div>
+      <div class="nav-toggles">
+        <button class="theme-toggle" id="themeToggle">Dark</button>
+        <button class="rtl-toggle" id="rtlToggle">LTR</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="page-content">
+
+    <!-- Section 1: Hero -->
+    <section class="page-hero" style="background-image: url('assets/images/hero/brands-hero.png'); position:relative;">
+      <div class="hero-overlay" style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.8), #0f0f23 95%);"></div>
+      <div class="hero-content hero-animate" style="z-index:2;">
+        <h1>Featured Brands</h1>
+        <p>We partner with the world's leading footwear brands to bring you quality, style, and innovation.</p>
+        <div class="mt-lg">
+          <span class="badge badge-gold" style="font-size:14px;padding:8px 16px;"><i class="fa-solid fa-award"></i> 50+ Premium Brands In Stock</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Premium Brands -->
+    <section class="section" id="premiumBrands">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Premium Sportswear</h2>
+          <p class="reveal stagger-1">Pioneers of performance, athletics, and modern lifestyle footwear</p>
+        </div>
+        <div class="grid-3">
+          <div class="brand-logo-card reveal stagger-1">
+            <div style="font-size:32px;font-weight:900;color:var(--text-dark);letter-spacing:1px;margin-bottom:var(--space-md);height:60px;display:flex;align-items:center;">NIKE</div>
+            <h3>Nike</h3>
+            <p class="text-caption mb-sm">"Just Do It"</p>
+            <span class="badge badge-primary mb-md">45 Products</span>
+            <a href="products.html" class="btn btn-ghost btn-sm">View Products</a>
+          </div>
+          <div class="brand-logo-card reveal stagger-2">
+            <div style="font-size:32px;font-weight:900;color:var(--text-dark);letter-spacing:1px;margin-bottom:var(--space-md);height:60px;display:flex;align-items:center;">ADIDAS</div>
+            <h3>Adidas</h3>
+            <p class="text-caption mb-sm">"Impossible is Nothing"</p>
+            <span class="badge badge-primary mb-md">38 Products</span>
+            <a href="products.html" class="btn btn-ghost btn-sm">View Products</a>
+          </div>
+          <div class="brand-logo-card reveal stagger-3">
+            <div style="font-size:32px;font-weight:900;color:var(--text-dark);letter-spacing:1px;margin-bottom:var(--space-md);height:60px;display:flex;align-items:center;">PUMA</div>
+            <h3>Puma</h3>
+            <p class="text-caption mb-sm">"Forever Faster"</p>
+            <span class="badge badge-primary mb-md">32 Products</span>
+            <a href="products.html" class="btn btn-ghost btn-sm">View Products</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Lifestyle Brands -->
+    <section class="section" style="background:var(--card-bg);" id="lifestyleBrands">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Street & Lifestyle</h2>
+          <p class="reveal stagger-1">Time-tested designs that define urban street culture</p>
+        </div>
+        <div class="grid-4">
+          <div class="brand-logo-card reveal stagger-1">
+            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">CONVERSE</div>
+            <h3 class="mt-sm">Converse</h3>
+            <p class="text-caption mb-md">Heritage court canvas styles.</p>
+            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
+          </div>
+          <div class="brand-logo-card reveal stagger-2">
+            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">VANS</div>
+            <h3 class="mt-sm">Vans</h3>
+            <p class="text-caption mb-md">Classic waffle sole skate icons.</p>
+            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
+          </div>
+          <div class="brand-logo-card reveal stagger-3">
+            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">TIMBERLAND</div>
+            <h3 class="mt-sm">Timberland</h3>
+            <p class="text-caption mb-md">Heavy duty waterproof nubuck boots.</p>
+            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
+          </div>
+          <div class="brand-logo-card reveal stagger-4">
+            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">DR. MARTENS</div>
+            <h3 class="mt-sm">Dr. Martens</h3>
+            <p class="text-caption mb-md">Legendary air-cushioned leather boots.</p>
+            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Performance Brands -->
+    <section class="section" id="performanceBrands">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Performance Running</h2>
+          <p class="reveal stagger-1">Biomedically engineered for speed, trail, and endurance</p>
+        </div>
+        <div class="grid-3">
+          <div class="brand-logo-card reveal stagger-1">
+            <div style="font-size:26px;font-weight:800;height:50px;display:flex;align-items:center;color:var(--text-dark);">NEW BALANCE</div>
+            <h3>New Balance</h3>
+            <p class="text-caption mb-sm">Premium cushioning support.</p>
+            <span class="badge badge-primary mb-md">Running & Everyday</span>
+            <a href="products.html" class="btn btn-ghost btn-sm">Explore Range</a>
+          </div>
+          <div class="brand-logo-card reveal stagger-2">
+            <div style="font-size:26px;font-weight:800;height:50px;display:flex;align-items:center;color:var(--text-dark);">ASICS</div>
+            <h3>ASICS</h3>
+            <p class="text-caption mb-sm">Gel technology specialists.</p>
+            <span class="badge badge-primary mb-md">Track & Field</span>
+            <a href="products.html" class="btn btn-ghost btn-sm">Explore Range</a>
+          </div>
+          <div class="brand-logo-card reveal stagger-3">
+            <div style="font-size:26px;font-weight:800;height:50px;display:flex;align-items:center;color:var(--text-dark);">BROOKS</div>
+            <h3>Brooks</h3>
+            <p class="text-caption mb-sm">Run happy biomechanics.</p>
+            <span class="badge badge-primary mb-md">Marathon Runners</span>
+            <a href="products.html" class="btn btn-ghost btn-sm">Explore Range</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Emerging Brands (Infinite Horizontal Scroll Carousel) -->
+    <section class="section" style="background:var(--card-bg);overflow:hidden;" id="emergingBrands">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Emerging Labels</h2>
+          <p class="reveal stagger-1">Independent shoe designers and handcraft labels making waves</p>
+        </div>
+      </div>
+      <div class="infinite-scroll-container">
+        <div class="infinite-scroll-track">
+          <!-- Slide duplicates to simulate infinite scroll loop -->
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">VEJA</div><p class="text-caption">France — Eco Leather</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ON RUNNING</div><p class="text-caption">Swiss — Cloud tech</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ALLBIRDS</div><p class="text-caption">NZ — Merino wool</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">HOKA ONE</div><p class="text-caption">US — Max Cushion</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">FEIT</div><p class="text-caption">Australia — Raw handsewn</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">CARMINA</div><p class="text-caption">Spain — Cordovan</p></div>
+          <!-- Duplicated for smooth loop -->
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">VEJA</div><p class="text-caption">France — Eco Leather</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ON RUNNING</div><p class="text-caption">Swiss — Cloud tech</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ALLBIRDS</div><p class="text-caption">NZ — Merino wool</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">HOKA ONE</div><p class="text-caption">US — Max Cushion</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">FEIT</div><p class="text-caption">Australia — Raw handsewn</p></div>
+          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">CARMINA</div><p class="text-caption">Spain — Cordovan</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Become a Partner -->
+    <section class="section" id="becomePartner">
+      <div class="container">
+        <div class="newsletter-section partner-card-glow reveal" style="background-image:radial-gradient(circle at center,rgba(255,215,0,0.15),transparent 75%);border:1px solid var(--border-color);transition:var(--transition);">
+          <h2>Are You a Brand?</h2>
+          <p>Partner with SOLE to reach millions of premium footwear enthusiasts and benefit from our worldwide fulfillment infrastructure.</p>
+          <a href="contact.html?subject=Partnership" class="btn btn-gold"><i class="fa-solid fa-handshake"></i> Apply Now</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg>
+            <span class="footer-logo-text">SOLE</span>
+          </a>
+          <p class="footer-tagline">Step Into Style</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="categories.html">Categories</a></li><li><a href="brands.html">Brands</a></li><li><a href="collections.html">Collections</a></li><li><a href="size-guide.html">Size Guide</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+        <div class="footer-col"><h4>Categories</h4><ul><li><a href="categories.html">Casual</a></li><li><a href="categories.html">Formal</a></li><li><a href="categories.html">Sports</a></li><li><a href="categories.html">Kids</a></li><li><a href="categories.html">Seasonal</a></li><li><a href="products.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul class="footer-contact"><li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li><li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li><li><i class="fa-solid fa-envelope"></i> hello@sole.com</li><li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li></ul></div>
+        <div class="footer-col"><h4>Newsletter</h4><p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email" required><button type="submit">Subscribe</button></form></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SOLE. All rights reserved.</p>
+        <div class="footer-payments"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

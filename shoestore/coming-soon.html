@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SOLE Premium Footwear is launching soon. Subscribe to receive updates, exclusive early bird discounts, and launch notifications.">
+  <title>Something Big is Coming — SOLE</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .sneaker-construction-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background: radial-gradient(circle at center, rgba(255,215,0,0.2) 0%, transparent 80%),
+                  repeating-linear-gradient(45deg, var(--accent) 0px, var(--accent) 10px, #1a1a2e 10px, #1a1a2e 20px);
+      z-index: 0;
+    }
+    .teaser-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 250px;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+    }
+    .teaser-blur-overlay {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(15,15,35,0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: var(--transition);
+    }
+    .teaser-card:hover .teaser-blur-overlay {
+      backdrop-filter: blur(2px);
+      background: rgba(15,15,35,0.3);
+    }
+    .teaser-card:hover .teaser-blur-overlay h3,
+    .teaser-card:hover .teaser-blur-overlay p {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#c41e3a"/>
+          <path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="12" r="3" fill="#ffd700"/>
+        </svg>
+        <span class="nav-logo-text">SOLE</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Home</a>
+          <div class="dropdown-menu">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home A</a>
+            <a href="home-b.html"><i class="fa-solid fa-gem"></i> Home B</a>
+          </div>
+        </div>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="brands.html" class="nav-link">Brands</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="size-guide.html" class="nav-link">Size Guide</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="products.html" class="nav-link nav-cta">Order</a>
+      </div>
+      <div class="nav-toggles">
+        <button class="theme-toggle" id="themeToggle">Dark</button>
+        <button class="rtl-toggle" id="rtlToggle">LTR</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="page-content">
+
+    <!-- Section 1: Launch Hero with Countdown -->
+    <section class="page-hero" style="background-image: url('assets/images/hero/coming-soon-hero.png'); position:relative; min-height:65vh;">
+      <div class="hero-overlay" style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.75) 30%, #0f0f23 95%);"></div>
+      <div class="hero-content hero-animate" style="z-index:2;max-width:800px;">
+        <h1>Something Big is Coming</h1>
+        <p class="mb-2xl">We're crafting something special for your feet. Our premium catalog and bespoke sizing tools will launch soon. Stay tuned.</p>
+        
+        <!-- Countdown Container -->
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-value" data-days>00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" data-hours>00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" data-minutes>00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" data-seconds>00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Sneak Peek Teasers -->
+    <section class="section" id="sneakPeek">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Sneak Peek</h2>
+          <p class="reveal stagger-1">Hover or click to reveal hints of our upcoming bespoke shoe collections</p>
+        </div>
+        <div class="grid-3">
+          <!-- Teaser 1 -->
+          <div class="teaser-card reveal stagger-1">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#c41e3a,#8b6508);display:flex;align-items:center;justify-content:center;">
+              <i class="fa-solid fa-shoe-prints" style="font-size:90px;color:rgba(255,255,255,0.15);"></i>
+            </div>
+            <div class="teaser-blur-overlay">
+              <span class="badge badge-gold mb-sm">Bespoke Dress</span>
+              <h3 style="color:#fff;">The Tuscan Brogue</h3>
+              <p class="text-caption" style="color:rgba(255,255,255,0.7);margin-top:8px;">Handcrafted shell cordovan</p>
+            </div>
+          </div>
+          <!-- Teaser 2 -->
+          <div class="teaser-card reveal stagger-2">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a5c2e,#004b49);display:flex;align-items:center;justify-content:center;">
+              <i class="fa-solid fa-bolt" style="font-size:90px;color:rgba(255,255,255,0.15);"></i>
+            </div>
+            <div class="teaser-blur-overlay">
+              <span class="badge badge-primary mb-sm">Performance</span>
+              <h3 style="color:#fff;">The Carbon Strike</h3>
+              <p class="text-caption" style="color:rgba(255,255,255,0.7);margin-top:8px;">Bio-foam trail runner</p>
+            </div>
+          </div>
+          <!-- Teaser 3 -->
+          <div class="teaser-card reveal stagger-3">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#5c4033,#111);display:flex;align-items:center;justify-content:center;">
+              <i class="fa-solid fa-mountain" style="font-size:90px;color:rgba(255,255,255,0.15);"></i>
+            </div>
+            <div class="teaser-blur-overlay">
+              <span class="badge badge-gold mb-sm">Winter Shield</span>
+              <h3 style="color:#fff;">The Summit Goodyear</h3>
+              <p class="text-caption" style="color:rgba(255,255,255,0.7);margin-top:8px;">Vibram lug traction boot</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Notify Me -->
+    <section class="section" style="background:var(--card-bg);" id="notifySection">
+      <div class="container" style="max-width:600px;text-align:center;">
+        <h2 class="reveal">Be the First to Know</h2>
+        <p class="mb-lg reveal stagger-1" style="color:var(--text-muted);">Subscribe below to get early-bird discounts and an invitation to our private launch event.</p>
+        <form class="newsletter-form reveal stagger-2" onsubmit="return false;" style="margin-top:24px;">
+          <input type="email" placeholder="Your email address" required style="border-color:var(--border-color);color:var(--text-dark);">
+          <button type="submit" class="btn btn-primary">Notify Me</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Section 4: What to Expect -->
+    <section class="section" id="whatToExpect">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">What to Expect</h2>
+          <p class="reveal stagger-1">Premium benefits reserved exclusively for SOLE members</p>
+        </div>
+        <div class="grid-3">
+          <div class="feature-card reveal stagger-1">
+            <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>New Collections</h3>
+            <p>Seasonal shoes styled by award-winning Italian designers, released in limited-run batches.</p>
+          </div>
+          <div class="feature-card reveal stagger-2">
+            <div class="feature-icon"><i class="fa-solid fa-fire"></i></div>
+            <h3>Exclusive Drops</h3>
+            <p>Priority allocation access to designer collabs, retro revivals, and eco-series sneaker runs.</p>
+          </div>
+          <div class="feature-card reveal stagger-3">
+            <div class="feature-icon"><i class="fa-solid fa-gift"></i></div>
+            <h3>Member Perks</h3>
+            <p>Free custom fitting sessions, birthday reward coupons, and lifetime repair options.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Social Follow -->
+    <section class="section" style="background:var(--card-bg);" id="socialFollow">
+      <div class="container" style="text-align:center;">
+        <h2 class="reveal">Follow Our Progress</h2>
+        <p class="mb-xl reveal stagger-1" style="color:var(--text-muted);">Get behind-the-scenes sneak peeks and watch shoes being crafted in our workshop.</p>
+        
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="reveal stagger-2">
+          <a href="#" class="social-login-btn google" style="width:auto;padding:12px 24px;margin-bottom:0;"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="#" class="social-login-btn facebook" style="width:auto;padding:12px 24px;margin-bottom:0;"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+          <a href="#" class="social-login-btn apple" style="width:auto;padding:12px 24px;margin-bottom:0;"><i class="fa-brands fa-x-twitter"></i> Twitter/X</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Contact -->
+    <section class="section" id="comingSoonContact">
+      <div class="container">
+        <div class="newsletter-section reveal" style="background-image:radial-gradient(circle at center,rgba(196,30,58,0.1),transparent 70%);">
+          <h2>Have Questions?</h2>
+          <p class="mb-lg">We are happy to answer sizing, design, or bulk ordering inquiries pre-launch.</p>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-gold"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+            <a href="about.html" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.3);color:#fff;"><i class="fa-solid fa-circle-info"></i> Our Heritage</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg>
+            <span class="footer-logo-text">SOLE</span>
+          </a>
+          <p class="footer-tagline">Step Into Style</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="categories.html">Categories</a></li><li><a href="brands.html">Brands</a></li><li><a href="collections.html">Collections</a></li><li><a href="size-guide.html">Size Guide</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+        <div class="footer-col"><h4>Categories</h4><ul><li><a href="categories.html">Casual</a></li><li><a href="categories.html">Formal</a></li><li><a href="categories.html">Sports</a></li><li><a href="categories.html">Kids</a></li><li><a href="categories.html">Seasonal</a></li><li><a href="products.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul class="footer-contact"><li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li><li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li><li><i class="fa-solid fa-envelope"></i> hello@sole.com</li><li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li></ul></div>
+        <div class="footer-col"><h4>Newsletter</h4><p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email" required><button type="submit">Subscribe</button></form></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SOLE. All rights reserved.</p>
+        <div class="footer-payments"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

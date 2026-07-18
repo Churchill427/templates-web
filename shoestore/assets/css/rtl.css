@@ -1,0 +1,210 @@
+/* ========================================
+   SOLE — RTL Layout Overrides
+   Applied when <html> has class "rtl"
+   ======================================== */
+
+html.rtl {
+  direction: rtl;
+}
+
+/* Text alignment */
+html.rtl .text-left { text-align: right; }
+html.rtl .text-right { text-align: left; }
+
+/* Navbar */
+html.rtl .nav-links {
+  flex-direction: row-reverse;
+}
+
+html.rtl .nav-logo {
+  flex-direction: row-reverse;
+}
+
+/* Dropdown */
+html.rtl .nav-dropdown .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* Footer */
+html.rtl .footer-col h4::after {
+  left: auto;
+  right: 0;
+}
+
+html.rtl .footer-col a:hover {
+  padding-left: 0;
+  padding-right: 4px;
+}
+
+html.rtl .footer-contact li {
+  flex-direction: row-reverse;
+}
+
+html.rtl .footer-social {
+  flex-direction: row-reverse;
+}
+
+html.rtl .footer-newsletter-form {
+  flex-direction: row-reverse;
+}
+
+/* Hero */
+html.rtl .hero-content {
+  text-align: right;
+}
+
+html.rtl .hero-overlay {
+  background: linear-gradient(225deg, rgba(26, 26, 46, 0.85) 0%, rgba(26, 26, 46, 0.4) 50%, transparent 100%);
+}
+
+html.rtl .hero-actions {
+  justify-content: flex-end;
+}
+
+/* Page Hero stays centered */
+
+/* Split sections */
+html.rtl .split-section {
+  direction: rtl;
+}
+
+html.rtl .split-section > * {
+  direction: rtl;
+}
+
+html.rtl .split-content {
+  text-align: right;
+}
+
+/* Collection banners */
+html.rtl .collection-banner-overlay {
+  background: linear-gradient(to left, rgba(26, 26, 46, 0.85) 30%, transparent 70%);
+}
+
+html.rtl .collection-banner.reversed .collection-banner-overlay {
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.85) 30%, transparent 70%);
+}
+
+html.rtl .collection-banner-content {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+html.rtl .collection-banner.reversed .collection-banner-content {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Timeline */
+html.rtl .timeline-item {
+  padding-right: 0;
+  padding-left: calc(50% + 30px);
+  justify-content: flex-start;
+}
+
+html.rtl .timeline-item:nth-child(even) {
+  padding-left: 0;
+  padding-right: calc(50% + 30px);
+  justify-content: flex-end;
+}
+
+html.rtl .timeline-content {
+  text-align: right;
+}
+
+/* Breadcrumb */
+html.rtl .breadcrumb {
+  flex-direction: row-reverse;
+}
+
+/* Form input icons */
+html.rtl .form-input-icon .form-input {
+  padding-left: 16px;
+  padding-right: 44px;
+}
+
+html.rtl .form-input-icon i {
+  left: auto;
+  right: 16px;
+}
+
+/* Select arrow */
+html.rtl select.form-input {
+  background-position: left 16px center;
+  padding-right: 16px;
+  padding-left: 40px;
+}
+
+/* Password toggle */
+html.rtl .password-toggle .form-input {
+  padding-right: 16px;
+  padding-left: 44px;
+}
+
+html.rtl .password-toggle-btn {
+  right: auto;
+  left: 12px;
+}
+
+/* Product badge */
+html.rtl .product-badge {
+  left: auto;
+  right: 12px;
+}
+
+/* Product wishlist */
+html.rtl .product-card-wishlist {
+  right: auto;
+  left: 12px;
+}
+
+/* Search bar */
+html.rtl .search-bar input {
+  padding-left: 20px;
+  padding-right: 48px;
+}
+
+html.rtl .search-bar i {
+  left: auto;
+  right: 18px;
+}
+
+/* Auth toggles */
+html.rtl .auth-toggles {
+  right: auto;
+  left: var(--space-lg);
+}
+
+/* Feature card stays centered */
+
+/* Location card */
+html.rtl .location-card p {
+  flex-direction: row-reverse;
+}
+
+/* Back to top */
+html.rtl .back-to-top {
+  right: auto;
+  left: 24px;
+}
+
+/* Testimonial quote */
+html.rtl .testimonial-text::before {
+  left: auto;
+  right: -5px;
+}
+
+html.rtl .testimonial-author {
+  flex-direction: row-reverse;
+}
+
+/* Accordion */
+html.rtl .accordion-header {
+  flex-direction: row-reverse;
+}
+
+/* Mobile hamburger */
+html.rtl .hamburger {
+  order: -1;
+}

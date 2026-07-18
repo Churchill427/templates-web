@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore SOLE's curated shoe collections. Shop Summer Vibes, Winter Warmth, Office Essentials, and limited edition releases.">
+  <title>Curated Collections — SOLE Premium Footwear</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .runway-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background: radial-gradient(circle at center, rgba(196,30,58,0.2) 0%, transparent 80%),
+                  linear-gradient(to right, rgba(0,0,0,0.5), transparent, rgba(0,0,0,0.5));
+      z-index: 0;
+    }
+    .countdown-timer-inline {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#c41e3a"/>
+          <path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="12" r="3" fill="#ffd700"/>
+        </svg>
+        <span class="nav-logo-text">SOLE</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Home</a>
+          <div class="dropdown-menu">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home A</a>
+            <a href="home-b.html"><i class="fa-solid fa-gem"></i> Home B</a>
+          </div>
+        </div>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="brands.html" class="nav-link">Brands</a>
+        <a href="collections.html" class="nav-link active">Collections</a>
+        <a href="size-guide.html" class="nav-link">Size Guide</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="products.html" class="nav-link nav-cta">Order</a>
+      </div>
+      <div class="nav-toggles">
+        <button class="theme-toggle" id="themeToggle">Dark</button>
+        <button class="rtl-toggle" id="rtlToggle">LTR</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="page-content">
+
+    <!-- Section 1: Hero -->
+    <section class="page-hero" style="background-image: url('assets/images/hero/collections-hero.png'); position:relative; overflow:hidden;">
+      <div class="runway-bg"></div>
+      <div class="hero-overlay" style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.7) 40%, #0a0a1a 90%);"></div>
+      <div class="hero-content hero-animate" style="z-index:2;">
+        <h1>Curated Collections</h1>
+        <p>Handpicked selections for every season, style, and story.</p>
+        <div class="mt-lg">
+          <span class="badge badge-gold" style="font-size:14px;padding:8px 16px;"><i class="fa-solid fa-layer-group"></i> 12 Exclusive Collections Available</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Summer Vibes -->
+    <section class="section" id="summerVibes">
+      <div class="container">
+        <div class="collection-banner reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);">
+          <img src="assets/images/hero/summer-collection-banner.png" alt="Summer Vibes 2024">
+          <div class="collection-banner-overlay" style="background:linear-gradient(to right,rgba(26,26,46,0.85) 30%,transparent 70%);"></div>
+          <div class="collection-banner-content">
+            <div class="collection-meta">
+              <span><i class="fa-solid fa-calendar-days"></i> Summer 2024</span>
+              <span>45 Items</span>
+            </div>
+            <h2>Summer Vibes 2024</h2>
+            <p class="mb-lg">Beat the heat in absolute style with our curated sandals, lightweight slides, and breathable linen slip-ons. From $39.</p>
+            <a href="products.html?collection=summer" class="btn btn-primary">Shop Collection</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Winter Warmth -->
+    <section class="section" style="background:var(--card-bg);" id="winterWarmth">
+      <div class="container">
+        <div class="collection-banner reversed reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);">
+          <img src="assets/images/hero/winter-collection-banner.png" alt="Winter Warmth">
+          <div class="collection-banner-overlay" style="background:linear-gradient(to left,rgba(26,26,46,0.85) 30%,transparent 70%);"></div>
+          <div class="collection-banner-content">
+            <div class="collection-meta">
+              <span><i class="fa-solid fa-calendar-days"></i> Winter Warmth</span>
+              <span>32 Items</span>
+            </div>
+            <h2>Winter Warmth</h2>
+            <p class="mb-lg">Thermal insulated inner lining and heavy-duty traction soles make our winter boot range ready to conquer ice, snow, and rain. From $89.</p>
+            <a href="products.html?collection=winter" class="btn btn-primary">Shop Collection</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Work & Professional (3D Flip Effect) -->
+    <section class="section" id="workProfessional">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Work & Professional</h2>
+          <p class="reveal stagger-1">Boardroom-ready class and travel-ready support</p>
+        </div>
+        <div class="grid-2">
+          <!-- Flip Card 1 -->
+          <div class="flip-card reveal stagger-1" style="height:350px;">
+            <div class="flip-card-inner h-full w-full">
+              <!-- Front -->
+              <div class="flip-card-front h-full w-full" style="position:relative;border-radius:var(--radius-lg);padding:var(--space-2xl);display:flex;flex-direction:column;justify-content:flex-end;color:#fff;border:1px solid var(--border-color);overflow:hidden;">
+                <img src="assets/images/products/office-essentials.png" alt="Office Essentials" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 100%);z-index:2;"></div>
+                <div style="position:relative;z-index:3;display:flex;flex-direction:column;">
+                  <i class="fa-solid fa-user-tie" style="font-size:48px;margin-bottom:var(--space-md);color:var(--accent);"></i>
+                  <h3>Office Essentials</h3>
+                  <p class="text-caption" style="color:rgba(255,255,255,0.7);">Click or hover to reveal the catalog details.</p>
+                </div>
+              </div>
+              <!-- Back -->
+              <div class="flip-card-back h-full w-full" style="background:var(--card-bg);border-radius:var(--radius-lg);padding:var(--space-2xl);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border-color);">
+                <h3>Office Essentials</h3>
+                <p class="mb-lg mt-md" style="color:var(--text-muted);">Premium leather loafers & classic Oxfords crafted with high-comfort foam footbeds for 9-to-5 boardroom ease.</p>
+                <a href="products.html?collection=office" class="btn btn-primary btn-sm">Shop Office</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flip Card 2 -->
+          <div class="flip-card reveal stagger-2" style="height:350px;">
+            <div class="flip-card-inner h-full w-full">
+              <!-- Front -->
+              <div class="flip-card-front h-full w-full" style="position:relative;border-radius:var(--radius-lg);padding:var(--space-2xl);display:flex;flex-direction:column;justify-content:flex-end;color:#fff;border:1px solid var(--border-color);overflow:hidden;">
+                <img src="assets/images/products/business-travel.png" alt="Business Travel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2) 100%);z-index:2;"></div>
+                <div style="position:relative;z-index:3;display:flex;flex-direction:column;">
+                  <i class="fa-solid fa-plane" style="font-size:48px;margin-bottom:var(--space-md);color:var(--accent);"></i>
+                  <h3>Business Travel</h3>
+                  <p class="text-caption" style="color:rgba(255,255,255,0.7);">Click or hover to reveal the catalog details.</p>
+                </div>
+              </div>
+              <!-- Back -->
+              <div class="flip-card-back h-full w-full" style="background:var(--card-bg);border-radius:var(--radius-lg);padding:var(--space-2xl);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--border-color);">
+                <h3>Business Travel</h3>
+                <p class="mb-lg mt-md" style="color:var(--text-muted);">Airport-friendly slip-ons and lightweight flexible dress shoes engineered for premium long-haul terminal travel.</p>
+                <a href="products.html?collection=travel" class="btn btn-primary btn-sm">Shop Travel</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Athleisure & Active -->
+    <section class="section" style="background:var(--card-bg);" id="athleisureActive">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Athleisure & Active</h2>
+          <p class="reveal stagger-1">Engineered support for workouts and weekend steps</p>
+        </div>
+        <div class="grid-2">
+          <!-- Card 1 -->
+          <div class="card reveal-left" style="overflow:hidden;border:1px solid var(--border-color);">
+            <div style="height:220px;position:relative;overflow:hidden;">
+              <img src="assets/images/products/gym-active.png" alt="Gym & Training" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="card-body">
+              <h3>Gym & Training</h3>
+              <p class="mb-lg">Shock absorbent rubber training shoes designed with secure ankle support sleeves and high lateral stability.</p>
+              <a href="products.html?collection=gym" class="btn btn-secondary btn-full">Shop Gym</a>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="card reveal-right" style="overflow:hidden;border:1px solid var(--border-color);">
+            <div style="height:220px;position:relative;overflow:hidden;">
+              <img src="assets/images/products/weekend-warriors.png" alt="Weekend Warriors" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="card-body">
+              <h3>Weekend Warriors</h3>
+              <p class="mb-lg">Flexible mesh sneakers and breathable walking shoe ranges made for park trails and casual weekend errands.</p>
+              <a href="products.html?collection=weekend" class="btn btn-secondary btn-full">Shop Weekend</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Limited Editions (Exclusive Drops with Countdown) -->
+    <section class="section" id="limitedEditions">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Limited Edition Drops</h2>
+          <p class="reveal stagger-1">Exclusive footwear designs created in micro-batches</p>
+        </div>
+        <div class="grid-3">
+          <!-- Drop 1 -->
+          <div class="card reveal stagger-1" style="border:1px solid var(--border-color);text-align:center;">
+            <div style="height:180px;position:relative;overflow:hidden;">
+              <img src="assets/images/products/designer-collab.png" alt="Designer Collab" style="width:100%;height:100%;object-fit:cover;">
+              <span class="product-badge sale badge-pulse" style="position:absolute;top:12px;left:12px;z-index:2;">Limited Drop</span>
+            </div>
+            <div class="card-body">
+              <h3>Designer Collab</h3>
+              <p class="text-caption mb-md">SOLE x Alessandro V. premium boots.</p>
+              <div class="countdown-timer-inline">
+                <span><i class="fa-regular fa-clock"></i> Drops in 4 Days</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-full mt-lg" onclick="showToast('You will be notified upon release!')">Notify Me</button>
+            </div>
+          </div>
+
+          <!-- Drop 2 -->
+          <div class="card reveal stagger-2" style="border:1px solid var(--border-color);text-align:center;">
+            <div style="height:180px;position:relative;overflow:hidden;">
+              <img src="assets/images/products/retro-revival.png" alt="Retro Revival" style="width:100%;height:100%;object-fit:cover;">
+              <span class="product-badge sale badge-pulse" style="position:absolute;top:12px;left:12px;z-index:2;">Retro Re-run</span>
+            </div>
+            <div class="card-body">
+              <h3>Retro Revival</h3>
+              <p class="text-caption mb-md">Our iconic 1995 runner reintroduced.</p>
+              <div class="countdown-timer-inline">
+                <span><i class="fa-regular fa-clock"></i> Drops in 12 Days</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-full mt-lg" onclick="showToast('You will be notified upon release!')">Notify Me</button>
+            </div>
+          </div>
+
+          <!-- Drop 3 -->
+          <div class="card reveal stagger-3" style="border:1px solid var(--border-color);text-align:center;">
+            <div style="height:180px;position:relative;overflow:hidden;">
+              <img src="assets/images/products/eco-series.png" alt="Eco Series" style="width:100%;height:100%;object-fit:cover;">
+              <span class="product-badge new badge-pulse" style="position:absolute;top:12px;left:12px;z-index:2;">Eco-Friendly</span>
+            </div>
+            <div class="card-body">
+              <h3>Eco Series</h3>
+              <p class="text-caption mb-md">100% biodegradable ocean plastic weave.</p>
+              <div class="countdown-timer-inline">
+                <span style="color:#22c55e;"><i class="fa-solid fa-circle-check"></i> Available Now</span>
+              </div>
+              <a href="products.html?collection=eco" class="btn btn-primary btn-sm btn-full mt-lg">Shop Eco</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg>
+            <span class="footer-logo-text">SOLE</span>
+          </a>
+          <p class="footer-tagline">Step Into Style</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="categories.html">Categories</a></li><li><a href="brands.html">Brands</a></li><li><a href="collections.html">Collections</a></li><li><a href="size-guide.html">Size Guide</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+        <div class="footer-col"><h4>Categories</h4><ul><li><a href="categories.html">Casual</a></li><li><a href="categories.html">Formal</a></li><li><a href="categories.html">Sports</a></li><li><a href="categories.html">Kids</a></li><li><a href="categories.html">Seasonal</a></li><li><a href="products.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul class="footer-contact"><li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li><li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li><li><i class="fa-solid fa-envelope"></i> hello@sole.com</li><li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li></ul></div>
+        <div class="footer-col"><h4>Newsletter</h4><p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email" required><button type="submit">Subscribe</button></form></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SOLE. All rights reserved.</p>
+        <div class="footer-payments"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

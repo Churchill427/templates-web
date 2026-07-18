@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse SOLE's complete collection of premium footwear. Filter by category, brand, and price. Free shipping on orders over $75.">
+  <title>Products — SOLE Premium Footwear</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar"><div class="nav-container"><a href="index.html" class="nav-logo"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg><span class="nav-logo-text">SOLE</span></a><div class="nav-links" id="navLinks"><div class="nav-dropdown"><a href="#" class="nav-link">Home</a><div class="dropdown-menu"><a href="index.html"><i class="fa-solid fa-house"></i> Home A</a><a href="home-b.html"><i class="fa-solid fa-gem"></i> Home B</a></div></div><a href="products.html" class="nav-link active">Products</a><a href="categories.html" class="nav-link">Categories</a><a href="brands.html" class="nav-link">Brands</a><a href="collections.html" class="nav-link">Collections</a><a href="size-guide.html" class="nav-link">Size Guide</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a><a href="products.html" class="nav-link nav-cta">Order</a></div><div class="nav-toggles"><button class="theme-toggle" id="themeToggle">Dark</button><button class="rtl-toggle" id="rtlToggle">LTR</button></div><button class="hamburger" id="hamburger" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button></div></nav>
+
+  <main class="page-content">
+    <!-- Section 1: Hero with Search & Filters -->
+    <section class="page-hero" style="background-image: url('assets/images/hero/products-hero.png'); min-height:55vh;">
+      <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(15, 15, 35, 0.75) 100%);"></div>
+      <div class="hero-content hero-animate" style="max-width:800px;">
+        <h1>Our Collection</h1>
+        <p style="margin-bottom:32px;">Browse our complete range of footwear designed for every occasion, every terrain, and every style preference.</p>
+        <div class="search-bar" style="margin:0 auto 24px;">
+          <i class="fa-solid fa-search"></i>
+          <input type="text" class="search-input" placeholder="Search products..." id="productSearch">
+        </div>
+        <div class="filter-pills" style="margin-top:16px;">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="casual">Casual</button>
+          <button class="filter-pill" data-filter="formal">Formal</button>
+          <button class="filter-pill" data-filter="sports">Sports</button>
+          <button class="filter-pill" data-filter="kids">Kids</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Featured Product Spotlight -->
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="split-section reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);background:var(--card-bg);">
+          <div class="split-image" style="min-height:400px;background:#fff;display:flex;align-items:center;justify-content:center;">
+            <img src="assets/images/products/air-stride-ultra.png" alt="Air Stride Ultra Shoe" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="split-content">
+            <span class="badge badge-gold mb-md"><i class="fa-solid fa-star"></i> Featured</span>
+            <h2>Air Stride Ultra</h2>
+            <div class="product-rating mb-md">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span>(248 reviews)</span>
+            </div>
+            <p class="product-price" style="font-size:32px;margin-bottom:16px;">$199</p>
+            <p>Our flagship running shoe featuring CloudFoam technology, breathable mesh upper, and responsive cushioning for the ultimate running experience.</p>
+            <div class="feature-tags mt-lg">
+              <span class="feature-tag"><i class="fa-solid fa-feather"></i> Ultra Light</span>
+              <span class="feature-tag"><i class="fa-solid fa-cloud"></i> CloudFoam</span>
+              <span class="feature-tag"><i class="fa-solid fa-wind"></i> Breathable</span>
+            </div>
+            <a href="product-detail.html" class="btn btn-primary mt-lg"><i class="fa-solid fa-eye"></i> View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Product Grid -->
+    <section class="section" style="background:var(--card-bg);" id="productSection">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:16px;">
+          <h2 class="reveal" style="margin:0;">All Products</h2>
+          <select class="form-input" id="productSort" style="width:auto;min-width:180px;">
+            <option value="default">Sort by: Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name-az">Name: A to Z</option>
+            <option value="name-za">Name: Z to A</option>
+          </select>
+        </div>
+
+        <div class="grid-4" id="productGrid">
+          <div class="product-card reveal stagger-1" data-category="casual" data-price="149" data-name="Urban Walker Pro">
+            <div class="product-card-img"><img src="assets/images/products/urban-walker-b.png" alt="Urban Walker Pro"><button class="product-card-wishlist" data-product-id="1" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Urban Walker Pro</h4><p class="product-price">$149</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(128)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal stagger-2" data-category="formal" data-price="189" data-name="Classic Oxford Elite">
+            <div class="product-card-img"><img src="assets/images/products/classic-oxford-b.png" alt="Classic Oxford Elite"><button class="product-card-wishlist" data-product-id="2" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Classic Oxford Elite</h4><p class="product-price">$189</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(95)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal stagger-3" data-category="sports" data-price="99" data-name="Flex Fit Trainer">
+            <div class="product-card-img"><img src="assets/images/products/flex-fit-b.png" alt="Flex Fit Trainer"><span class="product-badge sale">Sale</span><button class="product-card-wishlist" data-product-id="3" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Flex Fit Trainer</h4><p class="product-price">$99 <span class="original">$129</span></p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(210)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal stagger-4" data-category="kids" data-price="79" data-name="Kids Zoom Sprint">
+            <div class="product-card-img"><img src="assets/images/products/kids-zoom-b.png" alt="Kids' Zoom Sprint"><span class="product-badge new">New</span><button class="product-card-wishlist" data-product-id="4" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Kids' Zoom Sprint</h4><p class="product-price">$79</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(76)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal stagger-5" data-category="sports" data-price="159" data-name="Trail Blazer Hike">
+            <div class="product-card-img"><img src="assets/images/products/trail-blazer-b.png" alt="Trail Blazer Hike"><button class="product-card-wishlist" data-product-id="5" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Trail Blazer Hike</h4><p class="product-price">$159</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(154)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal stagger-6" data-category="casual" data-price="89" data-name="Comfort Slip-On">
+            <div class="product-card-img"><img src="assets/images/products/comfort-slipon-b.png" alt="Comfort Slip-On"><button class="product-card-wishlist" data-product-id="6" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Comfort Slip-On</h4><p class="product-price">$89</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(182)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal stagger-7" data-category="sports" data-price="119" data-name="Court Master Tennis">
+            <div class="product-card-img"><img src="assets/images/products/court-master-b.png" alt="Court Master Tennis"><button class="product-card-wishlist" data-product-id="7" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Court Master Tennis</h4><p class="product-price">$119</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(67)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal stagger-8" data-category="casual" data-price="59" data-name="Beach Breeze Sandal">
+            <div class="product-card-img"><img src="assets/images/products/beach-breeze-b.png" alt="Beach Breeze Sandal"><button class="product-card-wishlist" data-product-id="8" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Beach Breeze Sandal</h4><p class="product-price">$59</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(93)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal" data-category="casual" data-price="199" data-name="Winter Shield Boot">
+            <div class="product-card-img"><img src="assets/images/products/winter-shield-b.png" alt="Winter Shield Boot"><button class="product-card-wishlist" data-product-id="9" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Winter Shield Boot</h4><p class="product-price">$199</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(201)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal" data-category="formal" data-price="89" data-name="Dance Flow Ballet">
+            <div class="product-card-img"><img src="assets/images/products/dance-flow-b.png" alt="Dance Flow Ballet"><button class="product-card-wishlist" data-product-id="10" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Dance Flow Ballet</h4><p class="product-price">$89</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(44)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal" data-category="sports" data-price="109" data-name="Skate Pro Deck">
+            <div class="product-card-img"><img src="assets/images/products/skate-deck-b.png" alt="Skate Pro Deck"><span class="product-badge new">New</span><button class="product-card-wishlist" data-product-id="11" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Skate Pro Deck</h4><p class="product-price">$109</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(118)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+          <div class="product-card reveal" data-category="sports" data-price="179" data-name="Golf Elite Spike">
+            <div class="product-card-img"><img src="assets/images/products/golf-spike-b.png" alt="Golf Elite Spike"><button class="product-card-wishlist" data-product-id="12" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button></div>
+            <div class="product-card-body"><span class="product-brand">SOLE</span><h4>Golf Elite Spike</h4><p class="product-price">$179</p><div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(56)</span></div><div class="product-card-action"><a href="product-detail.html" class="btn btn-primary btn-sm btn-full">View Details</a></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Size Guide Teaser -->
+    <section class="section" id="sizeTeaser">
+      <div class="container">
+        <div class="split-section reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);background:var(--card-bg);">
+          <div class="split-content">
+            <h2>Not Sure About Your Size?</h2>
+            <p>Our comprehensive size guide covers US, UK, EU, and CM measurements. Find your perfect fit in seconds.</p>
+            <a href="size-guide.html" class="btn btn-primary mt-lg"><i class="fa-solid fa-ruler"></i> Full Size Guide</a>
+          </div>
+          <div class="split-image" style="min-height:300px;">
+            <img src="assets/images/ui/size-teaser.png" alt="How to measure your size">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Brand Filter -->
+    <section class="section" style="background:var(--card-bg);" id="brandFilter">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Shop by Brand</h2>
+          <p class="reveal stagger-1">Premium partners we trust</p>
+        </div>
+        <div class="grid-6 reveal">
+          <div class="brand-logo-card"><div class="brand-watermark">NIKE</div><h3 style="font-size:14px;margin-top:12px;">Nike</h3><p class="text-caption">45 Products</p></div>
+          <div class="brand-logo-card"><div class="brand-watermark">ADIDAS</div><h3 style="font-size:14px;margin-top:12px;">Adidas</h3><p class="text-caption">38 Products</p></div>
+          <div class="brand-logo-card"><div class="brand-watermark">PUMA</div><h3 style="font-size:14px;margin-top:12px;">Puma</h3><p class="text-caption">32 Products</p></div>
+          <div class="brand-logo-card"><div class="brand-watermark">REEBOK</div><h3 style="font-size:14px;margin-top:12px;">Reebok</h3><p class="text-caption">28 Products</p></div>
+          <div class="brand-logo-card"><div class="brand-watermark" style="font-size:20px;">NEW BALANCE</div><h3 style="font-size:14px;margin-top:12px;">New Balance</h3><p class="text-caption">35 Products</p></div>
+          <div class="brand-logo-card"><div class="brand-watermark">CONVERSE</div><h3 style="font-size:14px;margin-top:12px;">Converse</h3><p class="text-caption">22 Products</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Bulk Order CTA -->
+    <section class="section" id="bulkOrder">
+      <div class="container">
+        <div class="newsletter-section reveal" style="background-image:radial-gradient(circle at 30% 50%,rgba(255,215,0,0.08),transparent 50%);">
+          <h2>Need Shoes for Your Team or Event?</h2>
+          <p>We offer competitive pricing for bulk orders with custom branding options.</p>
+          <a href="contact.html" class="btn btn-gold"><i class="fa-solid fa-users-gear"></i> Request Quote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="footer-logo"><svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg><span class="footer-logo-text">SOLE</span></a><p class="footer-tagline">Step Into Style</p><div class="footer-social"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a><a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></div></div><div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="categories.html">Categories</a></li><li><a href="brands.html">Brands</a></li><li><a href="collections.html">Collections</a></li><li><a href="size-guide.html">Size Guide</a></li></ul></div><div class="footer-col"><h4>Support</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div><div class="footer-col"><h4>Categories</h4><ul><li><a href="categories.html">Casual</a></li><li><a href="categories.html">Formal</a></li><li><a href="categories.html">Sports</a></li><li><a href="categories.html">Kids</a></li><li><a href="categories.html">Seasonal</a></li><li><a href="products.html">New Arrivals</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul class="footer-contact"><li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li><li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li><li><i class="fa-solid fa-envelope"></i> hello@sole.com</li><li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li></ul></div><div class="footer-col"><h4>Newsletter</h4><p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email" required><button type="submit">Subscribe</button></form></div></div><div class="footer-bottom"><p>&copy; 2024 SOLE. All rights reserved.</p><div class="footer-payments"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i></div></div></div></footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

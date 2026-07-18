@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore premium shoes at SOLE by category. Shop Casual, Formal, Sports, and Kids collections to find your perfect fit.">
+  <title>Shop By Category — SOLE Premium Footwear</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .cat-icon-container {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .cat-icon-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 24px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .cat-icon-circle:hover {
+      background: var(--secondary);
+      transform: translateY(-5px) rotate(10deg);
+      box-shadow: 0 4px 15px rgba(196,30,58,0.4);
+    }
+    .quadrant-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.25;
+    }
+    .quadrant {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 24px;
+    }
+    .quadrant.c1 { background: #8b6508; }
+    .quadrant.c2 { background: #2c3e50; }
+    .quadrant.c3 { background: #1a5c2e; }
+    .quadrant.c4 { background: #c41e3a; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#c41e3a"/>
+          <path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="12" r="3" fill="#ffd700"/>
+        </svg>
+        <span class="nav-logo-text">SOLE</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Home</a>
+          <div class="dropdown-menu">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home A</a>
+            <a href="home-b.html"><i class="fa-solid fa-gem"></i> Home B</a>
+          </div>
+        </div>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="categories.html" class="nav-link active">Categories</a>
+        <a href="brands.html" class="nav-link">Brands</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="size-guide.html" class="nav-link">Size Guide</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="products.html" class="nav-link nav-cta">Order</a>
+      </div>
+      <div class="nav-toggles">
+        <button class="theme-toggle" id="themeToggle">Dark</button>
+        <button class="rtl-toggle" id="rtlToggle">LTR</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="page-content">
+    
+    <!-- Section 1: Hero with Quadrant Background -->
+    <section class="page-hero" style="background-image: url('assets/images/hero/categories-hero.png'); position:relative; overflow:hidden;">
+      <div class="hero-overlay" style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.75) 30%, #0f0f23 95%);"></div>
+      <div class="hero-content hero-animate" style="z-index:2;">
+        <h1>Shop by Category</h1>
+        <p>Find exactly what you're looking for, organized by style, activity, and occasion.</p>
+        <div class="cat-icon-container">
+          <a href="#casualSec" class="cat-icon-circle" aria-label="Casual"><i class="fa-solid fa-socks"></i></a>
+          <a href="#formalSec" class="cat-icon-circle" aria-label="Formal"><i class="fa-solid fa-briefcase"></i></a>
+          <a href="#sportsSec" class="cat-icon-circle" aria-label="Sports"><i class="fa-solid fa-dumbbell"></i></a>
+          <a href="#kidsSec" class="cat-icon-circle" aria-label="Kids"><i class="fa-solid fa-child-reaching"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Casual Collection -->
+    <section class="section" id="casualSec">
+      <div class="container">
+        <div class="collection-banner reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);">
+          <img src="assets/images/hero/casual-banner.png" alt="Casual Collection">
+          <div class="collection-banner-overlay" style="background:linear-gradient(to right,rgba(26,26,46,0.8) 40%,transparent 100%);"></div>
+          <div class="collection-banner-content">
+            <span class="badge badge-gold mb-md">Daily Comfort</span>
+            <h2>Casual Collection</h2>
+            <p class="mb-md">245 Products Available — From $59</p>
+            <p class="mb-lg">Relaxed leather loafers, slides, and slip-ons designed to give you effortless style and cushioned support for everyday steps.</p>
+            <a href="products.html" class="btn btn-primary">Explore Casual</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Formal Collection (Reversed) -->
+    <section class="section" style="background:var(--card-bg);" id="formalSec">
+      <div class="container">
+        <div class="collection-banner reversed reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);">
+          <img src="assets/images/hero/formal-banner.png" alt="Formal Collection">
+          <div class="collection-banner-overlay" style="background:linear-gradient(to left,rgba(26,26,46,0.8) 40%,transparent 100%);"></div>
+          <div class="collection-banner-content">
+            <span class="badge badge-primary mb-md">Elegant Styles</span>
+            <h2>Formal Collection</h2>
+            <p class="mb-md">128 Products Available — From $129</p>
+            <p class="mb-lg">Handcrafted Oxfords, classic leather dress shoes, and luxury boots that redefine sophistication for boardrooms and galas.</p>
+            <a href="products.html" class="btn btn-primary">Explore Formal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Sports Collection -->
+    <section class="section" id="sportsSec">
+      <div class="container">
+        <div class="collection-banner reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);">
+          <img src="assets/images/hero/sports-banner.png" alt="Sports Collection">
+          <div class="collection-banner-overlay" style="background:linear-gradient(to right,rgba(26,26,46,0.8) 40%,transparent 100%);"></div>
+          <div class="collection-banner-content">
+            <span class="badge badge-gold mb-md">High Performance</span>
+            <h2>Sports Collection</h2>
+            <p class="mb-md">312 Products Available — From $79</p>
+            <p class="mb-lg">Engineered trainers, athletic runners, and heavy-duty hiking boots designed with cloud cushion tech and anti-slip traction.</p>
+            <a href="products.html" class="btn btn-primary">Explore Sports</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Kids Collection (Reversed) -->
+    <section class="section" style="background:var(--card-bg);" id="kidsSec">
+      <div class="container">
+        <div class="collection-banner reversed reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);">
+          <img src="assets/images/hero/kids-banner.png" alt="Kids Collection">
+          <div class="collection-banner-overlay" style="background:linear-gradient(to left,rgba(26,26,46,0.8) 40%,transparent 100%);"></div>
+          <div class="collection-banner-content">
+            <span class="badge badge-primary mb-md">For Little Feet</span>
+            <h2>Kids Collection</h2>
+            <p class="mb-md">89 Products Available — From $39</p>
+            <p class="mb-lg">Bright, colorful sneakers and durable strap boots crafted with healthy arch support and playground-resistant materials.</p>
+            <a href="products.html" class="btn btn-primary">Explore Kids</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Seasonal Picks -->
+    <section class="section" id="seasonalPicks">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Seasonal Picks</h2>
+          <p class="reveal stagger-1">Specially curated footwear matching the weather guidelines</p>
+        </div>
+        <div class="grid-2">
+          <!-- Spring/Summer Card -->
+          <div class="card reveal-scale stagger-1" style="overflow:hidden;border:1px solid var(--border-color);position:relative;">
+            <div style="height:250px;position:relative;overflow:hidden;">
+              <img src="assets/images/ui/spring-summer.png" alt="Spring/Summer Collection" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="card-body">
+              <span class="badge badge-gold mb-sm">Spring / Summer 2024</span>
+              <h3>Spring/Summer Collection</h3>
+              <p class="mb-md">Breathable mesh trainers, canvas slides, and comfort espadrilles crafted for optimal ventilation and hot pavement resistance.</p>
+              <p class="text-caption mb-lg"><strong>82 Items Curated</strong></p>
+              <a href="collections.html" class="btn btn-secondary btn-full">Shop Season</a>
+            </div>
+          </div>
+
+          <!-- Fall/Winter Card -->
+          <div class="card reveal-scale stagger-2" style="overflow:hidden;border:1px solid var(--border-color);position:relative;">
+            <div style="height:250px;position:relative;overflow:hidden;">
+              <img src="assets/images/ui/fall-winter.png" alt="Fall/Winter Collection" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="card-body">
+              <span class="badge badge-primary mb-sm">Fall / Winter 2024</span>
+              <h3>Fall/Winter Collection</h3>
+              <p class="mb-md">Waterproof leather boots, thermal insulated hiking ranges, and protective running gear designed to trap heat and reject moisture.</p>
+              <p class="text-caption mb-lg"><strong>64 Items Curated</strong></p>
+              <a href="collections.html" class="btn btn-secondary btn-full">Shop Season</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg>
+            <span class="footer-logo-text">SOLE</span>
+          </a>
+          <p class="footer-tagline">Step Into Style</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="categories.html">Categories</a></li><li><a href="brands.html">Brands</a></li><li><a href="collections.html">Collections</a></li><li><a href="size-guide.html">Size Guide</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+        <div class="footer-col"><h4>Categories</h4><ul><li><a href="categories.html">Casual</a></li><li><a href="categories.html">Formal</a></li><li><a href="categories.html">Sports</a></li><li><a href="categories.html">Kids</a></li><li><a href="categories.html">Seasonal</a></li><li><a href="products.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul class="footer-contact"><li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li><li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li><li><i class="fa-solid fa-envelope"></i> hello@sole.com</li><li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li></ul></div>
+        <div class="footer-col"><h4>Newsletter</h4><p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email" required><button type="submit">Subscribe</button></form></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SOLE. All rights reserved.</p>
+        <div class="footer-payments"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

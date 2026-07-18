@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page not found. Oops! The page you were looking for walked away. Navigate back to SOLE home page or browse popular shoes.">
+  <title>Page Walked Away (404) — SOLE</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .desert-lost-shoe {
+      position: relative;
+      height: 250px;
+      background: linear-gradient(to bottom, #f3e5ab 60%, #e5c158 100%);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    html.dark-mode .desert-lost-shoe {
+      background: linear-gradient(to bottom, #2b2b1a 60%, #1e1e10 100%);
+    }
+    .walking-shoe-animation {
+      font-size: 80px;
+      color: var(--secondary);
+      animation: float 2.5s ease-in-out infinite, bounce 1.2s infinite;
+    }
+    .popular-links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .popular-link-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+    }
+    .popular-link-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-2px);
+    }
+    .popular-link-card:hover a {
+      color: var(--secondary);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#c41e3a"/>
+          <path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="12" r="3" fill="#ffd700"/>
+        </svg>
+        <span class="nav-logo-text">SOLE</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Home</a>
+          <div class="dropdown-menu">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home A</a>
+            <a href="home-b.html"><i class="fa-solid fa-gem"></i> Home B</a>
+          </div>
+        </div>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="brands.html" class="nav-link">Brands</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="size-guide.html" class="nav-link">Size Guide</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="products.html" class="nav-link nav-cta">Order</a>
+      </div>
+      <div class="nav-toggles">
+        <button class="theme-toggle" id="themeToggle">Dark</button>
+        <button class="rtl-toggle" id="rtlToggle">LTR</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="page-content">
+
+    <!-- Section 1: Error Hero -->
+    <section class="section" id="errorHero">
+      <div class="container">
+        <div class="desert-lost-shoe reveal">
+          <i class="fa-solid fa-shoe-prints walking-shoe-animation"></i>
+        </div>
+        <div class="text-center mt-xl">
+          <h1 style="font-size:72px;line-height:80px;color:var(--secondary);">404</h1>
+          <h2>Oops! Looks like this page walked away.</h2>
+          <p class="mb-lg">The shoe prints lead to a dead end. Use our navigation menu or browse popular categories below to get back on track.</p>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <a href="index.html" class="btn btn-primary"><i class="fa-solid fa-house"></i> Back to Home</a>
+            <a href="products.html" class="btn btn-secondary"><i class="fa-solid fa-bag-shopping"></i> Browse Products</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Popular Links (2x3 Grid) -->
+    <section class="section" style="background:var(--card-bg);" id="popularLinks">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">Popular Destinations</h2>
+          <p class="reveal stagger-1">Quick navigation links to popular areas of our store</p>
+        </div>
+        <div class="popular-links-grid reveal">
+          <div class="popular-link-card">
+            <i class="fa-solid fa-house" style="color:var(--secondary);"></i>
+            <a href="index.html">Home Page</a>
+          </div>
+          <div class="popular-link-card">
+            <i class="fa-solid fa-bag-shopping" style="color:var(--secondary);"></i>
+            <a href="products.html">All Products</a>
+          </div>
+          <div class="popular-link-card">
+            <i class="fa-solid fa-layer-group" style="color:var(--secondary);"></i>
+            <a href="categories.html">Categories</a>
+          </div>
+          <div class="popular-link-card">
+            <i class="fa-solid fa-circle-info" style="color:var(--secondary);"></i>
+            <a href="about.html">About Us</a>
+          </div>
+          <div class="popular-link-card">
+            <i class="fa-solid fa-envelope" style="color:var(--secondary);"></i>
+            <a href="contact.html">Contact Us</a>
+          </div>
+          <div class="popular-link-card">
+            <i class="fa-solid fa-ruler-horizontal" style="color:var(--secondary);"></i>
+            <a href="size-guide.html">Size Guide</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Search Suggestion -->
+    <section class="section" id="searchSuggestion">
+      <div class="container" style="max-width:600px;text-align:center;">
+        <h2 class="reveal">Try Searching for Shoes</h2>
+        <div class="search-bar light mt-md reveal stagger-1" style="margin:0 auto 16px;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Try searching for Boots, Runners..." onkeydown="if(event.key === 'Enter') window.location.href='products.html?q=' + this.value">
+        </div>
+        <div class="reveal stagger-2" style="font-size:13px;color:var(--text-muted);">
+          Popular terms: <a href="products.html?q=leather" class="text-accent" style="margin-right:8px;font-weight:600;">Leather</a>
+          <a href="products.html?q=running" class="text-accent" style="margin-right:8px;font-weight:600;">Running</a>
+          <a href="products.html?q=kids" class="text-accent" style="font-weight:600;">Kids</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Featured Products -->
+    <section class="section" style="background:var(--card-bg);" id="featuredAlt">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="reveal">You Might Like These Instead</h2>
+          <p class="reveal stagger-1">Selected premium styles for our lost visitors</p>
+        </div>
+        <div class="grid-4">
+          <div class="product-card reveal stagger-1">
+            <div class="product-card-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,#e8ddd3,#c4a882);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-shoe-prints" style="font-size:36px;color:rgba(139,105,20,0.4);"></i></div></div>
+            <div class="product-card-body"><h4>Urban Walker Pro</h4><p class="product-price">$149</p></div>
+          </div>
+          <div class="product-card reveal stagger-2">
+            <div class="product-card-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,#e0e7ef,#b8c9d9);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-dumbbell" style="font-size:36px;color:rgba(30,58,95,0.4);"></i></div></div>
+            <div class="product-card-body"><h4>Flex Fit Trainer</h4><p class="product-price">$99</p></div>
+          </div>
+          <div class="product-card reveal stagger-3">
+            <div class="product-card-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,#2d2d2d,#4a4a4a);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-briefcase" style="font-size:36px;color:rgba(255,215,0,0.4);"></i></div></div>
+            <div class="product-card-body"><h4>Classic Oxford Elite</h4><p class="product-price">$189</p></div>
+          </div>
+          <div class="product-card reveal stagger-4">
+            <div class="product-card-img"><div style="width:100%;height:100%;background:linear-gradient(135deg,#a8e6cf,#88d8a8);display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-child-reaching" style="font-size:36px;color:rgba(46,125,50,0.4);"></i></div></div>
+            <div class="product-card-body"><h4>Kids' Zoom Sprint</h4><p class="product-price">$79</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Contact Support -->
+    <section class="section" id="helpSection">
+      <div class="container">
+        <div class="newsletter-section reveal" style="background-image:radial-gradient(circle at center,rgba(196,30,58,0.1),transparent 70%);">
+          <h2>Need Help Finding Something?</h2>
+          <p class="mb-lg">Our customer support footwear specialists are available to guide you.</p>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-gold"><i class="fa-solid fa-headset"></i> Contact Support</a>
+            <button class="btn btn-secondary" style="border-color:rgba(255,255,255,0.3);color:#fff;" onclick="showToast('Live Chat is offline. Please email us!')"><i class="fa-regular fa-comments"></i> Chat With Us</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Newsletter -->
+    <section class="section" style="background:var(--card-bg);" id="altNewsletter">
+      <div class="container">
+        <div class="newsletter-section reveal" style="background-image:radial-gradient(circle at center,rgba(255,215,0,0.1),transparent 75%);border:1px solid var(--border-color);">
+          <h2>Don't Miss Out on New Arrivals</h2>
+          <p>Get notified about special limited drops and premium shoe releases.</p>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg>
+            <span class="footer-logo-text">SOLE</span>
+          </a>
+          <p class="footer-tagline">Step Into Style</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="categories.html">Categories</a></li><li><a href="brands.html">Brands</a></li><li><a href="collections.html">Collections</a></li><li><a href="size-guide.html">Size Guide</a></li></ul></div>
+        <div class="footer-col"><h4>Support</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+        <div class="footer-col"><h4>Categories</h4><ul><li><a href="categories.html">Casual</a></li><li><a href="categories.html">Formal</a></li><li><a href="categories.html">Sports</a></li><li><a href="categories.html">Kids</a></li><li><a href="categories.html">Seasonal</a></li><li><a href="products.html">New Arrivals</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><ul class="footer-contact"><li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li><li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li><li><i class="fa-solid fa-envelope"></i> hello@sole.com</li><li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li></ul></div>
+        <div class="footer-col"><h4>Newsletter</h4><p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email" required><button type="submit">Subscribe</button></form></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SOLE. All rights reserved.</p>
+        <div class="footer-payments"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i></div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>
