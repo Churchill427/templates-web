@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly — Premium Pet Grooming & Care Salon</title>
+  <meta name="description" content="Pawly offers premium pet grooming services tailored to every breed and size. Book your appointment for expert care in a stress-free environment.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pawly — Premium Pet Grooming & Care Salon">
+  <meta property="og:description" content="Expert grooming care tailored to every breed and size. Book your appointment today.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pawly.com">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Pawly",
+    "description": "Premium pet grooming & care salon",
+    "url": "https://pawly.com",
+    "telephone": "+1-555-PAWLY",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Pet Avenue",
+      "addressLocality": "San Francisco",
+      "addressRegion": "CA",
+      "postalCode": "94102"
+    },
+    "openingHours": "Mo-Sa 08:00-19:00"
+  }
+  </script>
+</head>
+<body class="page-transition">
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <!-- Brand -->
+      <a href="index.html" class="navbar-brand" aria-label="Pawly home">
+        <span class="brand-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="34" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="7" cy="24" r="5" fill="var(--color-primary)"/>
+            <circle cx="41" cy="24" r="5" fill="var(--color-primary)"/>
+            <ellipse cx="24" cy="32" rx="12" ry="10" fill="var(--color-primary)"/>
+          </svg>
+        </span>
+        <span class="brand-name">PAWLY</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="navbar-nav" role="menubar">
+        <li class="nav-dropdown" role="none">
+          <a href="#" class="nav-link nav-dropdown-toggle active" role="menuitem" aria-haspopup="true">
+            Home <i class="ph ph-caret-down"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="index.html" role="menuitem">Home Main</a>
+            <a href="home-alt.html" role="menuitem">Home Alt</a>
+          </div>
+        </li>
+        <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
+        <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
+        <li role="none"><a href="groomers.html" class="nav-link" role="menuitem">Groomers</a></li>
+        <li role="none"><a href="gallery.html" class="nav-link" role="menuitem">Gallery</a></li>
+        <li role="none"><a href="packages.html" class="nav-link" role="menuitem">Packages</a></li>
+        <li role="none"><a href="blog.html" class="nav-link" role="menuitem">Blog</a></li>
+        <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+        <li class="nav-dropdown" role="none">
+          <a href="#" class="nav-link nav-dropdown-toggle" role="menuitem" aria-haspopup="true">
+            Dashboard <i class="ph ph-caret-down"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard/user/index.html" role="menuitem">User Dashboard</a>
+            <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
+          </div>
+        </li>
+        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="navbar-actions">
+        <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+        <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+          <i class="ph ph-sun icon-sun" style="display:none;"></i>
+          <i class="ph ph-moon icon-moon"></i>
+        </button>
+      </div>
+
+      <!-- Hamburger (Mobile) -->
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#" class="nav-link mobile-dropdown-toggle">
+      Home <i class="ph ph-caret-down"></i>
+    </a>
+    <div class="mobile-dropdown-items">
+      <a href="index.html">Home Main</a>
+      <a href="home-alt.html">Home Alt</a>
+    </div>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="groomers.html" class="nav-link">Groomers</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="nav-link mobile-dropdown-toggle">
+      Dashboard <i class="ph ph-caret-down"></i>
+    </a>
+    <div class="mobile-dropdown-items">
+      <a href="dashboard/user/index.html">User Dashboard</a>
+      <a href="dashboard/admin/index.html">Admin Dashboard</a>
+    </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
+
+    <div class="mobile-nav-actions">
+      <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+      <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+        <i class="ph ph-sun icon-sun" style="display:none;"></i>
+        <i class="ph ph-moon icon-moon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- ===== SECTION 1: HERO ===== -->
+    <section class="hero hero-animate" id="hero-section" aria-label="Hero">
+      <div class="hero-bg parallax-bg" data-parallax-speed="0.3" style="background-image: url('assets/images/hero/home-main.png');"></div>
+      <div class="hero-overlay"></div>
+
+      <!-- Floating Paw Prints -->
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+
+      <div class="hero-content">
+        <h1>Premium Grooming for Your Best Friend</h1>
+        <p>Expert care tailored to every breed and size.</p>
+        <div class="hero-cta">
+          <a href="login.html" class="btn btn-primary btn-lg">Book Appointment</a>
+          <a href="services.html" class="btn btn-outline-white btn-lg">Explore Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: SERVICES PREVIEW ===== -->
+    <section class="section section-bg" id="services-preview" aria-label="Our grooming services">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Our Grooming Services</h2>
+        <p class="section-subtitle anim-fade-up">Comprehensive care for every furry family member</p>
+
+        <div class="grid grid-4" data-stagger="100">
+          <!-- Service 1 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="ph ph-dog icon-bounce"></i>
+            </div>
+            <h3 class="card-title">Dog Grooming</h3>
+            <p class="card-text">Full-service grooming for all breeds, from bath and brush to breed-specific styling and coat maintenance.</p>
+            <a href="services.html" class="card-link">Learn More <i class="ph ph-arrow-right"></i></a>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="ph ph-cat icon-bounce"></i>
+            </div>
+            <h3 class="card-title">Cat Grooming</h3>
+            <p class="card-text">Gentle grooming tailored for feline friends, including de-shedding, nail care, and stress-free bathing.</p>
+            <a href="services.html" class="card-link">Learn More <i class="ph ph-arrow-right"></i></a>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="ph ph-flower-lotus icon-bounce"></i>
+            </div>
+            <h3 class="card-title">Spa & Relaxation</h3>
+            <p class="card-text">Luxury spa treatments including aromatherapy baths, paw balm, blueberry facials, and deep conditioning.</p>
+            <a href="services.html" class="card-link">Learn More <i class="ph ph-arrow-right"></i></a>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="card">
+            <div class="card-icon">
+              <i class="ph ph-scissors icon-bounce"></i>
+            </div>
+            <h3 class="card-title">Breed Styling</h3>
+            <p class="card-text">Expert breed-specific cuts and styles by certified groomers who understand your pet's unique coat needs.</p>
+            <a href="services.html" class="card-link">Learn More <i class="ph ph-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: WHY CHOOSE US ===== -->
+    <section class="section section-image-bg" id="why-choose-us" aria-label="Why pet parents trust Pawly">
+      <div class="section-bg-img" style="background-image: linear-gradient(135deg, rgba(45,106,79,0.15), rgba(244,162,97,0.1)), url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M30 5c2 0 3 2 3 4s-1 4-3 4-3-2-3-4 1-4 3-4z&quot; fill=&quot;rgba(45,106,79,0.04)&quot;/%3E%3C/svg%3E');"></div>
+      <div class="section-bg-overlay"></div>
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Why Pet Parents Trust Pawly</h2>
+        <p class="section-subtitle anim-fade-up">We go above and beyond for every pet in our care</p>
+
+        <div class="grid grid-3" data-stagger="100">
+          <!-- Feature 1 -->
+          <div class="card card-flat">
+            <div class="card-icon" style="background: rgba(45,106,79,0.1);">
+              <i class="ph ph-certificate icon-bounce"></i>
+            </div>
+            <h3 class="card-title">Certified Groomers</h3>
+            <p class="card-text">All our groomers are professionally certified with ongoing education in the latest grooming techniques and pet safety protocols.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="card card-flat">
+            <div class="card-icon" style="background: rgba(244,162,97,0.12);">
+              <i class="ph ph-leaf icon-bounce" style="color: var(--color-secondary);"></i>
+            </div>
+            <h3 class="card-title">Premium Products</h3>
+            <p class="card-text">We use only veterinary-approved, organic, and hypoallergenic products that are gentle on your pet's skin and coat.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="card card-flat">
+            <div class="card-icon" style="background: rgba(82,183,136,0.12);">
+              <i class="ph ph-heart icon-bounce" style="color: var(--color-success);"></i>
+            </div>
+            <h3 class="card-title">Stress-Free Environment</h3>
+            <p class="card-text">Our calm, controlled salon features quiet dryers, soothing music, and individual attention to keep your pet relaxed and happy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: BEFORE & AFTER SHOWCASE ===== -->
+    <section class="section section-surface" id="before-after" aria-label="Before and after transformations">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Transformations That Speak</h2>
+        <p class="section-subtitle anim-fade-up">See the incredible difference professional grooming makes</p>
+
+        <div class="grid grid-2" data-stagger="150" style="gap: var(--space-xl);">
+          <!-- Pair 1: Dog Grooming -->
+          <div class="before-after-slider card" style="padding:0; overflow:hidden; aspect-ratio:16/10; cursor:ew-resize;" tabindex="0" aria-label="Before and after dog grooming comparison">
+            <div style="position:relative; width:100%; height:100%;">
+              <!-- Floating Corner Badges -->
+              <span class="badge" style="position:absolute; left:var(--space-sm); top:var(--space-sm); background:rgba(0,0,0,0.60); color:#fff; border:none; z-index:3; font-size:11px; padding:4px 8px; border-radius:var(--radius-sm);">Before: Matted Fur</span>
+              <span class="badge" style="position:absolute; right:var(--space-sm); top:var(--space-sm); background:var(--color-primary); color:#fff; border:none; z-index:3; font-size:11px; padding:4px 8px; border-radius:var(--radius-sm);">After: Silky Smooth</span>
+
+              <!-- Before Image -->
+              <img src="assets/images/transformations/dog-before.png" alt="Dog with matted fur before grooming" style="width:100%; height:100%; object-fit:cover; pointer-events:none; display:block;">
+
+              <!-- After Image Container (Clipped) -->
+              <div class="after-image" style="position:absolute; inset:0; clip-path:inset(0 50% 0 0); pointer-events:none; transition: none; z-index: 1;">
+                <img src="assets/images/transformations/dog-after.png" alt="Dog with silky smooth fur after grooming" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+
+              <!-- Slider Handle -->
+              <div class="slider-handle" tabindex="0" role="slider" aria-label="Drag to compare" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="position:absolute; left:50%; top:0; bottom:0; width:4px; background:var(--color-primary); cursor:ew-resize; z-index:2; transform:translateX(-50%);">
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:36px; height:36px; background:var(--color-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-md);">
+                  <i class="ph ph-arrows-horizontal" style="color:#fff; font-size:16px;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pair 2: Cat Grooming -->
+          <div class="before-after-slider card" style="padding:0; overflow:hidden; aspect-ratio:16/10; cursor:ew-resize;" tabindex="0" aria-label="Before and after cat grooming comparison">
+            <div style="position:relative; width:100%; height:100%;">
+              <!-- Floating Corner Badges -->
+              <span class="badge" style="position:absolute; left:var(--space-sm); top:var(--space-sm); background:rgba(0,0,0,0.60); color:#fff; border:none; z-index:3; font-size:11px; padding:4px 8px; border-radius:var(--radius-sm);">Before: Overgrown Coat</span>
+              <span class="badge" style="position:absolute; right:var(--space-sm); top:var(--space-sm); background:var(--color-secondary); color:#fff; border:none; z-index:3; font-size:11px; padding:4px 8px; border-radius:var(--radius-sm);">After: Perfectly Styled</span>
+
+              <!-- Before Image -->
+              <img src="assets/images/transformations/cat-before.png" alt="Cat with overgrown coat before grooming" style="width:100%; height:100%; object-fit:cover; pointer-events:none; display:block;">
+
+              <!-- After Image Container (Clipped) -->
+              <div class="after-image" style="position:absolute; inset:0; clip-path:inset(0 50% 0 0); pointer-events:none; transition: none; z-index: 1;">
+                <img src="assets/images/transformations/cat-after.png" alt="Cat with perfectly styled trimmed coat after grooming" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+
+              <!-- Slider Handle -->
+              <div class="slider-handle" tabindex="0" role="slider" aria-label="Drag to compare" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="position:absolute; left:50%; top:0; bottom:0; width:4px; background:var(--color-secondary); cursor:ew-resize; z-index:2; transform:translateX(-50%);">
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:36px; height:36px; background:var(--color-secondary); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-md);">
+                  <i class="ph ph-arrows-horizontal" style="color:#fff; font-size:16px;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: GROOMER PROFILES PREVIEW ===== -->
+    <section class="section section-bg" id="groomers-preview" aria-label="Meet our expert groomers">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Meet Our Expert Groomers</h2>
+        <p class="section-subtitle anim-fade-up">Passionate professionals dedicated to your pet's wellbeing</p>
+
+        <div class="grid grid-4" data-stagger="100">
+          <!-- Groomer 1 -->
+          <div class="card" style="text-align:center; padding: var(--space-lg) var(--space-md);">
+            <div style="width:120px; height:120px; border-radius:50%; margin:0 auto var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/groomers/groomer1.png" alt="Sarah Mitchell" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 class="card-title" style="font-size: 18px;">Sarah Mitchell</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:4px;">Lead Groomer</p>
+            <p class="card-text" style="font-size:var(--fs-small);">12 years experience specializing in Poodles and terrier breeds.</p>
+            <a href="groomers.html" class="card-link" style="justify-content:center;">View Profile <i class="ph ph-arrow-right"></i></a>
+          </div>
+
+          <!-- Groomer 2 -->
+          <div class="card" style="text-align:center; padding: var(--space-lg) var(--space-md);">
+            <div style="width:120px; height:120px; border-radius:50%; margin:0 auto var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/groomers/groomer2.png" alt="James Chen" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 class="card-title" style="font-size: 18px;">James Chen</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:4px;">Senior Stylist</p>
+            <p class="card-text" style="font-size:var(--fs-small);">8 years experience in creative grooming and Asian fusion cuts.</p>
+            <a href="groomers.html" class="card-link" style="justify-content:center;">View Profile <i class="ph ph-arrow-right"></i></a>
+          </div>
+
+          <!-- Groomer 3 -->
+          <div class="card" style="text-align:center; padding: var(--space-lg) var(--space-md);">
+            <div style="width:120px; height:120px; border-radius:50%; margin:0 auto var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/groomers/groomer3.png" alt="Maria Gonzalez" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 class="card-title" style="font-size: 18px;">Maria Gonzalez</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:4px;">Cat Specialist</p>
+            <p class="card-text" style="font-size:var(--fs-small);">10 years of feline grooming with certification in handling anxious cats.</p>
+            <a href="groomers.html" class="card-link" style="justify-content:center;">View Profile <i class="ph ph-arrow-right"></i></a>
+          </div>
+
+          <!-- Groomer 4 -->
+          <div class="card" style="text-align:center; padding: var(--space-lg) var(--space-md);">
+            <div style="width:120px; height:120px; border-radius:50%; margin:0 auto var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/groomers/groomer4.png" alt="David Park" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 class="card-title" style="font-size: 18px;">David Park</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:4px;">Spa Therapist</p>
+            <p class="card-text" style="font-size:var(--fs-small);">6 years in pet wellness and therapeutic spa treatments.</p>
+            <a href="groomers.html" class="card-link" style="justify-content:center;">View Profile <i class="ph ph-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: TESTIMONIALS & CTA ===== -->
+    <section class="section section-primary" id="testimonials" aria-label="Testimonials and call to action">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Happy Tails, Happy Families</h2>
+        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.8);">What our pet parents are saying about Pawly</p>
+
+        <div class="grid grid-3" data-stagger="100">
+          <!-- Testimonial 1 -->
+          <div class="card" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.15);">
+            <div style="margin-bottom: var(--space-sm);">
+              <i class="ph ph-quotes" style="font-size:32px; color:var(--color-secondary); opacity:0.7;"></i>
+            </div>
+            <p style="color:rgba(255,255,255,0.9); margin-bottom:var(--space-md); font-style:italic; line-height:1.7;">
+              "Pawly transformed our nervous rescue dog into the most confident, beautiful pup. Sarah's patience and expertise are unmatched!"
+            </p>
+            <div class="star-rating" style="margin-bottom:var(--space-xs);">
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+            </div>
+            <p style="color:#fff; font-weight:var(--fw-semibold); margin-bottom:2px; font-size:var(--fs-small);">Buddy the Golden Retriever</p>
+            <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:0;">- Emily & Robert Thompson</p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="card" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.15);">
+            <div style="margin-bottom: var(--space-sm);">
+              <i class="ph ph-quotes" style="font-size:32px; color:var(--color-secondary); opacity:0.7;"></i>
+            </div>
+            <p style="color:rgba(255,255,255,0.9); margin-bottom:var(--space-md); font-style:italic; line-height:1.7;">
+              "Our Persian cat Luna was always terrified of grooming. Maria's gentle approach made all the difference. Luna actually purrs during her sessions now!"
+            </p>
+            <div class="star-rating" style="margin-bottom:var(--space-xs);">
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+            </div>
+            <p style="color:#fff; font-weight:var(--fw-semibold); margin-bottom:2px; font-size:var(--fs-small);">Luna the Persian Cat</p>
+            <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:0;">- Sophia Nakamura</p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="card" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.15);">
+            <div style="margin-bottom: var(--space-sm);">
+              <i class="ph ph-quotes" style="font-size:32px; color:var(--color-secondary); opacity:0.7;"></i>
+            </div>
+            <p style="color:rgba(255,255,255,0.9); margin-bottom:var(--space-md); font-style:italic; line-height:1.7;">
+              "The spa day package was incredible! Our Labrador Max came home smelling amazing and his coat has never looked this glossy. Absolute five-star service."
+            </p>
+            <div class="star-rating" style="margin-bottom:var(--space-xs);">
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph-fill ph-star star"></i>
+              <i class="ph ph-star star empty"></i>
+            </div>
+            <p style="color:#fff; font-weight:var(--fw-semibold); margin-bottom:2px; font-size:var(--fs-small);">Max the Labrador</p>
+            <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:0;">- Daniel & Lisa Martinez</p>
+          </div>
+        </div>
+
+        <!-- CTA Banner -->
+        <div class="anim-fade-up" style="text-align:center; margin-top:var(--space-2xl); padding-top:var(--space-xl); border-top:1px solid rgba(255,255,255,0.15);">
+          <h3 style="color:#fff; margin-bottom:var(--space-sm);">Ready to Pamper Your Pet?</h3>
+          <p style="color:rgba(255,255,255,0.8); margin-bottom:var(--space-lg); max-width:500px; margin-left:auto; margin-right:auto;">
+            Join thousands of happy pet parents who trust Pawly for premium grooming care.
+          </p>
+          <a href="login.html" class="btn btn-secondary btn-lg">Book Now</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: Brand -->
+        <div class="footer-brand">
+          <div class="brand-name">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="14" cy="10" r="5" fill="#fff"/>
+              <circle cx="34" cy="10" r="5" fill="#fff"/>
+              <circle cx="7" cy="24" r="5" fill="#fff"/>
+              <circle cx="41" cy="24" r="5" fill="#fff"/>
+              <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+            </svg>
+            PAWLY
+          </div>
+          <p>Premium grooming care for your beloved companions.</p>
+
+          <div class="footer-social">
+            <button class="btn-social btn-google">
+              <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/>
+                <path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/>
+                <path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/>
+              </svg>
+              Sign in with Google
+            </button>
+            <button class="btn-social btn-facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              Sign in with Facebook
+            </button>
+            <button class="btn-social btn-apple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              Sign in with Apple
+            </button>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Home</a>
+            <a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Services</a>
+            <a href="groomers.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Groomers</a>
+            <a href="gallery.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a>
+            <a href="packages.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Packages</a>
+            <a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a>
+            <a href="contact.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Contact</a>
+          </div>
+        </div>
+
+        <!-- Column 3: Services -->
+        <div>
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Dog Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Cat Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Nail Care</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Spa Treatments</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Breed-Specific Styling</a>
+          </div>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <i class="ph ph-map-pin" aria-hidden="true"></i>
+            <span>123 Pet Avenue, San Francisco, CA 94102</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="ph ph-phone" aria-hidden="true"></i>
+            <span>+1 (555) 729-5968</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="ph ph-envelope" aria-hidden="true"></i>
+            <span>hello@pawly.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="ph ph-clock" aria-hidden="true"></i>
+            <span>Mon-Sat: 8AM - 7PM<br>Sun: 10AM - 5PM</span>
+          </div>
+          <a href="login.html" class="btn btn-secondary btn-sm" style="margin-top:var(--space-sm);">
+            <i class="ph ph-calendar-check"></i> Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pawly. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

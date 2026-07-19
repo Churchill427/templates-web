@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Admin — Services & Pricing</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to main dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="Admin Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar"></i><span>Appointments</span></a></li>
+        <li><a href="customers.html" class="db-menu-item"><i class="ph ph-users"></i><span>Customers</span></a></li>
+        <li><a href="groomers.html" class="db-menu-item"><i class="ph ph-scissors"></i><span>Groomers</span></a></li>
+        <li><a href="services.html" class="db-menu-item active"><i class="ph ph-folder-open"></i><span>Services</span></a></li>
+        <li><a href="reports.html" class="db-menu-item"><i class="ph ph-chart-bar"></i><span>Reports</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-gear"></i><span>Settings</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Admin Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">AD</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Administrator</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Services & Pricing</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Edit packages, salon base rates, and customize additions.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="openModal('add-service-modal')"><i class="ph ph-plus-circle"></i> Add Service</button>
+          </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-3" id="services-grid-container" data-stagger="100">
+          <!-- Service 1 -->
+          <div class="card service-card" data-service-id="1">
+            <div class="db-card-header" style="margin-bottom: var(--space-sm); padding-bottom:var(--space-xs);">
+              <h3 style="font-size: 18px; margin-bottom:0;">Essential Care</h3>
+              <span class="badge badge-primary">$35.00</span>
+            </div>
+            <p class="card-text" style="font-size: var(--fs-small); min-height: 50px;">Organic cleansing bath, dry, brush, nail clipping and ear wash.</p>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:var(--space-md);">
+              <span style="font-size:12px; color:var(--color-text-muted);"><i class="ph ph-clock"></i> 45 mins</span>
+              <div style="display:flex; gap:4px;">
+                <button class="btn btn-outline btn-sm" onclick="showToast('Loading service editor...', 'info')">Edit</button>
+                <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeService(1)">Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="card service-card" data-service-id="2">
+            <div class="db-card-header" style="margin-bottom: var(--space-sm); padding-bottom:var(--space-xs);">
+              <h3 style="font-size: 18px; margin-bottom:0;">Signature Style</h3>
+              <span class="badge badge-secondary">$65.00</span>
+            </div>
+            <p class="card-text" style="font-size: var(--fs-small); min-height: 50px;">Complete haircut & styling, sanitary trims, dental brushing, and pad balm.</p>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:var(--space-md);">
+              <span style="font-size:12px; color:var(--color-text-muted);"><i class="ph ph-clock"></i> 75 mins</span>
+              <div style="display:flex; gap:4px;">
+                <button class="btn btn-outline btn-sm" onclick="showToast('Loading service editor...', 'info')">Edit</button>
+                <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeService(2)">Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="card service-card" data-service-id="3">
+            <div class="db-card-header" style="margin-bottom: var(--space-sm); padding-bottom:var(--space-xs);">
+              <h3 style="font-size: 18px; margin-bottom:0;">Royal VIP Spa</h3>
+              <span class="badge badge-accent">$95.00</span>
+            </div>
+            <p class="card-text" style="font-size: var(--fs-small); min-height: 50px;">Aromatherapy lavender bath, deep coat conditioning, blueberry facial, and massage.</p>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:var(--space-md);">
+              <span style="font-size:12px; color:var(--color-text-muted);"><i class="ph ph-clock"></i> 120 mins</span>
+              <div style="display:flex; gap:4px;">
+                <button class="btn btn-outline btn-sm" onclick="showToast('Loading service editor...', 'info')">Edit</button>
+                <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeService(3)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Service Modal -->
+  <div class="modal-overlay" id="add-service-modal">
+    <div class="modal" style="max-width:480px;">
+      <div class="modal-header">
+        <h3>Add Service Category</h3>
+        <button class="modal-close"><i class="ph ph-x"></i></button>
+      </div>
+      <form id="new-service-form" data-validate>
+        <div class="form-group">
+          <label class="form-label" for="srv-name">Service Title</label>
+          <input type="text" id="srv-name" class="form-input" required>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label" for="srv-price">Base Price ($)</label>
+            <input type="number" id="srv-price" class="form-input" placeholder="e.g. 50" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="srv-dur">Duration (mins)</label>
+            <input type="number" id="srv-dur" class="form-input" placeholder="e.g. 60" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="srv-desc">Description</label>
+          <textarea id="srv-desc" class="form-input" placeholder="List package inclusions..." rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Publish Service</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- Service Actions Simulation -->
+  <script>
+    function removeService(id) {
+      const card = document.querySelector(`.service-card[data-service-id="${id}"]`);
+      if (card) {
+        card.style.transform = 'scale(0.8)';
+        card.style.opacity = '0';
+        setTimeout(() => {
+          card.remove();
+          showToast('Service package deleted.', 'error');
+        }, 300);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('new-service-form');
+      const grid = document.getElementById('services-grid-container');
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('srv-name').value;
+          const price = parseFloat(document.getElementById('srv-price').value);
+          const dur = parseInt(document.getElementById('srv-dur').value);
+          const desc = document.getElementById('srv-desc').value;
+          const newId = Date.now();
+
+          const newCard = document.createElement('div');
+          newCard.className = 'card service-card';
+          newCard.dataset.serviceId = newId;
+          newCard.innerHTML = `
+            <div class="db-card-header" style="margin-bottom: var(--space-sm); padding-bottom:var(--space-xs);">
+              <h3 style="font-size: 18px; margin-bottom:0;">${name}</h3>
+              <span class="badge badge-primary">$${price.toFixed(2)}</span>
+            </div>
+            <p class="card-text" style="font-size: var(--fs-small); min-height: 50px;">${desc}</p>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:var(--space-md);">
+              <span style="font-size:12px; color:var(--color-text-muted);"><i class="ph ph-clock"></i> ${dur} mins</span>
+              <div style="display:flex; gap:4px;">
+                <button class="btn btn-outline btn-sm" onclick="showToast('Loading service editor...', 'info')">Edit</button>
+                <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeService(${newId})">Delete</button>
+              </div>
+            </div>
+          `;
+
+          grid.appendChild(newCard);
+          closeModal('add-service-modal');
+          showToast('New service published successfully!', 'success');
+          form.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

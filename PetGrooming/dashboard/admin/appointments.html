@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Admin — Appointments Management</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to main dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="Admin Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item active"><i class="ph ph-calendar"></i><span>Appointments</span></a></li>
+        <li><a href="customers.html" class="db-menu-item"><i class="ph ph-users"></i><span>Customers</span></a></li>
+        <li><a href="groomers.html" class="db-menu-item"><i class="ph ph-scissors"></i><span>Groomers</span></a></li>
+        <li><a href="services.html" class="db-menu-item"><i class="ph ph-folder-open"></i><span>Services</span></a></li>
+        <li><a href="reports.html" class="db-menu-item"><i class="ph ph-chart-bar"></i><span>Reports</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-gear"></i><span>Settings</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Admin Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">AD</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Administrator</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Appointments</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Filter, confirm, or schedule new sessions.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="openModal('add-appointment-modal')"><i class="ph ph-plus-circle"></i> Create Booking</button>
+          </div>
+        </div>
+
+        <!-- Filters card -->
+        <div class="db-card" style="margin-bottom:var(--space-md);">
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--space-md); align-items:center;">
+            <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap;">
+              <select class="form-input" style="width:160px; margin-bottom:0;" id="filter-status">
+                <option value="all">All Statuses</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+              </select>
+              <select class="form-input" style="width:160px; margin-bottom:0;" id="filter-groomer">
+                <option value="all">All Groomers</option>
+                <option value="Sarah Mitchell">Sarah Mitchell</option>
+                <option value="Maria Gonzalez">Maria Gonzalez</option>
+                <option value="James Chen">James Chen</option>
+              </select>
+            </div>
+            
+            <div style="position:relative; width:260px; max-width:100%;">
+              <input type="text" id="appointment-search" class="form-input" placeholder="Search customer/pet..." style="padding-right: 40px; margin-bottom:0;">
+              <i class="ph ph-magnifying-glass" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); color:var(--color-text-muted);"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Appointment list table -->
+        <div class="db-card">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Pet Details</th>
+                  <th>Groomer</th>
+                  <th>Package Details</th>
+                  <th>Date & Time</th>
+                  <th>Status</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="appointments-tbody">
+                <tr data-status="In Progress" data-groomer="Sarah Mitchell" class="appointment-row">
+                  <td>Sarah Jenkins</td>
+                  <td>Milo (Goldendoodle, 12kg)</td>
+                  <td>Sarah Mitchell</td>
+                  <td>Signature Style</td>
+                  <td>July 18, 02:30 PM</td>
+                  <td><span class="badge badge-secondary" style="font-size:11px;">In Progress</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Status updated to Completed!', 'success')">Complete</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="Confirmed" data-groomer="James Chen" class="appointment-row">
+                  <td>Robert Chen</td>
+                  <td>Yuki (Samoyed, 24kg)</td>
+                  <td>James Chen</td>
+                  <td>Royal VIP Spa</td>
+                  <td>July 18, 04:00 PM</td>
+                  <td><span class="badge badge-primary" style="font-size:11px;">Confirmed</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Status updated to Completed!', 'success')">Complete</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="Confirmed" data-groomer="Maria Gonzalez" class="appointment-row">
+                  <td>Elena Rostova</td>
+                  <td>Sasha (Persian, 5kg)</td>
+                  <td>Maria Gonzalez</td>
+                  <td>Essential Care</td>
+                  <td>July 18, 05:15 PM</td>
+                  <td><span class="badge badge-primary" style="font-size:11px;">Confirmed</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Status updated to Completed!', 'success')">Complete</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+                <tr data-status="Pending" data-groomer="David Park" class="appointment-row">
+                  <td>Daniel Craig</td>
+                  <td>Bond (Labrador, 32kg)</td>
+                  <td>David Park</td>
+                  <td>Signature Style</td>
+                  <td>July 19, 09:00 AM</td>
+                  <td><span class="badge badge-outline" style="font-size:11px;">Pending</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" style="color:var(--color-primary); border-color:var(--color-primary);" onclick="showToast('Appointment Confirmed!', 'success')">Confirm</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Create Appointment Modal -->
+  <div class="modal-overlay" id="add-appointment-modal">
+    <div class="modal" style="max-width:500px;">
+      <div class="modal-header">
+        <h3>Create New Booking</h3>
+        <button class="modal-close"><i class="ph ph-x"></i></button>
+      </div>
+      <form id="new-booking-form" data-validate>
+        <div class="form-group">
+          <label class="form-label" for="booking-cust">Customer Name</label>
+          <input type="text" id="booking-cust" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="booking-pet">Pet Details (Name, Breed, Weight)</label>
+          <input type="text" id="booking-pet" class="form-input" placeholder="e.g. Buster (Beagle, 15kg)" required>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label" for="booking-groomer">Groomer</label>
+            <select id="booking-groomer" class="form-input" required>
+              <option value="Sarah Mitchell">Sarah Mitchell</option>
+              <option value="Maria Gonzalez">Maria Gonzalez</option>
+              <option value="James Chen">James Chen</option>
+              <option value="David Park">David Park</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="booking-pack">Package</label>
+            <select id="booking-pack" class="form-input" required>
+              <option value="Essential Care">Essential Care</option>
+              <option value="Signature Style">Signature Style</option>
+              <option value="Royal VIP Spa">Royal VIP Spa</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="booking-time">Date & Time</label>
+          <input type="datetime-local" id="booking-time" class="form-input" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Schedule Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- Live filtering and mock insert script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const search = document.getElementById('appointment-search');
+      const filterStatus = document.getElementById('filter-status');
+      const filterGroomer = document.getElementById('filter-groomer');
+      const rows = document.querySelectorAll('.appointment-row');
+      const tbody = document.getElementById('appointments-tbody');
+
+      function filterTable() {
+        const query = search.value.toLowerCase().trim();
+        const status = filterStatus.value;
+        const groomer = filterGroomer.value;
+
+        tbody.querySelectorAll('tr').forEach(row => {
+          const rowStatus = row.dataset.status || '';
+          const rowGroomer = row.dataset.groomer || '';
+          const text = row.textContent.toLowerCase();
+
+          const matchesSearch = text.includes(query);
+          const matchesStatus = (status === 'all' || rowStatus === status);
+          const matchesGroomer = (groomer === 'all' || rowGroomer === groomer);
+
+          if (matchesSearch && matchesStatus && matchesGroomer) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }
+
+      search.addEventListener('input', filterTable);
+      filterStatus.addEventListener('change', filterTable);
+      filterGroomer.addEventListener('change', filterTable);
+
+      // Form Submit simulator
+      const bookingForm = document.getElementById('new-booking-form');
+      if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const cust = document.getElementById('booking-cust').value;
+          const pet = document.getElementById('booking-pet').value;
+          const groomer = document.getElementById('booking-groomer').value;
+          const pack = document.getElementById('booking-pack').value;
+          const dtInput = document.getElementById('booking-time').value;
+
+          // format date nicely
+          const dateObj = new Date(dtInput);
+          const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ', ' + 
+                          dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+          const newRow = document.createElement('tr');
+          newRow.className = 'appointment-row';
+          newRow.dataset.status = 'Confirmed';
+          newRow.dataset.groomer = groomer;
+          newRow.innerHTML = `
+            <td>${cust}</td>
+            <td>${pet}</td>
+            <td>${groomer}</td>
+            <td>${pack}</td>
+            <td>${dateStr}</td>
+            <td><span class="badge badge-primary" style="font-size:11px;">Confirmed</span></td>
+            <td style="text-align:right;">
+              <button class="btn btn-outline btn-sm" onclick="showToast('Status updated to Completed!', 'success')">Complete</button>
+              <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+            </td>
+          `;
+
+          tbody.prepend(newRow);
+          closeModal('add-appointment-modal');
+          showToast('Appointment successfully scheduled!', 'success');
+          bookingForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

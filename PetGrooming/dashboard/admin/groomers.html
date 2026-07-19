@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Admin — Groomers Directory</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to main dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="Admin Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar"></i><span>Appointments</span></a></li>
+        <li><a href="customers.html" class="db-menu-item"><i class="ph ph-users"></i><span>Customers</span></a></li>
+        <li><a href="groomers.html" class="db-menu-item active"><i class="ph ph-scissors"></i><span>Groomers</span></a></li>
+        <li><a href="services.html" class="db-menu-item"><i class="ph ph-folder-open"></i><span>Services</span></a></li>
+        <li><a href="reports.html" class="db-menu-item"><i class="ph ph-chart-bar"></i><span>Reports</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-gear"></i><span>Settings</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Admin Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">AD</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Administrator</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Groomers Directory</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Add, manage, and edit professional groomers profiles.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="openModal('add-groomer-modal')"><i class="ph ph-plus-circle"></i> Add Groomer</button>
+          </div>
+        </div>
+
+        <!-- Groomers Grid -->
+        <div class="grid grid-3" id="groomers-grid-container" data-stagger="100">
+          <!-- Card 1 -->
+          <div class="card groomer-card" data-groomer-id="1" style="text-align:center; padding:var(--space-xl) var(--space-lg);">
+            <div style="width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg, var(--color-primary), #52B788); margin:0 auto var(--space-md); display:flex; align-items:center; justify-content:center; color:#fff; font-size:40px; font-weight:var(--fw-bold);">SM</div>
+            <h3 style="margin-bottom:2px;">Sarah Mitchell</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:var(--space-sm);">Lead Groomer</p>
+            
+            <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-md);">
+              <span><i class="ph ph-calendar"></i> 12 yrs exp</span>
+              <span><i class="ph ph-star"></i> 4.9★</span>
+            </div>
+
+            <p class="card-text" style="font-size:var(--fs-small); margin-bottom:var(--space-md);">Specializes in breed-specific styles for Poodles and Terriers.</p>
+            
+            <div style="display:flex; gap:var(--space-xs); justify-content:center;">
+              <button class="btn btn-outline btn-sm" onclick="showToast('Loading groomer schedule...', 'info')">Schedule</button>
+              <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeGroomer(1)">Remove</button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card groomer-card" data-groomer-id="2" style="text-align:center; padding:var(--space-xl) var(--space-lg);">
+            <div style="width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg, var(--color-secondary), var(--color-accent)); margin:0 auto var(--space-md); display:flex; align-items:center; justify-content:center; color:#fff; font-size:40px; font-weight:var(--fw-bold);">MG</div>
+            <h3 style="margin-bottom:2px;">Maria Gonzalez</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:var(--space-sm);">Feline Specialist</p>
+            
+            <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-md);">
+              <span><i class="ph ph-calendar"></i> 10 yrs exp</span>
+              <span><i class="ph ph-star"></i> 4.95★</span>
+            </div>
+
+            <p class="card-text" style="font-size:var(--fs-small); margin-bottom:var(--space-md);">Certified Feline Master Groomer specializing in Persian styling.</p>
+            
+            <div style="display:flex; gap:var(--space-xs); justify-content:center;">
+              <button class="btn btn-outline btn-sm" onclick="showToast('Loading groomer schedule...', 'info')">Schedule</button>
+              <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeGroomer(2)">Remove</button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card groomer-card" data-groomer-id="3" style="text-align:center; padding:var(--space-xl) var(--space-lg);">
+            <div style="width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg, #52B788, var(--color-primary)); margin:0 auto var(--space-md); display:flex; align-items:center; justify-content:center; color:#fff; font-size:40px; font-weight:var(--fw-bold);">JC</div>
+            <h3 style="margin-bottom:2px;">James Chen</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:var(--space-sm);">Creative Stylist</p>
+            
+            <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-md);">
+              <span><i class="ph ph-calendar"></i> 8 yrs exp</span>
+              <span><i class="ph ph-star"></i> 4.85★</span>
+            </div>
+
+            <p class="card-text" style="font-size:var(--fs-small); margin-bottom:var(--space-md);">Asian Fusion and creative color accents certified specialist.</p>
+            
+            <div style="display:flex; gap:var(--space-xs); justify-content:center;">
+              <button class="btn btn-outline btn-sm" onclick="showToast('Loading groomer schedule...', 'info')">Schedule</button>
+              <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeGroomer(3)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Groomer Modal -->
+  <div class="modal-overlay" id="add-groomer-modal">
+    <div class="modal" style="max-width:500px;">
+      <div class="modal-header">
+        <h3>Add Salon Groomer</h3>
+        <button class="modal-close"><i class="ph ph-x"></i></button>
+      </div>
+      <form id="new-groomer-form" data-validate>
+        <div class="form-group">
+          <label class="form-label" for="gr-name">Groomer Name</label>
+          <input type="text" id="gr-name" class="form-input" required>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label" for="gr-title">Title / Role</label>
+            <input type="text" id="gr-title" class="form-input" placeholder="e.g. Senior Stylist" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="gr-exp">Years of Experience</label>
+            <input type="number" id="gr-exp" class="form-input" placeholder="e.g. 5" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="gr-spec">Specialties</label>
+          <input type="text" id="gr-spec" class="form-input" placeholder="e.g. Large dogs, creative cuts" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="gr-bio">Brief Bio</label>
+          <textarea id="gr-bio" class="form-input" placeholder="Brief description of experience..." rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Register Groomer</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- CRUD Simulation Script -->
+  <script>
+    function removeGroomer(id) {
+      const card = document.querySelector(`.groomer-card[data-groomer-id="${id}"]`);
+      if (card) {
+        card.style.transform = 'scale(0.8)';
+        card.style.opacity = '0';
+        setTimeout(() => {
+          card.remove();
+          showToast('Groomer removed from database.', 'error');
+        }, 300);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('new-groomer-form');
+      const grid = document.getElementById('groomers-grid-container');
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('gr-name').value;
+          const title = document.getElementById('gr-title').value;
+          const exp = document.getElementById('gr-exp').value;
+          const spec = document.getElementById('gr-spec').value;
+          const bio = document.getElementById('gr-bio').value;
+
+          const initials = name.split(' ').map(n => n[0]).join('').substring(0,2).toUpperCase();
+          const newId = Date.now();
+
+          const newCard = document.createElement('div');
+          newCard.className = 'card groomer-card';
+          newCard.dataset.groomerId = newId;
+          newCard.style.textAlign = 'center';
+          newCard.style.padding = 'var(--space-xl) var(--space-lg)';
+          newCard.innerHTML = `
+            <div style="width:100px; height:100px; border-radius:50%; background:linear-gradient(135deg, var(--color-primary), #52B788); margin:0 auto var(--space-md); display:flex; align-items:center; justify-content:center; color:#fff; font-size:40px; font-weight:var(--fw-bold);">${initials}</div>
+            <h3 style="margin-bottom:2px;">${name}</h3>
+            <p style="color:var(--color-secondary); font-size:var(--fs-small); font-weight:var(--fw-semibold); margin-bottom:var(--space-sm);">${title}</p>
+            
+            <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-md);">
+              <span><i class="ph ph-calendar"></i> ${exp} yrs exp</span>
+              <span><i class="ph ph-star"></i> 5.0★</span>
+            </div>
+
+            <p class="card-text" style="font-size:var(--fs-small); margin-bottom:var(--space-md);">${bio}</p>
+            
+            <div style="display:flex; gap:var(--space-xs); justify-content:center;">
+              <button class="btn btn-outline btn-sm" onclick="showToast('Loading groomer schedule...', 'info')">Schedule</button>
+              <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removeGroomer(${newId})">Remove</button>
+            </div>
+          `;
+
+          grid.appendChild(newCard);
+          closeModal('add-groomer-modal');
+          showToast('New groomer added successfully!', 'success');
+          form.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

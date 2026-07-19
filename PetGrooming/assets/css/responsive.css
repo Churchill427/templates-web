@@ -1,0 +1,398 @@
+/* ============================================
+   PAWLY — Responsive Breakpoints
+   ============================================ */
+
+/* ── Large Desktop (> 1280px) ── */
+@media (min-width: 1281px) {
+  .container {
+    padding: 0 var(--space-xl);
+  }
+}
+
+/* ── Desktop (1024px – 1280px) ── */
+@media (max-width: 1280px) {
+  :root {
+    --fs-h1: 42px;
+    --fs-h2: 32px;
+  }
+}
+
+/* ── Tablet (640px – 1024px) ── */
+@media (max-width: 1024px) {
+  :root {
+    --fs-h1: 36px;
+    --fs-h2: 28px;
+    --fs-h3: 24px;
+    --fs-h4: 20px;
+    --navbar-height: 64px;
+  }
+
+  /* Grid adjustments */
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Two col stacks on small tablets */
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .two-col-image {
+    order: -1;
+    max-height: 400px;
+  }
+
+  /* Section padding reduction */
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+
+  /* Navbar: hide desktop nav, show hamburger */
+  .navbar-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav,
+  .mobile-nav-overlay {
+    display: block;
+  }
+
+  /* Navbar actions hide in desktop, show in mobile nav */
+  .navbar-actions .rtl-toggle-btn,
+  .navbar-actions .navbar-toggle-btn:not(.theme-toggle-mobile-visible) {
+    display: none;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 80vh;
+    padding: var(--space-2xl) var(--space-lg);
+    padding-top: calc(var(--navbar-height) + var(--space-2xl));
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  /* Footer grid */
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  /* Auth split */
+  .auth-split-left {
+    display: none;
+  }
+
+  .auth-split-right {
+    flex: 1;
+    min-height: 100vh;
+  }
+
+  /* Masonry */
+  .masonry-grid {
+    columns: 2;
+  }
+
+  /* Stat card grid on tablet */
+  .grid-4.stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Mobile (< 640px) ── */
+@media (max-width: 639px) {
+  :root {
+    --fs-h1: 32px;
+    --fs-h2: 26px;
+    --fs-h3: 22px;
+    --fs-h4: 18px;
+    --fs-body: 15px;
+    --fs-small: 13px;
+    --fs-button: 15px;
+    --navbar-height: 60px;
+    --navbar-height-mobile: 60px;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  /* Grid to single column */
+  .grid-4,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Section padding */
+  .section {
+    padding: var(--space-xl) 0;
+  }
+
+  .section-sm {
+    padding: var(--space-lg) 0;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    padding: var(--space-xl) var(--space-sm);
+    padding-top: calc(var(--navbar-height-mobile) + var(--space-xl));
+  }
+
+  .hero h1 {
+    font-size: var(--fs-h1);
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+
+  /* Section titles */
+  .section-subtitle {
+    font-size: 15px;
+    padding: 0 var(--space-xs);
+  }
+
+  /* Cards */
+  .card {
+    padding: var(--space-md);
+  }
+
+  .card:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  /* Pricing card */
+  .pricing-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .pricing-card .price {
+    font-size: 38px;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 12px 24px;
+  }
+
+  .btn-lg {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-xs);
+  }
+
+  .footer-bottom-links {
+    justify-content: center;
+  }
+
+  /* Navbar mobile */
+  .navbar-brand .brand-name {
+    font-size: 20px;
+  }
+
+  .navbar-brand .brand-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Auth card */
+  .auth-card {
+    padding: var(--space-lg);
+    margin: var(--space-sm);
+    max-width: 100%;
+  }
+
+  .auth-split {
+    flex-direction: column;
+  }
+
+  .auth-split-left {
+    display: none;
+  }
+
+  .auth-split-right {
+    padding: var(--space-md);
+  }
+
+  /* Social buttons */
+  .btn-social {
+    padding: 10px 16px;
+    font-size: var(--fs-small);
+    min-height: 44px;
+  }
+
+  /* Masonry */
+  .masonry-grid {
+    columns: 1;
+  }
+
+  /* Table responsive */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive table {
+    min-width: 600px;
+  }
+
+  /* Tabs scroll */
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+
+  /* Stat cards */
+  .stat-card {
+    padding: var(--space-md);
+  }
+
+  .stat-card-info h3 {
+    font-size: 24px;
+  }
+
+  /* Toast */
+  .toast {
+    left: var(--space-sm);
+    right: var(--space-sm);
+    max-width: none;
+  }
+
+  /* Modal */
+  .modal {
+    padding: var(--space-lg);
+    margin: var(--space-sm);
+    max-height: 85vh;
+  }
+
+  .modal-overlay {
+    padding: var(--space-sm);
+  }
+
+  /* Avatar sizes */
+  .avatar-xl {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Horizontal scroll touch */
+  .scroll-container {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    margin: 0 calc(var(--space-sm) * -1);
+  }
+
+  /* Two col image */
+  .two-col-image {
+    max-height: 300px;
+  }
+
+  /* Pagination */
+  .pagination {
+    gap: 4px;
+  }
+
+  .pagination-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  /* Footer social */
+  .footer-social .btn-social {
+    justify-content: center;
+  }
+}
+
+/* ── Very Small Screens (< 360px) ── */
+@media (max-width: 359px) {
+  :root {
+    --fs-h1: 28px;
+    --fs-h2: 24px;
+    --fs-h3: 20px;
+  }
+
+  .container {
+    padding: 0 var(--space-xs);
+  }
+
+  .card {
+    padding: var(--space-sm);
+  }
+
+  .auth-card {
+    padding: var(--space-sm);
+  }
+}
+
+/* ── Print Styles ── */
+@media print {
+  .navbar,
+  .footer,
+  .hamburger,
+  .mobile-nav,
+  .mobile-nav-overlay,
+  .theme-toggle,
+  .rtl-toggle-btn,
+  .toast,
+  .btn {
+    display: none !important;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: var(--space-lg) 0;
+  }
+
+  .hero-overlay,
+  .hero-bg {
+    display: none;
+  }
+
+  .hero h1 {
+    color: #000;
+    text-shadow: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .section {
+    padding: var(--space-md) 0;
+  }
+
+  .page-content {
+    padding-top: 0;
+  }
+}

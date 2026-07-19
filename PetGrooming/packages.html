@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly — Grooming Packages & Subscriptions</title>
+  <meta name="description" content="Explore Pawly's grooming packages and Club Pawly subscriptions. Choose or customize the perfect care routine for your pet.">
+  <meta property="og:title" content="Pawly — Grooming Packages & Subscriptions">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="page-transition">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand" aria-label="Pawly home">
+        <span class="brand-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="34" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="7" cy="24" r="5" fill="var(--color-primary)"/>
+            <circle cx="41" cy="24" r="5" fill="var(--color-primary)"/>
+            <ellipse cx="24" cy="32" rx="12" ry="10" fill="var(--color-primary)"/>
+          </svg>
+        </span>
+        <span class="brand-name">PAWLY</span>
+      </a>
+      <ul class="navbar-nav" role="menubar">
+        <li class="nav-dropdown" role="none"><a href="#" class="nav-link nav-dropdown-toggle" role="menuitem" aria-haspopup="true">Home <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html">Home Main</a><a href="home-alt.html">Home Alt</a></div></li>
+        <li role="none"><a href="about.html" class="nav-link">About</a></li>
+        <li role="none"><a href="services.html" class="nav-link">Services</a></li>
+        <li role="none"><a href="groomers.html" class="nav-link">Groomers</a></li>
+        <li role="none"><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li role="none"><a href="packages.html" class="nav-link active" role="menuitem">Packages</a></li>
+        <li role="none"><a href="blog.html" class="nav-link" role="menuitem">Blog</a></li>
+        <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+        <li class="nav-dropdown" role="none">
+          <a href="#" class="nav-link nav-dropdown-toggle" role="menuitem" aria-haspopup="true">
+            Dashboard <i class="ph ph-caret-down"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard/user/index.html" role="menuitem">User Dashboard</a>
+            <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
+          </div>
+        </li>
+        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+        <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+          <i class="ph ph-sun icon-sun" style="display:none;"></i>
+          <i class="ph ph-moon icon-moon"></i>
+        </button>
+      </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav">
+    <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+    <div class="mobile-dropdown-items"><a href="index.html">Home Main</a><a href="home-alt.html">Home Alt</a></div>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="groomers.html" class="nav-link">Groomers</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="packages.html" class="nav-link active">Packages</a>
+    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="nav-link mobile-dropdown-toggle">
+      Dashboard <i class="ph ph-caret-down"></i>
+    </a>
+    <div class="mobile-dropdown-items">
+      <a href="dashboard/user/index.html">User Dashboard</a>
+      <a href="dashboard/admin/index.html">Admin Dashboard</a>
+    </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
+    <div class="mobile-nav-actions">
+      <button class="rtl-toggle-btn rtl-toggle">LTR</button>
+      <button class="navbar-toggle-btn theme-toggle"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- SECTION 1: HERO -->
+    <section class="hero hero-animate" aria-label="Packages hero">
+      <div class="hero-bg parallax-bg" data-parallax-speed="0.3" style="background-image:url('assets/images/hero/packages.png');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Grooming Packages & Club Pawly</h1>
+        <p>Affordable luxury grooming programs and monthly memberships for your best friend.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE GROOMING TIERS -->
+    <section class="section section-bg" aria-label="Grooming Packages">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Grooming Packages</h2>
+        <p class="section-subtitle anim-fade-up">Standard rates. Choose the tier that matches your pet's needs.</p>
+        
+        <div class="grid grid-3" data-stagger="100">
+          <!-- Tier 1 -->
+          <div class="card pricing-card">
+            <span class="badge badge-primary">Essential Care</span>
+            <div class="price">$35<span>/session</span></div>
+            <p class="card-text">Perfect for quick maintenance and keeping coats neat between main style transformations.</p>
+            <ul class="feature-list">
+              <li><i class="ph ph-check-circle"></i> Organic Shampoo Bath</li>
+              <li><i class="ph ph-check-circle"></i> Warm Blow Dry & Brush out</li>
+              <li><i class="ph ph-check-circle"></i> Nail Clipping</li>
+              <li><i class="ph ph-check-circle"></i> Ear & Eye Cleanse</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Custom Styling/Haircut</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Aromatherapy & Massage</li>
+            </ul>
+            <a href="login.html" class="btn btn-outline btn-full" style="margin-top: auto;">Book Essential</a>
+          </div>
+
+          <!-- Tier 2 -->
+          <div class="card pricing-card featured">
+            <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%);">
+              <span class="badge badge-secondary" style="font-size:11px; padding:5px 16px;">Most Popular</span>
+            </div>
+            <span class="badge badge-secondary">Signature Style</span>
+            <div class="price" style="color:var(--color-secondary);">$65<span>/session</span></div>
+            <p class="card-text">A complete styling makeover using premium products tailored to your pet's specific breed standard.</p>
+            <ul class="feature-list">
+              <li><i class="ph ph-check-circle"></i> Essential Care Inclusions</li>
+              <li><i class="ph ph-check-circle"></i> Precision Breed Haircut & Style</li>
+              <li><i class="ph ph-check-circle"></i> Nail Filing (Grinding)</li>
+              <li><i class="ph ph-check-circle"></i> Dental Brush & Breath Spray</li>
+              <li><i class="ph ph-check-circle"></i> Sanitary Trim & Pad Balm</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Blueberry Facial & Mask</li>
+            </ul>
+            <a href="login.html" class="btn btn-secondary btn-full" style="margin-top: auto;">Book Signature</a>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="card pricing-card">
+            <span class="badge badge-accent">Royal VIP Spa</span>
+            <div class="price" style="color:var(--color-accent);">$95<span>/session</span></div>
+            <p class="card-text">The ultimate indulgence. Full-course spa treatments to pamper, refresh, and condition skin and soul.</p>
+            <ul class="feature-list">
+              <li><i class="ph ph-check-circle"></i> Signature Style Inclusions</li>
+              <li><i class="ph ph-check-circle"></i> Lavender Aromatherapy Bath</li>
+              <li><i class="ph ph-check-circle"></i> Deep Coat Conditioning Mask</li>
+              <li><i class="ph ph-check-circle"></i> Hydrating Blueberry Facial</li>
+              <li><i class="ph ph-check-circle"></i> Soothing Paw Massage</li>
+              <li><i class="ph ph-check-circle"></i> Signature Perfume/Cologne Spritz</li>
+            </ul>
+            <a href="login.html" class="btn btn-accent btn-full" style="color:#fff; margin-top: auto;">Book Royal VIP</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MEMBERSHIPS / CLUB PAWLY -->
+    <section class="section section-surface" id="club-membership" aria-label="Club Pawly Memberships">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Club Pawly</h2>
+        <p class="section-subtitle anim-fade-up">Enjoy great discounts, priority booking, and premium perks with our monthly plans.</p>
+        
+        <div class="grid grid-3" data-stagger="100">
+          <div class="card card-flat" style="border-top: 4px solid var(--color-primary);">
+            <h3 style="font-size:20px; color:var(--color-primary);">Silver Member</h3>
+            <p style="font-size:24px; font-weight:var(--fw-bold); margin: var(--space-xs) 0;">$29<span style="font-size:var(--fs-small); color:var(--color-text-muted); font-weight:normal;">/month</span></p>
+            <ul class="feature-list" style="margin-bottom:var(--space-md);">
+              <li><i class="ph ph-check-circle" style="color:var(--color-primary);"></i> 1 Essential Grooming visit</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-primary);"></i> 10% off additional services</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-primary);"></i> Priority Standby booking</li>
+            </ul>
+            <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top: auto;">Join Silver Club</a>
+          </div>
+
+          <div class="card card-flat" style="border-top: 4px solid var(--color-secondary); box-shadow: var(--shadow-lg);">
+            <h3 style="font-size:20px; color:var(--color-secondary);">Gold Member</h3>
+            <p style="font-size:24px; font-weight:var(--fw-bold); margin: var(--space-xs) 0;">$55<span style="font-size:var(--fs-small); color:var(--color-text-muted); font-weight:normal;">/month</span></p>
+            <ul class="feature-list" style="margin-bottom:var(--space-md);">
+              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> 1 Signature Style visit</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> 15% off additional services</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> Free tooth brushing each visit</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> Priority reservation slots</li>
+            </ul>
+            <a href="login.html" class="btn btn-secondary btn-sm btn-full" style="margin-top: auto;">Join Gold Club</a>
+          </div>
+
+          <div class="card card-flat" style="border-top: 4px solid var(--color-accent);">
+            <h3 style="font-size:20px; color:var(--color-accent);">Platinum Member</h3>
+            <p style="font-size:24px; font-weight:var(--fw-bold); margin: var(--space-xs) 0;">$85<span style="font-size:var(--fs-small); color:var(--color-text-muted); font-weight:normal;">/month</span></p>
+            <ul class="feature-list" style="margin-bottom:var(--space-md);">
+              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> 1 Royal VIP Spa visit</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> 20% off all salon products</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> Free transport pickup (within 5 miles)</li>
+              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> Guaranteed booking schedule</li>
+            </ul>
+            <a href="login.html" class="btn btn-accent btn-sm btn-full" style="color:#fff; margin-top: auto;">Join Platinum Club</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PACKAGE CUSTOMIZER & ESTIMATOR -->
+    <section class="section section-bg" id="estimator-section" aria-label="Dynamic Package Builder">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Design Your Experience</h2>
+        <p class="section-subtitle anim-fade-up">Build your customized package and instantly estimate the cost.</p>
+        
+        <div class="two-col" style="align-items: stretch; gap: var(--space-xl);">
+          <!-- Configurator Form -->
+          <div class="card anim-fade-left" style="flex: 1.2;">
+            <h3 style="margin-bottom: var(--space-md);">Customizer Options</h3>
+            <form id="price-calculator-form">
+              <div class="form-group">
+                <label class="form-label" for="calc-pet-size">Select Pet Size</label>
+                <select id="calc-pet-size" class="form-input">
+                  <option value="small" data-factor="1">Small Dog/Cat (Under 10kg)</option>
+                  <option value="medium" data-factor="1.2">Medium Pet (10-25kg)</option>
+                  <option value="large" data-factor="1.5">Large Pet (25kg+)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Choose Base Package</label>
+                <div style="display:flex; flex-direction:column; gap: var(--space-xs);">
+                  <label class="form-check">
+                    <input type="radio" name="base-tier" value="35" checked>
+                    <span>Essential Care Base ($35)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="radio" name="base-tier" value="65">
+                    <span>Signature Style Base ($65)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="radio" name="base-tier" value="95">
+                    <span>Royal VIP Spa Base ($95)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Add Extras & Upgrades</label>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-xs);">
+                  <label class="form-check">
+                    <input type="checkbox" name="addons" value="12" class="calc-addon">
+                    <span>Aromatherapy (+$12)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="addons" value="8" class="calc-addon">
+                    <span>Moisturizing Paw Balm (+$8)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="addons" value="15" class="calc-addon">
+                    <span>Blueberry Facial (+$15)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="addons" value="25" class="calc-addon">
+                    <span>Creative Coloring (+$25)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="addons" value="15" class="calc-addon">
+                    <span>De-shedding Treatment (+$15)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="addons" value="10" class="calc-addon">
+                    <span>Nail Filing / Grinding (+$10)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-check">
+                  <input type="checkbox" id="calc-member-discount" value="0.85">
+                  <span style="font-weight: var(--fw-semibold); color: var(--color-secondary);">Apply Club Member Discount (15% Off)</span>
+                </label>
+              </div>
+            </form>
+          </div>
+
+          <!-- Estimates Display Card -->
+          <div class="card anim-fade-right" style="flex: 0.8; background: linear-gradient(135deg, var(--color-primary) 0%, #1a3e2e 100%); color:#fff; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <h3 style="color:#fff; margin-bottom: var(--space-md); border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom:var(--space-sm);">Est. Pricing Summary</h3>
+              
+              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
+                <span style="color:rgba(255,255,255,0.75);">Base Cost:</span>
+                <span id="summary-base-price" style="font-weight:var(--fw-semibold);">$35.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
+                <span style="color:rgba(255,255,255,0.75);">Size Multiplier:</span>
+                <span id="summary-size-factor" style="font-weight:var(--fw-semibold);">1.00x</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
+                <span style="color:rgba(255,255,255,0.75);">Addons Total:</span>
+                <span id="summary-addons-price" style="font-weight:var(--fw-semibold);">$0.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm); display:none;" id="summary-discount-row">
+                <span style="color:var(--color-secondary);">Club Discount:</span>
+                <span id="summary-discount-value" style="color:var(--color-secondary); font-weight:var(--fw-semibold);">-15%</span>
+              </div>
+            </div>
+
+            <div style="margin-top:var(--space-xl);">
+              <div style="border-top:1px solid rgba(255,255,255,0.15); padding-top:var(--space-md); display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-lg);">
+                <span style="font-size:18px; color:rgba(255,255,255,0.85);">Total Estimate:</span>
+                <span id="calc-final-price" style="font-size:36px; font-weight:var(--fw-bold); color:var(--color-secondary);">$35.00</span>
+              </div>
+              
+              <a href="login.html" class="btn btn-secondary btn-full btn-lg">Book Customized Session</a>
+              <p style="font-size:11px; color:rgba(255,255,255,0.5); text-align:center; margin-top:var(--space-xs); margin-bottom:0;">*Actual price may vary depending on pet behavior and coat condition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: MEMBERSHIP BENEFITS -->
+    <section class="section section-surface" id="member-benefits" aria-label="Why Join Club Pawly">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Why Join Club Pawly?</h2>
+        <p class="section-subtitle anim-fade-up">Standard package or custom-built, we guarantee convenience & savings.</p>
+        
+        <div class="grid grid-4" data-stagger="80">
+          <div class="card card-flat" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(45,106,79,0.1);">
+              <i class="ph ph-shield-check"></i>
+            </div>
+            <h3 style="font-size:18px;">Guaranteed Slots</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Get automatic slot reservations on holidays and busy weekends.</p>
+          </div>
+
+          <div class="card card-flat" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(244,162,97,0.12);">
+              <i class="ph ph-percent" style="color:var(--color-secondary);"></i>
+            </div>
+            <h3 style="font-size:18px;">Big Savings</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Save over $200+ annually on standard grooming rates and spa additions.</p>
+          </div>
+
+          <div class="card card-flat" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(231,111,81,0.1);">
+              <i class="ph ph-truck" style="color:var(--color-accent);"></i>
+            </div>
+            <h3 style="font-size:18px;">Pickup Service</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Premium/Deluxe tier packages can request safe pick-up & drop-off of pets.</p>
+          </div>
+
+          <div class="card card-flat" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(82,183,136,0.12);">
+              <i class="ph ph-gift" style="color:var(--color-success);"></i>
+            </div>
+            <h3 style="font-size:18px;">Exclusive Gifts</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Free customized toys, pet treats, and home-care product samples.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: FAQ ACCORDION -->
+    <section class="section section-primary" id="packages-faq" aria-label="Frequently Asked Questions">
+      <div class="container">
+        <h2 class="section-title anim-fade-up" style="color:#fff;">Frequently Asked Questions</h2>
+        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.85);">Important info about pricing, payments, and packages.</p>
+        
+        <div class="container-narrow" style="padding:0;">
+          <div class="anim-fade-up">
+            <div class="accordion-item" style="border-color:rgba(255,255,255,0.15);">
+              <button class="accordion-header" style="color:#fff;">
+                Can I swap a service in a standard package?
+                <i class="ph ph-caret-down"></i>
+              </button>
+              <div class="accordion-body">
+                <p style="color:rgba(255,255,255,0.85);">Yes, our groomers can swap items in packages if they aren't suitable for your pet (e.g., replacing teeth brushing with paw balm). Please discuss options during check-in.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item" style="border-color:rgba(255,255,255,0.15);">
+              <button class="accordion-header" style="color:#fff;">
+                How does the Club Pawly billing cycle work?
+                <i class="ph ph-caret-down"></i>
+              </button>
+              <div class="accordion-body">
+                <p style="color:rgba(255,255,255,0.85);">Club Pawly memberships bill automatically on the 1st of every month. Unused grooming sessions do roll over to the next month for up to 60 days.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item" style="border-color:rgba(255,255,255,0.15);">
+              <button class="accordion-header" style="color:#fff;">
+                Can I cancel or pause my membership?
+                <i class="ph ph-caret-down"></i>
+              </button>
+              <div class="accordion-body">
+                <p style="color:rgba(255,255,255,0.85);">Of course. You can pause or cancel your subscription directly from the customer dashboard without penalty before the next billing date.</p>
+              </div>
+            </div>
+
+            <div class="accordion-item" style="border-color:rgba(255,255,255,0.15);">
+              <button class="accordion-header" style="color:#fff;">
+                Do you charge extra for matted fur or behavior?
+                <i class="ph ph-caret-down"></i>
+              </button>
+              <div class="accordion-body">
+                <p style="color:rgba(255,255,255,0.85);">If a coat is severely matted or a pet requires special handling, an extra charge may apply due to the additional time and tools needed. We'll always warn you beforehand.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="14" cy="10" r="5" fill="#fff"/>
+              <circle cx="34" cy="10" r="5" fill="#fff"/>
+              <circle cx="7" cy="24" r="5" fill="#fff"/>
+              <circle cx="41" cy="24" r="5" fill="#fff"/>
+              <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+            </svg>
+            PAWLY
+          </div>
+          <p>Premium grooming care for your beloved companions.</p>
+          <div class="footer-social">
+            <button class="btn-social btn-google"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/><path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/><path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/></svg> Sign in with Google</button>
+            <button class="btn-social btn-facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Sign in with Facebook</button>
+            <button class="btn-social btn-apple"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg> Sign in with Apple</button>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html"><i class="ph ph-caret-right"></i> Home</a>
+            <a href="about.html"><i class="ph ph-caret-right"></i> About</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Services</a>
+            <a href="groomers.html"><i class="ph ph-caret-right"></i> Groomers</a>
+            <a href="gallery.html"><i class="ph ph-caret-right"></i> Gallery</a>
+            <a href="packages.html"><i class="ph ph-caret-right"></i> Packages</a>
+            <a href="blog.html"><i class="ph ph-caret-right"></i> Blog</a>
+            <a href="contact.html"><i class="ph ph-caret-right"></i> Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html"><i class="ph ph-caret-right"></i> Dog Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Cat Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Nail Care</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Spa Treatments</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Breed-Specific Styling</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><i class="ph ph-map-pin"></i><span>123 Pet Avenue, San Francisco, CA 94102</span></div>
+          <div class="footer-contact-item"><i class="ph ph-phone"></i><span>+1 (555) 729-5968</span></div>
+          <div class="footer-contact-item"><i class="ph ph-envelope"></i><span>hello@pawly.com</span></div>
+          <div class="footer-contact-item"><i class="ph ph-clock"></i><span>Mon-Sat: 8AM-7PM<br>Sun: 10AM-5PM</span></div>
+          <a href="login.html" class="btn btn-secondary btn-sm" style="margin-top:var(--space-sm);"><i class="ph ph-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pawly. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+
+  <!-- Interactive Pricing Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const calcForm = document.getElementById('price-calculator-form');
+      if (!calcForm) return;
+
+      const sizeSelect = document.getElementById('calc-pet-size');
+      const baseRadioButtons = document.getElementsByName('base-tier');
+      const addonCheckboxes = document.querySelectorAll('.calc-addon');
+      const memberDiscountCheckbox = document.getElementById('calc-member-discount');
+
+      const summaryBase = document.getElementById('summary-base-price');
+      const summarySize = document.getElementById('summary-size-factor');
+      const summaryAddons = document.getElementById('summary-addons-price');
+      const summaryDiscountRow = document.getElementById('summary-discount-row');
+      const summaryDiscountVal = document.getElementById('summary-discount-value');
+      const calcFinal = document.getElementById('calc-final-price');
+
+      function calculateEstimate() {
+        // Base Price Selection
+        let baseVal = 35;
+        for (const radio of baseRadioButtons) {
+          if (radio.checked) {
+            baseVal = parseFloat(radio.value);
+            break;
+          }
+        }
+
+        // Size Factor
+        const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+        const sizeFactor = parseFloat(selectedOption.dataset.factor || 1);
+
+        // Addons Cost
+        let addonsTotal = 0;
+        addonCheckboxes.forEach(chk => {
+          if (chk.checked) {
+            addonsTotal += parseFloat(chk.value);
+          }
+        });
+
+        // Subtotal before discount
+        let subtotal = (baseVal * sizeFactor) + addonsTotal;
+
+        // Discount
+        let hasDiscount = memberDiscountCheckbox.checked;
+        if (hasDiscount) {
+          subtotal = subtotal * parseFloat(memberDiscountCheckbox.value);
+          summaryDiscountRow.style.display = 'flex';
+        } else {
+          summaryDiscountRow.style.display = 'none';
+        }
+
+        // Update Outputs
+        summaryBase.textContent = `$${baseVal.toFixed(2)}`;
+        summarySize.textContent = `${sizeFactor.toFixed(2)}x`;
+        summaryAddons.textContent = `$${addonsTotal.toFixed(2)}`;
+        calcFinal.textContent = `$${subtotal.toFixed(2)}`;
+      }
+
+      // Event Listeners
+      sizeSelect.addEventListener('change', calculateEstimate);
+      baseRadioButtons.forEach(radio => radio.addEventListener('change', calculateEstimate));
+      addonCheckboxes.forEach(chk => chk.addEventListener('change', calculateEstimate));
+      memberDiscountCheckbox.addEventListener('change', calculateEstimate);
+
+      calculateEstimate(); // Initial Run
+    });
+  </script>
+</body>
+</html>

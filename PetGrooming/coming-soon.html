@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly — Coming Soon</title>
+  <meta name="description" content="We are styling something beautiful. Pawly's new digital salon booking experience is launching soon.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .comingsoon-layout {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #153828 100%);
+      color: #fff;
+      padding: var(--space-xl);
+      text-align: center;
+      position: relative;
+    }
+    .comingsoon-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(244,162,97,0.15) 0%, transparent 60%);
+      z-index: 1;
+    }
+    .comingsoon-container {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+    .countdown-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) var(--space-xs);
+    }
+    .countdown-num {
+      font-size: 36px;
+      font-weight: var(--fw-bold);
+      font-family: var(--font-heading);
+      color: var(--color-secondary);
+      line-height: 1;
+    }
+    .countdown-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body class="page-transition">
+  <div class="comingsoon-layout">
+    <div class="comingsoon-overlay"></div>
+    
+    <div class="comingsoon-container anim-scale-in">
+      <div class="brand-name" style="font-size:32px; color:#fff; font-weight:var(--fw-bold); margin-bottom:var(--space-md); display:flex; align-items:center; justify-content:center; gap:var(--space-xs);">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:40px; height:40px;">
+          <circle cx="14" cy="10" r="5" fill="#fff"/>
+          <circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/>
+          <circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        PAWLY
+      </div>
+      
+      <h1 style="color:#fff; font-size:36px; line-height:1.2; margin-bottom:var(--space-sm);">Styling something beautiful</h1>
+      <p style="color:rgba(255,255,255,0.85); font-size:16px; max-width:480px; margin:0 auto;">
+        Our new digital booking experience is coming soon. Get ready to pamper your best friend with quick slots scheduling!
+      </p>
+
+      <!-- Countdown Container -->
+      <div class="countdown-grid" data-countdown="2026-10-01T00:00:00">
+        <div class="countdown-card">
+          <div class="countdown-num" data-days>00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-num" data-hours>00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-num" data-minutes>00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-card">
+          <div class="countdown-num" data-seconds>00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+
+      <!-- Registration Box -->
+      <div class="card" style="background:rgba(255,255,255,0.95); text-align:left; color:var(--color-text-primary); padding:var(--space-lg); border:none; box-shadow:var(--shadow-xl);">
+        <h3 style="font-size:18px; margin-bottom:4px;">Notify Me on Launch</h3>
+        <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:var(--space-md);">Sign up to get a 20% discount coupon on launch day.</p>
+        
+        <form data-validate style="margin-bottom:0;">
+          <div class="form-group" style="margin-bottom:var(--space-sm);">
+            <div class="form-input-icon">
+              <i class="ph ph-envelope" style="color:var(--color-text-muted);"></i>
+              <input type="email" class="form-input" placeholder="name@domain.com" required style="margin-bottom:0;">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Get Notified</button>
+        </form>
+      </div>
+
+      <p style="margin-top:var(--space-xl); font-size:12px; color:rgba(255,255,255,0.6); margin-bottom:0;">
+        Follow our progress on <a href="#" style="color:var(--color-secondary); font-weight:var(--fw-semibold);">Instagram</a> &middot; <a href="#" style="color:var(--color-secondary); font-weight:var(--fw-semibold);">Facebook</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

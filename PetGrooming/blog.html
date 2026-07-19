@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly — Pet Care & Grooming Blog</title>
+  <meta name="description" content="Stay updated with Pawly's grooming tips, health advices, breed styling guidelines, and stories about your furry friends.">
+  <meta property="og:title" content="Pawly — Pet Care & Grooming Blog">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="page-transition">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand" aria-label="Pawly home">
+        <span class="brand-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="34" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="7" cy="24" r="5" fill="var(--color-primary)"/>
+            <circle cx="41" cy="24" r="5" fill="var(--color-primary)"/>
+            <ellipse cx="24" cy="32" rx="12" ry="10" fill="var(--color-primary)"/>
+          </svg>
+        </span>
+        <span class="brand-name">PAWLY</span>
+      </a>
+      <ul class="navbar-nav" role="menubar">
+        <li class="nav-dropdown" role="none"><a href="#" class="nav-link nav-dropdown-toggle" role="menuitem" aria-haspopup="true">Home <i class="ph ph-caret-down"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html">Home Main</a><a href="home-alt.html">Home Alt</a></div></li>
+        <li role="none"><a href="about.html" class="nav-link">About</a></li>
+        <li role="none"><a href="services.html" class="nav-link">Services</a></li>
+        <li role="none"><a href="groomers.html" class="nav-link">Groomers</a></li>
+        <li role="none"><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li role="none"><a href="packages.html" class="nav-link">Packages</a></li>
+        <li role="none"><a href="blog.html" class="nav-link active" role="menuitem">Blog</a></li>
+        <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+        <li class="nav-dropdown" role="none">
+          <a href="#" class="nav-link nav-dropdown-toggle" role="menuitem" aria-haspopup="true">
+            Dashboard <i class="ph ph-caret-down"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard/user/index.html" role="menuitem">User Dashboard</a>
+            <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
+          </div>
+        </li>
+        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+        <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+          <i class="ph ph-sun icon-sun" style="display:none;"></i>
+          <i class="ph ph-moon icon-moon"></i>
+        </button>
+      </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav">
+    <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+    <div class="mobile-dropdown-items"><a href="index.html">Home Main</a><a href="home-alt.html">Home Alt</a></div>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="groomers.html" class="nav-link">Groomers</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="blog.html" class="nav-link active">Blog</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="nav-link mobile-dropdown-toggle">
+      Dashboard <i class="ph ph-caret-down"></i>
+    </a>
+    <div class="mobile-dropdown-items">
+      <a href="dashboard/user/index.html">User Dashboard</a>
+      <a href="dashboard/admin/index.html">Admin Dashboard</a>
+    </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
+    <div class="mobile-nav-actions">
+      <button class="rtl-toggle-btn rtl-toggle">LTR</button>
+      <button class="navbar-toggle-btn theme-toggle"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- SECTION 1: HERO -->
+    <section class="hero hero-animate" aria-label="Blog hero">
+      <div class="hero-bg parallax-bg" data-parallax-speed="0.3" style="background-image:url('assets/images/hero/blog.png');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Pawly Pet Chronicles</h1>
+        <p>Expert tips, styling advice, health updates, and success stories directly from our veterinary-certified team.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SEARCH & FILTER SYSTEM -->
+    <section class="section section-surface" id="blog-filter-section" aria-label="Search & Filter">
+      <div class="container">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:var(--space-md);">
+          <!-- Filter Tags -->
+          <div class="gallery-filter" style="margin-bottom:0; display:flex; gap:var(--space-xs); flex-wrap:wrap;">
+            <button class="tag active" data-filter="all">All Articles</button>
+            <button class="tag" data-filter="grooming">Grooming Tips</button>
+            <button class="tag" data-filter="health">Pet Health</button>
+            <button class="tag" data-filter="trends">Style Trends</button>
+            <button class="tag" data-filter="stories">Success Stories</button>
+          </div>
+          
+          <!-- Mock Search Bar -->
+          <div style="position:relative; min-width:280px; max-width:100%;">
+            <input type="text" id="blog-search-input" class="form-input" placeholder="Search blog articles..." style="padding-right: 40px; margin-bottom:0;">
+            <i class="ph ph-magnifying-glass" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); color:var(--color-text-muted); font-size:18px;"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED ARTICLE -->
+    <section class="section section-bg" id="featured-article-section" aria-label="Featured Article">
+      <div class="container">
+        <h2 class="section-title anim-fade-up" style="text-align: left; margin-bottom:var(--space-md);">Featured Article</h2>
+        
+        <div class="two-col anim-fade-up" style="align-items: stretch; gap: var(--space-xl);">
+          <!-- Graphic Placeholder -->
+          <div class="two-col-image" style="min-height:300px; display:flex; align-items:center; justify-content:center; border-radius:var(--radius-xl); overflow:hidden;">
+            <img src="assets/images/blog/featured.png" alt="Interactive Guide Preview" style="width:100%; height:100%; object-fit:cover; display:block;">
+          </div>
+          
+          <!-- Article Content -->
+          <div class="two-col-content" style="display:flex; flex-direction:column; justify-content:center;">
+            <span class="badge badge-secondary" style="align-self:flex-start; margin-bottom:var(--space-xs);">Grooming Tips</span>
+            <h3 style="font-size:28px; line-height:1.2; margin-bottom:var(--space-sm);">The ultimate step-by-step home de-shedding guide for heavy coat breeds</h3>
+            <p class="card-text">Heavy undercoats can become extremely hot and uncomfortable during summers. Learn the professional techniques, tools (slicker brush, undercoat rake), and steps to manage heavy shedding safely without damaging your pet's guard hair.</p>
+            
+            <div style="display:flex; align-items:center; gap:var(--space-sm); margin-top:var(--space-md); margin-bottom:var(--space-lg);">
+              <div style="width:40px; height:40px; border-radius:50%; background:var(--color-primary); display:flex; align-items:center; justify-content:center; color:#fff;">SM</div>
+              <div>
+                <p style="font-weight:var(--fw-semibold); margin-bottom:0; font-size:var(--fs-small);">Sarah Mitchell</p>
+                <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">July 15, 2026 &bull; 6 min read</p>
+              </div>
+            </div>
+
+            <a href="#" class="btn btn-primary" style="align-self:flex-start;">Read Full Article</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: POSTS GRID -->
+    <section class="section" id="blog-grid-section" aria-label="Recent Articles">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Recent Articles</h2>
+        <p class="section-subtitle anim-fade-up">Knowledge feeds from our expert grooming and support crew.</p>
+        
+        <div class="grid grid-3" data-stagger="100">
+          <!-- Post 1 -->
+          <div class="card blog-post gallery-item" data-category="health">
+            <div style="aspect-ratio:16/9; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/blog/article1.png" alt="Skin allergies" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <span class="badge badge-primary" style="margin-bottom:var(--space-xs);">Pet Health</span>
+            <h3 class="card-title" style="font-size:18px;">How to spot hidden skin allergies underneath dense coats</h3>
+            <p class="card-text">Dense double-coats can hide early signs of hotspots, yeast infections, and tick irritations. Our lead groomers present 5 warning indicators...</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-md); font-size:12px; color:var(--color-text-muted);">
+              <span>Dr. Lisa Wong</span>
+              <span>July 10, 2026</span>
+            </div>
+          </div>
+
+          <!-- Post 2 -->
+          <div class="card blog-post gallery-item" data-category="trends">
+            <div style="aspect-ratio:16/9; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/blog/article2.png" alt="Asian Fusion styling" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <span class="badge badge-accent" style="margin-bottom:var(--space-xs);">Style Trends</span>
+            <h3 class="card-title" style="font-size:18px;">What is Asian Fusion styling? The hot new pet design trend</h3>
+            <p class="card-text">Explore the creative style options changing pet haircuts worldwide. Find out if your doodle or spaniel is a fit for cute Teddy Bear round-cuts...</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-md); font-size:12px; color:var(--color-text-muted);">
+              <span>James Chen</span>
+              <span>July 8, 2026</span>
+            </div>
+          </div>
+
+          <!-- Post 3 -->
+          <div class="card blog-post gallery-item" data-category="grooming">
+            <div style="aspect-ratio:16/9; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/blog/article3.png" alt="Bathe an anxious feline" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <span class="badge badge-secondary" style="margin-bottom:var(--space-xs);">Grooming Tips</span>
+            <h3 class="card-title" style="font-size:18px;">How to successfully bathe an anxious feline without scratches</h3>
+            <p class="card-text">Bathing a cat requires complete patience, specialized items, and technique. Read our step-by-step stress-reducing bath procedures...</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-md); font-size:12px; color:var(--color-text-muted);">
+              <span>Maria Gonzalez</span>
+              <span>July 5, 2026</span>
+            </div>
+          </div>
+
+          <!-- Post 4 -->
+          <div class="card blog-post gallery-item" data-category="stories">
+            <div style="aspect-ratio:16/9; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/blog/article4.png" alt="Rescue rehabilitation" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <span class="badge badge-secondary" style="margin-bottom:var(--space-xs);">Success Stories</span>
+            <h3 class="card-title" style="font-size:18px;">Rescue rehabilitation: Transforming Buddy's grooming anxiety</h3>
+            <p class="card-text">Read how patience and specialized low-stress tactics helped a rescued Golden Retriever overcome trauma and accept nail clips comfortably...</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-md); font-size:12px; color:var(--color-text-muted);">
+              <span>Sarah Mitchell</span>
+              <span>June 28, 2026</span>
+            </div>
+          </div>
+
+          <!-- Post 5 -->
+          <div class="card blog-post gallery-item" data-category="health">
+            <div style="aspect-ratio:16/9; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/blog/article5.png" alt="Hydration vs. Dry skin" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <span class="badge badge-primary" style="margin-bottom:var(--space-xs);">Pet Health</span>
+            <h3 class="card-title" style="font-size:18px;">Hydration vs. Dry skin: Summer safety guidelines for pets</h3>
+            <p class="card-text">Summer heat, pool chlorine, and outdoor walks can parch your pet's skin and lead to painful scaling or cracking. Learn preventive tricks...</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-md); font-size:12px; color:var(--color-text-muted);">
+              <span>Dr. Lisa Wong</span>
+              <span>June 20, 2026</span>
+            </div>
+          </div>
+
+          <!-- Post 6 -->
+          <div class="card blog-post gallery-item" data-category="trends">
+            <div style="aspect-ratio:16/9; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/blog/article6.png" alt="Cute styling ideas" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <span class="badge badge-accent" style="margin-bottom:var(--space-xs);">Style Trends</span>
+            <h3 class="card-title" style="font-size:18px;">5 cute styling ideas for small breed topknots & bows</h3>
+            <p class="card-text">Add some personality! From simple styles to premium ribbon wraps, here are the safest ways to style your Yorkie's or Maltese's hair...</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-md); font-size:12px; color:var(--color-text-muted);">
+              <span>James Chen</span>
+              <span>June 15, 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: NEWSLETTER SIGNUP -->
+    <section class="section section-bg" id="blog-newsletter" aria-label="Subscribe to Pawly Chronicles">
+      <div class="container">
+        <div class="card card-flat" style="background: linear-gradient(135deg, rgba(45,106,79,0.08) 0%, rgba(244,162,97,0.08) 100%); padding: var(--space-2xl); border-radius: var(--radius-2xl);">
+          <div class="container-narrow" style="padding:0; text-align:center;">
+            <h2 class="section-title anim-fade-up" style="margin-bottom: var(--space-xs);">Get Expert Tips Weekly</h2>
+            <p class="section-subtitle anim-fade-up">No spam. Only clean tips, guidelines, and discounts on your pet spa visits.</p>
+            
+            <form data-validate class="anim-fade-up" style="max-width:500px; margin: 0 auto; display:flex; flex-direction:column; gap: var(--space-sm);">
+              <div class="form-group" style="margin-bottom:0;">
+                <input type="email" class="form-input" placeholder="Enter your email address" required aria-label="Email address" style="text-align: center;">
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Subscribe to Chronicles</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: POPULAR TAGS / SUGGESTED READING -->
+    <section class="section section-primary" id="suggested-topics" aria-label="Suggested Reading">
+      <div class="container">
+        <h2 class="section-title anim-fade-up" style="color:#fff;">Popular Topics</h2>
+        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.85);">Quickly scan topics our community reads most.</p>
+        
+        <div class="anim-fade-up" style="display:flex; justify-content:center; gap:var(--space-sm); flex-wrap:wrap; max-width:700px; margin:0 auto;">
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#SummerGrooming</a>
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#HypoallergenicShampoo</a>
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#NervousDogs</a>
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#CatBaths</a>
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#PuppyGrooming101</a>
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#AsianFusionStyling</a>
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#PawCare</a>
+          <a href="#" class="tag" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);">#DermatologistApproved</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="14" cy="10" r="5" fill="#fff"/>
+              <circle cx="34" cy="10" r="5" fill="#fff"/>
+              <circle cx="7" cy="24" r="5" fill="#fff"/>
+              <circle cx="41" cy="24" r="5" fill="#fff"/>
+              <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+            </svg>
+            PAWLY
+          </div>
+          <p>Premium grooming care for your beloved companions.</p>
+          <div class="footer-social">
+            <button class="btn-social btn-google"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/><path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/><path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/></svg> Sign in with Google</button>
+            <button class="btn-social btn-facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Sign in with Facebook</button>
+            <button class="btn-social btn-apple"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg> Sign in with Apple</button>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html"><i class="ph ph-caret-right"></i> Home</a>
+            <a href="about.html"><i class="ph ph-caret-right"></i> About</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Services</a>
+            <a href="groomers.html"><i class="ph ph-caret-right"></i> Groomers</a>
+            <a href="gallery.html"><i class="ph ph-caret-right"></i> Gallery</a>
+            <a href="packages.html"><i class="ph ph-caret-right"></i> Packages</a>
+            <a href="blog.html"><i class="ph ph-caret-right"></i> Blog</a>
+            <a href="contact.html"><i class="ph ph-caret-right"></i> Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html"><i class="ph ph-caret-right"></i> Dog Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Cat Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Nail Care</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Spa Treatments</a>
+            <a href="services.html"><i class="ph ph-caret-right"></i> Breed-Specific Styling</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><i class="ph ph-map-pin"></i><span>123 Pet Avenue, San Francisco, CA 94102</span></div>
+          <div class="footer-contact-item"><i class="ph ph-phone"></i><span>+1 (555) 729-5968</span></div>
+          <div class="footer-contact-item"><i class="ph ph-envelope"></i><span>hello@pawly.com</span></div>
+          <div class="footer-contact-item"><i class="ph ph-clock"></i><span>Mon-Sat: 8AM-7PM<br>Sun: 10AM-5PM</span></div>
+          <a href="login.html" class="btn btn-secondary btn-sm" style="margin-top:var(--space-sm);"><i class="ph ph-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pawly. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+  
+  <!-- Interactive Category Filtering Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tags = document.querySelectorAll('#blog-filter-section .tag');
+      const posts = document.querySelectorAll('#blog-grid-section .blog-post');
+      const searchInput = document.getElementById('blog-search-input');
+
+      function filterArticles() {
+        const activeTag = document.querySelector('#blog-filter-section .tag.active');
+        const currentCategory = activeTag ? activeTag.dataset.filter : 'all';
+        const searchText = searchInput.value.toLowerCase().trim();
+
+        posts.forEach(post => {
+          const cat = post.dataset.category || '';
+          const title = post.querySelector('.card-title').textContent.toLowerCase();
+          const desc = post.querySelector('.card-text').textContent.toLowerCase();
+
+          const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+          const matchesSearch = (title.includes(searchText) || desc.includes(searchText));
+
+          if (matchesCat && matchesSearch) {
+            post.style.display = 'block';
+            setTimeout(() => {
+              post.style.opacity = '1';
+              post.style.transform = 'translateY(0)';
+            }, 50);
+          } else {
+            post.style.display = 'none';
+          }
+        });
+      }
+
+      tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          tags.forEach(t => t.classList.remove('active'));
+          tag.classList.add('active');
+          filterArticles();
+        });
+      });
+
+      searchInput.addEventListener('input', filterArticles);
+    });
+  </script>
+</body>
+</html>

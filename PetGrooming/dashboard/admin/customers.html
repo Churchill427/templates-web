@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Admin — Customers Management</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to main dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="Admin Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar"></i><span>Appointments</span></a></li>
+        <li><a href="customers.html" class="db-menu-item active"><i class="ph ph-users"></i><span>Customers</span></a></li>
+        <li><a href="groomers.html" class="db-menu-item"><i class="ph ph-scissors"></i><span>Groomers</span></a></li>
+        <li><a href="services.html" class="db-menu-item"><i class="ph ph-folder-open"></i><span>Services</span></a></li>
+        <li><a href="reports.html" class="db-menu-item"><i class="ph ph-chart-bar"></i><span>Reports</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-gear"></i><span>Settings</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Admin Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">AD</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Administrator</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Customers</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">View profiles, register new clients, and track pet profiles.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="openModal('add-customer-modal')"><i class="ph ph-user-plus"></i> Add Customer</button>
+          </div>
+        </div>
+
+        <!-- Filter / Search Row -->
+        <div class="db-card" style="margin-bottom:var(--space-md);">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:var(--space-md); flex-wrap:wrap;">
+            <div style="font-size:14px; color:var(--color-text-muted);">
+              Total Registered Customers: <span style="font-weight:var(--fw-semibold); color:var(--color-text-primary);" id="customer-count">4</span>
+            </div>
+            
+            <div style="position:relative; width:280px; max-width:100%;">
+              <input type="text" id="customer-search" class="form-input" placeholder="Search customer email/phone..." style="padding-right: 40px; margin-bottom:0;">
+              <i class="ph ph-magnifying-glass" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); color:var(--color-text-muted);"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customers table -->
+        <div class="db-card">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Contact Info</th>
+                  <th>Registered Pets</th>
+                  <th>Membership Level</th>
+                  <th>Join Date</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="customers-tbody">
+                <tr class="customer-row">
+                  <td>
+                    <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                      <div style="width:36px; height:36px; border-radius:50%; background:rgba(45,106,79,0.1); color:var(--color-primary); display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold);">SJ</div>
+                      <div>
+                        <div style="font-weight:var(--fw-semibold);">Sarah Jenkins</div>
+                        <div style="font-size:11px; color:var(--color-text-muted);">ID: #CUST-1049</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>sarah.jenkins@gmail.com</div>
+                    <div style="font-size:12px; color:var(--color-text-muted);">+1 (555) 304-9844</div>
+                  </td>
+                  <td>Milo (Doodle), Bella (Persian)</td>
+                  <td><span class="badge badge-secondary" style="font-size:11px;">Gold Member</span></td>
+                  <td>Jan 12, 2024</td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Loading Customer Details...', 'info')">Edit</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+                <tr class="customer-row">
+                  <td>
+                    <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                      <div style="width:36px; height:36px; border-radius:50%; background:rgba(244,162,97,0.1); color:var(--color-secondary); display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold);">RC</div>
+                      <div>
+                        <div style="font-weight:var(--fw-semibold);">Robert Chen</div>
+                        <div style="font-size:11px; color:var(--color-text-muted);">ID: #CUST-1052</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>robert_chen@outlook.com</div>
+                    <div style="font-size:12px; color:var(--color-text-muted);">+1 (555) 789-2311</div>
+                  </td>
+                  <td>Yuki (Samoyed)</td>
+                  <td><span class="badge badge-primary" style="font-size:11px;">Silver Member</span></td>
+                  <td>Feb 20, 2024</td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Loading Customer Details...', 'info')">Edit</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+                <tr class="customer-row">
+                  <td>
+                    <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                      <div style="width:36px; height:36px; border-radius:50%; background:rgba(231,111,81,0.1); color:var(--color-accent); display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold);">ER</div>
+                      <div>
+                        <div style="font-weight:var(--fw-semibold);">Elena Rostova</div>
+                        <div style="font-size:11px; color:var(--color-text-muted);">ID: #CUST-1055</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>elena.rostova@yandex.com</div>
+                    <div style="font-size:12px; color:var(--color-text-muted);">+1 (555) 898-1122</div>
+                  </td>
+                  <td>Sasha (Persian)</td>
+                  <td><span class="badge badge-outline" style="font-size:11px;">Standard</span></td>
+                  <td>Mar 05, 2024</td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Loading Customer Details...', 'info')">Edit</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+                <tr class="customer-row">
+                  <td>
+                    <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                      <div style="width:36px; height:36px; border-radius:50%; background:rgba(82,183,136,0.1); color:var(--color-success); display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold);">DC</div>
+                      <div>
+                        <div style="font-weight:var(--fw-semibold);">Daniel Craig</div>
+                        <div style="font-size:11px; color:var(--color-text-muted);">ID: #CUST-1058</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>daniel.craig@gmail.com</div>
+                    <div style="font-size:12px; color:var(--color-text-muted);">+1 (555) 443-8877</div>
+                  </td>
+                  <td>Bond (Labrador)</td>
+                  <td><span class="badge badge-accent" style="font-size:11px;">Platinum Member</span></td>
+                  <td>Apr 18, 2024</td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Loading Customer Details...', 'info')">Edit</button>
+                    <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Customer Modal -->
+  <div class="modal-overlay" id="add-customer-modal">
+    <div class="modal" style="max-width:500px;">
+      <div class="modal-header">
+        <h3>Register Customer Profile</h3>
+        <button class="modal-close"><i class="ph ph-x"></i></button>
+      </div>
+      <form id="new-customer-form" data-validate>
+        <div class="form-group">
+          <label class="form-label" for="cust-name">Full Name</label>
+          <input type="text" id="cust-name" class="form-input" required>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label" for="cust-email">Email Address</label>
+            <input type="email" id="cust-email" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cust-phone">Phone Number</label>
+            <input type="tel" id="cust-phone" class="form-input" placeholder="e.g. +1 (555) 777-8888" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cust-pets">Registered Pets</label>
+          <input type="text" id="cust-pets" class="form-input" placeholder="e.g. Spot (Beagle), Fluffy (Persian)" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cust-membership">Membership Tier</label>
+          <select id="cust-membership" class="form-input" required>
+            <option value="Standard">Standard</option>
+            <option value="Silver Member">Silver Member</option>
+            <option value="Gold Member">Gold Member</option>
+            <option value="Platinum Member">Platinum Member</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Register Client</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- Live filtering and mock insert script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const search = document.getElementById('customer-search');
+      const rows = document.querySelectorAll('.customer-row');
+      const tbody = document.getElementById('customers-tbody');
+      const countSpan = document.getElementById('customer-count');
+
+      function filterTable() {
+        const query = search.value.toLowerCase().trim();
+        let activeCount = 0;
+
+        tbody.querySelectorAll('.customer-row').forEach(row => {
+          const text = row.textContent.toLowerCase();
+          if (text.includes(query)) {
+            row.style.display = '';
+            activeCount++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        countSpan.textContent = activeCount;
+      }
+
+      search.addEventListener('input', filterTable);
+
+      // Submit Form Handler Mock
+      const customerForm = document.getElementById('new-customer-form');
+      if (customerForm) {
+        customerForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('cust-name').value;
+          const email = document.getElementById('cust-email').value;
+          const phone = document.getElementById('cust-phone').value;
+          const pets = document.getElementById('cust-pets').value;
+          const membership = document.getElementById('cust-membership').value;
+
+          // initials
+          const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+          const randId = Math.floor(1000 + Math.random() * 9000);
+          
+          let badgeClass = 'badge-outline';
+          if (membership.includes('Silver')) badgeClass = 'badge-primary';
+          if (membership.includes('Gold')) badgeClass = 'badge-secondary';
+          if (membership.includes('Platinum')) badgeClass = 'badge-accent';
+
+          const newRow = document.createElement('tr');
+          newRow.className = 'customer-row';
+          newRow.innerHTML = `
+            <td>
+              <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                <div style="width:36px; height:36px; border-radius:50%; background:rgba(45,106,79,0.1); color:var(--color-primary); display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold);">${initials}</div>
+                <div>
+                  <div style="font-weight:var(--fw-semibold);">${name}</div>
+                  <div style="font-size:11px; color:var(--color-text-muted);">ID: #CUST-${randId}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div>${email}</div>
+              <div style="font-size:12px; color:var(--color-text-muted);">${phone}</div>
+            </td>
+            <td>${pets}</td>
+            <td><span class="badge ${badgeClass}" style="font-size:11px;">${membership}</span></td>
+            <td>July 18, 2026</td>
+            <td style="text-align:right;">
+              <button class="btn btn-outline btn-sm" onclick="showToast('Loading Customer Details...', 'info')">Edit</button>
+              <button class="btn btn-icon btn-outline" style="border:none;" aria-label="More actions"><i class="ph ph-dots-three-vertical"></i></button>
+            </td>
+          `;
+
+          tbody.prepend(newRow);
+          closeModal('add-customer-modal');
+          showToast('Customer registration complete!', 'success');
+          customerForm.reset();
+          filterTable(); // recalculate counts
+        });
+      }
+    });
+  </script>
+</body>
+</html>

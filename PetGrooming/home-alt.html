@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly — Where Every Pet Gets the Royal Treatment</title>
+  <meta name="description" content="Explore Pawly's grooming packages, meet our expert team, and discover breed-specific grooming excellence for your beloved pets.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pawly — Where Every Pet Gets the Royal Treatment">
+  <meta property="og:description" content="Explore grooming packages and meet our expert team at Pawly.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="page-transition">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand" aria-label="Pawly home">
+        <span class="brand-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="34" cy="10" r="5" fill="var(--color-primary)"/>
+            <circle cx="7" cy="24" r="5" fill="var(--color-primary)"/>
+            <circle cx="41" cy="24" r="5" fill="var(--color-primary)"/>
+            <ellipse cx="24" cy="32" rx="12" ry="10" fill="var(--color-primary)"/>
+          </svg>
+        </span>
+        <span class="brand-name">PAWLY</span>
+      </a>
+
+      <ul class="navbar-nav" role="menubar">
+        <li class="nav-dropdown" role="none">
+          <a href="#" class="nav-link nav-dropdown-toggle active" role="menuitem" aria-haspopup="true">
+            Home <i class="ph ph-caret-down"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="index.html" role="menuitem">Home Main</a>
+            <a href="home-alt.html" role="menuitem">Home Alt</a>
+          </div>
+        </li>
+        <li role="none"><a href="about.html" class="nav-link" role="menuitem">About</a></li>
+        <li role="none"><a href="services.html" class="nav-link" role="menuitem">Services</a></li>
+        <li role="none"><a href="groomers.html" class="nav-link" role="menuitem">Groomers</a></li>
+        <li role="none"><a href="gallery.html" class="nav-link" role="menuitem">Gallery</a></li>
+        <li role="none"><a href="packages.html" class="nav-link" role="menuitem">Packages</a></li>
+        <li role="none"><a href="blog.html" class="nav-link" role="menuitem">Blog</a></li>
+        <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Contact</a></li>
+        <li class="nav-dropdown" role="none">
+          <a href="#" class="nav-link nav-dropdown-toggle" role="menuitem" aria-haspopup="true">
+            Dashboard <i class="ph ph-caret-down"></i>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="dashboard/user/index.html" role="menuitem">User Dashboard</a>
+            <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
+          </div>
+        </li>
+        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
+      </ul>
+
+      <div class="navbar-actions">
+        <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+        <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+          <i class="ph ph-sun icon-sun" style="display:none;"></i>
+          <i class="ph ph-moon icon-moon"></i>
+        </button>
+      </div>
+
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+    <div class="mobile-dropdown-items">
+      <a href="index.html">Home Main</a>
+      <a href="home-alt.html">Home Alt</a>
+    </div>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="groomers.html" class="nav-link">Groomers</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="nav-link mobile-dropdown-toggle">
+      Dashboard <i class="ph ph-caret-down"></i>
+    </a>
+    <div class="mobile-dropdown-items">
+      <a href="dashboard/user/index.html">User Dashboard</a>
+      <a href="dashboard/admin/index.html">Admin Dashboard</a>
+    </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
+    <div class="mobile-nav-actions">
+      <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+      <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+        <i class="ph ph-sun icon-sun" style="display:none;"></i>
+        <i class="ph ph-moon icon-moon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- ===== SECTION 1: HERO ===== -->
+    <section class="hero hero-animate" id="hero-section" aria-label="Hero">
+      <div class="hero-bg parallax-bg" data-parallax-speed="0.3" style="background-image: url('assets/images/hero/home-alt.png');"></div>
+      <div class="hero-overlay"></div>
+
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+      <i class="ph ph-paw-print paw-float" aria-hidden="true"></i>
+
+      <div class="hero-content">
+        <h1>Where Every Pet Gets the Royal Treatment</h1>
+        <p>Expert grooming packages designed for dogs, cats, and exotic pets of all breeds and sizes.</p>
+        <div class="hero-cta">
+          <a href="packages.html" class="btn btn-primary btn-lg">View Packages</a>
+          <a href="groomers.html" class="btn btn-outline-white btn-lg">Meet the Team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: PACKAGE TIERS ===== -->
+    <section class="section section-bg" id="package-tiers" aria-label="Grooming packages">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Grooming Packages</h2>
+        <p class="section-subtitle anim-fade-up">Choose the perfect grooming experience for your pet</p>
+
+        <div class="grid grid-3" data-stagger="150">
+          <!-- Basic -->
+          <div class="card pricing-card">
+            <span class="badge badge-primary" style="margin-bottom:var(--space-sm);">Basic</span>
+            <div style="display:flex; gap:var(--space-xs); justify-content:center; margin:var(--space-xs) 0; color:var(--color-text-muted);">
+              <i class="ph ph-dog" title="Small pets"></i>
+              <i class="ph ph-cat" title="Cats"></i>
+            </div>
+            <div class="price">$35<span>/visit</span></div>
+            <ul class="feature-list">
+              <li><i class="ph ph-check-circle"></i> Bath & Blow Dry</li>
+              <li><i class="ph ph-check-circle"></i> Brush & De-tangle</li>
+              <li><i class="ph ph-check-circle"></i> Nail Trimming</li>
+              <li><i class="ph ph-check-circle"></i> Ear Cleaning</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Teeth Brushing</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Spa Treatment</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Creative Styling</li>
+            </ul>
+            <a href="packages.html" class="btn btn-outline btn-full">Select Package</a>
+          </div>
+
+          <!-- Premium (Featured) -->
+          <div class="card pricing-card featured" style="border-color:var(--color-secondary); position:relative;">
+            <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%);">
+              <span class="badge badge-secondary" style="font-size:11px; padding:5px 16px; color: var(--color-text-primary);">Best Value</span>
+            </div>
+            <span class="badge badge-secondary" style="margin-bottom:var(--space-sm);">Premium</span>
+            <div style="display:flex; gap:var(--space-xs); justify-content:center; margin:var(--space-xs) 0; color:var(--color-secondary);">
+              <i class="ph ph-dog" title="All dogs"></i>
+              <i class="ph ph-cat" title="All cats"></i>
+              <i class="ph ph-paw-print" title="All sizes"></i>
+            </div>
+            <div class="price" style="color:var(--color-secondary);">$65<span>/visit</span></div>
+            <ul class="feature-list">
+              <li><i class="ph ph-check-circle"></i> Bath & Blow Dry</li>
+              <li><i class="ph ph-check-circle"></i> Full Haircut & Styling</li>
+              <li><i class="ph ph-check-circle"></i> Nail Trimming & Filing</li>
+              <li><i class="ph ph-check-circle"></i> Ear Cleaning</li>
+              <li><i class="ph ph-check-circle"></i> Teeth Brushing</li>
+              <li><i class="ph ph-check-circle"></i> Paw Balm Treatment</li>
+              <li class="disabled"><i class="ph ph-x-circle"></i> Creative Styling</li>
+            </ul>
+            <a href="packages.html" class="btn btn-secondary btn-full">Select Package</a>
+          </div>
+
+          <!-- Deluxe -->
+          <div class="card pricing-card">
+            <span class="badge badge-accent" style="margin-bottom:var(--space-sm);">Deluxe</span>
+            <div style="display:flex; gap:var(--space-xs); justify-content:center; margin:var(--space-xs) 0; color:var(--color-accent);">
+              <i class="ph ph-dog" title="All dogs"></i>
+              <i class="ph ph-cat" title="All cats"></i>
+              <i class="ph ph-paw-print" title="All sizes"></i>
+              <i class="ph ph-crown" title="VIP"></i>
+            </div>
+            <div class="price" style="color:var(--color-accent);">$95<span>/visit</span></div>
+            <ul class="feature-list">
+              <li><i class="ph ph-check-circle"></i> Luxury Bath & Conditioning</li>
+              <li><i class="ph ph-check-circle"></i> Full Haircut & Breed Styling</li>
+              <li><i class="ph ph-check-circle"></i> Nail Care & Paw Massage</li>
+              <li><i class="ph ph-check-circle"></i> Deep Ear Cleaning</li>
+              <li><i class="ph ph-check-circle"></i> Teeth Brushing & Freshening</li>
+              <li><i class="ph ph-check-circle"></i> Full Spa Treatment</li>
+              <li><i class="ph ph-check-circle"></i> Creative Styling & Cologne</li>
+            </ul>
+            <a href="packages.html" class="btn btn-accent btn-full" style="color:#fff;">Select Package</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: STATS COUNTER ===== -->
+    <section class="section" id="stats-counter" aria-label="Our impact in numbers" style="background: linear-gradient(135deg, var(--color-primary) 0%, #1B4332 100%); color:#fff;">
+      <div class="container">
+        <h2 class="section-title anim-fade-up" style="color:#fff;">Our Impact</h2>
+        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.8);">Numbers that reflect our commitment to pet care excellence</p>
+
+        <div class="grid grid-4" data-stagger="200" style="text-align:center; margin-top:var(--space-xl);">
+          <div class="anim-fade-up">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+              <span data-counter="5000" data-counter-suffix="+">0</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Pets Groomed</p>
+          </div>
+
+          <div class="anim-fade-up">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+              <span data-counter="15">0</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Expert Groomers</p>
+          </div>
+
+          <div class="anim-fade-up">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+              <span data-counter="98" data-counter-suffix="%">0</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Satisfaction Rate</p>
+          </div>
+
+          <div class="anim-fade-up">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+              <span data-counter="12">0</span>
+            </div>
+            <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: BREED SPECIALIZATION ===== -->
+    <section class="section section-surface" id="breed-specialization" aria-label="Breed-specific expertise">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">Breed-Specific Expertise</h2>
+        <p class="section-subtitle anim-fade-up">Tailored grooming for every breed's unique coat and temperament</p>
+
+        <div class="scroll-container">
+          <div class="scroll-track">
+            <!-- Breed 1 -->
+            <div class="card" style="width:260px; text-align:center;">
+              <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img src="assets/images/breeds/breed1.png" alt="Poodle" style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <h3 class="card-title" style="font-size:18px;">Poodle</h3>
+              <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Continental, puppy, and lion cuts</p>
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+                <span><i class="ph ph-clock"></i> 2-3 hrs</span>
+                <span><i class="ph ph-currency-dollar"></i> From $75</span>
+              </div>
+            </div>
+
+            <!-- Breed 2 -->
+            <div class="card" style="width:260px; text-align:center;">
+              <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img src="assets/images/breeds/breed2.png" alt="Persian" style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <h3 class="card-title" style="font-size:18px;">Persian</h3>
+              <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Coat de-matting and lion trim specialist</p>
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+                <span><i class="ph ph-clock"></i> 1.5-2 hrs</span>
+                <span><i class="ph ph-currency-dollar"></i> From $60</span>
+              </div>
+            </div>
+
+            <!-- Breed 3 -->
+            <div class="card" style="width:260px; text-align:center;">
+              <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img src="assets/images/breeds/breed3.png" alt="Golden Retriever" style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <h3 class="card-title" style="font-size:18px;">Golden Retriever</h3>
+              <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">De-shedding and feathering maintenance</p>
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+                <span><i class="ph ph-clock"></i> 2-2.5 hrs</span>
+                <span><i class="ph ph-currency-dollar"></i> From $65</span>
+              </div>
+            </div>
+
+            <!-- Breed 4 -->
+            <div class="card" style="width:260px; text-align:center;">
+              <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img src="assets/images/breeds/breed4.png" alt="Siamese" style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <h3 class="card-title" style="font-size:18px;">Siamese</h3>
+              <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Short coat shine and sensitive skin care</p>
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+                <span><i class="ph ph-clock"></i> 1-1.5 hrs</span>
+                <span><i class="ph ph-currency-dollar"></i> From $45</span>
+              </div>
+            </div>
+
+            <!-- Breed 5 -->
+            <div class="card" style="width:260px; text-align:center;">
+              <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img src="assets/images/breeds/breed5.png" alt="Schnauzer" style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <h3 class="card-title" style="font-size:18px;">Schnauzer</h3>
+              <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Hand stripping and beard styling</p>
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+                <span><i class="ph ph-clock"></i> 2-3 hrs</span>
+                <span><i class="ph ph-currency-dollar"></i> From $70</span>
+              </div>
+            </div>
+
+            <!-- Breed 6 -->
+            <div class="card" style="width:260px; text-align:center;">
+              <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                <img src="assets/images/breeds/breed6.png" alt="Shih Tzu" style="width:100%; height:100%; object-fit:cover; display:block;">
+              </div>
+              <h3 class="card-title" style="font-size:18px;">Shih Tzu</h3>
+              <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Topknot styling and face trimming</p>
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+                <span><i class="ph ph-clock"></i> 2-2.5 hrs</span>
+                <span><i class="ph ph-currency-dollar"></i> From $55</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: PROCESS TIMELINE ===== -->
+    <section class="section section-bg" id="process-timeline" aria-label="The Pawly experience">
+      <div class="container">
+        <h2 class="section-title anim-fade-up">The Pawly Experience</h2>
+        <p class="section-subtitle anim-fade-up">From booking to pick-up, we make it seamless</p>
+
+        <div class="grid grid-4" data-stagger="200" style="position:relative; margin-top:var(--space-xl);">
+          <!-- Connecting line -->
+          <div style="position:absolute; top:60px; left:10%; right:10%; height:3px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-success)); border-radius:2px; z-index:0; display:none;" class="timeline-connector-desktop"></div>
+
+          <!-- Step 1 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
+            <div style="width:80px; height:80px; border-radius:50%; background: var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(45,106,79,0.3);">
+              <i class="ph ph-calendar-check"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">1</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Book Online</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Choose your service, select a date and time, and pick your preferred groomer.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
+            <div style="width:80px; height:80px; border-radius:50%; background: var(--color-secondary); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(244,162,97,0.3);">
+              <i class="ph ph-map-pin"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-secondary); color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">2</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Drop Off</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Bring your pet to our welcoming salon. We'll handle check-in and any special notes.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
+            <div style="width:80px; height:80px; border-radius:50%; background: var(--color-accent); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(231,111,81,0.3);">
+              <i class="ph ph-scissors"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-accent); color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">3</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Grooming Session</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Your pet receives personalized, professional grooming with premium products.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
+            <div style="width:80px; height:80px; border-radius:50%; background: var(--color-success); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(82,183,136,0.3);">
+              <i class="ph ph-sparkle"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-success); color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">4</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Pick Up & Glow</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Collect your freshly groomed, happy pet along with a grooming report card.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: NEWSLETTER & LOCATION ===== -->
+    <section class="section section-primary" id="newsletter-section" aria-label="Newsletter and location">
+      <div class="container">
+        <h2 class="section-title anim-fade-up" style="color:#fff;">Stay in the Loop</h2>
+        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.8);">Get grooming tips, exclusive deals, and pet care inspiration delivered to your inbox</p>
+
+        <div class="grid grid-2" style="gap:var(--space-2xl); align-items:center;">
+          <!-- Newsletter Form -->
+          <div class="anim-fade-left">
+            <h3 style="color:#fff; margin-bottom:var(--space-md);">Subscribe to Our Newsletter</h3>
+            <form data-validate style="max-width:480px;">
+              <div class="form-group">
+                <div class="form-input-icon">
+                  <i class="ph ph-envelope-simple" style="color:var(--color-text-muted);"></i>
+                  <input type="email" name="email" class="form-input" placeholder="Enter your email address" required aria-label="Email address">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary btn-full">
+                <i class="ph ph-paper-plane-tilt"></i> Subscribe
+              </button>
+              <p style="font-size:12px; color:rgba(255,255,255,0.5); margin-top:var(--space-xs); margin-bottom:0;">We respect your privacy. Unsubscribe anytime.</p>
+            </form>
+          </div>
+
+          <!-- Location Preview -->
+          <div class="anim-fade-right">
+            <h3 style="color:#fff; margin-bottom:var(--space-md);">Visit Our Salon</h3>
+            <div style="background:rgba(255,255,255,0.1); border-radius:var(--radius-xl); padding:var(--space-lg); border:1px solid rgba(255,255,255,0.15);">
+              <div style="width:100%; aspect-ratio:16/9; margin-bottom:var(--space-md); border-radius:var(--radius-lg); overflow:hidden;">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0864389025345!2d-122.41941548468165!3d37.77492927975913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807bedc00001%3A0xe54d6df1d3c63dc0!2s123%20Pet%20Avenue%20San%20Francisco!5e0!3m2!1sen!2sus!4v1626000000000!5m2!1sen!2sus" 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0; display:block;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Pawly Salon Location Map">
+                </iframe>
+              </div>
+              <p style="color:rgba(255,255,255,0.85); margin-bottom:var(--space-xs);"><i class="ph ph-map-pin" style="color:var(--color-secondary);"></i> 123 Pet Avenue, San Francisco, CA 94102</p>
+              <p style="color:rgba(255,255,255,0.65); font-size:var(--fs-small); margin-bottom:var(--space-sm);">Free parking available. Located near Central Park station.</p>
+              <a href="contact.html" class="btn btn-outline-white btn-sm">
+                <i class="ph ph-navigation-arrow"></i> Visit Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-name">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+              <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+              <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+            </svg>
+            PAWLY
+          </div>
+          <p>Premium grooming care for your beloved companions.</p>
+          <div class="footer-social">
+            <button class="btn-social btn-google"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/><path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/><path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/></svg> Sign in with Google</button>
+            <button class="btn-social btn-facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Sign in with Facebook</button>
+            <button class="btn-social btn-apple"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg> Sign in with Apple</button>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Home</a>
+            <a href="about.html"><i class="ph ph-caret-right" aria-hidden="true"></i> About</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Services</a>
+            <a href="groomers.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Groomers</a>
+            <a href="gallery.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Gallery</a>
+            <a href="packages.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Packages</a>
+            <a href="blog.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Blog</a>
+            <a href="contact.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <div class="footer-links">
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Dog Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Cat Grooming</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Nail Care</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Spa Treatments</a>
+            <a href="services.html"><i class="ph ph-caret-right" aria-hidden="true"></i> Breed-Specific Styling</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>123 Pet Avenue, San Francisco, CA 94102</span></div>
+          <div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (555) 729-5968</span></div>
+          <div class="footer-contact-item"><i class="ph ph-envelope" aria-hidden="true"></i><span>hello@pawly.com</span></div>
+          <div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon-Sat: 8AM - 7PM<br>Sun: 10AM - 5PM</span></div>
+          <a href="login.html" class="btn btn-secondary btn-sm" style="margin-top:var(--space-sm);"><i class="ph ph-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Pawly. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/rtl-toggle.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>

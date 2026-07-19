@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Portal — Overview</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <!-- Chart.js for interactive pet care statistics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="User Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/>
+          <circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/>
+          <circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item active"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar-plus"></i><span>Book Session</span></a></li>
+        <li><a href="pets.html" class="db-menu-item"><i class="ph ph-dog"></i><span>My Pets</span></a></li>
+        <li><a href="history.html" class="db-menu-item"><i class="ph ph-clock-counter-clockwise"></i><span>Grooming History</span></a></li>
+        <li><a href="invoices.html" class="db-menu-item"><i class="ph ph-receipt"></i><span>Invoices</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-user"></i><span>My Profile</span></a></li>
+      </ul>
+
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <!-- TOPBAR -->
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Client Workspace</span>
+        </div>
+        
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+            <i class="ph ph-sun icon-sun" style="display:none;"></i>
+            <i class="ph ph-moon icon-moon"></i>
+          </button>
+
+          <div class="db-user-profile">
+            <div class="db-user-avatar">SJ</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Sarah Jenkins</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENT MAIN -->
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Overview</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Welcome back, Sarah! Here is your pets status check.</p>
+          </div>
+          <div>
+            <a href="appointments.html" class="btn btn-primary"><i class="ph ph-calendar-plus"></i> Book Spa Day</a>
+          </div>
+        </div>
+
+        <!-- Quick Info Row -->
+        <div class="grid grid-3" style="margin-bottom: var(--space-xl);">
+          <div class="db-stat-card">
+            <div class="db-stat-info">
+              <h3>Registered Pets</h3>
+              <div class="db-stat-num">2</div>
+              <div style="color:var(--color-primary); font-size:12px;">Milo (Dog) & Bella (Cat)</div>
+            </div>
+            <div class="db-stat-icon" style="background:rgba(45,106,79,0.1); color:var(--color-primary);"><i class="ph ph-dog"></i></div>
+          </div>
+
+          <div class="db-stat-card">
+            <div class="db-stat-info">
+              <h3>Membership Level</h3>
+              <div class="db-stat-num" style="color:var(--color-secondary);">Gold</div>
+              <div style="color:var(--color-secondary); font-size:12px;">15% Off all add-ons enabled</div>
+            </div>
+            <div class="db-stat-icon" style="background:rgba(244,162,97,0.12); color:var(--color-secondary);"><i class="ph ph-crown"></i></div>
+          </div>
+
+          <div class="db-stat-card">
+            <div class="db-stat-info">
+              <h3>Club Pawly Savings</h3>
+              <div class="db-stat-num">$120</div>
+              <div style="color:var(--color-success); font-size:12px;">Total saved this year</div>
+            </div>
+            <div class="db-stat-icon" style="background:rgba(82,183,136,0.12); color:var(--color-success);"><i class="ph ph-percent"></i></div>
+          </div>
+        </div>
+
+        <!-- Charts Grid Section -->
+        <div class="db-charts-grid">
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>My Pet Care Expenses</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Last 6 months ($)</span>
+            </div>
+            <div style="height:240px; position:relative;">
+              <canvas id="userExpensesChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Grooming Frequencies</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Total visits by pet</span>
+            </div>
+            <div style="height:240px; position:relative;">
+              <canvas id="userGroomFreqChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Milo's Weight Tracker</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Weight tracking (lbs)</span>
+            </div>
+            <div style="height:240px; position:relative;">
+              <canvas id="userWeightChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Services Booked</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Breakdown by category</span>
+            </div>
+            <div style="height:240px; position:relative;">
+              <canvas id="userServicesChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two columns layout -->
+        <div class="two-col" style="gap:var(--space-xl); align-items:stretch;">
+          <!-- Left Column: Upcoming Appt and Pets Grid -->
+          <div style="flex:1.2; display:flex; flex-direction:column; gap:var(--space-xl);">
+            <!-- Next Appointment -->
+            <div class="db-card" style="margin-bottom:0; background:linear-gradient(135deg, var(--color-primary) 0%, #153828 100%); color:#fff; border:none; box-shadow:var(--shadow-md);">
+              <h3 style="color:#fff; margin-bottom:var(--space-md); border-bottom:1px solid rgba(255,255,255,0.15); padding-bottom:var(--space-sm);">Next Grooming Session</h3>
+              <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--space-md);">
+                <div>
+                  <h4 style="color:var(--color-secondary); font-size:22px; margin-bottom:4px;">Milo <span style="font-size:14px; font-weight:normal; color:#fff;">(Goldendoodle)</span></h4>
+                  <p style="color:rgba(255,255,255,0.85); font-size:var(--fs-small); margin-bottom:0;"><i class="ph ph-scissors"></i> Signature Style Package &bull; Groomer: Sarah M.</p>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:18px; font-weight:var(--fw-semibold); color:var(--color-secondary);">Today at 02:30 PM</div>
+                  <span class="badge badge-secondary" style="margin-top:4px;">In Progress</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pets Directory preview -->
+            <div class="db-card" style="margin-bottom:0;">
+              <div class="db-card-header">
+                <h2>My Pampered Companions</h2>
+                <a href="pets.html" class="btn btn-outline btn-sm">Manage Pets</a>
+              </div>
+              <div class="grid grid-2" style="gap: var(--space-md);">
+                <div class="card" style="display:flex; align-items:center; gap: var(--space-md);">
+                  <div style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg, var(--color-primary), #52B788); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px;"><i class="ph ph-dog"></i></div>
+                  <div>
+                    <h3 style="font-size:18px; margin-bottom:2px;">Milo</h3>
+                    <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">Goldendoodle &bull; 2 years</p>
+                    <span class="badge badge-primary" style="font-size:10px; margin-top:4px;">Grooming Today</span>
+                  </div>
+                </div>
+                <div class="card" style="display:flex; align-items:center; gap: var(--space-md);">
+                  <div style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg, var(--color-secondary), var(--color-accent)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px;"><i class="ph ph-cat"></i></div>
+                  <div>
+                    <h3 style="font-size:18px; margin-bottom:2px;">Bella</h3>
+                    <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">Persian &bull; 4 years</p>
+                    <span class="badge badge-outline" style="font-size:10px; margin-top:4px;">Next Groom: Aug 12</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Recent Activity and tips -->
+          <div style="flex:0.8; display:flex; flex-direction:column; gap:var(--space-xl);">
+            <!-- Activity log -->
+            <div class="db-card" style="margin-bottom:0;">
+              <div class="db-card-header" style="margin-bottom:var(--space-md);">
+                <h2>Recent Notifications</h2>
+              </div>
+              <div style="display:flex; flex-direction:column; gap: var(--space-sm);">
+                <div style="display:flex; gap:var(--space-xs); font-size:13px;">
+                  <i class="ph ph-bell" style="color:var(--color-secondary); margin-top:3px;"></i>
+                  <div>
+                    <p style="margin-bottom:2px;"><strong>Milo</strong> has checked in at the salon counter.</p>
+                    <span style="font-size:11px; color:var(--color-text-muted);">10 mins ago</span>
+                  </div>
+                </div>
+                <div style="display:flex; gap:var(--space-xs); font-size:13px;">
+                  <i class="ph ph-receipt" style="color:var(--color-primary); margin-top:3px;"></i>
+                  <div>
+                    <p style="margin-bottom:2px;">Invoice paid for <strong>Bella's</strong> June appointment.</p>
+                    <span style="font-size:11px; color:var(--color-text-muted);">2 days ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Custom Home Tips -->
+            <div class="db-card" style="margin-bottom:0; background:rgba(244,162,97,0.05);">
+              <h3 style="color:var(--color-secondary); margin-bottom:var(--space-xs);"><i class="ph ph-sparkles"></i> Stylist Tip</h3>
+              <p class="card-text" style="font-size:var(--fs-small); margin-bottom:0;">"To prevent tangles in Milo's curls, spray a leave-in coat conditioner weekly and use a stainless steel slicker comb. Avoid pulling out mats manually."</p>
+              <p style="font-size:11px; color:var(--color-text-muted); margin-top:var(--space-xs); text-align:right; margin-bottom:0;">— Sarah Mitchell, Lead Stylist</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ── Pet Care Expenses Chart (Line) ──
+      const expensesCtx = document.getElementById('userExpensesChart').getContext('2d');
+      new Chart(expensesCtx, {
+        type: 'line',
+        data: {
+          labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Care Expenses ($)',
+            data: [85, 120, 60, 140, 95, 165],
+            borderColor: '#2D6A4F',
+            backgroundColor: 'rgba(45, 106, 79, 0.08)',
+            borderWidth: 3,
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: 'rgba(0,0,0,0.05)' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // ── Grooming Frequencies Chart (Doughnut) ──
+      const groomFreqCtx = document.getElementById('userGroomFreqChart').getContext('2d');
+      new Chart(groomFreqCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Milo (Goldendoodle)', 'Bella (Persian Cat)'],
+          datasets: [{
+            data: [12, 5],
+            backgroundColor: ['#2D6A4F', '#F4A267'],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, padding: 15, font: { size: 11 } }
+            }
+          }
+        }
+      });
+
+      // ── Milo's Weight Tracker Chart (Line) ──
+      const weightCtx = document.getElementById('userWeightChart').getContext('2d');
+      new Chart(weightCtx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Weight (lbs)',
+            data: [22.0, 22.5, 23.2, 23.8, 24.1, 24.5],
+            borderColor: '#F4A267',
+            backgroundColor: 'rgba(244, 162, 97, 0.08)',
+            borderWidth: 3,
+            tension: 0.2,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: 'rgba(0,0,0,0.05)' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // ── Services Booked Breakdown Chart (Polar Area) ──
+      const servicesCtx = document.getElementById('userServicesChart').getContext('2d');
+      new Chart(servicesCtx, {
+        type: 'polarArea',
+        data: {
+          labels: ['Bath & Brush', 'Full Groom', 'Nail Trim', 'Spa Special'],
+          datasets: [{
+            data: [10, 8, 6, 5],
+            backgroundColor: [
+              'rgba(45, 106, 79, 0.7)',
+              'rgba(244, 162, 97, 0.7)',
+              'rgba(82, 183, 136, 0.7)',
+              'rgba(231, 111, 81, 0.7)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 10, padding: 8, font: { size: 10 } }
+            }
+          },
+          scales: {
+            r: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { display: false } }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

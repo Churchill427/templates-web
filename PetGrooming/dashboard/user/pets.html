@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Portal — My Pets</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="User Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar-plus"></i><span>Book Session</span></a></li>
+        <li><a href="pets.html" class="db-menu-item active"><i class="ph ph-dog"></i><span>My Pets</span></a></li>
+        <li><a href="history.html" class="db-menu-item"><i class="ph ph-clock-counter-clockwise"></i><span>Grooming History</span></a></li>
+        <li><a href="invoices.html" class="db-menu-item"><i class="ph ph-receipt"></i><span>Invoices</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-user"></i><span>My Profile</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Client Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">SJ</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Sarah Jenkins</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>My Pets</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Register, overview, and update your companions details.</p>
+          </div>
+          <div>
+            <button class="btn btn-primary" onclick="openModal('add-pet-modal')"><i class="ph ph-plus-circle"></i> Add Pet Profile</button>
+          </div>
+        </div>
+
+        <!-- Pets Grid -->
+        <div class="grid grid-2" id="pets-grid-container" data-stagger="100">
+          <!-- Pet 1 -->
+          <div class="card pet-profile-card" data-pet-id="1">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--space-md);">
+              <div style="display:flex; align-items:center; gap:var(--space-md);">
+                <div style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg, var(--color-primary), #52B788); color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px;"><i class="ph ph-dog"></i></div>
+                <div>
+                  <h3 style="font-size:20px; margin-bottom:2px;">Milo</h3>
+                  <span class="badge badge-primary" style="font-size:10px;">In Progress</span>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removePetProfile(1)">Delete</button>
+            </div>
+            
+            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:var(--space-xs); font-size:13px; margin-bottom:var(--space-md);">
+              <div><strong style="color:var(--color-text-secondary);">Breed:</strong> Goldendoodle</div>
+              <div><strong style="color:var(--color-text-secondary);">Age:</strong> 2 Years</div>
+              <div><strong style="color:var(--color-text-secondary);">Weight:</strong> 12 kg</div>
+              <div><strong style="color:var(--color-text-secondary);">Coat Type:</strong> Curly double-coat</div>
+            </div>
+
+            <div style="background:var(--color-bg); padding:var(--space-sm); border-radius:var(--radius-md); font-size:12px; color:var(--color-text-muted);">
+              <strong>Notes:</strong> Extremely friendly. Dislikes cold air blowers. Prefers treats during paw cleaning.
+            </div>
+          </div>
+
+          <!-- Pet 2 -->
+          <div class="card pet-profile-card" data-pet-id="2">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--space-md);">
+              <div style="display:flex; align-items:center; gap:var(--space-md);">
+                <div style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg, var(--color-secondary), var(--color-accent)); color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px;"><i class="ph ph-cat"></i></div>
+                <div>
+                  <h3 style="font-size:20px; margin-bottom:2px;">Bella</h3>
+                  <span class="badge badge-outline" style="font-size:10px;">Scheduled Aug 12</span>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removePetProfile(2)">Delete</button>
+            </div>
+            
+            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:var(--space-xs); font-size:13px; margin-bottom:var(--space-md);">
+              <div><strong style="color:var(--color-text-secondary);">Breed:</strong> Persian Cat</div>
+              <div><strong style="color:var(--color-text-secondary);">Age:</strong> 4 Years</div>
+              <div><strong style="color:var(--color-text-secondary);">Weight:</strong> 5 kg</div>
+              <div><strong style="color:var(--color-text-secondary);">Coat Type:</strong> Dense, long coat</div>
+            </div>
+
+            <div style="background:var(--color-bg); padding:var(--space-sm); border-radius:var(--radius-md); font-size:12px; color:var(--color-text-muted);">
+              <strong>Notes:</strong> Very nervous and sensitive. Needs low-stress handling by a feline certified specialist.
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Pet Profile Modal -->
+  <div class="modal-overlay" id="add-pet-modal">
+    <div class="modal" style="max-width:500px;">
+      <div class="modal-header">
+        <h3>Create Pet Profile</h3>
+        <button class="modal-close"><i class="ph ph-x"></i></button>
+      </div>
+      <form id="new-pet-form" data-validate>
+        <div class="form-group">
+          <label class="form-label" for="pet-name-in">Pet Name</label>
+          <input type="text" id="pet-name-in" class="form-input" required>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label" for="pet-type-in">Pet Type</label>
+            <select id="pet-type-in" class="form-input" required>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="other">Other / Exotic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pet-breed-in">Breed</label>
+            <input type="text" id="pet-breed-in" class="form-input" placeholder="e.g. Samoyed" required>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label" for="pet-age-in">Age (Years)</label>
+            <input type="number" id="pet-age-in" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pet-weight-in">Weight (kg)</label>
+            <input type="number" id="pet-weight-in" class="form-input" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="pet-coat-in">Coat Type</label>
+          <input type="text" id="pet-coat-in" class="form-input" placeholder="e.g. Curly double coat" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="pet-notes-in">Special Care Notes</label>
+          <textarea id="pet-notes-in" class="form-input" placeholder="Allergies, behavior warnings..." rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Create Profile</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- CRUD Simulation Scripts -->
+  <script>
+    function removePetProfile(id) {
+      const card = document.querySelector(`.pet-profile-card[data-pet-id="${id}"]`);
+      if (card) {
+        card.style.transform = 'scale(0.8)';
+        card.style.opacity = '0';
+        setTimeout(() => {
+          card.remove();
+          showToast('Pet profile deleted.', 'error');
+        }, 300);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('new-pet-form');
+      const container = document.getElementById('pets-grid-container');
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('pet-name-in').value;
+          const type = document.getElementById('pet-type-in').value;
+          const breed = document.getElementById('pet-breed-in').value;
+          const age = document.getElementById('pet-age-in').value;
+          const weight = document.getElementById('pet-weight-in').value;
+          const coat = document.getElementById('pet-coat-in').value;
+          const notes = document.getElementById('pet-notes-in').value || 'No special instructions recorded.';
+          const newId = Date.now();
+
+          const iconClass = type === 'cat' ? 'ph-cat' : 'ph-dog';
+          const bgGrad = type === 'cat' ? 'linear-gradient(135deg, var(--color-secondary), var(--color-accent))' : 'linear-gradient(135deg, var(--color-primary), #52B788)';
+
+          const newCard = document.createElement('div');
+          newCard.className = 'card pet-profile-card';
+          newCard.dataset.petId = newId;
+          newCard.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--space-md);">
+              <div style="display:flex; align-items:center; gap:var(--space-md);">
+                <div style="width:64px; height:64px; border-radius:50%; background:${bgGrad}; color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px;"><i class="ph ${iconClass}"></i></div>
+                <div>
+                  <h3 style="font-size:20px; margin-bottom:2px;">${name}</h3>
+                  <span class="badge badge-outline" style="font-size:10px;">Scheduled Slot Pending</span>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="removePetProfile(${newId})">Delete</button>
+            </div>
+            
+            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:var(--space-xs); font-size:13px; margin-bottom:var(--space-md);">
+              <div><strong style="color:var(--color-text-secondary);">Breed:</strong> ${breed}</div>
+              <div><strong style="color:var(--color-text-secondary);">Age:</strong> ${age} Years</div>
+              <div><strong style="color:var(--color-text-secondary);">Weight:</strong> ${weight} kg</div>
+              <div><strong style="color:var(--color-text-secondary);">Coat Type:</strong> ${coat}</div>
+            </div>
+
+            <div style="background:var(--color-bg); padding:var(--space-sm); border-radius:var(--radius-md); font-size:12px; color:var(--color-text-muted);">
+              <strong>Notes:</strong> ${notes}
+            </div>
+          `;
+
+          container.appendChild(newCard);
+          closeModal('add-pet-modal');
+          showToast(`Profile created for ${name}!`, 'success');
+          form.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

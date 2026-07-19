@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Admin — Salon Settings</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to main dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="Admin Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar"></i><span>Appointments</span></a></li>
+        <li><a href="customers.html" class="db-menu-item"><i class="ph ph-users"></i><span>Customers</span></a></li>
+        <li><a href="groomers.html" class="db-menu-item"><i class="ph ph-scissors"></i><span>Groomers</span></a></li>
+        <li><a href="services.html" class="db-menu-item"><i class="ph ph-folder-open"></i><span>Services</span></a></li>
+        <li><a href="reports.html" class="db-menu-item"><i class="ph ph-chart-bar"></i><span>Reports</span></a></li>
+        <li><a href="settings.html" class="db-menu-item active"><i class="ph ph-gear"></i><span>Settings</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Admin Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">AD</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Administrator</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Settings</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Configure global salon metrics and dashboard settings.</p>
+          </div>
+        </div>
+
+        <div class="two-col" style="gap:var(--space-xl); align-items:stretch;">
+          <!-- Left Forms card -->
+          <div class="card" style="flex:1.2; margin-bottom:0;">
+            <h3 style="margin-bottom:var(--space-md);">Salon Profile Configuration</h3>
+            
+            <form id="settings-config-form" data-validate>
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="set-salon-name">Brand Name</label>
+                  <input type="text" id="set-salon-name" class="form-input" value="Pawly" disabled>
+                  <p style="font-size:11px; color:var(--color-text-muted); margin-top:2px; margin-bottom:0;">Strictly locked brand identifier.</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-phone">Hotline Number</label>
+                  <input type="tel" id="set-phone" class="form-input" value="+1 (555) 729-5968" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="set-address">Salon Address</label>
+                <input type="text" id="set-address" class="form-input" value="123 Pet Avenue, San Francisco, CA 94102" required>
+              </div>
+
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="set-slot-cap">Max Slots Per Hour</label>
+                  <input type="number" id="set-slot-cap" class="form-input" value="5" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-currency">Base Currency</label>
+                  <select id="set-currency" class="form-input" required>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                  </select>
+                </div>
+              </div>
+
+              <h3 style="margin-top:var(--space-lg); margin-bottom:var(--space-md);">Notification Targets</h3>
+              
+              <div class="form-group">
+                <label class="form-check">
+                  <input type="checkbox" checked>
+                  <span>Notify manager on booking cancellation</span>
+                </label>
+                <label class="form-check" style="margin-top: var(--space-xs);">
+                  <input type="checkbox" checked>
+                  <span>Dispatch automatic invoices after appointments complete</span>
+                </label>
+                <label class="form-check" style="margin-top: var(--space-xs);">
+                  <input type="checkbox">
+                  <span>Send SMS notifications to clients via Twilio Mock</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top:var(--space-sm);">Save Variables</button>
+            </form>
+          </div>
+
+          <!-- Right Variables overview card -->
+          <div class="card" style="flex:0.8; margin-bottom:0; background:linear-gradient(135deg, rgba(45,106,79,0.05) 0%, rgba(244,162,97,0.05) 100%);">
+            <h3>Salon Metadata</h3>
+            <p class="card-text">Status indicators of global variables configured on this server.</p>
+            
+            <div style="display:flex; flex-direction:column; gap: var(--space-md); margin-top:var(--space-md);">
+              <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--color-border); padding-bottom:4px;">
+                <span style="color:var(--color-text-muted);">Database Status</span>
+                <span class="badge badge-success" style="font-size:11px;">Connected</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--color-border); padding-bottom:4px;">
+                <span style="color:var(--color-text-muted);">Server Latency</span>
+                <span>12ms</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--color-border); padding-bottom:4px;">
+                <span style="color:var(--color-text-muted);">API Sync Interval</span>
+                <span>60 seconds</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--color-border); padding-bottom:4px;">
+                <span style="color:var(--color-text-muted);">App Version</span>
+                <span>v1.0.4-stable</span>
+              </div>
+            </div>
+
+            <div style="margin-top: var(--space-xl); text-align:center;">
+              <button class="btn btn-outline btn-full btn-sm" style="color:var(--color-accent); border-color:var(--color-accent);" onclick="showToast('Clearing server cache files...', 'info')">Clear System Cache</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- simulated variables save script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const configForm = document.getElementById('settings-config-form');
+      if (configForm) {
+        configForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          showToast('Configuration variables saved successfully!', 'success');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Portal — My Profile Settings</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="User Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar-plus"></i><span>Book Session</span></a></li>
+        <li><a href="pets.html" class="db-menu-item"><i class="ph ph-dog"></i><span>My Pets</span></a></li>
+        <li><a href="history.html" class="db-menu-item"><i class="ph ph-clock-counter-clockwise"></i><span>Grooming History</span></a></li>
+        <li><a href="invoices.html" class="db-menu-item"><i class="ph ph-receipt"></i><span>Invoices</span></a></li>
+        <li><a href="settings.html" class="db-menu-item active"><i class="ph ph-user"></i><span>My Profile</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Client Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">SJ</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Sarah Jenkins</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Profile Settings</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Edit profile settings, credentials, and notification parameters.</p>
+          </div>
+        </div>
+
+        <div class="two-col" style="gap:var(--space-xl); align-items:stretch;">
+          <!-- Left settings configuration form -->
+          <div class="card" style="flex:1.2; margin-bottom:0;">
+            <h3 style="margin-bottom:var(--space-md);">Personal Details</h3>
+            <form id="user-profile-settings-form" data-validate>
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="usr-name">Full Name</label>
+                  <input type="text" id="usr-name" class="form-input" value="Sarah Jenkins" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="usr-phone">Phone Number</label>
+                  <input type="tel" id="usr-phone" class="form-input" value="+1 (555) 304-9844" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="usr-email">Email Address</label>
+                <input type="email" id="usr-email" class="form-input" value="sarah.jenkins@gmail.com" required>
+              </div>
+
+              <h3 style="margin-top:var(--space-lg); margin-bottom:var(--space-md);">Communication Preferences</h3>
+              <div class="form-group">
+                <label class="form-check">
+                  <input type="checkbox" checked>
+                  <span>Send me email notifications when booking confirms</span>
+                </label>
+                <label class="form-check" style="margin-top:var(--space-xs);">
+                  <input type="checkbox" checked>
+                  <span>Send SMS notifications 30 mins before my appointment slot</span>
+                </label>
+                <label class="form-check" style="margin-top:var(--space-xs);">
+                  <input type="checkbox">
+                  <span>Send me updates and grooming discounts weekly</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top:var(--space-sm);">Save Profile</button>
+            </form>
+          </div>
+
+          <!-- Right password settings panel -->
+          <div class="card" style="flex:0.8; margin-bottom:0;">
+            <h3 style="margin-bottom:var(--space-md);">Change Password</h3>
+            <form id="user-password-settings-form" data-validate>
+              <div class="form-group">
+                <label class="form-label" for="pass-curr">Current Password</label>
+                <input type="password" id="pass-curr" class="form-input" placeholder="••••••••" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pass-new">New Password</label>
+                <input type="password" id="pass-new" class="form-input" placeholder="Min. 8 characters" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pass-confirm">Confirm New Password</label>
+                <input type="password" id="pass-confirm" class="form-input" placeholder="••••••••" required>
+              </div>
+              <button type="submit" class="btn btn-outline btn-full">Update Password</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- Save triggers simulation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const profileForm = document.getElementById('user-profile-settings-form');
+      if (profileForm) {
+        profileForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          showToast('Profile settings saved successfully!', 'success');
+        });
+      }
+
+      const passForm = document.getElementById('user-password-settings-form');
+      if (passForm) {
+        passForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const p1 = document.getElementById('pass-new').value;
+          const p2 = document.getElementById('pass-confirm').value;
+          if (p1 === p2) {
+            showToast('Password updated successfully!', 'success');
+            passForm.reset();
+          } else {
+            showToast('Passwords do not match!', 'error');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

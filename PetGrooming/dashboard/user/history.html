@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Portal — Grooming History</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="User Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar-plus"></i><span>Book Session</span></a></li>
+        <li><a href="pets.html" class="db-menu-item"><i class="ph ph-dog"></i><span>My Pets</span></a></li>
+        <li><a href="history.html" class="db-menu-item active"><i class="ph ph-clock-counter-clockwise"></i><span>Grooming History</span></a></li>
+        <li><a href="invoices.html" class="db-menu-item"><i class="ph ph-receipt"></i><span>Invoices</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-user"></i><span>My Profile</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Client Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">SJ</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Sarah Jenkins</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Grooming History</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Logs of completed packages and stylist feedback report cards.</p>
+          </div>
+        </div>
+
+        <!-- History cards / tables logs -->
+        <div class="db-card">
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pet</th>
+                  <th>Service Date</th>
+                  <th>Stylist / Groomer</th>
+                  <th>Package Details</th>
+                  <th>Invoice Ref.</th>
+                  <th>Status</th>
+                  <th style="text-align:right;">Report Card</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Bella</strong> (Persian)</td>
+                  <td>June 12, 2026</td>
+                  <td>Maria Gonzalez</td>
+                  <td>Essential Care + Aromatherapy</td>
+                  <td>#INV-1034</td>
+                  <td><span class="badge badge-success" style="font-size:11px;">Completed</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="openModal('report-bella-modal')">View Feedback</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Milo</strong> (Goldendoodle)</td>
+                  <td>May 18, 2026</td>
+                  <td>Sarah Mitchell</td>
+                  <td>Signature Style + Paw Balm</td>
+                  <td>#INV-0982</td>
+                  <td><span class="badge badge-success" style="font-size:11px;">Completed</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="openModal('report-milo-modal')">View Feedback</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Bella</strong> (Persian)</td>
+                  <td>April 10, 2026</td>
+                  <td>Maria Gonzalez</td>
+                  <td>Essential Care</td>
+                  <td>#INV-0921</td>
+                  <td><span class="badge badge-success" style="font-size:11px;">Completed</span></td>
+                  <td style="text-align:right;">
+                    <button class="btn btn-outline btn-sm" onclick="showToast('Loading historical report card...', 'info')">View Feedback</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Feedback Modal 1 (Bella) -->
+  <div class="modal-overlay" id="report-bella-modal">
+    <div class="modal" style="max-width:480px;">
+      <div class="modal-header">
+        <h3>Grooming Report Card</h3>
+        <button class="modal-close"><i class="ph ph-x"></i></button>
+      </div>
+      <div style="border-bottom: 1px solid var(--color-border); padding-bottom:var(--space-sm); margin-bottom:var(--space-md);">
+        <h4 style="color:var(--color-primary);">Bella — Persian Cat</h4>
+        <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">Service Date: June 12, 2026 &bull; Stylist: Maria Gonzalez</p>
+      </div>
+      
+      <div style="display:flex; flex-direction:column; gap:var(--space-sm);">
+        <div>
+          <strong style="font-size:13px; color:var(--color-text-secondary);">Coat Condition Rating:</strong>
+          <div style="color:var(--color-secondary); font-size:14px; margin-top:2px;">★★★★☆ (Good. Slight mats removed near ears)</div>
+        </div>
+        <div>
+          <strong style="font-size:13px; color:var(--color-text-secondary);">Behavior Check:</strong>
+          <div style="color:var(--color-primary); font-size:14px; margin-top:2px;">Calm and relaxed. Accepted water pressure easily.</div>
+        </div>
+        <div>
+          <strong style="font-size:13px; color:var(--color-text-secondary);">Stylist Notes:</strong>
+          <p class="card-text" style="font-size:13px; margin-top:2px; margin-bottom:0;">
+            "Bella was incredibly sweet today. Aromatherapy bath helped calm her nerves down. Skin checks show slight dryness, so we recommend moisturizing spray before brushing at home."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal 2 (Milo) -->
+  <div class="modal-overlay" id="report-milo-modal">
+    <div class="modal" style="max-width:480px;">
+      <div class="modal-header">
+        <h3>Grooming Report Card</h3>
+        <button class="modal-close"><i class="ph ph-x"></i></button>
+      </div>
+      <div style="border-bottom: 1px solid var(--color-border); padding-bottom:var(--space-sm); margin-bottom:var(--space-md);">
+        <h4 style="color:var(--color-primary);">Milo — Goldendoodle</h4>
+        <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">Service Date: May 18, 2026 &bull; Stylist: Sarah Mitchell</p>
+      </div>
+      
+      <div style="display:flex; flex-direction:column; gap:var(--space-sm);">
+        <div>
+          <strong style="font-size:13px; color:var(--color-text-secondary);">Coat Condition Rating:</strong>
+          <div style="color:var(--color-secondary); font-size:14px; margin-top:2px;">★★★★★ (Perfectly maintained)</div>
+        </div>
+        <div>
+          <strong style="font-size:13px; color:var(--color-text-secondary);">Behavior Check:</strong>
+          <div style="color:var(--color-primary); font-size:14px; margin-top:2px;">Excited and responsive. Enjoys styling shears work.</div>
+        </div>
+        <div>
+          <strong style="font-size:13px; color:var(--color-text-secondary);">Stylist Notes:</strong>
+          <p class="card-text" style="font-size:13px; margin-top:2px; margin-bottom:0;">
+            "Milo is always a joy. We trimmed his signature teddy-bear face look and moisturized his paw pads. Try daily combing undercoat to prevent mats."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+</body>
+</html>

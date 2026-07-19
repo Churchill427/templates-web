@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Portal — Invoices</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <style>
+    /* Print optimizations as requested in instructions */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .db-sidebar, .db-topbar, .db-title-bar, .invoice-actions-print {
+        display: none !important;
+      }
+      .invoice-print-area, .invoice-print-area * {
+        visibility: visible;
+      }
+      .invoice-print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="User Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar-plus"></i><span>Book Session</span></a></li>
+        <li><a href="pets.html" class="db-menu-item"><i class="ph ph-dog"></i><span>My Pets</span></a></li>
+        <li><a href="history.html" class="db-menu-item"><i class="ph ph-clock-counter-clockwise"></i><span>Grooming History</span></a></li>
+        <li><a href="invoices.html" class="db-menu-item active"><i class="ph ph-receipt"></i><span>Invoices</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-user"></i><span>My Profile</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Client Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">SJ</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Sarah Jenkins</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Invoices</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">View and print invoices from previous transactions.</p>
+          </div>
+        </div>
+
+        <div class="two-col" style="gap:var(--space-xl); align-items:stretch;">
+          <!-- Left list card -->
+          <div class="db-card" style="flex:0.8; margin-bottom:0;">
+            <h3 style="margin-bottom:var(--space-md);">All Invoices</h3>
+            <div style="display:flex; flex-direction:column; gap: var(--space-xs);">
+              <div class="card invoice-tab active" style="cursor:pointer; padding:var(--space-md); border-color:var(--color-primary);" onclick="switchInvoice(1)">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+                  <strong style="font-size:15px;">Invoice #INV-1034</strong>
+                  <span class="badge badge-success" style="font-size:9px;">Paid</span>
+                </div>
+                <div style="font-size:12px; color:var(--color-text-muted);">Bella &bull; June 12, 2026 &bull; $42.50</div>
+              </div>
+              <div class="card invoice-tab" style="cursor:pointer; padding:var(--space-md);" onclick="switchInvoice(2)">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+                  <strong style="font-size:15px;">Invoice #INV-0982</strong>
+                  <span class="badge badge-success" style="font-size:9px;">Paid</span>
+                </div>
+                <div style="font-size:12px; color:var(--color-text-muted);">Milo &bull; May 18, 2026 &bull; $63.75</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right print panel -->
+          <div class="card invoice-print-area" style="flex:1.2; margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between; border-color:var(--color-border);" id="invoice-bill-container">
+            <div>
+              <!-- Invoice Header details -->
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid var(--color-border); padding-bottom:var(--space-md); margin-bottom:var(--space-md);">
+                <div>
+                  <h2 style="color:var(--color-primary); font-size:24px; margin-bottom:2px; display:flex; align-items:center; gap:4px;">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px; height:28px; fill:var(--color-primary);">
+                      <circle cx="14" cy="10" r="5"/><circle cx="34" cy="10" r="5"/><circle cx="7" cy="24" r="5"/><circle cx="41" cy="24" r="5"/><ellipse cx="24" cy="32" rx="12" ry="10"/>
+                    </svg>
+                    PAWLY
+                  </h2>
+                  <p style="font-size:11px; color:var(--color-text-muted); margin-bottom:0;">123 Pet Avenue, San Francisco, CA</p>
+                </div>
+                <div style="text-align:right;">
+                  <h3 style="font-size:16px; margin-bottom:2px;" id="inv-details-num">INVOICE #INV-1034</h3>
+                  <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;" id="inv-details-date">Date: June 12, 2026</p>
+                </div>
+              </div>
+
+              <!-- Bill to metadata -->
+              <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:var(--space-md); margin-bottom:var(--space-lg);">
+                <div>
+                  <h4 style="font-size:12px; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:4px;">Client Details</h4>
+                  <strong>Sarah Jenkins</strong>
+                  <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">sarah.jenkins@gmail.com</p>
+                </div>
+                <div>
+                  <h4 style="font-size:12px; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:4px;">Pet Details</h4>
+                  <strong id="inv-details-pet">Bella (Persian Cat)</strong>
+                  <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;" id="inv-details-notes">Special care: Sensitive skin</p>
+                </div>
+              </div>
+
+              <!-- Bill breakdown list -->
+              <table style="border-collapse:collapse; width:100%; margin-bottom:var(--space-lg);">
+                <thead>
+                  <tr style="border-bottom:2px solid var(--color-border); text-align:left;">
+                    <th style="padding:8px 0;">Description</th>
+                    <th style="padding:8px 0; text-align:right;">Price</th>
+                  </tr>
+                </thead>
+                <tbody id="invoice-items-tbody">
+                  <tr style="border-bottom:1px solid var(--color-border);">
+                    <td style="padding:10px 0;">
+                      <strong>Essential Care Grooming Package</strong>
+                      <div style="font-size:11px; color:var(--color-text-muted);">Shampoo cleansing, dry, brush, nail clipping</div>
+                    </td>
+                    <td style="padding:10px 0; text-align:right;">$35.00</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--color-border);">
+                    <td style="padding:10px 0;">
+                      <strong>Aromatherapy Bath Upgrade</strong>
+                      <div style="font-size:11px; color:var(--color-text-muted);">Calming lavender oil conditioning</div>
+                    </td>
+                    <td style="padding:10px 0; text-align:right;">$15.00</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid var(--color-border);">
+                    <td style="padding:10px 0; color:var(--color-secondary);">
+                      <strong>Gold Club Privilege Discount (15% Off)</strong>
+                    </td>
+                    <td style="padding:10px 0; text-align:right; color:var(--color-secondary); font-weight:var(--fw-semibold);">-$7.50</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Total summary block -->
+            <div style="border-top:1px solid var(--color-border); padding-top:var(--space-md); display:flex; flex-direction:column; align-items:flex-end;">
+              <div style="display:flex; justify-content:space-between; width:220px; font-size:14px; margin-bottom:4px;">
+                <span style="color:var(--color-text-muted);">Subtotal:</span>
+                <span id="inv-summary-subtotal">$50.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; width:220px; font-size:14px; margin-bottom:4px;">
+                <span style="color:var(--color-text-muted);">Club Discount:</span>
+                <span id="inv-summary-discount">-$7.50</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; width:220px; font-size:18px; font-weight:var(--fw-bold); border-top:1px solid var(--color-border); padding-top:4px; margin-top:4px;">
+                <span>Amount Paid:</span>
+                <span id="inv-summary-total" style="color:var(--color-primary);">$42.50</span>
+              </div>
+              
+              <div class="invoice-actions-print" style="margin-top:var(--space-lg); display:flex; gap:var(--space-xs);">
+                <button class="btn btn-outline btn-sm" onclick="printInvoice()"><i class="ph ph-printer"></i> Print Invoice</button>
+                <button class="btn btn-primary btn-sm" onclick="showToast('Invoice PDF downloading...', 'success')"><i class="ph ph-download-simple"></i> Download PDF</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+
+  <!-- tab invoice switcher scripts -->
+  <script>
+    function switchInvoice(id) {
+      const tabs = document.querySelectorAll('.invoice-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      
+      const targetTab = tabs[id - 1];
+      if (targetTab) targetTab.classList.add('active');
+
+      // Update bill summary details
+      const invNum = document.getElementById('inv-details-num');
+      const invDate = document.getElementById('inv-details-date');
+      const invPet = document.getElementById('inv-details-pet');
+      const invNotes = document.getElementById('inv-details-notes');
+      
+      const tbody = document.getElementById('invoice-items-tbody');
+      const subtotal = document.getElementById('inv-summary-subtotal');
+      const discount = document.getElementById('inv-summary-discount');
+      const total = document.getElementById('inv-summary-total');
+
+      if (id === 1) {
+        invNum.textContent = 'INVOICE #INV-1034';
+        invDate.textContent = 'Date: June 12, 2026';
+        invPet.textContent = 'Bella (Persian Cat)';
+        invNotes.textContent = 'Special care: Sensitive skin';
+
+        tbody.innerHTML = `
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 0;">
+              <strong>Essential Care Grooming Package</strong>
+              <div style="font-size:11px; color:var(--color-text-muted);">Shampoo cleansing, dry, brush, nail clipping</div>
+            </td>
+            <td style="padding:10px 0; text-align:right;">$35.00</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 0;">
+              <strong>Aromatherapy Bath Upgrade</strong>
+              <div style="font-size:11px; color:var(--color-text-muted);">Calming lavender oil conditioning</div>
+            </td>
+            <td style="padding:10px 0; text-align:right;">$15.00</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 0; color:var(--color-secondary);">
+              <strong>Gold Club Privilege Discount (15% Off)</strong>
+            </td>
+            <td style="padding:10px 0; text-align:right; color:var(--color-secondary); font-weight:var(--fw-semibold);">-$7.50</td>
+          </tr>
+        `;
+        subtotal.textContent = '$50.00';
+        discount.textContent = '-$7.50';
+        total.textContent = '$42.50';
+      } else {
+        invNum.textContent = 'INVOICE #INV-0982';
+        invDate.textContent = 'Date: May 18, 2026';
+        invPet.textContent = 'Milo (Goldendoodle)';
+        invNotes.textContent = 'Special care: Dislikes dryers';
+
+        tbody.innerHTML = `
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 0;">
+              <strong>Signature Style Grooming Package</strong>
+              <div style="font-size:11px; color:var(--color-text-muted);">Full haircut, warm bath, sanitary trim, pad balm</div>
+            </td>
+            <td style="padding:10px 0; text-align:right;">$65.00</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 0;">
+              <strong>Moisturizing Paw Balm Upgrade</strong>
+              <div style="font-size:11px; color:var(--color-text-muted);">Natural organic beeswax protectant</div>
+            </td>
+            <td style="padding:10px 0; text-align:right;">$10.00</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <td style="padding:10px 0; color:var(--color-secondary);">
+              <strong>Gold Club Privilege Discount (15% Off)</strong>
+            </td>
+            <td style="padding:10px 0; text-align:right; color:var(--color-secondary); font-weight:var(--fw-semibold);">-$11.25</td>
+          </tr>
+        `;
+        subtotal.textContent = '$75.00';
+        discount.textContent = '-$11.25';
+        total.textContent = '$63.75';
+      }
+    }
+  </script>
+</body>
+</html>

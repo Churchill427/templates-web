@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Admin — Overview Dashboard</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <!-- CDNs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Stylesheets (linking up 2 directories) -->
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="Admin Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/>
+          <circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/>
+          <circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item active"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item"><i class="ph ph-calendar"></i><span>Appointments</span></a></li>
+        <li><a href="customers.html" class="db-menu-item"><i class="ph ph-users"></i><span>Customers</span></a></li>
+        <li><a href="groomers.html" class="db-menu-item"><i class="ph ph-scissors"></i><span>Groomers</span></a></li>
+        <li><a href="services.html" class="db-menu-item"><i class="ph ph-folder-open"></i><span>Services</span></a></li>
+        <li><a href="reports.html" class="db-menu-item"><i class="ph ph-chart-bar"></i><span>Reports</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-gear"></i><span>Settings</span></a></li>
+      </ul>
+
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN INTERFACE -->
+    <div class="db-main">
+      <!-- TOPBAR -->
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Admin Workspace</span>
+        </div>
+        
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+            <i class="ph ph-sun icon-sun" style="display:none;"></i>
+            <i class="ph ph-moon icon-moon"></i>
+          </button>
+          
+          <button class="db-sidebar-toggle db-notification-trigger" aria-label="View notifications" style="position:relative;">
+            <i class="ph ph-bell"></i>
+            <span style="position:absolute; top:4px; right:4px; width:8px; height:8px; background:var(--color-secondary); border-radius:50%;"></span>
+          </button>
+
+          <div class="db-user-profile">
+            <div class="db-user-avatar">AD</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Administrator</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENT MAIN -->
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Overview</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Live performance indicators and business tracking details.</p>
+          </div>
+          <div>
+            <span class="badge badge-secondary" style="padding:6px 12px;"><i class="ph ph-clock"></i> Live Updates Enabled</span>
+          </div>
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-4" style="margin-bottom: var(--space-xl);">
+          <div class="db-stat-card">
+            <div class="db-stat-info">
+              <h3>Today's bookings</h3>
+              <div class="db-stat-num">32</div>
+              <div class="db-stat-trend up"><i class="ph ph-trend-up"></i> +12% vs yesterday</div>
+            </div>
+            <div class="db-stat-icon" style="background:rgba(45,106,79,0.1); color:var(--color-primary);"><i class="ph ph-calendar-check"></i></div>
+          </div>
+
+          <div class="db-stat-card">
+            <div class="db-stat-info">
+              <h3>Active Customers</h3>
+              <div class="db-stat-num">1,204</div>
+              <div class="db-stat-trend up"><i class="ph ph-trend-up"></i> +3.5% this month</div>
+            </div>
+            <div class="db-stat-icon" style="background:rgba(244,162,97,0.12); color:var(--color-secondary);"><i class="ph ph-users"></i></div>
+          </div>
+
+          <div class="db-stat-card">
+            <div class="db-stat-info">
+              <h3>Daily Revenue</h3>
+              <div class="db-stat-num">$2,450</div>
+              <div class="db-stat-trend up"><i class="ph ph-trend-up"></i> +8.1% vs target</div>
+            </div>
+            <div class="db-stat-icon" style="background:rgba(82,183,136,0.12); color:var(--color-success);"><i class="ph ph-currency-dollar"></i></div>
+          </div>
+
+          <div class="db-stat-card">
+            <div class="db-stat-info">
+              <h3>Occupancy Rate</h3>
+              <div class="db-stat-num">88%</div>
+              <div class="db-stat-trend down"><i class="ph ph-trend-down"></i> -2% vs slot capacity</div>
+            </div>
+            <div class="db-stat-icon" style="background:rgba(231,111,81,0.1); color:var(--color-accent);"><i class="ph ph-scissors"></i></div>
+          </div>
+        </div>
+
+        <!-- Charts row -->
+        <div class="db-charts-grid">
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Monthly Revenue Growth</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Last 6 months</span>
+            </div>
+            <div style="height:260px; position:relative;">
+              <canvas id="revGrowthChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Top Groomer Performance</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Grooms completed this week</span>
+            </div>
+            <div style="height:260px; position:relative;">
+              <canvas id="groomerPerfChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Appointment Status</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Current week's distribution</span>
+            </div>
+            <div style="height:260px; position:relative;">
+              <canvas id="apptStatusChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Popular Grooming Services</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Total bookings by service type</span>
+            </div>
+            <div style="height:260px; position:relative;">
+              <canvas id="servicePopChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Revenue by Package Type</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Current month's share</span>
+            </div>
+            <div style="height:260px; position:relative;">
+              <canvas id="packageSalesChart"></canvas>
+            </div>
+          </div>
+
+          <div class="db-card" style="margin-bottom:0;">
+            <div class="db-card-header">
+              <h2>Customer Acquisition Channels</h2>
+              <span style="font-size:12px; color:var(--color-text-muted);">Lead source tracking</span>
+            </div>
+            <div style="height:260px; position:relative;">
+              <canvas id="acquisitionChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Appointments List -->
+        <div class="db-card">
+          <div class="db-card-header">
+            <h2>Upcoming Appointments</h2>
+            <a href="appointments.html" class="btn btn-outline btn-sm">Manage Appointments</a>
+          </div>
+          
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Pet Name</th>
+                  <th>Groomer</th>
+                  <th>Service Package</th>
+                  <th>Date & Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sarah Jenkins</td>
+                  <td>Milo (Doodle)</td>
+                  <td>Sarah Mitchell</td>
+                  <td>Signature Style</td>
+                  <td>July 18, 02:30 PM</td>
+                  <td><span class="badge badge-secondary" style="font-size:11px;">In Progress</span></td>
+                </tr>
+                <tr>
+                  <td>Robert Chen</td>
+                  <td>Yuki (Samoyed)</td>
+                  <td>James Chen</td>
+                  <td>Royal VIP Spa</td>
+                  <td>July 18, 04:00 PM</td>
+                  <td><span class="badge badge-primary" style="font-size:11px;">Confirmed</span></td>
+                </tr>
+                <tr>
+                  <td>Elena Rostova</td>
+                  <td>Sasha (Persian)</td>
+                  <td>Maria Gonzalez</td>
+                  <td>Essential Care</td>
+                  <td>July 18, 05:15 PM</td>
+                  <td><span class="badge badge-primary" style="font-size:11px;">Confirmed</span></td>
+                </tr>
+                <tr>
+                  <td>Daniel Craig</td>
+                  <td>Bond (Labrador)</td>
+                  <td>David Park</td>
+                  <td>Signature Style</td>
+                  <td>July 19, 09:00 AM</td>
+                  <td><span class="badge badge-outline" style="font-size:11px;">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ── Rev Growth Chart ──
+      const revCtx = document.getElementById('revGrowthChart').getContext('2d');
+      new Chart(revCtx, {
+        type: 'line',
+        data: {
+          labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Monthly Sales ($)',
+            data: [15400, 18900, 22400, 20100, 26700, 31200],
+            borderColor: '#2D6A4F',
+            backgroundColor: 'rgba(45, 106, 79, 0.08)',
+            borderWidth: 3,
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: { grid: { color: 'rgba(0,0,0,0.05)' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // ── Groomer Performance Chart ──
+      const groomerCtx = document.getElementById('groomerPerfChart').getContext('2d');
+      new Chart(groomerCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Sarah', 'Maria', 'James', 'David', 'Rachel'],
+          datasets: [{
+            label: 'Grooms Completed',
+            data: [42, 38, 35, 29, 21],
+            backgroundColor: [
+              '#2D6A4F',
+              '#F4A267',
+              '#52B788',
+              '#E76F51',
+              '#E9C46A'
+            ],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: { grid: { color: 'rgba(0,0,0,0.05)' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // ── Appointment Status Chart (Doughnut) ──
+      const apptStatusCtx = document.getElementById('apptStatusChart').getContext('2d');
+      new Chart(apptStatusCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Completed', 'Confirmed', 'In Progress', 'Pending'],
+          datasets: [{
+            data: [20, 55, 15, 10],
+            backgroundColor: ['#2D6A4F', '#52B788', '#F4A267', '#E76F51'],
+            borderWidth: 2,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, padding: 15, font: { size: 11 } }
+            }
+          }
+        }
+      });
+
+      // ── Service Popularity Chart (Horizontal Bar) ──
+      const serviceCtx = document.getElementById('servicePopChart').getContext('2d');
+      new Chart(serviceCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Full Groom', 'Bath & Brush', 'De-shed', 'Nail Trim', 'Teeth Care'],
+          datasets: [{
+            label: 'Bookings',
+            data: [120, 85, 45, 60, 30],
+            backgroundColor: '#52B788',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(0,0,0,0.05)' } },
+            y: { grid: { display: false } }
+          }
+        }
+      });
+
+      // ── Package Sales Chart (Pie) ──
+      const packageCtx = document.getElementById('packageSalesChart').getContext('2d');
+      new Chart(packageCtx, {
+        type: 'pie',
+        data: {
+          labels: ['Essential Care', 'Signature Style', 'Royal VIP Spa'],
+          datasets: [{
+            data: [40, 35, 25],
+            backgroundColor: ['#2D6A4F', '#F4A267', '#E9C46A'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, padding: 15, font: { size: 11 } }
+            }
+          }
+        }
+      });
+
+      // ── Customer Acquisition Chart (Polar Area) ──
+      const acqCtx = document.getElementById('acquisitionChart').getContext('2d');
+      new Chart(acqCtx, {
+        type: 'polarArea',
+        data: {
+          labels: ['Social Media', 'Referrals', 'Search Engines', 'Local Ads'],
+          datasets: [{
+            data: [90, 120, 70, 30],
+            backgroundColor: [
+              'rgba(45, 106, 79, 0.7)',
+              'rgba(244, 162, 97, 0.7)',
+              'rgba(82, 183, 136, 0.7)',
+              'rgba(231, 111, 81, 0.7)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 10, padding: 8, font: { size: 10 } }
+            }
+          },
+          scales: {
+            r: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { display: false } }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

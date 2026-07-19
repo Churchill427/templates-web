@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawly Portal — Book Appointment</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon/favicon-32.png">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  
+  <link rel="stylesheet" href="../../assets/css/variables.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+</head>
+<body>
+  <a href="#db-main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="db-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="db-sidebar" aria-label="User Navigation">
+      <div class="db-sidebar-brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
+          <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
+          <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
+        </svg>
+        <span>PAWLY</span>
+      </div>
+      <ul class="db-sidebar-menu">
+        <li><a href="index.html" class="db-menu-item"><i class="ph ph-squares-four"></i><span>Overview</span></a></li>
+        <li><a href="appointments.html" class="db-menu-item active"><i class="ph ph-calendar-plus"></i><span>Book Session</span></a></li>
+        <li><a href="pets.html" class="db-menu-item"><i class="ph ph-dog"></i><span>My Pets</span></a></li>
+        <li><a href="history.html" class="db-menu-item"><i class="ph ph-clock-counter-clockwise"></i><span>Grooming History</span></a></li>
+        <li><a href="invoices.html" class="db-menu-item"><i class="ph ph-receipt"></i><span>Invoices</span></a></li>
+        <li><a href="settings.html" class="db-menu-item"><i class="ph ph-user"></i><span>My Profile</span></a></li>
+      </ul>
+      <div class="db-sidebar-footer">
+        <a href="../../login.html" class="db-menu-item" style="color:rgba(255,255,255,0.7);"><i class="ph ph-sign-out"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <div class="db-main">
+      <header class="db-topbar" role="banner">
+        <div class="db-topbar-left">
+          <button class="db-sidebar-toggle" aria-label="Toggle sidebar menu"><i class="ph ph-list"></i></button>
+          <span style="font-weight:var(--fw-semibold); color:var(--color-text-secondary);">Client Workspace</span>
+        </div>
+        <div class="db-topbar-right">
+          <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+          <div class="db-user-profile">
+            <div class="db-user-avatar">SJ</div>
+            <div style="font-size:13px; font-weight:var(--fw-semibold);" class="hidden-mobile">Sarah Jenkins</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="db-content" id="db-main-content">
+        <div class="db-title-bar">
+          <div>
+            <h1>Book Spa Session</h1>
+            <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Customize and schedule your pet's appointment.</p>
+          </div>
+        </div>
+
+        <div class="two-col" style="gap:var(--space-xl); align-items:stretch;">
+          <!-- Wizard Form Card -->
+          <div class="card" style="flex:1.2; margin-bottom:0;">
+            <h3 style="margin-bottom:var(--space-md);">Session Customizer</h3>
+            
+            <form id="user-booking-wizard" data-validate>
+              <!-- Step 1: Select Pet -->
+              <div class="form-group">
+                <label class="form-label" for="book-pet-select">Select Pet</label>
+                <select id="book-pet-select" class="form-input" required>
+                  <option value="milo" data-size="medium">Milo (Goldendoodle, 12kg)</option>
+                  <option value="bella" data-size="small">Bella (Persian, 5kg)</option>
+                </select>
+              </div>
+
+              <!-- Step 2: Select Base package -->
+              <div class="form-group">
+                <label class="form-label">Base Grooming Package</label>
+                <div style="display:flex; flex-direction:column; gap:var(--space-xs);">
+                  <label class="form-check">
+                    <input type="radio" name="base-pkg" value="35" checked>
+                    <span>Essential Care ($35)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="radio" name="base-pkg" value="65">
+                    <span>Signature Style ($65)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="radio" name="base-pkg" value="95">
+                    <span>Royal VIP Spa ($95)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Step 3: Addon choices -->
+              <div class="form-group">
+                <label class="form-label">Optional Add-ons</label>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-xs);">
+                  <label class="form-check">
+                    <input type="checkbox" class="user-booking-addon" value="12">
+                    <span>Aromatherapy Bath (+$12)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" class="user-booking-addon" value="8">
+                    <span>Moisturizing Paw Balm (+$8)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" class="user-booking-addon" value="15">
+                    <span>Blueberry Facial (+$15)</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" class="user-booking-addon" value="10">
+                    <span>Nail Filing / Grinding (+$10)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Step 4: Select Groomer & Time -->
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="book-groomer">Preferred Groomer</label>
+                  <select id="book-groomer" class="form-input" required>
+                    <option value="Sarah Mitchell">Sarah Mitchell</option>
+                    <option value="Maria Gonzalez">Maria Gonzalez</option>
+                    <option value="James Chen">James Chen</option>
+                    <option value="David Park">David Park</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="book-datetime">Appointment Slot</label>
+                  <input type="datetime-local" id="book-datetime" class="form-input" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full">Schedule Session</button>
+            </form>
+          </div>
+
+          <!-- Invoice Summary Card -->
+          <div class="card" style="flex:0.8; margin-bottom:0; background:linear-gradient(135deg, var(--color-primary) 0%, #153828 100%); color:#fff; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <h3 style="color:#fff; margin-bottom: var(--space-md); border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom:var(--space-sm);">Booking Estimate</h3>
+              
+              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
+                <span style="color:rgba(255,255,255,0.75);">Base Grooming:</span>
+                <span id="wizard-base-price">$35.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
+                <span style="color:rgba(255,255,255,0.75);">Add-ons Upgrades:</span>
+                <span id="wizard-addons-price">$0.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
+                <span style="color:var(--color-secondary); font-weight:var(--fw-semibold);">Gold Club Discount:</span>
+                <span id="wizard-discount" style="color:var(--color-secondary); font-weight:var(--fw-semibold);">-15%</span>
+              </div>
+            </div>
+
+            <div>
+              <div style="border-top:1px solid rgba(255,255,255,0.15); padding-top:var(--space-md); display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-lg);">
+                <span style="font-size:18px; color:rgba(255,255,255,0.85);">Estimated Total:</span>
+                <span id="wizard-final-price" style="font-size:36px; font-weight:var(--fw-bold); color:var(--color-secondary);">$29.75</span>
+              </div>
+              
+              <p style="font-size:11px; color:rgba(255,255,255,0.5); text-align:center; margin-bottom:0;">
+                Calculated with your Gold Membership privileges. Taxes applied at counter.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/theme-toggle.js"></script>
+  <script src="../../assets/js/rtl-toggle.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/dashboard.js"></script>
+  <script src="../../assets/js/forms.js"></script>
+
+  <!-- Wizard Price Update scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const petSelect = document.getElementById('book-pet-select');
+      const baseRadioButtons = document.getElementsByName('base-pkg');
+      const addonsCheckboxes = document.querySelectorAll('.user-booking-addon');
+      
+      const summaryBase = document.getElementById('wizard-base-price');
+      const summaryAddons = document.getElementById('wizard-addons-price');
+      const summaryFinal = document.getElementById('wizard-final-price');
+
+      function calculateWizardPrice() {
+        // Base pkg value
+        let baseVal = 35;
+        for (const radio of baseRadioButtons) {
+          if (radio.checked) {
+            baseVal = parseFloat(radio.value);
+            break;
+          }
+        }
+
+        // Addons total
+        let addonsTotal = 0;
+        addonsCheckboxes.forEach(chk => {
+          if (chk.checked) {
+            addonsTotal += parseFloat(chk.value);
+          }
+        });
+
+        // 15% discount applied automatically for Gold members
+        let total = (baseVal + addonsTotal) * 0.85;
+
+        // update summary
+        summaryBase.textContent = `$${baseVal.toFixed(2)}`;
+        summaryAddons.textContent = `$${addonsTotal.toFixed(2)}`;
+        summaryFinal.textContent = `$${total.toFixed(2)}`;
+      }
+
+      baseRadioButtons.forEach(radio => radio.addEventListener('change', calculateWizardPrice));
+      addonsCheckboxes.forEach(chk => chk.addEventListener('change', calculateWizardPrice));
+      petSelect.addEventListener('change', calculateWizardPrice);
+
+      calculateWizardPrice(); // run initial calculation
+
+      // Wizard submit simulator
+      const wizardForm = document.getElementById('user-booking-wizard');
+      if (wizardForm) {
+        wizardForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          showToast('Spa day scheduled! Redirecting to overview...', 'success');
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 2000);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
