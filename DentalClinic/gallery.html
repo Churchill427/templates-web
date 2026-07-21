@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View our Smile Gallery to see real transformations and success stories from DENT patients.">
+  <title>Smile Gallery — DENT Dental Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/icons/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    /* Tabs Styles */
+    .tabs-nav { display: flex; gap: var(--space-md); justify-content: center; margin-bottom: var(--space-xl); flex-wrap: wrap; }
+    .tab-btn { background: transparent; border: 2px solid var(--border-color); color: var(--text-primary); padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: var(--transition-fast); }
+    .tab-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .tab-btn.active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+    
+    .tab-content { display: none; animation: fadeIn 0.4s ease-out forwards; }
+    .tab-content.active { display: block; }
+
+    /* Photo Grid Styles */
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-md); }
+    .photo-item { position: relative; border-radius: var(--border-radius-lg); overflow: hidden; aspect-ratio: 1; cursor: pointer; }
+    .photo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .photo-item:hover img { transform: scale(1.1); }
+    .photo-overlay { position: absolute; inset: 0; background: rgba(11, 79, 108, 0.85); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: var(--transition-fast); color: #fff; padding: var(--space-md); text-align: center; }
+    .photo-item:hover .photo-overlay { opacity: 1; }
+    .photo-overlay h3 { color: #fff; margin-bottom: var(--space-xs); font-size: var(--fs-h4); }
+    .photo-overlay i { font-size: 32px; color: var(--color-secondary); margin-bottom: var(--space-sm); transform: translateY(20px); transition: transform 0.3s ease; }
+    .photo-item:hover .photo-overlay i { transform: translateY(0); }
+  </style>
+</head>
+<body class="has-navbar">
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand" aria-label="DENT Home"><div class="navbar__logo"><img src="assets/images/icons/logo.svg" alt="DENT Logo" width="36" height="36"></div><span class="navbar__brand-name">DENT</span></a>
+      <div class="navbar__menu"><div class="navbar__links">
+        <div class="navbar__dropdown"><a href="index.html">Home <i class="fa-solid fa-chevron-down" style="font-size:10px;margin-left:4px;"></i></a><div class="navbar__dropdown-menu"><a href="index.html"><i class="fa-solid fa-house"></i> Home 1</a><a href="home-b.html"><i class="fa-solid fa-star"></i> Home 2</a></div></div>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div></div>
+      <div class="navbar__controls"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-toggle-text">RTL</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="fa-solid fa-moon theme-toggle-icon"></i></button><a href="booking.html" class="btn btn--nav"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a></div>
+      <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-menu" id="mobileMenu"><div class="mobile-links"><a href="index.html"><i class="fa-solid fa-house"></i> Home 1</a><a href="home-b.html"><i class="fa-solid fa-star"></i> Home 2</a><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a><a href="services.html"><i class="fa-solid fa-tooth"></i> Services</a><a href="gallery.html" class="active"><i class="fa-solid fa-camera"></i> Gallery</a><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></div><div class="mobile-controls"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-toggle-text">RTL</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="fa-solid fa-moon theme-toggle-icon"></i></button><a href="booking.html" class="btn btn--primary btn--full"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a></div></div>
+    <div class="navbar__mobile-overlay" id="mobileOverlay"></div>
+  </nav>
+
+  <!-- 1. HERO SECTION -->
+  <section class="hero hero--short" aria-label="Smile Gallery">
+    <div class="hero__bg"><img src="assets/images/heroes/hero-gallery.png" alt="Beautiful smiles background" loading="eager"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content"><h1 class="reveal">Smile Gallery</h1><p class="reveal reveal-delay-1">See the life-changing results our expert team achieves every day. Your dream smile could be next.</p></div>
+  </section>
+
+  <!-- 2. BEFORE & AFTER INTERACTIVE SLIDERS -->
+  <section class="section" id="transformations" aria-label="Before and After Transformations">
+    <div class="container">
+      <div class="section__header reveal"><span class="section__subtitle">Real Results</span><h2>Before & After</h2><p>Drag the slider to compare the remarkable transformations of our patients.</p></div>
+      <div class="grid grid--2x2">
+        <!-- Slider 1 -->
+        <div class="ba-slider reveal reveal-delay-1" aria-label="Whitening transformation">
+          <div class="ba-slider__after"><img src="assets/images/services/whitening.png" alt="After teeth whitening"></div>
+          <div class="ba-slider__before"><img src="assets/images/services/fillings.png" alt="Before teeth whitening"></div>
+          <div class="ba-slider__divider"></div><div class="ba-slider__handle"><i class="fa-solid fa-arrows-left-right"></i></div>
+          <span class="ba-slider__label ba-slider__label--before badge badge--primary">Before</span><span class="ba-slider__label ba-slider__label--after badge badge--secondary">After</span>
+        </div>
+        <!-- Slider 2 -->
+        <div class="ba-slider reveal reveal-delay-2" aria-label="Veneers transformation">
+          <div class="ba-slider__after"><img src="assets/images/services/implants.png" alt="After veneers"></div>
+          <div class="ba-slider__before"><img src="assets/images/services/cleaning.png" alt="Before veneers"></div>
+          <div class="ba-slider__divider"></div><div class="ba-slider__handle"><i class="fa-solid fa-arrows-left-right"></i></div>
+          <span class="ba-slider__label ba-slider__label--before badge badge--primary">Before</span><span class="ba-slider__label ba-slider__label--after badge badge--secondary">After</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INTERACTIVE SUCCESS STORIES (TABS) -->
+  <section class="section section--alt" id="success-stories" aria-label="Success Stories">
+    <div class="container">
+      <div class="section__header reveal"><span class="section__subtitle">Patient Journeys</span><h2>Success Stories</h2><p>Explore specialized treatment results tailored to unique patient needs.</p></div>
+      
+      <div class="tabs-nav reveal">
+        <button class="tab-btn active" data-tab="tab-implants"><i class="fa-solid fa-tooth"></i> Dental Implants</button>
+        <button class="tab-btn" data-tab="tab-ortho"><i class="fa-solid fa-teeth"></i> Orthodontics</button>
+        <button class="tab-btn" data-tab="tab-cosmetic"><i class="fa-solid fa-sparkles"></i> Smile Makeovers</button>
+      </div>
+
+      <!-- Tab Content 1 -->
+      <div class="tab-content active" id="tab-implants">
+        <div class="split" style="align-items: center;">
+          <div class="split__image" style="border-radius: var(--border-radius-lg); overflow: hidden;">
+            <img src="assets/images/services/implants.png" alt="Dental implant success story" style="width: 100%; display: block;">
+          </div>
+          <div class="split__content">
+            <h3>Full Arch Restoration</h3>
+            <p><strong>Patient:</strong> Robert, 58</p>
+            <p>"After years of struggling with dentures, the All-on-4 implants completely changed my life. I can finally eat apples again, and my confidence is through the roof. The team at DENT made the entire surgical process painless and comfortable."</p>
+            <a href="services.html#specialized" class="btn btn--outline"><i class="fa-solid fa-arrow-right"></i> Learn about Implants</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 2 -->
+      <div class="tab-content" id="tab-ortho">
+        <div class="split split--reverse" style="align-items: center;">
+          <div class="split__image" style="border-radius: var(--border-radius-lg); overflow: hidden;">
+            <img src="assets/images/services/fillings.png" alt="Orthodontic success story" style="width: 100%; display: block;">
+          </div>
+          <div class="split__content">
+            <h3>Invisalign Transformation</h3>
+            <p><strong>Patient:</strong> Sarah, 26</p>
+            <p>"I always hid my smile because of severe crowding, but I didn't want metal braces as an adult. Invisalign was perfectly discreet. In just 14 months, Dr. Park gave me the straight, beautiful smile I had always wanted."</p>
+            <a href="services.html#orthodontics" class="btn btn--outline"><i class="fa-solid fa-arrow-right"></i> Learn about Invisalign</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 3 -->
+      <div class="tab-content" id="tab-cosmetic">
+        <div class="split" style="align-items: center;">
+          <div class="split__image" style="border-radius: var(--border-radius-lg); overflow: hidden;">
+            <img src="assets/images/services/whitening.png" alt="Cosmetic makeover success story" style="width: 100%; display: block;">
+          </div>
+          <div class="split__content">
+            <h3>Porcelain Veneers</h3>
+            <p><strong>Patient:</strong> Michael, 34</p>
+            <p>"I had chipped and discolored front teeth that made me self-conscious in professional settings. Dr. Mitchell designed six custom porcelain veneers. The result is so natural that nobody knows they aren't my real teeth!"</p>
+            <a href="services.html#cosmetic" class="btn btn--outline"><i class="fa-solid fa-arrow-right"></i> Learn about Veneers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INTERACTIVE PHOTO GRID (HOVER EFFECTS) -->
+  <section class="section" id="photo-grid" aria-label="Clinic & Patient Moments">
+    <div class="container">
+      <div class="section__header reveal"><span class="section__subtitle">Behind the Smiles</span><h2>Moments at DENT</h2></div>
+      <div class="photo-grid reveal">
+        <div class="photo-item">
+          <img src="assets/images/patients/gallery-moment-1.png" alt="Happy patient" loading="lazy">
+          <div class="photo-overlay"><i class="fa-solid fa-heart"></i><h3>Emily's Checkup</h3><p>Routine Cleaning</p></div>
+        </div>
+        <div class="photo-item">
+          <img src="assets/images/team/dentist-2.png" alt="Dr. Mitchell at work" loading="lazy">
+          <div class="photo-overlay"><i class="fa-solid fa-user-doctor"></i><h3>Dr. Mitchell</h3><p>Cosmetic Consult</p></div>
+        </div>
+        <div class="photo-item">
+          <img src="assets/images/clinic/booking-side.png" alt="Waiting room" loading="lazy">
+          <div class="photo-overlay"><i class="fa-solid fa-couch"></i><h3>Relaxing Space</h3><p>Our Waiting Lounge</p></div>
+        </div>
+        <div class="photo-item">
+          <img src="assets/images/patients/patient-3.png" alt="Happy patient" loading="lazy">
+          <div class="photo-overlay"><i class="fa-solid fa-star"></i><h3>Margaret's New Smile</h3><p>Implant Success</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. VIDEO TESTIMONIALS -->
+  <section class="section section--alt" id="videos" aria-label="Video Testimonials">
+    <div class="container">
+      <div class="section__header reveal"><span class="section__subtitle">Hear from Them</span><h2>Video Testimonials</h2></div>
+      <div class="grid grid--2">
+        <div class="video-card reveal reveal-delay-1">
+          <img class="video-card__thumbnail" src="assets/images/patients/testimonial-1.png" alt="Video thumbnail" loading="lazy">
+          <div class="video-card__play"><i class="fa-solid fa-play"></i></div>
+          <span class="video-card__duration badge badge--primary">3:12</span>
+        </div>
+        <div class="video-card reveal reveal-delay-2">
+          <img class="video-card__thumbnail" src="assets/images/patients/testimonial-2.png" alt="Video thumbnail" loading="lazy">
+          <div class="video-card__play"><i class="fa-solid fa-play"></i></div>
+          <span class="video-card__duration badge badge--primary">2:45</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. BOOKING CTA -->
+  <section class="section" id="booking" aria-label="Ready for Your Transformation">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="cta-banner__bg"><img src="assets/images/heroes/hero-home-a.png" alt="DENT Clinic" loading="lazy"></div>
+        <div class="cta-banner__overlay"></div>
+        <div class="cta-banner__content">
+          <h2>Ready for Your Transformation?</h2>
+          <p>Join thousands of happy patients who trust DENT with their smiles.</p>
+          <a href="booking.html" class="btn btn--primary btn--lg"><i class="fa-solid fa-calendar-check"></i> Schedule Your Visit Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__about"><div class="footer__brand"><div class="footer__brand-logo"><img src="assets/images/icons/logo.svg" alt="DENT Logo" width="32" height="32"></div><span class="footer__brand-name">DENT</span></div><p>Your trusted dental clinic providing comprehensive oral care.</p><div class="footer__socials"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></div></div>
+        <div><h4>Quick Links</h4><div class="footer__links"><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a><a href="gallery.html"><i class="fa-solid fa-chevron-right"></i> Gallery</a><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></div></div>
+        <div><h4>Our Services</h4><div class="footer__links"><a href="services.html#general"><i class="fa-solid fa-chevron-right"></i> General</a><a href="services.html#cosmetic"><i class="fa-solid fa-chevron-right"></i> Cosmetic</a><a href="services.html#orthodontics"><i class="fa-solid fa-chevron-right"></i> Orthodontics</a></div></div>
+        <div><h4>Contact Us</h4><div class="footer__contact-item"><i class="fa-solid fa-location-dot"></i><span>123 Dental Avenue, NY 10001</span></div><div class="footer__contact-item"><i class="fa-solid fa-phone"></i><span>+1 (555) DENT-001</span></div><div class="footer__contact-item"><i class="fa-solid fa-envelope"></i><span>info@dentclinic.com</span></div></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 DENT Dental Clinic. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Interactivity for Success Story Tabs
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked
+          btn.classList.add('active');
+          const target = document.getElementById(btn.getAttribute('data-tab'));
+          if (target) target.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

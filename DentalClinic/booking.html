@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your dental appointment at DENT — Easy online scheduling with form validation and instant confirmation.">
+  <title>Book Appointment — DENT Dental Clinic</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/icons/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="has-navbar">
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand" aria-label="DENT Home"><div class="navbar__logo"><img src="assets/images/icons/logo.svg" alt="DENT Logo" width="36" height="36"></div><span class="navbar__brand-name">DENT</span></a>
+      <div class="navbar__menu"><div class="navbar__links"><div class="navbar__dropdown">
+            <a href="index.html">Home <i class="fa-solid fa-chevron-down" style="font-size:10px;margin-left:4px;"></i></a>
+            <div class="navbar__dropdown-menu">
+              <a href="index.html"><i class="fa-solid fa-house"></i> Home 1</a>
+              <a href="home-b.html"><i class="fa-solid fa-star"></i> Home 2</a>
+            </div>
+          </div><a href="about.html">About</a><a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a></div></div>
+      <div class="navbar__controls"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-toggle-text">RTL</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="fa-solid fa-moon theme-toggle-icon"></i></button><a href="booking.html" class="btn btn--nav active"><i class="fa-solid fa-calendar-check"></i> Book Appointment</a></div>
+      <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar__mobile-menu" id="mobileMenu"><div class="mobile-links"><a href="index.html"><i class="fa-solid fa-house"></i> Home 1</a><a href="home-b.html"><i class="fa-solid fa-star"></i> Home 2</a><a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a><a href="services.html"><i class="fa-solid fa-tooth"></i> Services</a><a href="gallery.html"><i class="fa-solid fa-camera"></i> Gallery</a><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></div><div class="mobile-controls"><button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-toggle-text">RTL</span></button><button class="navbar__toggle-btn" data-toggle-theme><i class="fa-solid fa-moon theme-toggle-icon"></i></button></div></div>
+    <div class="navbar__mobile-overlay" id="mobileOverlay"></div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero--short" aria-label="Book Appointment">
+    <div class="hero__bg"><img src="assets/images/heroes/hero-booking.png" alt="Calendar and dental appointment scheduling" loading="eager"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content"><h1 class="reveal">Schedule Your Visit</h1><p class="reveal reveal-delay-1">Book your appointment in under 2 minutes. We'll confirm within 24 hours.</p></div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="section" id="booking-form" aria-label="Booking Form">
+    <div class="container">
+      <div style="max-width:900px;margin:0 auto;">
+        <div class="card reveal" style="padding:var(--space-2xl);">
+          <form data-validate id="fullBookingForm">
+            <div class="form-grid">
+              <div class="form-group"><label for="book-name">Full Name</label><input type="text" id="book-name" name="name" class="form-control" placeholder="John Doe" required></div>
+              <div class="form-group"><label for="book-email">Email Address</label><input type="email" id="book-email" name="email" class="form-control" placeholder="john@example.com" required></div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group"><label for="book-phone">Phone Number</label><input type="tel" id="book-phone" name="phone" class="form-control" placeholder="+1 (555) 000-0000" required></div>
+              <div class="form-group"><label for="book-service">Service</label>
+                <select id="book-service" name="service" class="form-control" required>
+                  <option value="">Select a service</option>
+                  <option value="cleaning">Teeth Cleaning</option>
+                  <option value="fillings">Dental Fillings</option>
+                  <option value="braces">Braces / Invisalign</option>
+                  <option value="whitening">Teeth Whitening</option>
+                  <option value="implants">Dental Implants</option>
+                  <option value="consultation">General Consultation</option>
+                  <option value="emergency">Emergency</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-group"><label for="book-date">Preferred Date</label><input type="date" id="book-date" name="date" class="form-control" required></div>
+              <div class="form-group"><label for="book-time">Preferred Time</label>
+                <select id="book-time" name="time" class="form-control" required>
+                  <option value="">Select time</option>
+                  <option value="morning">Morning (9AM - 12PM)</option>
+                  <option value="afternoon">Afternoon (12PM - 5PM)</option>
+                  <option value="evening">Evening (5PM - 8PM)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label for="book-dentist">Dentist Preference</label>
+              <select id="book-dentist" name="dentist" class="form-control">
+                <option value="none">No Preference</option>
+                <option value="carter">Dr. James Carter</option>
+                <option value="mitchell">Dr. Sarah Mitchell</option>
+                <option value="park">Dr. Helen Park</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="book-notes">Additional Notes</label><textarea id="book-notes" name="notes" class="form-control" placeholder="Any allergies, special requirements, or concerns..." rows="4"></textarea></div>
+            <button type="submit" class="btn btn--primary btn--full btn--lg"><i class="fa-solid fa-calendar-check"></i> Confirm Booking</button>
+          </form>
+          <!-- Confirmation -->
+          <div class="confirmation" style="display:none;">
+            <div class="confirmation__icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your appointment request has been submitted. We'll send a confirmation email shortly.</p>
+            <div class="reference-number"></div>
+            <p class="text-small" style="color:var(--text-muted);">Save this reference number for your records.</p>
+            <a href="index.html" class="btn btn--outline" style="margin-top:var(--space-lg);"><i class="fa-solid fa-house"></i> Return Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="section section--alt" id="what-to-expect" aria-label="What to Expect">
+    <div class="container">
+      <div class="section__header reveal"><span class="section__subtitle">Simple Process</span><h2>What to Expect</h2></div>
+      <div class="grid grid--3">
+        <div class="card reveal reveal-delay-1" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto var(--space-lg);background:rgba(247,181,56,0.1);color:var(--color-accent);"><i class="fa-solid fa-laptop"></i></div>
+          <h3 class="card__title">Book Online</h3>
+          <p class="card__text">Fill out the simple form above and choose your preferred date, time, and dentist.</p>
+        </div>
+        <div class="card reveal reveal-delay-2" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto var(--space-lg);background:rgba(32,191,85,0.1);color:var(--color-secondary);"><i class="fa-solid fa-envelope-circle-check"></i></div>
+          <h3 class="card__title">Receive Confirmation</h3>
+          <p class="card__text">Get an email confirmation within 24 hours with your appointment details and reference number.</p>
+        </div>
+        <div class="card reveal reveal-delay-3" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto var(--space-lg);background:rgba(11,79,108,0.1);color:var(--color-primary);"><i class="fa-solid fa-hospital"></i></div>
+          <h3 class="card__title">Visit Clinic</h3>
+          <p class="card__text">Arrive 15 minutes early, bring your ID and insurance card, and we'll take care of the rest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREPARE FOR YOUR VISIT -->
+  <section class="section" id="prepare" aria-label="Prepare for Your Visit">
+    <div class="container">
+      <div class="section__header reveal"><span class="section__subtitle">Be Ready</span><h2>Prepare for Your Visit</h2></div>
+      <div class="card reveal" style="max-width:700px;margin:0 auto;">
+        <ul class="checklist">
+          <li><i class="fa-solid fa-id-card"></i> Bring a valid photo ID (driver's license, passport, or state ID)</li>
+          <li><i class="fa-solid fa-shield-halved"></i> Bring your dental insurance card and member information</li>
+          <li><i class="fa-solid fa-clock"></i> Arrive 15 minutes before your scheduled appointment time</li>
+          <li><i class="fa-solid fa-pills"></i> Prepare a list of current medications and dosages</li>
+          <li><i class="fa-solid fa-file-medical"></i> Bring recent dental X-rays if available (digital copies accepted)</li>
+          <li><i class="fa-solid fa-notes-medical"></i> Note any allergies, medical conditions, or dental anxiety concerns</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CANCELLATION POLICY -->
+  <section class="section section--alt" id="cancellation" aria-label="Cancellation Policy">
+    <div class="container">
+      <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto;">
+        <div style="font-size:48px;color:var(--color-primary);margin-bottom:var(--space-lg);opacity:0.3;"><i class="fa-solid fa-calendar-xmark"></i></div>
+        <h2>Cancellation Policy</h2>
+        <p>We understand plans change. Please provide at least 24 hours notice for cancellations or rescheduling. Late cancellations (less than 24 hours) may incur a $50 fee. No-shows may be charged the full appointment cost. To cancel or reschedule, call us at +1 (555) DENT-001 or email appointments@dentclinic.com.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEED HELP? -->
+  <section class="section" id="need-help" aria-label="Need Help">
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div class="cta-banner__bg"><img src="assets/images/heroes/hero-home-a.png" alt="Dental support team" loading="lazy"></div>
+        <div class="cta-banner__overlay"></div>
+        <div class="cta-banner__content">
+          <h2>Need Help Booking?</h2>
+          <p><i class="fa-solid fa-phone-volume"></i> Call us at +1 (555) DENT-001</p>
+          <a href="tel:+15553368001" class="btn btn--primary btn--lg"><i class="fa-solid fa-phone"></i> Call Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__about"><div class="footer__brand"><div class="footer__brand-logo"><img src="assets/images/icons/logo.svg" alt="DENT Logo" width="32" height="32"></div><span class="footer__brand-name">DENT</span></div><p>Your trusted dental clinic providing comprehensive oral care.</p><div class="footer__socials"><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></div></div>
+        <div><h4>Quick Links</h4><div class="footer__links"><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog</a><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></div></div>
+        <div><h4>Our Services</h4><div class="footer__links"><a href="services.html#general"><i class="fa-solid fa-chevron-right"></i> General</a><a href="services.html#cosmetic"><i class="fa-solid fa-chevron-right"></i> Cosmetic</a><a href="services.html#orthodontics"><i class="fa-solid fa-chevron-right"></i> Orthodontics</a><a href="services.html#specialized"><i class="fa-solid fa-chevron-right"></i> Specialized</a></div></div>
+        <div><h4>Contact Us</h4><div class="footer__contact-item"><i class="fa-solid fa-location-dot"></i><span>123 Dental Avenue, NY 10001</span></div><div class="footer__contact-item"><i class="fa-solid fa-phone"></i><span>+1 (555) DENT-001</span></div><div class="footer__contact-item"><i class="fa-solid fa-envelope"></i><span>info@dentclinic.com</span></div></div>
+      </div>
+      <div class="footer__bottom"><p>&copy; 2026 DENT Dental Clinic. All rights reserved.</p></div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

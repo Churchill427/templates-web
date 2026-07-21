@@ -1,0 +1,225 @@
+/* ============================================================
+   DENT — Dark Mode Overrides
+   Applied when [data-theme="dark"] is set on <html>
+   ============================================================ */
+
+[data-theme="dark"] {
+  /* --- Backgrounds --- */
+  --bg-body: #0F172A;
+  --bg-card: #1E293B;
+  --bg-card-hover: #334155;
+  --bg-navbar: rgba(15, 23, 42, 0.95);
+  --bg-navbar-scroll: rgba(15, 23, 42, 0.92);
+  --bg-dropdown: #1E293B;
+  --bg-input: #1E293B;
+  --bg-section-alt: #162032;
+  --bg-footer: #0B4F6C;
+  --bg-modal: rgba(0, 0, 0, 0.7);
+
+  /* --- Text --- */
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-link: #7DD3FC;
+  --text-link-hover: #20BF55;
+
+  /* --- Borders --- */
+  --border-color: #334155;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode: Form control background */
+[data-theme="dark"] .form-control {
+  background-color: #1E293B;
+  border-color: #334155;
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(11, 79, 108, 0.3);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: #64748B;
+}
+
+[data-theme="dark"] select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Dark mode: Navbar dropdown */
+[data-theme="dark"] .navbar__dropdown-menu {
+  background: #1E293B;
+  border: 1px solid #334155;
+}
+
+[data-theme="dark"] .navbar__dropdown-menu a {
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .navbar__dropdown-menu a:hover {
+  background: #334155;
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .navbar__brand-dropdown {
+  background: #1E293B;
+  border: 1px solid #334155;
+}
+
+[data-theme="dark"] .navbar__brand-dropdown a {
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .navbar__brand-dropdown a:hover {
+  background: #334155;
+}
+
+/* Dark mode: Accordion */
+[data-theme="dark"] .accordion__trigger {
+  background: #1E293B;
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .accordion__trigger:hover,
+[data-theme="dark"] .accordion__item.active .accordion__trigger {
+  background: #334155;
+}
+
+[data-theme="dark"] .accordion__content {
+  background: #1E293B;
+}
+
+/* Dark mode: Cards */
+[data-theme="dark"] .card {
+  background: #1E293B;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode: Category pill */
+[data-theme="dark"] .category-pill {
+  background: #1E293B;
+  border-color: #334155;
+  color: #E2E8F0;
+}
+
+/* Dark mode: Newsletter */
+[data-theme="dark"] .newsletter {
+  background: #162032;
+  border-color: #334155;
+}
+
+/* Dark mode: Badge */
+[data-theme="dark"] .badge--primary {
+  background: rgba(11, 79, 108, 0.3);
+  color: #7DD3FC;
+}
+
+/* Dark mode: Search box */
+[data-theme="dark"] .search-box {
+  border-color: #334155;
+}
+
+/* Dark mode: Auth card */
+[data-theme="dark"] .auth-card__brand-name {
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .auth-page__form-side {
+  background: #0F172A;
+}
+
+/* Dark mode: Social buttons */
+[data-theme="dark"] .btn--google {
+  background: #1E293B;
+  color: #E2E8F0;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .btn--google:hover {
+  background: #334155;
+  color: #E2E8F0;
+}
+
+/* Dark mode: Calendar */
+[data-theme="dark"] .calendar__nav-btn {
+  background: #334155;
+  color: #E2E8F0;
+}
+
+[data-theme="dark"] .calendar__day:hover {
+  background: #334155;
+}
+
+/* Dark mode: Chart containers */
+[data-theme="dark"] .chart-container {
+  background: #1E293B;
+  border-color: #334155;
+}
+
+/* Dark mode: Pricing card */
+[data-theme="dark"] .card--pricing.featured {
+  border-color: var(--color-accent);
+}
+
+/* Dark mode: Checklist */
+[data-theme="dark"] .checklist li {
+  border-bottom-color: #334155;
+}
+
+/* Dark mode: Logo scroller */
+[data-theme="dark"] .logo-scroller__item {
+  filter: grayscale(100%) brightness(1.5);
+}
+
+[data-theme="dark"] .logo-scroller__item:hover {
+  filter: grayscale(0%) brightness(1.2);
+}
+
+/* Dark mode: Map container */
+[data-theme="dark"] .map-container {
+  background: #1E293B;
+  border-color: #334155;
+}
+
+/* Dark mode: Error code */
+[data-theme="dark"] .error-code {
+  color: #334155;
+}
+
+/* Dark mode: Confirmation */
+[data-theme="dark"] .confirmation__icon {
+  background: rgba(32, 191, 85, 0.2);
+}
+
+/* Dark mode: Video play button */
+[data-theme="dark"] .video-card__play {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Smooth theme transition for all elements */
+[data-theme="dark"] *,
+[data-theme="dark"] *::before,
+[data-theme="dark"] *::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+/* Override transition for elements that need instant changes (images, etc.) */
+[data-theme="dark"] img,
+[data-theme="dark"] video,
+[data-theme="dark"] canvas {
+  transition: none;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DENT Admin Dashboard — Manage appointments, patients, and clinic analytics.">
+  <title>Admin Dashboard — DENT</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/icons/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/dark-mode.css"><link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <a href="index.html" class="sidebar__brand">
+          <img src="assets/images/icons/logo.svg" alt="DENT" width="28" height="28">
+          <span class="sidebar__brand-name">DENT</span>
+        </a>
+        <button class="sidebar__toggle" aria-label="Toggle sidebar"><i class="fa-solid fa-envelope"></i></button>
+      </div>
+      <nav class="sidebar__nav">
+        <a href="#" class="sidebar__link active"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+        <a href="#" class="sidebar__link"><i class="fa-solid fa-calendar-days"></i><span>Appointments</span></a>
+        <a href="#" class="sidebar__link"><i class="fa-solid fa-user-group"></i><span>Patients</span></a>
+        <a href="#" class="sidebar__link"><i class="fa-solid fa-tooth"></i><span>Services</span></a>
+        <a href="#" class="sidebar__link"><i class="fa-solid fa-chart-line"></i><span>Analytics</span></a>
+        <a href="#" class="sidebar__link"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+      </nav>
+      <div class="sidebar__footer">
+        <button class="navbar__toggle-btn" data-toggle-theme style="width:100%;justify-content:center;"><i class="fa-solid fa-moon theme-toggle-icon"></i><span>Theme</span></button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard__main" id="dashboardMain">
+      <!-- Mobile toggle -->
+      <button class="dashboard__mobile-toggle navbar__toggle-btn" style="display:none;margin-bottom:var(--space-md);" aria-label="Toggle sidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Header -->
+      <div class="dashboard__header">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="text-small" style="color:var(--text-muted);margin:0;">Welcome back, Admin. Here's your clinic overview.</p>
+        </div>
+        <div style="display:flex;gap:var(--space-md);align-items:center;">
+          <button class="navbar__toggle-btn" data-toggle-rtl><span class="rtl-toggle-text">RTL</span></button>
+          <a href="booking.html" class="btn btn--primary btn--sm"><i class="fa-solid fa-plus"></i> New Booking</a>
+        </div>
+      </div>
+
+      <!-- STAT CARDS -->
+      <div class="grid grid--4" style="margin-bottom:var(--space-xl);">
+        <div class="card card--stat">
+          <div class="card__icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <div><div class="stat__value" data-stat="248">0</div><div class="stat__label">Total Appointments</div></div>
+        </div>
+        <div class="card card--stat">
+          <div class="card__icon" style="background:rgba(247,181,56,0.1);color:var(--color-accent);"><i class="fa-solid fa-user-plus"></i></div>
+          <div><div class="stat__value" data-stat="67">0</div><div class="stat__label">New Patients</div></div>
+        </div>
+        <div class="card card--stat">
+          <div class="card__icon" style="background:rgba(11,79,108,0.1);color:var(--color-primary);"><i class="fa-solid fa-dollar-sign"></i></div>
+          <div><div class="stat__value" data-stat="42850" data-prefix="$">0</div><div class="stat__label">Revenue This Month</div></div>
+        </div>
+        <div class="card card--stat">
+          <div class="card__icon" style="background:rgba(236,72,153,0.1);color:#EC4899;"><i class="fa-solid fa-star"></i></div>
+          <div><div class="stat__value" data-stat="23">0</div><div class="stat__label">Pending Reviews</div></div>
+        </div>
+      </div>
+
+      <!-- CALENDAR -->
+      <div class="calendar" style="margin-bottom:var(--space-xl);">
+        <div class="calendar__header">
+          <button class="calendar__nav-btn calendar__prev" aria-label="Previous month"><i class="fa-solid fa-chevron-left"></i></button>
+          <h3 class="calendar__title">July 2026</h3>
+          <button class="calendar__nav-btn calendar__next" aria-label="Next month"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="calendar__grid"></div>
+        <div style="display:flex;gap:var(--space-lg);margin-top:var(--space-md);font-size:var(--fs-xs);">
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--color-primary);margin-right:4px;"></span>Today</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:rgba(247,181,56,0.3);margin-right:4px;"></span>Booked</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:rgba(32,191,85,0.2);margin-right:4px;"></span>Available</span>
+        </div>
+      </div>
+
+      <!-- CHARTS -->
+      <div class="grid grid--2" style="margin-bottom:var(--space-xl);">
+        <!-- Bar Chart -->
+        <div class="chart-container">
+          <div class="chart-container__header"><h3>Monthly Appointments</h3><span class="badge badge--primary">Last 6 Months</span></div>
+          <div class="chart-canvas-wrapper"><canvas id="chartBar"></canvas></div>
+        </div>
+        <!-- Doughnut Chart -->
+        <div class="chart-container">
+          <div class="chart-container__header"><h3>Service Distribution</h3><span class="badge badge--secondary">Current Month</span></div>
+          <div class="chart-canvas-wrapper"><canvas id="chartDoughnut"></canvas></div>
+        </div>
+      </div>
+
+      <div class="grid grid--2">
+        <!-- Line Chart -->
+        <div class="chart-container">
+          <div class="chart-container__header"><h3>Patient Growth</h3><span class="badge badge--accent">Trend</span></div>
+          <div class="chart-canvas-wrapper"><canvas id="chartLine"></canvas></div>
+        </div>
+        <!-- Area Chart -->
+        <div class="chart-container">
+          <div class="chart-container__header"><h3>Revenue Trend</h3><span class="badge badge--primary">Last 6 Months</span></div>
+          <div class="chart-canvas-wrapper"><canvas id="chartArea"></canvas></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script>
+    // Initialize charts after DOM loads
+    document.addEventListener('DOMContentLoaded', () => {
+      const C = window.DentCharts;
+      if (!C) return;
+
+      new C.BarChart('chartBar', {
+        labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        data: [42, 38, 55, 48, 62, 58],
+        colors: [C.COLORS.primary, C.COLORS.primary, C.COLORS.primary, C.COLORS.primary, C.COLORS.accent, C.COLORS.primary]
+      });
+
+      new C.DoughnutChart('chartDoughnut', {
+        labels: ['Cleaning', 'Fillings', 'Whitening', 'Implants', 'Braces'],
+        data: [35, 22, 18, 15, 10],
+        colors: [C.COLORS.primary, C.COLORS.secondary, C.COLORS.accent, C.COLORS.extra1, C.COLORS.extra2]
+      });
+
+      new C.LineChart('chartLine', {
+        labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        data: [12, 18, 15, 24, 22, 31],
+        color: C.COLORS.secondary,
+        fillColor: C.COLORS.secondaryLight
+      });
+
+      new C.AreaChart('chartArea', {
+        labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        data: [28500, 32000, 29800, 38500, 41200, 42850],
+        color: C.COLORS.accent,
+        fillColor: C.COLORS.accentLight
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+/* ============================================================
+   DENT — RTL Layout Overrides
+   Applied when [dir="rtl"] is set on <html>
+   ============================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* --- Navbar --- */
+[dir="rtl"] .navbar__inner {
+  /* flex-direction removed for correct RTL */
+}
+
+[dir="rtl"] .navbar__brand {
+  /* flex-direction removed for correct RTL */
+}
+
+[dir="rtl"] .navbar__menu {
+  /* flex-direction removed for correct RTL */
+}
+
+[dir="rtl"] .navbar__links {
+  /* flex-direction removed for correct RTL */
+}
+
+[dir="rtl"] .navbar__links a::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .navbar__hamburger {
+  order: -1;
+}
+
+[dir="rtl"] .navbar__mobile-menu {
+  right: auto;
+  left: -100%;
+}
+
+[dir="rtl"] .navbar__mobile-menu.open {
+  left: 0;
+}
+
+[dir="rtl"] .navbar__mobile-menu .mobile-links a.active {
+  border-left: none;
+  border-right: 3px solid var(--color-accent);
+}
+
+[dir="rtl"] .navbar__brand-dropdown {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .navbar__dropdown-menu {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%) translateY(8px);
+}
+
+[dir="rtl"] .navbar__dropdown:hover .navbar__dropdown-menu {
+  transform: translateX(-50%) translateY(0);
+}
+
+[dir="rtl"] .navbar__dropdown-menu a:hover {
+  padding-left: 20px;
+  padding-right: 24px;
+}
+
+/* --- Footer --- */
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer__brand {
+  /* flex-direction removed for correct RTL */
+}
+
+[dir="rtl"] .footer__links a {
+  /* flex-direction removed for correct RTL */
+}
+
+[dir="rtl"] .footer__contact-item {
+  /* flex-direction removed for correct RTL */
+}
+
+/* --- Hero --- */
+[dir="rtl"] .hero__content {
+  text-align: center;
+}
+
+/* --- Split Layout --- */
+[dir="rtl"] .split {
+  direction: rtl;
+}
+
+[dir="rtl"] .split--reverse > :first-child {
+  order: 1;
+}
+
+[dir="rtl"] .split--reverse > :last-child {
+  order: 2;
+}
+
+/* --- Cards --- */
+[dir="rtl"] .card {
+  text-align: right;
+}
+
+[dir="rtl"] .card--team {
+  text-align: center;
+}
+
+[dir="rtl"] .card__link {
+  /* flex-direction removed for correct RTL */
+}
+
+[dir="rtl"] .card--stat {
+  /* flex-direction removed for correct RTL */
+}
+
+/* --- Testimonials --- */
+[dir="rtl"] .card--testimonial .testimonial__quote {
+  padding-left: 0;
+  padding-right: var(--space-lg);
+}
+
+[dir="rtl"] .card--testimonial .testimonial__quote::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .card--testimonial .testimonial__author {
+  /* flex-direction removed for correct RTL */
+}
+
+/* --- Forms --- */
+[dir="rtl"] .form-control {
+  text-align: right;
+}
+
+[dir="rtl"] select.form-control {
+  background-position: left 16px center;
+  padding-left: 40px;
+  padding-right: 16px;
+}
+
+[dir="rtl"] .form-check {
+  /* flex-direction removed for correct RTL */
+}
+
+/* --- Accordion --- */
+[dir="rtl"] .accordion__trigger {
+  /* flex-direction removed for correct RTL */
+  text-align: right;
+}
+
+/* --- Timeline --- */
+@media (max-width: 1023px) {
+  [dir="rtl"] .timeline::before {
+    left: auto;
+    right: 24px;
+  }
+
+  [dir="rtl"] .timeline__line {
+    left: auto;
+    right: 24px;
+  }
+
+  [dir="rtl"] .timeline__step {
+    padding-left: 0;
+    padding-right: 64px;
+    text-align: right;
+  }
+
+  [dir="rtl"] .timeline__icon {
+    left: auto;
+    right: 0;
+  }
+}
+
+/* --- Sidebar --- */
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .sidebar__link {
+  border-left: none;
+  border-right: 3px solid transparent;
+}
+
+[dir="rtl"] .sidebar__link.active {
+  border-right-color: var(--color-accent);
+}
+
+[dir="rtl"] .dashboard__main {
+  margin-left: 0;
+  margin-right: var(--sidebar-width);
+}
+
+[dir="rtl"] .sidebar.collapsed ~ .dashboard__main,
+[dir="rtl"] .dashboard__main.expanded {
+  margin-left: 0;
+  margin-right: var(--sidebar-collapsed);
+}
+
+@media (max-width: 1023px) {
+  [dir="rtl"] .dashboard__main {
+    margin-right: var(--sidebar-collapsed);
+  }
+}
+
+@media (max-width: 639px) {
+  [dir="rtl"] .sidebar {
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  [dir="rtl"] .dashboard__main {
+    margin-right: 0;
+  }
+}
+
+/* --- Auth Page --- */
+[dir="rtl"] .auth-page {
+  direction: rtl;
+}
+
+[dir="rtl"] .auth-card {
+  text-align: right;
+}
+
+[dir="rtl"] .auth-card h2,
+[dir="rtl"] .auth-card .auth-subtitle,
+[dir="rtl"] .auth-card__brand,
+[dir="rtl"] .auth-card__footer {
+  text-align: center;
+}
+
+/* --- Checklist --- */
+[dir="rtl"] .checklist li {
+  /* flex-direction removed for correct RTL */
+}
+
+/* --- Search Box --- */
+[dir="rtl"] .search-box {
+  direction: rtl;
+}
+
+/* --- Pricing features --- */
+[dir="rtl"] .card--pricing .pricing__features {
+  text-align: right;
+}
+
+[dir="rtl"] .card--pricing .pricing__features li {
+  /* flex-direction removed for correct RTL */
+}
+
+/* --- Badge position --- */
+[dir="rtl"] .ba-slider__label--before {
+  left: auto;
+  right: var(--space-md);
+}
+
+[dir="rtl"] .ba-slider__label--after {
+  right: auto;
+  left: var(--space-md);
+}
+
+/* --- CTA Banner --- */
+[dir="rtl"] .cta-banner {
+  text-align: center;
+}
+
+/* --- Newsletter form --- */
+@media (min-width: 640px) {
+  [dir="rtl"] .newsletter__form {
+    /* flex-direction removed for correct RTL */
+  }
+}
+
+/* --- Video card duration badge --- */
+[dir="rtl"] .video-card__duration {
+  right: auto;
+  left: var(--space-md);
+}
+
+/* --- Section alignment --- */
+[dir="rtl"] .section__header {
+  text-align: center;
+}
+
+/* --- Gallery overlay --- */
+[dir="rtl"] .gallery__item-overlay {
+  text-align: center;
+}
+
+/* --- Footer mobile center override --- */
+@media (max-width: 639px) {
+  [dir="rtl"] .footer__grid {
+    text-align: center;
+  }
+}
+
+/* --- Flip Directional Icons --- */
+[dir="rtl"] .fa-chevron-right,
+[dir="rtl"] .fa-arrow-right {
+  transform: scaleX(-1);
+}
+
+/* --- Responsive Controls Positioning --- */
+@media (max-width: 1023px) {
+  [dir="rtl"] .navbar__controls {
+    margin-left: var(--space-md);
+    margin-right: auto;
+  }
+}
+
+
