@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TINY - Cosy Knitted Hoodie</title>
+  <meta name="description" content="Shop the Cosy Knitted Hoodie at TINY. Made from 100% GOTS certified organic cotton, fleece lining, and cute wooden button accessories.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B'><path d='M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12z'/></svg>">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- JS Libraries -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  
+  <style>
+    /* Product layout */
+    .product-detail-layout {
+      display: flex;
+      gap: var(--space-6);
+      align-items: flex-start;
+    }
+    
+    .gallery-col {
+      flex: 1.1;
+    }
+    
+    .details-col {
+      flex: 0.9;
+    }
+    
+    .main-img-wrapper {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-2);
+      aspect-ratio: 1 / 1;
+    }
+    
+    .main-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .thumbnails-row {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .thumb-btn {
+      flex: 1;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 1 / 1;
+      background: none;
+      padding: 0;
+      transition: var(--transition);
+    }
+    
+    .thumb-btn:hover, .thumb-btn.active {
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+    
+    .thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Configurator elements */
+    .option-group {
+      margin-bottom: var(--space-3);
+    }
+    
+    .option-title {
+      font-family: var(--font-headings);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    
+    /* Rounded circle dots for color */
+    .color-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      display: inline-block;
+      margin-right: 8px;
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+    }
+    
+    .color-dot.active {
+      border-color: var(--primary-color);
+    }
+    
+    /* Size buttons */
+    .size-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 6px;
+      transition: var(--transition);
+    }
+    
+    .size-btn.active {
+      background-color: var(--secondary-color);
+      color: #FFFFFF;
+      border-color: var(--secondary-color);
+    }
+    
+    /* Qty input */
+    .qty-picker {
+      display: inline-flex;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      align-items: center;
+    }
+    
+    .qty-picker button {
+      background: none;
+      border: none;
+      width: 36px;
+      height: 36px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+    
+    .qty-picker button:hover {
+      background-color: var(--accent-color);
+    }
+
+    body.dark-theme .qty-picker button:hover {
+      background-color: #2D2D44;
+    }
+    
+    .qty-picker input {
+      width: 44px;
+      border: none;
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+      background: none;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: var(--primary-color);">
+          <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        </svg><span class="logo-text">TINY</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown-item">
+            <a href="#" class="nav-link" id="home-dropdown-trigger">Home <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+            <ul class="nav-dropdown">
+              <li><a href="index.html">Home 1</a></li>
+              <li><a href="home-wholesale.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="outfit-builder.html" class="nav-link">Outfit Builder</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        
+        <!-- RTL & Theme toggles -->
+        <button class="toggle-btn rtl-toggle-btn" title="Toggle Layout Direction">LTR</button>
+        <button class="toggle-btn theme-toggle-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        
+        <a href="cart.html" class="cart-icon-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="header-spacer"></div>
+
+  <!-- Section 1: Hero Section (Gallery & Breadcrumbs) -->
+  <section class="product-gallery-section" style="padding-bottom: 0;">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a><span>/</span><a href="shop.html">Shop</a><span>/</span><span>Cosy Knitted Hoodie</span>
+      </div>
+      
+      <div class="product-detail-layout split-row reveal">
+        <!-- Image Gallery Col -->
+        <div class="gallery-col">
+          <div class="main-img-wrapper">
+            <img id="main-gallery-img" src="assets/images/product_owl_shirt.jpg" alt="Owl Print Cotton Shirt Main Image">
+          </div>
+          <div class="thumbnails-row">
+            <button class="thumb-btn active" onclick="swapImage('assets/images/product_owl_shirt.jpg', this)">
+              <img src="assets/images/product_owl_shirt.jpg" alt="Thumbnail 1">
+            </button>
+            <button class="thumb-btn" onclick="swapImage('assets/images/product_plaid_shirt.jpg', this)">
+              <img src="assets/images/product_plaid_shirt.jpg" alt="Thumbnail 2">
+            </button>
+            <button class="thumb-btn" onclick="swapImage('assets/images/product_striped_shirt.jpg', this)">
+              <img src="assets/images/product_striped_shirt.jpg" alt="Thumbnail 3">
+            </button>
+            <button class="thumb-btn" onclick="swapImage('assets/images/product_craft_kurta.jpg', this)">
+              <img src="assets/images/product_craft_kurta.jpg" alt="Thumbnail 4">
+            </button>
+          </div>
+        </div>
+        
+        <!-- Section 2: Product Details (Customizer & Price) -->
+        <div class="details-col product-details-content">
+          <span style="font-size: 0.85rem; background-color: var(--accent-color); color: var(--text-primary); padding: 4px 12px; border-radius: 4px; font-weight: bold;">Bestseller</span>
+          <h1 style="font-size: 2.25rem; margin-top: 10px; margin-bottom: 8px;">Owl Print Cotton Shirt</h1>
+          
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--primary-color); margin-bottom: var(--space-2);">$26.50</div>
+          
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-3);">Ensure your little one stays snug and cute in our premium cotton owl shirt. Carefully woven from GOTS organic combed cotton with fun blue owl patterns.</p>
+          
+          <!-- Size Selector -->
+          <div class="option-group">
+            <div class="option-title">Select Size:</div>
+            <div id="product-size" style="display: flex;">
+              <button class="size-btn active" onclick="selectSize('6-12M', this)">6-12M</button>
+              <button class="size-btn" onclick="selectSize('12-18M', this)">12-18M</button>
+              <button class="size-btn" onclick="selectSize('18-24M', this)">18-24M</button>
+              <button class="size-btn" onclick="selectSize('2-3Y', this)">2-3Y</button>
+            </div>
+          </div>
+          
+          <!-- Color Selector -->
+          <div class="option-group">
+            <div class="option-title">Select Color:</div>
+            <div id="product-color" style="display: flex;">
+              <div class="color-dot active" data-color="Mint Sage" style="background-color: #4ECDC4;" onclick="selectColor('Mint Sage', this)"></div>
+              <div class="color-dot" data-color="Soft Coral" style="background-color: #FF6B6B;" onclick="selectColor('Soft Coral', this)"></div>
+              <div class="color-dot" data-color="Oats Cream" style="background-color: #FFF5E1; border: 1px solid rgba(0,0,0,0.1);" onclick="selectColor('Oats Cream', this)"></div>
+            </div>
+            <span id="selected-color-text" style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 600;">Mint Sage</span>
+          </div>
+          
+          <!-- Quantity & Cart CTA -->
+          <div class="option-group" style="display: flex; gap: var(--space-2); align-items: center; margin-top: var(--space-3);">
+            <div class="qty-picker">
+              <button onclick="adjustQty(-1)">-</button>
+              <input type="text" id="product-quantity" value="1" readonly>
+              <button onclick="adjustQty(1)">+</button>
+            </div>
+            
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s2" data-product-name="Owl Print Cotton Shirt" data-product-price="26.50" data-product-img="assets/images/product_owl_shirt.jpg" style="flex: 1; padding: 14px 28px;">
+              <i class="fa-solid fa-cart-shopping" style="margin-right: 8px;"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Product Features -->
+  <section class="product-features-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Premium Fabric Details</h2>
+        <p class="section-subtitle">A closer look at the care and quality put into this knitted sweater</p>
+      </div>
+      <div class="card-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Feature 1 -->
+        <div class="card" style="align-items: center; text-align: center;">
+          <div style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-cloud"></i>
+          </div>
+          <h3>100% GOTS Cotton</h3>
+          <p class="card-text">Weaved from GOTS certified long-staple organic cotton fibers for delicate, irritant-free touch.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="card" style="align-items: center; text-align: center;">
+          <div style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-temperature-arrow-up"></i>
+          </div>
+          <h3>Fleece Lining</h3>
+          <p class="card-text">Double layered with a super-breathable inner cotton fleece coat designed for cold wind protection.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="card" style="align-items: center; text-align: center;">
+          <div style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-soap"></i>
+          </div>
+          <h3>Easy Wash Care</h3>
+          <p class="card-text">Machine washable on gentle cycles with cold water. Stays soft and holds color wash after wash.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Related Products -->
+  <section class="related-products section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>You Might Also Like</h2>
+        <p class="section-subtitle">Complementary organic styles to complete their cute look</p>
+      </div>
+      <div class="card-grid reveal">
+        <!-- Related item 1 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_plaid_shirt.jpg" alt="Plaid Space Rocket Set"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Newborn</span>
+          <h3 class="card-title" style="font-size: 1.1rem;"><a href="product-detail.html" style="color: inherit;">Plaid Space Rocket Set</a></h3>
+          <p class="card-text">Casual plaid short-sleeve shirt layered over a soft rocket print graphic tee.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; color: var(--primary-color);">$18.90</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s1" data-product-name="Plaid Space Rocket Set" data-product-price="18.90" data-product-img="assets/images/product_plaid_shirt.jpg" style="padding: 4px 10px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Related item 2 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_striped_shirt.jpg" alt="Pastel Striped Linen Shirt"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Kids</span>
+          <h3 class="card-title" style="font-size: 1.1rem;"><a href="product-detail.html" style="color: inherit;">Pastel Striped Linen Shirt</a></h3>
+          <p class="card-text">Durable double-stitched shirt in cheerful pastel ocean stripe patterns.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; color: var(--primary-color);">$15.00</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s3" data-product-name="Pastel Striped Linen Shirt" data-product-price="15.00" data-product-img="assets/images/product_striped_shirt.jpg" style="padding: 4px 10px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Related item 3 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_craft_kurta.jpg" alt="Craft Patterned Linen Top"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Pre-Teen</span>
+          <h3 class="card-title" style="font-size: 1.1rem;"><a href="product-detail.html" style="color: inherit;">Craft Patterned Linen Top</a></h3>
+          <p class="card-text">Breezy flowy top built with GOTS organic linen threads.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; color: var(--primary-color);">$32.00</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s4" data-product-name="Craft Patterned Linen Top" data-product-price="32.00" data-product-img="assets/images/product_craft_kurta.jpg" style="padding: 4px 10px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Related item 4 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=400&q=80" alt="Padded Winter Snuggle Coat"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Newborn</span>
+          <h3 class="card-title" style="font-size: 1.1rem;"><a href="product-detail.html" style="color: inherit;">Padded Winter Snuggle Coat</a></h3>
+          <p class="card-text">Padded warm snuggle fleece lining for subzero protection.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; color: var(--primary-color);">$39.99</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s6" data-product-name="Padded Winter Snuggle Coat" data-product-price="39.99" data-product-img="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=400&q=80" style="padding: 4px 10px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Customer Reviews -->
+  <section class="product-reviews">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Customer Reviews</h2>
+        <p class="section-subtitle">Real feedback from parents who purchased this product</p>
+      </div>
+      
+      <div class="card-grid reveal" style="grid-template-columns: repeat(2, 1fr); margin-bottom: var(--space-4);">
+        <!-- Review 1 -->
+        <div class="card" style="padding: var(--space-3);">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <div style="color: #FFD700;">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Verified Buyer</span>
+          </div>
+          <h4 style="margin-bottom:6px;">Warm and washing-machine friendly</h4>
+          <p class="card-text">"Bought the Mint Sage hoodie for my 1-year-old. It shrunk slightly on the first wash but is extremely cozy, thick, and looks adorable."</p>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--text-secondary);">— Clara M., Parent</span>
+        </div>
+        <!-- Review 2 -->
+        <div class="card" style="padding: var(--space-3);">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <div style="color: #FFD700;">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Verified Buyer</span>
+          </div>
+          <h4 style="margin-bottom:6px;">Super Cute Wooden Buttons</h4>
+          <p class="card-text">"The stitching around button loops is robust. The color matches the website picture perfectly. Very happy parent."</p>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--text-secondary);">— Nicholas D., Father</span>
+        </div>
+      </div>
+      
+      <div class="reveal" style="text-align: center;">
+        <button class="btn btn-secondary" onclick="alert('Write a Review form is coming soon!')">Write a Customer Review</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Size Guide Quick Reference -->
+  <section class="size-quick-ref section-bg-alt">
+    <div class="container reveal">
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <h2 style="margin-bottom: 8px;">Mini Sizing Table</h2>
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-3);">Quick measurements reference guide for outerwear and sweaters.</p>
+        
+        <table class="size-chart-table" style="background-color: var(--card-bg); max-width: 600px; margin: 0 auto 20px auto;">
+          <thead>
+            <tr>
+              <th>Age (months)</th>
+              <th>Chest Circumference</th>
+              <th>Total Sleeve Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>6-12M</td>
+              <td>40 cm</td>
+              <td>22 cm</td>
+            </tr>
+            <tr>
+              <td>12-18M</td>
+              <td>44 cm</td>
+              <td>25 cm</td>
+            </tr>
+            <tr>
+              <td>18-24M</td>
+              <td>48 cm</td>
+              <td>28 cm</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <a href="shop.html?show_guide=1" style="font-weight: 700; color: var(--primary-color);">Browse the full Sizing Guide &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer Col 1 -->
+        <div class="footer-col">
+          <div class="footer-logo" style="color: currentColor;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
+              <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            </svg>TINY
+          </div>
+          <div class="social-buttons">
+            <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn apple"><i class="fa-brands fa-apple"></i></a>
+          </div>
+        </div>
+        <!-- Footer Col 2 -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="shop.html">Shop Collections</a></li>
+            <li><a href="blog.html">Parenting Blog</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 3 -->
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=newborn">Newborns</a></li>
+            <li><a href="shop.html?category=toddler">Toddlers</a></li>
+            <li><a href="shop.html?category=kids">Kids Playwear</a></li>
+            <li><a href="home-wholesale.html">School Uniforms</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 4 -->
+        <div class="footer-col">
+          <h3>Stay Updated</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-2);">Subscribe for styling guides and exclusive discount releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: var(--secondary-color); font-weight: bold;\'><i class=\'fa-solid fa-check\'></i> Check mail for confirmation!</p>';">
+            <input type="email" placeholder="Email Address" required class="footer-input">
+            <button type="submit" class="footer-submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 TINY Clothing Store. All rights reserved.</div>
+        <div style="display: flex; gap: var(--space-2);">
+          <a href="404.html" style="color: var(--text-muted);">Privacy Policy</a>
+          <span style="color: rgba(255,255,255,0.1)">|</span>
+          <a href="coming-soon.html" style="color: var(--text-muted);">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Swap gallery main image and manage thumbnail active class */
+    function swapImage(url, clickedBtn) {
+      document.getElementById('main-gallery-img').src = url;
+      const buttons = document.querySelectorAll('.thumb-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      clickedBtn.classList.add('active');
+    }
+    
+    let activeSize = '6-12M';
+    let activeColor = 'Mint Sage';
+    
+    function selectSize(size, clickedBtn) {
+      activeSize = size;
+      const sizeBtns = document.querySelectorAll('#product-size .size-btn');
+      sizeBtns.forEach(btn => btn.classList.remove('active'));
+      clickedBtn.classList.add('active');
+    }
+    
+    function selectColor(color, clickedDot) {
+      activeColor = color;
+      document.getElementById('selected-color-text').textContent = color;
+      const dots = document.querySelectorAll('#product-color .color-dot');
+      dots.forEach(dot => dot.classList.remove('active'));
+      clickedDot.classList.add('active');
+    }
+    
+    function adjustQty(amount) {
+      const input = document.getElementById('product-quantity');
+      let val = parseInt(input.value) + amount;
+      if (val < 1) val = 1;
+      input.value = val;
+    }
+    
+    // Wire custom attributes into the "Add to Cart" button dynamically on choice change
+    document.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
+      e.target.setAttribute('data-product-size', activeSize);
+      e.target.setAttribute('data-product-color', activeColor);
+    });
+  </script>
+</body>
+</html>

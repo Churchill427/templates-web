@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TINY - Shop Collections</title>
+  <meta name="description" content="Shop baby and kids outfits by size, age, uniform categories or seasonal gifts. Interactive sizing tables and live checkout capabilities inside.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B'><path d='M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12z'/></svg>">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- JS Libraries -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  
+  <style>
+    /* Shop Hero custom */
+    .shop-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/hero_shop.jpg') no-repeat center center/cover;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      padding: var(--space-8) var(--space-3);
+    }
+    
+    .shop-hero h1 {
+      color: #FFFFFF;
+      margin: 0;
+    }
+    
+    /* Category Filter Bar */
+    .filter-tabs-wrapper {
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 80px;
+      background-color: var(--header-bg);
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    
+    .filter-tabs-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .filter-tab {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-family: var(--font-headings);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .filter-tab.active, .filter-tab:hover {
+      background-color: var(--primary-color);
+      color: #FFFFFF;
+      border-color: var(--primary-color);
+    }
+    
+    /* Special offers banner */
+    .promo-banner {
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.95), rgba(78, 205, 196, 0.95)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      color: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    
+    .promo-content h3 {
+      color: #FFFFFF;
+    }
+    
+    /* Interactive Size Chart */
+    .size-tabs-header {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: var(--space-3);
+    }
+    
+    .size-tab-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      font-family: var(--font-headings);
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    
+    .size-tab-btn.active, .size-tab-btn:hover {
+      background-color: var(--secondary-color);
+      color: #FFFFFF;
+      border-color: var(--secondary-color);
+    }
+    
+    .size-chart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    
+    .size-chart-table th, .size-chart-table td {
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    
+    .size-chart-table th {
+      background-color: var(--accent-color);
+      color: var(--text-primary);
+    }
+    
+    body.dark-theme .size-chart-table th {
+      background-color: #2D2D44;
+    }
+    
+    .size-pane {
+      display: none;
+    }
+    
+    .size-pane.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: var(--primary-color);">
+          <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        </svg><span class="logo-text">TINY</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown-item">
+            <a href="#" class="nav-link" id="home-dropdown-trigger">Home <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+            <ul class="nav-dropdown">
+              <li><a href="index.html">Home 1</a></li>
+              <li><a href="home-wholesale.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="outfit-builder.html" class="nav-link">Outfit Builder</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        
+        <!-- RTL & Theme toggles -->
+        <button class="toggle-btn rtl-toggle-btn" title="Toggle Layout Direction">LTR</button>
+        <button class="toggle-btn theme-toggle-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        
+        <a href="cart.html" class="cart-icon-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="header-spacer"></div>
+
+  <!-- Section 1: Hero Section -->
+  <section class="shop-hero">
+    <div class="reveal">
+      <h1>Shop the Collection</h1>
+    </div>
+  </section>
+
+  <!-- Section 2: Category Filter Bar -->
+  <div class="filter-tabs-wrapper">
+    <div class="container filter-tabs-container">
+      <button class="filter-tab active" data-filter="all" onclick="filterProducts('all')">All Outfits</button>
+      <button class="filter-tab" data-filter="newborn" onclick="filterProducts('newborn')">Newborn</button>
+      <button class="filter-tab" data-filter="toddler" onclick="filterProducts('toddler')">Toddler</button>
+      <button class="filter-tab" data-filter="kids" onclick="filterProducts('kids')">Kids Play</button>
+      <button class="filter-tab" data-filter="pre-teen" onclick="filterProducts('pre-teen')">Pre-Teen</button>
+      <button class="filter-tab" data-filter="uniforms" onclick="filterProducts('uniforms')">Uniforms</button>
+      <button class="filter-tab" data-filter="gifts" onclick="filterProducts('gifts')">Gifts</button>
+    </div>
+  </div>
+
+  <!-- Section 3: Product Grid (8 items) -->
+  <section class="product-grid-section">
+    <div class="container">
+      <div class="card-grid product-grid reveal" style="grid-template-columns: repeat(4, 1fr);">
+        <!-- Item 1: Newborn -->
+        <div class="card" data-category="newborn">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_plaid_shirt.jpg" alt="Plaid Space Rocket Set"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Newborn</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Plaid Space Rocket Set</a></h3>
+          <p class="card-text">Casual plaid short-sleeve shirt layered over a soft rocket print graphic tee.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$18.90</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s1" data-product-name="Plaid Space Rocket Set" data-product-price="18.90" data-product-img="assets/images/product_plaid_shirt.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Item 2: Toddler -->
+        <div class="card" data-category="toddler">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_owl_shirt.jpg" alt="Owl Print Cotton Shirt"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Toddler</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Owl Print Cotton Shirt</a></h3>
+          <p class="card-text">Breathable pure cotton short-sleeve button-up with charming blue owl patterns.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$26.50</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s2" data-product-name="Owl Print Cotton Shirt" data-product-price="26.50" data-product-img="assets/images/product_owl_shirt.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Item 3: Kids -->
+        <div class="card" data-category="kids">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_striped_shirt.jpg" alt="Pastel Striped Linen Shirt"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Kids</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Pastel Striped Linen Shirt</a></h3>
+          <p class="card-text">Durable double-stitched shirt in cheerful pastel ocean stripe patterns.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$15.00</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s3" data-product-name="Pastel Striped Linen Shirt" data-product-price="15.00" data-product-img="assets/images/product_striped_shirt.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Item 4: Pre-Teen -->
+        <div class="card" data-category="pre-teen">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_craft_kurta.jpg" alt="Craft Patterned Linen Top"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Pre-Teen</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Craft Patterned Linen Top</a></h3>
+          <p class="card-text">A breezy flowy top built with GOTS organic linen threads. Features craft motifs.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$32.00</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s4" data-product-name="Craft Patterned Linen Top" data-product-price="32.00" data-product-img="assets/images/product_craft_kurta.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Item 5: Uniforms -->
+        <div class="card" data-category="uniforms">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_white_shirt.jpg" alt="Mandarin Collar White Shirt"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Uniforms</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Mandarin Collar White Shirt</a></h3>
+          <p class="card-text">Tailored crisp white cotton button-down shirt with modern mandarin collar.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$45.00</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s5" data-product-name="Mandarin Collar White Shirt" data-product-price="45.00" data-product-img="assets/images/product_white_shirt.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Item 6: Newborn -->
+        <div class="card" data-category="newborn">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_masi_tee.jpg" alt="Promoted to Masi Graphic Tee"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Newborn</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Promoted to Masi Graphic Tee</a></h3>
+          <p class="card-text">Ultra-soft mint aqua cotton t-shirt with cute baby graphic print.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$39.99</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s6" data-product-name="Promoted to Masi Graphic Tee" data-product-price="39.99" data-product-img="assets/images/product_masi_tee.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Item 7: Gifts -->
+        <div class="card" data-category="gifts">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_masi_tee.jpg" alt="Pastel Graphic Cotton Tee"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Gifts</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Pastel Graphic Cotton Tee</a></h3>
+          <p class="card-text">Comfortable mint green crewneck tee made with organic combed cotton.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$22.00</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s7" data-product-name="Pastel Graphic Cotton Tee" data-product-price="22.00" data-product-img="assets/images/product_masi_tee.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Item 8: Gifts -->
+        <div class="card" data-category="gifts">
+          <div class="card-img-wrapper">
+            <a href="product-detail.html"><img src="assets/images/product_plaid_shirt2.jpg" alt="Flannel Plaid Shirt Set"></a>
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Gifts</span>
+          <h3 class="card-title" style="font-size: 1.15rem;"><a href="product-detail.html" style="color: inherit;">Flannel Plaid Shirt Set</a></h3>
+          <p class="card-text">Classic plaid checkered button-down short sleeve shirt with layered tee.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--primary-color);">$12.50</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s8" data-product-name="Flannel Plaid Shirt Set" data-product-price="12.50" data-product-img="assets/images/product_plaid_shirt2.jpg" style="padding: 6px 12px; font-size: 0.85rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Special Offers -->
+  <section class="special-offers section-bg-alt">
+    <div class="container">
+      <div class="promo-banner reveal">
+        <div class="promo-content">
+          <span style="font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; background-color: #FFFFFF; color: var(--primary-color); padding: 4px 10px; border-radius: 4px;">Limited Deal</span>
+          <h3 style="font-size: 2rem; margin-top: 10px;">Get 15% Off All School Uniform Items</h3>
+          <p style="font-size: 1.05rem; color: #FFFFFF; margin-top: 5px;">Hurry up! Use coupon code <strong>UNIFORM15</strong> at checkout. Offer expires shortly.</p>
+        </div>
+        <div style="text-align: center; background-color: rgba(255, 255, 255, 0.2); padding: 15px 30px; border-radius: var(--radius-md); min-width: 200px;">
+          <div style="font-size: 0.85rem; font-weight: bold; text-transform: uppercase;">Resets In</div>
+          <div id="shop-promo-countdown" style="font-size: 2rem; font-weight: 800; font-family: monospace; margin-top: 5px;">00:00:00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Size Guide Section -->
+  <section class="size-guide-section" id="size-guide">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Interactive Sizing Chart</h2>
+        <p class="section-subtitle">Select your child's age group to inspect exact measurements</p>
+      </div>
+      
+      <div class="reveal" style="max-width: 800px; margin: 0 auto;">
+        <!-- Tabs Header -->
+        <div class="size-tabs-header">
+          <button class="size-tab-btn active" onclick="switchSizeTab('infants')">Infants (0-12M)</button>
+          <button class="size-tab-btn" onclick="switchSizeTab('toddlers')">Toddlers (1-3Y)</button>
+          <button class="size-tab-btn" onclick="switchSizeTab('kids-sizing')">Kids (4-8Y)</button>
+        </div>
+        
+        <!-- Tab Content 1 -->
+        <div class="size-pane active" id="pane-infants">
+          <table class="size-chart-table">
+            <thead>
+              <tr>
+                <th>Size (Age)</th>
+                <th>Height (cm)</th>
+                <th>Chest (cm)</th>
+                <th>Waist (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0-3 Months</td>
+                <td>50-56</td>
+                <td>38-40</td>
+                <td>38-40</td>
+              </tr>
+              <tr>
+                <td>3-6 Months</td>
+                <td>57-68</td>
+                <td>41-43</td>
+                <td>41-43</td>
+              </tr>
+              <tr>
+                <td>6-12 Months</td>
+                <td>69-80</td>
+                <td>44-46</td>
+                <td>44-45</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Tab Content 2 -->
+        <div class="size-pane" id="pane-toddlers">
+          <table class="size-chart-table">
+            <thead>
+              <tr>
+                <th>Size (Age)</th>
+                <th>Height (cm)</th>
+                <th>Chest (cm)</th>
+                <th>Waist (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>12-18 Months</td>
+                <td>81-86</td>
+                <td>47-49</td>
+                <td>46-47</td>
+              </tr>
+              <tr>
+                <td>18-24 Months</td>
+                <td>87-92</td>
+                <td>50-52</td>
+                <td>48-49</td>
+              </tr>
+              <tr>
+                <td>2-3 Years</td>
+                <td>93-98</td>
+                <td>53-54</td>
+                <td>50-51</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Tab Content 3 -->
+        <div class="size-pane" id="pane-kids-sizing">
+          <table class="size-chart-table">
+            <thead>
+              <tr>
+                <th>Size (Age)</th>
+                <th>Height (cm)</th>
+                <th>Chest (cm)</th>
+                <th>Waist (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4-5 Years</td>
+                <td>104-110</td>
+                <td>56-58</td>
+                <td>53-54</td>
+              </tr>
+              <tr>
+                <td>6-7 Years</td>
+                <td>116-122</td>
+                <td>60-62</td>
+                <td>55-56</td>
+              </tr>
+              <tr>
+                <td>8 Years</td>
+                <td>128</td>
+                <td>64</td>
+                <td>57</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Shop CTA -->
+  <section class="shop-help-cta section-bg-alt" style="text-align: center;">
+    <div class="container reveal">
+      <h2 style="margin-bottom: var(--space-2);">Need Help Choosing the Right Dress?</h2>
+      <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto var(--space-3) auto;">If you are unsure about sizes or want help planning school uniform collections, our customer support agents are ready to assist.</p>
+      <div style="display: flex; justify-content: center; gap: var(--space-2);">
+        <a href="contact.html" class="btn btn-primary">Contact Support</a>
+        <a href="#size-guide" class="btn btn-secondary">Review Sizing Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer Col 1 -->
+        <div class="footer-col">
+          <div class="footer-logo" style="color: currentColor;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
+              <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            </svg>TINY
+          </div>
+          <div class="social-buttons">
+            <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn apple"><i class="fa-brands fa-apple"></i></a>
+          </div>
+        </div>
+        <!-- Footer Col 2 -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="shop.html">Shop Collections</a></li>
+            <li><a href="blog.html">Parenting Blog</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 3 -->
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=newborn">Newborns</a></li>
+            <li><a href="shop.html?category=toddler">Toddlers</a></li>
+            <li><a href="shop.html?category=kids">Kids Playwear</a></li>
+            <li><a href="home-wholesale.html">School Uniforms</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 4 -->
+        <div class="footer-col">
+          <h3>Stay Updated</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-2);">Subscribe for styling guides and exclusive discount releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: var(--secondary-color); font-weight: bold;\'><i class=\'fa-solid fa-check\'></i> Check mail for confirmation!</p>';">
+            <input type="email" placeholder="Email Address" required class="footer-input">
+            <button type="submit" class="footer-submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 TINY Clothing Store. All rights reserved.</div>
+        <div style="display: flex; gap: var(--space-2);">
+          <a href="404.html" style="color: var(--text-muted);">Privacy Policy</a>
+          <span style="color: rgba(255,255,255,0.1)">|</span>
+          <a href="coming-soon.html" style="color: var(--text-muted);">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* In-page specific JS for product filtration and size switching */
+    function filterProducts(category) {
+      const cards = document.querySelectorAll('.product-grid .card');
+      const tabs = document.querySelectorAll('.filter-tab');
+      
+      tabs.forEach(tab => {
+        if (tab.getAttribute('data-filter') === category) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    
+    function switchSizeTab(tabId) {
+      const buttons = document.querySelectorAll('.size-tab-btn');
+      const panes = document.querySelectorAll('.size-pane');
+      
+      buttons.forEach(btn => {
+        if (btn.getAttribute('onclick').includes(tabId)) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      panes.forEach(pane => {
+        if (pane.id === 'pane-' + tabId) {
+          pane.classList.add('active');
+        } else {
+          pane.classList.remove('active');
+        }
+      });
+    }
+
+    // Auto filter if URL parameter is present
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category');
+      if (cat) {
+        filterProducts(cat);
+      }
+      
+      // Auto scroll to size guide if requested
+      if (params.get('show_guide')) {
+        const el = document.getElementById('size-guide');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>

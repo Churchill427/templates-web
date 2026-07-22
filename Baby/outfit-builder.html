@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TINY - Mix &amp; Match Outfit Builder</title>
+  <meta name="description" content="Build the perfect children outfit with our interactive TINY Outfit Builder. Mix and match premium organic cotton tops and bottoms with instant cart additions.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B'><path d='M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12z'/></svg>">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- JS Libraries -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  
+  <style>
+    /* Hero styling custom to outfit-builder.html */
+    .builder-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/hero_outfit_builder.jpg') no-repeat center center/cover;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      padding: var(--space-8) var(--space-3);
+    }
+    
+    .builder-hero h1 {
+      color: #FFFFFF;
+      margin: 0;
+    }
+    
+    /* Interactive mix & match canvas */
+    .builder-interface {
+      display: flex;
+      gap: var(--space-4);
+      align-items: stretch;
+    }
+    
+    .controls-panel {
+      flex: 1.1;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .canvas-panel {
+      flex: 0.9;
+      background-color: var(--accent-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    body.dark-theme .canvas-panel {
+      background-color: #22223B;
+    }
+    
+    .selection-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: var(--space-2);
+    }
+    
+    .select-item-btn {
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .select-item-btn.active, .select-item-btn:hover {
+      border-color: var(--primary-color);
+      background-color: var(--accent-color);
+    }
+
+    body.dark-theme .select-item-btn.active, 
+    body.dark-theme .select-item-btn:hover {
+      background-color: #2D2D44;
+    }
+    
+    .select-item-btn img {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      margin-bottom: 6px;
+    }
+    
+    .select-item-btn span {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+    }
+    
+    /* Mannequin Preview stacked elements */
+    .mannequin-frame {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 250px;
+      gap: 5px;
+      margin-bottom: var(--space-2);
+    }
+    
+    .canvas-piece {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+    }
+    
+    .canvas-piece img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Slider milestone sizing page custom */
+    .milestone-slider-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+    }
+    
+    .age-slider {
+      width: 100%;
+      margin: var(--space-2) 0;
+      accent-color: var(--primary-color);
+    }
+    
+    /* Breakpoints media query mapping */
+    @media (max-width: 1024px) {
+      .builder-interface {
+        gap: var(--space-3);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .builder-interface {
+        flex-direction: column;
+      }
+      .controls-panel, .canvas-panel {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 360px) {
+      .selection-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .select-item-btn img {
+        height: 50px;
+      }
+      .canvas-piece {
+        aspect-ratio: 1 / 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: var(--primary-color);">
+          <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        </svg><span class="logo-text">TINY</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown-item">
+            <a href="#" class="nav-link" id="home-dropdown-trigger">Home <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+            <ul class="nav-dropdown">
+              <li><a href="index.html">Home 1</a></li>
+              <li><a href="home-wholesale.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="outfit-builder.html" class="nav-link active">Outfit Builder</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <!-- RTL & Theme toggles -->
+        <button class="toggle-btn rtl-toggle-btn" title="Toggle Layout Direction">LTR</button>
+        <button class="toggle-btn theme-toggle-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        
+        <a href="cart.html" class="cart-icon-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="header-spacer"></div>
+
+  <!-- Section 1: Hero Section -->
+  <section class="builder-hero">
+    <div class="reveal">
+      <h1>Mix &amp; Match Outfit Builder</h1>
+    </div>
+  </section>
+
+  <!-- Section 2: Outfit Canvas / Interactive Builder Area -->
+  <section class="builder-area">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Design Your Kid's Playwear Set</h2>
+        <p class="section-subtitle">Pick a top and bottom to create a personalized outfit set, check details, and add the bundle in one click</p>
+      </div>
+      
+      <div class="builder-interface split-row reveal">
+        <!-- Controls Column -->
+        <div class="controls-panel">
+          <div>
+            <!-- Tops Selector -->
+            <h3 style="border-bottom:1px solid var(--border-color); padding-bottom:6px; margin-bottom:12px;">1. Choose Top Item</h3>
+            <div class="selection-row" id="top-selections">
+              <button class="select-item-btn active" data-id="top_stripe" data-name="Striped Crewneck" data-price="15.00" data-img="assets/images/top_lemon.jpg" onclick="chooseTop('top_stripe')">
+                <img src="assets/images/top_lemon.jpg" alt="Striped Tee">
+                <span>Striped Tee</span>
+              </button>
+              <button class="select-item-btn" data-id="top_hoodie" data-name="Cosy Hoodie" data-price="26.50" data-img="assets/images/top_knit.jpg" onclick="chooseTop('top_hoodie')">
+                <img src="assets/images/top_knit.jpg" alt="Knitted Hoodie">
+                <span>Knitted Hoodie</span>
+              </button>
+              <button class="select-item-btn" data-id="top_polo" data-name="Classroom Polo" data-price="19.99" data-img="assets/images/top_rabbit.jpg" onclick="chooseTop('top_polo')">
+                <img src="assets/images/top_rabbit.jpg" alt="Uniform Polo">
+                <span>School Polo</span>
+              </button>
+            </div>
+            
+            <!-- Bottoms Selector -->
+            <h3 style="border-bottom:1px solid var(--border-color); padding-bottom:6px; margin-bottom:12px; margin-top:15px;">2. Choose Bottom Item</h3>
+            <div class="selection-row" id="bottom-selections">
+              <button class="select-item-btn active" data-id="bot_skirt" data-name="School Skirt" data-price="22.50" data-img="assets/images/bot_skirt.jpg" onclick="chooseBottom('bot_skirt')">
+                <img src="assets/images/bot_skirt.jpg" alt="Pleated Skirt">
+                <span>Pleated Skirt</span>
+              </button>
+              <button class="select-item-btn" data-id="bot_shorts" data-name="Active PE Shorts" data-price="12.99" data-img="assets/images/bot_shorts.jpg" onclick="chooseBottom('bot_shorts')">
+                <img src="assets/images/bot_shorts.jpg" alt="Active Shorts">
+                <span>Active Shorts</span>
+              </button>
+              <button class="select-item-btn" data-id="bot_joggers" data-name="Cotton Joggers" data-price="24.99" data-img="assets/images/bot_joggers.jpg" onclick="chooseBottom('bot_joggers')">
+                <img src="assets/images/bot_joggers.jpg" alt="Cotton Pants">
+                <span>Cotton Joggers</span>
+              </button>
+            </div>
+          </div>
+          
+          <div style="margin-top: 20px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+              <span style="font-weight:700;">Set Combination:</span>
+              <span id="selected-outfit-text" style="color:var(--text-secondary); font-size:0.9rem;">Striped Crewneck + School Skirt</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+              <span style="font-weight:700; font-size:1.1rem;">Bundle Set Price:</span>
+              <span id="bundle-total-price" style="font-size:1.8rem; font-weight:800; color:var(--primary-color);">$37.50</span>
+            </div>
+            <button class="btn btn-primary" id="add-bundle-to-cart" style="width:100%; padding:14px; font-size:1.05rem;" onclick="addSelectedBundle()">
+              <i class="fa-solid fa-cart-shopping" style="margin-right: 8px;"></i> Add Bundle Set to Cart
+            </button>
+          </div>
+        </div>
+        
+        <!-- Canvas Panel Column -->
+        <div class="canvas-panel">
+          <span style="font-size: 0.85rem; font-weight: 800; background-color: var(--primary-color); color: #FFFFFF; padding: 4px 12px; border-radius: 4px; position: absolute; top: 15px; left: 15px; text-transform: uppercase;">Live Preview Canvas</span>
+          <div class="mannequin-frame">
+            <!-- Top apparel wrapper -->
+            <div class="canvas-piece">
+              <img id="canvas-top-img" src="assets/images/top_lemon.jpg" alt="Selected Top Preview">
+            </div>
+            <!-- Bottom apparel wrapper -->
+            <div class="canvas-piece">
+              <img id="canvas-bottom-img" src="assets/images/bot_skirt.jpg" alt="Selected Bottom Preview">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Curated Outfit Sets -->
+  <section class="curated-outfits section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Pre-Matched Curated Sets</h2>
+        <p class="section-subtitle">Parent-approved sets for school activities, beach play, and cozy home wear</p>
+      </div>
+      
+      <div class="card-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Set Card 1 -->
+        <div class="card">
+          <div class="card-img-wrapper" style="height: 200px;">
+            <img src="assets/images/set_summer.jpg" alt="Summer Sunshine Combo">
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Summer Wear</span>
+          <h3 class="card-title">Summer Sunshine Combo</h3>
+          <p class="card-text">Combines our light breathable organic crewneck tee and active PE shorts.</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+            <span style="font-weight: 800; color: var(--primary-color); font-size:1.2rem;">$27.99</span>
+            <button class="btn btn-primary" onclick="addToCart('cur_set1', 'Summer Sunshine Combo', 27.99, 'assets/images/set_summer.jpg', 'M', 'Default', 1); alert('Sunshine Combo added!');" style="padding: 6px 12px; font-size:0.85rem;"><i class="fa-solid fa-plus"></i> Add Set</button>
+          </div>
+        </div>
+        <!-- Set Card 2 -->
+        <div class="card">
+          <div class="card-img-wrapper" style="height: 200px;">
+            <img src="assets/images/set_school.jpg" alt="Classroom Classic Combo">
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">School Uniform</span>
+          <h3 class="card-title">Classroom Classic Combo</h3>
+          <p class="card-text">Consists of our classroom polo and pleated school uniform skirt.</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+            <span style="font-weight: 800; color: var(--primary-color); font-size:1.2rem;">$42.49</span>
+            <button class="btn btn-primary" onclick="addToCart('cur_set2', 'Classroom Classic Combo', 42.49, 'assets/images/set_school.jpg', 'M', 'Default', 1); alert('Classic Combo added!');" style="padding: 6px 12px; font-size:0.85rem;"><i class="fa-solid fa-plus"></i> Add Set</button>
+          </div>
+        </div>
+        <!-- Set Card 3 -->
+        <div class="card">
+          <div class="card-img-wrapper" style="height: 200px;">
+            <img src="assets/images/set_winter.jpg" alt="Cosy Winter Jogger Combo">
+          </div>
+          <span style="font-size: 0.8rem; background-color: var(--secondary-color); color: #FFFFFF; padding: 2px 8px; border-radius: 20px; align-self: flex-start; margin-bottom: 8px; font-weight: 700;">Winter Wear</span>
+          <h3 class="card-title">Cosy Winter Jogger Combo</h3>
+          <p class="card-text">Combines the heavy knit fleece hoodie and thick cotton play joggers pants.</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+            <span style="font-weight: 800; color: var(--primary-color); font-size:1.2rem;">$51.49</span>
+            <button class="btn btn-primary" onclick="addToCart('cur_set3', 'Cosy Winter Jogger Combo', 51.49, 'assets/images/set_winter.jpg', 'M', 'Default', 1); alert('Winter Combo added!');" style="padding: 6px 12px; font-size:0.85rem;"><i class="fa-solid fa-plus"></i> Add Set</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Organic Fabric Comfort Benefits -->
+  <section class="fabric-benefits">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Designed for Sensitive Skins</h2>
+        <p class="section-subtitle">Comfort and safety features embedded into every garment fabric thread</p>
+      </div>
+      <div class="card-grid reveal">
+        <!-- Feature 1 -->
+        <div class="card" style="align-items: center; text-align: center;">
+          <div style="font-size: 2.2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-square-envelope"></i>
+          </div>
+          <h3>Flatlock Stitching</h3>
+          <p class="card-text">Our outfits feature smooth stitched seams that lie flat against baby skin to prevent scratchiness.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="card" style="align-items: center; text-align: center;">
+          <div style="font-size: 2.2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-circle-notch"></i>
+          </div>
+          <h3>No Internal Tags</h3>
+          <p class="card-text">Washing directions and sizing are heat-transferred directly to fabric. No scratchy tag cuts.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="card" style="align-items: center; text-align: center;">
+          <div style="font-size: 2.2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-tint"></i>
+          </div>
+          <h3>Non-Toxic Pastel Dyes</h3>
+          <p class="card-text">We rely on organic eco-friendly pigment dyes that do not bleed color or sensitize skins.</p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="card" style="align-items: center; text-align: center;">
+          <div style="font-size: 2.2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-expand"></i>
+          </div>
+          <h3>Growth Adjusters</h3>
+          <p class="card-text">Flexible waistband loops and rollable cuffs allow outfits to grow along with children.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Growth Milestones Sizing Slider (Interactive) -->
+  <section class="sizing-milestone-section section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Interactive Sizing Slider</h2>
+        <p class="section-subtitle">Slide the selector below to view recommended fit dimensions matching age brackets</p>
+      </div>
+      
+      <div class="milestone-slider-container reveal">
+        <h3 style="margin-bottom:8px;">Age Group Milestone</h3>
+        <div style="font-size: 2rem; font-weight:800; color:var(--primary-color); margin-bottom:10px;" id="slider-age-val">4 Years Old</div>
+        
+        <input type="range" min="1" max="4" value="2" class="age-slider" id="milestone-range-slider" oninput="updateSlider(this.value)">
+        
+        <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:700; color:var(--text-secondary); margin-bottom: 20px;">
+          <span>1 Year</span>
+          <span>3 Years</span>
+          <span>6 Years</span>
+          <span>10 Years</span>
+        </div>
+        
+        <div style="background-color:var(--bg-color); border:1px solid var(--border-color); padding:15px; border-radius:var(--radius-sm); text-align:left;">
+          <div style="display:flex; justify-content:space-between; padding-bottom:8px; border-bottom:1px solid var(--border-color); margin-bottom:8px;">
+            <span style="font-weight:700;">Recommended Height Range:</span>
+            <span id="slider-height-val" style="color:var(--text-secondary);">92 - 98 cm</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding-bottom:8px; border-bottom:1px solid var(--border-color); margin-bottom:8px;">
+            <span style="font-weight:700;">Recommended Weight Range:</span>
+            <span id="slider-weight-val" style="color:var(--text-secondary);">12.0 - 14.5 kg</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span style="font-weight:700;">Standard TINY Size Fit:</span>
+            <span id="slider-fit-val" style="color:var(--text-secondary); font-weight:700;">Toddler (18-24M)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Outfits Support CTA -->
+  <section class="builder-consultation-section text-center">
+    <div class="container reveal">
+      <h2>Stuck Designing Your Uniform Set?</h2>
+      <p style="color:var(--text-secondary); max-width:600px; margin:0 auto var(--space-3) auto;">Our styling staff can help coordinate fabric choices, embroider school logos, and arrange personalized sizing packages.</p>
+      <div style="display:flex; justify-content:center; gap:var(--space-2);">
+        <a href="contact.html" class="btn btn-primary">Contact Styling Team</a>
+        <a href="shop.html" class="btn btn-secondary">Explore Shop Catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer Col 1 -->
+        <div class="footer-col">
+          <div class="footer-logo" style="color: currentColor;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
+              <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            </svg>TINY
+          </div>
+          <div class="social-buttons">
+            <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn apple"><i class="fa-brands fa-apple"></i></a>
+          </div>
+        </div>
+        <!-- Footer Col 2 -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="shop.html">Shop Collections</a></li>
+            <li><a href="blog.html">Parenting Blog</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 3 -->
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=newborn">Newborns</a></li>
+            <li><a href="shop.html?category=toddler">Toddlers</a></li>
+            <li><a href="shop.html?category=kids">Kids Playwear</a></li>
+            <li><a href="home-wholesale.html">School Uniforms</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 4 -->
+        <div class="footer-col">
+          <h3>Stay Updated</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-2);">Subscribe for styling guides and exclusive discount releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: var(--secondary-color); font-weight: bold;\'><i class=\'fa-solid fa-check\'></i> Check mail for confirmation!</p>';">
+            <input type="email" placeholder="Email Address" required class="footer-input">
+            <button type="submit" class="footer-submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 TINY Clothing Store. All rights reserved.</div>
+        <div style="display: flex; gap: var(--space-2);">
+          <a href="404.html" style="color: var(--text-muted);">Privacy Policy</a>
+          <span style="color: rgba(255,255,255,0.1)">|</span>
+          <a href="coming-soon.html" style="color: var(--text-muted);">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mix and match state variables
+    let selectedTopId = 'top_stripe';
+    let selectedBottomId = 'bot_skirt';
+    
+    function chooseTop(id) {
+      // Toggle active button
+      const buttons = document.querySelectorAll('#top-selections .select-item-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.querySelector(`#top-selections .select-item-btn[data-id="${id}"]`);
+      activeBtn.classList.add('active');
+      
+      selectedTopId = id;
+      
+      // Update canvas image
+      document.getElementById('canvas-top-img').src = activeBtn.getAttribute('data-img');
+      
+      updateComboTotals();
+    }
+    
+    function chooseBottom(id) {
+      const buttons = document.querySelectorAll('#bottom-selections .select-item-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.querySelector(`#bottom-selections .select-item-btn[data-id="${id}"]`);
+      activeBtn.classList.add('active');
+      
+      selectedBottomId = id;
+      
+      // Update canvas image
+      document.getElementById('canvas-bottom-img').src = activeBtn.getAttribute('data-img');
+      
+      updateComboTotals();
+    }
+    
+    function updateComboTotals() {
+      const topBtn = document.querySelector(`#top-selections .select-item-btn[data-id="${selectedTopId}"]`);
+      const botBtn = document.querySelector(`#bottom-selections .select-item-btn[data-id="${selectedBottomId}"]`);
+      
+      const topName = topBtn.getAttribute('data-name');
+      const topPrice = parseFloat(topBtn.getAttribute('data-price'));
+      
+      const botName = botBtn.getAttribute('data-name');
+      const botPrice = parseFloat(botBtn.getAttribute('data-price'));
+      
+      document.getElementById('selected-outfit-text').textContent = `${topName} + ${botName}`;
+      document.getElementById('bundle-total-price').textContent = `$${(topPrice + botPrice).toFixed(2)}`;
+    }
+    
+    function addSelectedBundle() {
+      const topBtn = document.querySelector(`#top-selections .select-item-btn[data-id="${selectedTopId}"]`);
+      const botBtn = document.querySelector(`#bottom-selections .select-item-btn[data-id="${selectedBottomId}"]`);
+      
+      const topName = topBtn.getAttribute('data-name');
+      const topPrice = parseFloat(topBtn.getAttribute('data-price'));
+      const topImg = topBtn.getAttribute('data-img');
+      
+      const botName = botBtn.getAttribute('data-name');
+      const botPrice = parseFloat(botBtn.getAttribute('data-price'));
+      const botImg = botBtn.getAttribute('data-img');
+      
+      // Add both to cart
+      addToCart(selectedTopId, topName, topPrice, topImg, 'M', 'Default', 1);
+      addToCart(selectedBottomId, botName, botPrice, botImg, 'M', 'Default', 1);
+      
+      // Feedback animation
+      const addBtn = document.getElementById('add-bundle-to-cart');
+      const originalText = addBtn.innerHTML;
+      addBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Added Outfit Combo!';
+      addBtn.style.backgroundColor = '#4ECDC4';
+      
+      setTimeout(() => {
+        addBtn.innerHTML = originalText;
+        addBtn.style.backgroundColor = '';
+      }, 2000);
+    }
+    
+    // Slider functions
+    const sliderData = {
+      "1": { age: "1 Year Old", height: "80 - 86 cm", weight: "10.0 - 12.0 kg", fit: "Toddler (12-18M)" },
+      "2": { age: "3 Years Old", height: "92 - 98 cm", weight: "14.0 - 16.5 kg", fit: "Toddler (2-3Y)" },
+      "3": { age: "6 Years Old", height: "110 - 116 cm", weight: "18.0 - 22.5 kg", fit: "Kids (5-6Y)" },
+      "4": { age: "10 Years Old", height: "134 - 140 cm", weight: "28.0 - 33.0 kg", fit: "Pre-Teen (9-10Y)" }
+    };
+    
+    function updateSlider(val) {
+      const data = sliderData[val];
+      if (!data) return;
+      document.getElementById('slider-age-val').textContent = data.age;
+      document.getElementById('slider-height-val').textContent = data.height;
+      document.getElementById('slider-weight-val').textContent = data.weight;
+      document.getElementById('slider-fit-val').textContent = data.fit;
+    }
+  </script>
+</body>
+</html>

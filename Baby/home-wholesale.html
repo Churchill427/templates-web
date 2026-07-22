@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TINY - Wholesale & School Uniforms</title>
+  <meta name="description" content="Shop TINY Wholesale and School Uniform division. Order bulk children clothing, custom school wear, uniform blazers, and custom logo embroideries.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B'><path d='M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12z'/></svg>">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- JS Libraries -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  
+  <style>
+    /* Wholesale Hero Section */
+    .wholesale-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/hero_home2.jpg') no-repeat center center/cover;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      padding: var(--space-8) var(--space-3);
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero-content h1 {
+      color: #FFFFFF;
+      margin-bottom: var(--space-3);
+      padding: var(--space-2) 0;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-4);
+      color: #FFF5E1;
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Split Row layout alignment - start and end at same position */
+    .benefit-row {
+      display: flex;
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+    
+    .benefit-text-col {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .benefit-img-col {
+      flex: 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    
+    .benefit-img-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Size Chart teaser */
+    .teaser-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-3) 0;
+      background-color: var(--card-bg);
+    }
+    
+    .teaser-table th, .teaser-table td {
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    
+    .teaser-table th {
+      background-color: var(--accent-color);
+      color: var(--text-primary);
+      font-family: var(--font-headings);
+      font-weight: 700;
+    }
+
+    body.dark-theme .teaser-table th {
+      background-color: #2D2D44;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: var(--primary-color);">
+          <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        </svg><span class="logo-text">TINY</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown-item">
+            <a href="#" class="nav-link" id="home-dropdown-trigger">Home <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+            <ul class="nav-dropdown">
+              <li><a href="index.html">Home 1</a></li>
+              <li><a href="home-wholesale.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="outfit-builder.html" class="nav-link">Outfit Builder</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        
+        <!-- RTL & Theme toggles -->
+        <button class="toggle-btn rtl-toggle-btn" title="Toggle Layout Direction">LTR</button>
+        <button class="toggle-btn theme-toggle-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        
+        <a href="cart.html" class="cart-icon-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="header-spacer"></div>
+
+  <!-- Section 1: Hero Section -->
+  <section class="wholesale-hero">
+    <div class="hero-content reveal">
+      <h1>School Uniforms & Bulk Orders</h1>
+      <p>Premium supply solutions for educational schools, retail wholesalers, and bulk gifters.</p>
+      <a href="#enquiry" class="btn btn-primary">Enquire Now</a>
+    </div>
+  </section>
+
+  <!-- Section 2: School Uniform Categories -->
+  <section class="school-uniforms">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>School Uniform Outfits</h2>
+        <p class="section-subtitle">Comfortable, colorfast, and long-lasting garments built for classes and recess</p>
+      </div>
+      <div class="card-grid reveal">
+        <!-- Uniform Card 1 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="assets/images/uniform_blue_vest.jpg" alt="School Polo Shirt">
+          </div>
+          <h3 class="card-title text-center">Classroom Polos</h3>
+          <p class="card-text text-center">Breathable pique knit cotton shirts with double-stitch collar frames.</p>
+          <a href="shop.html?category=uniforms" class="card-link">View Polo Styles &rarr;</a>
+        </div>
+        <!-- Uniform Card 2 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="assets/images/uniform_yellow_polo.jpg" alt="Uniform Skirts and Trousers">
+          </div>
+          <h3 class="card-title text-center">Pants &amp; Skirts</h3>
+          <p class="card-text text-center">Crease-resistant pleated school skirts and sturdy uniform trousers.</p>
+          <a href="shop.html?category=uniforms" class="card-link">View Bottoms &rarr;</a>
+        </div>
+        <!-- Uniform Card 3 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="assets/images/uniform_black_suit.jpg" alt="Uniform Blazer Jackets">
+          </div>
+          <h3 class="card-title text-center">Formal Blazers</h3>
+          <p class="card-text text-center">Classic lined blazers featuring inner utility pocket organizers.</p>
+          <a href="shop.html?category=uniforms" class="card-link">View Outerwear &rarr;</a>
+        </div>
+        <!-- Uniform Card 4 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="assets/images/uniform_pink_pe.jpg" alt="School Gym Sportswear">
+          </div>
+          <h3 class="card-title text-center">Physical Ed Kit</h3>
+          <p class="card-text text-center">Moisture-wicking mesh jerseys and lightweight active shorts.</p>
+          <a href="shop.html?category=uniforms" class="card-link">View PE Kits &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Bulk Order Benefits -->
+  <section class="bulk-benefits section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Wholesale Benefits</h2>
+        <p class="section-subtitle">Why educational buyers and clothing retailers partner with TINY</p>
+      </div>
+      <div class="benefit-row split-row reveal">
+        <div class="benefit-text-col">
+          <div>
+            <h3 style="margin-bottom: var(--space-2);"><i class="fa-solid fa-tags" style="color: var(--primary-color); margin-right: 8px;"></i> Tiered Volume Pricing</h3>
+            <p style="color: var(--text-secondary);">Enjoy substantial unit cost savings on uniform contracts and bulk clothes order items.</p>
+          </div>
+          <div style="margin-top: var(--space-2);">
+            <h3 style="margin-bottom: var(--space-2);"><i class="fa-solid fa-palette" style="color: var(--primary-color); margin-right: 8px;"></i> Logo &amp; Color Customization</h3>
+            <p style="color: var(--text-secondary);">Add bespoke badges, custom labels, and exact school crest embroideries directly on fabrics.</p>
+          </div>
+          <div style="margin-top: var(--space-2);">
+            <h3 style="margin-bottom: var(--space-2);"><i class="fa-solid fa-boxes-packing" style="color: var(--primary-color); margin-right: 8px;"></i> Guaranteed Supply</h3>
+            <p style="color: var(--text-secondary);">Reserve inventory lines in advance to secure worry-free stock availability for back-to-school rushes.</p>
+          </div>
+        </div>
+        <div class="benefit-img-col">
+          <img src="assets/images/wholesale_bundle_set.jpg" alt="Bulk Wholesale Bundle Set">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Gifting Options -->
+  <section class="gifting-options">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Premium Gifting Options</h2>
+        <p class="section-subtitle">Delight families with customized gift bundles and greeting accessories</p>
+      </div>
+      <div class="card-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Gift Option 1 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="assets/images/gift_pink_hamper.jpg" alt="TINY Digital Gift Cards">
+          </div>
+          <h3 class="card-title text-center">TINY Digital Gift Cards</h3>
+          <p class="card-text text-center">Let parents choose their favorite baby accessories. Delivered instantly via email.</p>
+          <a href="shop.html?category=gifts" class="card-link">Explore Cards &rarr;</a>
+        </div>
+        <!-- Gift Option 2 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="assets/images/gift_yellow_box.jpg" alt="Premium Gift Wrapping">
+          </div>
+          <h3 class="card-title text-center">Custom Box Wrapping</h3>
+          <p class="card-text text-center">Presented in our signature pastel boxes wrapped with natural hemp cord bows.</p>
+          <a href="shop.html?category=gifts" class="card-link">Explore Wrap styles &rarr;</a>
+        </div>
+        <!-- Gift Option 3 -->
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="assets/images/gift_green_vanity.jpg" alt="Personalized clothing items">
+          </div>
+          <h3 class="card-title text-center">Personalized Monograms</h3>
+          <p class="card-text text-center">Stitch name initials or cute animal motifs directly on sweaters and onesies.</p>
+          <a href="shop.html?category=gifts" class="card-link">Explore Personalization &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Size Guide Preview -->
+  <section class="size-guide-preview section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Size Guide Preview</h2>
+        <p class="section-subtitle">Get the right fit first time around for different growth milestones</p>
+      </div>
+      <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <table class="teaser-table">
+          <thead>
+            <tr>
+              <th>Age Bracket</th>
+              <th>Height Recommendation</th>
+              <th>Weight Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Newborn (0-3M)</td>
+              <td>50 - 62 cm</td>
+              <td>3.0 - 5.5 kg</td>
+            </tr>
+            <tr>
+              <td>Toddler (1-2Y)</td>
+              <td>80 - 92 cm</td>
+              <td>10.0 - 13.0 kg</td>
+            </tr>
+            <tr>
+              <td>Kid (4-6Y)</td>
+              <td>104 - 116 cm</td>
+              <td>16.0 - 22.0 kg</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-3);">For detailed measurements of sleeves, chest dimensions, and waist adjustments, browse our full guide.</p>
+        <a href="shop.html?show_guide=1" class="btn btn-secondary">View Full Sizing Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Store Enquiry Form -->
+  <section class="store-enquiry-section" id="enquiry">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Submit Store Enquiry</h2>
+        <p class="section-subtitle">Let us help build your perfect uniforms supply or customized bulk order</p>
+      </div>
+      <div class="reveal" style="max-width: 600px; margin: 0 auto; background-color: var(--card-bg); border: 1px solid var(--border-color); padding: var(--space-4); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+        <form id="wholesale-enquiry-form">
+          <div class="form-group">
+            <label for="enquiry-name" class="form-label">Full Name</label>
+            <input type="text" id="enquiry-name" class="form-control" placeholder="Jane Doe">
+          </div>
+          <div class="form-group">
+            <label for="enquiry-email" class="form-label">Email Address</label>
+            <input type="email" id="enquiry-email" class="form-control" placeholder="jane@example.com">
+          </div>
+          <div class="form-group">
+            <label for="enquiry-org" class="form-label">School / Organization</label>
+            <input type="text" id="enquiry-org" class="form-control" placeholder="Sunnydale Elementary School">
+          </div>
+          <div class="form-group">
+            <label for="enquiry-type" class="form-label">Enquiry Type</label>
+            <select id="enquiry-type" class="form-control">
+              <option value="">-- Select Order Type --</option>
+              <option value="school">School Uniform Contract</option>
+              <option value="wholesale">Wholesale Retail Distribution</option>
+              <option value="gift">Bulk Gift Boxes</option>
+              <option value="other">Other Bulk Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="enquiry-message" class="form-label">Order Details &amp; Quantity</label>
+            <textarea id="enquiry-message" class="form-control" rows="4" placeholder="Please specify sizes, styles, custom logos, and estimated quantity needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-2);">Submit Wholesale Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer Col 1 -->
+        <div class="footer-col">
+          <div class="footer-logo" style="color: currentColor;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
+              <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            </svg>TINY
+          </div>
+          <div class="social-buttons">
+            <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn apple"><i class="fa-brands fa-apple"></i></a>
+          </div>
+        </div>
+        <!-- Footer Col 2 -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="shop.html">Shop Collections</a></li>
+            <li><a href="blog.html">Parenting Blog</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 3 -->
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=newborn">Newborns</a></li>
+            <li><a href="shop.html?category=toddler">Toddlers</a></li>
+            <li><a href="shop.html?category=kids">Kids Playwear</a></li>
+            <li><a href="home-wholesale.html">School Uniforms</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 4 -->
+        <div class="footer-col">
+          <h3>Stay Updated</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-2);">Subscribe for styling guides and exclusive discount releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: var(--secondary-color); font-weight: bold;\'><i class=\'fa-solid fa-check\'></i> Check mail for confirmation!</p>';">
+            <input type="email" placeholder="Email Address" required class="footer-input">
+            <button type="submit" class="footer-submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 TINY Clothing Store. All rights reserved.</div>
+        <div style="display: flex; gap: var(--space-2);">
+          <a href="404.html" style="color: var(--text-muted);">Privacy Policy</a>
+          <span style="color: rgba(255,255,255,0.1)">|</span>
+          <a href="coming-soon.html" style="color: var(--text-muted);">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

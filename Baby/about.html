@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TINY - About Us</title>
+  <meta name="description" content="Read our story. Learn about TINY's mission to craft comfortable, sustainable, and organic cotton clothing for kids and newborns. Meet our dedicated team.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B'><path d='M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12z'/></svg>">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- JS Libraries -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  
+  <style>
+    /* About Us Hero */
+    .about-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/hero_about.png') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      padding: var(--space-8) var(--space-3);
+    }
+    
+    .about-hero h1 {
+      color: #FFFFFF;
+      margin: 0;
+    }
+    
+    /* Vertically aligned Story Section */
+    .story-row {
+      display: flex;
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+    
+    .story-text-col {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .story-img-col {
+      flex: 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    
+    .story-img-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Team member image fit */
+    .team-img-wrapper {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: var(--space-2);
+      aspect-ratio: 1 / 1;
+    }
+    
+    .team-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Partner logos scrolling marquee animation */
+    .partner-scroll {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-3);
+    }
+    
+    .partner-logo-item {
+      font-family: var(--font-headings);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      opacity: 0.65;
+      letter-spacing: 2px;
+      transition: var(--transition);
+      cursor: default;
+    }
+    
+    .partner-logo-item:hover {
+      opacity: 1;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: var(--primary-color);">
+          <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        </svg><span class="logo-text">TINY</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown-item">
+            <a href="#" class="nav-link" id="home-dropdown-trigger">Home <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+            <ul class="nav-dropdown">
+              <li><a href="index.html">Home 1</a></li>
+              <li><a href="home-wholesale.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="outfit-builder.html" class="nav-link">Outfit Builder</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        
+        <!-- RTL & Theme toggles -->
+        <button class="toggle-btn rtl-toggle-btn" title="Toggle Layout Direction">LTR</button>
+        <button class="toggle-btn theme-toggle-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        
+        <a href="cart.html" class="cart-icon-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="header-spacer"></div>
+
+  <!-- Section 1: Hero Section -->
+  <section class="about-hero">
+    <div class="reveal">
+      <h1>Our Story</h1>
+    </div>
+  </section>
+
+  <!-- Section 2: Our Story (Vertically Aligned) -->
+  <section class="our-story-details">
+    <div class="container">
+      <div class="story-row split-row reveal">
+        <div class="story-text-col">
+          <div>
+            <h2 style="margin-bottom: var(--space-2);">Crafting Comfort Since 2018</h2>
+            <p style="color: var(--text-secondary);">TINY was founded in 2018 by two parents who struggled to find baby wear that was clean, highly comfortable, and designed to move with kids' natural playing states. We set out to change things by working only with organic cotton mills.</p>
+          </div>
+          <div style="margin-top: var(--space-2);">
+            <p style="color: var(--text-secondary);">Today, TINY is proud to clothe over 50,000 children globally, supplying school uniforms to educational centers and providing organic everyday styles that protect the sensitive skin of kids and newborns.</p>
+          </div>
+          <div style="margin-top: var(--space-2);">
+            <p style="color: var(--text-secondary);">We test every thread count, button, and zipper frame for strength. Our garments do not feature annoying tags or scratchy interior seams. Experience the TINY comfort difference today.</p>
+          </div>
+        </div>
+        <div class="story-img-col">
+          <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17bba43?auto=format&fit=crop&w=600&q=80" alt="Moms and kids socializing together">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Mission & Values -->
+  <section class="mission-values section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Our Core Values</h2>
+        <p class="section-subtitle">The beliefs that direct our daily work and textile productions</p>
+      </div>
+      <div class="card-grid reveal">
+        <!-- Value 1 -->
+        <div class="card">
+          <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <h3>Sustainability First</h3>
+          <p class="card-text">We source GOTS certified cotton and utilize eco-friendly dyes to safeguard water resources and children health.</p>
+        </div>
+        <!-- Value 2 -->
+        <div class="card">
+          <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <h3>Absolute Comfort</h3>
+          <p class="card-text">Every apparel item features flatlock seams and tagless necklines to prevent skin scratchiness or irritation.</p>
+        </div>
+        <!-- Value 3 -->
+        <div class="card">
+          <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <h3>Heirloom Quality</h3>
+          <p class="card-text">Our uniforms and playsuits are double-stitched and pre-shrunk, made to be passed down through siblings.</p>
+        </div>
+        <!-- Value 4 -->
+        <div class="card">
+          <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 8px;">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <h3>Fair Partnerships</h3>
+          <p class="card-text">We verify that all weaving mills and uniform garment factories maintain ethical working wages and practices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Our Team -->
+  <section class="our-team">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Meet the Founders</h2>
+        <p class="section-subtitle">Dedicated parents and creators aiming to build comfortable apparel</p>
+      </div>
+      <div class="card-grid reveal">
+        <!-- Member 1 -->
+        <div class="card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Sarah Jenkins, CEO">
+          </div>
+          <h3 class="card-title text-center" style="font-size: 1.15rem;">Sarah Jenkins</h3>
+          <p class="text-center" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 700; margin-bottom: 8px;">Co-Founder &amp; CEO</p>
+          <p class="card-text text-center">Sarah directs our design patterns and leads our organic supplier relationships.</p>
+          <div class="social-buttons" style="justify-content: center; gap: 8px;">
+            <a href="#" class="social-btn google" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn instagram" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <!-- Member 2 -->
+        <div class="card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="David Jenkins, COO">
+          </div>
+          <h3 class="card-title text-center" style="font-size: 1.15rem;">David Jenkins</h3>
+          <p class="text-center" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 700; margin-bottom: 8px;">Co-Founder &amp; COO</p>
+          <p class="card-text text-center">David manages our wholesale distribution network and back-office supply lines.</p>
+          <div class="social-buttons" style="justify-content: center; gap: 8px;">
+            <a href="#" class="social-btn google" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn instagram" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <!-- Member 3 -->
+        <div class="card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" alt="Elana Smith, Design Lead">
+          </div>
+          <h3 class="card-title text-center" style="font-size: 1.15rem;">Elana Smith</h3>
+          <p class="text-center" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 700; margin-bottom: 8px;">Head of Design</p>
+          <p class="card-text text-center">Elana curates our pastel seasonal clothing color cards and sizing systems.</p>
+          <div class="social-buttons" style="justify-content: center; gap: 8px;">
+            <a href="#" class="social-btn google" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn instagram" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <!-- Member 4 -->
+        <div class="card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Marc Martinez, Lead Developer">
+          </div>
+          <h3 class="card-title text-center" style="font-size: 1.15rem;">Marc Martinez</h3>
+          <p class="text-center" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 700; margin-bottom: 8px;">Technical Lead</p>
+          <p class="card-text text-center">Marc keeps the TINY retail online portal smooth and fast for parents shopping.</p>
+          <div class="social-buttons" style="justify-content: center; gap: 8px;">
+            <a href="#" class="social-btn google" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn instagram" style="width:28px; height:28px; font-size: 0.8rem;"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Testimonials -->
+  <section class="testimonials section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Loved By Families</h2>
+        <p class="section-subtitle">Read what happy parents have to say about our fabric comfort</p>
+      </div>
+      <div class="card-grid reveal" style="grid-template-columns: repeat(3, 1fr); margin-bottom: var(--space-4);">
+        <!-- Review 1 -->
+        <div class="card">
+          <div style="color: #FFD700; margin-bottom: 8px;">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h4 style="margin-bottom: 4px;">Incredibly Soft Jumpsuits</h4>
+          <p class="card-text">"My toddler has eczema, but the GOTS organic cotton playsuits haven't caused a single skin flare-up. Will definitely purchase more!"</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">— Amanda R., Parent</span>
+        </div>
+        <!-- Review 2 -->
+        <div class="card">
+          <div style="color: #FFD700; margin-bottom: 8px;">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h4 style="margin-bottom: 4px;">Uniforms built for play</h4>
+          <p class="card-text">"Ordered classroom polos for Sunnydale school. The shirts keep color beautifully through hot washing machine cycles. Sturdy seams!"</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">— Principal Robert K.</span>
+        </div>
+        <!-- Review 3 -->
+        <div class="card">
+          <div style="color: #FFD700; margin-bottom: 8px;">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h4 style="margin-bottom: 4px;">Adorable Box Gifting</h4>
+          <p class="card-text">"Sent a customized monogram bib set to my sister's baby shower. The box wrap was gorgeous and she absolutely loved the custom initials!"</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">— Jessica L., Aunt</span>
+        </div>
+      </div>
+      <div class="reveal" style="text-align: center;">
+        <a href="blog.html" class="btn btn-primary">Read More Reviews</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Partners/Brands -->
+  <section class="partners-section">
+    <div class="container reveal">
+      <div style="text-align: center; margin-bottom: var(--space-4);">
+        <h2 style="margin-bottom: 8px;">Our Certified Partners</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">We work with top certified organic and safety standards organizations</p>
+      </div>
+      <div class="partner-scroll">
+        <div class="partner-logo-item">GOTS STANDARD</div>
+        <div class="partner-logo-item">OEKO-TEX 100</div>
+        <div class="partner-logo-item">ORGANIC EXCHANGE</div>
+        <div class="partner-logo-item">FAIRWEAR INT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer Col 1 -->
+        <div class="footer-col">
+          <div class="footer-logo" style="color: currentColor;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
+              <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            </svg>TINY
+          </div>
+          <div class="social-buttons">
+            <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn apple"><i class="fa-brands fa-apple"></i></a>
+          </div>
+        </div>
+        <!-- Footer Col 2 -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="shop.html">Shop Collections</a></li>
+            <li><a href="blog.html">Parenting Blog</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 3 -->
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=newborn">Newborns</a></li>
+            <li><a href="shop.html?category=toddler">Toddlers</a></li>
+            <li><a href="shop.html?category=kids">Kids Playwear</a></li>
+            <li><a href="home-wholesale.html">School Uniforms</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 4 -->
+        <div class="footer-col">
+          <h3>Stay Updated</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-2);">Subscribe for styling guides and exclusive discount releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: var(--secondary-color); font-weight: bold;\'><i class=\'fa-solid fa-check\'></i> Check mail for confirmation!</p>';">
+            <input type="email" placeholder="Email Address" required class="footer-input">
+            <button type="submit" class="footer-submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 TINY Clothing Store. All rights reserved.</div>
+        <div style="display: flex; gap: var(--space-2);">
+          <a href="404.html" style="color: var(--text-muted);">Privacy Policy</a>
+          <span style="color: rgba(255,255,255,0.1)">|</span>
+          <a href="coming-soon.html" style="color: var(--text-muted);">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

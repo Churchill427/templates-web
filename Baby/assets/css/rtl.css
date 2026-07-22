@@ -1,0 +1,92 @@
+/* ==========================================================================
+   TINY - Right-to-Left (RTL) Layout Overrides
+   ========================================================================== */
+
+[dir="rtl"] {
+  /* Adjust basic alignments */
+  text-align: right;
+}
+
+[dir="rtl"] body {
+  direction: rtl;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left !important;
+}
+
+/* Header & Switchers */
+[dir="rtl"] .switcher-dropdown {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .header-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-links a:hover {
+  padding-left: 0;
+  padding-right: 5px;
+}
+
+[dir="rtl"] .card-link::after {
+  content: ' \2190';
+  /* Left pointing arrow for RTL flow */
+}
+
+[dir="rtl"] .newsletter-form {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-input {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  text-align: right;
+}
+
+[dir="rtl"] .footer-submit {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+[dir="rtl"] .breadcrumbs span {
+  display: inline-block;
+  transform: scaleX(-1);
+  /* Flips breadcrumb slashes or arrows */
+}
+
+[dir="rtl"] .form-group {
+  text-align: right;
+}
+
+[dir="rtl"] .accordion-header {
+  text-align: right;
+}
+
+[dir="rtl"] .accordion-icon {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .product-details-content {
+  text-align: right;
+}
+
+[dir="rtl"] .cart-totals-table th,
+[dir="rtl"] .cart-totals-table td {
+  text-align: right;
+}
+
+/* RTL Dropdown Alignment */
+[dir="rtl"] .nav-links .nav-dropdown {
+  left: auto !important;
+  right: 50% !important;
+  transform: translateX(50%) !important;
+}
+
+[dir="rtl"] .nav-links .nav-dropdown a {
+  text-align: right !important;
+}

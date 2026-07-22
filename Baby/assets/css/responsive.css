@@ -1,0 +1,147 @@
+/* ==========================================================================
+   TINY - Responsive Breakpoint Overrides
+   ========================================================================== */
+
+/* 1. Tablet Viewport (Max 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --space-8: 48px; /* Section vertical padding adapts to 48px */
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.85rem;
+  }
+
+  /* Adjust Footer */
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  /* Grid Layouts collapse to 2 columns */
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 2. Mobile Viewport (Max 640px) */
+@media (max-width: 640px) {
+  :root {
+    --space-8: 32px; /* Section vertical padding adapts to 32px */
+    --space-3: 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .site-header {
+    height: 60px;
+  }
+
+  .header-spacer {
+    height: 60px;
+  }
+
+  /* Mobile Navigation Drawer */
+  .hamburger {
+    display: flex; /* Show Hamburger menu */
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: calc(100vh - 60px);
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-4);
+    gap: var(--space-3);
+    transition: left 0.3s ease-in-out;
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+  }
+
+  [dir="rtl"] .nav-links {
+    left: auto;
+    right: -100%;
+    border-right: none;
+    border-left: 1px solid var(--border-color);
+    transition: right 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  [dir="rtl"] .nav-links.active {
+    right: 0;
+  }
+
+  /* Grid Layouts collapse to single column */
+  .card-grid,
+  .product-grid,
+  .blog-grid,
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Flex alignment collapse */
+  .split-row {
+    flex-direction: column !important;
+    gap: var(--space-3) !important;
+  }
+
+  .split-row > div {
+    width: 100% !important;
+  }
+
+  /* Form layouts spacing */
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: center;
+  }
+
+  /* Hide toggles/buttons from mobile top row if space is cramped, push them into nav or make compact */
+  .header-actions {
+    gap: 8px;
+  }
+
+  .cart-icon-btn span {
+    display: none; /* Hide 'Cart' text, show only icon & badge on mobile */
+  }
+
+  .cart-icon-btn {
+    padding: 8px 12px;
+  }
+}

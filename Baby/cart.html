@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TINY - Your Shopping Cart</title>
+  <meta name="description" content="Review your children clothing selection, update item counts, apply coupons, and checkout securely inside our multi-step shopping cart.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B'><path d='M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12z'/></svg>">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- JS Libraries -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/cart.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
+  
+  <style>
+    /* Checkout Progress Stepper */
+    .stepper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-4);
+      margin-top: var(--space-2);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-headings);
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+    
+    .step.active {
+      color: var(--primary-color);
+    }
+    
+    .step.active .step-num {
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
+      color: #FFFFFF;
+    }
+    
+    .step.completed {
+      color: var(--secondary-color);
+    }
+    
+    .step.completed .step-num {
+      border-color: var(--secondary-color);
+      background-color: var(--secondary-color);
+      color: #FFFFFF;
+    }
+    
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background-color: var(--border-color);
+      min-width: 40px;
+    }
+    
+    /* Cart page double layout */
+    .cart-checkout-layout {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+    
+    .cart-main-col {
+      flex: 1.3;
+    }
+    
+    .cart-sidebar-col {
+      flex: 0.7;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    /* Cart rows */
+    .cart-item-row {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-2);
+      margin-bottom: 12px;
+    }
+    
+    /* Dynamic Forms inside main col */
+    .checkout-form-panel {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-sm);
+      display: none;
+      animation: formFade 0.4s ease;
+    }
+    
+    @keyframes formFade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Totals table styling */
+    .cart-totals-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--space-2);
+    }
+    
+    .cart-totals-table td {
+      padding: 8px 0;
+      font-size: 0.95rem;
+    }
+    
+    .cart-totals-table tr.total-row td {
+      border-top: 1px dashed var(--border-color);
+      padding-top: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: var(--primary-color);">
+          <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        </svg><span class="logo-text">TINY</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown-item">
+            <a href="#" class="nav-link" id="home-dropdown-trigger">Home <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+            <ul class="nav-dropdown">
+              <li><a href="index.html">Home 1</a></li>
+              <li><a href="home-wholesale.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="shop.html" class="nav-link">Shop</a></li>
+          <li><a href="outfit-builder.html" class="nav-link">Outfit Builder</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        
+        <!-- RTL & Theme toggles -->
+        <button class="toggle-btn rtl-toggle-btn" title="Toggle Layout Direction">LTR</button>
+        <button class="toggle-btn theme-toggle-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        
+        <a href="cart.html" class="cart-icon-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge">0</span>
+        </a>
+        
+        <button class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="header-spacer"></div>
+
+  <!-- Section 1: Hero Section (Steppers) -->
+  <section class="cart-hero-section" style="padding-bottom: 0;">
+    <div class="container text-center">
+      <h1>Your Shopping Cart</h1>
+      <div class="stepper reveal">
+        <div class="step active" id="step-indicator-1">
+          <div class="step-num">1</div>
+          <span>Review Cart</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" id="step-indicator-2">
+          <div class="step-num">2</div>
+          <span>Billing Info</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step" id="step-indicator-3">
+          <div class="step-num">3</div>
+          <span>Payment</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Grid Section (Sections 2: Cart Items & 3: Order Summary) -->
+  <section class="cart-checkout-grid-section">
+    <div class="container">
+      <div class="cart-checkout-layout split-row reveal">
+        
+        <!-- Main Cart Column -->
+        <div class="cart-main-col">
+          <!-- Section 2: Cart Content Details -->
+          <div id="cart-section-main">
+            <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 15px;">Selected Outfits</h3>
+            <div id="cart-items-container">
+              <!-- Dynamically populated by cart.js -->
+            </div>
+          </div>
+          
+          <!-- Dynamic Step 2 Form (Billing) -->
+          <div class="checkout-form-panel" id="checkout-billing-section">
+            <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 15px;">Shipping &amp; Billing Details</h3>
+            <div class="form-group">
+              <label for="billing-name" class="form-label">Full Shipping Name <span style="color:var(--primary-color);">*</span></label>
+              <input type="text" id="billing-name" class="form-control" placeholder="Sarah Jenkins" required>
+            </div>
+            <div class="form-group">
+              <label for="billing-email" class="form-label">Email Address <span style="color:var(--primary-color);">*</span></label>
+              <input type="email" id="billing-email" class="form-control" placeholder="sarah@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="billing-address" class="form-label">Street Address <span style="color:var(--primary-color);">*</span></label>
+              <input type="text" id="billing-address" class="form-control" placeholder="123 Pastel Meadows Ave, Apt 4" required>
+            </div>
+            <div class="form-row" style="display:flex; gap:12px;">
+              <div class="form-group" style="flex:1;">
+                <label for="billing-city" class="form-label">City</label>
+                <input type="text" id="billing-city" class="form-control" placeholder="New York">
+              </div>
+              <div class="form-group" style="flex:1;">
+                <label for="billing-zip" class="form-label">ZIP / Postal Code</label>
+                <input type="text" id="billing-zip" class="form-control" placeholder="10001">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Dynamic Step 3 Form (Payment) -->
+          <div class="checkout-form-panel" id="checkout-payment-section">
+            <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 15px;">Card Payment Details</h3>
+            <div class="form-group">
+              <label for="payment-card-no" class="form-label">Credit Card Number <span style="color:var(--primary-color);">*</span></label>
+              <input type="text" id="payment-card-no" class="form-control" placeholder="4111 2222 3333 4444" required>
+            </div>
+            <div class="form-row" style="display:flex; gap:12px;">
+              <div class="form-group" style="flex:1;">
+                <label for="payment-card-expiry" class="form-label">Expiry Date <span style="color:var(--primary-color);">*</span></label>
+                <input type="text" id="payment-card-expiry" class="form-control" placeholder="MM/YY" required>
+              </div>
+              <div class="form-group" style="flex:1;">
+                <label for="payment-card-cvv" class="form-label">CVV <span style="color:var(--primary-color);">*</span></label>
+                <input type="password" id="payment-card-cvv" class="form-control" placeholder="123" maxlength="4" required>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Success State (Confirmation) -->
+          <div class="checkout-form-panel" id="checkout-confirmation-section" style="text-align: center; padding: var(--space-4) var(--space-3);">
+            <i class="fa-solid fa-circle-check" style="font-size: 4.5rem; color: var(--secondary-color); margin-bottom: var(--space-2);"></i>
+            <h2>Order Placed Successfully!</h2>
+            <p style="color: var(--text-secondary); margin-top: 5px; max-width: 500px; margin-left: auto; margin-right: auto;">Thank you for shopping at TINY. We have sent a purchase invoice confirmation email to your address.</p>
+            <a href="shop.html" class="btn btn-primary" style="margin-top: var(--space-3);">Continue Shopping</a>
+          </div>
+        </div>
+        
+        <!-- Section 3: Sidebar Summary Column -->
+        <div class="cart-sidebar-col" id="checkout-summary-sidebar">
+          <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 12px;">Order Summary</h3>
+          <table class="cart-totals-table">
+            <tbody>
+              <tr>
+                <td>Subtotal</td>
+                <td id="cart-subtotal" style="text-align: right; font-weight: 600;">$0.00</td>
+              </tr>
+              <tr>
+                <td>Discount Promo</td>
+                <td id="cart-discount" style="text-align: right; font-weight: 600; color: var(--secondary-color);">-$0.00</td>
+              </tr>
+              <tr>
+                <td>Sales Tax (5%)</td>
+                <td id="cart-tax" style="text-align: right; font-weight: 600;">$0.00</td>
+              </tr>
+              <tr>
+                <td>Shipping Fee</td>
+                <td id="cart-shipping" style="text-align: right; font-weight: 600;">$0.00</td>
+              </tr>
+              <tr class="total-row">
+                <td>Est. Total</td>
+                <td id="cart-total" style="text-align: right;">$0.00</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <!-- Coupon Input -->
+          <div style="margin-top: 15px; margin-bottom: 15px;">
+            <div class="form-group" style="margin-bottom: 8px;">
+              <input type="text" id="promo-code-input" class="form-control" placeholder="PROMO CODE (TINY10)" style="text-transform: uppercase;">
+            </div>
+            <button class="btn btn-secondary" id="apply-promo-btn" style="width: 100%; padding: 8px 16px; font-size: 0.9rem;">Apply Coupon</button>
+            <div id="promo-feedback" style="font-size: 0.8rem; font-weight: 600; margin-top: 4px; text-align: center;"></div>
+          </div>
+          
+          <button class="btn btn-primary" id="checkout-next-btn" style="width: 100%; padding: 12px 24px;">Proceed to Billing</button>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Recommended Add-ons -->
+  <section class="cart-addons section-bg-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Complete Their Look</h2>
+        <p class="section-subtitle">Add popular baby gifting accessories and quick matching pieces</p>
+      </div>
+      <div class="card-grid reveal" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Add-on 1 -->
+        <div class="card">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="assets/images/product_plaid_shirt2.jpg" alt="Flannel Plaid Shirt Set">
+          </div>
+          <h3 class="card-title" style="font-size: 1.15rem;">Flannel Plaid Shirt Set</h3>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+            <span style="font-weight: 800; color: var(--primary-color);">$12.50</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s8" data-product-name="Flannel Plaid Shirt Set" data-product-price="12.50" data-product-img="assets/images/product_plaid_shirt2.jpg" style="padding: 4px 10px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Add-on 2 -->
+        <div class="card">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="assets/images/product_masi_tee.jpg" alt="Pastel Graphic Cotton Tee">
+          </div>
+          <h3 class="card-title" style="font-size: 1.15rem;">Pastel Graphic Cotton Tee</h3>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+            <span style="font-weight: 800; color: var(--primary-color);">$22.00</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_s7" data-product-name="Pastel Graphic Cotton Tee" data-product-price="22.00" data-product-img="assets/images/product_masi_tee.jpg" style="padding: 4px 10px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <!-- Add-on 3 -->
+        <div class="card">
+          <div class="card-img-wrapper" style="height: 180px;">
+            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=400&q=80" alt="Baby Sleepsuit">
+          </div>
+          <h3 class="card-title" style="font-size: 1.15rem;">Snuggly Cotton Sleepsuit</h3>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+            <span style="font-weight: 800; color: var(--primary-color);">$19.99</span>
+            <button class="btn btn-primary add-to-cart-btn" data-product-id="prod_t4" data-product-name="Snuggly Cotton Sleepsuit" data-product-price="19.99" data-product-img="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=400&q=80" style="padding: 4px 10px; font-size: 0.8rem;"><i class="fa-solid fa-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Trust Badges -->
+  <section class="trust-badges-section" style="padding: var(--space-6) 0;">
+    <div class="container text-center reveal">
+      <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-shield-halved" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+          <span style="font-weight: 700; font-family: var(--font-headings);">Secure 256-bit SSL Payments</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-truck" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+          <span style="font-weight: 700; font-family: var(--font-headings);">Free Shipping Over $100</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-rotate" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+          <span style="font-weight: 700; font-family: var(--font-headings);">30-day Free Return window</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Continue Shopping CTA -->
+  <section class="continue-shopping-cta section-bg-alt text-center" style="text-align: center; padding: 60px 20px;">
+    <div class="container reveal" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+      <h2 style="margin-bottom: var(--space-2); text-align: center;">Not Done Shopping Yet?</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-3); text-align: center; max-width: 600px;">Explore our range of school uniforms or shop infant outfits by age brackets.</p>
+      <a href="shop.html" class="btn btn-secondary" style="display: inline-block; margin: 0 auto;">Return to Shop Collections</a>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Footer Col 1 -->
+        <div class="footer-col">
+          <div class="footer-logo" style="color: currentColor;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
+              <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            </svg>TINY
+          </div>
+          <div class="social-buttons">
+            <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn apple"><i class="fa-brands fa-apple"></i></a>
+          </div>
+        </div>
+        <!-- Footer Col 2 -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="shop.html">Shop Collections</a></li>
+            <li><a href="blog.html">Parenting Blog</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 3 -->
+        <div class="footer-col">
+          <h3>Categories</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=newborn">Newborns</a></li>
+            <li><a href="shop.html?category=toddler">Toddlers</a></li>
+            <li><a href="shop.html?category=kids">Kids Playwear</a></li>
+            <li><a href="home-wholesale.html">School Uniforms</a></li>
+          </ul>
+        </div>
+        <!-- Footer Col 4 -->
+        <div class="footer-col">
+          <h3>Stay Updated</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-2);">Subscribe for styling guides and exclusive discount releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML = '<p style=\'color: var(--secondary-color); font-weight: bold;\'><i class=\'fa-solid fa-check\'></i> Check mail for confirmation!</p>';">
+            <input type="email" placeholder="Email Address" required class="footer-input">
+            <button type="submit" class="footer-submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 TINY Clothing Store. All rights reserved.</div>
+        <div style="display: flex; gap: var(--space-2);">
+          <a href="404.html" style="color: var(--text-muted);">Privacy Policy</a>
+          <span style="color: rgba(255,255,255,0.1)">|</span>
+          <a href="coming-soon.html" style="color: var(--text-muted);">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Force rerender cart items when add-to-cart clicks occur on this page (specifically for add-ons)
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('add-to-cart-btn')) {
+        setTimeout(renderCart, 200);
+      }
+    });
+  </script>
+</body>
+</html>
