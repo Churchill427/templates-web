@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home 2 | Smart Appliance Ecosystem & Seasonal Deals</title>
+  <meta name="description" content="Discover smart living solutions, infinite brand choices, seasonal appliance sales, and hassle-free delivery at HOME.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- FIXED GLASS NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        HOME<span>.</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item-dropdown">
+            <a href="index.html" class="nav-link active">Home ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="index.html" class="dropdown-link">Home 1</a></li>
+              <li><a href="home-v2.html" class="dropdown-link">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="appliances.html" class="nav-link">Appliances</a></li>
+          <li><a href="brands.html" class="nav-link">Brands</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme"><span class="theme-icon"></span></button>
+        <button class="btn-icon dir-toggle-btn" aria-label="Toggle Direction"><span class="dir-label" style="font-weight:700; font-size:0.75rem;">LTR</span></button>
+        <button class="btn-icon cart-toggle-btn" aria-label="View Cart" style="position: relative;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+          </svg>
+          <span class="badge cart-badge-count" style="position: absolute; top: -4px; right: -4px;">1</span>
+        </button>
+        <a href="services.html" class="btn btn-secondary" style="display: none; @media(min-width: 768px){display:inline-flex;}">Book Repair</a>
+        <button class="hamburger-btn" aria-label="Open Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 style="font-size: 1.2rem;">Your Shopping Cart</h3>
+        <button class="cart-close-btn" style="background:none; font-size: 1.5rem; color: var(--text-main);">&times;</button>
+      </div>
+      <div class="cart-drawer-body cart-items-list"></div>
+      <div class="cart-drawer-footer">
+        <div style="display:flex; justify-content:space-between; font-weight:700; font-size: 1.1rem; margin-bottom: 1rem;">
+          <span>Subtotal:</span>
+          <span class="cart-total-price">$0.00</span>
+        </div>
+        <a href="appliances.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero" style="background-image: url('assets/img/hero-home-v2.png');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="subtitle" style="color: var(--color-secondary); font-weight: 700; letter-spacing: 2px;">Smart Living Redefined</span>
+        <h1>Smart Living Starts Here</h1>
+        <p>Seamlessly integrate ultra-quiet HVAC systems, AI-powered laundry hubs, and connected kitchen innovations into your everyday routine.</p>
+        <div class="hero-buttons">
+          <a href="appliances.html" class="btn btn-secondary">Explore Smart Hub</a>
+          <a href="brands.html" class="btn btn-outline" style="color:#FFF; border-color:#FFF;">View Brands</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: BRAND MARQUEE -->
+    <section class="section" style="padding-top: var(--space-8); padding-bottom: var(--space-8);">
+      <div class="container" style="text-align: center; margin-bottom: var(--space-4);">
+        <span class="subtitle">World-Class Partners</span>
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <span class="brand-badge">⚡ SAMSUNG</span>
+          <span class="brand-badge">⚡ LG THINQ</span>
+          <span class="brand-badge">⚡ WHIRLPOOL</span>
+          <span class="brand-badge">⚡ BOSCH</span>
+          <span class="brand-badge">⚡ PANASONIC</span>
+          <span class="brand-badge">⚡ HAIER</span>
+          <span class="brand-badge">⚡ GENERAL ELECTRIC</span>
+          <!-- Duplicate for seamless scroll -->
+          <span class="brand-badge">⚡ SAMSUNG</span>
+          <span class="brand-badge">⚡ LG THINQ</span>
+          <span class="brand-badge">⚡ WHIRLPOOL</span>
+          <span class="brand-badge">⚡ BOSCH</span>
+          <span class="brand-badge">⚡ PANASONIC</span>
+          <span class="brand-badge">⚡ HAIER</span>
+          <span class="brand-badge">⚡ GENERAL ELECTRIC</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SEASONAL DEALS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Limited-Time Offers</span>
+          <h2>Exclusive Seasonal Appliance Deals</h2>
+          <p>Save up to 45% on seasonal bundles with complementary installation.</p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Banner 1 -->
+          <div class="card" style="padding:0; overflow:hidden; position:relative; min-height:360px; display:flex; align-items:flex-end;">
+            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80" alt="Summer Cooling Sale" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.2) 80%);"></div>
+            <div style="position:relative; z-index:2; padding: 2rem; color: #FFFFFF;">
+              <span class="badge" style="background: var(--color-secondary); margin-bottom: 0.5rem;">SAVE UP TO 40%</span>
+              <h3 style="color:#FFF; font-size: 1.75rem; margin-bottom: 0.5rem;">Summer Cooling Blitz</h3>
+              <p style="color: #CBD5E1; margin-bottom: 1.5rem;">Beat the heat with inverter split ACs and energy-saving ceiling solutions.</p>
+              <a href="appliances.html" class="btn btn-secondary">Shop Cooling Sale</a>
+            </div>
+          </div>
+
+          <!-- Banner 2 -->
+          <div class="card" style="padding:0; overflow:hidden; position:relative; min-height:360px; display:flex; align-items:flex-end;">
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Winter Warmth Deals" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.2) 80%);"></div>
+            <div style="position:relative; z-index:2; padding: 2rem; color: #FFFFFF;">
+              <span class="badge" style="background: var(--color-accent); margin-bottom: 0.5rem;">FREE INSTALLATION</span>
+              <h3 style="color:#FFF; font-size: 1.75rem; margin-bottom: 0.5rem;">Gourmet Kitchen Upgrade</h3>
+              <p style="color: #CBD5E1; margin-bottom: 1.5rem;">Upgrade your kitchen suite with built-in convection ovens and quiet dishwashers.</p>
+              <a href="appliances.html" class="btn btn-primary">Shop Kitchen Bundles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: HOW IT WORKS -->
+    <section class="section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Simplified Process</span>
+          <h2>How Easy Buying at HOME Is</h2>
+          <p>4 simple steps from browsing to white-glove home setup.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="step-number">1</div>
+            <h4>1. Choose Product</h4>
+            <p>Filter by energy rating, dimensions, and brand features.</p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-number">2</div>
+            <h4>2. Schedule Delivery</h4>
+            <p>Select your preferred delivery date and time slot.</p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-number">3</div>
+            <h4>3. Doorstep Arrival</h4>
+            <p>Our logisitics team inspects product before unboxing.</p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-number">4</div>
+            <h4>4. Certified Setup</h4>
+            <p>Certified engineers install, test, and explain controls.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: BLOG PREVIEW -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Appliance Insights</span>
+          <h2>Maintenance Tips & Buying Guides</h2>
+          <p>Read expert articles on how to cut electricity bills and extend machine lifespan.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="assets/img/fridge-new.jpg" alt="Fridge Tips" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding: 1.5rem;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-secondary);">ENERGY SAVING</span>
+              <h4 style="margin: 0.5rem 0;">10 Ways to Reduce Refrigerator Energy Usage</h4>
+              <p style="font-size: 0.9rem; margin-bottom: 1rem;">Simple temperature adjustments and coil cleaning routines to lower your monthly bill.</p>
+              <a href="blog.html" style="font-weight: 600; color: var(--color-primary);">Read Article →</a>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="assets/img/washer-new.jpg" alt="Washer Guide" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding: 1.5rem;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-accent);">MAINTENANCE</span>
+              <h4 style="margin: 0.5rem 0;">Front-Load Washer Odor Prevention Guide</h4>
+              <p style="font-size: 0.9rem; margin-bottom: 1rem;">Eliminate mildew buildup in rubber door gaskets with these step-by-step cleaning hacks.</p>
+              <a href="blog.html" style="font-weight: 600; color: var(--color-primary);">Read Article →</a>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="assets/img/ac-buying.jpg" alt="AC Buying Guide" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding: 1.5rem;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-secondary);">BUYING GUIDE</span>
+              <h4 style="margin: 0.5rem 0;">How to Calculate Tone Capacity for ACs</h4>
+              <p style="font-size: 0.9rem; margin-bottom: 1rem;">Match your room square footage with the ideal AC tonnage for efficient cooling.</p>
+              <a href="blog.html" style="font-weight: 600; color: var(--color-primary);">Read Article →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: NEWSLETTER CTA -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-primary) 0%, #0F172A 100%); color: #FFFFFF; text-align: center;">
+      <div class="container" style="max-width: 700px;">
+        <h2 style="color: #FFFFFF; margin-bottom: 1rem;">Stay Updated with Smart Appliance News</h2>
+        <p style="color: #E2E8F0; margin-bottom: 2rem;">Subscribe to receive member-only voucher codes, flash sale alerts, and VIP repair discounts directly to your inbox.</p>
+        <form style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" placeholder="Enter your email address" class="form-input" style="max-width: 380px; background: #FFFFFF; color: #1E293B;" required>
+          <button type="submit" class="btn btn-secondary">Subscribe Now</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo footer-logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            HOME<span>.</span>
+          </a>
+          <p class="footer-tagline">Your trusted destination for smart home appliances, certified installation, and 24/7 expert repair services.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn google">G</a>
+            <a href="#" class="social-btn apple"></a>
+            <a href="#" class="social-btn facebook">f</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home-v2.html">Home 2</a></li>
+            <li><a href="appliances.html">Appliances</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Appliance Repair</a></li>
+            <li><a href="services.html">Certified Installation</a></li>
+            <li><a href="services.html">Annual Maintenance</a></li>
+            <li><a href="services.html">Extended Warranty</a></li>
+            <li><a href="contact.html">24/7 Emergency Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Subscribe & Save</h4>
+          <p style="font-size: 0.9rem;">Get weekly appliance tips, energy-saving guides, and exclusive discount coupons.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" placeholder="Enter your email" class="footer-newsletter-input" required>
+            <button type="submit" class="btn btn-secondary">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 HOME Appliance Store & Service Center. All rights reserved.</div>
+        <div style="display:flex; gap: 1.5rem;">
+          <a href="about.html" style="color: #94A3B8;">Privacy Policy</a>
+          <a href="about.html" style="color: #94A3B8;">Terms of Service</a>
+          <a href="contact.html" style="color: #94A3B8;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

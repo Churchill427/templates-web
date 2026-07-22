@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOME | Smart Home Appliance Store & Service Center</title>
+  <meta name="description"
+    content="Upgrade your lifestyle with energy-efficient home appliances, expert installation, and 24/7 repair services at HOME.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <!-- FIXED GLASS NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        HOME<span>.</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item-dropdown">
+            <a href="index.html" class="nav-link active">Home ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="index.html" class="dropdown-link">Home 1</a></li>
+              <li><a href="home-v2.html" class="dropdown-link">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="appliances.html" class="nav-link">Appliances</a></li>
+          <li><a href="brands.html" class="nav-link">Brands</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme">
+          <span class="theme-icon"></span>
+        </button>
+
+        <!-- RTL Toggle Button -->
+        <button class="btn-icon dir-toggle-btn" aria-label="Toggle Direction">
+          <span class="dir-label" style="font-weight: 700; font-size: 0.75rem;">LTR</span>
+        </button>
+
+        <!-- Book Repair CTA -->
+        <a href="services.html" class="btn btn-secondary"
+          style="display: none; @media(min-width: 768px){display:inline-flex;}">Book Repair</a>
+
+        <!-- Hamburger Toggle -->
+        <button class="hamburger-btn" aria-label="Open Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 style="font-size: 1.2rem;">Your Shopping Cart</h3>
+        <button class="cart-close-btn"
+          style="background:none; font-size: 1.5rem; color: var(--text-main);">&times;</button>
+      </div>
+      <div class="cart-drawer-body cart-items-list">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="cart-drawer-footer">
+        <div
+          style="display:flex; justify-content:space-between; font-weight:700; font-size: 1.1rem; margin-bottom: 1rem;">
+          <span>Subtotal:</span>
+          <span class="cart-total-price">$0.00</span>
+        </div>
+        <a href="appliances.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero"
+      style="background-image: url('assets/img/hero-index.png');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="subtitle"
+          style="color: var(--color-secondary); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; display: block;">Smart
+          Living Innovation</span>
+        <h1>Upgrade Your Home with Smart Appliances</h1>
+        <p>Discover energy-efficient refrigerators, intelligent washing machines, and premium home systems with express
+          delivery and certified installation.</p>
+        <div class="hero-buttons">
+          <a href="appliances.html" class="btn btn-primary">Shop Now</a>
+          <a href="services.html" class="btn btn-secondary">Book Service</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CATEGORY GRID -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Explore Categories</span>
+          <h2>Designed for Every Corner of Your House</h2>
+          <p>Choose from top-tier categories crafted for durability and high performance.</p>
+        </div>
+
+        <div class="grid-4">
+          <a href="appliances.html" class="category-card">
+            <img src="assets/img/fridge-new.jpg"
+              alt="Refrigerators">
+            <div class="category-card-content">
+              <h3>Refrigerators</h3>
+              <p style="color: #CBD5E1; font-size: 0.9rem;">Smart Cooling & Inverters</p>
+            </div>
+          </a>
+
+          <a href="appliances.html" class="category-card">
+            <img src="assets/img/category-washer.jpg"
+              alt="Washing Machines">
+            <div class="category-card-content">
+              <h3>Washing Machines</h3>
+              <p style="color: #CBD5E1; font-size: 0.9rem;">Front & Top Load Washers</p>
+            </div>
+          </a>
+
+          <a href="appliances.html" class="category-card">
+            <img src="assets/img/category-ac.jpg"
+              alt="Air Conditioners">
+            <div class="category-card-content">
+              <h3>Air Conditioners</h3>
+              <p style="color: #CBD5E1; font-size: 0.9rem;">Dual Inverter ACs</p>
+            </div>
+          </a>
+
+          <a href="appliances.html" class="category-card">
+            <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=600&q=80"
+              alt="Microwaves">
+            <div class="category-card-content">
+              <h3>Microwaves & Ovens</h3>
+              <p style="color: #CBD5E1; font-size: 0.9rem;">Convection & Grill</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED PRODUCTS -->
+    <section class="section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Best Sellers</span>
+          <h2>Featured Home Appliances</h2>
+          <p>Hand-picked models with 5-star energy ratings and long-term warranty coverage.</p>
+        </div>
+
+        <div class="grid-4">
+          <!-- Card 1 -->
+          <div class="card product-card">
+            <button class="wishlist-btn" aria-label="Add to Wishlist">♥</button>
+            <div class="product-img-wrapper">
+              <img src="assets/img/fridge-new.jpg"
+                alt="French Door Refrigerator">
+            </div>
+            <div class="product-info">
+              <span class="product-category">Refrigerator</span>
+              <h4 class="product-title">French Door Smart Fridge 520L</h4>
+              <div class="product-rating">★★★★★ <span>(4.9)</span></div>
+              <div class="product-price-row">
+                <span class="product-price">$1,499</span>
+                <button class="btn btn-primary"
+                  onclick="addToCart({id:'p101', name:'French Door Smart Fridge 520L', price:1499, image:'assets/img/fridge-new.jpg'})">Add
+                  to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card product-card">
+            <button class="wishlist-btn" aria-label="Add to Wishlist">♥</button>
+            <div class="product-img-wrapper">
+              <img src="assets/img/washer-new.jpg"
+                alt="TurboSteam Washer">
+            </div>
+            <div class="product-info">
+              <span class="product-category">Washing Machine</span>
+              <h4 class="product-title">TurboSteam Front-Load Washer 10kg</h4>
+              <div class="product-rating">★★★★☆ <span>(4.8)</span></div>
+              <div class="product-price-row">
+                <span class="product-price">$899</span>
+                <button class="btn btn-primary"
+                  onclick="addToCart({id:'p102', name:'TurboSteam Front-Load Washer 10kg', price:899, image:'assets/img/washer-new.jpg'})">Add
+                  to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card product-card">
+            <button class="wishlist-btn" aria-label="Add to Wishlist">♥</button>
+            <div class="product-img-wrapper">
+              <img src="assets/img/ac-new.jpg"
+                alt="Dual Inverter Split AC" style="object-fit:cover; width:100%; height:100%;">
+            </div>
+            <div class="product-info">
+              <span class="product-category">Air Conditioner</span>
+              <h4 class="product-title">Dual Inverter Split AC 1.5 Ton</h4>
+              <div class="product-rating">★★★★★ <span>(5.0)</span></div>
+              <div class="product-price-row">
+                <span class="product-price">$749</span>
+                <button class="btn btn-primary"
+                  onclick="addToCart({id:'p103', name:'Dual Inverter Split AC 1.5 Ton', price:749, image:'assets/img/ac-new.jpg'})">Add
+                  to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="card product-card">
+            <button class="wishlist-btn" aria-label="Add to Wishlist">♥</button>
+            <div class="product-img-wrapper">
+              <img src="assets/img/microwave-new.jpg"
+                alt="Smart Convection Microwave" style="object-fit:cover; width:100%; height:100%;">
+            </div>
+            <div class="product-info">
+              <span class="product-category">Microwave</span>
+              <h4 class="product-title">Smart Convection Grill Oven 32L</h4>
+              <div class="product-rating">★★★★☆ <span>(4.7)</span></div>
+              <div class="product-price-row">
+                <span class="product-price">$329</span>
+                <button class="btn btn-primary"
+                  onclick="addToCart({id:'p104', name:'Smart Convection Grill Oven 32L', price:329, image:'assets/img/microwave-new.jpg'})">Add
+                  to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: WHY CHOOSE US -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Why HOME</span>
+          <h2>Unmatched Service Standards</h2>
+          <p>We combine premium products with certified technical experts to guarantee peace of mind.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="text-align: center; align-items: center;">
+            <div
+              style="width: 60px; height: 60px; border-radius: 50%; background: rgba(30, 58, 138, 0.1); display:flex; align-items:center; justify-content:center; margin-bottom: 1rem; color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14" />
+                <path d="M12 5l7 7-7 7" />
+              </svg>
+            </div>
+            <h3>Fast Same-Day</h3>
+            <p style="margin-top: 0.5rem;">Orders placed before noon qualify for express same-day doorstep shipping.</p>
+            <div style="margin-top: 1.5rem; font-size: 2rem; font-weight: 800; color: var(--color-secondary);"
+              class="counter-val" data-target="15000">0+</div>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Products Delivered</span>
+          </div>
+
+          <div class="card" style="text-align: center; align-items: center;">
+            <div
+              style="width: 60px; height: 60px; border-radius: 50%; background: rgba(245, 158, 11, 0.1); display:flex; align-items:center; justify-content:center; margin-bottom: 1rem; color: var(--color-secondary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+            </div>
+            <h3>Certified Installation</h3>
+            <p style="margin-top: 0.5rem;">Factory-trained technicians ensure perfect setup and initial diagnostics.</p>
+            <div style="margin-top: 1.5rem; font-size: 2rem; font-weight: 800; color: var(--color-secondary);"
+              class="counter-val" data-target="120">0+</div>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Certified Technicians</span>
+          </div>
+
+          <div class="card" style="text-align: center; align-items: center;">
+            <div
+              style="width: 60px; height: 60px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); display:flex; align-items:center; justify-content:center; margin-bottom: 1rem; color: var(--color-accent);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3>Extended Warranty</h3>
+            <p style="margin-top: 0.5rem;">Up to 5 years extended protection plan covering parts and labor.</p>
+            <div style="margin-top: 1.5rem; font-size: 2rem; font-weight: 800; color: var(--color-secondary);"
+              class="counter-val" data-target="99">0%</div>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Customer Satisfaction Rate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SERVICE BOOKING TEASER -->
+    <section class="section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="split-section">
+          <div style="display:flex; flex-direction:column; justify-content:center;">
+            <span class="subtitle">Quick Repair Service</span>
+            <h2>Need an Immediate Repair or Routine Maintenance?</h2>
+            <p style="margin-bottom: 1.5rem;">Is your refrigerator not cooling or your washing machine making noise? Our
+              emergency team is available 24/7 with genuine spare parts.</p>
+            <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="services.html" class="btn btn-primary">Book Repair Now</a>
+              <a href="contact.html" class="btn btn-outline">Emergency Hotline</a>
+            </div>
+          </div>
+          <div class="split-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80"
+              alt="Smiling Repair Technician">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: TESTIMONIALS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Customer Feedback</span>
+          <h2>Trusted by Thousands of Homeowners</h2>
+          <p>Here is what our satisfied clients say about our products and repair services.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div style="color: var(--color-secondary); margin-bottom: 0.75rem;">★★★★★</div>
+            <p style="font-style: italic; margin-bottom: 1.5rem;">"The installation team arrived right on time for our
+              new French Door fridge. Super professional and explained all smart features."</p>
+            <div style="display:flex; align-items:center; gap: 0.75rem; margin-top: auto;">
+              <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80" alt="John Doe" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <h4 style="font-size: 0.95rem;">John Doe</h4>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Verified Buyer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="color: var(--color-secondary); margin-bottom: 0.75rem;">★★★★★</div>
+            <p style="font-style: italic; margin-bottom: 1.5rem;">"Booked an AC repair online at midnight and had a
+              technician at my house by 9 AM next morning. Saved my summer!"</p>
+            <div style="display:flex; align-items:center; gap: 0.75rem; margin-top: auto;">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Sarah Miller" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <h4 style="font-size: 0.95rem;">Sarah Miller</h4>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Service Customer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="color: var(--color-secondary); margin-bottom: 0.75rem;">★★★★★</div>
+            <p style="font-style: italic; margin-bottom: 1.5rem;">"Excellent prices on premium brands. Extended 3-year
+              warranty gave us complete peace of mind."</p>
+            <div style="display:flex; align-items:center; gap: 0.75rem; margin-top: auto;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Robert Chen" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+              <div>
+                <h4 style="font-size: 0.95rem;">Robert Chen</h4>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Homeowner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="about.html" class="btn btn-outline">Read More Reviews</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Logo & Tagline -->
+        <div>
+          <a href="index.html" class="logo footer-logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            HOME<span>.</span>
+          </a>
+          <p class="footer-tagline">Your trusted destination for smart home appliances, certified installation, and 24/7
+            expert repair services.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn google" aria-label="Google">G</a>
+            <a href="#" class="social-btn apple" aria-label="Apple"></a>
+            <a href="#" class="social-btn facebook" aria-label="Facebook">f</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home-v2.html">Home 2</a></li>
+            <li><a href="appliances.html">Appliances</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Appliance Repair</a></li>
+            <li><a href="services.html">Certified Installation</a></li>
+            <li><a href="services.html">Annual Maintenance</a></li>
+            <li><a href="services.html">Extended Warranty</a></li>
+            <li><a href="contact.html">24/7 Emergency Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div>
+          <h4>Subscribe & Save</h4>
+          <p style="font-size: 0.9rem;">Get weekly appliance tips, energy-saving guides, and exclusive discount coupons.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" placeholder="Enter your email" class="footer-newsletter-input" required>
+            <button type="submit" class="btn btn-secondary">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 HOME Appliance Store & Service Center. All rights reserved.</div>
+        <div style="display:flex; gap: 1.5rem;">
+          <a href="about.html" style="color: #94A3B8;">Privacy Policy</a>
+          <a href="about.html" style="color: #94A3B8;">Terms of Service</a>
+          <a href="contact.html" style="color: #94A3B8;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

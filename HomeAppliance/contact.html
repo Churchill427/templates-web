@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Emergency Hotline | HOME</title>
+  <meta name="description" content="Get in touch with HOME customer support, visit our store showrooms, or call our 24/7 emergency repair hotline.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- FIXED GLASS NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        HOME<span>.</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item-dropdown">
+            <a href="index.html" class="nav-link">Home ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="index.html" class="dropdown-link">Home 1</a></li>
+              <li><a href="home-v2.html" class="dropdown-link">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="appliances.html" class="nav-link">Appliances</a></li>
+          <li><a href="brands.html" class="nav-link">Brands</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme"><span class="theme-icon"></span></button>
+        <button class="btn-icon dir-toggle-btn" aria-label="Toggle Direction"><span class="dir-label" style="font-weight:700; font-size:0.75rem;">LTR</span></button>
+        <button class="btn-icon cart-toggle-btn" aria-label="View Cart" style="position: relative;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+          </svg>
+          <span class="badge cart-badge-count" style="position: absolute; top: -4px; right: -4px;">1</span>
+        </button>
+        <a href="services.html" class="btn btn-secondary" style="display: none; @media(min-width: 768px){display:inline-flex;}">Book Repair</a>
+        <button class="hamburger-btn" aria-label="Open Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 style="font-size: 1.2rem;">Your Shopping Cart</h3>
+        <button class="cart-close-btn" style="background:none; font-size: 1.5rem; color: var(--text-main);">&times;</button>
+      </div>
+      <div class="cart-drawer-body cart-items-list"></div>
+      <div class="cart-drawer-footer">
+        <div style="display:flex; justify-content:space-between; font-weight:700; font-size: 1.1rem; margin-bottom: 1rem;">
+          <span>Subtotal:</span>
+          <span class="cart-total-price">$0.00</span>
+        </div>
+        <a href="appliances.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero" style="background-image: url('assets/img/hero-contact.png');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="subtitle" style="color: var(--color-secondary); font-weight: 700;">Support & Inquiries</span>
+        <h1>Get in Touch with HOME</h1>
+        <p>Whether you have product questions or need urgent repair dispatch, our friendly support team is here to assist 24 hours a day.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CONTACT FORM & INFO -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <!-- Form Left -->
+          <div class="card" style="padding: 2.5rem;">
+            <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
+            <form onsubmit="event.preventDefault(); showToast('Thank you! Your message has been sent.'); this.reset();">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-input" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-input" placeholder="john@example.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" placeholder="+1 (555) 000-0000">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subject *</label>
+                <input type="text" class="form-input" placeholder="Appliance Order / Repair Question" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message *</label>
+                <textarea class="form-textarea" placeholder="How can we help you today?" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+          </div>
+
+          <!-- Info Right -->
+          <div style="display:flex; flex-direction:column; justify-content:space-between; gap:1.5rem;">
+            <div class="card" style="padding: 2rem;">
+              <h3 style="margin-bottom: 1rem;">Customer Support Hub</h3>
+              <p style="margin-bottom: 1.5rem;">Our customer success desk handles order tracking, warranty claims, and technician scheduling.</p>
+
+              <div style="display:flex; flex-direction:column; gap:1rem; font-size:0.95rem;">
+                <div>
+                  <strong>📍 Main Headquarters:</strong><br>
+                  100 Appliance Parkway, Suite 400, Tech City, TC 90210
+                </div>
+                <div>
+                  <strong>📞 Phone Support:</strong><br>
+                  Sales: (800) 555-HOME | Service: (800) 999-REPAIR
+                </div>
+                <div>
+                  <strong>✉️ Email Address:</strong><br>
+                  support@homeappliance.com
+                </div>
+                <div>
+                  <strong>⏰ Operating Hours:</strong><br>
+                  Showroom: Mon-Sat 9AM-8PM | Hotline: 24/7 Available
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Login Branded Card -->
+            <div class="card" style="padding: 1.5rem; text-align:center;">
+              <h4 style="margin-bottom:0.5rem;">Connect with Social Login</h4>
+              <p style="font-size:0.85rem; margin-bottom: 1rem;">Sign in quickly via your favorite identity provider.</p>
+              <div style="display:flex; gap:1rem; justify-content:center;">
+                <button class="social-btn google" style="width:auto; padding:0 1rem; border-radius:8px; height:40px;" onclick="showToast('Signed in with Google');">Google</button>
+                <button class="social-btn apple" style="width:auto; padding:0 1rem; border-radius:8px; height:40px;" onclick="showToast('Signed in with Apple');">Apple ID</button>
+                <button class="social-btn facebook" style="width:auto; padding:0 1rem; border-radius:8px; height:40px;" onclick="showToast('Signed in with Facebook');">Facebook</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: STORE MAP -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Interactive Location</span>
+          <h2>Visit Our Flagship Appliance Showroom</h2>
+        </div>
+
+        <div style="width:100%; height: 380px; border-radius: 16px; overflow:hidden; position:relative; background:#1E293B; border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center;">
+          <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="Map View" style="width:100%; height:100%; object-fit:cover; opacity:0.6;">
+          <div style="position:relative; z-index:2; background: var(--bg-surface); padding: 1.5rem 2rem; border-radius:12px; box-shadow:var(--shadow-lg); text-align:center;">
+            <div style="font-size: 2rem; margin-bottom: 0.25rem;">📍</div>
+            <h3 style="margin-bottom:0.25rem;">HOME Flagship Experience Store</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted);">100 Appliance Parkway, Tech City</p>
+            <a href="https://maps.google.com" target="_blank" class="btn btn-secondary" style="margin-top:1rem; height:36px; font-size:0.85rem;">Open in Google Maps ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FAQ ACCORDION -->
+    <section class="section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Support FAQ</span>
+          <h2>Common Inquiries & Assistance</h2>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              How do I track my delivery or repair status?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content" style="max-height:150px;">
+              <p style="margin-top:0.5rem;">You will receive an SMS containing a live GPS tracking link 30 minutes prior to your technician's arrival window.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              What payment methods do you accept at doorstep?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p style="margin-top:0.5rem;">Our technicians carry mobile POS terminals accepting Visa, Mastercard, Apple Pay, Google Pay, and cash.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Can I reschedule or cancel a repair appointment?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-content">
+              <p style="margin-top:0.5rem;">Yes, you can reschedule free of charge up to 2 hours before the scheduled time slot by calling (800) 999-REPAIR.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: STORE LOCATIONS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Regional Branches</span>
+          <h2>Our Branch Network</h2>
+          <p>Find the nearest HOME showroom and pickup location.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=500&q=80" alt="Metro Flagship Store showroom with home appliances" style="width:100%; height:180px; object-fit:cover;">
+            <div style="padding:1.5rem;">
+              <h4>Metro Flagship Store</h4>
+              <p style="font-size:0.85rem; margin-top:0.25rem;">100 Appliance Parkway, Tech City</p>
+              <p style="font-size:0.85rem; color:var(--color-primary); font-weight:600; margin-top:0.5rem;">Tel: (800) 555-0101</p>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=500&q=80" alt="North Suburbs Service Hub with repair technicians" style="width:100%; height:180px; object-fit:cover;">
+            <div style="padding:1.5rem;">
+              <h4>North Suburbs Service Hub</h4>
+              <p style="font-size:0.85rem; margin-top:0.25rem;">450 Northern Boulevard, Suite 12</p>
+              <p style="font-size:0.85rem; color:var(--color-primary); font-weight:600; margin-top:0.5rem;">Tel: (800) 555-0102</p>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=500&q=80" alt="West Coast Tech Depot with appliance inventory" style="width:100%; height:180px; object-fit:cover;">
+            <div style="padding:1.5rem;">
+              <h4>West Coast Tech Depot</h4>
+              <p style="font-size:0.85rem; margin-top:0.25rem;">880 Sunset Highway, Innovation Hub</p>
+              <p style="font-size:0.85rem; color:var(--color-primary); font-weight:600; margin-top:0.5rem;">Tel: (800) 555-0103</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: EMERGENCY REPAIR BANNER -->
+    <section class="section" style="background: linear-gradient(135deg, #EF4444 0%, #B91C1C 100%); color: #FFFFFF; text-align: center;">
+      <div class="container">
+        <h2 style="color: #FFFFFF; margin-bottom: 1rem;">24/7 Immediate Emergency Repair Hotline</h2>
+        <p style="color: #FEE2E2; max-width: 600px; margin: 0 auto 1.5rem auto;">Leaking washer or cooling failure? Our rapid response unit is on call 365 days a year.</p>
+        <a href="tel:18009997372" class="btn btn-secondary" style="font-size: 1.1rem; height: 50px;">📞 Call Emergency Hotline: (800) 999-REPAIR</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo footer-logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            HOME<span>.</span>
+          </a>
+          <p class="footer-tagline">Your trusted destination for smart home appliances, certified installation, and 24/7 expert repair services.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn google">G</a>
+            <a href="#" class="social-btn apple"></a>
+            <a href="#" class="social-btn facebook">f</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home-v2.html">Home 2</a></li>
+            <li><a href="appliances.html">Appliances</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Appliance Repair</a></li>
+            <li><a href="services.html">Certified Installation</a></li>
+            <li><a href="services.html">Annual Maintenance</a></li>
+            <li><a href="services.html">Extended Warranty</a></li>
+            <li><a href="contact.html">24/7 Emergency Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Subscribe & Save</h4>
+          <p style="font-size: 0.9rem;">Get weekly appliance tips, energy-saving guides, and exclusive discount coupons.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" placeholder="Enter your email" class="footer-newsletter-input" required>
+            <button type="submit" class="btn btn-secondary">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 HOME Appliance Store & Service Center. All rights reserved.</div>
+        <div style="display:flex; gap: 1.5rem;">
+          <a href="about.html" style="color: #94A3B8;">Privacy Policy</a>
+          <a href="about.html" style="color: #94A3B8;">Terms of Service</a>
+          <a href="contact.html" style="color: #94A3B8;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/faq.js"></script>
+</body>
+</html>

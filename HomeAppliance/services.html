@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appliance Repair & Installation Services | HOME</title>
+  <meta name="description"
+    content="Book certified technicians for same-day home appliance repair, HVAC servicing, and guaranteed installation.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <!-- FIXED GLASS NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        HOME<span>.</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item-dropdown">
+            <a href="index.html" class="nav-link">Home ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="index.html" class="dropdown-link">Home 1</a></li>
+              <li><a href="home-v2.html" class="dropdown-link">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="appliances.html" class="nav-link">Appliances</a></li>
+          <li><a href="brands.html" class="nav-link">Brands</a></li>
+          <li><a href="services.html" class="nav-link active">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme"><span class="theme-icon"></span></button>
+        <button class="btn-icon dir-toggle-btn" aria-label="Toggle Direction"><span class="dir-label"
+            style="font-weight:700; font-size:0.75rem;">LTR</span></button>
+        <button class="btn-icon cart-toggle-btn" aria-label="View Cart" style="position: relative;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="8" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          </svg>
+          <span class="badge cart-badge-count" style="position: absolute; top: -4px; right: -4px;">1</span>
+        </button>
+        <a href="#booking-wizard" class="btn btn-secondary"
+          style="display: none; @media(min-width: 768px){display:inline-flex;}">Book Repair</a>
+        <button class="hamburger-btn" aria-label="Open Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-overlay">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 style="font-size: 1.2rem;">Your Shopping Cart</h3>
+        <button class="cart-close-btn"
+          style="background:none; font-size: 1.5rem; color: var(--text-main);">&times;</button>
+      </div>
+      <div class="cart-drawer-body cart-items-list"></div>
+      <div class="cart-drawer-footer">
+        <div
+          style="display:flex; justify-content:space-between; font-weight:700; font-size: 1.1rem; margin-bottom: 1rem;">
+          <span>Subtotal:</span>
+          <span class="cart-total-price">$0.00</span>
+        </div>
+        <a href="appliances.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO -->
+    <section class="hero"
+      style="background-image: url('assets/img/hero-services.png');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="subtitle" style="color: var(--color-secondary); font-weight: 700;">Certified Service Center</span>
+        <h1>Expert Repair & Installation Services</h1>
+        <p>From emergency AC diagnostics to full kitchen suite installation, our licensed engineers restore optimal
+          performance to your home appliances.</p>
+        <div class="hero-buttons">
+          <a href="#booking-wizard" class="btn btn-secondary">Schedule Service Call</a>
+          <a href="#pricing-plans" class="btn btn-outline" style="color:#FFF; border-color:#FFF;">View Maintenance
+            Plans</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SERVICE CATEGORIES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">What We Do</span>
+          <h2>Comprehensive Home Appliance Services</h2>
+          <p>We service all major brands using 100% genuine factory parts.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="assets/img/repair.png"
+              alt="Appliance Repair Service" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding: 1.5rem;">
+              <h3>1. Appliance Repair</h3>
+              <p style="margin-top: 0.5rem; margin-bottom: 1rem;">Fast diagnostic and repair for non-cooling fridges,
+                leaking washers, noisy ACs, and dead ovens.</p>
+              <a href="#booking-wizard" class="btn btn-outline" style="width:100%;">Book Repair</a>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="assets/img/installation.png"
+              alt="Precision Appliance Installation" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding: 1.5rem;">
+              <h3>2. Precision Installation</h3>
+              <p style="margin-top: 0.5rem; margin-bottom: 1rem;">Factory-spec mounting, plumbing connection, voltage
+                verification, and ventilation fitting.</p>
+              <a href="#booking-wizard" class="btn btn-outline" style="width:100%;">Book Installation</a>
+            </div>
+          </div>
+
+          <div class="card" style="padding:0; overflow:hidden;">
+            <img src="assets/img/maintenance.png"
+              alt="Annual Appliance Maintenance" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding: 1.5rem;">
+              <h3>3. Annual Maintenance</h3>
+              <p style="margin-top: 0.5rem; margin-bottom: 1rem;">Preventive care tune-ups including chemical coil wash,
+                gas level check, and filter replacement.</p>
+              <a href="#booking-wizard" class="btn btn-outline" style="width:100%;">Book Tune-Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PRICING PLANS -->
+    <section class="section" id="pricing-plans" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Transparent Pricing</span>
+          <h2>Service & Maintenance Pricing</h2>
+          <p>No hidden fees or unexpected surcharges. Honest upfront estimates.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="text-align:center; padding: 2rem;">
+            <h4>Basic Diagnostic</h4>
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary); margin: 0.5rem 0;">$49</div>
+            <p style="margin-bottom: 1.5rem;">Waved if repair work is completed by our technician.</p>
+            <ul
+              style="text-align: left; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem;">
+              <li>✓ Full physical inspection</li>
+              <li>✓ Electrical fault diagnosis</li>
+              <li>✓ Upfront repair quote</li>
+              <li style="color: var(--text-muted);">✗ Parts included</li>
+            </ul>
+            <a href="#booking-wizard" class="btn btn-outline" style="width:100%;">Book Basic</a>
+          </div>
+
+          <div class="card"
+            style="text-align:center; padding: 2rem; border-color: var(--color-secondary); transform: scale(1.04); position:relative; overflow: visible;">
+            <span class="badge" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%);">MOST POPULAR</span>
+            <h4>Standard Tune-Up</h4>
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-secondary); margin: 0.5rem 0;">$99</div>
+            <p style="margin-bottom: 1.5rem;">Complete annual maintenance pass for 1 major appliance.</p>
+            <ul
+              style="text-align: left; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem;">
+              <li>✓ Full system diagnosis</li>
+              <li>✓ Chemical coil/filter clean</li>
+              <li>✓ Calibration & gas check</li>
+              <li>✓ 90-Day repair warranty</li>
+            </ul>
+            <a href="#booking-wizard" class="btn btn-secondary" style="width:100%;">Book Standard</a>
+          </div>
+
+          <div class="card" style="text-align:center; padding: 2rem;">
+            <h4>Complete Home Care</h4>
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-accent); margin: 0.5rem 0;">$199</div>
+            <p style="margin-bottom: 1.5rem;">Covers up to 4 major appliances per year with priority booking.</p>
+            <ul
+              style="text-align: left; list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem;">
+              <li>✓ 4 Appliance annual tune-ups</li>
+              <li>✓ Priority 2-hour dispatch</li>
+              <li>✓ 15% Discount on all parts</li>
+              <li>✓ 1-Year repair warranty</li>
+            </ul>
+            <a href="#booking-wizard" class="btn btn-outline" style="width:100%;">Book Premium Care</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: MULTI-STEP BOOKING FORM -->
+    <section class="section" id="booking-wizard">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Online Appointment</span>
+          <h2>Book Service Technician in 4 Easy Steps</h2>
+          <p>Select your date and time slot. Our system assigns the nearest certified engineer.</p>
+        </div>
+
+        <div class="wizard-card">
+          <div class="wizard-steps">
+            <div class="wizard-step-item active" data-step="1">
+              <div class="wizard-step-circle">1</div>
+              <span class="wizard-step-label">Contact</span>
+            </div>
+            <div class="wizard-step-item" data-step="2">
+              <div class="wizard-step-circle">2</div>
+              <span class="wizard-step-label">Appliance</span>
+            </div>
+            <div class="wizard-step-item" data-step="3">
+              <div class="wizard-step-circle">3</div>
+              <span class="wizard-step-label">Schedule</span>
+            </div>
+            <div class="wizard-step-item" data-step="4">
+              <div class="wizard-step-circle">4</div>
+              <span class="wizard-step-label">Confirm</span>
+            </div>
+          </div>
+
+          <form id="booking-wizard-form">
+            <!-- Step 1 Pane -->
+            <div class="wizard-step-pane" data-step="1">
+              <h3 style="margin-bottom: 1.5rem;">Step 1: Your Personal Information</h3>
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" id="cust-name" class="form-input" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" id="cust-phone" class="form-input" placeholder="+1 (555) 000-0000" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Service Address *</label>
+                <input type="text" id="cust-address" class="form-input" placeholder="123 Main St, Suite 4" required>
+              </div>
+              <button class="btn btn-primary wizard-next-btn" style="float: right;">Next: Appliance Info →</button>
+              <div style="clear:both;"></div>
+            </div>
+
+            <!-- Step 2 Pane -->
+            <div class="wizard-step-pane" data-step="2" style="display:none;">
+              <h3 style="margin-bottom: 1.5rem;">Step 2: Appliance & Problem Description</h3>
+              <div class="form-group">
+                <label class="form-label">Select Appliance Type *</label>
+                <select id="appliance-type" class="form-select" required>
+                  <option value="">Choose Category...</option>
+                  <option value="Refrigerator">Refrigerator / Freezer</option>
+                  <option value="Washing Machine">Washing Machine / Dryer</option>
+                  <option value="Air Conditioner">Air Conditioner (HVAC)</option>
+                  <option value="Microwave Oven">Microwave / Electric Oven</option>
+                  <option value="Dishwasher">Dishwasher</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Brand Name</label>
+                <input type="text" class="form-input" placeholder="e.g. Samsung, LG, Whirlpool">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Describe the Issue</label>
+                <textarea class="form-textarea"
+                  placeholder="e.g. Making buzzing noise and not cooling properly..."></textarea>
+              </div>
+              <button class="btn btn-outline wizard-prev-btn" style="float: left;">← Back</button>
+              <button class="btn btn-primary wizard-next-btn" style="float: right;">Next: Schedule →</button>
+              <div style="clear:both;"></div>
+            </div>
+
+            <!-- Step 3 Pane -->
+            <div class="wizard-step-pane" data-step="3" style="display:none;">
+              <h3 style="margin-bottom: 1.5rem;">Step 3: Choose Preferred Date & Time</h3>
+              <div class="form-group">
+                <label class="form-label">Preferred Service Date *</label>
+                <input type="date" id="service-date" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Preferred Time Slot *</label>
+                <select id="service-time" class="form-select" required>
+                  <option value="">Select Window...</option>
+                  <option value="Morning (8:00 AM - 12:00 PM)">Morning (8:00 AM - 12:00 PM)</option>
+                  <option value="Afternoon (12:00 PM - 4:00 PM)">Afternoon (12:00 PM - 4:00 PM)</option>
+                  <option value="Evening (4:00 PM - 8:00 PM)">Evening (4:00 PM - 8:00 PM)</option>
+                </select>
+              </div>
+              <button class="btn btn-outline wizard-prev-btn" style="float: left;">← Back</button>
+              <button class="btn btn-primary wizard-next-btn" style="float: right;">Next: Summary →</button>
+              <div style="clear:both;"></div>
+            </div>
+
+            <!-- Step 4 Pane -->
+            <div class="wizard-step-pane" data-step="4" style="display:none;">
+              <h3 style="margin-bottom: 1.5rem;">Step 4: Review & Submit Booking</h3>
+              <div id="booking-summary-box" style="margin-bottom: 1.5rem;"></div>
+              <button class="btn btn-outline wizard-prev-btn" style="float: left;">← Back</button>
+              <button type="submit" class="btn btn-secondary" style="float: right;">Confirm & Book Technician</button>
+              <div style="clear:both;"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SERVICE AREAS -->
+    <section class="section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Local Service Network</span>
+          <h2>Service Coverage & Hub Locations</h2>
+          <p>Our mobile service fleet operates across major metropolitan areas with average 45-minute response times.
+          </p>
+        </div>
+
+        <div class="grid-2" style="align-items: center;">
+          <!-- Map Mockup Div -->
+          <div
+            style="width: 100%; height: 320px; border-radius: 16px; background: #E2E8F0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">
+            <div
+              style="position: absolute; inset:0; background: radial-gradient(circle, rgba(30,58,138,0.15) 0%, rgba(15,23,42,0.6) 100%), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80'); background-size: cover;">
+            </div>
+            <div
+              style="position: relative; z-index: 2; text-align: center; color: #FFF; padding: 1rem; background: rgba(15,23,42,0.85); border-radius: 12px;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                style="color: var(--color-secondary);">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <h4 style="color:#FFF; margin-top: 0.5rem;">5 Metro Dispatch Hubs</h4>
+              <p style="font-size: 0.85rem; color: #CBD5E1;">Tracking live service vans in real-time</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom: 1rem;">Covered Metropolitan Zones</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+              <div
+                style="background: var(--bg-main); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <strong>📍 Downtown Metro</strong>
+                <p style="font-size: 0.85rem;">Response: &lt; 30 Mins</p>
+              </div>
+              <div
+                style="background: var(--bg-main); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <strong>📍 North Suburbs</strong>
+                <p style="font-size: 0.85rem;">Response: &lt; 45 Mins</p>
+              </div>
+              <div
+                style="background: var(--bg-main); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <strong>📍 West Innovation District</strong>
+                <p style="font-size: 0.85rem;">Response: &lt; 40 Mins</p>
+              </div>
+              <div
+                style="background: var(--bg-main); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                <strong>📍 South Harbor Area</strong>
+                <p style="font-size: 0.85rem;">Response: &lt; 50 Mins</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: FAQ ACCORDION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="subtitle">Got Questions?</span>
+          <h2>Frequently Asked Service Questions</h2>
+          <p>Everything you need to know about repair warranties, dispatch, and parts.</p>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              How quickly can a service technician arrive at my house?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="accordion-content" style="max-height: 200px;">
+              <p style="margin-top: 0.5rem;">For emergency requests submitted before 12:00 PM, we offer same-day
+                dispatch. Standard service appointments are scheduled within a 2-hour arrival window.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Are replacement parts genuine and covered under warranty?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p style="margin-top: 0.5rem;">Yes! We use 100% genuine OEM replacement parts sourced directly from
+                manufacturers like Samsung, LG, and Whirlpool. All parts come with a 90-day to 1-year guarantee.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              What happens if my appliance cannot be repaired?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p style="margin-top: 0.5rem;">If our engineer determines that repairing your machine is not
+                cost-effective, your $49 diagnostic fee will be credited towards purchasing a new replacement unit from
+                HOME.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Do you offer emergency weekend or holiday repairs?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p style="margin-top: 0.5rem;">Yes, our 24/7 hotline operates 365 days a year for urgent cooling failures,
+                gas leaks, or flooding washing machines.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              How do I prepare my home for the technician's visit?
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="accordion-content">
+              <p style="margin-top: 0.5rem;">Please ensure a clear pathway to the appliance, clear out items around the
+                unit, and keep pets in a safe area during servicing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- GLOBAL FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo footer-logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            HOME<span>.</span>
+          </a>
+          <p class="footer-tagline">Your trusted destination for smart home appliances, certified installation, and 24/7
+            expert repair services.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn google">G</a>
+            <a href="#" class="social-btn apple"></a>
+            <a href="#" class="social-btn facebook">f</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home-v2.html">Home 2</a></li>
+            <li><a href="appliances.html">Appliances</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Appliance Repair</a></li>
+            <li><a href="services.html">Certified Installation</a></li>
+            <li><a href="services.html">Annual Maintenance</a></li>
+            <li><a href="services.html">Extended Warranty</a></li>
+            <li><a href="contact.html">24/7 Emergency Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Subscribe & Save</h4>
+          <p style="font-size: 0.9rem;">Get weekly appliance tips, energy-saving guides, and exclusive discount coupons.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" placeholder="Enter your email" class="footer-newsletter-input" required>
+            <button type="submit" class="btn btn-secondary">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 HOME Appliance Store & Service Center. All rights reserved.</div>
+        <div style="display:flex; gap: 1.5rem;">
+          <a href="about.html" style="color: #94A3B8;">Privacy Policy</a>
+          <a href="about.html" style="color: #94A3B8;">Terms of Service</a>
+          <a href="contact.html" style="color: #94A3B8;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/services.js"></script>
+  <script src="assets/js/faq.js"></script>
+</body>
+
+</html>
