@@ -1,0 +1,122 @@
+/* css/pages/calculator.css */
+
+/* Hero */
+.hero-calculator {
+  background-image: url('../../assets/images/calculator_hero.png');
+}
+
+/* Calculator Grid styling */
+.calc-tool-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.calc-results-box {
+  background-color: var(--bg-color-alt);
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  border: 1px dashed var(--secondary);
+}
+.calc-val {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--secondary);
+  line-height: 1;
+  margin: 16px 0;
+}
+
+/* Treadwear Slider */
+.slider-container {
+  margin: 24px 0;
+}
+.range-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border-color);
+  outline: none;
+  -webkit-appearance: none;
+}
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--secondary);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Compare Size visual grid */
+.tire-visual-flex {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 32px 0;
+}
+.tire-circle {
+  border: 8px solid var(--primary);
+  border-top-color: var(--secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  transition: all 0.3s ease;
+  background-color: rgba(255,255,255,0.02);
+}
+#tireA {
+  width: 160px;
+  height: 160px;
+  font-size: 16px;
+}
+#tireB {
+  width: 180px;
+  height: 180px;
+  font-size: 18px;
+}
+
+/* Tab container */
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 12px 24px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.tab-btn.active, .tab-btn:hover {
+  border-color: var(--secondary);
+  background-color: var(--secondary);
+  color: #fff;
+}
+.tab-pane {
+  display: none;
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+.tab-pane.active {
+  display: block;
+}

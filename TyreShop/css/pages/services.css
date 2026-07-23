@@ -1,0 +1,258 @@
+/* css/pages/services.css */
+
+/* Hero */
+.hero-services {
+  background-image: url('../../assets/images/services_hero.png');
+}
+
+/* Tyre Services */
+.tyre-service-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .tyre-service-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+.tyre-service-img {
+  flex: 1;
+  position: relative;
+  min-height: 250px;
+}
+.tyre-service-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tyre-service-content {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tyre-service-content h3 {
+  margin-bottom: 12px;
+}
+.tyre-service-content p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* Wheel Services */
+.wheel-services-section {
+  background-color: var(--bg-color-alt);
+}
+.wheel-service-block {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 40px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+  transition: transform 0.3s;
+}
+.wheel-service-block:hover {
+  transform: translateX(8px);
+}
+@media (min-width: 768px) {
+  .wheel-service-block {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+}
+.wheel-icon {
+  font-size: 64px;
+  color: var(--secondary);
+  flex-shrink: 0;
+  margin-bottom: 24px;
+}
+@media (min-width: 768px) {
+  .wheel-icon { margin-bottom: 0; }
+}
+.wheel-info {
+  flex: 1;
+}
+.wheel-info h3 {
+  margin-bottom: 12px;
+}
+.wheel-info p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.wheel-price {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 24px;
+}
+.wheel-price span {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Additional Services */
+.additional-card {
+  padding: 32px;
+  text-align: center;
+}
+.additional-card h4 {
+  margin-bottom: 8px;
+}
+.additional-price {
+  color: var(--secondary);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 20px;
+}
+
+/* Service Process Timeline */
+.process-section {
+  background-color: var(--bg-color-alt);
+}
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  height: 100%;
+  width: 2px;
+  background-color: var(--border-color);
+}
+@media (min-width: 768px) {
+  .timeline {
+    flex-direction: row;
+    gap: 24px;
+    max-width: 100%;
+  }
+  .timeline::before {
+    top: 24px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+}
+
+.timeline-step {
+  position: relative;
+  padding-left: 64px;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .timeline-step {
+    padding-left: 0;
+    padding-top: 64px;
+    text-align: center;
+  }
+}
+.step-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  background-color: var(--secondary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  z-index: 2;
+  box-shadow: 0 0 0 8px var(--bg-color-alt);
+}
+@media (min-width: 768px) {
+  .step-number {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.timeline-step h4 {
+  margin-bottom: 8px;
+}
+.timeline-step p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Equipment Showcase */
+.equipment-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+@media (min-width: 1024px) {
+  .equipment-grid {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .equipment-content, .equipment-images {
+    flex: 1;
+  }
+}
+.equipment-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.equipment-content h2 {
+  margin-bottom: 24px;
+}
+.equipment-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.equipment-specs li {
+  padding-left: 24px;
+  position: relative;
+  font-size: 14px;
+}
+.equipment-specs li::before {
+  content: '•';
+  color: var(--secondary);
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+}
+.equipment-images {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.equip-img-box {
+  position: relative;
+  flex: 1;
+  min-height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.equip-img-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

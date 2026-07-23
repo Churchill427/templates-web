@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAX | Tyre Catalog & Products</title>
+    <meta name="description" content="Browse the TRAX tyre catalog featuring Michelin, Pirelli, Continental, and Bridgestone. Find your perfect fit by size or brand.">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/products.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                <span>TRAX</span>
+            </a>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Home 1 (Performance)</a></li>
+                        <li><a href="home-b.html">Home 2 (Family Safety)</a></li>
+                    </ul>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="products.html" class="nav-link active">Products</a>
+                <a href="emergency.html" class="nav-link">Emergency</a>
+                <a href="calculator.html" class="nav-link">Calculator</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle">LIGHT</button>
+                <button class="dir-toggle">LTR</button>
+                <a href="booking.html" class="btn btn-primary">Book Now</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-dropdown">
+            <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+            <div class="mobile-dropdown-menu">
+                <a href="index.html" class="nav-link">Home 1 (Performance)</a>
+                <a href="home-b.html" class="nav-link">Home 2 (Family Safety)</a>
+            </div>
+        </div>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="products.html" class="nav-link active">Products</a>
+        <a href="emergency.html" class="nav-link">Emergency</a>
+        <a href="calculator.html" class="nav-link">Calculator</a>
+        <div class="mobile-actions">
+            <button class="theme-toggle">LIGHT</button>
+            <button class="dir-toggle">LTR</button>
+        </div>
+        <a href="booking.html" class="btn btn-primary" style="width:100%; text-align:center;">Book Appointment</a>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <button class="floating-cart-btn" id="cartBtn" aria-label="View Cart">
+        <i class="ph ph-shopping-cart"></i>
+        <div class="cart-badge">0</div>
+    </button>
+
+    <!-- Slide-out Cart Panel -->
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="cart-items">
+            <p style="color: var(--text-muted); text-align: center; margin-top: 24px;">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <span>$0.00</span>
+            </div>
+            <div class="cart-total-row">
+                <span>Tax (Estimated)</span>
+                <span>$0.00</span>
+            </div>
+            <div class="cart-total-row grand-total">
+                <span>Total</span>
+                <span>$0.00</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;">Proceed to Checkout</button>
+            <div style="text-align: center; margin-top: 16px;">
+                <a href="#" style="color: var(--secondary); font-size: 14px;">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero Section -->
+        <section class="hero-section hero-products">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content animate-fade-up">
+                <h1>Find Your Perfect Fit</h1>
+                <p>Browse our extensive catalog of premium tyres tailored for performance, safety, and longevity.</p>
+                
+                <form class="hero-search-container" action="#" onsubmit="event.preventDefault()">
+                    <input type="text" class="form-input" placeholder="Search by size (e.g., 225/40 R18)">
+                    <select class="form-input">
+                        <option value="">All Brands</option>
+                        <option value="michelin">Michelin</option>
+                        <option value="pirelli">Pirelli</option>
+                        <option value="continental">Continental</option>
+                    </select>
+                    <select class="form-input">
+                        <option value="">All Seasons</option>
+                        <option value="summer">Summer</option>
+                        <option value="winter">Winter</option>
+                        <option value="all">All-Season</option>
+                    </select>
+                    <button class="btn btn-primary">Search Tyres</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section 2: Featured Products -->
+        <section class="container">
+            <div class="section-header animate-fade-up">
+                <h2>Featured Products</h2>
+            </div>
+            <div class="grid grid-4">
+                <div class="product-card animate-fade-up delay-100">
+                    <div class="product-img-box">
+                        <img src="assets/images/products/pirelli.jpg" alt="Pirelli P-Zero PZ4">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Pirelli</span>
+                        <h3>P-Zero PZ4</h3>
+                        <div class="product-size">245/35 R19</div>
+                        <div class="product-price">$249.99</div>
+                        <button class="btn btn-outline add-to-cart" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card animate-fade-up delay-200">
+                    <div class="product-img-box">
+                        <img src="assets/images/products/michelin.jpg" alt="Michelin Pilot Sport 4S">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Michelin</span>
+                        <h3>Pilot Sport 4S</h3>
+                        <div class="product-size">255/35 R19</div>
+                        <div class="product-price">$285.00</div>
+                        <button class="btn btn-outline add-to-cart" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card animate-fade-up delay-300">
+                    <div class="product-img-box">
+                        <img src="assets/images/products/continental.jpg" alt="Continental ExtremeContact">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Continental</span>
+                        <h3>ExtremeContact DWS06</h3>
+                        <div class="product-size">225/40 R18</div>
+                        <div class="product-price">$195.50</div>
+                        <button class="btn btn-outline add-to-cart" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card animate-fade-up delay-400">
+                    <div class="product-img-box">
+                        <img src="assets/images/products/bridgestone.jpg" alt="Bridgestone Potenza">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Bridgestone</span>
+                        <h3>Potenza RE-71R</h3>
+                        <div class="product-size">275/35 R19</div>
+                        <div class="product-price">$310.00</div>
+                        <button class="btn btn-outline add-to-cart" style="width: 100%;">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Brand Filter -->
+        <section class="brand-filter-section animate-fade-up">
+            <div class="container">
+                <div class="brand-scroll">
+                    <button class="brand-logo-btn active"><img src="assets/images/brands/michelin.svg" alt="Michelin"></button>
+                    <button class="brand-logo-btn"><img src="assets/images/brands/pirelli.svg" alt="Pirelli"></button>
+                    <button class="brand-logo-btn"><img src="assets/images/brands/continental.svg" alt="Continental"></button>
+                    <button class="brand-logo-btn"><img src="assets/images/brands/bridgestone.svg" alt="Bridgestone"></button>
+                    <button class="brand-logo-btn"><img src="assets/images/brands/goodyear.svg" alt="Goodyear"></button>
+                    <button class="brand-logo-btn"><img src="assets/images/brands/hankook.svg" alt="Hankook"></button>
+                    <button class="brand-logo-btn"><img src="assets/images/brands/yokohama.svg" alt="Yokohama"></button>
+                    <button class="brand-logo-btn"><img src="assets/images/brands/toyo.svg" alt="Toyo Tires"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Size Guide -->
+        <section class="size-guide-section">
+            <div class="container">
+                <div class="size-guide-grid">
+                    <div class="size-guide-visual animate-fade-up">
+                        <div class="size-string">
+                            <span data-type="width" class="active">225</span> / <span data-type="aspect">40</span> <span data-type="construction">R</span> <span data-type="diameter">18</span>
+                        </div>
+                        <div class="size-info-box">
+                            <h4 id="sizeInfoTitle">Tyre Width (225)</h4>
+                            <p id="sizeInfoDesc" style="color: var(--text-main);">The width of the tyre measured in millimeters from sidewall to sidewall.</p>
+                        </div>
+                    </div>
+                    <div class="size-guide-content animate-fade-up">
+                        <h2>How to Read Your Tyre Size</h2>
+                        <p>Finding the right tyre starts with knowing your current size. You can find this sequence of numbers and letters on the sidewall of your existing tyres or in your vehicle owner's manual.</p>
+                        <p>Click on the different parts of the tyre size sequence on the left to understand what each number means. Proper fitment is critical for vehicle handling and speedometer accuracy.</p>
+                        <button class="btn btn-primary" style="margin-top: 16px;">Download Fitment Chart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Current Promotions -->
+        <section class="offers-section">
+            <div class="container animate-fade-up">
+                <div class="section-header">
+                    <h2>Current Promotions</h2>
+                </div>
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <h3>Buy 3 Get 1 Free</h3>
+                        <p>On select Michelin & Continental tyre sets.</p>
+                        <div class="timer">Ends in: 14 Days</div>
+                        <button class="btn btn-outline-white">Shop Eligible Tyres</button>
+                    </div>
+                    <div class="offer-card" style="background-color: var(--secondary);">
+                        <h3>Free Alignment Check</h3>
+                        <p>Included with any purchase of 4 new tyres.</p>
+                        <div class="timer" style="color: var(--primary);">Limited Time Offer</div>
+                        <button class="btn btn-primary" style="background-color: var(--primary); color: #fff;">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Cart Summary Teaser -->
+        <section class="cart-teaser-section">
+            <div class="container animate-fade-up">
+                <div class="cart-teaser-box">
+                    <h2>Ready to Complete Your Order?</h2>
+                    <p>Review your selected tyres and easily schedule a fitting appointment during checkout.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('cartPanel').classList.add('open')">View Full Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="navbar-logo" style="margin-bottom: 16px; display: inline-flex;">
+                        <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                        <span>TRAX</span>
+                    </a>
+                    <p>Premium automotive services designed to keep you safe and performing at your best on every road.</p>
+                    <div class="social-icons">
+                        <a href="#" class="fb"><i class="ph-fill ph-facebook-logo"></i></a>
+                        <a href="#" class="tw"><i class="ph-fill ph-twitter-logo"></i></a>
+                        <a href="#" class="ig"><i class="ph-fill ph-instagram-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="products.html">Tyre Brands</a>
+                        <a href="services.html">Wheel Alignment</a>
+                        <a href="services.html">Wheel Balancing</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>123 Performance Way<br>Motor City, MC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TRAX Automotive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAX | Book Appointment</title>
+    <meta name="description" content="Schedule your tyre service, alignment, or balancing appointment online at TRAX. Choose your service, date, and time slot.">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/booking.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                <span>TRAX</span>
+            </a>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Home 1 (Performance)</a></li>
+                        <li><a href="home-b.html">Home 2 (Family Safety)</a></li>
+                    </ul>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="emergency.html" class="nav-link">Emergency</a>
+                <a href="calculator.html" class="nav-link">Calculator</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle">LIGHT</button>
+                <button class="dir-toggle">LTR</button>
+                <a href="booking.html" class="btn btn-primary active">Book Now</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-dropdown">
+            <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+            <div class="mobile-dropdown-menu">
+                <a href="index.html" class="nav-link">Home 1 (Performance)</a>
+                <a href="home-b.html" class="nav-link">Home 2 (Family Safety)</a>
+            </div>
+        </div>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="emergency.html" class="nav-link">Emergency</a>
+        <a href="calculator.html" class="nav-link">Calculator</a>
+        <div class="mobile-actions">
+            <button class="theme-toggle">LIGHT</button>
+            <button class="dir-toggle">LTR</button>
+        </div>
+        <a href="booking.html" class="btn btn-primary active" style="width:100%; text-align:center;">Book Appointment</a>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero Section -->
+        <section class="hero-section hero-booking">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content animate-fade-up">
+                <h1>Book Your Service</h1>
+                <p>Reserve your spot in our service bay. Fast, transparent, and built around your schedule.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Booking Form (Steps) -->
+        <section class="container">
+            <div class="section-header animate-fade-up">
+                <h2>1. Select Service</h2>
+            </div>
+            <div class="service-select-grid grid-select">
+                <div class="service-select-card animate-fade-up delay-100" data-name="Laser Wheel Alignment" data-price="89.00">
+                    <i class="ph ph-check-circle check-icon"></i>
+                    <i class="ph ph-crosshair main-icon"></i>
+                    <h3>Wheel Alignment</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Full 3D scan and adjustment</p>
+                    <div style="font-weight: 700; color: var(--secondary);">$89.00</div>
+                </div>
+                <div class="service-select-card animate-fade-up delay-200" data-name="Road Force Balancing" data-price="45.00">
+                    <i class="ph ph-check-circle check-icon"></i>
+                    <i class="ph ph-circle main-icon"></i>
+                    <h3>Wheel Balancing</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Road force simulation</p>
+                    <div style="font-weight: 700; color: var(--secondary);">$45.00</div>
+                </div>
+                <div class="service-select-card animate-fade-up delay-300" data-name="Tyre Fitting & Installation" data-price="120.00">
+                    <i class="ph ph-check-circle check-icon"></i>
+                    <i class="ph ph-wrench main-icon"></i>
+                    <h3>Tyre Fitting</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Mounting for 4 tyres</p>
+                    <div style="font-weight: 700; color: var(--secondary);">$120.00</div>
+                </div>
+                <div class="service-select-card animate-fade-up delay-100" data-name="Puncture Repair" data-price="35.00">
+                    <i class="ph ph-check-circle check-icon"></i>
+                    <i class="ph ph-band-aids main-icon"></i>
+                    <h3>Puncture Repair</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Internal patch & plug</p>
+                    <div style="font-weight: 700; color: var(--secondary);">$35.00</div>
+                </div>
+                <div class="service-select-card animate-fade-up delay-200" data-name="Tyre Rotation" data-price="30.00">
+                    <i class="ph ph-check-circle check-icon"></i>
+                    <i class="ph ph-arrows-clockwise main-icon"></i>
+                    <h3>Tyre Rotation</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Front-to-back swap</p>
+                    <div style="font-weight: 700; color: var(--secondary);">$30.00</div>
+                </div>
+                <div class="service-select-card animate-fade-up delay-300" data-name="Comprehensive Inspection" data-price="0.00">
+                    <i class="ph ph-check-circle check-icon"></i>
+                    <i class="ph ph-magnifying-glass main-icon"></i>
+                    <h3>Full Inspection</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 8px;">Suspension and tread check</p>
+                    <div style="font-weight: 700; color: var(--secondary);">Free</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Date & Time Picker -->
+        <section class="calendar-section">
+            <div class="container">
+                <div class="section-header animate-fade-up">
+                    <h2>2. Choose Date & Time</h2>
+                </div>
+                <div class="datetime-container">
+                    <div class="calendar-wrapper animate-fade-up">
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <button class="calendar-btn" id="prevMonth"><i class="ph ph-caret-left"></i></button>
+                                <h3 id="monthYear" style="margin:0;">July 2026</h3>
+                                <button class="calendar-btn" id="nextMonth"><i class="ph ph-caret-right"></i></button>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="calendar-day-name">Sun</div>
+                                <div class="calendar-day-name">Mon</div>
+                                <div class="calendar-day-name">Tue</div>
+                                <div class="calendar-day-name">Wed</div>
+                                <div class="calendar-day-name">Thu</div>
+                                <div class="calendar-day-name">Fri</div>
+                                <div class="calendar-day-name">Sat</div>
+                            </div>
+                            <div class="calendar-grid" id="calendarDays">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time-wrapper animate-fade-up">
+                        <h3 style="margin-bottom: 16px;">Available Slots</h3>
+                        <div class="time-grid">
+                            <div class="time-slot">08:00 AM</div>
+                            <div class="time-slot">09:00 AM</div>
+                            <div class="time-slot">10:00 AM</div>
+                            <div class="time-slot">11:00 AM</div>
+                            <div class="time-slot">01:00 PM</div>
+                            <div class="time-slot">02:00 PM</div>
+                            <div class="time-slot">03:00 PM</div>
+                            <div class="time-slot">04:00 PM</div>
+                            <div class="time-slot">05:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4 & 5: Forms -->
+        <section class="form-section container">
+            <form action="#" id="bookingForm" onsubmit="event.preventDefault()">
+                <div class="form-wrapper">
+                    <!-- Vehicle Details -->
+                    <div class="animate-fade-up" style="margin-bottom: 48px;">
+                        <h2 style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">3. Vehicle Details</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Make</label>
+                                <input type="text" class="form-input" placeholder="e.g., Toyota" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Model</label>
+                                <input type="text" class="form-input" placeholder="e.g., Camry" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Year</label>
+                                <input type="number" class="form-input" placeholder="e.g., 2021" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Registration / Plate</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tyre Size (Optional)</label>
+                                <input type="text" class="form-input" placeholder="e.g., 225/40 R18">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Details -->
+                    <div class="animate-fade-up">
+                        <h2 style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">4. Personal Details</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Special Requests or Symptoms</label>
+                            <textarea class="form-input" rows="4" placeholder="e.g., Steering wheel pulls to the right at high speeds..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Section 6: Summary & Confirm -->
+        <section class="summary-section">
+            <div class="container animate-fade-up">
+                <div class="section-header">
+                    <h2>5. Review & Confirm</h2>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-item">
+                        <span class="summary-label">Service</span>
+                        <span class="summary-value" id="summary-service">None Selected</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Date</span>
+                        <span class="summary-value" id="summary-date">Pending</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Time</span>
+                        <span class="summary-value" id="summary-time">Pending</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Location</span>
+                        <span class="summary-value">TRAX Main Center</span>
+                    </div>
+                    <div class="summary-item" style="border-bottom: none;">
+                        <span class="summary-label">Est. Price</span>
+                        <span class="summary-value" id="summary-price">$0.00</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total Due Online</span>
+                        <span id="summary-total">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-actions">
+                        <button class="btn btn-outline" style="background-color: var(--bg-color);">Add to Cart Instead</button>
+                        <button type="submit" form="bookingForm" class="btn btn-primary" onclick="alert('Booking Confirmed! Check your email.')">Confirm Booking</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="navbar-logo" style="margin-bottom: 16px; display: inline-flex;">
+                        <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                        <span>TRAX</span>
+                    </a>
+                    <p>Premium automotive services designed to keep you safe and performing at your best on every road.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="products.html">Tyre Brands</a>
+                        <a href="services.html">Wheel Alignment</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>123 Performance Way<br>Motor City, MC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TRAX Automotive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

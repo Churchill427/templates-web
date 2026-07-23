@@ -1,0 +1,143 @@
+/* css/pages/contact.css */
+
+/* Hero */
+.hero-contact {
+  background-image: url('../../assets/images/contact_hero.png');
+}
+
+/* Contact Info Cards */
+.contact-info-section {
+  position: relative;
+  z-index: 10;
+  margin-top: -60px; /* Overlap hero */
+  padding: 0 0 80px;
+}
+.contact-card {
+  padding: 40px 32px;
+  text-align: center;
+  background-color: var(--card-bg);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+.contact-icon {
+  font-size: 48px;
+  color: var(--secondary);
+  margin-bottom: 24px;
+}
+.contact-card h3 {
+  margin-bottom: 16px;
+}
+.contact-card p, .contact-card a {
+  color: var(--text-muted);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+.contact-card a:hover {
+  color: var(--secondary);
+}
+
+/* Form & Map Section */
+.form-map-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+@media (min-width: 1024px) {
+  .form-map-grid {
+    flex-direction: row;
+  }
+  .form-container, .map-container {
+    flex: 1;
+  }
+}
+.form-container h2 {
+  margin-bottom: 32px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .form-row { flex-direction: row; }
+  .form-row .form-group { flex: 1; }
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 300px;
+  background-color: var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+}
+@media (min-width: 1024px) {
+  .map-placeholder { height: 100%; min-height: 400px; }
+}
+
+/* Social Connect */
+.social-connect-section {
+  background-color: var(--bg-color-alt);
+  text-align: center;
+}
+.social-buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+@media (min-width: 768px) {
+  .social-buttons-grid { flex-direction: row; }
+}
+
+/* FAQ Accordion */
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.accordion-item {
+  border-bottom: 1px solid var(--border-color);
+}
+.accordion-header {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+}
+[dir="rtl"] .accordion-header { text-align: right; }
+
+.accordion-header i {
+  color: var(--secondary);
+  transition: transform 0.3s;
+}
+.accordion-header.active i {
+  transform: rotate(180deg);
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.accordion-content p {
+  padding-bottom: 24px;
+  color: var(--text-muted);
+  font-size: 14px;
+}

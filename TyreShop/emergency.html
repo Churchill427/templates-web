@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAX | Roadside Emergency Tyre Service</title>
+    <meta name="description" content="Stuck on the road? Request instant emergency flat tyre changes, blowout assistance, or alloy wheel rescues. Live dispatch tracking available.">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/emergency.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                <span>TRAX</span>
+            </a>
+            
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Home 1 (Performance)</a></li>
+                        <li><a href="home-b.html">Home 2 (Family Safety)</a></li>
+                    </ul>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="emergency.html" class="nav-link active">Emergency</a>
+                <a href="calculator.html" class="nav-link">Calculator</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle">LIGHT</button>
+                <button class="dir-toggle">LTR</button>
+                <a href="booking.html" class="btn btn-primary">Book Now</a>
+            </div>
+
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-dropdown">
+            <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+            <div class="mobile-dropdown-menu">
+                <a href="index.html" class="nav-link">Home 1 (Performance)</a>
+                <a href="home-b.html" class="nav-link">Home 2 (Family Safety)</a>
+            </div>
+        </div>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="emergency.html" class="nav-link active">Emergency</a>
+        <a href="calculator.html" class="nav-link">Calculator</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        
+        <div class="mobile-actions">
+            <button class="theme-toggle">LIGHT</button>
+            <button class="dir-toggle">LTR</button>
+        </div>
+        <a href="booking.html" class="btn btn-primary" style="width:100%; text-align:center;">Book Appointment</a>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero Section -->
+        <section class="hero-section hero-emergency">
+            <div class="hero-overlay" style="background-color: rgba(15,23,42,0.75);"></div>
+            <div class="container hero-content animate-fade-up">
+                <div style="background-color: rgba(220,38,38,0.2); border: 2px solid #dc2626; padding: 12px 24px; border-radius: 4px; display: inline-block; margin-bottom: 24px;">
+                    <span style="font-weight: 700; color: #f87171; text-transform: uppercase; font-family: var(--font-heading); font-size: 14px; letter-spacing: 1px;"><i class="ph-fill ph-warning" style="margin-right: 8px;"></i> Emergency Service Hotline: (555) 911-TRAX</span>
+                </div>
+                <h1>Roadside Tyre Rescue</h1>
+                <p>Flat tyre? Tyre blowout? Locked wheel bolts? Our rapid-response vans are stocked with replacement tyres and laser alignment systems to fix you where you stop.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Emergency Incident Selector -->
+        <section class="container">
+            <div class="section-header animate-fade-up">
+                <h2>1. Select Incident Type</h2>
+                <p style="color: var(--text-muted);">Click your emergency type below to tailor the dispatch toolkit and price estimate.</p>
+            </div>
+            
+            <div class="emergency-grid-selector animate-fade-up delay-100">
+                <div class="incident-card selected" data-type="flat">
+                    <i class="ph ph-wrench"></i>
+                    <h3>Flat Tyre</h3>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 8px;">Single puncture needing plug/replacement</p>
+                </div>
+                <div class="incident-card" data-type="blowout">
+                    <i class="ph ph-warning-octagon"></i>
+                    <h3>Blowout</h3>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 8px;">Shredded tyre sidewall or highway damage</p>
+                </div>
+                <div class="incident-card" data-type="alloy">
+                    <i class="ph ph-disc"></i>
+                    <h3>Alloy Rim Damage</h3>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 8px;">Cracked or bent rim hitting pothole/curb</p>
+                </div>
+                <div class="incident-card" data-type="locknut">
+                    <i class="ph ph-shield-warning"></i>
+                    <h3>Lost Locknut</h3>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 8px;">Locked bolt key lost or stripped threads</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Instant Price Estimator -->
+        <section class="wheel-services-section">
+            <div class="container">
+                <div class="section-header animate-fade-up">
+                    <h2>2. Dispatch Pricing Estimator</h2>
+                    <p style="color: var(--text-muted);">Adjust distance and parts needed for an upfront roadside dispatch quote.</p>
+                </div>
+                
+                <div class="card emerg-calc-card animate-fade-up delay-100">
+                    <div class="slider-container">
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px;">
+                            <span>Distance from Service Hub:</span>
+                            <span id="distanceVal" style="color: var(--secondary);">10 km</span>
+                        </div>
+                        <input type="range" min="1" max="50" value="10" class="range-slider" id="emergDistance">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 32px;">
+                        <label class="form-label">Replacement Tyre Option</label>
+                        <select class="form-input" id="emergTyreType">
+                            <option value="mount-spare">Mount my vehicle's spare tyre ($0 extra)</option>
+                            <option value="need-tyre">Bring new premium replacement tyre (+$149)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-results-box" style="border-color: red;">
+                        <h3 style="color: red;">Estimated Total Charge</h3>
+                        <div class="calc-val" id="estimatePrice" style="color: red;">$100.00</div>
+                        <p style="font-size: 12px; color: var(--text-muted);">Includes base dispatch fee, travel mileage rate, and alignment diagnostics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Live Dispatch Timeline -->
+        <section class="dispatch-tracker">
+            <div class="container">
+                <div class="section-header animate-fade-up">
+                    <h2>3. Live Dispatch Tracker</h2>
+                    <p style="color: var(--text-muted);">Real-time dispatch status updates. Submit the dispatch form below to start live tracking.</p>
+                </div>
+                
+                <div class="tracker-status-box animate-fade-up delay-100" style="max-width: 600px; margin: 0 auto;">
+                    <div class="tracker-step active">
+                        <div class="tracker-dot">1</div>
+                        <div>
+                            <h4 style="margin: 0;">Request Dispatched</h4>
+                            <p style="color: var(--text-muted); font-size: 13px;">Awaiting verification & route assignment</p>
+                        </div>
+                    </div>
+                    <div class="tracker-step">
+                        <div class="tracker-dot">2</div>
+                        <div>
+                            <h4 style="margin: 0;">Mobile Van En-Route</h4>
+                            <p style="color: var(--text-muted); font-size: 13px;">Certified technician navigating to location</p>
+                        </div>
+                    </div>
+                    <div class="tracker-step">
+                        <div class="tracker-dot">3</div>
+                        <div>
+                            <h4 style="margin: 0;">Arrived at Location</h4>
+                            <p style="color: var(--text-muted); font-size: 13px;">Securing safety zone and executing repair service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Safe Stop Checklist -->
+        <section class="container">
+            <div class="section-header animate-fade-up">
+                <h2>4. Safe Stop Action Checklist</h2>
+                <p style="color: var(--text-muted);">Your safety is paramount. Check off these safety items while waiting for dispatch.</p>
+            </div>
+            
+            <div class="checklist-container animate-fade-up delay-100">
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <div>
+                        <h4 style="margin:0 0 4px;">1. Pull Over Safely</h4>
+                        <p style="color: var(--text-muted); font-size: 13px;">Move vehicle to flat solid shoulder far from moving highway lanes.</p>
+                    </div>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <div>
+                        <h4 style="margin:0 0 4px;">2. Turn on Hazards</h4>
+                        <p style="color: var(--text-muted); font-size: 13px;">Engage double warning flashers immediately to alert oncoming traffic.</p>
+                    </div>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <div>
+                        <h4 style="margin:0 0 4px;">3. Set Emergency Brake</h4>
+                        <p style="color: var(--text-muted); font-size: 13px;">Engage mechanical handbrake fully to avoid accidental rolling.</p>
+                    </div>
+                </label>
+                <label class="checklist-item">
+                    <input type="checkbox">
+                    <div>
+                        <h4 style="margin:0 0 4px;">4. Exit Vehicle Safely</h4>
+                        <p style="color: var(--text-muted); font-size: 13px;">Exit through doors facing away from active road lanes and stand behind guardrails.</p>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+        <!-- Section 6: Emergency Hotline Dispatch Form -->
+        <section class="wheel-services-section">
+            <div class="container animate-fade-up">
+                <div class="section-header" style="text-align: center;">
+                    <h2>5. Request Instant Dispatch</h2>
+                    <p style="color: var(--text-muted);">Fill details below to trigger live dispatcher response.</p>
+                </div>
+                
+                <div class="card emergency-dispatch-card" style="max-width: 600px; margin: 0 auto;">
+                    <form id="emergencyForm" class="contact-form">
+                        <input type="hidden" id="selectedIncidentType" value="flat">
+                        
+                        <div class="form-group" style="margin-bottom: 16px;">
+                            <label class="form-label">Phone Number (Required)</label>
+                            <input type="tel" class="form-input" placeholder="e.g., (555) 123-4567" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 24px;">
+                            <label class="form-label">Current Road Address / GPS Coordinates</label>
+                            <input type="text" class="form-input" placeholder="e.g., Mile Marker 104 East, Highway 80" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 32px;">
+                            <label class="form-label">Vehicle License Plate & Model</label>
+                            <input type="text" class="form-input" placeholder="e.g., 8XYZ90 Red Audi A4" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; background-color: red; border-color: red;">Submit Emergency Dispatch</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="navbar-logo" style="margin-bottom: 16px; display: inline-flex;">
+                        <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                        <span>TRAX</span>
+                    </a>
+                    <p>Premium automotive services designed to keep you safe and performing at your best on every road.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="products.html">Tyre Brands</a>
+                        <a href="services.html">Wheel Alignment</a>
+                        <a href="services.html">Wheel Balancing</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>123 Performance Way<br>Motor City, MC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TRAX Automotive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/emergency.js"></script>
+</body>
+</html>

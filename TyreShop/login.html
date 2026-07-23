@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAX | Sign In</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/pages/auth.css">
+</head>
+<body>
+    
+    <!-- Theme & RTL Toggles placed top right -->
+    <div class="auth-toggles">
+        <button class="theme-toggle">LIGHT</button>
+        <button class="dir-toggle">LTR</button>
+    </div>
+
+    <main class="auth-page">
+        <!-- Left Branded Panel -->
+        <section class="auth-panel auth-left">
+            <div class="auth-left-content">
+                <a href="index.html" class="auth-logo">
+                    <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                    <span>TRAX</span>
+                </a>
+                <div class="auth-features">
+                    <div class="feature-item">
+                        <i class="ph ph-lightning"></i>
+                        <div>
+                            <h3>Fast Service</h3>
+                            <p>Get back on the road quicker with our express lane.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ph ph-wrench"></i>
+                        <div>
+                            <h3>Expert Team</h3>
+                            <p>Certified technicians using the latest equipment.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="ph ph-shield-check"></i>
+                        <div>
+                            <h3>Quality Guaranteed</h3>
+                            <p>Warranties on all premium tyres and services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Form Panel -->
+        <section class="auth-panel auth-right">
+            <div class="auth-form-wrapper">
+                <h2>Welcome Back</h2>
+                <p>Sign in to manage your appointments and vehicles.</p>
+                
+                <div class="auth-social">
+                    <button class="btn-social btn-google">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                        Sign in with Google
+                    </button>
+                    <button class="btn-social btn-facebook">
+                        <i class="ph-fill ph-facebook-logo" style="font-size: 20px;"></i>
+                        Sign in with Facebook
+                    </button>
+                    <button class="btn-social btn-apple">
+                        <i class="ph-fill ph-apple-logo" style="font-size: 20px;"></i>
+                        Sign in with Apple
+                    </button>
+                </div>
+
+                <div class="divider">or continue with email</div>
+
+                <form class="auth-form" action="dashboard.html" method="GET">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" class="form-input" required>
+                    </div>
+                    <div class="auth-links">
+                        <label style="display: flex; gap: 8px; cursor: pointer;">
+                            <input type="checkbox"> Remember Me
+                        </label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+                
+                <div style="text-align: center; margin-top: 24px; font-size: 14px;">
+                    Don't have an account? <a href="signup.html" style="color: var(--secondary); font-weight: 500;">Sign Up</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

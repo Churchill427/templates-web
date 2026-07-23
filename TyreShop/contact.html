@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAX | Contact Us</title>
+    <meta name="description" content="Reach out to TRAX for tyre inquiries, service appointments, or emergency roadside support. Call, email, or visit us.">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/auth.css"> <!-- For btn-social styles -->
+    <link rel="stylesheet" href="css/pages/contact.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                <span>TRAX</span>
+            </a>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Home 1 (Performance)</a></li>
+                        <li><a href="home-b.html">Home 2 (Family Safety)</a></li>
+                    </ul>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="emergency.html" class="nav-link">Emergency</a>
+                <a href="calculator.html" class="nav-link">Calculator</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle">LIGHT</button>
+                <button class="dir-toggle">LTR</button>
+                <a href="booking.html" class="btn btn-primary">Book Now</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-dropdown">
+            <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+            <div class="mobile-dropdown-menu">
+                <a href="index.html" class="nav-link">Home 1 (Performance)</a>
+                <a href="home-b.html" class="nav-link">Home 2 (Family Safety)</a>
+            </div>
+        </div>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="emergency.html" class="nav-link">Emergency</a>
+        <a href="calculator.html" class="nav-link">Calculator</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <div class="mobile-actions">
+            <button class="theme-toggle">LIGHT</button>
+            <button class="dir-toggle">LTR</button>
+        </div>
+        <a href="booking.html" class="btn btn-primary" style="width:100%; text-align:center;">Book Appointment</a>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero Section -->
+        <section class="hero-section hero-contact">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content animate-fade-up">
+                <h1>Get In Touch</h1>
+                <p>Have a question or need emergency assistance? Our team is ready to help you get back on the road.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Contact Information -->
+        <section class="contact-info-section container">
+            <div class="grid grid-3 animate-fade-up">
+                <div class="card contact-card">
+                    <i class="ph ph-map-pin contact-icon"></i>
+                    <h3>Our Location</h3>
+                    <p>123 Performance Way</p>
+                    <p>Motor City, MC 12345</p>
+                </div>
+                <div class="card contact-card">
+                    <i class="ph ph-phone contact-icon"></i>
+                    <h3>Phone & Email</h3>
+                    <a href="tel:+15551234567">(555) 123-4567</a>
+                    <a href="mailto:info@trax.com">info@trax.com</a>
+                </div>
+                <div class="card contact-card">
+                    <i class="ph ph-clock contact-icon"></i>
+                    <h3>Working Hours</h3>
+                    <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                    <p>Sat: 9:00 AM - 3:00 PM</p>
+                    <p>Sun: Closed</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 & 4: Contact Form + Map Integration -->
+        <section class="container">
+            <div class="form-map-grid">
+                <!-- Contact Form -->
+                <div class="form-container animate-fade-up">
+                    <h2>Send a Message</h2>
+                    <form class="contact-form" action="https://formspree.io/f/placeholder" method="POST" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Service Type</label>
+                                <select class="form-input" required>
+                                    <option value="">Select Service...</option>
+                                    <option value="tyres">Tyre Sales & Fitting</option>
+                                    <option value="alignment">Wheel Alignment</option>
+                                    <option value="balancing">Wheel Balancing</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-input" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Map Integration -->
+                <div class="map-container animate-fade-up">
+                    <div class="map-placeholder">
+                        <p>[ Google Maps API Integration ]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Social Connect -->
+        <section class="social-connect-section">
+            <div class="container animate-fade-up">
+                <div class="section-header">
+                    <h2>Connect With Us</h2>
+                </div>
+                <div class="social-buttons-grid">
+                    <button class="btn-social btn-google">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                        Google
+                    </button>
+                    <button class="btn-social btn-facebook">
+                        <i class="ph-fill ph-facebook-logo" style="font-size: 20px;"></i>
+                        Facebook
+                    </button>
+                    <button class="btn-social btn-apple">
+                        <i class="ph-fill ph-apple-logo" style="font-size: 20px;"></i>
+                        Apple
+                    </button>
+                </div>
+                <h3>Follow Us</h3>
+                <div class="social-icons" style="justify-content: center; margin-top: 24px;">
+                    <a href="#" class="fb"><i class="ph-fill ph-facebook-logo"></i></a>
+                    <a href="#" class="tw"><i class="ph-fill ph-twitter-logo"></i></a>
+                    <a href="#" class="ig"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#" class="in"><i class="ph-fill ph-linkedin-logo"></i></a>
+                    <a href="#" class="yt"><i class="ph-fill ph-youtube-logo"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: FAQ Quick Links -->
+        <section class="container faq-section">
+            <div class="section-header animate-fade-up">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="accordion animate-fade-up">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        How long does a wheel alignment take?
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A standard 4-wheel alignment on our Hunter HawkEye system typically takes 45-60 minutes depending on whether significant adjustments are needed.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Do you offer a warranty on tyres?
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Yes, all premium tyres we sell come with the manufacturer's treadwear and defect warranty. We also offer an optional road hazard warranty for punctures.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Can I return tyres if they don't fit?
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We ensure a 100% fitment guarantee before ordering. However, unmounted tyres can be returned within 14 days subject to a restocking fee.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Do you offer emergency puncture repair?
+                        <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>During working hours, we accept walk-ins for emergency puncture repairs. It usually takes 15-20 minutes to safely plug and patch from the inside.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="navbar-logo" style="margin-bottom: 16px; display: inline-flex;">
+                        <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                        <span>TRAX</span>
+                    </a>
+                    <p>Premium automotive services designed to keep you safe and performing at your best on every road.</p>
+                    <div class="social-icons">
+                        <a href="#" class="fb"><i class="ph-fill ph-facebook-logo"></i></a>
+                        <a href="#" class="tw"><i class="ph-fill ph-twitter-logo"></i></a>
+                        <a href="#" class="ig"><i class="ph-fill ph-instagram-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="products.html">Tyre Brands</a>
+                        <a href="services.html">Wheel Alignment</a>
+                        <a href="services.html">Wheel Balancing</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>123 Performance Way<br>Motor City, MC 12345</p>
+                    <p>Phone: (555) 123-4567<br>Email: info@trax.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TRAX Automotive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Form Validation & Accordion Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contactForm');
+            if(form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // simple validation
+                    alert("Thank you for your message! We will get back to you shortly.");
+                    form.reset();
+                });
+            }
+
+            const accordions = document.querySelectorAll('.accordion-header');
+            accordions.forEach(acc => {
+                acc.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

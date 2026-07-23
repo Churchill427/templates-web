@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAX | Tyre Calculator & Care Guide</title>
+    <meta name="description" content="Calculate your vehicle's recommended tyre pressure, estimate treadwear lifespan, and compare tyre dimensions with our interactive tool.">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/calculator.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                <span>TRAX</span>
+            </a>
+            
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Home 1 (Performance)</a></li>
+                        <li><a href="home-b.html">Home 2 (Family Safety)</a></li>
+                    </ul>
+                </div>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="emergency.html" class="nav-link">Emergency</a>
+                <a href="calculator.html" class="nav-link active">Calculator</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle">LIGHT</button>
+                <button class="dir-toggle">LTR</button>
+                <a href="booking.html" class="btn btn-primary">Book Now</a>
+            </div>
+
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-dropdown">
+            <a href="#" class="nav-link mobile-dropdown-toggle">Home <i class="ph ph-caret-down"></i></a>
+            <div class="mobile-dropdown-menu">
+                <a href="index.html" class="nav-link">Home 1 (Performance)</a>
+                <a href="home-b.html" class="nav-link">Home 2 (Family Safety)</a>
+            </div>
+        </div>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="emergency.html" class="nav-link">Emergency</a>
+        <a href="calculator.html" class="nav-link active">Calculator</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        
+        <div class="mobile-actions">
+            <button class="theme-toggle">LIGHT</button>
+            <button class="dir-toggle">LTR</button>
+        </div>
+        <a href="booking.html" class="btn btn-primary" style="width:100%; text-align:center;">Book Appointment</a>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero Section -->
+        <section class="hero-section hero-calculator">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content animate-fade-up">
+                <h1>Tyre Pressure & Care Guide</h1>
+                <p>Maximize your safety, fuel economy, and treadwear lifespan with our advanced custom calculation utilities.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: PSI / Pressure Calculator -->
+        <section class="container">
+            <div class="section-header animate-fade-up">
+                <h2>1. Optimal PSI Calculator</h2>
+                <p style="color: var(--text-muted);">Get recommended tyre pressure levels tailored for your specific vehicle and driving conditions.</p>
+            </div>
+            
+            <div class="grid grid-2 animate-fade-up delay-100">
+                <div class="calc-tool-card">
+                    <form onsubmit="event.preventDefault()">
+                        <div class="form-group" style="margin-bottom: 24px;">
+                            <label class="form-label">Vehicle Type</label>
+                            <select class="form-input" id="calcVehicle">
+                                <option value="sedan">Sedan / Coupe</option>
+                                <option value="suv">SUV / Crossover</option>
+                                <option value="sports">High Performance Sports Car</option>
+                                <option value="truck">Light Truck / Commercial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Typical Load / Weight Condition</label>
+                            <select class="form-input" id="calcLoad">
+                                <option value="normal">Normal Load (1-3 passengers, light luggage)</option>
+                                <option value="heavy">Maximum Load (Full passengers, loaded trunk)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="calc-results-box" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h3>Recommended Pressure</h3>
+                    <div style="display: flex; justify-content: space-around; margin-top: 24px;">
+                        <div>
+                            <p style="font-weight: 600; color: var(--text-muted);">Front Axle</p>
+                            <div class="calc-val" id="frontPsiVal">32</div>
+                            <span style="font-weight: 500;">PSI</span>
+                        </div>
+                        <div>
+                            <p style="font-weight: 600; color: var(--text-muted);">Rear Axle</p>
+                            <div class="calc-val" id="rearPsiVal">32</div>
+                            <span style="font-weight: 500;">PSI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Treadwear Estimator -->
+        <section class="wheel-services-section">
+            <div class="container">
+                <div class="section-header animate-fade-up">
+                    <h2>2. Treadwear & Lifespan Estimator</h2>
+                    <p style="color: var(--text-muted);">Estimate how many years of safe driving you have remaining based on alignment and annual driving habits.</p>
+                </div>
+                
+                <div class="calc-tool-card animate-fade-up delay-100" style="max-width: 800px; margin: 0 auto;">
+                    <div class="slider-container">
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px;">
+                            <span>Annual Mileage:</span>
+                            <span id="sliderLabel" style="color: var(--secondary);">15,000 km</span>
+                        </div>
+                        <input type="range" min="5000" max="40000" step="1000" value="15000" class="range-slider" id="mileageSlider">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 32px;">
+                        <label class="form-label">Current Suspension Alignment Status</label>
+                        <select class="form-input" id="alignmentSelect">
+                            <option value="good">Perfectly Aligned (Serviced within 6 months)</option>
+                            <option value="bad">Slight pull / irregular wear detected</option>
+                            <option value="critical">Severe vibration / misalignment pull</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-results-box">
+                        <h3>Estimated Remaining Safe Lifespan</h3>
+                        <div class="calc-val" id="lifespanVal">3.3</div>
+                        <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Years Remaining</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Tire Size Comparison Tool -->
+        <section class="container">
+            <div class="section-header animate-fade-up">
+                <h2>3. Visual Size Comparison Tool</h2>
+                <p style="color: var(--text-muted);">Compare the physical dimensions of standard base size versus your upgrade configuration profile.</p>
+            </div>
+            
+            <div class="calc-tool-card animate-fade-up delay-100">
+                <div class="grid grid-2">
+                    <div>
+                        <h3 style="margin-bottom: 24px;">Upgrade Configuration</h3>
+                        <div class="form-group" style="margin-bottom: 16px;">
+                            <label class="form-label">Width (mm)</label>
+                            <select class="form-input" id="widthSelect">
+                                <option value="195">195</option>
+                                <option value="205">205</option>
+                                <option value="225">225</option>
+                                <option value="245" selected>245</option>
+                                <option value="265">265</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 16px;">
+                            <label class="form-label">Aspect Ratio (%)</label>
+                            <select class="form-input" id="aspectSelect">
+                                <option value="35" selected>35</option>
+                                <option value="40">40</option>
+                                <option value="45">45</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Wheel Diameter (inches)</label>
+                            <select class="form-input" id="diameterSelect">
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19" selected>19</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div class="tire-visual-flex">
+                            <div style="text-align: center;">
+                                <div class="tire-circle" id="tireA">225/40 R18</div>
+                                <span style="font-size: 12px; color: var(--text-muted); font-weight: 600; display: block; margin-top: 8px;">Baseline Profile</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <div class="tire-circle" id="tireB" style="border-top-color: red;">245/35 R19</div>
+                                <span id="sizeBText" style="font-size: 12px; color: red; font-weight: 600; display: block; margin-top: 8px;">245/35 R19</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Tyre Care Best Practices -->
+        <section class="wheel-services-section">
+            <div class="container animate-fade-up">
+                <div class="section-header">
+                    <h2>4. Tyre Care Guide</h2>
+                    <p style="color: var(--text-muted);">Practical maintenance tips straight from our senior technicians to keep your vehicle running smoothly.</p>
+                </div>
+                
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-target="#tabRotation">Rotation Schedule</button>
+                    <button class="tab-btn" data-target="#tabInspection">Pressure Checking</button>
+                    <button class="tab-btn" data-target="#tabTorque">Wheel Torque</button>
+                    <button class="tab-btn" data-target="#tabCleaning">Rim Cleaning</button>
+                </div>
+                
+                <div id="tabRotation" class="tab-pane active">
+                    <h3>Rotation Guidelines</h3>
+                    <p style="margin: 16px 0; color: var(--text-muted);">Rotating your tyres redistributes tread wear evenly across front and rear axles. We recommend a cross or front-to-back rotation every 8,000 to 10,000 km, or during your seasonal oil changes. Proper alignment during rotation ensures optimal grip and maximum longevity.</p>
+                    <ul class="equipment-specs">
+                        <li>Fwd Vehicles: Rotate front directly back; cross rear to front</li>
+                        <li>Rwd Vehicles: Cross front to rear; rotate rear directly forward</li>
+                        <li>Awd Vehicles: Cross-rotate all four corners systematically</li>
+                    </ul>
+                </div>
+                
+                <div id="tabInspection" class="tab-pane">
+                    <h3>Pressure Checks</h3>
+                    <p style="margin: 16px 0; color: var(--text-muted);">Tyres lose pressure naturally over time and with fluctuating ambient temperatures. Low pressure creates excess sidewall flexing, leading to heat buildup and catastrophic blowouts. High pressure reduces tread contact area, causing center wear and harsh ride quality.</p>
+                    <ul class="equipment-specs">
+                        <li>Check tyre pressure monthly when the tyres are "cold" (not driven for 3 hours)</li>
+                        <li>Always inspect the spare tire load pressure profile regularly</li>
+                        <li>Maintain matching pressure across matching axles for brake stabilization</li>
+                    </ul>
+                </div>
+                
+                <div id="tabTorque" class="tab-pane">
+                    <h3>Wheel Torque Specs</h3>
+                    <p style="margin: 16px 0; color: var(--text-muted);">Tightening lug nuts to factory-recommended torque values avoids rotor warping and ensures wheels remain securely attached under stress. Over-tightening damages studs, while under-tightening causes severe vibration and potential wheel separation.</p>
+                    <ul class="equipment-specs">
+                        <li>Use a calibrated torque wrench rather than pneumatic impact tools</li>
+                        <li>Torque in a cross star-pattern to distribute load pressure evenly</li>
+                        <li>Re-torque newly installed wheels after the first 100 km of driving</li>
+                    </ul>
+                </div>
+                
+                <div id="tabCleaning" class="tab-pane">
+                    <h3>Rim Cleaning & Care</h3>
+                    <p style="margin: 16px 0; color: var(--text-muted);">Brake dust, road salt, and tar cause corrosive pitting to aluminum alloy wheels if left uncleaned. Regular cleaning preserves the clear-coat protection finish, saving costly alloy rim repairs.</p>
+                    <ul class="equipment-specs">
+                        <li>Use non-acidic cleaning agents to prevent clear-coat degradation</li>
+                        <li>Avoid spraying cold water on hot brake rotors to prevent wrapping</li>
+                        <li>Apply a protective wheel wax seal to repel road grime and brake dust</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Instant Action CTA -->
+        <section class="container" style="text-align: center;">
+            <div class="animate-fade-up">
+                <h2>Low Tread or Uneven Wear Detected?</h2>
+                <p style="color: var(--text-muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Don't compromise your safety. Book a physical inspection today with our advanced 3D laser scanners for alignment and treadwear analysis.</p>
+                <a href="booking.html" class="btn btn-primary btn-lg">Schedule Laser Alignment</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="navbar-logo" style="margin-bottom: 16px; display: inline-flex;">
+                        <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                        <span>TRAX</span>
+                    </a>
+                    <p>Premium automotive services designed to keep you safe and performing at your best on every road.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="products.html">Tyre Brands</a>
+                        <a href="services.html">Wheel Alignment</a>
+                        <a href="services.html">Wheel Balancing</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>123 Performance Way<br>Motor City, MC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TRAX Automotive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+</html>

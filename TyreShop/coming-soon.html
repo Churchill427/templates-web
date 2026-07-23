@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAX | Coming Soon</title>
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/special.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-logo">
+                <img src="assets/icons/logo.svg" alt="TRAX Logo">
+                <span>TRAX</span>
+            </a>
+            <div class="nav-actions" style="margin-left: auto;">
+                <button class="theme-toggle">LIGHT</button>
+                <button class="dir-toggle">LTR</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="special-page">
+        <!-- 1. Hero Section -->
+        <section class="special-hero coming-bg">
+            <div class="hero-overlay"></div>
+            <div class="container special-content">
+                <h1>Something Big is Rolling In</h1>
+                <p>We're upgrading our digital garage. Stay tuned for a completely new experience.</p>
+            </div>
+        </section>
+
+        <!-- 2. Countdown Timer -->
+        <section class="countdown-section">
+            <div class="container">
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">14</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">:</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">08</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">:</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">45</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number">:</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">12</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Feature Preview -->
+        <section class="preview-section">
+            <div class="container">
+                <div class="grid grid-3">
+                    <div class="card preview-card">
+                        <i class="ph ph-map-pin" style="font-size: 32px; color: var(--secondary); margin-bottom: 16px;"></i>
+                        <h3>New Location</h3>
+                        <p>A brand new state-of-the-art facility opening soon downtown.</p>
+                    </div>
+                    <div class="card preview-card">
+                        <i class="ph ph-car" style="font-size: 32px; color: var(--secondary); margin-bottom: 16px;"></i>
+                        <h3>Expanded Inventory</h3>
+                        <p>More premium tyre brands and specialized track setups.</p>
+                    </div>
+                    <div class="card preview-card">
+                        <i class="ph ph-device-mobile" style="font-size: 32px; color: var(--secondary); margin-bottom: 16px;"></i>
+                        <h3>Mobile App</h3>
+                        <p>Book appointments and track your service history directly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Notify Me Form -->
+        <section class="notify-section">
+            <div class="container">
+                <h2>Be the first to know</h2>
+                <form class="notify-form" action="#" onsubmit="event.preventDefault()">
+                    <input type="email" class="form-input" placeholder="Enter your email address" required style="flex:1;">
+                    <button type="submit" class="btn btn-primary">Notify Me</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 5. Social Links -->
+        <section class="social-teaser-section">
+            <div class="container">
+                <h3>Follow our progress</h3>
+                <div class="social-icons">
+                    <a href="#" class="fb" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                    <a href="#" class="tw" aria-label="Twitter"><i class="ph-fill ph-twitter-logo"></i></a>
+                    <a href="#" class="ig" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Contact Teaser -->
+        <section style="text-align: center;">
+            <p style="margin-bottom: 16px; font-size: 18px;">Questions? Reach out directly.</p>
+            <a href="mailto:info@trax.com" class="btn btn-outline"><i class="ph ph-envelope"></i> Email Us</a>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple countdown logic
+        const countdown = () => {
+            let s = parseInt(document.getElementById('seconds').innerText);
+            let m = parseInt(document.getElementById('minutes').innerText);
+            let h = parseInt(document.getElementById('hours').innerText);
+            let d = parseInt(document.getElementById('days').innerText);
+            
+            s--;
+            if(s < 0) { s = 59; m--; }
+            if(m < 0) { m = 59; h--; }
+            if(h < 0) { h = 23; d--; }
+            
+            document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+            document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+            document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+            document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+        };
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
