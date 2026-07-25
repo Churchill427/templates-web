@@ -355,6 +355,8 @@ p {
   box-shadow: var(--shadow-card);
   overflow: hidden;
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -364,6 +366,13 @@ p {
 
 .card-body {
   padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-body .btn {
+  margin-top: auto;
 }
 
 .card-img {
@@ -646,7 +655,7 @@ p {
 /* ---------- 9. Hero Sections ---------- */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--navbar-height));
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1455,6 +1464,8 @@ select.form-input {
   padding: var(--space-xl);
   box-shadow: var(--shadow-card);
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonial-card:hover {
@@ -1498,6 +1509,7 @@ select.form-input {
   display: flex;
   align-items: center;
   gap: var(--space-md);
+  margin-top: auto;
 }
 
 .testimonial-avatar {
@@ -2414,6 +2426,8 @@ select.form-input {
   overflow: hidden;
   box-shadow: var(--shadow-card);
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
 .location-card:hover {
@@ -2439,6 +2453,13 @@ select.form-input {
 
 .location-card-body {
   padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.location-card-body .btn {
+  margin-top: auto;
 }
 
 .location-card h3 {

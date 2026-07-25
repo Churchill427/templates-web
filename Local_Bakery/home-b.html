@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CRUM Bakery — Home 2 crafted with precision and passion. Discover our signature cakes, custom designs, and artisan pastries.">
+  <meta name="description"
+    content="CRUM Bakery — Home 2 crafted with precision and passion. Discover our signature cakes, custom designs, and artisan pastries.">
   <title>CRUM — Home 2 | Premium Bakery & Cake Shop</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -44,7 +48,7 @@
       font-weight: var(--fw-light);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255, 255, 255, 0.8);
       margin-bottom: var(--space-lg);
     }
 
@@ -66,7 +70,7 @@
     .process-grid::before {
       content: '';
       position: absolute;
-      top: 44px;
+      top: 24px;
       left: 12.5%;
       right: 12.5%;
       height: 2px;
@@ -116,7 +120,10 @@
       .process-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .process-grid::before { display: none; }
+
+      .process-grid::before {
+        display: none;
+      }
     }
 
     @media (max-width: 639px) {
@@ -243,14 +250,20 @@
         padding: var(--space-xl);
         gap: var(--space-xl);
       }
-      .signature-img { height: 320px; }
+
+      .signature-img {
+        height: 320px;
+      }
     }
 
     @media (max-width: 639px) {
       .signature-slide {
         padding: var(--space-lg);
       }
-      .signature-img { height: 250px; }
+
+      .signature-img {
+        height: 250px;
+      }
     }
 
     /* Flavor Lab */
@@ -261,6 +274,9 @@
     }
 
     .flavor-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
       padding: var(--space-xl);
       border-radius: var(--radius-lg);
@@ -268,6 +284,7 @@
       border: 1px solid var(--border-color-light);
       transition: all var(--transition-base);
       cursor: pointer;
+      height: 100%;
     }
 
     .flavor-card:hover {
@@ -282,6 +299,7 @@
       border-radius: 50%;
       overflow: hidden;
       margin: 0 auto var(--space-md);
+      flex-shrink: 0;
     }
 
     .flavor-card-img img {
@@ -292,6 +310,10 @@
 
     .flavor-card h4 {
       margin-bottom: var(--space-xs);
+      min-height: 2.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .flavor-card .flavor-type {
@@ -300,10 +322,13 @@
       font-weight: var(--fw-semibold);
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      margin-top: auto;
     }
 
     @media (max-width: 1023px) {
-      .flavor-grid { grid-template-columns: repeat(2, 1fr); }
+      .flavor-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 639px) {
@@ -315,7 +340,11 @@
         padding-bottom: var(--space-sm);
         scrollbar-width: none;
       }
-      .flavor-grid::-webkit-scrollbar { display: none; }
+
+      .flavor-grid::-webkit-scrollbar {
+        display: none;
+      }
+
       .flavor-card {
         scroll-snap-align: start;
         flex-shrink: 0;
@@ -355,7 +384,9 @@
     }
 
     @media (max-width: 639px) {
-      .stories-grid { grid-template-columns: 1fr; }
+      .stories-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Newsletter + Social Section */
@@ -398,13 +429,20 @@
     }
 
     @media (max-width: 1023px) {
-      .newsletter-social-split { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .newsletter-social-split {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
     }
+
     @media (max-width: 639px) {
-      .social-grid { grid-template-columns: repeat(2, 1fr); }
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
+
 <body class="page-hero">
   <div class="scroll-progress" aria-hidden="true"></div>
 
@@ -436,8 +474,10 @@
         <a href="book-now.html" class="nav-link nav-cta">Book Now</a>
       </div>
       <div class="navbar-controls">
-        <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button>
-        <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button>
+        <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span
+            class="rtl-label">LTR</span></button>
+        <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i
+            class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
@@ -461,11 +501,14 @@
       <a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a>
       <a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a>
       <a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a>
-      <a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a>
+      <a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book
+        Now</a>
     </div>
     <div class="mobile-controls">
-      <button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button>
-      <button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button>
+      <button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span
+          class="rtl-label">LTR</span></button>
+      <button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon"
+          aria-hidden="true"></i><span>Theme</span></button>
     </div>
   </div>
 
@@ -476,14 +519,15 @@
     <section class="hero hero-b" id="hero" aria-label="Hero banner">
       <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1600&q=80"
-             alt="Minimalist white marble surface with single perfect pastry under dramatic side lighting"
-             loading="eager">
+          alt="Minimalist white marble surface with single perfect pastry under dramatic side lighting" loading="eager">
       </div>
-      <div class="hero-overlay" style="background:linear-gradient(135deg, rgba(26,18,11,0.7) 0%, rgba(44,24,16,0.4) 100%);"></div>
+      <div class="hero-overlay"
+        style="background:linear-gradient(135deg, rgba(26,18,11,0.7) 0%, rgba(44,24,16,0.4) 100%);"></div>
       <div class="hero-content">
         <p class="hero-subtitle hero-animate-in">Where Precision Meets Passion</p>
-        <h1 class="hero-animate-in-delay-1" data-char-reveal data-char-delay="40" style="font-size:var(--fs-display);margin-bottom:var(--space-xl);">
-          <span class="font-logo" style="display:block;font-size:1.2em;">CRUM</span>
+        <h1 class="hero-animate-in-delay-1" data-char-reveal data-char-delay="40"
+          style="font-size:var(--fs-display);margin-bottom:var(--space-xl);">
+          <span class="font-logo" style="display:block;font-size:1.2em;">BAKE</span>
         </h1>
         <div class="hero-btns hero-animate-in-delay-2">
           <a href="services.html" class="btn btn-primary btn-lg" id="hero-cta-menu">View Menu</a>
@@ -561,12 +605,15 @@
           <div class="signature-track" id="sig-track">
             <!-- Slide 1 -->
             <div class="signature-slide">
-              <div class="signature-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80" alt="Midnight Velvet dark chocolate cake with gold leaf" loading="lazy"></div>
+              <div class="signature-img"><img
+                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700&q=80"
+                  alt="Midnight Velvet dark chocolate cake with gold leaf" loading="lazy"></div>
               <div class="signature-info">
                 <span class="badge badge-accent">Bestseller</span>
                 <h3>Midnight Velvet</h3>
                 <div class="sig-price">$65.00</div>
-                <p class="text-secondary">Dark chocolate ganache layers with blackberry compote and edible gold leaf. Rich, indulgent, and utterly stunning.</p>
+                <p class="text-secondary">Dark chocolate ganache layers with blackberry compote and edible gold leaf.
+                  Rich, indulgent, and utterly stunning.</p>
                 <div class="signature-flavors">
                   <span class="flavor-tag">Dark Chocolate</span>
                   <span class="flavor-tag">Blackberry</span>
@@ -577,12 +624,15 @@
             </div>
             <!-- Slide 2 -->
             <div class="signature-slide">
-              <div class="signature-img"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=700&q=80" alt="Rose Garden cake with pistachio cream and crystallized petals" loading="lazy"></div>
+              <div class="signature-img"><img
+                  src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=700&q=80"
+                  alt="Rose Garden cake with pistachio cream and crystallized petals" loading="lazy"></div>
               <div class="signature-info">
                 <span class="badge badge-secondary">New</span>
                 <h3>Rose Garden</h3>
                 <div class="sig-price">$72.00</div>
-                <p class="text-secondary">Delicate rosewater sponge with Persian pistachio cream and crystallized rose petals. A romantic masterpiece.</p>
+                <p class="text-secondary">Delicate rosewater sponge with Persian pistachio cream and crystallized rose
+                  petals. A romantic masterpiece.</p>
                 <div class="signature-flavors">
                   <span class="flavor-tag">Rosewater</span>
                   <span class="flavor-tag">Pistachio</span>
@@ -593,12 +643,15 @@
             </div>
             <!-- Slide 3 -->
             <div class="signature-slide">
-              <div class="signature-img"><img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=700&q=80" alt="Tropical Sunrise mango mousse cake" loading="lazy"></div>
+              <div class="signature-img"><img
+                  src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=700&q=80"
+                  alt="Tropical Sunrise mango mousse cake" loading="lazy"></div>
               <div class="signature-info">
                 <span class="badge badge-warning">Seasonal</span>
                 <h3>Tropical Sunrise</h3>
                 <div class="sig-price">$58.00</div>
-                <p class="text-secondary">Mango mousse layers with passion fruit curd and toasted coconut flakes. Summer in every bite.</p>
+                <p class="text-secondary">Mango mousse layers with passion fruit curd and toasted coconut flakes. Summer
+                  in every bite.</p>
                 <div class="signature-flavors">
                   <span class="flavor-tag">Mango</span>
                   <span class="flavor-tag">Passion Fruit</span>
@@ -609,12 +662,15 @@
             </div>
             <!-- Slide 4 -->
             <div class="signature-slide">
-              <div class="signature-img"><img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=700&q=80" alt="Caramel Royale cake with hazelnut praline" loading="lazy"></div>
+              <div class="signature-img"><img
+                  src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=700&q=80"
+                  alt="Caramel Royale cake with hazelnut praline" loading="lazy"></div>
               <div class="signature-info">
                 <span class="badge badge-accent">Popular</span>
                 <h3>Caramel Royale</h3>
                 <div class="sig-price">$68.00</div>
-                <p class="text-secondary">Salted caramel drizzle over hazelnut praline layers with Belgian chocolate. Decadently irresistible.</p>
+                <p class="text-secondary">Salted caramel drizzle over hazelnut praline layers with Belgian chocolate.
+                  Decadently irresistible.</p>
                 <div class="signature-flavors">
                   <span class="flavor-tag">Caramel</span>
                   <span class="flavor-tag">Hazelnut</span>
@@ -627,9 +683,11 @@
         </div>
 
         <div class="carousel-nav" id="sig-nav">
-          <button class="carousel-nav-btn" id="sig-prev" aria-label="Previous slide"><i class="ph ph-caret-left" aria-hidden="true"></i></button>
+          <button class="carousel-nav-btn" id="sig-prev" aria-label="Previous slide"><i class="ph ph-caret-left"
+              aria-hidden="true"></i></button>
           <div class="carousel-dots-custom" id="sig-dots"></div>
-          <button class="carousel-nav-btn" id="sig-next" aria-label="Next slide"><i class="ph ph-caret-right" aria-hidden="true"></i></button>
+          <button class="carousel-nav-btn" id="sig-next" aria-label="Next slide"><i class="ph ph-caret-right"
+              aria-hidden="true"></i></button>
         </div>
       </div>
     </section>
@@ -643,54 +701,63 @@
           <span class="section-label">Explore Flavors</span>
           <h2>The Flavor Lab</h2>
           <hr class="section-divider">
-          <p>Our palette of flavors spans the globe. From classic vanilla to exotic yuzu — discover your next favorite.</p>
+          <p>Our palette of flavors spans the globe. From classic vanilla to exotic yuzu — discover your next favorite.
+          </p>
         </div>
 
         <div class="flavor-grid">
           <div class="flavor-card reveal stagger-1" id="flavor-chocolate">
-            <div class="flavor-card-img"><img src="assets/images/flavor-chocolate-new.png" alt="Rich dark chocolate pieces" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-chocolate-new.png"
+                alt="Rich dark chocolate pieces" loading="lazy"></div>
             <h4>Dark Chocolate</h4>
             <p class="text-small text-muted mb-sm">70% Belgian cacao, deep and rich</p>
             <span class="flavor-type">Core Flavor</span>
           </div>
           <div class="flavor-card reveal stagger-2" id="flavor-vanilla">
-            <div class="flavor-card-img"><img src="assets/images/flavor-vanilla-new.png" alt="Fresh vanilla pods on wooden surface" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-vanilla-new.png"
+                alt="Fresh vanilla pods on wooden surface" loading="lazy"></div>
             <h4>Madagascar Vanilla</h4>
             <p class="text-small text-muted mb-sm">Real bean extract, smooth and aromatic</p>
             <span class="flavor-type">Core Flavor</span>
           </div>
           <div class="flavor-card reveal stagger-3" id="flavor-strawberry">
-            <div class="flavor-card-img"><img src="assets/images/flavor-strawberry-new.png" alt="Fresh red strawberries in a bowl" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-strawberry-new.png"
+                alt="Fresh red strawberries in a bowl" loading="lazy"></div>
             <h4>Wild Strawberry</h4>
             <p class="text-small text-muted mb-sm">Hand-picked berries, naturally sweet</p>
             <span class="flavor-type">Seasonal</span>
           </div>
           <div class="flavor-card reveal stagger-4" id="flavor-pistachio">
-            <div class="flavor-card-img"><img src="assets/images/flavor-pistachio-new.png" alt="Green pistachio nuts and paste" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-pistachio-new.png"
+                alt="Green pistachio nuts and paste" loading="lazy"></div>
             <h4>Persian Pistachio</h4>
             <p class="text-small text-muted mb-sm">Roasted and ground, nutty perfection</p>
             <span class="flavor-type">Premium</span>
           </div>
           <div class="flavor-card reveal stagger-5" id="flavor-matcha">
-            <div class="flavor-card-img"><img src="assets/images/flavor-matcha-new.png" alt="Matcha green tea powder in ceramic bowl" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-matcha-new.png"
+                alt="Matcha green tea powder in ceramic bowl" loading="lazy"></div>
             <h4>Kyoto Matcha</h4>
             <p class="text-small text-muted mb-sm">Ceremonial grade, earthy and vibrant</p>
             <span class="flavor-type">Premium</span>
           </div>
           <div class="flavor-card reveal stagger-6" id="flavor-lavender">
-            <div class="flavor-card-img"><img src="assets/images/flavor-lavender-new.png" alt="Fresh lavender sprigs in bloom" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-lavender-new.png"
+                alt="Fresh lavender sprigs in bloom" loading="lazy"></div>
             <h4>French Lavender</h4>
             <p class="text-small text-muted mb-sm">Floral and delicate, pairs with honey</p>
             <span class="flavor-type">Seasonal</span>
           </div>
           <div class="flavor-card reveal stagger-7" id="flavor-caramel">
-            <div class="flavor-card-img"><img src="assets/images/flavor-caramel-new.png" alt="Golden salted caramel drizzle" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-caramel-new.png"
+                alt="Golden salted caramel drizzle" loading="lazy"></div>
             <h4>Salted Caramel</h4>
             <p class="text-small text-muted mb-sm">Sea salt meets burnt sugar perfection</p>
             <span class="flavor-type">Core Flavor</span>
           </div>
           <div class="flavor-card reveal stagger-8" id="flavor-lemon">
-            <div class="flavor-card-img"><img src="assets/images/flavor-lemon-new.png" alt="Fresh yellow lemons on vine" loading="lazy"></div>
+            <div class="flavor-card-img"><img src="assets/images/flavor-lemon-new.png" alt="Fresh yellow lemons on vine"
+                loading="lazy"></div>
             <h4>Amalfi Lemon</h4>
             <p class="text-small text-muted mb-sm">Bright, zesty, sunshine in a bite</p>
             <span class="flavor-type">Seasonal</span>
@@ -713,45 +780,61 @@
 
         <div class="stories-grid">
           <div class="story-card reveal stagger-1" id="story-1">
-            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=200&q=80" alt="Emma and Liam, wedding couple" class="story-avatar" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=200&q=80"
+              alt="Emma and Liam, wedding couple" class="story-avatar" loading="lazy">
             <div>
               <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"CRUM created the most stunning five-tier cake for our wedding. Every guest asked about it. Truly a masterpiece!"</p>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"CRUM created the most
+                stunning five-tier cake for our wedding. Every guest asked about it. Truly a masterpiece!"</p>
               <p class="text-bold text-small text-primary" style="margin-bottom:0;">Emma & Liam</p>
               <p class="text-xs text-muted" style="margin:0;">Wedding Couple</p>
             </div>
           </div>
           <div class="story-card reveal stagger-2" id="story-2">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Sarah Mitchell, regular customer" class="story-avatar" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80"
+              alt="Sarah Mitchell, regular customer" class="story-avatar" loading="lazy">
             <div>
               <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"The sourdough here has ruined me for all other bread. I'm here every Saturday morning without fail."</p>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"The sourdough here has
+                ruined me for all other bread. I'm here every Saturday morning without fail."</p>
               <p class="text-bold text-small text-primary" style="margin-bottom:0;">Sarah Mitchell</p>
               <p class="text-xs text-muted" style="margin:0;">Regular Customer</p>
             </div>
           </div>
           <div class="story-card reveal stagger-3" id="story-3">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Michael Torres, corporate client" class="story-avatar" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"
+              alt="Michael Torres, corporate client" class="story-avatar" loading="lazy">
             <div>
               <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"We order from CRUM for every company event. Professional, reliable, and the quality is unmatched."</p>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"We order from CRUM for
+                every company event. Professional, reliable, and the quality is unmatched."</p>
               <p class="text-bold text-small text-primary" style="margin-bottom:0;">Michael Torres</p>
               <p class="text-xs text-muted" style="margin:0;">Corporate Client</p>
             </div>
           </div>
           <div class="story-card reveal stagger-4" id="story-4">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" alt="Aisha Patel, birthday client" class="story-avatar" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80"
+              alt="Aisha Patel, birthday client" class="story-avatar" loading="lazy">
             <div>
               <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i>
+                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                  class="ph ph-star-fill" aria-hidden="true"></i>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"My daughter's unicorn cake was absolute perfection. The attention to detail is incredible."</p>
+              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"My daughter's unicorn
+                cake was absolute perfection. The attention to detail is incredible."</p>
               <p class="text-bold text-small text-primary" style="margin-bottom:0;">Aisha Patel</p>
               <p class="text-xs text-muted" style="margin:0;">Birthday Client</p>
             </div>
@@ -770,10 +853,12 @@
           <div class="newsletter-card reveal-left">
             <span class="section-label">Stay Updated</span>
             <h2 style="margin-top:var(--space-sm);margin-bottom:var(--space-sm);">Join the CRUM Family</h2>
-            <p class="text-secondary mb-xl">Be the first to know about new flavors, seasonal specials, exclusive recipes, and limited-time offers.</p>
+            <p class="text-secondary mb-xl">Be the first to know about new flavors, seasonal specials, exclusive
+              recipes, and limited-time offers.</p>
             <form class="newsletter-form" id="home-b-newsletter" data-validate aria-label="Newsletter signup">
               <div class="form-group" style="margin-bottom:var(--space-md);">
-                <input type="email" class="form-input" placeholder="Enter your email address" data-rules="required|email" required aria-label="Email address">
+                <input type="email" class="form-input" placeholder="Enter your email address"
+                  data-rules="required|email" required aria-label="Email address">
               </div>
               <button type="submit" class="btn btn-primary w-full">
                 <i class="ph ph-envelope-simple" aria-hidden="true"></i> Subscribe
@@ -803,7 +888,8 @@
                 <img src="assets/images/behind-counter-5.png" alt="Blueberry scones on baking sheet" loading="lazy">
               </div>
               <div class="social-grid-item">
-                <img src="assets/images/behind-counter-6.png" alt="Chocolate chip cookies fresh from oven" loading="lazy">
+                <img src="assets/images/behind-counter-6.png" alt="Chocolate chip cookies fresh from oven"
+                  loading="lazy">
               </div>
             </div>
           </div>
@@ -824,9 +910,12 @@
         </a>
         <p>Handcrafted artisan breads, pastries, and celebration cakes. Baking with love and tradition since 2012.</p>
         <div class="footer-social">
-          <a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-          <a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
-          <a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo" aria-hidden="true"></i></a>
+          <a href="#" class="social-instagram" aria-label="Instagram"><i class="ph ph-instagram-logo"
+              aria-hidden="true"></i></a>
+          <a href="#" class="social-facebook" aria-label="Facebook"><i class="ph ph-facebook-logo"
+              aria-hidden="true"></i></a>
+          <a href="#" class="social-pinterest" aria-label="Pinterest"><i class="ph ph-pinterest-logo"
+              aria-hidden="true"></i></a>
           <a href="#" class="social-tiktok" aria-label="TikTok"><i class="ph ph-tiktok-logo" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -842,18 +931,24 @@
       </div>
       <div>
         <h4 class="footer-heading">Contact</h4>
-        <div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Baker's Quarter, Portland, OR 97201</span></div>
-        <div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span></div>
-        <div class="footer-contact-item"><i class="ph ph-envelope-simple" aria-hidden="true"></i><span>hello@crumbakery.com</span></div>
-        <div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span></div>
+        <div class="footer-contact-item"><i class="ph ph-map-pin" aria-hidden="true"></i><span>128 Flour Lane, Baker's
+            Quarter, Portland, OR 97201</span></div>
+        <div class="footer-contact-item"><i class="ph ph-phone" aria-hidden="true"></i><span>+1 (503) 555-CRUM</span>
+        </div>
+        <div class="footer-contact-item"><i class="ph ph-envelope-simple"
+            aria-hidden="true"></i><span>hello@crumbakery.com</span></div>
+        <div class="footer-contact-item"><i class="ph ph-clock" aria-hidden="true"></i><span>Mon–Fri: 6AM–7PM</span>
+        </div>
       </div>
       <div>
         <h4 class="footer-heading">Newsletter</h4>
-        <p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh updates on new flavors, seasonal specials, and exclusive offers.</p>
+        <p style="color:rgba(245,222,179,0.7);font-size:var(--fs-small);margin-bottom:var(--space-md);">Get fresh
+          updates on new flavors, seasonal specials, and exclusive offers.</p>
         <div class="footer-newsletter">
           <form class="newsletter-form" aria-label="Footer newsletter signup">
             <input type="email" class="newsletter-input" placeholder="Your email" required aria-label="Email address">
-            <button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></button>
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe"><i class="ph ph-paper-plane-tilt"
+                aria-hidden="true"></i></button>
           </form>
         </div>
       </div>
@@ -868,7 +963,8 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up" aria-hidden="true"></i></button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="ph ph-caret-up"
+      aria-hidden="true"></i></button>
 
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
@@ -878,7 +974,7 @@
 
   <!-- Signature Carousel Script -->
   <script>
-    (function() {
+    (function () {
       const track = document.getElementById('sig-track');
       const slides = track.querySelectorAll('.signature-slide');
       const prevBtn = document.getElementById('sig-prev');
@@ -897,11 +993,19 @@
 
       function goTo(index) {
         current = (index + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        const offset = isRtl ? current * 100 : -current * 100;
+        track.style.transform = `translateX(${offset}%)`;
         dotsContainer.querySelectorAll('.carousel-dot-custom').forEach((d, i) => {
           d.classList.toggle('active', i === current);
         });
       }
+
+      // Watch for direction changes to update carousel position
+      const observer = new MutationObserver(() => {
+        goTo(current);
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['dir'] });
 
       prevBtn.addEventListener('click', () => goTo(current - 1));
       nextBtn.addEventListener('click', () => goTo(current + 1));
@@ -922,5 +1026,5 @@
     })();
   </script>
 </body>
-</html>
 
+</html>

@@ -161,6 +161,21 @@
   [dir="rtl"] .dashboard__main {
     margin-inline-end: 0;
   }
+
+  /* Timeline mobile vertical overrides */
+  [dir="rtl"] .timeline {
+    padding-left: 0 !important;
+    padding-right: var(--space-2xl) !important;
+  }
+
+  [dir="rtl"] .timeline__step {
+    text-align: right !important;
+  }
+
+  [dir="rtl"] .timeline__connector {
+    left: auto !important;
+    right: 24px !important;
+  }
 }
 
 /* --- Testimonial --- */
@@ -202,7 +217,8 @@
 }
 
 /* --- Pricing Table --- */
-[dir="rtl"] .pricing-table thead th {
+[dir="rtl"] .pricing-table th,
+[dir="rtl"] .pricing-table td {
   text-align: right;
 }
 
@@ -225,4 +241,10 @@
 [dir="rtl"] .dashboard__topbar-btn .notification-dot {
   right: auto;
   left: 8px;
+}
+
+/* --- Phone Input --- */
+[dir="rtl"] input[type="tel"] {
+  direction: ltr;
+  text-align: right;
 }

@@ -13,7 +13,8 @@ html.rtl .text-right { text-align: left; }
 
 /* Navbar */
 html.rtl .nav-links {
-  flex-direction: row-reverse;
+  margin-right: auto;
+  margin-left: var(--space-xl);
 }
 
 html.rtl .nav-logo {
@@ -21,6 +22,16 @@ html.rtl .nav-logo {
 }
 
 /* Dropdown */
+html.rtl .nav-dropdown > .nav-link {
+  padding-right: 0;
+  padding-left: 14px;
+}
+
+html.rtl .nav-dropdown > .nav-link::before {
+  right: auto;
+  left: 0;
+}
+
 html.rtl .nav-dropdown .dropdown-menu {
   left: auto;
   right: 0;
@@ -110,7 +121,8 @@ html.rtl .timeline-item:nth-child(even) {
 }
 
 html.rtl .timeline-content {
-  text-align: right;
+  direction: ltr;
+  text-align: left;
 }
 
 /* Breadcrumb */
@@ -206,5 +218,5 @@ html.rtl .accordion-header {
 
 /* Mobile hamburger */
 html.rtl .hamburger {
-  order: -1;
+  order: 0;
 }

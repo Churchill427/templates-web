@@ -22,7 +22,7 @@
   .nav-link { font-size: 13px; }
 
   /* Hero */
-  .hero { min-height: 80vh; }
+  .hero { min-height: calc(80vh - var(--navbar-height)); }
   .hero-stats .container { grid-template-columns: repeat(2, 1fr); }
 
   /* Split sections */
@@ -166,8 +166,8 @@
 
   /* Hero */
   .hero {
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: calc(100vh - var(--navbar-height));
+    min-height: calc(100svh - var(--navbar-height));
   }
 
   .hero h1 { font-size: 32px; line-height: 40px; }
@@ -362,13 +362,26 @@
 
 /* ---------- RTL Responsive Overrides ---------- */
 @media (max-width: 1024px) {
+  html.rtl .timeline::before {
+    left: auto;
+    right: 0;
+  }
+
   html.rtl .timeline-item,
   html.rtl .timeline-item:nth-child(even) {
     padding-left: 0;
     padding-right: 40px;
+    justify-content: flex-start;
   }
 
   html.rtl .timeline-node { left: auto; right: 0; }
+}
+
+@media (max-width: 768px) {
+  html.rtl .nav-toggles {
+    margin-right: auto;
+    margin-left: var(--space-md);
+  }
 }
 
 @media (max-width: 640px) {

@@ -71,7 +71,16 @@
 
 /* ── Cards ── */
 [dir="rtl"] .card-link {
-  flex-direction: row-reverse;
+  /* Allow natural RTL flow: text on right, icon on left.
+     This ensures that when the gap increases on hover,
+     the icon is pushed to the left, animating correctly. */
+  flex-direction: row;
+}
+
+[dir="rtl"] .ph-arrow-right {
+  /* Flip the right arrow to point to the left in RTL mode */
+  transform: scaleX(-1);
+  display: inline-block;
 }
 
 /* ── Form Elements ── */

@@ -919,6 +919,12 @@ button {
   padding-top: var(--space-2);
 }
 
+.product-price-row .btn {
+  height: 36px;
+  padding: 0 var(--space-3);
+  font-size: 0.85rem;
+}
+
 .product-price {
   font-family: var(--font-heading);
   font-size: 1.25rem;
@@ -1736,5 +1742,251 @@ body {
 
   .footer-newsletter-form {
     flex-direction: column;
+  }
+}
+
+/* Stats Cards Horizontal Alignment & Responsive Layout */
+.stats-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: var(--space-4) !important;
+}
+
+.stats-grid .card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100%;
+}
+
+.stats-grid .stats-footer {
+  margin-top: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.stats-grid .stats-footer span {
+  display: block !important;
+  text-align: center !important;
+  min-height: 2.5rem !important;
+}
+
+@media (max-width: 767px) {
+  .stats-grid {
+    gap: var(--space-2) !important;
+  }
+  .stats-grid .card {
+    padding: var(--space-3) !important;
+  }
+  .stats-grid .card div[style*="width: 60px"] {
+    width: 44px !important;
+    height: 44px !important;
+    margin-bottom: var(--space-2) !important;
+  }
+  .stats-grid .card div[style*="width: 60px"] svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .stats-grid .card h3 {
+    font-size: 0.85rem !important;
+  }
+  .stats-grid .card p {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--space-2) !important;
+  }
+  .stats-grid .card .counter-val {
+    font-size: 1.25rem !important;
+    margin-top: var(--space-2) !important;
+  }
+  .stats-grid .stats-footer span {
+    font-size: 0.7rem !important;
+    min-height: 2rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .stats-grid {
+    gap: var(--space-3) !important;
+  }
+  .stats-grid .card {
+    padding: var(--space-4) !important;
+  }
+  .stats-grid .card div[style*="width: 60px"] {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .stats-grid .card div[style*="width: 60px"] svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .stats-grid .card h3 {
+    font-size: 1.05rem !important;
+  }
+  .stats-grid .card p {
+    font-size: 0.825rem !important;
+    line-height: 1.4 !important;
+  }
+  .stats-grid .card .counter-val {
+    font-size: 1.6rem !important;
+  }
+  .stats-grid .stats-footer span {
+    font-size: 0.75rem !important;
+    min-height: 2.25rem !important;
+  }
+}
+
+/* Blog Cards Horizontal Alignment & Responsive Layout */
+.blog-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: var(--space-6) !important;
+}
+
+.blog-grid .card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100%;
+}
+
+.blog-grid .card > div {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+
+.blog-grid .card > div a {
+  margin-top: auto !important;
+  display: inline-block !important;
+}
+
+@media (max-width: 767px) {
+  .blog-grid {
+    gap: var(--space-2) !important;
+  }
+  .blog-grid .card img {
+    height: 100px !important;
+  }
+  .blog-grid .card > div {
+    padding: var(--space-2) !important;
+  }
+  .blog-grid .card span {
+    font-size: 0.65rem !important;
+  }
+  .blog-grid .card h4 {
+    font-size: 0.75rem !important;
+    margin: 0.25rem 0 !important;
+    line-height: 1.2 !important;
+  }
+  .blog-grid .card p {
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .blog-grid .card a {
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-grid {
+    gap: var(--space-3) !important;
+  }
+  .blog-grid .card img {
+    height: 140px !important;
+  }
+  .blog-grid .card > div {
+    padding: var(--space-4) !important;
+  }
+  .blog-grid .card h4 {
+    font-size: 0.95rem !important;
+    line-height: 1.3 !important;
+  }
+  .blog-grid .card p {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* Brands Cards Horizontal Alignment */
+.brands-grid .card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100%;
+}
+
+.brands-grid .card .btn {
+  margin-top: auto !important;
+}
+
+/* Principles Cards Horizontal Alignment & Responsive Layout */
+.principles-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: var(--space-4) !important;
+}
+
+.principles-grid .card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  height: 100%;
+}
+
+.principles-grid .card h3 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  margin-top: 0.5rem !important;
+  min-height: 3rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.principles-grid .card p {
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+  min-height: 4.5rem !important;
+}
+
+@media (max-width: 767px) {
+  .principles-grid {
+    gap: var(--space-2) !important;
+  }
+  .principles-grid .card {
+    padding: var(--space-3) !important;
+  }
+  .principles-grid .card div[style*="font-size: 2.5rem"] {
+    font-size: 1.75rem !important;
+  }
+  .principles-grid .card h3 {
+    font-size: 0.75rem !important;
+    min-height: 2.25rem !important;
+  }
+  .principles-grid .card p {
+    font-size: 0.65rem !important;
+    line-height: 1.3 !important;
+    min-height: 4.25rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .principles-grid {
+    gap: var(--space-3) !important;
+  }
+  .principles-grid .card {
+    padding: var(--space-4) !important;
+  }
+  .principles-grid .card div[style*="font-size: 2.5rem"] {
+    font-size: 2.25rem !important;
+  }
+  .principles-grid .card h3 {
+    font-size: 0.95rem !important;
+    min-height: 2.75rem !important;
+  }
+  .principles-grid .card p {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    min-height: 4.5rem !important;
   }
 }
