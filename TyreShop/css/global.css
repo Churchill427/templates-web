@@ -18,6 +18,13 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Global Phosphor Icon Base Size */
+i[class*="ph-"],
+i[class*="ph "] {
+  font-size: 24px;
+  line-height: 1;
+}
+
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
@@ -290,14 +297,32 @@ textarea.form-input {
   color: var(--secondary);
 }
 
+/* Grid System */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+.grid-2 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .hamburger {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 6px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+  z-index: 1001;
 }
 @media (min-width: 1024px) {
   .hamburger { display: none; }

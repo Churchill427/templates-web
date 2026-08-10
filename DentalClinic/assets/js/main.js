@@ -176,12 +176,25 @@
     },
 
     bindDropdowns() {
-      // Close dropdowns on outside click
+      const dropdowns = document.querySelectorAll('.navbar__dropdown');
+      dropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('a');
+        const menu = dropdown.querySelector('.navbar__dropdown-menu');
+        if (!trigger || !menu) return;
+
+        trigger.addEventListener('click', (e) => {
+          if (e.target.closest('.fa-chevron-down') || window.innerWidth <= 1024) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+            menu.classList.toggle('show');
+          }
+        });
+      });
+
       document.addEventListener('click', (e) => {
         if (!e.target.closest('.navbar__dropdown')) {
-          document.querySelectorAll('.navbar__dropdown-menu').forEach(d => {
-            d.classList.remove('show');
-          });
+          document.querySelectorAll('.navbar__dropdown').forEach(d => d.classList.remove('open'));
+          document.querySelectorAll('.navbar__dropdown-menu').forEach(d => d.classList.remove('show'));
         }
       });
     }
@@ -531,6 +544,175 @@
   };
 
   // ============================================================
+  // 14. DENTAL SERVICES & ENQUIRY MODAL MODULE
+  // ============================================================
+  const ServiceEnquiryModule = {
+    init() {
+      this.bindFilters();
+      this.bindModalTriggers();
+      this.bindQuickBooking();
+    },
+
+    bindFilters() {
+      const filterBtns = document.querySelectorAll('.services-filter__btn');
+      const serviceCards = document.querySelectorAll('.service-card');
+
+      if (!filterBtns.length || !serviceCards.length) return;
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          serviceCards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'flex';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            } else {
+              card.style.display = 'none';
+              card.style.opacity = '0';
+            }
+          });
+        });
+      });
+    },
+
+    bindModalTriggers() {
+      const modal = document.getElementById('enquiryModal');
+      if (!modal) return;
+
+      const backdrop = document.getElementById('modalBackdrop');
+      const closeBtn = document.getElementById('modalCloseBtn');
+      const closeConfirmBtn = document.getElementById('closeConfirmationBtn');
+      const triggers = document.querySelectorAll('.service-enquire-trigger');
+
+      const modalTitle = document.getElementById('modalServiceTitle');
+      const modalPrice = document.getElementById('modalServicePrice');
+      const modalCat = document.getElementById('modalServiceCategory');
+      const formContainer = document.getElementById('modalFormContainer');
+      const confirmation = document.getElementById('modalConfirmation');
+      const form = document.getElementById('enquiryForm');
+
+      const openModal = (title, price, category) => {
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalPrice) modalPrice.textContent = price;
+        if (modalCat) modalCat.innerHTML = `<i class="fa-solid fa-tooth"></i> ${category}`;
+
+        formContainer.style.display = 'block';
+        confirmation.style.display = 'none';
+        if (form) form.reset();
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      triggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const title = btn.getAttribute('data-service-title') || 'Dental Treatment';
+          const price = btn.getAttribute('data-service-price') || 'Contact Us';
+          const cat = btn.getAttribute('data-service-cat') || 'General Dentistry';
+          openModal(title, price, cat);
+        });
+      });
+
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (closeConfirmBtn) closeConfirmBtn.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const nameInput = document.getElementById('enquiryName');
+          const phoneInput = document.getElementById('enquiryPhone');
+          const emailInput = document.getElementById('enquiryEmail');
+
+          if (!nameInput.value.trim() || !phoneInput.value.trim() || !emailInput.value.trim()) {
+            alert('Please complete all required fields.');
+            return;
+          }
+
+          document.getElementById('confirmPatientName').textContent = nameInput.value.trim();
+          document.getElementById('confirmServiceName').textContent = modalTitle ? modalTitle.textContent : 'Treatment';
+          document.getElementById('enquiryRefNum').textContent = 'DENT-ENQ-' + Math.floor(1000 + Math.random() * 9000);
+
+          formContainer.style.display = 'none';
+          confirmation.style.display = 'block';
+        });
+      }
+    },
+
+    bindQuickBooking() {
+      const quickForm = document.getElementById('quickBookingForm');
+      const quickSuccess = document.getElementById('quickBookingSuccess');
+      if (!quickForm || !quickSuccess) return;
+
+      quickForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('quickName');
+        const phone = document.getElementById('quickPhone');
+
+        if (!name.value.trim() || !phone.value.trim()) {
+          alert('Please provide your name and phone number.');
+          return;
+        }
+
+        document.getElementById('quickRefNum').textContent = 'DENT-BK-' + Math.floor(1000 + Math.random() * 9000);
+        quickForm.style.display = 'none';
+        quickSuccess.style.display = 'block';
+      });
+    }
+  };
+
+  // ============================================================
+  // 15. SOCIAL CONNECT INTERACTIVE TOAST MODULE
+  // ============================================================
+  const SocialConnectModule = {
+    init() {
+      const socialBtns = document.querySelectorAll('.btn--social-h, .btn--social');
+      if (!socialBtns.length) return;
+
+      let toast = document.querySelector('.toast-notification');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--color-accent);font-size:20px;"></i><span class="toast-message">Connected!</span>`;
+        document.body.appendChild(toast);
+      }
+
+      socialBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const platform = btn.getAttribute('data-social-platform') || 'Social Account';
+          const msg = toast.querySelector('.toast-message');
+          if (msg) msg.textContent = `Connecting via ${platform}... Welcome to DENT Clinic!`;
+
+          toast.classList.add('active');
+          setTimeout(() => {
+            toast.classList.remove('active');
+          }, 3500);
+        });
+      });
+    }
+  };
+
+  // ============================================================
   // INITIALIZE ALL MODULES
   // ============================================================
   document.addEventListener('DOMContentLoaded', () => {
@@ -547,6 +729,10 @@
     FormValidation.init();
     CountdownTimer.init();
     SmoothScroll.init();
+    ServiceEnquiryModule.init();
+    SocialConnectModule.init();
   });
 
 })();
+
+

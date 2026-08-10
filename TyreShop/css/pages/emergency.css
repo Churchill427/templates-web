@@ -43,7 +43,13 @@
 .emerg-calc-card {
   max-width: 600px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 24px 16px;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .emerg-calc-card {
+    padding: 40px;
+  }
 }
 
 /* Slider styling */
@@ -76,18 +82,25 @@
 .calc-results-box {
   background-color: var(--bg-color-alt);
   border-radius: 8px;
-  padding: 32px;
+  padding: 20px 12px;
   text-align: center;
   border: 1px dashed var(--secondary);
   margin-top: 24px;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .calc-results-box {
+    padding: 32px;
+  }
 }
 .calc-val {
   font-family: var(--font-heading);
-  font-size: 64px;
+  font-size: clamp(32px, 8vw, 64px);
   font-weight: 700;
   color: var(--secondary);
-  line-height: 1;
-  margin: 16px 0;
+  line-height: 1.1;
+  margin: 12px 0;
+  word-break: break-word;
 }
 
 
@@ -186,4 +199,47 @@
 
 .emergency-dispatch-card {
   padding: 40px;
+}
+
+/* 360px Mobile Alignment Fixes */
+@media (max-width: 480px) {
+  .emergency-dispatch-card {
+    padding: 24px 16px;
+  }
+  .emerg-calc-card {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+  .emerg-calc-card select.form-input {
+    font-size: 13px;
+    padding-right: 30px;
+    text-overflow: ellipsis;
+  }
+  .calc-results-box {
+    padding: 16px 8px;
+  }
+  .calc-results-box h3 {
+    font-size: 16px;
+  }
+  .calc-val {
+    font-size: 36px;
+  }
+  .incident-card {
+    padding: 20px 12px;
+  }
+  .incident-card i {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .tracker-status-box {
+    padding: 16px 12px;
+  }
+  .tracker-step {
+    gap: 12px;
+    padding-bottom: 24px;
+  }
+  .checklist-item {
+    padding: 14px 10px;
+    gap: 10px;
+  }
 }

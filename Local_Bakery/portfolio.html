@@ -83,10 +83,70 @@
     .comparison-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
     .comparison-slider .slider-before{clip-path:inset(0 50% 0 0);}
     .comparison-card-body{padding:var(--space-lg);}
-    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-xl);max-width:800px;margin:0 auto;}
-    .stat-box{text-align:center;}
-    .stat-num{font-family:var(--font-heading);font-size:var(--fs-display);font-weight:var(--fw-bold);color:var(--color-accent);display:block;line-height:1;}
-    .stat-label{font-size:var(--fs-small);color:var(--text-muted);margin-top:var(--space-xs);}
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .stat-card {
+      text-align: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color-light);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl) var(--space-md);
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-accent);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    [data-theme="light"] .stat-card:hover {
+      background: rgba(0, 0, 0, 0.01);
+    }
+    
+    .stat-card .stat-icon {
+      font-size: 2.25rem;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+      opacity: 0.9;
+    }
+    
+    .stat-card .stat-num {
+      font-family: var(--font-logo);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: var(--fw-bold);
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+      line-height: 1.1;
+      margin-bottom: var(--space-xs);
+    }
+    
+    .stat-card .stat-label {
+      font-size: var(--fs-body);
+      font-weight: var(--fw-semibold);
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    
+    .stat-card .stat-subtext {
+      font-size: var(--fs-xs);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
     .upcoming-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-xl);}
     .upcoming-card{display:grid;grid-template-columns:120px 1fr;gap:var(--space-lg);padding:var(--space-lg);background:var(--bg-surface);border:1px solid var(--border-color-light);border-radius:var(--radius-lg);transition:all var(--transition-base);}
     .upcoming-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
@@ -101,14 +161,14 @@
       .spotlight-split{grid-template-columns:1fr; gap:var(--space-xl);}
       .spotlight-img{height:360px;}
       .comparison-grid{grid-template-columns:1fr;max-width:500px;margin-left:auto;margin-right:auto;}
-      .stats-row{grid-template-columns:repeat(2,1fr);}
+      .stats-grid{grid-template-columns:repeat(2,1fr);}
       .upcoming-grid{grid-template-columns:1fr;}
     }
     @media(max-width:768px){
       .portfolio-grid{grid-template-columns:repeat(2,1fr);gap:var(--space-sm);}
       .spotlight-img{height:300px;}
-      .stats-row{grid-template-columns:1fr; gap:var(--space-lg);}
-      .upcoming-card{grid-template-columns:100px 1fr;}
+      .stats-grid{grid-template-columns:1fr; gap:var(--space-md);}
+    }      .upcoming-card{grid-template-columns:100px 1fr;}
     }
     @media(max-width:480px){
       .portfolio-grid{grid-template-columns:1fr;}
@@ -119,8 +179,8 @@
 </head>
 <body class="page-hero">
   <div class="scroll-progress" aria-hidden="true"></div>
-  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation"><div class="navbar-inner"><a href="index.html" class="navbar-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><div class="navbar-links"><div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a></div></div><a href="about.html" class="nav-link">About</a><a href="services.html" class="nav-link">Services</a><a href="portfolio.html" class="nav-link active">Portfolio</a><a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a><a href="book-now.html" class="nav-link nav-cta">Book Now</a></div><div class="navbar-controls"><button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button><button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button></div><button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button></div></nav>
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu"><div class="mobile-nav-links"><a href="#" class="mobile-nav-link mobile-dropdown-toggle"><i class="ph ph-house" aria-hidden="true"></i> Home <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i></a><div class="mobile-dropdown-content"><a href="index.html" class="mobile-dropdown-item">Home 1</a><a href="home-b.html" class="mobile-dropdown-item">Home 2</a></div><a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a><a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a><a href="portfolio.html" class="mobile-nav-link active"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a><a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a><a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a><a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a></div><div class="mobile-controls"><button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button><button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button></div></div>
+  <nav class="navbar transparent" id="navbar" role="navigation" aria-label="Main navigation"><div class="navbar-inner"><a href="index.html" class="navbar-logo" aria-label="CRUM Home"><div class="logo-icon"><img src="assets/images/logo.svg" alt="CRUM Logo" style="width: 100%; height: 100%;"></div><span class="logo-text">CRUM</span></a><div class="navbar-links"><div class="nav-dropdown" id="home-dropdown"><a href="#" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Home <i class="ph ph-caret-down chevron" aria-hidden="true"></i></a><div class="nav-dropdown-menu" role="menu"><a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="nav-dropdown-item" role="menuitem">Home 2</a></div></div><a href="about.html" class="nav-link">About</a><a href="services.html" class="nav-link">Services</a><a href="portfolio.html" class="nav-link active">Gallery</a><a href="blog.html" class="nav-link">Blog</a><a href="contact.html" class="nav-link">Contact</a></div><div class="navbar-controls"><button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span class="rtl-label">LTR</span></button><button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button><a href="book-now.html" class="nav-link nav-cta">Book Now</a></div><button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button></div></nav>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu"><div class="mobile-nav-links"><a href="#" class="mobile-nav-link mobile-dropdown-toggle"><i class="ph ph-house" aria-hidden="true"></i> Home <i class="ph ph-caret-down chevron" style="margin-left:auto;" aria-hidden="true"></i></a><div class="mobile-dropdown-content"><a href="index.html" class="mobile-dropdown-item">Home 1</a><a href="home-b.html" class="mobile-dropdown-item">Home 2</a></div><a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a><a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a><a href="portfolio.html" class="mobile-nav-link active"><i class="ph ph-images" aria-hidden="true"></i> Gallery</a><a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a><a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a><a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book Now</a></div><div class="mobile-controls"><button class="mobile-toggle-btn" data-toggle-rtl><i class="ph ph-arrows-left-right" aria-hidden="true"></i><span class="rtl-label">LTR</span></button><button class="mobile-toggle-btn" data-toggle-theme><i class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i><span>Theme</span></button></div></div>
 
   <main>
     <section class="hero hero-mini" id="hero" aria-label="Portfolio hero"><div class="hero-bg"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=1600&q=80" alt="Artistic cake display with dramatic lighting" loading="eager" data-parallax="0.3"></div><div class="hero-overlay"></div><div class="hero-content"><h1 class="hero-animate-in">Our Portfolio</h1><p class="hero-animate-in-delay-1">A curated collection of our finest creations — each one tells a unique story.</p></div></section>
@@ -171,12 +231,39 @@
     </section>
 
     <!-- S4: BEFORE/AFTER COMPARISON -->
-    <section class="section" id="comparison" aria-label="Before and after">
+    <section class="section section-watermark" id="comparison" aria-label="Before and after">
       <div class="container"><div class="section-header reveal"><span class="section-label">Design to Reality</span><h2>Before & After</h2><hr class="section-divider"><p>See how client sketches and ideas come to life in our kitchen.</p></div>
         <div class="comparison-grid">
-          <div class="comparison-card reveal stagger-1"><div class="comparison-slider"><img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=500&q=80" alt="Finished birthday cake" loading="lazy"><img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=500&q=80" alt="Birthday cake sketch" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.8);"></div><div class="comparison-card-body"><h4>Birthday Bliss</h4><p class="text-small text-muted">From mood board to masterpiece</p></div></div>
-          <div class="comparison-card reveal stagger-2"><div class="comparison-slider"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=500&q=80" alt="Finished wedding cake" loading="lazy"><img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?w=500&q=80" alt="Wedding cake concept" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.8);"></div><div class="comparison-card-body"><h4>Wedding Elegance</h4><p class="text-small text-muted">Client sketch to tiered perfection</p></div></div>
-          <div class="comparison-card reveal stagger-3"><div class="comparison-slider"><img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=500&q=80" alt="Finished mirror glaze" loading="lazy"><img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=500&q=80" alt="Mirror glaze concept" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.8);"></div><div class="comparison-card-body"><h4>Mirror Magic</h4><p class="text-small text-muted">Reference photo to reality</p></div></div>
+          <div class="comparison-card reveal stagger-1">
+            <div class="comparison-slider">
+              <img src="assets/images/portfolio-birthday-slice.png" alt="Finished sprinkles birthday cake" loading="lazy">
+              <img src="assets/images/portfolio-birthday-slice.png" alt="Birthday cake design concept sketch" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.85);">
+            </div>
+            <div class="comparison-card-body">
+              <h4>Birthday Bliss</h4>
+              <p class="text-small text-muted">From concept sketch to sprinkles birthday cake</p>
+            </div>
+          </div>
+          <div class="comparison-card reveal stagger-2">
+            <div class="comparison-slider">
+              <img src="assets/images/portfolio-chocolate-gold.png" alt="Finished chocolate gold drip cake" loading="lazy">
+              <img src="assets/images/portfolio-chocolate-gold.png" alt="Chocolate gold drip cake design concept sketch" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.85);">
+            </div>
+            <div class="comparison-card-body">
+              <h4>Golden Ganache</h4>
+              <p class="text-small text-muted">From custom design to luxury chocolate drip art</p>
+            </div>
+          </div>
+          <div class="comparison-card reveal stagger-3">
+            <div class="comparison-slider">
+              <img src="assets/images/portfolio-butterfly.png" alt="Finished butterfly garden cake" loading="lazy">
+              <img src="assets/images/portfolio-butterfly.png" alt="Butterfly garden cake design concept sketch" loading="lazy" class="slider-before" style="filter:sepia(1) brightness(0.85);">
+            </div>
+            <div class="comparison-card-body">
+              <h4>Butterfly Garden</h4>
+              <p class="text-small text-muted">From reference photo to enchanted butterfly cake</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -184,11 +271,31 @@
     <!-- S5: STATS + COUNTDOWN -->
     <section class="section section-alt" id="stats" aria-label="Portfolio statistics">
       <div class="container"><div class="section-header reveal"><span class="section-label">In Numbers</span><h2>Our Impact</h2><hr class="section-divider"></div>
-        <div class="stats-row reveal">
-          <div class="stat-box"><span class="stat-num" data-count="500">0</span><p class="stat-label">Cakes Delivered</p></div>
-          <div class="stat-box"><span class="stat-num" data-count="120">0</span><p class="stat-label">Weddings Served</p></div>
-          <div class="stat-box"><span class="stat-num" data-count="50">0</span><p class="stat-label">Corporate Clients</p></div>
-          <div class="stat-box"><span class="stat-num" data-count="98">0</span><p class="stat-label">% Satisfaction</p></div>
+        <div class="stats-grid reveal">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ph ph-cake" aria-hidden="true"></i></div>
+            <span class="stat-num" data-count="500">0</span>
+            <span class="stat-label">Cakes Delivered</span>
+            <p class="stat-subtext">Baked with precision &amp; love</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ph ph-heart" aria-hidden="true"></i></div>
+            <span class="stat-num" data-count="120">0</span>
+            <span class="stat-label">Weddings Served</span>
+            <p class="stat-subtext">For unforgettable celebrations</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ph ph-briefcase" aria-hidden="true"></i></div>
+            <span class="stat-num" data-count="50">0</span>
+            <span class="stat-label">Corporate Clients</span>
+            <p class="stat-subtext">Premium catering partners</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="ph ph-crown" aria-hidden="true"></i></div>
+            <span class="stat-num" data-count="98">0</span>
+            <span class="stat-label">% Satisfaction</span>
+            <p class="stat-subtext">Based on verified reviews</p>
+          </div>
         </div>
         <div class="countdown-strip reveal" id="countdown-section">
           <h3 style="color:#fff;margin-bottom:var(--space-xs);">Spring Collection Launching Soon</h3>

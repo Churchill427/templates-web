@@ -25,31 +25,124 @@
   <style>
     /* === HOME B SPECIFIC STYLES === */
 
-    /* Hero B: Modern */
+    /* Hero B: Modern Redesign */
     .hero-b {
       min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       overflow: hidden;
+      background: var(--bg-base);
     }
 
     .hero-b .hero-bg img {
       animation: heroSlowZoom 25s ease alternate infinite;
     }
 
+    /* Floating glowing background orbs */
+    .hero-b .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 1;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .hero-b .hero-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--color-accent) 0%, rgba(210, 105, 30, 0) 70%);
+      top: 15%;
+      left: 10%;
+      animation: orbFloat1 20s ease-in-out infinite alternate;
+    }
+
+    .hero-b .hero-orb-2 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, var(--color-secondary-light) 0%, rgba(245, 222, 179, 0) 70%);
+      bottom: 10%;
+      right: 10%;
+      animation: orbFloat2 25s ease-in-out infinite alternate;
+    }
+
+    @keyframes orbFloat1 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 40px) scale(1.15); }
+    }
+
+    @keyframes orbFloat2 {
+      0% { transform: translate(0, 0) scale(1.1); }
+      100% { transform: translate(-60px, -30px) scale(0.9); }
+    }
+
     .hero-b .hero-content {
-      max-width: 700px;
+      position: relative;
+      z-index: 3;
+      max-width: 750px;
+      width: 100%;
+      padding-inline: var(--page-padding);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Glassmorphism slate card */
+    .hero-b .hero-glass-card {
+      background: rgba(26, 18, 11, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(245, 222, 179, 0.15);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-3xl) var(--space-2xl);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      text-align: center;
+      width: 100%;
+      max-width: 650px;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .hero-b .hero-glass-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+      border-color: rgba(245, 222, 179, 0.25);
     }
 
     .hero-b .hero-subtitle {
       font-family: var(--font-body);
-      font-size: clamp(1rem, 1.5vw, 1.3rem);
-      font-weight: var(--fw-light);
-      letter-spacing: 0.1em;
+      font-size: clamp(0.9rem, 1.2vw, 1.15rem);
+      font-weight: var(--fw-semibold);
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: var(--space-lg);
+      color: var(--color-accent);
+      margin-bottom: var(--space-md);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-b .hero-title {
+      font-family: var(--font-logo);
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-md);
+      background: linear-gradient(135deg, #FFFFFF 30%, var(--color-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      line-height: 1.1;
+    }
+
+    .hero-b .hero-description {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: var(--lh-relaxed);
+      margin-bottom: var(--space-2xl);
+      max-width: 520px;
+      margin-inline: auto;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     }
 
     .hero-b .hero-btns {
@@ -57,6 +150,16 @@
       gap: var(--space-md);
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 639px) {
+      .hero-b .hero-glass-card {
+        padding: var(--space-2xl) var(--space-md);
+      }
+      .hero-b .hero-orb {
+        display: none;
+      }
     }
 
     /* Process Timeline */
@@ -468,16 +571,16 @@
         </div>
         <a href="about.html" class="nav-link">About</a>
         <a href="services.html" class="nav-link">Services</a>
-        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="portfolio.html" class="nav-link">Gallery</a>
         <a href="blog.html" class="nav-link">Blog</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="book-now.html" class="nav-link nav-cta">Book Now</a>
       </div>
       <div class="navbar-controls">
         <button class="toggle-btn rtl-toggle" data-toggle-rtl aria-label="Toggle text direction"><span
             class="rtl-label">LTR</span></button>
         <button class="toggle-btn" data-toggle-theme aria-label="Toggle dark mode"><i
             class="ph ph-moon theme-toggle-icon" aria-hidden="true"></i></button>
+        <a href="book-now.html" class="nav-link nav-cta">Book Now</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
@@ -498,7 +601,7 @@
       </div>
       <a href="about.html" class="mobile-nav-link"><i class="ph ph-info" aria-hidden="true"></i> About</a>
       <a href="services.html" class="mobile-nav-link"><i class="ph ph-storefront" aria-hidden="true"></i> Services</a>
-      <a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Portfolio</a>
+      <a href="portfolio.html" class="mobile-nav-link"><i class="ph ph-images" aria-hidden="true"></i> Gallery</a>
       <a href="blog.html" class="mobile-nav-link"><i class="ph ph-newspaper" aria-hidden="true"></i> Blog</a>
       <a href="contact.html" class="mobile-nav-link"><i class="ph ph-envelope" aria-hidden="true"></i> Contact</a>
       <a href="book-now.html" class="mobile-nav-link"><i class="ph ph-calendar-check" aria-hidden="true"></i> Book
@@ -519,19 +622,24 @@
     <section class="hero hero-b" id="hero" aria-label="Hero banner">
       <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1600&q=80"
-          alt="Minimalist white marble surface with single perfect pastry under dramatic side lighting" loading="eager">
+          alt="Strawberry panna cotta in elegant glass jars, top view" loading="eager">
       </div>
       <div class="hero-overlay"
-        style="background:linear-gradient(135deg, rgba(26,18,11,0.7) 0%, rgba(44,24,16,0.4) 100%);"></div>
+        style="background:linear-gradient(135deg, rgba(26,18,11,0.6) 0%, rgba(44,24,16,0.3) 100%);"></div>
+      
+      <!-- Ambient Orbs -->
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+
       <div class="hero-content">
-        <p class="hero-subtitle hero-animate-in">Where Precision Meets Passion</p>
-        <h1 class="hero-animate-in-delay-1" data-char-reveal data-char-delay="40"
-          style="font-size:var(--fs-display);margin-bottom:var(--space-xl);">
-          <span class="font-logo" style="display:block;font-size:1.2em;">BAKE</span>
-        </h1>
-        <div class="hero-btns hero-animate-in-delay-2">
-          <a href="services.html" class="btn btn-primary btn-lg" id="hero-cta-menu">View Menu</a>
-          <a href="book-now.html" class="btn btn-outline-white btn-lg" id="hero-cta-book">Book Now</a>
+        <div class="hero-glass-card hero-animate-in">
+          <p class="hero-subtitle">Where Precision Meets Passion</p>
+          <h1 class="hero-title">BAKE</h1>
+          <p class="hero-description">Handcrafting award-winning sourdoughs, delicate french pastries, and bespoke celebration cakes using mathematical precision and local organic ingredients.</p>
+          <div class="hero-btns">
+            <a href="services.html" class="btn btn-primary btn-lg" id="hero-cta-menu">View Menu</a>
+            <a href="book-now.html" class="btn btn-outline-white btn-lg" id="hero-cta-book">Book Now</a>
+          </div>
         </div>
       </div>
       <div class="scroll-indicator" aria-hidden="true">

@@ -207,6 +207,8 @@
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
+  border: 1px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 .offer-card h3 {
   color: #fff;
@@ -214,7 +216,7 @@
   margin-bottom: 16px;
 }
 .offer-card p {
-  color: var(--accent);
+  color: #E2E8F0; /* High contrast text on dark blue background */
   margin-bottom: 24px;
 }
 .offer-card .timer {
@@ -223,6 +225,36 @@
   font-weight: 700;
   color: var(--secondary);
   margin-bottom: 24px;
+}
+
+/* Dark theme visibility override for default offer card */
+:root[data-theme="dark"] .offer-card {
+  background-color: var(--bg-color); /* Dark slate (#0F172A) is darker than section bg (#1E293B) */
+  border-color: var(--border-color);
+}
+
+/* Secondary (accented yellow) offer card */
+.offer-card.secondary-bg {
+  background-color: var(--secondary);
+  color: #0F172A; /* High contrast text on yellow background */
+}
+.offer-card.secondary-bg h3 {
+  color: #0F172A;
+}
+.offer-card.secondary-bg p {
+  color: #334155; /* High contrast dark grey text on yellow background */
+}
+.offer-card.secondary-bg .timer {
+  color: #0F172A;
+}
+.offer-card.secondary-bg .btn {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.offer-card.secondary-bg .btn:hover {
+  background-color: #0F172A;
+  border-color: #0F172A;
 }
 
 /* Cart Teaser */

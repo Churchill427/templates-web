@@ -42,6 +42,15 @@
       margin: 0;
     }
     
+    .shop-hero p {
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin: var(--space-2) auto 0 auto;
+      color: #FFF5E1;
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+    
     /* Category Filter Bar */
     .filter-tabs-wrapper {
       padding: var(--space-2) 0;
@@ -54,12 +63,33 @@
       -webkit-backdrop-filter: blur(8px);
       overflow-x: auto;
       white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .filter-tabs-wrapper::-webkit-scrollbar {
+      display: none;
     }
     
     .filter-tabs-container {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
+      align-items: center;
+      width: max-content;
+      min-width: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 992px) {
+      .filter-tabs-wrapper {
+        top: 65px;
+      }
+      .filter-tabs-container {
+        justify-content: flex-start;
+      }
     }
     
     .filter-tab {
@@ -73,6 +103,8 @@
       font-size: 0.95rem;
       cursor: pointer;
       transition: var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     
     .filter-tab.active, .filter-tab:hover {
@@ -83,7 +115,7 @@
     
     /* Special offers banner */
     .promo-banner {
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.95), rgba(78, 205, 196, 0.95)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.95), rgba(78, 205, 196, 0.95));
       border-radius: var(--radius-lg);
       padding: var(--space-6);
       color: #FFFFFF;
@@ -91,6 +123,14 @@
       justify-content: space-between;
       align-items: center;
       gap: var(--space-3);
+    }
+
+    @media (max-width: 640px) {
+      .promo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--space-4);
+      }
     }
     
     .promo-content h3 {
@@ -101,8 +141,9 @@
     .size-tabs-header {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: var(--space-3);
+      flex-wrap: wrap;
     }
     
     .size-tab-btn {
@@ -122,18 +163,25 @@
       color: #FFFFFF;
       border-color: var(--secondary-color);
     }
+
+    .size-pane {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
     
     .size-chart-table {
       width: 100%;
+      min-width: 320px;
       border-collapse: collapse;
       margin-top: 15px;
     }
     
     .size-chart-table th, .size-chart-table td {
       border: 1px solid var(--border-color);
-      padding: 12px;
+      padding: 10px;
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
     
     .size-chart-table th {
@@ -213,6 +261,7 @@
   <section class="shop-hero">
     <div class="reveal">
       <h1>Shop the Collection</h1>
+      <p>Browse our complete range of organic baby & toddler clothes, from soft playwear and tees to cozy outfits crafted for every milestone.</p>
     </div>
   </section>
 
@@ -232,7 +281,7 @@
   <!-- Section 3: Product Grid (8 items) -->
   <section class="product-grid-section">
     <div class="container">
-      <div class="card-grid product-grid reveal" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="card-grid product-grid reveal">
         <!-- Item 1: Newborn -->
         <div class="card" data-category="newborn">
           <div class="card-img-wrapper">
@@ -497,11 +546,11 @@
       <div class="footer-grid">
         <!-- Footer Col 1 -->
         <div class="footer-col">
-          <div class="footer-logo" style="color: currentColor;">
+          <a href="index.html" class="footer-logo" style="color: currentColor;">
             <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
               <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
             </svg>TINY
-          </div>
+          </a>
           <div class="social-buttons">
             <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>
             <a href="#" class="social-btn facebook"><i class="fa-brands fa-facebook-f"></i></a>

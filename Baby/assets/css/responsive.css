@@ -36,7 +36,66 @@
   }
 }
 
-/* 2. Mobile Viewport (Max 640px) */
+/* 2. Tablet & Mobile Viewports Navigation (Max 992px) */
+@media (max-width: 992px) {
+  /* Navigation Drawer Trigger */
+  .hamburger {
+    display: flex; /* Show Hamburger menu on tablet and mobile */
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: calc(100vh - 80px);
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-4);
+    gap: var(--space-3);
+    transition: left 0.3s ease-in-out;
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+  }
+
+  .nav-links li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-link {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  [dir="rtl"] .nav-links {
+    left: auto;
+    right: -100%;
+    border-right: none;
+    border-left: 1px solid var(--border-color);
+    transition: right 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  [dir="rtl"] .nav-links.active {
+    right: 0;
+  }
+}
+
+/* 3. Mobile Viewport (Max 640px) */
 @media (max-width: 640px) {
   :root {
     --space-8: 32px; /* Section vertical padding adapts to 32px */
@@ -56,50 +115,11 @@
   }
 
   .site-header {
-    height: 60px;
+    height: 65px;
   }
 
   .header-spacer {
-    height: 60px;
-  }
-
-  /* Mobile Navigation Drawer */
-  .hamburger {
-    display: flex; /* Show Hamburger menu */
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 60px;
-    left: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: calc(100vh - 60px);
-    background-color: var(--bg-color);
-    border-right: 1px solid var(--border-color);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: var(--space-4);
-    gap: var(--space-3);
-    transition: left 0.3s ease-in-out;
-    box-shadow: var(--shadow-lg);
-    z-index: 999;
-  }
-
-  [dir="rtl"] .nav-links {
-    left: auto;
-    right: -100%;
-    border-right: none;
-    border-left: 1px solid var(--border-color);
-    transition: right 0.3s ease-in-out;
-  }
-
-  .nav-links.active {
-    left: 0;
-  }
-
-  [dir="rtl"] .nav-links.active {
-    right: 0;
+    height: 65px;
   }
 
   /* Grid Layouts collapse to single column */
@@ -142,6 +162,51 @@
   }
 
   .cart-icon-btn {
-    padding: 8px 12px;
+    padding: 0 12px;
+  }
+}
+
+/* 4. Ultra-Small Mobile Viewport (Max 480px / 360px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.35rem !important;
+  }
+
+  .shop-hero,
+  .wholesale-hero {
+    min-height: 280px !important;
+    padding: 30px 12px !important;
+  }
+
+  .benefit-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .benefit-img-col {
+    height: 200px !important;
+  }
+
+  .filter-tabs-wrapper {
+    padding: 8px 0 !important;
+  }
+
+  .filter-tab {
+    padding: 8px 14px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .size-tab-btn {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
   }
 }

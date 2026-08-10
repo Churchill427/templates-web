@@ -188,18 +188,27 @@ img {
   list-style: none;
   gap: var(--space-3);
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
   position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav-link {
   font-family: var(--font-headings);
   color: var(--text-primary);
   font-weight: 600;
-  padding: var(--space-1) 0;
-  font-size: 1.05rem;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transition: var(--transition);
 }
 
 .nav-link:hover,
@@ -210,22 +219,26 @@ img {
 /* Home Switcher Dropdown */
 .home-switcher {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
 }
 
 .switcher-btn {
   background: none;
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  padding: 6px 12px;
+  height: 38px;
+  padding: 0 12px;
+  box-sizing: border-box;
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-family: var(--font-headings);
   font-weight: 600;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 0.9rem;
+  line-height: 1;
   transition: var(--transition);
 }
 
@@ -276,16 +289,24 @@ img {
   background: none;
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  padding: 6px 12px;
+  height: 38px;
+  padding: 0 14px;
+  box-sizing: border-box;
   font-size: 0.85rem;
   font-weight: bold;
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-family: var(--font-headings);
   transition: var(--transition);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
+}
+
+.theme-toggle-btn {
+  width: 38px;
+  padding: 0;
 }
 
 .toggle-btn:hover {
@@ -295,16 +316,21 @@ img {
 .cart-icon-btn {
   background-color: var(--cta-color);
   color: #FFFFFF !important;
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 8px 16px;
-  display: flex;
+  border: 1px solid transparent;
+  height: 38px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  font-size: 0.85rem;
   font-weight: 700;
   font-family: var(--font-headings);
   cursor: pointer;
   transition: var(--transition);
+  line-height: 1;
+  border-radius: var(--radius-sm);
 }
 
 .cart-icon-btn:hover {
@@ -374,6 +400,14 @@ img {
   font-weight: 800;
   color: var(--primary-color);
   margin-bottom: var(--space-2);
+  display: inline-block;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-logo:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .footer-description {
@@ -750,7 +784,7 @@ section {
   display: block !important;
   font-size: 0.95rem !important;
   font-weight: 600 !important;
-  text-align: left !important;
+  text-align: center !important;
   padding: 10px 20px !important;
   transition: var(--transition) !important;
   list-style: none !important;
