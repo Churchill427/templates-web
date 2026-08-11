@@ -19,6 +19,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16.png?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png?v=1">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/fill/style.css">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/variables.css">
@@ -75,15 +76,15 @@
             <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
           </div>
         </li>
-        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
       </ul>
 
       <div class="navbar-actions">
         <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
         <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
-          <i class="ph ph-sun icon-sun" style="display:none;"></i>
-          <i class="ph ph-moon icon-moon"></i>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
       </div>
 
       <button class="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -113,14 +114,14 @@
       <a href="dashboard/user/index.html">User Dashboard</a>
       <a href="dashboard/admin/index.html">Admin Dashboard</a>
     </div>
-    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
     <div class="mobile-nav-actions">
       <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
       <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
-        <i class="ph ph-sun icon-sun" style="display:none;"></i>
-        <i class="ph ph-moon icon-moon"></i>
-      </button>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
     </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
   </div>
 
   <!-- ===== MAIN CONTENT ===== -->
@@ -147,77 +148,77 @@
       </div>
     </section>
 
-    <!-- ===== SECTION 2: PACKAGE TIERS ===== -->
-    <section class="section section-bg" id="package-tiers" aria-label="Grooming packages">
+    <!-- ===== SECTION 2: GROOMING PRICE ESTIMATOR ===== -->
+    <section class="section section-bg" id="pricing-estimator" aria-label="Grooming price estimator">
       <div class="container">
-        <h2 class="section-title anim-fade-up">Grooming Packages</h2>
-        <p class="section-subtitle anim-fade-up">Choose the perfect grooming experience for your pet</p>
+        <h2 class="section-title anim-fade-up">Grooming Price Estimator</h2>
+        <p class="section-subtitle anim-fade-up">Get an instant quote based on your pet's size and grooming needs</p>
 
-        <div class="grid grid-3" data-stagger="150">
-          <!-- Basic -->
-          <div class="card pricing-card">
-            <span class="badge badge-primary" style="margin-bottom:var(--space-sm);">Basic</span>
-            <div style="display:flex; gap:var(--space-xs); justify-content:center; margin:var(--space-xs) 0; color:var(--color-text-muted);">
-              <i class="ph ph-dog" title="Small pets"></i>
-              <i class="ph ph-cat" title="Cats"></i>
+        <div class="estimator-container anim-fade-up" style="margin-top:var(--space-lg);">
+          <div class="estimator-controls">
+            <!-- Size Selector -->
+            <div class="control-group">
+              <h3 style="font-size:18px; margin-bottom:var(--space-sm);">1. Select Pet Size</h3>
+              <div class="estimator-tabs size-tabs">
+                <button class="estimator-tab active" data-size="small" aria-label="Small size under 15 lbs">
+                  <i class="ph ph-dog"></i>
+                  <span>Small</span>
+                  <small>Under 15 lbs</small>
+                </button>
+                <button class="estimator-tab" data-size="medium" aria-label="Medium size 15 to 50 lbs">
+                  <i class="ph ph-dog" style="font-size:24px;"></i>
+                  <span>Medium</span>
+                  <small>15–50 lbs</small>
+                </button>
+                <button class="estimator-tab" data-size="large" aria-label="Large size over 50 lbs">
+                  <i class="ph ph-dog" style="font-size:28px;"></i>
+                  <span>Large</span>
+                  <small>Over 50 lbs</small>
+                </button>
+              </div>
             </div>
-            <div class="price">$35<span>/visit</span></div>
-            <ul class="feature-list">
-              <li><i class="ph ph-check-circle"></i> Bath & Blow Dry</li>
-              <li><i class="ph ph-check-circle"></i> Brush & De-tangle</li>
-              <li><i class="ph ph-check-circle"></i> Nail Trimming</li>
-              <li><i class="ph ph-check-circle"></i> Ear Cleaning</li>
-              <li class="disabled"><i class="ph ph-x-circle"></i> Teeth Brushing</li>
-              <li class="disabled"><i class="ph ph-x-circle"></i> Spa Treatment</li>
-              <li class="disabled"><i class="ph ph-x-circle"></i> Creative Styling</li>
-            </ul>
-            <a href="packages.html" class="btn btn-outline btn-full">Select Package</a>
+
+            <!-- Package Selector -->
+            <div class="control-group" style="margin-top: var(--space-lg);">
+              <h3 style="font-size:18px; margin-bottom:var(--space-sm);">2. Select Package</h3>
+              <div class="estimator-tabs package-tabs">
+                <button class="estimator-tab active" data-package="basic" aria-label="Basic Package">
+                  <span>Basic Bath</span>
+                  <small>Essential wash</small>
+                </button>
+                <button class="estimator-tab" data-package="premium" aria-label="Premium Package">
+                  <span>Premium Groom</span>
+                  <small>Full haircut</small>
+                </button>
+                <button class="estimator-tab" data-package="deluxe" aria-label="Deluxe Package">
+                  <span>Deluxe Spa</span>
+                  <small>Luxury pampering</small>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <!-- Premium (Featured) -->
-          <div class="card pricing-card featured" style="border-color:var(--color-secondary); position:relative;">
-            <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%);">
-              <span class="badge badge-secondary" style="font-size:11px; padding:5px 16px; color: var(--color-text-primary);">Best Value</span>
+          <!-- Result Display Card -->
+          <div class="estimator-result card">
+            <div class="result-header">
+              <span class="badge badge-primary" id="result-badge">Basic Bath</span>
+              <div class="price-display">
+                <span class="currency">$</span>
+                <span class="price-amount" id="result-price">35</span>
+                <span class="period">/est</span>
+              </div>
             </div>
-            <span class="badge badge-secondary" style="margin-bottom:var(--space-sm);">Premium</span>
-            <div style="display:flex; gap:var(--space-xs); justify-content:center; margin:var(--space-xs) 0; color:var(--color-secondary);">
-              <i class="ph ph-dog" title="All dogs"></i>
-              <i class="ph ph-cat" title="All cats"></i>
-              <i class="ph ph-paw-print" title="All sizes"></i>
+            <div class="result-details">
+              <p class="est-duration"><i class="ph ph-clock"></i> Est. Time: <strong id="result-time">45–60 mins</strong></p>
+              <ul class="feature-list" id="result-features" style="text-align:left; font-size:var(--fs-small);">
+                <li><i class="ph ph-check-circle"></i> Organic Shampoo Bath</li>
+                <li><i class="ph ph-check-circle"></i> Warm Blow Dry</li>
+                <li><i class="ph ph-check-circle"></i> Brush & De-tangle</li>
+                <li><i class="ph ph-check-circle"></i> Nail Trimming</li>
+                <li><i class="ph ph-check-circle"></i> Ear Cleaning</li>
+              </ul>
             </div>
-            <div class="price" style="color:var(--color-secondary);">$65<span>/visit</span></div>
-            <ul class="feature-list">
-              <li><i class="ph ph-check-circle"></i> Bath & Blow Dry</li>
-              <li><i class="ph ph-check-circle"></i> Full Haircut & Styling</li>
-              <li><i class="ph ph-check-circle"></i> Nail Trimming & Filing</li>
-              <li><i class="ph ph-check-circle"></i> Ear Cleaning</li>
-              <li><i class="ph ph-check-circle"></i> Teeth Brushing</li>
-              <li><i class="ph ph-check-circle"></i> Paw Balm Treatment</li>
-              <li class="disabled"><i class="ph ph-x-circle"></i> Creative Styling</li>
-            </ul>
-            <a href="packages.html" class="btn btn-secondary btn-full">Select Package</a>
-          </div>
-
-          <!-- Deluxe -->
-          <div class="card pricing-card">
-            <span class="badge badge-accent" style="margin-bottom:var(--space-sm);">Deluxe</span>
-            <div style="display:flex; gap:var(--space-xs); justify-content:center; margin:var(--space-xs) 0; color:var(--color-accent);">
-              <i class="ph ph-dog" title="All dogs"></i>
-              <i class="ph ph-cat" title="All cats"></i>
-              <i class="ph ph-paw-print" title="All sizes"></i>
-              <i class="ph ph-crown" title="VIP"></i>
-            </div>
-            <div class="price" style="color:var(--color-accent);">$95<span>/visit</span></div>
-            <ul class="feature-list">
-              <li><i class="ph ph-check-circle"></i> Luxury Bath & Conditioning</li>
-              <li><i class="ph ph-check-circle"></i> Full Haircut & Breed Styling</li>
-              <li><i class="ph ph-check-circle"></i> Nail Care & Paw Massage</li>
-              <li><i class="ph ph-check-circle"></i> Deep Ear Cleaning</li>
-              <li><i class="ph ph-check-circle"></i> Teeth Brushing & Freshening</li>
-              <li><i class="ph ph-check-circle"></i> Full Spa Treatment</li>
-              <li><i class="ph ph-check-circle"></i> Creative Styling & Cologne</li>
-            </ul>
-            <a href="packages.html" class="btn btn-accent btn-full" style="color:#fff;">Select Package</a>
+            <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md); justify-content: center; text-align: center;">Book This Groom</a>
           </div>
         </div>
       </div>
@@ -231,28 +232,28 @@
 
         <div class="grid grid-4" data-stagger="200" style="text-align:center; margin-top:var(--space-xl);">
           <div class="anim-fade-up">
-            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:#52B788; line-height:1;">
               <span data-counter="5000" data-counter-suffix="+">0</span>
             </div>
             <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Pets Groomed</p>
           </div>
 
           <div class="anim-fade-up">
-            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:#52B788; line-height:1;">
               <span data-counter="15">0</span>
             </div>
             <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Expert Groomers</p>
           </div>
 
           <div class="anim-fade-up">
-            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:#52B788; line-height:1;">
               <span data-counter="98" data-counter-suffix="%">0</span>
             </div>
             <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Satisfaction Rate</p>
           </div>
 
           <div class="anim-fade-up">
-            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:var(--color-secondary); line-height:1;">
+            <div style="font-size:56px; font-weight:var(--fw-bold); font-family:var(--font-heading); color:#52B788; line-height:1;">
               <span data-counter="12">0</span>
             </div>
             <p style="color:rgba(255,255,255,0.85); margin-top:var(--space-xs); font-size:18px; margin-bottom:0;">Years Experience</p>
@@ -267,84 +268,119 @@
         <h2 class="section-title anim-fade-up">Breed-Specific Expertise</h2>
         <p class="section-subtitle anim-fade-up">Tailored grooming for every breed's unique coat and temperament</p>
 
-        <div class="scroll-container">
-          <div class="scroll-track">
+        <!-- Carousel Wrapper -->
+        <div style="position:relative;">
+          <!-- Previous Button -->
+          <button id="breed-prev" aria-label="Previous breeds" style="position:absolute; left:-20px; top:50%; transform:translateY(-50%); z-index:2; width:44px; height:44px; border-radius:50%; background:var(--color-primary); color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:20px; box-shadow:0 4px 12px rgba(45,106,79,0.35); transition:all 0.3s ease;">
+            <i class="ph ph-caret-left"></i>
+          </button>
+
+          <!-- Next Button -->
+          <button id="breed-next" aria-label="Next breeds" style="position:absolute; right:-20px; top:50%; transform:translateY(-50%); z-index:2; width:44px; height:44px; border-radius:50%; background:var(--color-primary); color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:20px; box-shadow:0 4px 12px rgba(45,106,79,0.35); transition:all 0.3s ease;">
+            <i class="ph ph-caret-right"></i>
+          </button>
+
+          <!-- Carousel Track (hidden scrollbar) -->
+          <div id="breed-carousel" style="display:flex; gap:var(--space-lg); overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; -ms-overflow-style:none; padding:var(--space-sm) 0;">
+            <style>
+              #breed-carousel::-webkit-scrollbar { display:none; }
+              #breed-prev:hover, #breed-next:hover { background:#1B4332; transform:translateY(-50%) scale(1.1); }
+            </style>
+
             <!-- Breed 1 -->
-            <div class="card" style="width:260px; text-align:center;">
+            <div class="card" style="min-width:260px; max-width:260px; text-align:center; scroll-snap-align:start; flex-shrink:0; display:flex; flex-direction:column;">
               <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
                 <img src="assets/images/breeds/breed1.png" alt="Poodle" style="width:100%; height:100%; object-fit:cover; display:block;">
               </div>
               <h3 class="card-title" style="font-size:18px;">Poodle</h3>
               <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Continental, puppy, and lion cuts</p>
-              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary); margin-bottom:var(--space-sm);">
                 <span><i class="ph ph-clock"></i> 2-3 hrs</span>
                 <span><i class="ph ph-currency-dollar"></i> From $75</span>
               </div>
+              <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top:auto;">
+                <i class="ph ph-calendar-check"></i> Book Now
+              </a>
             </div>
 
             <!-- Breed 2 -->
-            <div class="card" style="width:260px; text-align:center;">
+            <div class="card" style="min-width:260px; max-width:260px; text-align:center; scroll-snap-align:start; flex-shrink:0; display:flex; flex-direction:column;">
               <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
                 <img src="assets/images/breeds/breed2.png" alt="Persian" style="width:100%; height:100%; object-fit:cover; display:block;">
               </div>
               <h3 class="card-title" style="font-size:18px;">Persian</h3>
               <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Coat de-matting and lion trim specialist</p>
-              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary); margin-bottom:var(--space-sm);">
                 <span><i class="ph ph-clock"></i> 1.5-2 hrs</span>
                 <span><i class="ph ph-currency-dollar"></i> From $60</span>
               </div>
+              <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top:auto;">
+                <i class="ph ph-calendar-check"></i> Book Now
+              </a>
             </div>
 
             <!-- Breed 3 -->
-            <div class="card" style="width:260px; text-align:center;">
+            <div class="card" style="min-width:260px; max-width:260px; text-align:center; scroll-snap-align:start; flex-shrink:0; display:flex; flex-direction:column;">
               <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
                 <img src="assets/images/breeds/breed3.png" alt="Golden Retriever" style="width:100%; height:100%; object-fit:cover; display:block;">
               </div>
               <h3 class="card-title" style="font-size:18px;">Golden Retriever</h3>
               <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">De-shedding and feathering maintenance</p>
-              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary); margin-bottom:var(--space-sm);">
                 <span><i class="ph ph-clock"></i> 2-2.5 hrs</span>
                 <span><i class="ph ph-currency-dollar"></i> From $65</span>
               </div>
+              <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top:auto;">
+                <i class="ph ph-calendar-check"></i> Book Now
+              </a>
             </div>
 
             <!-- Breed 4 -->
-            <div class="card" style="width:260px; text-align:center;">
+            <div class="card" style="min-width:260px; max-width:260px; text-align:center; scroll-snap-align:start; flex-shrink:0; display:flex; flex-direction:column;">
               <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
                 <img src="assets/images/breeds/breed4.png" alt="Siamese" style="width:100%; height:100%; object-fit:cover; display:block;">
               </div>
               <h3 class="card-title" style="font-size:18px;">Siamese</h3>
               <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Short coat shine and sensitive skin care</p>
-              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary); margin-bottom:var(--space-sm);">
                 <span><i class="ph ph-clock"></i> 1-1.5 hrs</span>
                 <span><i class="ph ph-currency-dollar"></i> From $45</span>
               </div>
+              <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top:auto;">
+                <i class="ph ph-calendar-check"></i> Book Now
+              </a>
             </div>
 
             <!-- Breed 5 -->
-            <div class="card" style="width:260px; text-align:center;">
+            <div class="card" style="min-width:260px; max-width:260px; text-align:center; scroll-snap-align:start; flex-shrink:0; display:flex; flex-direction:column;">
               <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
                 <img src="assets/images/breeds/breed5.png" alt="Schnauzer" style="width:100%; height:100%; object-fit:cover; display:block;">
               </div>
               <h3 class="card-title" style="font-size:18px;">Schnauzer</h3>
               <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Hand stripping and beard styling</p>
-              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary); margin-bottom:var(--space-sm);">
                 <span><i class="ph ph-clock"></i> 2-3 hrs</span>
                 <span><i class="ph ph-currency-dollar"></i> From $70</span>
               </div>
+              <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top:auto;">
+                <i class="ph ph-calendar-check"></i> Book Now
+              </a>
             </div>
 
             <!-- Breed 6 -->
-            <div class="card" style="width:260px; text-align:center;">
+            <div class="card" style="min-width:260px; max-width:260px; text-align:center; scroll-snap-align:start; flex-shrink:0; display:flex; flex-direction:column;">
               <div style="width:100%; aspect-ratio:1; border-radius:var(--radius-lg); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
                 <img src="assets/images/breeds/breed6.png" alt="Shih Tzu" style="width:100%; height:100%; object-fit:cover; display:block;">
               </div>
               <h3 class="card-title" style="font-size:18px;">Shih Tzu</h3>
               <p style="font-size:var(--fs-small); color:var(--color-text-muted); margin-bottom:var(--space-xs);">Topknot styling and face trimming</p>
-              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary);">
+              <div style="display:flex; justify-content:center; gap:var(--space-md); font-size:var(--fs-small); color:var(--color-text-secondary); margin-bottom:var(--space-sm);">
                 <span><i class="ph ph-clock"></i> 2-2.5 hrs</span>
                 <span><i class="ph ph-currency-dollar"></i> From $55</span>
               </div>
+              <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top:auto;">
+                <i class="ph ph-calendar-check"></i> Book Now
+              </a>
             </div>
           </div>
         </div>
@@ -359,7 +395,7 @@
 
         <div class="grid grid-4" data-stagger="200" style="position:relative; margin-top:var(--space-xl);">
           <!-- Connecting line -->
-          <div style="position:absolute; top:60px; left:10%; right:10%; height:3px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-success)); border-radius:2px; z-index:0; display:none;" class="timeline-connector-desktop"></div>
+          <div style="position:absolute; top:60px; left:10%; right:10%; height:3px; background: linear-gradient(90deg, #1B4332, #2D6A4F, #40916C, #52B788); border-radius:2px; z-index:0; display:none;" class="timeline-connector-desktop"></div>
 
           <!-- Step 1 -->
           <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
@@ -373,30 +409,30 @@
 
           <!-- Step 2 -->
           <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
-            <div style="width:80px; height:80px; border-radius:50%; background: var(--color-secondary); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(244,162,97,0.3);">
+            <div style="width:80px; height:80px; border-radius:50%; background: #40916C; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(45,106,79,0.3);">
               <i class="ph ph-map-pin"></i>
             </div>
-            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-secondary); color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">2</div>
+            <div style="width:28px; height:28px; border-radius:50%; background:#40916C; color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">2</div>
             <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Drop Off</h3>
             <p class="card-text" style="font-size:var(--fs-small);">Bring your pet to our welcoming salon. We'll handle check-in and any special notes.</p>
           </div>
 
           <!-- Step 3 -->
           <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
-            <div style="width:80px; height:80px; border-radius:50%; background: var(--color-accent); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(231,111,81,0.3);">
+            <div style="width:80px; height:80px; border-radius:50%; background: #52B788; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(45,106,79,0.3);">
               <i class="ph ph-scissors"></i>
             </div>
-            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-accent); color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">3</div>
+            <div style="width:28px; height:28px; border-radius:50%; background:#52B788; color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">3</div>
             <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Grooming Session</h3>
             <p class="card-text" style="font-size:var(--fs-small);">Your pet receives personalized, professional grooming with premium products.</p>
           </div>
 
           <!-- Step 4 -->
           <div class="anim-fade-up" style="text-align:center; position:relative; z-index:1;">
-            <div style="width:80px; height:80px; border-radius:50%; background: var(--color-success); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(82,183,136,0.3);">
+            <div style="width:80px; height:80px; border-radius:50%; background: #74C69D; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:28px; box-shadow:0 4px 15px rgba(45,106,79,0.3);">
               <i class="ph ph-sparkle"></i>
             </div>
-            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-success); color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">4</div>
+            <div style="width:28px; height:28px; border-radius:50%; background:#74C69D; color:#fff; display:flex; align-items:center; justify-content:center; margin:-12px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">4</div>
             <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Pick Up & Glow</h3>
             <p class="card-text" style="font-size:var(--fs-small);">Collect your freshly groomed, happy pet along with a grooming report card.</p>
           </div>
@@ -444,7 +480,7 @@
                   title="Pawly Salon Location Map">
                 </iframe>
               </div>
-              <p style="color:rgba(255,255,255,0.85); margin-bottom:var(--space-xs);"><i class="ph ph-map-pin" style="color:var(--color-secondary);"></i> 123 Pet Avenue, San Francisco, CA 94102</p>
+              <p style="color:rgba(255,255,255,0.85); margin-bottom:var(--space-xs);"><i class="ph ph-map-pin" style="color:#52B788;"></i> 123 Pet Avenue, San Francisco, CA 94102</p>
               <p style="color:rgba(255,255,255,0.65); font-size:var(--fs-small); margin-bottom:var(--space-sm);">Free parking available. Located near Central Park station.</p>
               <a href="contact.html" class="btn btn-outline-white btn-sm">
                 <i class="ph ph-navigation-arrow"></i> Visit Us
@@ -462,14 +498,14 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="brand-name">
+          <a href="index.html" class="brand-name">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/>
               <circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/>
               <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
             </svg>
             PAWLY
-          </div>
+          </a>
           <p>Premium grooming care for your beloved companions.</p>
           <div class="footer-social">
             <button class="btn-social btn-google"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/><path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/><path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/></svg> Sign in with Google</button>
@@ -524,5 +560,112 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/forms.js"></script>
+
+  <!-- Breed Carousel Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.getElementById('breed-carousel');
+      const prevBtn = document.getElementById('breed-prev');
+      const nextBtn = document.getElementById('breed-next');
+      if (!carousel || !prevBtn || !nextBtn) return;
+
+      const scrollAmount = 292; // card width (260) + gap (32)
+
+      function updateButtons() {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        prevBtn.style.opacity = carousel.scrollLeft <= 5 ? '0.4' : '1';
+        prevBtn.style.pointerEvents = carousel.scrollLeft <= 5 ? 'none' : 'auto';
+        nextBtn.style.opacity = carousel.scrollLeft >= maxScroll - 5 ? '0.4' : '1';
+        nextBtn.style.pointerEvents = carousel.scrollLeft >= maxScroll - 5 ? 'none' : 'auto';
+      }
+
+      prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      carousel.addEventListener('scroll', updateButtons);
+      updateButtons();
+    });
+  </script>
+
+  <!-- Pricing Estimator Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sizeTabs = document.querySelectorAll('.size-tabs .estimator-tab');
+      const packageTabs = document.querySelectorAll('.package-tabs .estimator-tab');
+      
+      const priceAmount = document.getElementById('result-price');
+      const resultBadge = document.getElementById('result-badge');
+      const resultTime = document.getElementById('result-time');
+      const resultFeatures = document.getElementById('result-features');
+      if (!priceAmount || !resultBadge || !resultTime || !resultFeatures) return;
+      
+      // Pricing data
+      const pricing = {
+        small: {
+          basic: { price: 35, time: '45–60 mins', name: 'Basic Bath', features: ['Organic Shampoo Bath', 'Warm Blow Dry', 'Brush & De-tangle', 'Nail Trimming', 'Ear Cleaning'] },
+          premium: { price: 65, time: '75–90 mins', name: 'Premium Groom', features: ['Bath & Blow Dry', 'Full Haircut & Style', 'Nail Trimming & Filing', 'Ear Cleaning', 'Teeth Brushing', 'Paw Balm Treatment'] },
+          deluxe: { price: 95, time: '100–120 mins', name: 'Deluxe Spa', features: ['Luxury Bath & Conditioning', 'Full Haircut & Breed Style', 'Nail Care & Paw Massage', 'Deep Ear Cleaning', 'Teeth Brushing & Freshening', 'Full Spa Treatment', 'Creative Styling & Cologne'] }
+        },
+        medium: {
+          basic: { price: 45, time: '60–75 mins', name: 'Basic Bath', features: ['Organic Shampoo Bath', 'Warm Blow Dry', 'Brush & De-tangle', 'Nail Trimming', 'Ear Cleaning'] },
+          premium: { price: 75, time: '90–105 mins', name: 'Premium Groom', features: ['Bath & Blow Dry', 'Full Haircut & Style', 'Nail Trimming & Filing', 'Ear Cleaning', 'Teeth Brushing', 'Paw Balm Treatment'] },
+          deluxe: { price: 110, time: '120–140 mins', name: 'Deluxe Spa', features: ['Luxury Bath & Conditioning', 'Full Haircut & Breed Style', 'Nail Care & Paw Massage', 'Deep Ear Cleaning', 'Teeth Brushing & Freshening', 'Full Spa Treatment', 'Creative Styling & Cologne'] }
+        },
+        large: {
+          basic: { price: 60, time: '75–90 mins', name: 'Basic Bath', features: ['Organic Shampoo Bath', 'Warm Blow Dry', 'Brush & De-tangle', 'Nail Trimming', 'Ear Cleaning'] },
+          premium: { price: 95, time: '105–120 mins', name: 'Premium Groom', features: ['Bath & Blow Dry', 'Full Haircut & Style', 'Nail Trimming & Filing', 'Ear Cleaning', 'Teeth Brushing', 'Paw Balm Treatment'] },
+          deluxe: { price: 135, time: '140–160 mins', name: 'Deluxe Spa', features: ['Luxury Bath & Conditioning', 'Full Haircut & Breed Style', 'Nail Care & Paw Massage', 'Deep Ear Cleaning', 'Teeth Brushing & Freshening', 'Full Spa Treatment', 'Creative Styling & Cologne'] }
+        }
+      };
+      
+      let selectedSize = 'small';
+      let selectedPackage = 'basic';
+      
+      function updateEstimator() {
+        const data = pricing[selectedSize][selectedPackage];
+        
+        // Animate price update
+        priceAmount.style.opacity = 0;
+        setTimeout(() => {
+          priceAmount.textContent = data.price;
+          priceAmount.style.opacity = 1;
+        }, 150);
+        
+        resultBadge.textContent = data.name;
+        resultTime.textContent = data.time;
+        
+        // Update features
+        resultFeatures.innerHTML = '';
+        data.features.forEach(f => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="ph ph-check-circle"></i> ${f}`;
+          resultFeatures.appendChild(li);
+        });
+      }
+      
+      sizeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          sizeTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          selectedSize = tab.dataset.size;
+          updateEstimator();
+        });
+      });
+      
+      packageTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          packageTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          selectedPackage = tab.dataset.package;
+          updateEstimator();
+        });
+      });
+    });
+  </script>
 </body>
 </html>

@@ -13,6 +13,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16.png?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png?v=1">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/fill/style.css">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -58,14 +59,14 @@
             <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
           </div>
         </li>
-        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
       </ul>
       <div class="navbar-actions">
         <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
         <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
-          <i class="ph ph-sun icon-sun" style="display:none;"></i>
-          <i class="ph ph-moon icon-moon"></i>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
       </div>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -89,11 +90,14 @@
       <a href="dashboard/user/index.html">User Dashboard</a>
       <a href="dashboard/admin/index.html">Admin Dashboard</a>
     </div>
-    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
     <div class="mobile-nav-actions">
       <button class="rtl-toggle-btn rtl-toggle">LTR</button>
-      <button class="navbar-toggle-btn theme-toggle"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+      <button class="navbar-toggle-btn theme-toggle">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
     </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
   </div>
 
   <main id="main-content">
@@ -107,263 +111,349 @@
       </div>
     </section>
 
-    <!-- SECTION 2: THE GROOMING TIERS -->
-    <section class="section section-bg" aria-label="Grooming Packages">
+    <!-- SECTION 2: OUR GROOMING SERVICES -->
+    <section class="section section-bg" id="grooming-services" aria-label="Our Grooming Services">
       <div class="container">
-        <h2 class="section-title anim-fade-up">Grooming Packages</h2>
-        <p class="section-subtitle anim-fade-up">Standard rates. Choose the tier that matches your pet's needs.</p>
+        <h2 class="section-title anim-fade-up">Our Grooming Services</h2>
+        <p class="section-subtitle anim-fade-up">Professional care tailored to every breed, coat type, and temperament</p>
         
         <div class="grid grid-3" data-stagger="100">
-          <!-- Tier 1 -->
-          <div class="card pricing-card">
-            <span class="badge badge-primary">Essential Care</span>
-            <div class="price">$35<span>/session</span></div>
-            <p class="card-text">Perfect for quick maintenance and keeping coats neat between main style transformations.</p>
-            <ul class="feature-list">
-              <li><i class="ph ph-check-circle"></i> Organic Shampoo Bath</li>
-              <li><i class="ph ph-check-circle"></i> Warm Blow Dry & Brush out</li>
-              <li><i class="ph ph-check-circle"></i> Nail Clipping</li>
-              <li><i class="ph ph-check-circle"></i> Ear & Eye Cleanse</li>
-              <li class="disabled"><i class="ph ph-x-circle"></i> Custom Styling/Haircut</li>
-              <li class="disabled"><i class="ph ph-x-circle"></i> Aromatherapy & Massage</li>
+          <!-- Service 1: Bath & Brush -->
+          <div class="card card-flat anim-fade-up" style="text-align:center; padding:var(--space-lg);">
+            <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, #2D6A4F 0%, #40916C 100%); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:32px; box-shadow:0 6px 20px rgba(45,106,79,0.25);">
+              <i class="ph ph-bathtub"></i>
+            </div>
+            <h3 style="font-size:20px; margin-bottom:var(--space-xs);">Bath & Brush</h3>
+            <p class="card-text" style="font-size:var(--fs-small); margin-bottom:var(--space-md);">Organic shampoo bath, warm blow dry, thorough brush-out, and de-tangling for a fresh, clean coat.</p>
+            <ul class="feature-list" style="text-align:left; font-size:var(--fs-small);">
+              <li><i class="ph ph-check-circle"></i> Hypoallergenic shampoo options</li>
+              <li><i class="ph ph-check-circle"></i> Conditioner treatment</li>
+              <li><i class="ph ph-check-circle"></i> High-velocity blow dry</li>
+              <li><i class="ph ph-check-circle"></i> Suitable for all breeds</li>
             </ul>
-            <a href="login.html" class="btn btn-outline btn-full" style="margin-top: auto;">Book Essential</a>
+            <a href="login.html" class="btn btn-outline btn-full" style="margin-top:auto;">
+              <i class="ph ph-calendar-check"></i> Book This Service
+            </a>
           </div>
 
-          <!-- Tier 2 -->
-          <div class="card pricing-card featured">
+          <!-- Service 2: Full Grooming -->
+          <div class="card card-flat anim-fade-up" style="text-align:center; padding:var(--space-lg); border:2px solid var(--color-primary); position:relative; overflow:visible;">
             <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%);">
-              <span class="badge badge-secondary" style="font-size:11px; padding:5px 16px;">Most Popular</span>
+              <span class="badge badge-primary" style="font-size:11px; padding:5px 16px;">Most Requested</span>
             </div>
-            <span class="badge badge-secondary">Signature Style</span>
-            <div class="price" style="color:var(--color-secondary);">$65<span>/session</span></div>
-            <p class="card-text">A complete styling makeover using premium products tailored to your pet's specific breed standard.</p>
-            <ul class="feature-list">
-              <li><i class="ph ph-check-circle"></i> Essential Care Inclusions</li>
-              <li><i class="ph ph-check-circle"></i> Precision Breed Haircut & Style</li>
-              <li><i class="ph ph-check-circle"></i> Nail Filing (Grinding)</li>
-              <li><i class="ph ph-check-circle"></i> Dental Brush & Breath Spray</li>
-              <li><i class="ph ph-check-circle"></i> Sanitary Trim & Pad Balm</li>
-              <li class="disabled"><i class="ph ph-x-circle"></i> Blueberry Facial & Mask</li>
+            <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:32px; box-shadow:0 6px 20px rgba(27,67,50,0.3);">
+              <i class="ph ph-scissors"></i>
+            </div>
+            <h3 style="font-size:20px; margin-bottom:var(--space-xs);">Full Grooming</h3>
+            <p class="card-text" style="font-size:var(--fs-small); margin-bottom:var(--space-md);">Complete breed-standard haircut, precision styling, nail care, ear cleaning, and teeth brushing.</p>
+            <ul class="feature-list" style="text-align:left; font-size:var(--fs-small);">
+              <li><i class="ph ph-check-circle"></i> Breed-specific haircut & style</li>
+              <li><i class="ph ph-check-circle"></i> Nail trimming & filing</li>
+              <li><i class="ph ph-check-circle"></i> Ear & eye cleaning</li>
+              <li><i class="ph ph-check-circle"></i> Dental hygiene care</li>
+              <li><i class="ph ph-check-circle"></i> Sanitary trim included</li>
             </ul>
-            <a href="login.html" class="btn btn-secondary btn-full" style="margin-top: auto;">Book Signature</a>
+            <a href="login.html" class="btn btn-primary btn-full" style="margin-top:auto;">
+              <i class="ph ph-calendar-check"></i> Book This Service
+            </a>
           </div>
 
-          <!-- Tier 3 -->
-          <div class="card pricing-card">
-            <span class="badge badge-accent">Royal VIP Spa</span>
-            <div class="price" style="color:var(--color-accent);">$95<span>/session</span></div>
-            <p class="card-text">The ultimate indulgence. Full-course spa treatments to pamper, refresh, and condition skin and soul.</p>
-            <ul class="feature-list">
-              <li><i class="ph ph-check-circle"></i> Signature Style Inclusions</li>
-              <li><i class="ph ph-check-circle"></i> Lavender Aromatherapy Bath</li>
-              <li><i class="ph ph-check-circle"></i> Deep Coat Conditioning Mask</li>
-              <li><i class="ph ph-check-circle"></i> Hydrating Blueberry Facial</li>
-              <li><i class="ph ph-check-circle"></i> Soothing Paw Massage</li>
-              <li><i class="ph ph-check-circle"></i> Signature Perfume/Cologne Spritz</li>
+          <!-- Service 3: Spa & Wellness -->
+          <div class="card card-flat anim-fade-up" style="text-align:center; padding:var(--space-lg);">
+            <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, #52B788 0%, #74C69D 100%); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md); font-size:32px; box-shadow:0 6px 20px rgba(82,183,136,0.25);">
+              <i class="ph ph-flower-lotus"></i>
+            </div>
+            <h3 style="font-size:20px; margin-bottom:var(--space-xs);">Spa & Wellness</h3>
+            <p class="card-text" style="font-size:var(--fs-small); margin-bottom:var(--space-md);">Luxury aromatherapy bath, deep coat conditioning mask, blueberry facial, and paw massage.</p>
+            <ul class="feature-list" style="text-align:left; font-size:var(--fs-small);">
+              <li><i class="ph ph-check-circle"></i> Lavender aromatherapy soak</li>
+              <li><i class="ph ph-check-circle"></i> Deep conditioning mask</li>
+              <li><i class="ph ph-check-circle"></i> Hydrating blueberry facial</li>
+              <li><i class="ph ph-check-circle"></i> Soothing paw massage & balm</li>
+              <li><i class="ph ph-check-circle"></i> Signature cologne spritz</li>
             </ul>
-            <a href="login.html" class="btn btn-accent btn-full" style="color:#fff; margin-top: auto;">Book Royal VIP</a>
+            <a href="login.html" class="btn btn-outline btn-full" style="margin-top:auto;">
+              <i class="ph ph-calendar-check"></i> Book This Service
+            </a>
+          </div>
+        </div>
+
+        <!-- Additional Services Row -->
+        <div class="grid grid-4" data-stagger="80" style="margin-top:var(--space-xl);">
+          <div class="card card-flat anim-fade-up" style="text-align:center; padding:var(--space-md);">
+            <div style="width:56px; height:56px; border-radius:50%; background:rgba(45,106,79,0.1); color:var(--color-primary); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:24px;">
+              <i class="ph ph-paw-print"></i>
+            </div>
+            <h3 style="font-size:16px; margin-bottom:var(--space-xs);">Nail Care</h3>
+            <p class="card-text" style="font-size:13px;">Trimming, filing, grinding, and paw pad balm application.</p>
+          </div>
+
+          <div class="card card-flat anim-fade-up" style="text-align:center; padding:var(--space-md);">
+            <div style="width:56px; height:56px; border-radius:50%; background:rgba(45,106,79,0.1); color:var(--color-primary); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:24px;">
+              <i class="ph ph-tooth"></i>
+            </div>
+            <h3 style="font-size:16px; margin-bottom:var(--space-xs);">Dental Hygiene</h3>
+            <p class="card-text" style="font-size:13px;">Teeth brushing, breath spray, and oral health check.</p>
+          </div>
+
+          <div class="card card-flat anim-fade-up" style="text-align:center; padding:var(--space-md);">
+            <div style="width:56px; height:56px; border-radius:50%; background:rgba(45,106,79,0.1); color:var(--color-primary); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:24px;">
+              <i class="ph ph-wind"></i>
+            </div>
+            <h3 style="font-size:16px; margin-bottom:var(--space-xs);">De-shedding</h3>
+            <p class="card-text" style="font-size:13px;">Undercoat removal and shedding reduction treatment.</p>
+          </div>
+
+          <div class="card card-flat anim-fade-up" style="text-align:center; padding:var(--space-md);">
+            <div style="width:56px; height:56px; border-radius:50%; background:rgba(45,106,79,0.1); color:var(--color-primary); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:24px;">
+              <i class="ph ph-palette"></i>
+            </div>
+            <h3 style="font-size:16px; margin-bottom:var(--space-xs);">Creative Styling</h3>
+            <p class="card-text" style="font-size:13px;">Fun color accents, patterns, and themed grooming looks.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: MEMBERSHIPS / CLUB PAWLY -->
-    <section class="section section-surface" id="club-membership" aria-label="Club Pawly Memberships">
+    <!-- SECTION 3: HOW IT WORKS -->
+    <section class="section section-surface" id="how-it-works" aria-label="How It Works">
       <div class="container">
-        <h2 class="section-title anim-fade-up">Club Pawly</h2>
-        <p class="section-subtitle anim-fade-up">Enjoy great discounts, priority booking, and premium perks with our monthly plans.</p>
-        
-        <div class="grid grid-3" data-stagger="100">
-          <div class="card card-flat" style="border-top: 4px solid var(--color-primary);">
-            <h3 style="font-size:20px; color:var(--color-primary);">Silver Member</h3>
-            <p style="font-size:24px; font-weight:var(--fw-bold); margin: var(--space-xs) 0;">$29<span style="font-size:var(--fs-small); color:var(--color-text-muted); font-weight:normal;">/month</span></p>
-            <ul class="feature-list" style="margin-bottom:var(--space-md);">
-              <li><i class="ph ph-check-circle" style="color:var(--color-primary);"></i> 1 Essential Grooming visit</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-primary);"></i> 10% off additional services</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-primary);"></i> Priority Standby booking</li>
-            </ul>
-            <a href="login.html" class="btn btn-primary btn-sm btn-full" style="margin-top: auto;">Join Silver Club</a>
+        <h2 class="section-title anim-fade-up">How It Works</h2>
+        <p class="section-subtitle anim-fade-up">Simple, stress-free grooming in four easy steps</p>
+
+        <div class="grid grid-4" data-stagger="150" style="margin-top:var(--space-xl);">
+          <!-- Step 1 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative;">
+            <div style="width:72px; height:72px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:28px; box-shadow:0 4px 15px rgba(45,106,79,0.3);">
+              <i class="ph ph-calendar-plus"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; margin:-10px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">1</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Book Online</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Pick your preferred service, date, and groomer through our easy online booking system.</p>
           </div>
 
-          <div class="card card-flat" style="border-top: 4px solid var(--color-secondary); box-shadow: var(--shadow-lg);">
-            <h3 style="font-size:20px; color:var(--color-secondary);">Gold Member</h3>
-            <p style="font-size:24px; font-weight:var(--fw-bold); margin: var(--space-xs) 0;">$55<span style="font-size:var(--fs-small); color:var(--color-text-muted); font-weight:normal;">/month</span></p>
-            <ul class="feature-list" style="margin-bottom:var(--space-md);">
-              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> 1 Signature Style visit</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> 15% off additional services</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> Free tooth brushing each visit</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-secondary);"></i> Priority reservation slots</li>
-            </ul>
-            <a href="login.html" class="btn btn-secondary btn-sm btn-full" style="margin-top: auto;">Join Gold Club</a>
+          <!-- Step 2 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative;">
+            <div style="width:72px; height:72px; border-radius:50%; background:#40916C; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:28px; box-shadow:0 4px 15px rgba(45,106,79,0.25);">
+              <i class="ph ph-chat-text"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:#40916C; color:#fff; display:flex; align-items:center; justify-content:center; margin:-10px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">2</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Consultation</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Our groomer reviews your pet's breed, coat condition, and any special care requirements.</p>
           </div>
 
-          <div class="card card-flat" style="border-top: 4px solid var(--color-accent);">
-            <h3 style="font-size:20px; color:var(--color-accent);">Platinum Member</h3>
-            <p style="font-size:24px; font-weight:var(--fw-bold); margin: var(--space-xs) 0;">$85<span style="font-size:var(--fs-small); color:var(--color-text-muted); font-weight:normal;">/month</span></p>
-            <ul class="feature-list" style="margin-bottom:var(--space-md);">
-              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> 1 Royal VIP Spa visit</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> 20% off all salon products</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> Free transport pickup (within 5 miles)</li>
-              <li><i class="ph ph-check-circle" style="color:var(--color-accent);"></i> Guaranteed booking schedule</li>
-            </ul>
-            <a href="login.html" class="btn btn-accent btn-sm btn-full" style="color:#fff; margin-top: auto;">Join Platinum Club</a>
+          <!-- Step 3 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative;">
+            <div style="width:72px; height:72px; border-radius:50%; background:#52B788; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:28px; box-shadow:0 4px 15px rgba(82,183,136,0.25);">
+              <i class="ph ph-scissors"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:#52B788; color:#fff; display:flex; align-items:center; justify-content:center; margin:-10px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">3</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Grooming Session</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Your pet receives professional grooming with premium, pet-safe products in our calm salon.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="anim-fade-up" style="text-align:center; position:relative;">
+            <div style="width:72px; height:72px; border-radius:50%; background:#74C69D; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm); font-size:28px; box-shadow:0 4px 15px rgba(116,198,157,0.25);">
+              <i class="ph ph-sparkle"></i>
+            </div>
+            <div style="width:28px; height:28px; border-radius:50%; background:#74C69D; color:#fff; display:flex; align-items:center; justify-content:center; margin:-10px auto var(--space-sm); font-size:14px; font-weight:var(--fw-bold); font-family:var(--font-heading); border:3px solid var(--color-bg);">4</div>
+            <h3 style="font-size:18px; margin-bottom:var(--space-xs);">Happy Pet Pickup</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Collect your freshly groomed pet along with a detailed grooming report card and care tips.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: PACKAGE CUSTOMIZER & ESTIMATOR -->
-    <section class="section section-bg" id="estimator-section" aria-label="Dynamic Package Builder">
+    <!-- SECTION 4: SERVICE COMPARISON TABLE -->
+    <section class="section section-bg" id="service-comparison" aria-label="Service Comparison">
       <div class="container">
-        <h2 class="section-title anim-fade-up">Design Your Experience</h2>
-        <p class="section-subtitle anim-fade-up">Build your customized package and instantly estimate the cost.</p>
-        
-        <div class="two-col" style="align-items: stretch; gap: var(--space-xl);">
-          <!-- Configurator Form -->
-          <div class="card anim-fade-left" style="flex: 1.2;">
-            <h3 style="margin-bottom: var(--space-md);">Customizer Options</h3>
-            <form id="price-calculator-form">
-              <div class="form-group">
-                <label class="form-label" for="calc-pet-size">Select Pet Size</label>
-                <select id="calc-pet-size" class="form-input">
-                  <option value="small" data-factor="1">Small Dog/Cat (Under 10kg)</option>
-                  <option value="medium" data-factor="1.2">Medium Pet (10-25kg)</option>
-                  <option value="large" data-factor="1.5">Large Pet (25kg+)</option>
-                </select>
-              </div>
+        <h2 class="section-title anim-fade-up">Compare Our Services</h2>
+        <p class="section-subtitle anim-fade-up">See exactly what's included in each grooming experience</p>
 
-              <div class="form-group">
-                <label class="form-label">Choose Base Package</label>
-                <div style="display:flex; flex-direction:column; gap: var(--space-xs);">
-                  <label class="form-check">
-                    <input type="radio" name="base-tier" value="35" checked>
-                    <span>Essential Care Base ($35)</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="radio" name="base-tier" value="65">
-                    <span>Signature Style Base ($65)</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="radio" name="base-tier" value="95">
-                    <span>Royal VIP Spa Base ($95)</span>
-                  </label>
-                </div>
-              </div>
+        <div class="anim-fade-up" style="overflow-x:auto; margin-top:var(--space-lg);">
+          <table style="width:100%; border-collapse:collapse; background:var(--color-surface); border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-md);">
+            <thead>
+              <tr style="background:linear-gradient(135deg, var(--color-primary) 0%, #1B4332 100%); color:#fff;">
+                <th style="padding:var(--space-md) var(--space-lg); text-align:left; font-family:var(--font-heading); font-size:16px; min-width:200px;">Service Included</th>
+                <th style="padding:var(--space-md); text-align:center; font-family:var(--font-heading); font-size:16px; min-width:130px;">
+                  <i class="ph ph-bathtub" style="display:block; font-size:24px; margin-bottom:4px;"></i>
+                  Bath & Brush
+                </th>
+                <th style="padding:var(--space-md); text-align:center; font-family:var(--font-heading); font-size:16px; background:rgba(255,255,255,0.1); min-width:130px;">
+                  <i class="ph ph-scissors" style="display:block; font-size:24px; margin-bottom:4px;"></i>
+                  Full Grooming
+                </th>
+                <th style="padding:var(--space-md); text-align:center; font-family:var(--font-heading); font-size:16px; min-width:130px;">
+                  <i class="ph ph-flower-lotus" style="display:block; font-size:24px; margin-bottom:4px;"></i>
+                  Spa & Wellness
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Organic Shampoo Bath</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Blow Dry & Brush Out</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Nail Trimming</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Ear & Eye Cleaning</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Breed-Specific Haircut & Style</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px;"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Teeth Brushing & Breath Care</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px;"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Sanitary Trim & Pad Balm</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px;"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-check-circle"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Aromatherapy Bath</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px;"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Deep Coat Conditioning Mask</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px;"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-border);">
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Blueberry Facial</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px;"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+              <tr>
+                <td style="padding:var(--space-sm) var(--space-lg); font-size:var(--fs-small);">Paw Massage & Cologne Spritz</td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px;"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-text-muted); font-size:20px; background:rgba(45,106,79,0.03);"><i class="ph ph-minus"></i></td>
+                <td style="padding:var(--space-sm); text-align:center; color:var(--color-primary); font-size:20px;"><i class="ph ph-check-circle"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-              <div class="form-group">
-                <label class="form-label">Add Extras & Upgrades</label>
-                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-xs);">
-                  <label class="form-check">
-                    <input type="checkbox" name="addons" value="12" class="calc-addon">
-                    <span>Aromatherapy (+$12)</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" name="addons" value="8" class="calc-addon">
-                    <span>Moisturizing Paw Balm (+$8)</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" name="addons" value="15" class="calc-addon">
-                    <span>Blueberry Facial (+$15)</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" name="addons" value="25" class="calc-addon">
-                    <span>Creative Coloring (+$25)</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" name="addons" value="15" class="calc-addon">
-                    <span>De-shedding Treatment (+$15)</span>
-                  </label>
-                  <label class="form-check">
-                    <input type="checkbox" name="addons" value="10" class="calc-addon">
-                    <span>Nail Filing / Grinding (+$10)</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group" style="margin-bottom:0;">
-                <label class="form-check">
-                  <input type="checkbox" id="calc-member-discount" value="0.85">
-                  <span style="font-weight: var(--fw-semibold); color: var(--color-secondary);">Apply Club Member Discount (15% Off)</span>
-                </label>
-              </div>
-            </form>
-          </div>
-
-          <!-- Estimates Display Card -->
-          <div class="card anim-fade-right" style="flex: 0.8; background: linear-gradient(135deg, var(--color-primary) 0%, #1a3e2e 100%); color:#fff; display:flex; flex-direction:column; justify-content:space-between;">
-            <div>
-              <h3 style="color:#fff; margin-bottom: var(--space-md); border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom:var(--space-sm);">Est. Pricing Summary</h3>
-              
-              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
-                <span style="color:rgba(255,255,255,0.75);">Base Cost:</span>
-                <span id="summary-base-price" style="font-weight:var(--fw-semibold);">$35.00</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
-                <span style="color:rgba(255,255,255,0.75);">Size Multiplier:</span>
-                <span id="summary-size-factor" style="font-weight:var(--fw-semibold);">1.00x</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm);">
-                <span style="color:rgba(255,255,255,0.75);">Addons Total:</span>
-                <span id="summary-addons-price" style="font-weight:var(--fw-semibold);">$0.00</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:var(--space-sm); display:none;" id="summary-discount-row">
-                <span style="color:var(--color-secondary);">Club Discount:</span>
-                <span id="summary-discount-value" style="color:var(--color-secondary); font-weight:var(--fw-semibold);">-15%</span>
-              </div>
-            </div>
-
-            <div style="margin-top:var(--space-xl);">
-              <div style="border-top:1px solid rgba(255,255,255,0.15); padding-top:var(--space-md); display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--space-lg);">
-                <span style="font-size:18px; color:rgba(255,255,255,0.85);">Total Estimate:</span>
-                <span id="calc-final-price" style="font-size:36px; font-weight:var(--fw-bold); color:var(--color-secondary);">$35.00</span>
-              </div>
-              
-              <a href="login.html" class="btn btn-secondary btn-full btn-lg">Book Customized Session</a>
-              <p style="font-size:11px; color:rgba(255,255,255,0.5); text-align:center; margin-top:var(--space-xs); margin-bottom:0;">*Actual price may vary depending on pet behavior and coat condition.</p>
-            </div>
-          </div>
+        <div style="text-align:center; margin-top:var(--space-xl);">
+          <a href="contact.html" class="btn btn-primary btn-lg anim-fade-up">
+            <i class="ph ph-phone"></i> Contact Us for Custom Requests
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 5: MEMBERSHIP BENEFITS -->
-    <section class="section section-surface" id="member-benefits" aria-label="Why Join Club Pawly">
+    <!-- SECTION 5: PET CARE GUARANTEE & TESTIMONIALS -->
+    <section class="section section-surface" id="pet-care-guarantee" aria-label="Our Pet Care Guarantee">
       <div class="container">
-        <h2 class="section-title anim-fade-up">Why Join Club Pawly?</h2>
-        <p class="section-subtitle anim-fade-up">Standard package or custom-built, we guarantee convenience & savings.</p>
+        <h2 class="section-title anim-fade-up">Our Pet Care Guarantee</h2>
+        <p class="section-subtitle anim-fade-up">Your pet's safety, comfort, and happiness are our top priorities</p>
         
         <div class="grid grid-4" data-stagger="80">
-          <div class="card card-flat" style="text-align:center;">
+          <div class="card card-flat anim-fade-up" style="text-align:center;">
             <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(45,106,79,0.1);">
               <i class="ph ph-shield-check"></i>
             </div>
-            <h3 style="font-size:18px;">Guaranteed Slots</h3>
-            <p class="card-text" style="font-size:var(--fs-small);">Get automatic slot reservations on holidays and busy weekends.</p>
+            <h3 style="font-size:18px;">100% Safe Products</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">We use only certified organic, hypoallergenic, and cruelty-free grooming products.</p>
           </div>
 
-          <div class="card card-flat" style="text-align:center;">
-            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(244,162,97,0.12);">
-              <i class="ph ph-percent" style="color:var(--color-secondary);"></i>
+          <div class="card card-flat anim-fade-up" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(45,106,79,0.1);">
+              <i class="ph ph-certificate" style="color:var(--color-primary);"></i>
             </div>
-            <h3 style="font-size:18px;">Big Savings</h3>
-            <p class="card-text" style="font-size:var(--fs-small);">Save over $200+ annually on standard grooming rates and spa additions.</p>
+            <h3 style="font-size:18px;">Certified Groomers</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Every groomer is professionally certified with 5+ years of breed-specific experience.</p>
           </div>
 
-          <div class="card card-flat" style="text-align:center;">
-            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(231,111,81,0.1);">
-              <i class="ph ph-truck" style="color:var(--color-accent);"></i>
+          <div class="card card-flat anim-fade-up" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(45,106,79,0.1);">
+              <i class="ph ph-heart" style="color:var(--color-primary);"></i>
             </div>
-            <h3 style="font-size:18px;">Pickup Service</h3>
-            <p class="card-text" style="font-size:var(--fs-small);">Premium/Deluxe tier packages can request safe pick-up & drop-off of pets.</p>
+            <h3 style="font-size:18px;">Stress-Free Environment</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Calming music, gentle handling, and separate areas for anxious pets ensure comfort.</p>
           </div>
 
-          <div class="card card-flat" style="text-align:center;">
-            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(82,183,136,0.12);">
-              <i class="ph ph-gift" style="color:var(--color-success);"></i>
+          <div class="card card-flat anim-fade-up" style="text-align:center;">
+            <div class="card-icon" style="margin:0 auto var(--space-sm); background:rgba(45,106,79,0.1);">
+              <i class="ph ph-clipboard-text" style="color:var(--color-primary);"></i>
             </div>
-            <h3 style="font-size:18px;">Exclusive Gifts</h3>
-            <p class="card-text" style="font-size:var(--fs-small);">Free customized toys, pet treats, and home-care product samples.</p>
+            <h3 style="font-size:18px;">Grooming Report Card</h3>
+            <p class="card-text" style="font-size:var(--fs-small);">Receive a detailed report on your pet's coat condition, health notes, and home care tips.</p>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div style="margin-top:var(--space-2xl);">
+          <h3 class="section-title anim-fade-up" style="font-size:var(--fs-h3);">What Pet Parents Say</h3>
+          <div class="grid grid-3" data-stagger="100" style="margin-top:var(--space-lg);">
+            <div class="card card-flat anim-fade-up" style="padding:var(--space-lg);">
+              <div style="display:flex; gap:4px; color:#E9C46A; margin-bottom:var(--space-sm); font-size:18px;">
+                <i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i>
+              </div>
+              <p class="card-text" style="font-style:italic; margin-bottom:var(--space-md);">"My golden retriever has never looked so beautiful! The groomers were so patient with him, and the de-shedding treatment made a huge difference. Highly recommend!"</p>
+              <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                <div style="width:44px; height:44px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold); font-family:var(--font-heading);">SM</div>
+                <div>
+                  <p style="font-weight:var(--fw-semibold); margin-bottom:2px; font-size:var(--fs-small);">Sarah M.</p>
+                  <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">Golden Retriever Owner</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-flat anim-fade-up" style="padding:var(--space-lg);">
+              <div style="display:flex; gap:4px; color:#E9C46A; margin-bottom:var(--space-sm); font-size:18px;">
+                <i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i>
+              </div>
+              <p class="card-text" style="font-style:italic; margin-bottom:var(--space-md);">"Finding a groomer who understands Persian cats is rare. Pawly's team handled the de-matting so gently. My cat actually purred during the session!"</p>
+              <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                <div style="width:44px; height:44px; border-radius:50%; background:#40916C; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold); font-family:var(--font-heading);">JL</div>
+                <div>
+                  <p style="font-weight:var(--fw-semibold); margin-bottom:2px; font-size:var(--fs-small);">James L.</p>
+                  <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">Persian Cat Owner</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-flat anim-fade-up" style="padding:var(--space-lg);">
+              <div style="display:flex; gap:4px; color:#E9C46A; margin-bottom:var(--space-sm); font-size:18px;">
+                <i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i><i class="ph ph-star-fill"></i>
+              </div>
+              <p class="card-text" style="font-style:italic; margin-bottom:var(--space-md);">"The spa treatment was incredible — my poodle came home smelling amazing and looking like a show dog. The grooming report card was such a thoughtful touch!"</p>
+              <div style="display:flex; align-items:center; gap:var(--space-sm);">
+                <div style="width:44px; height:44px; border-radius:50%; background:#52B788; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:var(--fw-bold); font-family:var(--font-heading);">RK</div>
+                <div>
+                  <p style="font-weight:var(--fw-semibold); margin-bottom:2px; font-size:var(--fs-small);">Rachel K.</p>
+                  <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:0;">Poodle Owner</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -427,7 +517,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="brand-name">
+          <a href="index.html" class="brand-name">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="14" cy="10" r="5" fill="#fff"/>
               <circle cx="34" cy="10" r="5" fill="#fff"/>
@@ -436,7 +526,7 @@
               <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
             </svg>
             PAWLY
-          </div>
+          </a>
           <p>Premium grooming care for your beloved companions.</p>
           <div class="footer-social">
             <button class="btn-social btn-google"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/><path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/><path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/></svg> Sign in with Google</button>
@@ -492,73 +582,6 @@
   <script src="assets/js/animations.js"></script>
   <script src="assets/js/forms.js"></script>
 
-  <!-- Interactive Pricing Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const calcForm = document.getElementById('price-calculator-form');
-      if (!calcForm) return;
 
-      const sizeSelect = document.getElementById('calc-pet-size');
-      const baseRadioButtons = document.getElementsByName('base-tier');
-      const addonCheckboxes = document.querySelectorAll('.calc-addon');
-      const memberDiscountCheckbox = document.getElementById('calc-member-discount');
-
-      const summaryBase = document.getElementById('summary-base-price');
-      const summarySize = document.getElementById('summary-size-factor');
-      const summaryAddons = document.getElementById('summary-addons-price');
-      const summaryDiscountRow = document.getElementById('summary-discount-row');
-      const summaryDiscountVal = document.getElementById('summary-discount-value');
-      const calcFinal = document.getElementById('calc-final-price');
-
-      function calculateEstimate() {
-        // Base Price Selection
-        let baseVal = 35;
-        for (const radio of baseRadioButtons) {
-          if (radio.checked) {
-            baseVal = parseFloat(radio.value);
-            break;
-          }
-        }
-
-        // Size Factor
-        const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
-        const sizeFactor = parseFloat(selectedOption.dataset.factor || 1);
-
-        // Addons Cost
-        let addonsTotal = 0;
-        addonCheckboxes.forEach(chk => {
-          if (chk.checked) {
-            addonsTotal += parseFloat(chk.value);
-          }
-        });
-
-        // Subtotal before discount
-        let subtotal = (baseVal * sizeFactor) + addonsTotal;
-
-        // Discount
-        let hasDiscount = memberDiscountCheckbox.checked;
-        if (hasDiscount) {
-          subtotal = subtotal * parseFloat(memberDiscountCheckbox.value);
-          summaryDiscountRow.style.display = 'flex';
-        } else {
-          summaryDiscountRow.style.display = 'none';
-        }
-
-        // Update Outputs
-        summaryBase.textContent = `$${baseVal.toFixed(2)}`;
-        summarySize.textContent = `${sizeFactor.toFixed(2)}x`;
-        summaryAddons.textContent = `$${addonsTotal.toFixed(2)}`;
-        calcFinal.textContent = `$${subtotal.toFixed(2)}`;
-      }
-
-      // Event Listeners
-      sizeSelect.addEventListener('change', calculateEstimate);
-      baseRadioButtons.forEach(radio => radio.addEventListener('change', calculateEstimate));
-      addonCheckboxes.forEach(chk => chk.addEventListener('change', calculateEstimate));
-      memberDiscountCheckbox.addEventListener('change', calculateEstimate);
-
-      calculateEstimate(); // Initial Run
-    });
-  </script>
 </body>
 </html>

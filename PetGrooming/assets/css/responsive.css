@@ -63,7 +63,8 @@
 
   /* Navbar actions hide in desktop, show in mobile nav */
   .navbar-actions .rtl-toggle-btn,
-  .navbar-actions .navbar-toggle-btn:not(.theme-toggle-mobile-visible) {
+  .navbar-actions .navbar-toggle-btn:not(.theme-toggle-mobile-visible),
+  .navbar-actions .btn {
     display: none;
   }
 
@@ -224,10 +225,22 @@
   }
 
   /* Auth card */
+  .auth-theme-toggles {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    left: auto;
+    transform: none;
+    display: flex;
+    gap: var(--space-xs);
+    z-index: 100;
+  }
+
   .auth-card {
     padding: var(--space-lg);
     margin: var(--space-sm);
     max-width: 100%;
+    margin-top: 60px;
   }
 
   .auth-split {

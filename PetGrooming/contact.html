@@ -13,6 +13,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16.png?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png?v=1">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/fill/style.css">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -58,14 +59,14 @@
             <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
           </div>
         </li>
-        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
       </ul>
       <div class="navbar-actions">
         <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
         <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
-          <i class="ph ph-sun icon-sun" style="display:none;"></i>
-          <i class="ph ph-moon icon-moon"></i>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
         </button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
       </div>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -89,11 +90,14 @@
       <a href="dashboard/user/index.html">User Dashboard</a>
       <a href="dashboard/admin/index.html">Admin Dashboard</a>
     </div>
-    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
     <div class="mobile-nav-actions">
       <button class="rtl-toggle-btn rtl-toggle">LTR</button>
-      <button class="navbar-toggle-btn theme-toggle"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+      <button class="navbar-toggle-btn theme-toggle">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
     </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
   </div>
 
   <main id="main-content">
@@ -242,7 +246,7 @@
         
         <div class="card anim-fade-up" style="padding:0; overflow:hidden; aspect-ratio:21/9; min-height:350px; position:relative;">
           <!-- Floating Address Banner -->
-          <div class="card" style="position:absolute; top:20px; left:20px; max-width:320px; z-index:2; background:rgba(255,255,255,0.95); backdrop-filter:blur(8px); box-shadow:var(--shadow-lg);">
+          <div class="card" style="position:absolute; top:20px; left:20px; max-width:320px; z-index:2; background:var(--glass-bg); backdrop-filter:blur(8px); box-shadow:var(--shadow-lg);">
             <h4 style="color:var(--color-primary); margin-bottom: var(--space-xs);"><i class="ph ph-map-pin"></i> Pawly Flagship</h4>
             <p style="font-size:var(--fs-small); margin-bottom:0; color:var(--color-text-secondary);">123 Pet Avenue, San Francisco, CA 94102</p>
             <p style="font-size:12px; color:var(--color-text-muted); margin-top:4px;">Direct: +1 (555) 729-5968</p>
@@ -310,7 +314,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="brand-name">
+          <a href="index.html" class="brand-name">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="14" cy="10" r="5" fill="#fff"/>
               <circle cx="34" cy="10" r="5" fill="#fff"/>
@@ -319,7 +323,7 @@
               <ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/>
             </svg>
             PAWLY
-          </div>
+          </a>
           <p>Premium grooming care for your beloved companions.</p>
           <div class="footer-social">
             <button class="btn-social btn-google"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/><path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/><path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/></svg> Sign in with Google</button>

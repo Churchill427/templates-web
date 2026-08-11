@@ -58,18 +58,22 @@
     .auth-card-container {
       width: 500px;
       max-width: 100%;
+      height: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding: var(--space-xl);
       overflow-y: auto;
     }
     .auth-card {
       width: 100%;
       max-width: 400px;
+      margin: auto 0;
       animation: scaleIn 0.5s ease-out forwards;
+      flex-shrink: 0;
     }
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
       .auth-banner {
         display: none;
       }
@@ -87,9 +91,9 @@
     <div class="auth-theme-toggles">
       <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
       <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
-        <i class="ph ph-sun icon-sun" style="display:none;"></i>
-        <i class="ph ph-moon icon-moon"></i>
-      </button>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
     </div>
     <!-- Left Banner Content -->
     <div class="auth-banner">
@@ -129,26 +133,18 @@
     <div class="auth-card-container">
       <div class="card auth-card" id="auth-card-element" style="border:none; box-shadow:var(--shadow-xl);">
         <div style="text-align:center; margin-bottom:var(--space-md);">
-          <a href="index.html" style="display:inline-block; margin-bottom: var(--space-xs);">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:36px; height:36px;">
+          <a href="index.html" style="display:inline-flex; align-items:center; gap:var(--space-xs); margin-bottom: var(--space-xs); text-decoration:none; color:var(--color-primary); font-family:var(--font-heading); font-weight:var(--fw-bold); font-size:24px; text-transform:uppercase; letter-spacing:1px;">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px; height:28px;">
               <circle cx="14" cy="10" r="5" fill="var(--color-primary)"/>
               <circle cx="34" cy="10" r="5" fill="var(--color-primary)"/>
               <circle cx="7" cy="24" r="5" fill="var(--color-primary)"/>
               <circle cx="41" cy="24" r="5" fill="var(--color-primary)"/>
               <ellipse cx="24" cy="32" rx="12" ry="10" fill="var(--color-primary)"/>
             </svg>
+            PAWLY
           </a>
           <h2 style="font-size:24px; margin-bottom:4px;">Sign In</h2>
           <p style="color:var(--color-text-muted); font-size:var(--fs-small); margin-bottom:0;">Access your Pawly client portal</p>
-        </div>
-
-        <div style="background: var(--color-bg-light); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-sm); margin-bottom: var(--space-md); font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; text-align: left;">
-          <strong style="color:var(--color-primary); display:flex; align-items:center; gap:6px;"><i class="ph ph-info" style="font-size:16px;"></i> Demo Credentials:</strong>
-          <div style="margin-top: 6px;">
-            • Admin: <code style="background:var(--color-border); padding:2px 4px; border-radius:3px; font-family:monospace;">admin@pawly.com</code><br>
-            • Client: <code style="background:var(--color-border); padding:2px 4px; border-radius:3px; font-family:monospace;">client@pawly.com</code>
-          </div>
-          <span style="font-size: 11px; color:var(--color-text-muted); display:block; margin-top:6px;">Any password (minimum 8 chars) works. Use social login buttons for instant bypass.</span>
         </div>
 
         <form id="login-auth-form" data-validate>
@@ -156,7 +152,7 @@
             <label class="form-label" for="login-email">Email Address</label>
             <div class="form-input-icon">
               <i class="ph ph-envelope"></i>
-              <input type="email" id="login-email" class="form-input" placeholder="name@domain.com" value="admin@pawly.com" required>
+              <input type="email" id="login-email" class="form-input" placeholder="name@domain.com" required>
             </div>
           </div>
 
@@ -167,7 +163,7 @@
             </div>
             <div class="form-input-icon">
               <i class="ph ph-lock"></i>
-              <input type="password" id="login-pass" class="form-input" placeholder="••••••••" value="adminpassword" required>
+              <input type="password" id="login-pass" class="form-input" placeholder="••••••••" required>
               <button type="button" class="toggle-password" aria-label="Show password"><i class="ph ph-eye"></i></button>
             </div>
           </div>
@@ -189,33 +185,24 @@
           </div>
 
           <!-- OAuth Social buttons -->
-          <div style="display:flex; flex-direction:column; gap:var(--space-xs);">
-            <button type="button" class="btn-social btn-google btn-full" onclick="handleSocialRedirect('admin')">
-              <span class="btn-social-content">
-                <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
-                  <path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/>
-                  <path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/>
-                  <path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/>
-                  <path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/>
-                </svg>
-                Google
-              </span>
+          <div class="grid grid-3" style="gap:var(--space-xs); margin-bottom:0;">
+            <button type="button" class="btn-social btn-google btn-full" onclick="handleSocialRedirect('admin')" style="justify-content:center; padding:10px;" aria-label="Sign in with Google">
+              <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/>
+                <path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/>
+                <path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/>
+              </svg>
             </button>
-            <button type="button" class="btn-social btn-apple btn-full" onclick="handleSocialRedirect('user')">
-              <span class="btn-social-content">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.21.67-2.93 1.49-.62.69-1.16 1.84-1.01 2.96 1.12.09 2.27-.57 2.95-1.39z"/>
-                </svg>
-                Apple
-              </span>
+            <button type="button" class="btn-social btn-apple btn-full" onclick="handleSocialRedirect('user')" style="justify-content:center; padding:10px; background:#000; border-color:#000; color:#fff;" aria-label="Sign in with Apple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.21.67-2.93 1.49-.62.69-1.16 1.84-1.01 2.96 1.12.09 2.27-.57 2.95-1.39z"/>
+              </svg>
             </button>
-            <button type="button" class="btn-social btn-facebook btn-full" onclick="handleSocialRedirect('user')">
-              <span class="btn-social-content">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                Facebook
-              </span>
+            <button type="button" class="btn-social btn-facebook btn-full" onclick="handleSocialRedirect('user')" style="justify-content:center; padding:10px; background:#1877F2; border-color:#1877F2; color:#fff;" aria-label="Sign in with Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
             </button>
           </div>
 

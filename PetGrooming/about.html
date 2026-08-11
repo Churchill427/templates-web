@@ -14,6 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16.png?v=1">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png?v=1">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/fill/style.css">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -51,11 +52,14 @@
             <a href="dashboard/admin/index.html" role="menuitem">Admin Dashboard</a>
           </div>
         </li>
-        <li role="none"><a href="login.html" class="btn btn-primary btn-sm" role="menuitem">Login</a></li>
       </ul>
       <div class="navbar-actions">
         <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
-        <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+        <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
       </div>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -78,11 +82,14 @@
       <a href="dashboard/user/index.html">User Dashboard</a>
       <a href="dashboard/admin/index.html">Admin Dashboard</a>
     </div>
-    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
     <div class="mobile-nav-actions">
       <button class="rtl-toggle-btn rtl-toggle" aria-label="Toggle text direction">LTR</button>
-      <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode"><i class="ph ph-sun icon-sun" style="display:none;"></i><i class="ph ph-moon icon-moon"></i></button>
+      <button class="navbar-toggle-btn theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
     </div>
+    <a href="login.html" class="btn btn-primary btn-full" style="margin-top: var(--space-md);">Login</a>
   </div>
 
   <main id="main-content">
@@ -249,7 +256,7 @@
     </section>
 
     <!-- ===== SECTION 5: FACILITIES ===== -->
-    <section class="section section-bg" id="facilities" aria-label="State-of-the-art facilities">
+    <section class="section section-surface" id="facilities" aria-label="State-of-the-art facilities">
       <div class="container">
         <h2 class="section-title anim-fade-up">State-of-the-Art Facilities</h2>
         <p class="section-subtitle anim-fade-up">Designed for comfort, safety, and the best grooming experience</p>
@@ -281,66 +288,327 @@
         </div>
 
         <div class="grid grid-4" data-stagger="100" style="margin-top:var(--space-lg);">
-          <div class="card" style="text-align:center; padding:var(--space-md);">
-            <i class="ph ph-thermometer" style="font-size:28px; color:var(--color-primary);"></i>
-            <h4 style="font-size:15px; margin-top:var(--space-xs);">Climate Control</h4>
+          <div class="card img-hover-zoom">
+            <div style="width:100%; aspect-ratio:4/3; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/facilities/facility4.png" alt="Climate Control" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 style="font-size:16px;">Climate Control</h3>
+            <p class="card-text" style="font-size:13px;">Temperature-regulated rooms keep pets comfortable year-round during sessions.</p>
           </div>
-          <div class="card" style="text-align:center; padding:var(--space-md);">
-            <i class="ph ph-music-note" style="font-size:28px; color:var(--color-secondary);"></i>
-            <h4 style="font-size:15px; margin-top:var(--space-xs);">Soothing Music</h4>
+          <div class="card img-hover-zoom">
+            <div style="width:100%; aspect-ratio:4/3; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/facilities/facility5.png" alt="Soothing Music" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 style="font-size:16px;">Soothing Music</h3>
+            <p class="card-text" style="font-size:13px;">Calming ambient soundscapes to reduce pet anxiety during grooming.</p>
           </div>
-          <div class="card" style="text-align:center; padding:var(--space-md);">
-            <i class="ph ph-camera" style="font-size:28px; color:var(--color-accent);"></i>
-            <h4 style="font-size:15px; margin-top:var(--space-xs);">Live Webcam</h4>
+          <div class="card img-hover-zoom">
+            <div style="width:100%; aspect-ratio:4/3; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/facilities/facility6.png" alt="Live Webcam" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 style="font-size:16px;">Live Webcam</h3>
+            <p class="card-text" style="font-size:13px;">Watch your pet's grooming session in real-time from anywhere.</p>
           </div>
-          <div class="card" style="text-align:center; padding:var(--space-md);">
-            <i class="ph ph-first-aid" style="font-size:28px; color:var(--color-success);"></i>
-            <h4 style="font-size:15px; margin-top:var(--space-xs);">First Aid Station</h4>
+          <div class="card img-hover-zoom">
+            <div style="width:100%; aspect-ratio:4/3; border-radius:var(--radius-md); margin-bottom:var(--space-sm); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="assets/images/facilities/facility7.png" alt="First Aid Station" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <h3 style="font-size:16px;">First Aid Station</h3>
+            <p class="card-text" style="font-size:13px;">Fully equipped pet first aid station for immediate care if needed.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== SECTION 6: CERTIFICATIONS & PARTNERS ===== -->
-    <section class="section section-primary" id="certifications" aria-label="Trusted and certified">
+    <!-- ===== SECTION 6: TRUSTED & CERTIFIED (Redesigned) ===== -->
+    <section class="section" id="certifications" aria-label="Trusted and certified" style="background: linear-gradient(160deg, #1B4332 0%, #2D6A4F 40%, #1a3a2a 100%); color:#fff; overflow:hidden;">
+      <style>
+        /* Trust Section Scoped Styles */
+        .trust-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: var(--space-md);
+          margin-bottom: var(--space-2xl);
+        }
+        .trust-stat-card {
+          text-align: center;
+          padding: var(--space-lg) var(--space-md);
+          background: rgba(255,255,255,0.06);
+          border-radius: var(--radius-xl);
+          border: 1px solid rgba(255,255,255,0.08);
+          backdrop-filter: blur(12px);
+          transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .trust-stat-card:hover {
+          transform: translateY(-4px);
+          background: rgba(255,255,255,0.1);
+        }
+        .trust-stat-number {
+          font-size: 42px;
+          font-weight: 800;
+          color: #52B788;
+          line-height: 1;
+          margin-bottom: 4px;
+        }
+        .trust-stat-label {
+          font-size: 14px;
+          color: rgba(255,255,255,0.7);
+          font-weight: 500;
+        }
+        .trust-cert-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: var(--space-md);
+          margin-bottom: var(--space-2xl);
+        }
+        .trust-cert-card {
+          text-align: center;
+          padding: var(--space-lg) var(--space-sm);
+          background: rgba(255,255,255,0.04);
+          border-radius: var(--radius-lg);
+          border: 1px solid rgba(82,183,136,0.2);
+          transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .trust-cert-card:hover {
+          transform: translateY(-3px);
+          border-color: #52B788;
+          box-shadow: 0 8px 24px rgba(82,183,136,0.15);
+        }
+        .trust-cert-icon {
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, rgba(82,183,136,0.25), rgba(45,106,79,0.3));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto var(--space-sm);
+          border: 2px solid rgba(82,183,136,0.3);
+        }
+        .trust-cert-icon i {
+          font-size: 32px;
+          color: #52B788;
+        }
+        .trust-cert-card h4 {
+          color: #fff;
+          font-size: 16px;
+          margin-bottom: 6px;
+        }
+        .trust-cert-card p {
+          color: rgba(255,255,255,0.6);
+          font-size: 13px;
+          line-height: 1.5;
+          margin: 0;
+        }
+        .trust-reasons-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: var(--space-lg);
+          margin-bottom: var(--space-2xl);
+        }
+        .trust-reason-card {
+          padding: var(--space-lg);
+          background: rgba(255,255,255,0.05);
+          border-radius: var(--radius-xl);
+          border: 1px solid rgba(255,255,255,0.08);
+          backdrop-filter: blur(8px);
+          transition: transform 0.3s ease;
+        }
+        .trust-reason-card:hover {
+          transform: translateY(-4px);
+        }
+        .trust-reason-icon {
+          width: 56px;
+          height: 56px;
+          border-radius: var(--radius-md);
+          background: linear-gradient(135deg, #52B788, #2D6A4F);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: var(--space-md);
+        }
+        .trust-reason-icon i {
+          font-size: 26px;
+          color: #fff;
+        }
+        .trust-reason-card h4 {
+          color: #fff;
+          font-size: 18px;
+          margin-bottom: var(--space-xs);
+        }
+        .trust-reason-card p {
+          color: rgba(255,255,255,0.65);
+          font-size: 14px;
+          line-height: 1.6;
+          margin: 0;
+        }
+        .trust-cta-banner {
+          text-align: center;
+          padding: var(--space-xl) var(--space-lg);
+          background: rgba(82,183,136,0.1);
+          border-radius: var(--radius-xl);
+          border: 1px solid rgba(82,183,136,0.2);
+          backdrop-filter: blur(12px);
+        }
+        .trust-cta-banner h3 {
+          color: #fff;
+          font-size: 24px;
+          margin-bottom: var(--space-xs);
+        }
+        .trust-cta-banner p {
+          color: rgba(255,255,255,0.7);
+          max-width: 520px;
+          margin: 0 auto var(--space-md);
+        }
+        .trust-cta-banner .btn-trust-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 14px 32px;
+          background: #52B788;
+          color: #fff;
+          font-weight: 600;
+          font-size: 16px;
+          border-radius: var(--radius-full);
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 16px rgba(82,183,136,0.3);
+        }
+        .trust-cta-banner .btn-trust-cta:hover {
+          background: #40916C;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 24px rgba(82,183,136,0.4);
+        }
+
+        /* ── Trust Section Responsive: 1024px ── */
+        @media (max-width: 1024px) {
+          .trust-stats-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+          .trust-stat-number { font-size: 34px; }
+          .trust-cert-grid { grid-template-columns: repeat(2, 1fr); }
+          .trust-reasons-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+          .trust-reason-card { padding: var(--space-md); }
+        }
+
+        /* ── Trust Section Responsive: 768px ── */
+        @media (max-width: 768px) {
+          .trust-stats-grid { grid-template-columns: repeat(2, 1fr); }
+          .trust-stat-number { font-size: 32px; }
+          .trust-cert-grid { grid-template-columns: repeat(2, 1fr); }
+          .trust-reasons-grid { grid-template-columns: 1fr; }
+          .trust-reason-card { padding: var(--space-md); }
+          .trust-cta-banner { padding: var(--space-lg) var(--space-md); }
+          .trust-cta-banner h3 { font-size: 20px; }
+        }
+
+        /* ── Trust Section Responsive: 360px ── */
+        @media (max-width: 400px) {
+          .trust-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+          .trust-stat-card { padding: var(--space-md) var(--space-xs); }
+          .trust-stat-number { font-size: 28px; }
+          .trust-stat-label { font-size: 12px; }
+          .trust-cert-grid { grid-template-columns: 1fr; }
+          .trust-cert-card { display: flex; align-items: center; gap: var(--space-md); text-align: left; padding: var(--space-md); }
+          .trust-cert-card .trust-cert-icon { margin: 0; flex-shrink: 0; width: 56px; height: 56px; }
+          .trust-cert-card .trust-cert-icon i { font-size: 26px; }
+          .trust-reasons-grid { gap: var(--space-md); }
+          .trust-cta-banner { padding: var(--space-md) var(--space-sm); }
+          .trust-cta-banner h3 { font-size: 18px; }
+          .trust-cta-banner .btn-trust-cta { padding: 12px 24px; font-size: 14px; }
+        }
+      </style>
+
       <div class="container">
         <h2 class="section-title anim-fade-up" style="color:#fff;">Trusted & Certified</h2>
-        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.8);">Industry-recognized certifications and veterinary partnerships</p>
+        <p class="section-subtitle anim-fade-up" style="color:rgba(255,255,255,0.75);">Backed by industry credentials, real results, and the trust of hundreds of pet parents</p>
 
-        <div class="grid grid-4" data-stagger="100" style="margin-bottom:var(--space-xl);">
-          <div style="text-align:center; padding:var(--space-lg); background:rgba(255,255,255,0.08); border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,0.1);">
-            <div style="width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm);">
-              <i class="ph ph-certificate" style="font-size:28px; color:var(--color-secondary);"></i>
-            </div>
-            <h4 style="color:#fff; font-size:14px;">NDGAA Certified</h4>
+        <!-- Trust Stats Banner -->
+        <div class="trust-stats-grid anim-fade-up">
+          <div class="trust-stat-card">
+            <div class="trust-stat-number">10+</div>
+            <div class="trust-stat-label">Years of Experience</div>
           </div>
-
-          <div style="text-align:center; padding:var(--space-lg); background:rgba(255,255,255,0.08); border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,0.1);">
-            <div style="width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm);">
-              <i class="ph ph-seal-check" style="font-size:28px; color:var(--color-secondary);"></i>
-            </div>
-            <h4 style="color:#fff; font-size:14px;">IPG Accredited</h4>
+          <div class="trust-stat-card">
+            <div class="trust-stat-number">500+</div>
+            <div class="trust-stat-label">Pets Groomed Monthly</div>
           </div>
-
-          <div style="text-align:center; padding:var(--space-lg); background:rgba(255,255,255,0.08); border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,0.1);">
-            <div style="width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm);">
-              <i class="ph ph-shield-check" style="font-size:28px; color:var(--color-secondary);"></i>
-            </div>
-            <h4 style="color:#fff; font-size:14px;">ASPCA Partner</h4>
+          <div class="trust-stat-card">
+            <div class="trust-stat-number">15</div>
+            <div class="trust-stat-label">Certified Groomers</div>
           </div>
-
-          <div style="text-align:center; padding:var(--space-lg); background:rgba(255,255,255,0.08); border-radius:var(--radius-lg); border:1px solid rgba(255,255,255,0.1);">
-            <div style="width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-sm);">
-              <i class="ph ph-leaf" style="font-size:28px; color:var(--color-secondary);"></i>
-            </div>
-            <h4 style="color:#fff; font-size:14px;">Eco-Certified</h4>
+          <div class="trust-stat-card">
+            <div class="trust-stat-number">4.9<span style="font-size:20px;">★</span></div>
+            <div class="trust-stat-label">Average Rating</div>
           </div>
         </div>
 
-        <div class="anim-fade-up" style="text-align:center; padding-top:var(--space-xl); border-top:1px solid rgba(255,255,255,0.15);">
-          <h3 style="color:#fff; margin-bottom:var(--space-sm);">Join the Pawly Family</h3>
-          <p style="color:rgba(255,255,255,0.75); margin-bottom:var(--space-md); max-width:500px; margin-left:auto; margin-right:auto;">We're always looking for passionate groomers to join our team. Great benefits, ongoing education, and a supportive work environment.</p>
-          <a href="groomers.html#careers" class="btn btn-secondary">View Open Positions</a>
+        <!-- Certification Badges -->
+        <h3 class="anim-fade-up" style="color:rgba(255,255,255,0.9); font-size:20px; text-align:center; margin-bottom:var(--space-lg);">Our Certifications & Partnerships</h3>
+        <div class="trust-cert-grid anim-fade-up">
+          <div class="trust-cert-card">
+            <div class="trust-cert-icon">
+              <i class="ph ph-certificate"></i>
+            </div>
+            <h4>NDGAA Certified</h4>
+            <p>National Dog Groomers Association accredited for grooming excellence</p>
+          </div>
+          <div class="trust-cert-card">
+            <div class="trust-cert-icon">
+              <i class="ph ph-seal-check"></i>
+            </div>
+            <h4>IPG Accredited</h4>
+            <p>International Professional Groomers recognized salon standards</p>
+          </div>
+          <div class="trust-cert-card">
+            <div class="trust-cert-icon">
+              <i class="ph ph-shield-check"></i>
+            </div>
+            <h4>ASPCA Partner</h4>
+            <p>Partnered with ASPCA for animal welfare and responsible care</p>
+          </div>
+          <div class="trust-cert-card">
+            <div class="trust-cert-icon">
+              <i class="ph ph-leaf"></i>
+            </div>
+            <h4>Eco-Certified</h4>
+            <p>100% biodegradable, cruelty-free products used in every service</p>
+          </div>
+        </div>
+
+        <!-- Why Trust Us -->
+        <h3 class="anim-fade-up" style="color:rgba(255,255,255,0.9); font-size:20px; text-align:center; margin-bottom:var(--space-lg);">Why Pet Parents Trust Us</h3>
+        <div class="trust-reasons-grid anim-fade-up">
+          <div class="trust-reason-card">
+            <div class="trust-reason-icon">
+              <i class="ph ph-stethoscope"></i>
+            </div>
+            <h4>Vet-Approved Methods</h4>
+            <p>Every technique and product we use is reviewed and approved by our on-staff veterinary consultant, Dr. Lisa Wong, DVM.</p>
+          </div>
+          <div class="trust-reason-card">
+            <div class="trust-reason-icon">
+              <i class="ph ph-shield-star"></i>
+            </div>
+            <h4>Fully Insured & Bonded</h4>
+            <p>Complete liability coverage for every grooming session. Your pet is protected from the moment they arrive until pickup.</p>
+          </div>
+          <div class="trust-reason-card">
+            <div class="trust-reason-icon">
+              <i class="ph ph-recycle"></i>
+            </div>
+            <h4>Eco-Friendly & Safe</h4>
+            <p>We use only organic, hypoallergenic shampoos and sustainable materials — safe for pets, gentle on the planet.</p>
+          </div>
+        </div>
+
+        <!-- CTA Banner -->
+        <div class="trust-cta-banner anim-fade-up">
+          <h3>Join the Pawly Family</h3>
+          <p>We're always looking for passionate groomers to join our team. Great benefits, ongoing education, and a supportive work environment.</p>
+          <a href="groomers.html#careers" class="btn-trust-cta">
+            <i class="ph ph-briefcase"></i> View Open Positions
+          </a>
         </div>
       </div>
     </section>
@@ -352,7 +620,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="brand-name"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/><circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/><ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/></svg> PAWLY</div>
+          <a href="index.html" class="brand-name"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="14" cy="10" r="5" fill="#fff"/><circle cx="34" cy="10" r="5" fill="#fff"/><circle cx="7" cy="24" r="5" fill="#fff"/><circle cx="41" cy="24" r="5" fill="#fff"/><ellipse cx="24" cy="32" rx="12" ry="10" fill="#fff"/></svg> PAWLY</a>
           <p>Premium grooming care for your beloved companions.</p>
           <div class="footer-social">
             <button class="btn-social btn-google"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.1 1.5 7.5 2.8l5.5-5.5C33.5 3.5 29.2 1.5 24 1.5 14.8 1.5 7.2 7.3 4.2 15.2l6.4 5C12.3 14 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.5-.1-3-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.1l7.3 5.7c4.3-4 6.8-9.9 6.8-17.3z"/><path fill="#FBBC05" d="M10.6 28.6a14.4 14.4 0 010-9.2l-6.4-5a23.9 23.9 0 000 19.2l6.4-5z"/><path fill="#34A853" d="M24 46.5c5.2 0 9.5-1.7 12.7-4.6l-7.3-5.7c-1.7 1.2-3.9 1.8-5.4 1.8-6.3 0-11.7-4.3-13.4-10.3l-6.4 5C7.2 40.7 14.8 46.5 24 46.5z"/></svg> Sign in with Google</button>
