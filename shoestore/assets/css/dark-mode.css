@@ -111,9 +111,10 @@ html.dark-mode .size-table tr:hover td {
 
 /* Forms */
 html.dark-mode .form-input {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-light);
+  box-shadow: none;
 }
 
 html.dark-mode .form-input::placeholder {
@@ -125,7 +126,33 @@ html.dark-mode .form-label {
 }
 
 html.dark-mode select.form-input {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0aec0' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0aec0' stroke-width='2' fill='none'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  background-size: 12px 8px !important;
+  padding-right: 40px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: var(--text-light) !important;
+  outline: none;
+  box-shadow: none;
+}
+
+html.dark-mode select.form-input option {
+  background-color: #1a1a2e;
+  color: #ffffff;
+}
+
+/* Remove unwanted lines in section containers */
+html.dark-mode .section,
+html.dark-mode #productSection,
+html.dark-mode .container {
+  border-left: none;
+  border-right: none;
+  outline: none;
 }
 
 /* Button ghost */

@@ -303,7 +303,6 @@
     sliders.forEach(slider => {
       const before = slider.querySelector('.comparison-slider__before');
       const handle = slider.querySelector('.comparison-slider__handle');
-      const beforeImg = before ? before.querySelector('img') : null;
 
       if (!before || !handle) return;
 
@@ -311,6 +310,7 @@
 
       function updateSlider(x) {
         const rect = slider.getBoundingClientRect();
+        if (rect.width === 0) return;
         let pos = (x - rect.left) / rect.width;
         pos = Math.max(0, Math.min(1, pos));
 
@@ -318,9 +318,14 @@
         before.style.width = '100%';
         before.style.clipPath = `inset(0 ${100 - (pos * 100)}% 0 0)`;
         before.style.webkitClipPath = `inset(0 ${100 - (pos * 100)}% 0 0)`;
-        
-        handle.style.left = (pos * 100) + '%';
+        handle.style.left = `${pos * 100}%`;
       }
+
+      // Initialize at 50%
+      before.style.width = '100%';
+      before.style.clipPath = 'inset(0 50% 0 0)';
+      before.style.webkitClipPath = 'inset(0 50% 0 0)';
+      handle.style.left = '50%';
 
       slider.addEventListener('mousedown', (e) => {
         isDragging = true;

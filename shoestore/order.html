@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Place bulk and wholesale footwear orders with SOLE. Enjoy up to 35% off, custom branding, and dedicated corporate account support.">
+  <title>Bulk & Wholesale Order — SOLE Premium Footwear</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .tier-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+    .tier-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+    }
+    .tier-card.featured {
+      border: 2px solid var(--accent);
+      background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255,215,0,0.05) 100%);
+    }
+    .order-form-container {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+    }
+    .order-form-group {
+      margin-bottom: 24px;
+    }
+    .estimate-box {
+      background: rgba(196, 30, 58, 0.08);
+      border: 1px dashed var(--secondary);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 24px 0;
+    }
+    @media (max-width: 768px) {
+      .order-form-container {
+        padding: 24px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="soleBgGrad_order_html_1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="40%" stop-color="#c41e3a"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <linearGradient id="soleGoldGrad_order_html_1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff066"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_order_html_1)"/>
+  <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+  <path d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z" fill="white"/>
+  <path d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z" fill="white"/>
+  <path d="M12 12C15.5 10.2 20 10.8 24 12.5C24.7 12.8 24.3 13.8 23.5 13.5C20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z" fill="url(#soleGoldGrad_order_html_1)"/>
+  <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z" fill="url(#soleGoldGrad_order_html_1)"/>
+</svg>
+        <span class="nav-logo-text">SOLE</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">Home</a>
+          <div class="dropdown-menu">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home A</a>
+            <a href="home-b.html"><i class="fa-solid fa-gem"></i> Home B</a>
+          </div>
+        </div>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="brands.html" class="nav-link">Brands</a>
+        <a href="collections.html" class="nav-link">Collections</a>
+        <a href="size-guide.html" class="nav-link">Size Guide</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-toggles">
+        <button class="theme-toggle" id="themeToggle">Dark</button>
+        <button class="rtl-toggle" id="rtlToggle">LTR</button>
+        <a href="order.html" class="nav-link nav-cta active">Order</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="page-content">
+
+    <!-- Section 1: Hero -->
+    <section class="page-hero" style="background-image: url('assets/images/hero/products-hero.png'); position:relative;">
+      <div class="hero-overlay" style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.85), #0f0f23 95%);"></div>
+      <div class="hero-content hero-animate" style="z-index:2;max-width:750px;">
+        <span class="badge badge-gold mb-md" style="font-size:13px;letter-spacing:1px;"><i class="fa-solid fa-boxes-packing"></i> WHOLESALE & CORPORATE PORTAL</span>
+        <h1>Bulk Footwear Ordering</h1>
+        <p style="font-size:18px;line-height:1.6;margin-bottom:24px;">Equip your team, stock your retail store, or order custom branded footwear. Enjoy tiered wholesale discounts up to 35% off and dedicated account manager support.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="#bulkForm" class="btn btn-primary btn-lg"><i class="fa-solid fa-file-signature"></i> Start Bulk Request</a>
+          <a href="#pricingTiers" class="btn btn-secondary btn-lg"><i class="fa-solid fa-tags"></i> View Wholesale Tiers</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Discount Tiers Showcase -->
+    <section class="section" id="pricingTiers">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="badge badge-primary mb-sm">WHOLESALE DISCOUNT TIERS</span>
+          <h2 class="reveal">Tiered Volume Pricing</h2>
+          <p class="reveal stagger-1" style="max-width:600px;margin:0 auto;">Save more as your order quantity grows. All bulk tiers include full warranty coverage.</p>
+        </div>
+
+        <div class="grid-3 mt-xl">
+          <div class="tier-card reveal stagger-1">
+            <span class="badge badge-primary mb-md">Starter Bulk</span>
+            <h3 style="font-size:28px;margin-bottom:8px;">15% OFF</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">50 – 199 Pairs</p>
+            <ul style="list-style:none;padding:0;margin:0 0 24px 0;font-size:14px;color:var(--text-dark);line-height:2;">
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Free Worldwide Express Freight</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Standard SOLE Luxury Packaging</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Mix & Match Any 3 Categories</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> 30-Day Fit Guarantee</li>
+            </ul>
+            <a href="#bulkForm" onclick="selectTier('50-199')" class="btn btn-secondary btn-full">Select Starter Tier</a>
+          </div>
+
+          <div class="tier-card featured reveal stagger-2">
+            <span class="badge badge-gold mb-md"><i class="fa-solid fa-crown"></i> Most Popular</span>
+            <h3 style="font-size:28px;margin-bottom:8px;">25% OFF</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">200 – 499 Pairs</p>
+            <ul style="list-style:none;padding:0;margin:0 0 24px 0;font-size:14px;color:var(--text-dark);line-height:2;">
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Priority Factory Production</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Custom Company Logo Embossing</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Free Sample Sizing Box</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Dedicated Account Manager</li>
+            </ul>
+            <a href="#bulkForm" onclick="selectTier('200-499')" class="btn btn-primary btn-full">Select Business Pro</a>
+          </div>
+
+          <div class="tier-card reveal stagger-3">
+            <span class="badge badge-primary mb-md">Enterprise</span>
+            <h3 style="font-size:28px;margin-bottom:8px;">35% OFF</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">500+ Pairs</p>
+            <ul style="list-style:none;padding:0;margin:0 0 24px 0;font-size:14px;color:var(--text-dark);line-height:2;">
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Bespoke Sole & Material Engineering</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Custom Retail Display Boxes</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> Flexible Net-30 Payment Terms</li>
+              <li><i class="fa-solid fa-check" style="color:var(--secondary);margin-right:8px;"></i> VIP Logistics & Insurance</li>
+            </ul>
+            <a href="#bulkForm" onclick="selectTier('500+')" class="btn btn-secondary btn-full">Select Enterprise Tier</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Interactive Bulk Order Form & Benefits Split Section -->
+    <section class="section" style="background:var(--card-bg);" id="bulkForm">
+      <div class="container">
+        <div class="grid-2" style="gap:48px;align-items:start;">
+          <!-- Left Column: Form -->
+          <div class="order-form-container reveal-left">
+            <h2 style="font-size:28px;margin-bottom:8px;"><i class="fa-solid fa-cart-flatbed" style="color:var(--secondary);margin-right:10px;"></i> Bulk Order Inquiry Form</h2>
+            <p style="color:var(--text-muted);margin-bottom:28px;">Fill in your bulk requirements below. Our wholesale team will prepare a formal quote within 4 hours.</p>
+
+            <form id="bulkOrderForm" onsubmit="handleBulkOrderSubmit(event)">
+              <!-- Step 1: Contact Details -->
+              <h4 style="margin-bottom:16px;color:var(--secondary);border-bottom:1px solid var(--border-color);padding-bottom:8px;">1. Contact & Company Info</h4>
+              <div class="grid-2" style="gap:16px;margin-bottom:16px;">
+                <div>
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" class="form-input" id="fullName" placeholder="e.g. Robert Vance" required>
+                </div>
+                <div>
+                  <label class="form-label">Company / Organization *</label>
+                  <input type="text" class="form-input" id="companyName" placeholder="e.g. Vance Logistics Corp" required>
+                </div>
+              </div>
+              <div class="grid-2" style="gap:16px;margin-bottom:16px;">
+                <div>
+                  <label class="form-label">Business Email *</label>
+                  <input type="email" class="form-input" id="businessEmail" placeholder="robert@vancecorp.com" required>
+                </div>
+                <div>
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-input" id="phoneNumber" placeholder="+1 (555) 019-2834" required>
+                </div>
+              </div>
+
+              <!-- Step 2: Order Specs -->
+              <h4 style="margin-top:28px;margin-bottom:16px;color:var(--secondary);border-bottom:1px solid var(--border-color);padding-bottom:8px;">2. Order Specifications</h4>
+              <div class="grid-2" style="gap:16px;margin-bottom:16px;">
+                <div>
+                  <label class="form-label">Footwear Category *</label>
+                  <select class="form-input" id="categorySelect" required onchange="calculateEstimate()">
+                    <option value="casual">Casual & Loafers ($89 base/pair)</option>
+                    <option value="formal">Formal Leather Oxfords ($169 base/pair)</option>
+                    <option value="sports">Sports & Active Runners ($119 base/pair)</option>
+                    <option value="kids">Kids & Junior ($69 base/pair)</option>
+                    <option value="custom">Bespoke Custom Brand ($199 base/pair)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="form-label">Estimated Quantity *</label>
+                  <select class="form-input" id="quantitySelect" required onchange="calculateEstimate()">
+                    <option value="50">50 – 199 Pairs (15% Wholesale Discount)</option>
+                    <option value="200" selected>200 – 499 Pairs (25% Wholesale Discount)</option>
+                    <option value="500">500+ Pairs (35% Wholesale Discount)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-2" style="gap:16px;margin-bottom:16px;">
+                <div>
+                  <label class="form-label">Target Delivery Date</label>
+                  <input type="date" class="form-input" id="targetDate">
+                </div>
+                <div>
+                  <label class="form-label">Shipping Country *</label>
+                  <select class="form-input" id="countrySelect" required>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany / EU</option>
+                    <option value="OTHER">Other International</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="checkbox-group" style="margin-top:16px;margin-bottom:16px;">
+                <input type="checkbox" id="customLogoCheck">
+                <label for="customLogoCheck">Request Custom Logo Embossing / Custom Box Packaging</label>
+              </div>
+
+              <div>
+                <label class="form-label">Size Breakdown & Specific Notes</label>
+                <textarea class="form-input" id="orderNotes" placeholder="e.g. Size breakdown needed: US 8 (30 pairs), US 9 (50 pairs), US 10 (40 pairs). Custom logo on left heel."></textarea>
+              </div>
+
+              <!-- Estimated Price Summary Box -->
+              <div class="estimate-box">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span style="font-weight:600;color:var(--text-dark);">Estimated Base Rate:</span>
+                  <span style="font-family:var(--font-heading);font-weight:700;" id="estBaseRate">$119 / pair</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <span style="font-weight:600;color:var(--secondary);">Applicable Discount:</span>
+                  <span style="font-family:var(--font-heading);font-weight:700;color:var(--secondary);" id="estDiscount">25% OFF</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-color);padding-top:12px;margin-top:8px;">
+                  <span style="font-size:18px;font-weight:700;color:var(--text-dark);">Estimated Order Total:</span>
+                  <span style="font-size:24px;font-family:var(--font-heading);font-weight:700;color:var(--accent);" id="estTotal">$17,850</span>
+                </div>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:8px;margin-bottom:0;">* Final formal invoice with taxes and exact freight terms will be sent upon submission.</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg btn-full">
+                <i class="fa-solid fa-paper-plane"></i> Submit Bulk Order Request
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: Wholesale Support & FAQs -->
+          <div class="reveal-right">
+            <div style="background:var(--body-bg);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border-color);margin-bottom:32px;">
+              <h3 style="margin-bottom:20px;"><i class="fa-solid fa-shield-halved" style="color:var(--accent);margin-right:10px;"></i> Why SOLE Wholesale</h3>
+              
+              <div style="display:flex;gap:16px;margin-bottom:20px;">
+                <div style="width:44px;height:44px;border-radius:12px;background:rgba(196,30,58,0.1);color:var(--secondary);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">
+                  <i class="fa-solid fa-gem"></i>
+                </div>
+                <div>
+                  <h4 style="font-size:16px;margin-bottom:4px;">Master Italian Leather & Tech</h4>
+                  <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Ethically sourced tanneries and CloudCushion memory foam insoles built for longevity.</p>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:16px;margin-bottom:20px;">
+                <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,215,0,0.15);color:#d97706;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">
+                  <i class="fa-solid fa-ruler"></i>
+                </div>
+                <div>
+                  <h4 style="font-size:16px;margin-bottom:4px;">Free Sizing Fit Box</h4>
+                  <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">We send a physical sizing sample set before launching mass production to guarantee 100% fit accuracy.</p>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:16px;">
+                <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.1);color:#10b981;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">
+                  <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                  <h4 style="font-size:16px;margin-bottom:4px;">Dedicated Account Executive</h4>
+                  <p style="font-size:14px;color:var(--text-muted);line-height:1.5;">Get direct phone and WhatsApp support with real-time manufacturing and logistics tracking.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div style="background:var(--body-bg);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border-color);">
+              <h3 style="margin-bottom:20px;"><i class="fa-solid fa-circle-question" style="color:var(--secondary);margin-right:10px;"></i> Bulk Order FAQs</h3>
+              
+              <div style="margin-bottom:16px;">
+                <h4 style="font-size:15px;color:var(--text-dark);margin-bottom:6px;">What is the Minimum Order Quantity (MOQ)?</h4>
+                <p style="font-size:13px;color:var(--text-muted);line-height:1.5;">Our bulk pricing starts at 50 pairs. You can mix and match different shoe sizes and colors within the same category.</p>
+              </div>
+
+              <div style="margin-bottom:16px;">
+                <h4 style="font-size:15px;color:var(--text-dark);margin-bottom:6px;">How long does bulk production take?</h4>
+                <p style="font-size:13px;color:var(--text-muted);line-height:1.5;">In-stock styles ship within 3-5 business days. Custom logo embossed orders take 12-18 business days.</p>
+              </div>
+
+              <div>
+                <h4 style="font-size:15px;color:var(--text-dark);margin-bottom:6px;">Do you offer custom branding options?</h4>
+                <p style="font-size:13px;color:var(--text-muted);line-height:1.5;">Yes! We provide laser-engraved heel logos, custom sockliner printing, and custom branded shoe boxes for corporate clients.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="soleBgGrad_order_html_2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="40%" stop-color="#c41e3a"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <linearGradient id="soleGoldGrad_order_html_2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff066"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_order_html_2)"/>
+  <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+  <path d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z" fill="white"/>
+  <path d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z" fill="white"/>
+  <path d="M12 12C15.5 10.2 20 10.8 24 12.5C24.7 12.8 24.3 13.8 23.5 13.5C20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z" fill="url(#soleGoldGrad_order_html_2)"/>
+  <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z" fill="url(#soleGoldGrad_order_html_2)"/>
+</svg>
+            <span class="footer-logo-text">SOLE</span>
+          </a>
+          <p class="footer-tagline">Step Into Style — Premium footwear crafted for every step of your journey.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Support -->
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ</a></li>
+            <li><a href="size-guide.html">Shipping & Fit</a></li>
+            <li><a href="contact.html#returns">Returns Policy</a></li>
+            <li><a href="about.html#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Categories -->
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="categories.html">Casual Footwear</a></li>
+            <li><a href="categories.html">Formal Leather</a></li>
+            <li><a href="categories.html">Sports & Performance</a></li>
+            <li><a href="categories.html">Kids Collection</a></li>
+            <li><a href="categories.html">Seasonal Outfits</a></li>
+            <li><a href="products.html">New Arrivals</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li>
+            <li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fa-solid fa-envelope"></i> hello@sole.com</li>
+            <li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li>
+          </ul>
+        </div>
+
+        <!-- Column 6: Newsletter -->
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals & drop alerts</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); if (typeof showToast === 'function') { showToast('Thank you for subscribing to SOLE!'); } else { alert('Thank you for subscribing to SOLE!'); } this.reset();">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span class="copyright-year">2026</span> SOLE. All rights reserved.</p>
+        <div class="footer-payments">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/forms.js"></script>
+  <script>
+    function calculateEstimate() {
+      const cat = document.getElementById('categorySelect').value;
+      const qty = parseInt(document.getElementById('quantitySelect').value);
+
+      let baseRate = 119;
+      if (cat === 'casual') baseRate = 89;
+      if (cat === 'formal') baseRate = 169;
+      if (cat === 'sports') baseRate = 119;
+      if (cat === 'kids') baseRate = 69;
+      if (cat === 'custom') baseRate = 199;
+
+      let discount = 0.15;
+      let discountText = '15% OFF';
+      if (qty >= 200 && qty < 500) { discount = 0.25; discountText = '25% OFF'; }
+      if (qty >= 500) { discount = 0.35; discountText = '35% OFF'; }
+
+      const unitPrice = baseRate * (1 - discount);
+      const total = Math.round(unitPrice * qty);
+
+      document.getElementById('estBaseRate').innerText = '$' + baseRate + ' / pair';
+      document.getElementById('estDiscount').innerText = discountText;
+      document.getElementById('estTotal').innerText = '$' + total.toLocaleString();
+    }
+
+    function selectTier(tierQty) {
+      const qtySelect = document.getElementById('quantitySelect');
+      if (tierQty === '50-199') qtySelect.value = '50';
+      if (tierQty === '200-499') qtySelect.value = '200';
+      if (tierQty === '500+') qtySelect.value = '500';
+      calculateEstimate();
+    }
+
+    function handleBulkOrderSubmit(e) {
+      e.preventDefault();
+      const company = document.getElementById('companyName').value;
+      const total = document.getElementById('estTotal').innerText;
+      if (typeof showToast === 'function') {
+        showToast('Bulk Order Inquiry Submitted for ' + company + '! Est. Total: ' + total);
+      } else {
+        alert('Bulk Order Inquiry Submitted for ' + company + '! Est. Total: ' + total);
+      }
+      document.getElementById('bulkOrderForm').reset();
+      calculateEstimate();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      calculateEstimate();
+    });
+  </script>
+</body>
+</html>

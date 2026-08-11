@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover featured shoe brands at SOLE. From high-performance sportswear to luxury lifestyle labels. We partner with the best.">
-  <title>Featured Brands — SOLE Premium Footwear</title>
+  <meta name="description" content="Discover top footwear brands at SOLE. Explore featured products from Nike, Adidas, Puma, New Balance, ASICS, and SOLE Luxe with instant Add to Cart.">
+  <title>Featured Brands & Top Products — SOLE Premium Footwear</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
@@ -13,27 +14,42 @@
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <style>
-    .brand-hero-collage {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      opacity: 0.08;
-      z-index: 0;
-      gap: var(--space-md);
-      padding: var(--space-lg);
-    }
-    .collage-item {
-      font-size: 28px;
-      font-weight: 800;
+    .brand-section-header {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-color);
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      color: #fff;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: var(--shadow-card);
     }
-    .partner-card-glow:hover {
-      box-shadow: 0 0 35px rgba(255, 215, 0, 0.3);
-      border-color: var(--accent);
+    .brand-title-badge {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+      margin: 0;
+      line-height: 1;
+    }
+    .brand-product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 1024px) {
+      .brand-product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .brand-product-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -44,11 +60,25 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="36" height="36" rx="8" fill="#c41e3a"/>
-          <path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="18" cy="12" r="3" fill="#ffd700"/>
-        </svg>
+  <defs>
+    <linearGradient id="soleBgGrad_brands_html_1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="40%" stop-color="#c41e3a"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <linearGradient id="soleGoldGrad_brands_html_1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff066"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_brands_html_1)"/>
+  <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+  <path d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z" fill="white"/>
+  <path d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z" fill="white"/>
+  <path d="M12 12C15.5 10.2 20 10.8 24 12.5C24.3 13.8 23.5 13.5 20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z" fill="url(#soleGoldGrad_brands_html_1)"/>
+  <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z" fill="url(#soleGoldGrad_brands_html_1)"/>
+</svg>
         <span class="nav-logo-text">SOLE</span>
       </a>
 
@@ -67,11 +97,11 @@
         <a href="size-guide.html" class="nav-link">Size Guide</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="products.html" class="nav-link nav-cta">Order</a>
       </div>
       <div class="nav-toggles">
         <button class="theme-toggle" id="themeToggle">Dark</button>
         <button class="rtl-toggle" id="rtlToggle">LTR</button>
+        <a href="order.html" class="nav-link nav-cta">Order</a>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
@@ -87,140 +117,291 @@
     <section class="page-hero" style="background-image: url('assets/images/hero/brands-hero.png'); position:relative;">
       <div class="hero-overlay" style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.8), #0f0f23 95%);"></div>
       <div class="hero-content hero-animate" style="z-index:2;">
-        <h1>Featured Brands</h1>
-        <p>We partner with the world's leading footwear brands to bring you quality, style, and innovation.</p>
+        <h1>World-Class Brands & Top Footwear</h1>
+        <p>Explore top products from global iconic shoe brands with instant add to cart and express delivery.</p>
         <div class="mt-lg">
           <span class="badge badge-gold" style="font-size:14px;padding:8px 16px;"><i class="fa-solid fa-award"></i> 50+ Premium Brands In Stock</span>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: Premium Brands -->
-    <section class="section" id="premiumBrands">
+    <!-- Section 2: Nike Top Products Showcase -->
+    <section class="section" id="nikeBrand">
       <div class="container">
-        <div class="section-header">
-          <h2 class="reveal">Premium Sportswear</h2>
-          <p class="reveal stagger-1">Pioneers of performance, athletics, and modern lifestyle footwear</p>
+        <div class="brand-section-header reveal">
+          <div>
+            <div class="brand-title-badge">NIKE</div>
+            <p style="margin-top:6px;color:var(--text-muted);">"Just Do It" — High-Performance Athletics & Modern Lifestyle Icons</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge badge-primary" style="font-size:13px;padding:8px 14px;">45 Models In Stock</span>
+            <a href="products.html" class="btn btn-secondary btn-sm">Explore All Nike <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
         </div>
-        <div class="grid-3">
-          <div class="brand-logo-card reveal stagger-1">
-            <div style="font-size:32px;font-weight:900;color:var(--text-dark);letter-spacing:1px;margin-bottom:var(--space-md);height:60px;display:flex;align-items:center;">NIKE</div>
-            <h3>Nike</h3>
-            <p class="text-caption mb-sm">"Just Do It"</p>
-            <span class="badge badge-primary mb-md">45 Products</span>
-            <a href="products.html" class="btn btn-ghost btn-sm">View Products</a>
+
+        <div class="brand-product-grid">
+          <div class="product-card reveal stagger-1">
+            <div class="product-card-img">
+              <img src="assets/images/products/air-stride-ultra.png" alt="Nike Air Stride Ultra">
+              <span class="product-badge new">Flagship</span>
+              <button class="product-card-wishlist" data-product-id="101" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">NIKE · PERFORMANCE</span>
+              <h4>Nike Air Stride Ultra Cloud</h4>
+              <p class="product-price">$199</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(248)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Nike Air Stride Ultra to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
-          <div class="brand-logo-card reveal stagger-2">
-            <div style="font-size:32px;font-weight:900;color:var(--text-dark);letter-spacing:1px;margin-bottom:var(--space-md);height:60px;display:flex;align-items:center;">ADIDAS</div>
-            <h3>Adidas</h3>
-            <p class="text-caption mb-sm">"Impossible is Nothing"</p>
-            <span class="badge badge-primary mb-md">38 Products</span>
-            <a href="products.html" class="btn btn-ghost btn-sm">View Products</a>
+
+          <div class="product-card reveal stagger-2">
+            <div class="product-card-img">
+              <img src="assets/images/products/speed-runner.png" alt="Nike Speed Pro Runner">
+              <span class="product-badge sale">-20%</span>
+              <button class="product-card-wishlist" data-product-id="102" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">NIKE · RUNNING</span>
+              <h4>Nike Speed Pro Marathon Runner</h4>
+              <p class="product-price">$119 <span class="original">$149</span></p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(156)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Nike Speed Pro Runner to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
-          <div class="brand-logo-card reveal stagger-3">
-            <div style="font-size:32px;font-weight:900;color:var(--text-dark);letter-spacing:1px;margin-bottom:var(--space-md);height:60px;display:flex;align-items:center;">PUMA</div>
-            <h3>Puma</h3>
-            <p class="text-caption mb-sm">"Forever Faster"</p>
-            <span class="badge badge-primary mb-md">32 Products</span>
-            <a href="products.html" class="btn btn-ghost btn-sm">View Products</a>
+
+          <div class="product-card reveal stagger-3">
+            <div class="product-card-img">
+              <img src="assets/images/products/air-stride.png" alt="Nike Air Stride Classic">
+              <button class="product-card-wishlist" data-product-id="103" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">NIKE · CASUAL</span>
+              <h4>Nike Air Stride Street Classic</h4>
+              <p class="product-price">$139</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(98)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Nike Air Stride Classic to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: Lifestyle Brands -->
-    <section class="section" style="background:var(--card-bg);" id="lifestyleBrands">
+    <!-- Section 3: Adidas Top Products Showcase -->
+    <section class="section" style="background:var(--card-bg);" id="adidasBrand">
       <div class="container">
-        <div class="section-header">
-          <h2 class="reveal">Street & Lifestyle</h2>
-          <p class="reveal stagger-1">Time-tested designs that define urban street culture</p>
+        <div class="brand-section-header reveal">
+          <div>
+            <div class="brand-title-badge">ADIDAS</div>
+            <p style="margin-top:6px;color:var(--text-muted);">"Impossible is Nothing" — Legendary 3-Stripes Comfort & Sportswear</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge badge-gold" style="font-size:13px;padding:8px 14px;">38 Models In Stock</span>
+            <a href="products.html" class="btn btn-secondary btn-sm">Explore All Adidas <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
         </div>
-        <div class="grid-4">
-          <div class="brand-logo-card reveal stagger-1">
-            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">CONVERSE</div>
-            <h3 class="mt-sm">Converse</h3>
-            <p class="text-caption mb-md">Heritage court canvas styles.</p>
-            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
+
+        <div class="brand-product-grid">
+          <div class="product-card reveal stagger-1">
+            <div class="product-card-img">
+              <img src="assets/images/products/flex-fit-b.png" alt="Adidas Flex Fit Trainer">
+              <span class="product-badge sale">Sale -30%</span>
+              <button class="product-card-wishlist" data-product-id="104" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">ADIDAS · TRAINING</span>
+              <h4>Adidas Flex Fit Cushion Trainer</h4>
+              <p class="product-price">$99 <span class="original">$129</span></p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(210)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Adidas Flex Fit Trainer to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
-          <div class="brand-logo-card reveal stagger-2">
-            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">VANS</div>
-            <h3 class="mt-sm">Vans</h3>
-            <p class="text-caption mb-md">Classic waffle sole skate icons.</p>
-            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
+
+          <div class="product-card reveal stagger-2">
+            <div class="product-card-img">
+              <img src="assets/images/products/court-master-b.png" alt="Adidas Court Master">
+              <button class="product-card-wishlist" data-product-id="105" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">ADIDAS · TENNIS</span>
+              <h4>Adidas Court Master Tennis Pro</h4>
+              <p class="product-price">$119</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(67)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Adidas Court Master to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
-          <div class="brand-logo-card reveal stagger-3">
-            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">TIMBERLAND</div>
-            <h3 class="mt-sm">Timberland</h3>
-            <p class="text-caption mb-md">Heavy duty waterproof nubuck boots.</p>
-            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
-          </div>
-          <div class="brand-logo-card reveal stagger-4">
-            <div style="font-size:24px;font-weight:800;height:40px;display:flex;align-items:center;color:var(--text-dark);">DR. MARTENS</div>
-            <h3 class="mt-sm">Dr. Martens</h3>
-            <p class="text-caption mb-md">Legendary air-cushioned leather boots.</p>
-            <a href="products.html" class="btn btn-ghost btn-sm">Explore</a>
+
+          <div class="product-card reveal stagger-3">
+            <div class="product-card-img">
+              <img src="assets/images/products/golf-spike-b.png" alt="Adidas Golf Elite">
+              <button class="product-card-wishlist" data-product-id="106" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">ADIDAS · GOLF</span>
+              <h4>Adidas Golf Spike Tour Edition</h4>
+              <p class="product-price">$179</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(56)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Adidas Golf Spike to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 4: Performance Brands -->
-    <section class="section" id="performanceBrands">
+    <!-- Section 4: Puma Top Products Showcase -->
+    <section class="section" id="pumaBrand">
       <div class="container">
-        <div class="section-header">
-          <h2 class="reveal">Performance Running</h2>
-          <p class="reveal stagger-1">Biomedically engineered for speed, trail, and endurance</p>
+        <div class="brand-section-header reveal">
+          <div>
+            <div class="brand-title-badge">PUMA</div>
+            <p style="margin-top:6px;color:var(--text-muted);">"Forever Faster" — High Velocity Athletic & Urban Street Footwear</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge badge-primary" style="font-size:13px;padding:8px 14px;">32 Models In Stock</span>
+            <a href="products.html" class="btn btn-secondary btn-sm">Explore All Puma <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
         </div>
-        <div class="grid-3">
-          <div class="brand-logo-card reveal stagger-1">
-            <div style="font-size:26px;font-weight:800;height:50px;display:flex;align-items:center;color:var(--text-dark);">NEW BALANCE</div>
-            <h3>New Balance</h3>
-            <p class="text-caption mb-sm">Premium cushioning support.</p>
-            <span class="badge badge-primary mb-md">Running & Everyday</span>
-            <a href="products.html" class="btn btn-ghost btn-sm">Explore Range</a>
+
+        <div class="brand-product-grid">
+          <div class="product-card reveal stagger-1">
+            <div class="product-card-img">
+              <img src="assets/images/products/urban-walker-b.png" alt="Puma Urban Walker">
+              <span class="product-badge new">Popular</span>
+              <button class="product-card-wishlist" data-product-id="107" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">PUMA · LIFESTYLE</span>
+              <h4>Puma Urban Walker Street Edition</h4>
+              <p class="product-price">$149</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(128)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Puma Urban Walker to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
-          <div class="brand-logo-card reveal stagger-2">
-            <div style="font-size:26px;font-weight:800;height:50px;display:flex;align-items:center;color:var(--text-dark);">ASICS</div>
-            <h3>ASICS</h3>
-            <p class="text-caption mb-sm">Gel technology specialists.</p>
-            <span class="badge badge-primary mb-md">Track & Field</span>
-            <a href="products.html" class="btn btn-ghost btn-sm">Explore Range</a>
+
+          <div class="product-card reveal stagger-2">
+            <div class="product-card-img">
+              <img src="assets/images/products/beach-breeze-b.png" alt="Puma Breeze Sandal">
+              <button class="product-card-wishlist" data-product-id="108" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">PUMA · CASUAL</span>
+              <h4>Puma Breeze Comfort Slide Sandal</h4>
+              <p class="product-price">$59</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(93)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Puma Breeze Sandal to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
-          <div class="brand-logo-card reveal stagger-3">
-            <div style="font-size:26px;font-weight:800;height:50px;display:flex;align-items:center;color:var(--text-dark);">BROOKS</div>
-            <h3>Brooks</h3>
-            <p class="text-caption mb-sm">Run happy biomechanics.</p>
-            <span class="badge badge-primary mb-md">Marathon Runners</span>
-            <a href="products.html" class="btn btn-ghost btn-sm">Explore Range</a>
+
+          <div class="product-card reveal stagger-3">
+            <div class="product-card-img">
+              <img src="assets/images/products/skate-deck-b.png" alt="Puma Skate Pro">
+              <button class="product-card-wishlist" data-product-id="109" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">PUMA · SKATE</span>
+              <h4>Puma Skate Deck Pro Sneaker</h4>
+              <p class="product-price">$109</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(118)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added Puma Skate Pro to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 5: Emerging Brands (Infinite Horizontal Scroll Carousel) -->
-    <section class="section" style="background:var(--card-bg);overflow:hidden;" id="emergingBrands">
+    <!-- Section 5: SOLE Luxury & Heritage Showcase -->
+    <section class="section" style="background:var(--card-bg);" id="soleBrand">
       <div class="container">
-        <div class="section-header">
-          <h2 class="reveal">Emerging Labels</h2>
-          <p class="reveal stagger-1">Independent shoe designers and handcraft labels making waves</p>
+        <div class="brand-section-header reveal">
+          <div>
+            <div class="brand-title-badge" style="color:var(--secondary);">SOLE LUXE</div>
+            <p style="margin-top:6px;color:var(--text-muted);">Handcrafted Italian Leather, Bespoke Oxfords & Artisanal Loafers</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="badge badge-gold" style="font-size:13px;padding:8px 14px;">Master Artisan Line</span>
+            <a href="products.html" class="btn btn-primary btn-sm">Explore SOLE Luxe <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
         </div>
-      </div>
-      <div class="infinite-scroll-container">
-        <div class="infinite-scroll-track">
-          <!-- Slide duplicates to simulate infinite scroll loop -->
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">VEJA</div><p class="text-caption">France — Eco Leather</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ON RUNNING</div><p class="text-caption">Swiss — Cloud tech</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ALLBIRDS</div><p class="text-caption">NZ — Merino wool</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">HOKA ONE</div><p class="text-caption">US — Max Cushion</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">FEIT</div><p class="text-caption">Australia — Raw handsewn</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">CARMINA</div><p class="text-caption">Spain — Cordovan</p></div>
-          <!-- Duplicated for smooth loop -->
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">VEJA</div><p class="text-caption">France — Eco Leather</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ON RUNNING</div><p class="text-caption">Swiss — Cloud tech</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">ALLBIRDS</div><p class="text-caption">NZ — Merino wool</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">HOKA ONE</div><p class="text-caption">US — Max Cushion</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">FEIT</div><p class="text-caption">Australia — Raw handsewn</p></div>
-          <div class="brand-logo-card" style="width:220px;"><div style="font-size:20px;font-weight:700;color:var(--text-dark);">CARMINA</div><p class="text-caption">Spain — Cordovan</p></div>
+
+        <div class="brand-product-grid">
+          <div class="product-card reveal stagger-1">
+            <div class="product-card-img">
+              <img src="assets/images/products/classic-oxford-b.png" alt="Classic Oxford Elite">
+              <span class="product-badge new">Artisan</span>
+              <button class="product-card-wishlist" data-product-id="110" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">SOLE LUXE · FORMAL</span>
+              <h4>SOLE Classic Oxford Elite Leather</h4>
+              <p class="product-price">$189</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(95)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added SOLE Oxford Elite to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal stagger-2">
+            <div class="product-card-img">
+              <img src="assets/images/products/heritage-loafer.png" alt="Heritage Loafer">
+              <button class="product-card-wishlist" data-product-id="111" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">SOLE LUXE · HERITAGE</span>
+              <h4>SOLE Heritage Italian Tassel Loafer</h4>
+              <p class="product-price">$169</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(89)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added SOLE Heritage Loafer to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card reveal stagger-3">
+            <div class="product-card-img">
+              <img src="assets/images/products/midnight-formal.png" alt="Midnight Formal">
+              <button class="product-card-wishlist" data-product-id="112" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="product-card-body">
+              <span class="product-brand" style="color:var(--secondary);font-weight:700;">SOLE LUXE · FORMAL</span>
+              <h4>SOLE Midnight Velvet Formal Derby</h4>
+              <p class="product-price">$209</p>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(72)</span></div>
+              <div style="display:flex;gap:8px;margin-top:16px;">
+                <button type="button" onclick="showToast('Added SOLE Midnight Formal to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -229,9 +410,9 @@
     <section class="section" id="becomePartner">
       <div class="container">
         <div class="newsletter-section partner-card-glow reveal" style="background-image:radial-gradient(circle at center,rgba(255,215,0,0.15),transparent 75%);border:1px solid var(--border-color);transition:var(--transition);">
-          <h2>Are You a Brand?</h2>
-          <p>Partner with SOLE to reach millions of premium footwear enthusiasts and benefit from our worldwide fulfillment infrastructure.</p>
-          <a href="contact.html?subject=Partnership" class="btn btn-gold"><i class="fa-solid fa-handshake"></i> Apply Now</a>
+          <h2>Are You a Footwear Brand?</h2>
+          <p>Partner with SOLE to reach millions of premium footwear enthusiasts and benefit from our global distribution network.</p>
+          <a href="contact.html?subject=Partnership" class="btn btn-gold"><i class="fa-solid fa-handshake"></i> Apply for Partnership</a>
         </div>
       </div>
     </section>
@@ -242,29 +423,111 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
+        <!-- Column 1: Brand -->
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
-            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#c41e3a"/><path d="M8 24C8 24 10 14 18 14C26 14 28 24 28 24" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M6 24H30" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="3" fill="#ffd700"/></svg>
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="soleBgGrad_brands_html_2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="40%" stop-color="#c41e3a"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <linearGradient id="soleGoldGrad_brands_html_2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff066"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_brands_html_2)"/>
+  <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
+  <path d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z" fill="white"/>
+  <path d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z" fill="white"/>
+  <path d="M12 12C15.5 10.2 20 10.8 24 12.5C24.7 12.8 24.3 13.8 23.5 13.5C20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z" fill="url(#soleGoldGrad_brands_html_2)"/>
+  <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z" fill="url(#soleGoldGrad_brands_html_2)"/>
+</svg>
             <span class="footer-logo-text">SOLE</span>
           </a>
-          <p class="footer-tagline">Step Into Style</p>
+          <p class="footer-tagline">Step Into Style — Premium footwear crafted for every step of your journey.</p>
           <div class="footer-social">
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="categories.html">Categories</a></li><li><a href="brands.html">Brands</a></li><li><a href="collections.html">Collections</a></li><li><a href="size-guide.html">Size Guide</a></li></ul></div>
-        <div class="footer-col"><h4>Support</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
-        <div class="footer-col"><h4>Categories</h4><ul><li><a href="categories.html">Casual</a></li><li><a href="categories.html">Formal</a></li><li><a href="categories.html">Sports</a></li><li><a href="categories.html">Kids</a></li><li><a href="categories.html">Seasonal</a></li><li><a href="products.html">New Arrivals</a></li></ul></div>
-        <div class="footer-col"><h4>Contact</h4><ul class="footer-contact"><li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li><li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li><li><i class="fa-solid fa-envelope"></i> hello@sole.com</li><li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li></ul></div>
-        <div class="footer-col"><h4>Newsletter</h4><p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals</p><form class="footer-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email" required><button type="submit">Subscribe</button></form></div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Support -->
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ</a></li>
+            <li><a href="size-guide.html">Shipping & Fit</a></li>
+            <li><a href="contact.html#returns">Returns Policy</a></li>
+            <li><a href="about.html#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Categories -->
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="categories.html">Casual Footwear</a></li>
+            <li><a href="categories.html">Formal Leather</a></li>
+            <li><a href="categories.html">Sports & Performance</a></li>
+            <li><a href="categories.html">Kids Collection</a></li>
+            <li><a href="categories.html">Seasonal Outfits</a></li>
+            <li><a href="products.html">New Arrivals</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><i class="fa-solid fa-location-dot"></i> 123 Fashion Street, NY 10001</li>
+            <li><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fa-solid fa-envelope"></i> hello@sole.com</li>
+            <li><i class="fa-solid fa-clock"></i> Mon-Sat: 9AM - 9PM</li>
+          </ul>
+        </div>
+
+        <!-- Column 6: Newsletter -->
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals & drop alerts</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); if (typeof showToast === 'function') { showToast('Thank you for subscribing to SOLE!'); } else { alert('Thank you for subscribing to SOLE!'); } this.reset();">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2024 SOLE. All rights reserved.</p>
-        <div class="footer-payments"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i><i class="fa-brands fa-cc-apple-pay"></i></div>
+        <p>&copy; <span class="copyright-year">2026</span> SOLE. All rights reserved.</p>
+        <div class="footer-payments">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+        </div>
       </div>
     </div>
   </footer>

@@ -9,7 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initRTLToggle();
   initBackToTop();
   setActiveNavLink();
+  initFooterYear();
 });
+
+/* ---------- Footer Year ---------- */
+function initFooterYear() {
+  const currentYear = new Date().getFullYear();
+  document.querySelectorAll('.copyright-year').forEach(el => {
+    el.textContent = currentYear || '2026';
+  });
+}
 
 /* ---------- Navbar ---------- */
 function initNavbar() {

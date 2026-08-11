@@ -187,10 +187,72 @@
   flex-direction: row-reverse;
 }
 
-/* --- Contact Item --- */
-[dir="rtl"] .footer__contact-item {
-  flex-direction: row-reverse;
+/* --- Footer Layout & Alignment in RTL --- */
+[dir="rtl"] .footer {
   text-align: right;
+}
+
+[dir="rtl"] .footer__brand {
+  align-items: flex-start;
+  text-align: right;
+}
+
+[dir="rtl"] .footer__logo {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .footer__tagline {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .footer__social {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .footer__heading {
+  text-align: right;
+}
+
+[dir="rtl"] .footer__links {
+  align-items: flex-start;
+  text-align: right;
+}
+
+[dir="rtl"] .footer__link {
+  text-align: right;
+}
+
+[dir="rtl"] .footer__contact-item {
+  flex-direction: row;
+  text-align: right;
+  justify-content: flex-start;
+  gap: var(--space-sm);
+}
+
+[dir="rtl"] .footer__contact-item svg {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+[dir="rtl"] .footer__contact-item span,
+[dir="rtl"] .footer__contact-item a {
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
+  text-align: right;
+}
+
+[dir="rtl"] .footer__bottom {
+  text-align: center;
+}
+
+[dir="rtl"] .footer__bottom p {
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
 }
 
 /* --- Auth Page Toggles --- */
@@ -247,4 +309,26 @@
 [dir="rtl"] input[type="tel"] {
   direction: ltr;
   text-align: right;
+}
+
+/* --- Hero Split Layout --- */
+[dir="rtl"] .hero__content--split {
+  align-items: flex-start;
+  text-align: right;
+}
+
+[dir="rtl"] .hero__showcase-badge-floating {
+  right: auto;
+  left: -12px;
+}
+
+/* --- Newsletter Box RTL --- */
+[dir="rtl"] .newsletter-box {
+  text-align: right;
+  align-items: flex-start;
+}
+
+[dir="rtl"] .newsletter {
+  margin-right: 0;
+  padding-right: 0;
 }

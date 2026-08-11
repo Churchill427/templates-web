@@ -29,9 +29,9 @@
         <a href="contact.html" class="nav__link">Contact</a>
       </nav>
       <div class="navbar__controls">
-        <a href="book-now.html" class="btn btn--primary" style="padding: 8px 16px; font-size: 14px; margin-right: 12px;">Book Now</a>
         <button class="navbar__toggle-btn" id="rtl-toggle" aria-label="Toggle text direction"><span class="rtl-toggle-label">LTR</span></button>
         <button class="navbar__toggle-btn" id="theme-toggle" aria-label="Toggle dark mode"><svg class="theme-icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <a href="book-now.html" class="btn btn--primary" style="padding: 8px 16px; font-size: 14px; margin-left: 8px;">Book Now</a>
       </div>
     </div>
   </header>
@@ -51,49 +51,154 @@
   <main id="main-content">
 
     <!-- ─── Section 1: Hero ──────────────────────── -->
-    <section class="hero" id="services-hero" aria-label="Services hero">
+    <section class="hero hero--subpage" id="services-hero" aria-label="Services hero">
       <div class="hero__bg" data-parallax="0.3">
         <img src="../assets/images/heroes/hero-services.png" alt="Premium barber tools artistically arranged" loading="eager">
       </div>
       <div class="hero__overlay"></div>
-      <div class="hero__content">
-        <h1 class="hero__title reveal">PREMIUM GROOMING SERVICES</h1>
-        <p class="hero__subtitle reveal">Crafted for the man who demands the best</p>
+      <div class="hero__container">
+        <div class="hero__content hero__content--subpage reveal">
+          <div class="hero__badge">
+            <span class="hero__badge-icon">★</span> Bespoke Men's Grooming Menu
+          </div>
+          <h1 class="hero__title">PREMIUM BARBERING &amp; GROOMING SERVICES</h1>
+          <p class="hero__narrative">
+            Explore our curated menu of precision haircuts, traditional hot towel straight razor shaves, and custom beard sculpting. Every service includes a dedicated style consultation and luxury organic hair conditioning.
+          </p>
+
+          <div class="hero__highlights-row">
+            <span class="hero__highlight-pill">✂️ <strong>Precision Shears</strong> &amp; Fades</span>
+            <span class="hero__highlight-pill">🔥 <strong>Hot Towel</strong> Essential Steam</span>
+            <span class="hero__highlight-pill">🌿 <strong>Organic</strong> Scalp Treatments</span>
+            <span class="hero__highlight-pill">⏱️ <strong>45-Min</strong> Dedicated Slots</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ─── Section 2: Service Categories ────────── -->
+    <!-- ─── Section 2: Service Categories (With High-Quality Images) ── -->
     <section class="section" id="service-categories" aria-label="Service categories">
       <div class="container">
         <div class="section-header reveal">
           <h2 class="section-header__title">WHAT WE OFFER</h2>
-          <p class="section-header__subtitle">Three pillars of premium grooming</p>
+          <p class="section-header__subtitle">Three pillars of premium grooming with bespoke master barber care</p>
           <div class="section-header__line"></div>
         </div>
+
         <div class="grid grid-3 stagger">
-          <div class="card card--icon reveal" id="cat-haircuts">
-            <div class="card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+          <!-- Card 1: Haircuts -->
+          <div class="card reveal" id="cat-haircuts" style="overflow: hidden; display: flex; flex-direction: column;">
+            <div class="card__image" style="height: 220px; position: relative;">
+              <img src="../assets/images/services/haircut.png" alt="Master barber crafting a precision haircut" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+              <span class="card__badge" style="position: absolute; top: 12px; right: 12px; background: var(--color-amber); color: var(--color-charcoal); padding: 4px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; text-transform: uppercase;">Popular</span>
             </div>
-            <h3 class="card__title">Haircuts</h3>
-            <p class="card__text">Classic cuts, modern fades, textured crops, and precision styling. From timeless to trendsetting.</p>
-            <p class="text-accent" style="font-weight: var(--fw-semibold); font-size: var(--fs-body);">From $35</p>
+            <div class="card__body" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3 class="card__title" style="margin-bottom: var(--space-xs);">Haircuts &amp; Fades</h3>
+                <p class="card__text" style="margin-bottom: var(--space-md);">Classic gentleman cuts, skin fades, textured crops, and razor line-ups tailored to your head structure and personal style.</p>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: var(--space-md);">
+                <span class="text-accent" style="font-weight: 700; font-size: 18px;">From $35 <small style="font-size: 12px; color: var(--text-sub); font-weight: 400;">/ 45 min</small></span>
+                <a href="book-now.html" class="btn btn--outline btn--sm">Book Haircut</a>
+              </div>
+            </div>
           </div>
-          <div class="card card--icon reveal" id="cat-beard">
-            <div class="card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+          <!-- Card 2: Beard & Shave -->
+          <div class="card reveal" id="cat-beard" style="overflow: hidden; display: flex; flex-direction: column;">
+            <div class="card__image" style="height: 220px; position: relative;">
+              <img src="../assets/images/services/beard.png" alt="Barber performing beard grooming and hot towel shave" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+              <span class="card__badge" style="position: absolute; top: 12px; right: 12px; background: var(--color-amber); color: var(--color-charcoal); padding: 4px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; text-transform: uppercase;">Signature</span>
             </div>
-            <h3 class="card__title">Beard & Shave</h3>
-            <p class="card__text">Expert beard shaping, straight razor shaves, hot towel treatments, and beard conditioning rituals.</p>
-            <p class="text-accent" style="font-weight: var(--fw-semibold); font-size: var(--fs-body);">From $25</p>
+            <div class="card__body" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3 class="card__title" style="margin-bottom: var(--space-xs);">Beard &amp; Hot Towel Shave</h3>
+                <p class="card__text" style="margin-bottom: var(--space-md);">Precision beard shaping, essential oil hot towel steam treatment, straight razor line-ups, and natural beard conditioning.</p>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: var(--space-md);">
+                <span class="text-accent" style="font-weight: 700; font-size: 18px;">From $25 <small style="font-size: 12px; color: var(--text-sub); font-weight: 400;">/ 30 min</small></span>
+                <a href="book-now.html" class="btn btn--outline btn--sm">Book Beard</a>
+              </div>
+            </div>
           </div>
-          <div class="card card--icon reveal" id="cat-treatments">
-            <div class="card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+
+          <!-- Card 3: Treatments -->
+          <div class="card reveal" id="cat-treatments" style="overflow: hidden; display: flex; flex-direction: column;">
+            <div class="card__image" style="height: 220px; position: relative;">
+              <img src="../assets/images/services/coloring.png" alt="Barber applying luxury hair treatment and hair coloring" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+              <span class="card__badge" style="position: absolute; top: 12px; right: 12px; background: var(--color-amber); color: var(--color-charcoal); padding: 4px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; text-transform: uppercase;">Specialist</span>
             </div>
-            <h3 class="card__title">Treatments</h3>
-            <p class="card__text">Hair coloring, scalp treatments, deep conditioning, and keratin smoothing for lasting results.</p>
-            <p class="text-accent" style="font-weight: var(--fw-semibold); font-size: var(--fs-body);">From $45</p>
+            <div class="card__body" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3 class="card__title" style="margin-bottom: var(--space-xs);">Coloring &amp; Scalp Care</h3>
+                <p class="card__text" style="margin-bottom: var(--space-md);">Natural grey blending, scalp detox treatments, keratin hair conditioning, and custom hair toning for vibrant, healthy results.</p>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: var(--space-md);">
+                <span class="text-accent" style="font-weight: 700; font-size: 18px;">From $45 <small style="font-size: 12px; color: var(--text-sub); font-weight: 400;">/ 60 min</small></span>
+                <a href="book-now.html" class="btn btn--outline btn--sm">Book Treatment</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Section 2B: Signature Services Visual Showcase Grid ── -->
+    <section class="section" id="service-showcase" aria-label="Signature grooming visual showcase" style="background: var(--bg-card-alt);">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-header__title">CRAFT &amp; TECHNIQUE SHOWCASE</h2>
+          <p class="section-header__subtitle">High-precision results crafted by our master barbering team</p>
+          <div class="section-header__line"></div>
+        </div>
+
+        <div class="grid grid-4 stagger">
+          <!-- Showcase 1 -->
+          <div class="card reveal" style="overflow: hidden;">
+            <div class="card__image" style="height: 240px;">
+              <img src="../assets/images/services/home1_1.jpg" alt="Executive Skin Fade &amp; Pompadour haircut" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size: 18px;">Executive Skin Fade</h4>
+              <p class="text-small" style="margin-bottom: var(--space-sm);">Precision Japanese blade fade with crisp razor line-up.</p>
+              <span class="text-accent" style="font-weight: 700;">$50</span>
+            </div>
+          </div>
+
+          <!-- Showcase 2 -->
+          <div class="card reveal" style="overflow: hidden;">
+            <div class="card__image" style="height: 240px;">
+              <img src="../assets/images/services/shave.png" alt="Royal Hot Towel Straight Razor Shave" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size: 18px;">Royal Hot Towel Shave</h4>
+              <p class="text-small" style="margin-bottom: var(--space-sm);">Essential oil steam prep, single-use blade, cold towel finish.</p>
+              <span class="text-accent" style="font-weight: 700;">$40</span>
+            </div>
+          </div>
+
+          <!-- Showcase 3 -->
+          <div class="card reveal" style="overflow: hidden;">
+            <div class="card__image" style="height: 240px;">
+              <img src="../assets/images/services/home1_2.jpg" alt="Beard Sculpting &amp; Organic Oil Conditioning" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size: 18px;">Beard Sculpting Ritual</h4>
+              <p class="text-small" style="margin-bottom: var(--space-sm);">Symmetrical beard shaping with cold-pressed botanical oil balm.</p>
+              <span class="text-accent" style="font-weight: 700;">$30</span>
+            </div>
+          </div>
+
+          <!-- Showcase 4 -->
+          <div class="card reveal" style="overflow: hidden;">
+            <div class="card__image" style="height: 240px;">
+              <img src="../assets/images/services/home1_4.jpg" alt="Texture Crop &amp; Matte Style Haircut" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="card__body">
+              <h4 class="card__title" style="font-size: 18px;">Modern Texture Crop</h4>
+              <p class="text-small" style="margin-bottom: var(--space-sm);">Sculpted top layers with organic matte pomade blow-dry finish.</p>
+              <span class="text-accent" style="font-weight: 700;">$45</span>
+            </div>
           </div>
         </div>
       </div>

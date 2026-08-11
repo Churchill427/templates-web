@@ -436,11 +436,22 @@ p {
   text-decoration: none;
   flex-shrink: 0;
   z-index: 1001;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-logo:hover {
+  transform: translateY(-1px);
 }
 
 .nav-logo svg {
   width: 36px;
   height: 36px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.nav-logo:hover svg {
+  transform: scale(1.08) rotate(-3deg);
+  filter: drop-shadow(0 4px 12px rgba(196, 30, 58, 0.35));
 }
 
 .nav-logo-text {
@@ -449,6 +460,11 @@ p {
   font-weight: 700;
   color: var(--primary);
   letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.nav-logo:hover .nav-logo-text {
+  color: var(--secondary);
 }
 
 .nav-links {
@@ -492,13 +508,25 @@ p {
   color: var(--secondary);
 }
 
-/* Nav CTA Button (Order) */
+/* Nav CTA Button (Order) — Matched height & alignment with RTL toggle for a balanced header */
 .nav-cta {
   background-color: var(--secondary);
   color: #ffffff !important;
-  padding: 10px 24px;
-  border-radius: var(--radius-md);
+  font-size: 13px;
   font-weight: 600;
+  padding: 0 18px;
+  height: 36px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--secondary);
+  box-sizing: border-box;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  margin: 0;
 }
 
 .nav-cta::after {
@@ -507,7 +535,9 @@ p {
 
 .nav-cta:hover {
   background-color: var(--cta-hover);
-  transform: translateY(-2px);
+  border-color: var(--cta-hover);
+  color: #ffffff !important;
+  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
 }
 
@@ -581,20 +611,27 @@ p {
   display: flex;
   gap: var(--space-xs);
   align-items: center;
+  flex-shrink: 0;
 }
 
 .theme-toggle,
 .rtl-toggle {
   font-size: 13px;
   font-weight: 600;
-  padding: 6px 14px;
+  padding: 0 14px;
+  height: 36px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   border-radius: var(--radius-sm);
   color: var(--text-dark);
   background: transparent;
   border: 1px solid var(--border-color);
   cursor: pointer;
-  min-height: 34px;
   transition: var(--transition-fast);
+  white-space: nowrap;
 }
 
 .theme-toggle:hover,
@@ -759,9 +796,14 @@ p {
 }
 
 .page-hero p {
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 550px;
-  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 0 auto 28px auto;
+  line-height: 1.6;
+}
+
+.page-hero .btn {
+  margin-top: 20px;
 }
 
 /* ---------- 10. Footer ---------- */
@@ -788,11 +830,23 @@ p {
   align-items: center;
   gap: var(--space-sm);
   margin-bottom: var(--space-md);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: translateY(-1px);
 }
 
 .footer-logo svg {
   width: 32px;
   height: 32px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.footer-logo:hover svg {
+  transform: scale(1.08) rotate(-3deg);
+  filter: drop-shadow(0 4px 10px rgba(220, 38, 38, 0.4));
 }
 
 .footer-logo-text {
@@ -801,6 +855,11 @@ p {
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.footer-logo:hover .footer-logo-text {
+  color: #f87171;
 }
 
 .footer-tagline {
@@ -1041,10 +1100,13 @@ textarea.form-input {
 
 select.form-input {
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a5568' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 40px;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  background-size: 12px 8px !important;
+  padding-right: 40px !important;
 }
 
 .checkbox-group {
@@ -2499,7 +2561,7 @@ select.form-input {
   box-shadow: var(--shadow-card);
 }
 
-.faq-card i {
+.faq-card > i {
   font-size: 28px;
   color: var(--secondary);
   margin-bottom: var(--space-md);
@@ -2513,7 +2575,21 @@ select.form-input {
 .faq-card a {
   font-size: 13px;
   color: var(--secondary);
-  font-weight: 500;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.faq-card a i {
+  font-size: 12px !important;
+  color: inherit;
+  margin-bottom: 0 !important;
+  transition: transform 0.2s ease;
+}
+
+.faq-card a:hover i {
+  transform: translateX(4px);
 }
 
 /* ---------- 39. Masonry Grid ---------- */
