@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initStatsCounter();
   initSocialLogos();
+  initBookingModal();
 });
 
 /* --------------------------------------------------------------------------
@@ -429,3 +430,388 @@ function initSocialLogos() {
   appleBtn.forEach(btn => btn.innerHTML = appleSvg);
   facebookBtn.forEach(btn => btn.innerHTML = facebookSvg);
 }
+
+/* --------------------------------------------------------------------------
+   8. Premium Global Booking Modal Logic
+   -------------------------------------------------------------------------- */
+function initBookingModal() {
+  if (document.querySelector('.booking-modal-overlay')) return;
+
+  const modalOverlay = document.createElement('div');
+  modalOverlay.className = 'booking-modal-overlay';
+  modalOverlay.innerHTML = `
+  <div class="booking-modal">
+    <button class="booking-modal-close" aria-label="Close">&times;</button>
+    <div class="booking-modal-container">
+      
+      <!-- Left Panel: Premium Promo & Trust -->
+      <div class="booking-modal-info">
+        <div class="booking-modal-img-wrap">
+          <img src="assets/img/premium-booking.png" alt="Premium Service">
+        </div>
+        <div class="booking-modal-badges">
+          <h3>Premium Service Guarantee</h3>
+          <div class="badge-item">
+            <span class="badge-icon">🛡️</span>
+            <div>
+              <strong>Certified Technicians</strong>
+              <p>Licensed, background-checked expert engineers.</p>
+            </div>
+          </div>
+          <div class="badge-item">
+            <span class="badge-icon">⚡</span>
+            <div>
+              <strong>Same-Day Dispatch</strong>
+              <p>Average response time under 45 minutes.</p>
+            </div>
+          </div>
+          <div class="badge-item">
+            <span class="badge-icon">💎</span>
+            <div>
+              <strong>100% OEM Parts</strong>
+              <p>Genuine parts with a full 1-year warranty.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Multi-Step Wizard -->
+      <div class="booking-modal-form-wrap">
+        <h2>Schedule Appliance Service</h2>
+        <p class="form-subtitle">Complete the steps below to reserve your diagnostic slot.</p>
+
+        <!-- Progress Steps -->
+        <div class="modal-steps-indicator">
+          <div class="modal-step active" data-step="1">
+            <div class="step-num">1</div>
+            <div class="step-lbl">Service</div>
+          </div>
+          <div class="modal-step" data-step="2">
+            <div class="step-num">2</div>
+            <div class="step-lbl">Info</div>
+          </div>
+          <div class="modal-step" data-step="3">
+            <div class="step-num">3</div>
+            <div class="step-lbl">Schedule</div>
+          </div>
+          <div class="modal-step" data-step="4">
+            <div class="step-num">4</div>
+            <div class="step-lbl">Confirm</div>
+          </div>
+        </div>
+        
+        <div class="modal-step-counter-mobile">Step 1 of 4: Select Service</div>
+
+        <form id="modal-booking-form">
+          <!-- Step 1: Service selection -->
+          <div class="modal-step-pane active" data-step="1">
+            <div class="form-group">
+              <label class="form-label">Service Type *</label>
+              <div class="service-pill-grid">
+                <div class="service-pill active" data-val="Repair">
+                  <span>🔧 Repair</span>
+                </div>
+                <div class="service-pill" data-val="Installation">
+                  <span>📐 Installation</span>
+                </div>
+                <div class="service-pill" data-val="Maintenance">
+                  <span>🧼 Tune-Up</span>
+                </div>
+              </div>
+              <input type="hidden" id="modal-service-type" value="Repair" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Appliance Type *</label>
+              <select id="modal-appliance-type" class="form-select" required>
+                <option value="">Choose appliance category...</option>
+                <option value="Refrigerator">Refrigerator / Freezer</option>
+                <option value="Washing Machine">Washing Machine / Dryer</option>
+                <option value="Air Conditioner">Air Conditioner (HVAC)</option>
+                <option value="Microwave Oven">Microwave / Electric Oven</option>
+                <option value="Dishwasher">Dishwasher</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Appliance Brand</label>
+              <input type="text" id="modal-brand-name" class="form-input" placeholder="e.g. Samsung, LG, Whirlpool">
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary modal-next-btn" type="button" style="width: 100%;">Continue to Details →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Contact Info -->
+          <div class="modal-step-pane" data-step="2">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="modal-cust-name" class="form-input" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number *</label>
+              <input type="tel" id="modal-cust-phone" class="form-input" placeholder="+1 (555) 000-0000" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Service Address *</label>
+              <input type="text" id="modal-cust-address" class="form-input" placeholder="123 Main St, Apartment 4B" required>
+            </div>
+
+            <div class="form-actions-split">
+              <button class="btn btn-outline modal-prev-btn" type="button">Back</button>
+              <button class="btn btn-primary modal-next-btn" type="button">Next: Schedule →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Date/Time slot -->
+          <div class="modal-step-pane" data-step="3">
+            <div class="form-group">
+              <label class="form-label">Preferred Date *</label>
+              <input type="date" id="modal-service-date" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Time Slot *</label>
+              <select id="modal-service-time" class="form-select" required>
+                <option value="">Select window...</option>
+                <option value="Morning (8:00 AM - 12:00 PM)">Morning (8:00 AM - 12:00 PM)</option>
+                <option value="Afternoon (12:00 PM - 4:00 PM)">Afternoon (12:00 PM - 4:00 PM)</option>
+                <option value="Evening (4:00 PM - 8:00 PM)">Evening (4:00 PM - 8:00 PM)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Issue Details</label>
+              <textarea id="modal-issue-desc" class="form-textarea" placeholder="Describe the problem with your appliance..."></textarea>
+            </div>
+
+            <div class="form-actions-split">
+              <button class="btn btn-outline modal-prev-btn" type="button">Back</button>
+              <button class="btn btn-primary modal-next-btn" type="button">Next: Review →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Summary -->
+          <div class="modal-step-pane" data-step="4">
+            <div class="booking-summary-card">
+              <!-- Dynamically populated -->
+            </div>
+            
+            <div class="form-actions-split" style="margin-top: 1.5rem;">
+              <button class="btn btn-outline modal-prev-btn" type="button">Back</button>
+              <button type="submit" class="btn btn-secondary">Book Service Now</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  `;
+  document.body.appendChild(modalOverlay);
+
+  // Set today's date as min date
+  const dateInput = document.getElementById('modal-service-date');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+  }
+
+  // Handle service pills selection
+  const pills = modalOverlay.querySelectorAll('.service-pill');
+  const serviceTypeInput = document.getElementById('modal-service-type');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      if (serviceTypeInput) {
+        serviceTypeInput.value = pill.dataset.val;
+      }
+    });
+  });
+
+  // Wizard state and elements
+  let currentStep = 1;
+  const stepItems = modalOverlay.querySelectorAll('.modal-step');
+  const stepPanes = modalOverlay.querySelectorAll('.modal-step-pane');
+  const nextBtns = modalOverlay.querySelectorAll('.modal-next-btn');
+  const prevBtns = modalOverlay.querySelectorAll('.modal-prev-btn');
+  const mobileCounter = modalOverlay.querySelector('.modal-step-counter-mobile');
+
+  const stepTitlesMobile = [
+    "Select Service",
+    "Customer Information",
+    "Choose Schedule",
+    "Confirm Details"
+  ];
+
+  function updateModalWizard() {
+    // Desktop indicator
+    stepItems.forEach(item => {
+      const step = parseInt(item.dataset.step);
+      if (step === currentStep) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Mobile title
+    if (mobileCounter) {
+      mobileCounter.textContent = `Step ${currentStep} of 4: ${stepTitlesMobile[currentStep - 1]}`;
+    }
+
+    // Step pane visibility
+    stepPanes.forEach(pane => {
+      const step = parseInt(pane.dataset.step);
+      if (step === currentStep) {
+        pane.classList.add('active');
+      } else {
+        pane.classList.remove('active');
+      }
+    });
+
+    // Summary pane populate
+    if (currentStep === 4) {
+      const sType = serviceTypeInput ? serviceTypeInput.value : 'Repair';
+      const sAppliance = document.getElementById('modal-appliance-type').value;
+      const sBrand = document.getElementById('modal-brand-name').value || 'Unspecified';
+      const sName = document.getElementById('modal-cust-name').value;
+      const sPhone = document.getElementById('modal-cust-phone').value;
+      const sAddress = document.getElementById('modal-cust-address').value;
+      const sDate = document.getElementById('modal-service-date').value;
+      const sTime = document.getElementById('modal-service-time').value;
+      const sIssue = document.getElementById('modal-issue-desc').value || 'None provided';
+
+      const summaryCard = modalOverlay.querySelector('.booking-summary-card');
+      summaryCard.innerHTML = `
+        <h4>Appointment Summary</h4>
+        <div class="booking-summary-grid">
+          <span class="label">Request:</span>
+          <span class="val">${sType} for ${sBrand} ${sAppliance}</span>
+          
+          <span class="label">Customer:</span>
+          <span class="val">${sName}</span>
+          
+          <span class="label">Contact:</span>
+          <span class="val">${sPhone}</span>
+          
+          <span class="label">Address:</span>
+          <span class="val">${sAddress}</span>
+          
+          <span class="label">Schedule:</span>
+          <span class="val">${sDate} (${sTime})</span>
+          
+          <span class="label">Details:</span>
+          <span class="val">${sIssue}</span>
+        </div>
+      `;
+    }
+  }
+
+  // Next buttons
+  nextBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pane = modalOverlay.querySelector(`.modal-step-pane[data-step="${currentStep}"]`);
+      const requiredInputs = pane.querySelectorAll('input[required], select[required]');
+      let isValid = true;
+
+      requiredInputs.forEach(input => {
+        if (!input.value.trim()) {
+          input.style.borderColor = '#EF4444';
+          isValid = false;
+        } else {
+          input.style.borderColor = 'var(--border-color)';
+        }
+      });
+
+      if (!isValid) {
+        if (typeof showToast === 'function') {
+          showToast('Please fill in all required fields.');
+        } else {
+          alert('Please fill in all required fields.');
+        }
+        return;
+      }
+
+      if (currentStep < 4) {
+        currentStep++;
+        updateModalWizard();
+      }
+    });
+  });
+
+  // Prev buttons
+  prevBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateModalWizard();
+      }
+    });
+  });
+
+  // Form submit
+  const form = document.getElementById('modal-booking-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('modal-cust-name').value;
+    
+    // Close modal
+    modalOverlay.classList.remove('active');
+    
+    // Reset state
+    setTimeout(() => {
+      form.reset();
+      currentStep = 1;
+      updateModalWizard();
+      pills.forEach(p => p.classList.remove('active'));
+      pills[0].classList.add('active');
+      if (serviceTypeInput) serviceTypeInput.value = 'Repair';
+    }, 300);
+
+    // Show success toast
+    if (typeof showToast === 'function') {
+      showToast(`Thank you ${name}! Your appointment has been booked successfully.`);
+    } else {
+      alert(`Thank you ${name}! Your appointment has been booked successfully.`);
+    }
+  });
+
+  // Modal open function
+  window.openBookingModal = function() {
+    modalOverlay.classList.add('active');
+  };
+
+  // Close triggers
+  const closeBtn = modalOverlay.querySelector('.booking-modal-close');
+  closeBtn.addEventListener('click', () => {
+    modalOverlay.classList.remove('active');
+  });
+
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      modalOverlay.classList.remove('active');
+    }
+  });
+}
+
+// Intercept all booking CTA clicks
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('a, button');
+  if (!trigger) return;
+
+  const href = trigger.getAttribute('href');
+  const isCta = trigger.classList.contains('btn') || trigger.classList.contains('nav-cta');
+  const isBookingHref = href === '#booking-wizard' || href === 'services.html';
+  
+  // Check if inside nav-menu to avoid intercepting regular Services navigation page link
+  const isNavbarLink = trigger.classList.contains('nav-link') || trigger.closest('.nav-menu');
+
+  if (isCta && isBookingHref && !isNavbarLink) {
+    e.preventDefault();
+    if (typeof window.openBookingModal === 'function') {
+      window.openBookingModal();
+    }
+  }
+});

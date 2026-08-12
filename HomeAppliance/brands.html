@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Appliance Brands | HOME Store</title>
+  <title>Global Appliance Brands | Fixa Store</title>
   <meta name="description"
-    content="Discover global leader appliance manufacturers carried at HOME including Samsung, LG, Whirlpool, Bosch, and Panasonic.">
+    content="Discover global leader appliance manufacturers carried at Fixa including Samsung, LG, Whirlpool, Bosch, and Panasonic.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -17,11 +17,15 @@
   <header class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 9l10-7 10 7" />
+          <path d="M4 9v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+          <circle cx="12" cy="14" r="4" />
+          <path d="M12 10v1.5M12 16.5v1.5M8 14h1.5M14.5 14h1.5" />
+          <path d="M11 13.5l1.5-2v2h1.5l-1.5 2v-2z" fill="currentColor" />
         </svg>
-        HOME<span>.</span>
+        FIXA<span>.</span>
       </a>
 
       <nav>
@@ -46,16 +50,8 @@
         <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme"><span class="theme-icon"></span></button>
         <button class="btn-icon dir-toggle-btn" aria-label="Toggle Direction"><span class="dir-label"
             style="font-weight:700; font-size:0.75rem;">LTR</span></button>
-        <button class="btn-icon cart-toggle-btn" aria-label="View Cart" style="position: relative;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="8" cy="21" r="1" />
-            <circle cx="19" cy="21" r="1" />
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-          </svg>
-          <span class="badge cart-badge-count" style="position: absolute; top: -4px; right: -4px;">1</span>
-        </button>
-        <a href="services.html" class="btn btn-secondary"
-          style="display: none; @media(min-width: 768px){display:inline-flex;}">Book Repair</a>
+        <!-- Primary CTA -->
+        <a href="services.html" class="btn btn-primary nav-cta">Book Service</a>
         <button class="hamburger-btn" aria-label="Open Menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12" />
@@ -89,8 +85,7 @@
 
   <main>
     <!-- SECTION 1: HERO -->
-    <section class="hero"
-      style="background-image: url('assets/img/hero-brands.png');">
+    <section class="hero" style="background-image: url('assets/img/hero-brands.png');">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <span class="subtitle" style="color: var(--color-secondary); font-weight: 700;">Global Partnerships</span>
@@ -107,7 +102,7 @@
     <section class="section" id="brand-grid">
       <div class="container">
         <div class="section-header">
-          <span class="subtitle">Authorized Retailer</span>
+          <span class="subtitle"></span>
           <h2>Explore By Manufacturer</h2>
           <p>Click on any brand to filter products, official accessories, and replacement parts.</p>
         </div>
@@ -189,30 +184,222 @@
     </section>
 
     <!-- SECTION 3: BRAND SPOTLIGHT -->
-    <section class="section" style="background: var(--bg-surface);">
+    <section class="section"
+      style="background: var(--bg-surface-elevated); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
       <div class="container">
-        <div class="split-section">
-          <div class="split-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80"
-              alt="Samsung Innovation">
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+          <span class="subtitle"></span>
+          <h2>Manufacturer Spotlight</h2>
+          <p>Explore exclusive smart home ecosystems and advanced engineering from our top partners.</p>
+        </div>
+
+        <!-- Brand Select Tabs -->
+        <div class="spotlight-tabs">
+          <button class="btn active" onclick="switchSpotlight('samsung')">Samsung SmartThings</button>
+          <button class="btn" onclick="switchSpotlight('lg')">LG ThinQ AI</button>
+          <button class="btn" onclick="switchSpotlight('bosch')">Bosch Engineering</button>
+        </div>
+
+        <!-- Spotlight Content Wrapper -->
+        <div class="spotlight-wrapper" style="position: relative;">
+
+          <!-- SAMSUNG SPOTLIGHT -->
+          <div id="spotlight-samsung" class="spotlight-card active-card">
+            <div class="split-section">
+              <div class="split-image-wrapper" style="position: relative;">
+                <img src="https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80"
+                  alt="Samsung Innovation">
+                <div
+                  style="position: absolute; top: 1rem; right: 1rem; background: var(--color-primary); color: #FFF; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 700; z-index: 5;">
+                  CONNECT HUB</div>
+              </div>
+              <div style="display:flex; flex-direction:column; justify-content:center;">
+                <span class="subtitle">Samsung AI Spotlight</span>
+                <h2>Samsung AI SmartThings Ecosystem</h2>
+                <p style="margin-bottom: 1.5rem;">Experience total home control. Samsung's latest AI refrigerators track
+                  ingredient expiration dates, automatically suggest recipes, and sync cooling cycles with your
+                  smartphone.</p>
+
+                <div class="spotlight-features-grid">
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>AI Energy Mode</h5>
+                      <p>Reduces electricity consumption by up to 30% dynamically.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>SpaceMax™ Tech</h5>
+                      <p>Thinner cabinet walls provide extra volume without bulk.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>20-Year Warranty</h5>
+                      <p>Guaranteed digital inverter compressor durability.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>SmartThings Integration</h5>
+                      <p>Monitor status and diagnostics directly from your mobile phone.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="appliances.html" class="btn btn-primary" style="align-self: flex-start;">Shop Samsung
+                  Collection</a>
+              </div>
+            </div>
           </div>
-          <div style="display:flex; flex-direction:column; justify-content:center;">
-            <span class="subtitle">Manufacturer Spotlight</span>
-            <h2>Samsung AI SmartThings Ecosystem</h2>
-            <p style="margin-bottom: 1rem;">Experience total home control. Samsung's latest AI refrigerators track
-              ingredient expiration dates, automatically suggest recipes, and sync cooling cycles with your smartphone.
-            </p>
-            <ul style="list-style: none; margin-bottom: 1.5rem; display:flex; flex-direction:column; gap:0.5rem;">
-              <li style="display:flex; align-items:center; gap:0.5rem; color: var(--color-accent); font-weight:600;">✓
-                AI Energy Mode reduces consumption by up to 30%</li>
-              <li style="display:flex; align-items:center; gap:0.5rem; color: var(--color-accent); font-weight:600;">✓
-                SpaceMax™ technology provides thinner walls and extra volume</li>
-              <li style="display:flex; align-items:center; gap:0.5rem; color: var(--color-accent); font-weight:600;">✓
-                20-Year Digital Inverter motor warranty</li>
-            </ul>
-            <a href="appliances.html" class="btn btn-primary" style="align-self: flex-start;">Shop Samsung
-              Collection</a>
+
+          <!-- LG SPOTLIGHT -->
+          <div id="spotlight-lg" class="spotlight-card">
+            <div class="split-section">
+              <div class="split-image-wrapper" style="position: relative;">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
+                  alt="LG ThinQ Innovation">
+                <div
+                  style="position: absolute; top: 1rem; right: 1rem; background: var(--color-primary); color: #FFF; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 700; z-index: 5;">
+                  THINQ AI</div>
+              </div>
+              <div style="display:flex; flex-direction:column; justify-content:center;">
+                <span class="subtitle">LG Electronics Spotlight</span>
+                <h2>LG ThinQ Intelligent Home</h2>
+                <p style="margin-bottom: 1.5rem;">Powered by advanced AI Direct Drive technology, LG washers detect
+                  fabric softness and weight to optimize wash patterns. Sync your home with LG ThinQ voice activation.
+                </p>
+
+                <div class="spotlight-features-grid">
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>AI Direct Drive</h5>
+                      <p>Protects fabrics with 18% more optimized washing movements.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>ThinQ Voice Control</h5>
+                      <p>Control status effortlessly via Alexa or Google Assistant.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>TurboWash™ 360</h5>
+                      <p>Four multi-directional spray nozzles clean clothes in 39 minutes.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>InstaView™ Window</h5>
+                      <p>Knock twice to view items inside without losing cooling air.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="appliances.html" class="btn btn-primary" style="align-self: flex-start;">Shop LG Collection</a>
+              </div>
+            </div>
           </div>
+
+          <!-- BOSCH SPOTLIGHT -->
+          <div id="spotlight-bosch" class="spotlight-card">
+            <div class="split-section">
+              <div class="split-image-wrapper" style="position: relative;">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
+                  alt="Bosch Innovation">
+                <div
+                  style="position: absolute; top: 1rem; right: 1rem; background: var(--color-primary); color: #FFF; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 700; z-index: 5;">
+                  PRECISION GERMAN</div>
+              </div>
+              <div style="display:flex; flex-direction:column; justify-content:center;">
+                <span class="subtitle">Bosch Engineering Spotlight</span>
+                <h2>Bosch German-Engineered Precision</h2>
+                <p style="margin-bottom: 1.5rem;">Renowned for quiet efficiency, Bosch dishwashers feature patented
+                  CrystalDry™ technology that transforms moisture into heat for ultimate drying results on all dishware.
+                </p>
+
+                <div class="spotlight-features-grid">
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>CrystalDry™ Drying</h5>
+                      <p>Yields up to 60% drier dishes, including sensitive plastics.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>EcoSilence Drive</h5>
+                      <p>Quiet brushless motor generates sound ratings as low as 38 dBA.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>AquaStop® Protection</h5>
+                      <p>24/7 lifetime leakage warranty prevents property water damage.</p>
+                    </div>
+                  </div>
+                  <div class="spotlight-feature-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div>
+                      <h5>VarioDrawer™ Rack</h5>
+                      <p>Third loading level adds 30% more loading space capacity.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="appliances.html" class="btn btn-primary" style="align-self: flex-start;">Shop Bosch
+                  Collection</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -284,8 +471,8 @@
 
         <div class="grid-2">
           <div class="card" style="display:flex; flex-direction:row; gap:1.5rem; align-items:center;">
-            <img src="assets/img/fridge-new.jpg"
-              alt="Samsung Favorite" style="width: 120px; height: 120px; object-fit:cover; border-radius:10px;">
+            <img src="assets/img/fridge-new.jpg" alt="Samsung Favorite"
+              style="width: 120px; height: 120px; object-fit:cover; border-radius:10px;">
             <div>
               <span class="badge" style="margin-bottom:0.25rem;">SAMSUNG BEST SELLER</span>
               <h4 style="margin-bottom: 0.25rem;">French Door Smart Fridge 520L</h4>
@@ -295,8 +482,8 @@
           </div>
 
           <div class="card" style="display:flex; flex-direction:row; gap:1.5rem; align-items:center;">
-            <img src="assets/img/washer-new.jpg"
-              alt="LG Favorite" style="width: 120px; height: 120px; object-fit:cover; border-radius:10px;">
+            <img src="assets/img/washer-new.jpg" alt="LG Favorite"
+              style="width: 120px; height: 120px; object-fit:cover; border-radius:10px;">
             <div>
               <span class="badge" style="background: var(--color-accent); margin-bottom:0.25rem;">LG BEST SELLER</span>
               <h4 style="margin-bottom: 0.25rem;">TurboSteam Front Load Washer</h4>
@@ -344,11 +531,15 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo footer-logo">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 9l10-7 10 7" />
+              <path d="M4 9v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+              <circle cx="12" cy="14" r="4" />
+              <path d="M12 10v1.5M12 16.5v1.5M8 14h1.5M14.5 14h1.5" />
+              <path d="M11 13.5l1.5-2v2h1.5l-1.5 2v-2z" fill="currentColor" />
             </svg>
-            HOME<span>.</span>
+            FIXA<span>.</span>
           </a>
           <p class="footer-tagline">Your trusted destination for smart home appliances, certified installation, and 24/7
             expert repair services.</p>
@@ -395,7 +586,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 HOME Appliance Store & Service Center. All rights reserved.</div>
+        <div>&copy; 2026 Fixa Appliance Store & Service Center. All rights reserved.</div>
         <div style="display:flex; gap: 1.5rem;">
           <a href="about.html" style="color: #94A3B8;">Privacy Policy</a>
           <a href="about.html" style="color: #94A3B8;">Terms of Service</a>
@@ -406,6 +597,32 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    function switchSpotlight(brandId) {
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll('.spotlight-tabs .btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Find the clicked button and make it active
+      event.currentTarget.classList.add('active');
+
+      // Hide all spotlight cards
+      const cards = document.querySelectorAll('.spotlight-card');
+      cards.forEach(card => {
+        card.classList.remove('active-card');
+        card.style.display = 'none';
+      });
+
+      // Show the selected brand card
+      const activeCard = document.getElementById('spotlight-' + brandId);
+      if (activeCard) {
+        activeCard.style.display = 'block';
+        // Force repaint to trigger CSS transition
+        activeCard.offsetHeight;
+        activeCard.classList.add('active-card');
+      }
+    }
+  </script>
 </body>
 
 </html>

@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us & Emergency Hotline | HOME</title>
-  <meta name="description" content="Get in touch with HOME customer support, visit our store showrooms, or call our 24/7 emergency repair hotline.">
+  <title>Contact Us & Emergency Hotline | Fixa</title>
+  <meta name="description" content="Get in touch with Fixa customer support, visit our store showrooms, or call our 24/7 emergency repair hotline.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 <body>
 
@@ -14,11 +16,14 @@
   <header class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          <polyline points="9 22 9 12 15 12 15 22"/>
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 9l10-7 10 7" />
+          <path d="M4 9v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+          <circle cx="12" cy="14" r="4" />
+          <path d="M12 10v1.5M12 16.5v1.5M8 14h1.5M14.5 14h1.5" />
+          <path d="M11 13.5l1.5-2v2h1.5l-1.5 2v-2z" fill="currentColor" />
         </svg>
-        HOME<span>.</span>
+        FIXA<span>.</span>
       </a>
 
       <nav>
@@ -42,14 +47,8 @@
       <div class="nav-actions">
         <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme"><span class="theme-icon"></span></button>
         <button class="btn-icon dir-toggle-btn" aria-label="Toggle Direction"><span class="dir-label" style="font-weight:700; font-size:0.75rem;">LTR</span></button>
-        <button class="btn-icon cart-toggle-btn" aria-label="View Cart" style="position: relative;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-          </svg>
-          <span class="badge cart-badge-count" style="position: absolute; top: -4px; right: -4px;">1</span>
-        </button>
-        <a href="services.html" class="btn btn-secondary" style="display: none; @media(min-width: 768px){display:inline-flex;}">Book Repair</a>
+        <!-- Primary CTA -->
+        <a href="services.html" class="btn btn-primary nav-cta">Book Service</a>
         <button class="hamburger-btn" aria-label="Open Menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
@@ -83,7 +82,7 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <span class="subtitle" style="color: var(--color-secondary); font-weight: 700;">Support & Inquiries</span>
-        <h1>Get in Touch with HOME</h1>
+        <h1>Get in Touch with Fixa</h1>
         <p>Whether you have product questions or need urgent repair dispatch, our friendly support team is here to assist 24 hours a day.</p>
       </div>
     </section>
@@ -93,7 +92,7 @@
       <div class="container">
         <div class="grid-2">
           <!-- Form Left -->
-          <div class="card" style="padding: 2.5rem;">
+          <div class="card contact-form-card" style="padding: 2.5rem;">
             <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
             <form onsubmit="event.preventDefault(); showToast('Thank you! Your message has been sent.'); this.reset();">
               <div class="form-group">
@@ -126,18 +125,18 @@
               <h3 style="margin-bottom: 1rem;">Customer Support Hub</h3>
               <p style="margin-bottom: 1.5rem;">Our customer success desk handles order tracking, warranty claims, and technician scheduling.</p>
 
-              <div style="display:flex; flex-direction:column; gap:1rem; font-size:0.95rem;">
+              <div class="contact-page-info" style="display:flex; flex-direction:column; gap:1rem; font-size:0.95rem;">
                 <div>
                   <strong>📍 Main Headquarters:</strong><br>
                   100 Appliance Parkway, Suite 400, Tech City, TC 90210
                 </div>
                 <div>
                   <strong>📞 Phone Support:</strong><br>
-                  Sales: (800) 555-HOME | Service: (800) 999-REPAIR
+                  Sales: (800) 555-FIXA | Service: (800) 999-REPAIR
                 </div>
                 <div>
                   <strong>✉️ Email Address:</strong><br>
-                  support@homeappliance.com
+                  support@fixa.com
                 </div>
                 <div>
                   <strong>⏰ Operating Hours:</strong><br>
@@ -150,7 +149,7 @@
             <div class="card" style="padding: 1.5rem; text-align:center;">
               <h4 style="margin-bottom:0.5rem;">Connect with Social Login</h4>
               <p style="font-size:0.85rem; margin-bottom: 1rem;">Sign in quickly via your favorite identity provider.</p>
-              <div style="display:flex; gap:1rem; justify-content:center;">
+              <div style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center;">
                 <button class="social-btn google" style="width:auto; padding:0 1rem; border-radius:8px; height:40px;" onclick="showToast('Signed in with Google');">Google</button>
                 <button class="social-btn apple" style="width:auto; padding:0 1rem; border-radius:8px; height:40px;" onclick="showToast('Signed in with Apple');">Apple ID</button>
                 <button class="social-btn facebook" style="width:auto; padding:0 1rem; border-radius:8px; height:40px;" onclick="showToast('Signed in with Facebook');">Facebook</button>
@@ -169,11 +168,13 @@
           <h2>Visit Our Flagship Appliance Showroom</h2>
         </div>
 
-        <div style="width:100%; height: 380px; border-radius: 16px; overflow:hidden; position:relative; background:#1E293B; border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center;">
-          <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="Map View" style="width:100%; height:100%; object-fit:cover; opacity:0.6;">
-          <div style="position:relative; z-index:2; background: var(--bg-surface); padding: 1.5rem 2rem; border-radius:12px; box-shadow:var(--shadow-lg); text-align:center;">
+        <div class="showroom-locator">
+          <!-- Live Interactive Leaflet Map -->
+          <div id="showroom-map" class="showroom-map-container"></div>
+          
+          <div class="showroom-details-card">
             <div style="font-size: 2rem; margin-bottom: 0.25rem;">📍</div>
-            <h3 style="margin-bottom:0.25rem;">HOME Flagship Experience Store</h3>
+            <h3 style="margin-bottom:0.25rem;">FIXA Flagship Experience Store</h3>
             <p style="font-size:0.85rem; color:var(--text-muted);">100 Appliance Parkway, Tech City</p>
             <a href="https://maps.google.com" target="_blank" class="btn btn-secondary" style="margin-top:1rem; height:36px; font-size:0.85rem;">Open in Google Maps ↗</a>
           </div>
@@ -229,7 +230,7 @@
         <div class="section-header">
           <span class="subtitle">Regional Branches</span>
           <h2>Our Branch Network</h2>
-          <p>Find the nearest HOME showroom and pickup location.</p>
+          <p>Find the nearest Fixa showroom and pickup location.</p>
         </div>
 
         <div class="grid-3">
@@ -268,7 +269,7 @@
       <div class="container">
         <h2 style="color: #FFFFFF; margin-bottom: 1rem;">24/7 Immediate Emergency Repair Hotline</h2>
         <p style="color: #FEE2E2; max-width: 600px; margin: 0 auto 1.5rem auto;">Leaking washer or cooling failure? Our rapid response unit is on call 365 days a year.</p>
-        <a href="tel:18009997372" class="btn btn-secondary" style="font-size: 1.1rem; height: 50px;">📞 Call Emergency Hotline: (800) 999-REPAIR</a>
+        <a href="tel:18009997372" class="btn btn-secondary emergency-hotline-btn">📞 Call Emergency Hotline: (800) 999-REPAIR</a>
       </div>
     </section>
   </main>
@@ -279,11 +280,14 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo footer-logo">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 9l10-7 10 7" />
+              <path d="M4 9v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+              <circle cx="12" cy="14" r="4" />
+              <path d="M12 10v1.5M12 16.5v1.5M8 14h1.5M14.5 14h1.5" />
+              <path d="M11 13.5l1.5-2v2h1.5l-1.5 2v-2z" fill="currentColor" />
             </svg>
-            HOME<span>.</span>
+            FIXA<span>.</span>
           </a>
           <p class="footer-tagline">Your trusted destination for smart home appliances, certified installation, and 24/7 expert repair services.</p>
           <div class="social-links">
@@ -328,7 +332,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 HOME Appliance Store & Service Center. All rights reserved.</div>
+        <div>&copy; 2026 Fixa Appliance Store & Service Center. All rights reserved.</div>
         <div style="display:flex; gap: 1.5rem;">
           <a href="about.html" style="color: #94A3B8;">Privacy Policy</a>
           <a href="about.html" style="color: #94A3B8;">Terms of Service</a>
@@ -340,5 +344,37 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/faq.js"></script>
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Initialize Leaflet Map centered on Times Square / Tech City Appliance District
+      var map = L.map('showroom-map', {
+        center: [40.7589, -73.9851],
+        zoom: 13,
+        scrollWheelZoom: false
+      });
+
+      // Add a modern dark cartography layer to map
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }).addTo(map);
+
+      // Custom marker icon styled in Energy Amber secondary color
+      var customIcon = L.divIcon({
+        className: 'custom-map-pin',
+        html: '<div style="background: var(--color-secondary); width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid #FFFFFF; box-shadow: 0 0 12px var(--color-secondary);"></div>',
+        iconSize: [16, 16],
+        iconAnchor: [8, 8]
+      });
+
+      // Add marker to the map
+      L.marker([40.7589, -73.9851], { icon: customIcon })
+        .addTo(map)
+        .bindPopup("<strong style='color:#0F172A;'>FIXA Flagship Experience Store</strong><br><span style='font-size:0.8rem; color:#475569;'>100 Appliance Parkway, Tech City</span>");
+    });
+  </script>
 </body>
 </html>

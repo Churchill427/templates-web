@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appliance Repair & Installation Services | HOME</title>
+  <title>Appliance Repair & Installation Services | Fixa</title>
   <meta name="description"
     content="Book certified technicians for same-day home appliance repair, HVAC servicing, and guaranteed installation.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body>
@@ -17,11 +19,14 @@
   <header class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <polyline points="9 22 9 12 15 12 15 22" />
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 9l10-7 10 7" />
+          <path d="M4 9v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+          <circle cx="12" cy="14" r="4" />
+          <path d="M12 10v1.5M12 16.5v1.5M8 14h1.5M14.5 14h1.5" />
+          <path d="M11 13.5l1.5-2v2h1.5l-1.5 2v-2z" fill="currentColor" />
         </svg>
-        HOME<span>.</span>
+        FIXA<span>.</span>
       </a>
 
       <nav>
@@ -46,16 +51,8 @@
         <button class="btn-icon theme-toggle-btn" aria-label="Toggle Theme"><span class="theme-icon"></span></button>
         <button class="btn-icon dir-toggle-btn" aria-label="Toggle Direction"><span class="dir-label"
             style="font-weight:700; font-size:0.75rem;">LTR</span></button>
-        <button class="btn-icon cart-toggle-btn" aria-label="View Cart" style="position: relative;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="8" cy="21" r="1" />
-            <circle cx="19" cy="21" r="1" />
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-          </svg>
-          <span class="badge cart-badge-count" style="position: absolute; top: -4px; right: -4px;">1</span>
-        </button>
-        <a href="#booking-wizard" class="btn btn-secondary"
-          style="display: none; @media(min-width: 768px){display:inline-flex;}">Book Repair</a>
+        <!-- Primary CTA -->
+        <a href="#booking-wizard" class="btn btn-primary nav-cta">Book Service</a>
         <button class="hamburger-btn" aria-label="Open Menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12" />
@@ -331,22 +328,8 @@
 
         <div class="grid-2" style="align-items: center;">
           <!-- Map Mockup Div -->
-          <div
-            style="width: 100%; height: 320px; border-radius: 16px; background: #E2E8F0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">
-            <div
-              style="position: absolute; inset:0; background: radial-gradient(circle, rgba(30,58,138,0.15) 0%, rgba(15,23,42,0.6) 100%), url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80'); background-size: cover;">
-            </div>
-            <div
-              style="position: relative; z-index: 2; text-align: center; color: #FFF; padding: 1rem; background: rgba(15,23,42,0.85); border-radius: 12px;">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                style="color: var(--color-secondary);">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <h4 style="color:#FFF; margin-top: 0.5rem;">5 Metro Dispatch Hubs</h4>
-              <p style="font-size: 0.85rem; color: #CBD5E1;">Tracking live service vans in real-time</p>
-            </div>
-          </div>
+          <!-- Live Interactive Leaflet Map -->
+          <div id="interactive-map" style="width: 100%; height: 320px; border-radius: 16px; border: 1px solid var(--border-color); position: relative; z-index: 10;"></div>
 
           <div>
             <h3 style="margin-bottom: 1rem;">Covered Metropolitan Zones</h3>
@@ -463,11 +446,14 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo footer-logo">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 9l10-7 10 7" />
+              <path d="M4 9v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+              <circle cx="12" cy="14" r="4" />
+              <path d="M12 10v1.5M12 16.5v1.5M8 14h1.5M14.5 14h1.5" />
+              <path d="M11 13.5l1.5-2v2h1.5l-1.5 2v-2z" fill="currentColor" />
             </svg>
-            HOME<span>.</span>
+            FIXA<span>.</span>
           </a>
           <p class="footer-tagline">Your trusted destination for smart home appliances, certified installation, and 24/7
             expert repair services.</p>
@@ -514,7 +500,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 HOME Appliance Store & Service Center. All rights reserved.</div>
+        <div>&copy; 2026 Fixa Appliance Store & Service Center. All rights reserved.</div>
         <div style="display:flex; gap: 1.5rem;">
           <a href="about.html" style="color: #94A3B8;">Privacy Policy</a>
           <a href="about.html" style="color: #94A3B8;">Terms of Service</a>
@@ -527,6 +513,48 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/services.js"></script>
   <script src="assets/js/faq.js"></script>
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Initialize Leaflet Map centered on NYC Metro area coordinates
+      var map = L.map('interactive-map', {
+        center: [40.7128, -74.0060],
+        zoom: 10,
+        scrollWheelZoom: false
+      });
+
+      // Add a dark theme tile layer matching the premium brand design
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }).addTo(map);
+
+      // Coordinates for Covered Metropolitan Zones
+      var hubs = [
+        { name: "Downtown Metro Hub", coords: [40.7128, -74.0060], response: "< 30 Mins" },
+        { name: "North Suburbs Hub", coords: [40.7891, -73.9598], response: "< 45 Mins" },
+        { name: "West Innovation District Hub", coords: [40.7282, -74.0776], response: "< 40 Mins" },
+        { name: "South Harbor Hub", coords: [40.6397, -74.0257], response: "< 50 Mins" }
+      ];
+
+      // Custom marker icon styled in secondary brand color (energy amber)
+      var customIcon = L.divIcon({
+        className: 'custom-map-pin',
+        html: '<div style="background: var(--color-secondary); width: 14px; height: 14px; border-radius: 50%; border: 2px solid #FFFFFF; box-shadow: 0 0 10px var(--color-secondary);"></div>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7]
+      });
+
+      // Add interactive pins with info popups
+      hubs.forEach(function(hub) {
+        L.marker(hub.coords, { icon: customIcon })
+          .addTo(map)
+          .bindPopup("<strong style='color:#0F172A;'>" + hub.name + "</strong><br><span style='font-size:0.8rem; color:#475569;'>Guaranteed Response: " + hub.response + "</span>");
+      });
+    });
+  </script>
 </body>
 
 </html>
