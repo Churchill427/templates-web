@@ -107,8 +107,10 @@
     const dir = saved || DIR_LTR;
     applyDir(dir);
 
-    if (rtlToggle) rtlToggle.addEventListener('click', toggleDir);
-    if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', toggleDir);
+    const toggles = document.querySelectorAll('#rtl-toggle, #rtl-toggle-mobile, .rtl-toggle-btn');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', toggleDir);
+    });
   }
 
   // ─── NAVBAR SCROLL BEHAVIOR ──────────────────────────────

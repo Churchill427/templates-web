@@ -17,22 +17,14 @@
 }
 
 /* --- Navbar --- */
-[dir="rtl"] .navbar__inner {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .nav {
-  flex-direction: row-reverse;
-}
-
 [dir="rtl"] .nav__link::after {
   left: auto;
   right: 0;
 }
 
-/* RTL Hamburger stays on right */
-[dir="rtl"] .navbar__hamburger {
-  order: -1;
+[dir="rtl"] .navbar__controls .btn {
+  margin-left: 0 !important;
+  margin-right: var(--space-sm) !important;
 }
 
 /* --- Mobile Menu --- */
@@ -48,14 +40,15 @@
 
 /* --- Dropdown --- */
 [dir="rtl"] .nav__dropdown-menu {
-  left: auto;
-  right: 50%;
-  transform: translateX(50%) translateY(8px);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%) translateY(8px);
+  text-align: right;
 }
 
 [dir="rtl"] .nav__dropdown:hover .nav__dropdown-menu,
 [dir="rtl"] .nav__dropdown.open .nav__dropdown-menu {
-  transform: translateX(50%) translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 /* --- Form Select Arrow --- */
@@ -148,8 +141,13 @@
   right: calc(100% + 8px);
 }
 
-/* Sidebar mobile */
+/* Mobile Header & Sidebar */
 @media (max-width: 1024px) {
+  [dir="rtl"] .navbar__controls {
+    margin-left: var(--space-md) !important;
+    margin-right: auto !important;
+  }
+
   [dir="rtl"] .dashboard__sidebar {
     transform: translateX(100%);
   }

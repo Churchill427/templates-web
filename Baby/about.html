@@ -55,14 +55,15 @@
     .story-row {
       display: flex;
       gap: var(--space-6);
-      align-items: stretch;
+      align-items: center;
     }
     
     .story-text-col {
       flex: 1.2;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      gap: var(--space-3);
     }
     
     .story-img-col {
@@ -95,7 +96,7 @@
     .partner-scroll {
       display: flex;
       gap: var(--space-4);
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       margin-top: var(--space-3);
@@ -110,6 +111,8 @@
       letter-spacing: 2px;
       transition: var(--transition);
       cursor: default;
+      text-align: center;
+      max-width: 100%;
     }
     
     .partner-logo-item:hover {
@@ -180,16 +183,10 @@
     <div class="container">
       <div class="story-row split-row reveal">
         <div class="story-text-col">
-          <div>
-            <h2 style="margin-bottom: var(--space-2);">Crafting Comfort Since 2018</h2>
-            <p style="color: var(--text-secondary);">TINY was founded in 2018 by two parents who struggled to find baby wear that was clean, highly comfortable, and designed to move with kids' natural playing states. We set out to change things by working only with organic cotton mills.</p>
-          </div>
-          <div style="margin-top: var(--space-2);">
-            <p style="color: var(--text-secondary);">Today, TINY is proud to clothe over 50,000 children globally, supplying school uniforms to educational centers and providing organic everyday styles that protect the sensitive skin of kids and newborns.</p>
-          </div>
-          <div style="margin-top: var(--space-2);">
-            <p style="color: var(--text-secondary);">We test every thread count, button, and zipper frame for strength. Our garments do not feature annoying tags or scratchy interior seams. Experience the TINY comfort difference today.</p>
-          </div>
+          <h2 style="margin-bottom: var(--space-2);">Crafting Comfort Since 2018</h2>
+          <p style="color: var(--text-secondary);">TINY was founded in 2018 by two parents who struggled to find baby wear that was clean, highly comfortable, and designed to move with kids' natural playing states. We set out to change things by working only with organic cotton mills.</p>
+          <p style="color: var(--text-secondary);">Today, TINY is proud to clothe over 50,000 children globally, supplying school uniforms to educational centers and providing organic everyday styles that protect the sensitive skin of kids and newborns.</p>
+          <p style="color: var(--text-secondary);">We test every thread count, button, and zipper frame for strength. Our garments do not feature annoying tags or scratchy interior seams. Experience the TINY comfort difference today.</p>
         </div>
         <div class="story-img-col">
           <img src="assets/images/child_playroom.jpg" alt="Moms and kids socializing together" loading="lazy">
@@ -386,10 +383,10 @@
       <div class="footer-grid">
         <!-- Footer Col 1 -->
         <div class="footer-col">
-          <a href="index.html" class="footer-logo" style="color: currentColor;">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: currentColor;">
+          <a href="index.html" class="footer-logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="display: inline-block; vertical-align: middle; margin-right: 8px; color: var(--primary-color);">
               <path d="M4.5 8.5a2.5 2.5 0 1 1 3.22-2.38 5.48 5.48 0 0 1 8.56 0 2.5 2.5 0 1 1 3.22 2.38 5.5 5.5 0 0 1 .5 3.12c0 2.45-1.6 4.5-3.8 5.16.2.46.3.97.3 1.5a3 3 0 0 1-6 0c0-.53.1-1.04.3-1.5-2.2-.66-3.8-2.71-3.8-5.16 0-1.12.18-2.18.5-3.12zM12 11.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-            </svg>TINY
+            </svg><span class="logo-text">TINY</span>
           </a>
           <div class="social-buttons">
             <a href="#" class="social-btn google"><i class="fa-brands fa-google"></i></a>

@@ -13,8 +13,8 @@ SOLE is a premium, responsive e-commerce web platform for high-end shoe fashion 
 ## File Structure
 ```
 sole/
-├── index.html (Home A - Default)
-├── home-b.html (Home B - Alternative)
+├── index.html (Home 1 - Default)
+├── home-b.html (Home 2 - Alternative)
 ├── about.html
 ├── products.html
 ├── product-detail.html

@@ -27,7 +27,7 @@
   --header-bg: rgba(255, 255, 255, 0.95);
   --footer-bg: #2B2B3D;
   --footer-text: #E2E8F0;
-  --footer-link-hover: #4ECDC4;
+  --footer-link-hover: #FF6B6B;
 
   /* Typography */
   --font-headings: 'Nunito', sans-serif;
@@ -398,11 +398,22 @@ img {
   font-family: var(--font-headings);
   font-size: 2rem;
   font-weight: 800;
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   margin-bottom: var(--space-2);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   transition: var(--transition);
+  letter-spacing: 1px;
+}
+
+.footer-logo .logo-icon {
+  color: var(--primary-color) !important;
+}
+
+.footer-logo .logo-text {
+  text-transform: uppercase;
+  color: var(--primary-color) !important;
 }
 
 .footer-logo:hover {
@@ -607,6 +618,10 @@ section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-3);
+}
+
+.gifting-options .card-grid {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .card {
