@@ -228,7 +228,7 @@
 }
 
 /* Dark theme visibility override for default offer card */
-:root[data-theme="dark"] .offer-card {
+:root[data-theme="dark"] .offer-card:not(.secondary-bg) {
   background-color: var(--bg-color); /* Dark slate (#0F172A) is darker than section bg (#1E293B) */
   border-color: var(--border-color);
 }
@@ -242,7 +242,7 @@
   color: #0F172A;
 }
 .offer-card.secondary-bg p {
-  color: #334155; /* High contrast dark grey text on yellow background */
+  color: #0F172A; /* High contrast dark text on yellow background */
 }
 .offer-card.secondary-bg .timer {
   color: #0F172A;

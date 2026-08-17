@@ -156,11 +156,46 @@
 
     /* Responsive adjustments */
     @media (max-width: 639px) {
+      .hero-b {
+        min-height: 100svh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: var(--navbar-height);
+      }
+      .hero-b .hero-bg img {
+        object-position: center center;
+        animation: none;
+      }
+      .hero-b .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-inline: auto;
+        padding-inline: var(--page-padding);
+      }
       .hero-b .hero-glass-card {
         padding: var(--space-2xl) var(--space-md);
+        margin-inline: auto;
+        text-align: center;
+        width: 100%;
       }
       .hero-b .hero-orb {
         display: none;
+      }
+    }
+
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .hero-b {
+        padding-top: var(--navbar-height);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero-b .hero-glass-card {
+        padding: var(--space-xl) var(--space-xs);
       }
     }
 
@@ -369,6 +404,14 @@
       .signature-img {
         height: 250px;
       }
+
+      .signature-info {
+        text-align: center;
+      }
+
+      .signature-flavors {
+        justify-content: center;
+      }
     }
 
     /* Flavor Lab */
@@ -465,9 +508,10 @@
     }
 
     .story-card {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-md);
       padding: var(--space-xl);
       background: var(--bg-surface);
       border-radius: var(--radius-lg);
@@ -480,9 +524,21 @@
       transform: translateY(-2px);
     }
 
+    .story-profile {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-top: auto;
+    }
+
+    .story-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
     .story-avatar {
-      width: 60px;
-      height: 60px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--color-secondary);
@@ -543,6 +599,40 @@
     @media (max-width: 639px) {
       .social-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .newsletter-card {
+        padding: var(--space-xl) var(--space-md);
+        text-align: center;
+      }
+
+      /* Testimonials (Client Stories) Centering */
+      .story-card {
+        text-align: center;
+        align-items: center;
+      }
+      .story-profile {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .story-meta {
+        align-items: center;
+        text-align: center;
+      }
+
+      /* Newsletter + Social section headings centering */
+      #newsletter-social {
+        text-align: center;
+      }
+      #newsletter-social .section-label,
+      #newsletter-social h2 {
+        text-align: center;
+        margin-inline: auto;
+      }
+      .newsletter-social-split {
+        text-align: center;
       }
     }
   </style>
@@ -890,63 +980,71 @@
 
         <div class="stories-grid">
           <div class="story-card reveal stagger-1" id="story-1">
-            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=200&q=80"
-              alt="Emma and Liam, wedding couple" class="story-avatar" loading="lazy">
-            <div>
-              <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i>
+            <div class="star-rating mb-sm">
+              <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i>
+            </div>
+            <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"CRUM created the most
+              stunning five-tier cake for our wedding. Every guest asked about it. Truly a masterpiece!"</p>
+            <div class="story-profile">
+              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=200&q=80"
+                alt="Emma and Liam, wedding couple" class="story-avatar" loading="lazy">
+              <div class="story-meta">
+                <p class="text-bold text-small text-primary" style="margin-bottom:0;">Emma & Liam</p>
+                <p class="text-xs text-muted" style="margin:0;">Wedding Couple</p>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"CRUM created the most
-                stunning five-tier cake for our wedding. Every guest asked about it. Truly a masterpiece!"</p>
-              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Emma & Liam</p>
-              <p class="text-xs text-muted" style="margin:0;">Wedding Couple</p>
             </div>
           </div>
           <div class="story-card reveal stagger-2" id="story-2">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80"
-              alt="Sarah Mitchell, regular customer" class="story-avatar" loading="lazy">
-            <div>
-              <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i>
+            <div class="star-rating mb-sm">
+              <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i>
+            </div>
+            <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"The sourdough here has
+              ruined me for all other bread. I'm here every Saturday morning without fail."</p>
+            <div class="story-profile">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80"
+                alt="Sarah Mitchell, regular customer" class="story-avatar" loading="lazy">
+              <div class="story-meta">
+                <p class="text-bold text-small text-primary" style="margin-bottom:0;">Sarah Mitchell</p>
+                <p class="text-xs text-muted" style="margin:0;">Regular Customer</p>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"The sourdough here has
-                ruined me for all other bread. I'm here every Saturday morning without fail."</p>
-              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Sarah Mitchell</p>
-              <p class="text-xs text-muted" style="margin:0;">Regular Customer</p>
             </div>
           </div>
           <div class="story-card reveal stagger-3" id="story-3">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"
-              alt="Michael Torres, corporate client" class="story-avatar" loading="lazy">
-            <div>
-              <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i>
+            <div class="star-rating mb-sm">
+              <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i>
+            </div>
+            <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"We order from CRUM for
+              every company event. Professional, reliable, and the quality is unmatched."</p>
+            <div class="story-profile">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"
+                alt="Michael Torres, corporate client" class="story-avatar" loading="lazy">
+              <div class="story-meta">
+                <p class="text-bold text-small text-primary" style="margin-bottom:0;">Michael Torres</p>
+                <p class="text-xs text-muted" style="margin:0;">Corporate Client</p>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"We order from CRUM for
-                every company event. Professional, reliable, and the quality is unmatched."</p>
-              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Michael Torres</p>
-              <p class="text-xs text-muted" style="margin:0;">Corporate Client</p>
             </div>
           </div>
           <div class="story-card reveal stagger-4" id="story-4">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80"
-              alt="Aisha Patel, birthday client" class="story-avatar" loading="lazy">
-            <div>
-              <div class="star-rating mb-sm">
-                <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
-                  class="ph ph-star-fill" aria-hidden="true"></i>
+            <div class="star-rating mb-sm">
+              <i class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i><i class="ph ph-star-fill" aria-hidden="true"></i><i
+                class="ph ph-star-fill" aria-hidden="true"></i>
+            </div>
+            <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"My daughter's unicorn
+              cake was absolute perfection. The attention to detail is incredible."</p>
+            <div class="story-profile">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80"
+                alt="Aisha Patel, birthday client" class="story-avatar" loading="lazy">
+              <div class="story-meta">
+                <p class="text-bold text-small text-primary" style="margin-bottom:0;">Aisha Patel</p>
+                <p class="text-xs text-muted" style="margin:0;">Birthday Client</p>
               </div>
-              <p class="text-secondary" style="font-style:italic;margin-bottom:var(--space-sm);">"My daughter's unicorn
-                cake was absolute perfection. The attention to detail is incredible."</p>
-              <p class="text-bold text-small text-primary" style="margin-bottom:0;">Aisha Patel</p>
-              <p class="text-xs text-muted" style="margin:0;">Birthday Client</p>
             </div>
           </div>
         </div>

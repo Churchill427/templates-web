@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore premium shoes at SOLE by category, gender (Men, Women, Kids), and age group. Shop Casual, Formal, Sports, and Kids collections with instant Add to Cart.">
+  <meta name="description"
+    content="Explore premium shoes at SOLE by category, gender (Men, Women, Kids), and age group. Shop Casual, Formal, Sports, and Kids collections with instant Add to Cart.">
   <title>Shop By Category & Fit — SOLE Premium Footwear</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon.png">
@@ -21,11 +23,12 @@
       margin-top: var(--space-xl);
       flex-wrap: wrap;
     }
+
     .cat-icon-circle {
       width: 70px;
       height: 70px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -34,11 +37,13 @@
       transition: var(--transition);
       cursor: pointer;
     }
+
     .cat-icon-circle:hover {
       background: var(--secondary);
       transform: translateY(-5px) rotate(10deg);
-      box-shadow: 0 4px 15px rgba(196,30,58,0.4);
+      box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
     }
+
     .category-filter-bar {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
@@ -47,6 +52,7 @@
       border: 1px solid var(--border-color);
       box-shadow: var(--shadow-card);
     }
+
     .filter-group-title {
       font-size: 13px;
       font-weight: 700;
@@ -55,22 +61,51 @@
       color: var(--text-muted);
       margin-bottom: 12px;
     }
+
     .filter-pills-row {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
     }
+
+    .filter-pills-row .filter-pill {
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      background: transparent;
+    }
+
+    .filter-pills-row .filter-pill:hover,
+    .filter-pills-row .filter-pill.active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: #ffffff;
+    }
+
+    html.dark-mode .filter-pills-row .filter-pill {
+      border-color: rgba(255, 255, 255, 0.15);
+      color: var(--text-light);
+    }
+
+    html.dark-mode .filter-pills-row .filter-pill:hover,
+    html.dark-mode .filter-pills-row .filter-pill.active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: #ffffff;
+    }
+
     .category-product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
       margin-top: 24px;
     }
+
     @media (max-width: 1024px) {
       .category-product-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
     @media (max-width: 640px) {
       .category-product-grid {
         grid-template-columns: 1fr;
@@ -78,6 +113,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- ========== NAVBAR ========== -->
@@ -85,25 +121,35 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="soleBgGrad_categories_html_1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#dc2626"/>
-      <stop offset="40%" stop-color="#c41e3a"/>
-      <stop offset="100%" stop-color="#7f1d1d"/>
-    </linearGradient>
-    <linearGradient id="soleGoldGrad_categories_html_1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#fff066"/>
-      <stop offset="50%" stop-color="#ffd700"/>
-      <stop offset="100%" stop-color="#d97706"/>
-    </linearGradient>
-  </defs>
-  <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_categories_html_1)"/>
-  <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
-  <path d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z" fill="white"/>
-  <path d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z" fill="white"/>
-  <path d="M12 12C15.5 10.2 20 10.8 24 12.5C24.7 12.8 24.3 13.8 23.5 13.5C20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z" fill="url(#soleGoldGrad_categories_html_1)"/>
-  <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z" fill="url(#soleGoldGrad_categories_html_1)"/>
-</svg>
+          <defs>
+            <linearGradient id="soleBgGrad_categories_html_1" x1="0" y1="0" x2="36" y2="36"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#dc2626" />
+              <stop offset="40%" stop-color="#c41e3a" />
+              <stop offset="100%" stop-color="#7f1d1d" />
+            </linearGradient>
+            <linearGradient id="soleGoldGrad_categories_html_1" x1="0" y1="0" x2="36" y2="36"
+              gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fff066" />
+              <stop offset="50%" stop-color="#ffd700" />
+              <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+          </defs>
+          <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_categories_html_1)" />
+          <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15"
+            stroke-width="1" />
+          <path
+            d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z"
+            fill="white" />
+          <path
+            d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z"
+            fill="white" />
+          <path
+            d="M12 12C15.5 10.2 20 10.8 24 12.5C24.7 12.8 24.3 13.8 23.5 13.5C20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z"
+            fill="url(#soleGoldGrad_categories_html_1)" />
+          <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z"
+            fill="url(#soleGoldGrad_categories_html_1)" />
+        </svg>
         <span class="nav-logo-text">SOLE</span>
       </a>
 
@@ -137,10 +183,12 @@
 
   <!-- ========== MAIN CONTENT ========== -->
   <main class="page-content">
-    
+
     <!-- Section 1: Hero -->
-    <section class="page-hero" style="background-image: url('assets/images/hero/categories-hero.png'); position:relative; overflow:hidden;">
-      <div class="hero-overlay" style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.75) 30%, #0f0f23 95%);"></div>
+    <section class="page-hero"
+      style="background-image: url('assets/images/hero/categories-hero.png'); position:relative; overflow:hidden;">
+      <div class="hero-overlay"
+        style="background: radial-gradient(circle at center, rgba(15, 15, 35, 0.75) 30%, #0f0f23 95%);"></div>
       <div class="hero-content hero-animate" style="z-index:2;">
         <h1>Shop Footwear by Category & Fit</h1>
         <p>Explore curated shoe collections filtered by Gender (Men, Women, Kids), Age Group, and Style.</p>
@@ -160,18 +208,23 @@
           <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:24px;">
             <!-- Audience Filter -->
             <div>
-              <div class="filter-group-title"><i class="fa-solid fa-users" style="color:var(--secondary);margin-right:6px;"></i> Filter by Gender / Target</div>
+              <div class="filter-group-title"><i class="fa-solid fa-users"
+                  style="color:var(--secondary);margin-right:6px;"></i> Filter by Gender / Target</div>
               <div class="filter-pills-row">
                 <button class="filter-pill active cat-audience-btn" data-audience="all">All</button>
-                <button class="filter-pill cat-audience-btn" data-audience="men"><i class="fa-solid fa-mars"></i> Men</button>
-                <button class="filter-pill cat-audience-btn" data-audience="women"><i class="fa-solid fa-venus"></i> Women</button>
-                <button class="filter-pill cat-audience-btn" data-audience="kids"><i class="fa-solid fa-child"></i> Kids</button>
+                <button class="filter-pill cat-audience-btn" data-audience="men"><i class="fa-solid fa-mars"></i>
+                  Men</button>
+                <button class="filter-pill cat-audience-btn" data-audience="women"><i class="fa-solid fa-venus"></i>
+                  Women</button>
+                <button class="filter-pill cat-audience-btn" data-audience="kids"><i class="fa-solid fa-child"></i>
+                  Kids</button>
               </div>
             </div>
 
             <!-- Age Filter -->
             <div>
-              <div class="filter-group-title"><i class="fa-solid fa-cake-candles" style="color:var(--accent);margin-right:6px;"></i> Filter by Age Group</div>
+              <div class="filter-group-title"><i class="fa-solid fa-cake-candles"
+                  style="color:var(--accent);margin-right:6px;"></i> Filter by Age Group</div>
               <div class="filter-pills-row">
                 <button class="filter-pill active cat-age-btn" data-age="all">All Ages</button>
                 <button class="filter-pill cat-age-btn" data-age="adults">Adults (18+)</button>
@@ -181,42 +234,60 @@
               </div>
             </div>
           </div>
+
+          <!-- No Results Message -->
+          <div id="noResults"
+            style="display:none; text-align:center; padding:60px 20px; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); box-shadow:var(--shadow-card); margin-top:24px;">
+            <i class="fa-solid fa-shoe-prints"
+              style="font-size:48px; color:var(--text-muted); opacity:0.3; margin-bottom:16px; display:block;"></i>
+            <h3 style="margin-bottom:8px;">No Matching Shoes Found</h3>
+            <p style="color:var(--text-muted);">Try adjusting your gender/target or age filters to see other
+              collections.</p>
+          </div>
         </div>
-      </div>
     </section>
 
     <!-- Section 3: Casual Collection Showcase -->
     <section class="section" id="casualSec">
       <div class="container">
-        <div class="collection-banner reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
+        <div class="collection-banner reveal"
+          style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
           <img src="assets/images/hero/casual-banner.png" alt="Casual Collection">
           <div class="collection-banner-overlay"></div>
           <div class="collection-banner-content">
             <span class="badge badge-gold mb-md">Daily Comfort</span>
             <h2>Casual Footwear Showcase</h2>
             <p class="mb-md">245 Products Available — From $59</p>
-            <p class="mb-lg">Relaxed leather loafers, slides, and slip-ons designed to give you effortless style and cushioned support for everyday steps.</p>
+            <p class="mb-lg">Relaxed leather loafers, slides, and slip-ons designed to give you effortless style and
+              cushioned support for everyday steps.</p>
             <a href="products.html" class="btn btn-primary">Shop All Casual</a>
           </div>
         </div>
 
         <!-- Featured Shoes Grid for Casual -->
-        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-star" style="color:var(--accent);"></i> Featured Casual Shoes</h3>
+        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-star" style="color:var(--accent);"></i> Featured
+          Casual Shoes</h3>
         <div class="category-product-grid">
           <div class="product-card cat-shoe-card" data-audience="men" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/urban-walker-b.png" alt="Urban Walker Pro">
               <span class="product-badge new">New</span>
-              <button class="product-card-wishlist" data-product-id="1" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="1" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Men · Adults (18+)</span>
               <h4>Urban Walker Leather Pro</h4>
               <p class="product-price">$149</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(128)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star-half-stroke"></i><span>(128)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Urban Walker Pro to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Urban Walker Pro to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -224,16 +295,22 @@
           <div class="product-card cat-shoe-card" data-audience="women" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/comfort-slipon-b.png" alt="Comfort Slip-On">
-              <button class="product-card-wishlist" data-product-id="6" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="6" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Women · Adults (18+)</span>
               <h4>Comfort Memory Slip-On</h4>
               <p class="product-price">$89</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(182)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-regular fa-star"></i><span>(182)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Comfort Slip-On to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Comfort Slip-On to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -242,16 +319,22 @@
             <div class="product-card-img">
               <img src="assets/images/products/beach-breeze-b.png" alt="Beach Breeze Sandal">
               <span class="product-badge sale">-20%</span>
-              <button class="product-card-wishlist" data-product-id="8" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="8" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Women · Teens (13-17)</span>
               <h4>Beach Breeze Comfort Sandal</h4>
               <p class="product-price">$59 <span class="original">$79</span></p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(93)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-regular fa-star"></i><span>(93)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Beach Breeze Sandal to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Beach Breeze Sandal to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -259,16 +342,22 @@
           <div class="product-card cat-shoe-card" data-audience="men" data-age="teens">
             <div class="product-card-img">
               <img src="assets/images/products/cat-casual.png" alt="Retro Canvas Low">
-              <button class="product-card-wishlist" data-product-id="20" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="20" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Men · Teens (13-17)</span>
-              <h4>Retro Canvas Low Street Sneaker</h4>
+              <h4>Retro Canvas Low Street</h4>
               <p class="product-price">$79</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(110)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><span>(110)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Retro Canvas Low to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Retro Canvas Low to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -279,35 +368,44 @@
     <!-- Section 4: Formal Collection Showcase -->
     <section class="section" style="background:var(--card-bg);" id="formalSec">
       <div class="container">
-        <div class="collection-banner reversed reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
+        <div class="collection-banner reversed reveal"
+          style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
           <img src="assets/images/hero/formal-banner.png" alt="Formal Collection">
           <div class="collection-banner-overlay"></div>
           <div class="collection-banner-content">
             <span class="badge badge-primary mb-md">Elegant Styles</span>
             <h2>Formal Leather Showcase</h2>
             <p class="mb-md">128 Products Available — From $129</p>
-            <p class="mb-lg">Handcrafted Oxfords, classic leather dress shoes, and luxury boots that redefine sophistication for boardrooms and galas.</p>
+            <p class="mb-lg">Handcrafted Oxfords, classic leather dress shoes, and luxury boots that redefine
+              sophistication for boardrooms and galas.</p>
             <a href="products.html" class="btn btn-primary">Shop All Formal</a>
           </div>
         </div>
 
         <!-- Featured Shoes Grid for Formal -->
-        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-gem" style="color:var(--accent);"></i> Featured Formal Footwear</h3>
+        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-gem" style="color:var(--accent);"></i> Featured
+          Formal Footwear</h3>
         <div class="category-product-grid">
           <div class="product-card cat-shoe-card" data-audience="men" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/classic-oxford-b.png" alt="Classic Oxford Elite">
               <span class="product-badge new">Best Seller</span>
-              <button class="product-card-wishlist" data-product-id="2" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="2" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Men · Adults (18+)</span>
               <h4>Classic Oxford Elite Leather</h4>
               <p class="product-price">$189</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(95)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><span>(95)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Classic Oxford Elite to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Classic Oxford Elite to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -315,16 +413,22 @@
           <div class="product-card cat-shoe-card" data-audience="men" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/midnight-formal.png" alt="Midnight Formal">
-              <button class="product-card-wishlist" data-product-id="12" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="12" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Men · Adults (18+)</span>
               <h4>Midnight Velvet Derby Formal</h4>
               <p class="product-price">$209</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(72)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><span>(72)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Midnight Velvet Formal to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Midnight Velvet Formal to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -332,16 +436,22 @@
           <div class="product-card cat-shoe-card" data-audience="women" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/dance-flow-b.png" alt="Dance Flow Ballet">
-              <button class="product-card-wishlist" data-product-id="10" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="10" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Women · Adults (18+)</span>
               <h4>Dance Flow Italian Ballet Heel</h4>
               <p class="product-price">$89</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(44)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-regular fa-star"></i><span>(44)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Dance Flow Ballet to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Dance Flow Ballet to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -350,16 +460,22 @@
             <div class="product-card-img">
               <img src="assets/images/products/heritage-loafer.png" alt="Heritage Italian Loafer">
               <span class="product-badge new">Premium</span>
-              <button class="product-card-wishlist" data-product-id="21" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="21" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Men · Adults (18+)</span>
               <h4>Heritage Italian Tassel Loafer</h4>
               <p class="product-price">$169</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(89)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><span>(89)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Heritage Italian Loafer to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Heritage Italian Loafer to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -370,35 +486,44 @@
     <!-- Section 5: Sports & Performance Showcase -->
     <section class="section" id="sportsSec">
       <div class="container">
-        <div class="collection-banner reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
+        <div class="collection-banner reveal"
+          style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
           <img src="assets/images/hero/sports-banner.png" alt="Sports Collection">
           <div class="collection-banner-overlay"></div>
           <div class="collection-banner-content">
             <span class="badge badge-gold mb-md">High Performance</span>
             <h2>Sports & Active Performance</h2>
             <p class="mb-md">312 Products Available — From $79</p>
-            <p class="mb-lg">Engineered trainers, athletic runners, and heavy-duty hiking boots designed with cloud cushion tech and anti-slip traction.</p>
+            <p class="mb-lg">Engineered trainers, athletic runners, and heavy-duty hiking boots designed with cloud
+              cushion tech and anti-slip traction.</p>
             <a href="products.html" class="btn btn-primary">Shop All Sports</a>
           </div>
         </div>
 
         <!-- Featured Shoes Grid for Sports -->
-        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-bolt" style="color:var(--secondary);"></i> Featured Active Performance Shoes</h3>
+        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-bolt" style="color:var(--secondary);"></i>
+          Featured Active Performance Shoes</h3>
         <div class="category-product-grid">
           <div class="product-card cat-shoe-card" data-audience="men" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/flex-fit-b.png" alt="Flex Fit Trainer">
               <span class="product-badge sale">Sale -30%</span>
-              <button class="product-card-wishlist" data-product-id="3" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="3" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Men · Adults (18+)</span>
               <h4>Flex Fit Cross Trainer V3</h4>
               <p class="product-price">$99 <span class="original">$129</span></p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>(210)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-regular fa-star"></i><span>(210)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Flex Fit Trainer to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Flex Fit Trainer to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -407,16 +532,22 @@
             <div class="product-card-img">
               <img src="assets/images/products/speed-runner.png" alt="Speed Pro Runner">
               <span class="product-badge sale">-20%</span>
-              <button class="product-card-wishlist" data-product-id="11" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="11" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Women · Teens (13-17)</span>
-              <h4>Speed Pro Lightweight Runner</h4>
+              <h4>Speed Pro Lightweight</h4>
               <p class="product-price">$119 <span class="original">$149</span></p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(156)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star-half-stroke"></i><span>(156)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Speed Pro Runner to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Speed Pro Runner to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -424,16 +555,22 @@
           <div class="product-card cat-shoe-card" data-audience="men" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/trail-blazer-b.png" alt="Trail Blazer Hike">
-              <button class="product-card-wishlist" data-product-id="5" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="5" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Men · Adults (18+)</span>
               <h4>Trail Blazer Waterproof Hike</h4>
               <p class="product-price">$159</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(154)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><span>(154)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Trail Blazer Hike to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Trail Blazer Hike to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -441,16 +578,22 @@
           <div class="product-card cat-shoe-card" data-audience="women" data-age="adults">
             <div class="product-card-img">
               <img src="assets/images/products/court-master-b.png" alt="Court Master Tennis">
-              <button class="product-card-wishlist" data-product-id="7" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="7" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Women · Adults (18+)</span>
-              <h4>Court Master Pro Tennis Shoe</h4>
+              <h4>Court Master Pro Tennis</h4>
               <p class="product-price">$119</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(67)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star-half-stroke"></i><span>(67)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Court Master Tennis to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Court Master Tennis to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -461,35 +604,44 @@
     <!-- Section 6: Kids Collection Showcase -->
     <section class="section" style="background:var(--card-bg);" id="kidsSec">
       <div class="container">
-        <div class="collection-banner reversed reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
+        <div class="collection-banner reversed reveal"
+          style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);margin-bottom:32px;">
           <img src="assets/images/hero/kids-banner.png" alt="Kids Collection">
           <div class="collection-banner-overlay"></div>
           <div class="collection-banner-content">
             <span class="badge badge-primary mb-md">For Little Feet</span>
             <h2>Kids & Toddlers Showcase</h2>
             <p class="mb-md">89 Products Available — From $39</p>
-            <p class="mb-lg">Bright, colorful sneakers and durable strap boots crafted with healthy arch support and playground-resistant materials.</p>
+            <p class="mb-lg">Bright, colorful sneakers and durable strap boots crafted with healthy arch support and
+              playground-resistant materials.</p>
             <a href="products.html" class="btn btn-primary">Shop All Kids</a>
           </div>
         </div>
 
         <!-- Featured Shoes Grid for Kids -->
-        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-child" style="color:var(--accent);"></i> Featured Kids & Toddler Shoes</h3>
+        <h3 class="mb-md" style="font-size:22px;"><i class="fa-solid fa-child" style="color:var(--accent);"></i>
+          Featured Kids & Toddler Shoes</h3>
         <div class="category-product-grid">
           <div class="product-card cat-shoe-card" data-audience="kids" data-age="kids">
             <div class="product-card-img">
               <img src="assets/images/products/kids-zoom-b.png" alt="Kids' Zoom Sprint">
               <span class="product-badge new">New</span>
-              <button class="product-card-wishlist" data-product-id="4" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="4" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Kids · Age 4-12</span>
               <h4>Kids' Zoom Sprint Runner</h4>
               <p class="product-price">$79</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(76)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star-half-stroke"></i><span>(76)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Kids Zoom Sprint to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Kids Zoom Sprint to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -497,16 +649,22 @@
           <div class="product-card cat-shoe-card" data-audience="kids" data-age="toddlers">
             <div class="product-card-img">
               <img src="assets/images/products/playtime.png" alt="Play Time Toddler">
-              <button class="product-card-wishlist" data-product-id="13" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="13" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Kids · Toddlers (0-3)</span>
               <h4>Junior Explorer Toddler Strap</h4>
               <p class="product-price">$69</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>(134)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star-half-stroke"></i><span>(134)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Junior Explorer to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Junior Explorer to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -514,16 +672,22 @@
           <div class="product-card cat-shoe-card" data-audience="kids" data-age="kids">
             <div class="product-card-img">
               <img src="assets/images/products/cat-kids.png" alt="Playground High Top">
-              <button class="product-card-wishlist" data-product-id="22" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="product-card-wishlist" data-product-id="22" aria-label="Add to wishlist"><i
+                  class="fa-regular fa-heart"></i></button>
             </div>
             <div class="product-card-body">
               <span class="product-brand" style="color:var(--secondary);font-weight:700;">Kids · Age 4-12</span>
-              <h4>Playground Cushioned High-Top</h4>
+              <h4>Playground Cushioned High</h4>
               <p class="product-price">$59</p>
-              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>(98)</span></div>
+              <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><span>(98)</span></div>
               <div style="display:flex;gap:8px;margin-top:16px;">
-                <button type="button" onclick="showToast('Added Playground High-Top to Cart!')" class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop Now</a>
+                <button type="button" onclick="showToast('Added Playground High-Top to Cart!')"
+                  class="btn btn-primary btn-sm" style="flex:1;"><i class="fa-solid fa-cart-plus"></i> Add to
+                  Cart</button>
+                <a href="product-detail.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-eye"></i> Shop
+                  Now</a>
               </div>
             </div>
           </div>
@@ -540,28 +704,34 @@
         </div>
         <div class="grid-2">
           <!-- Spring/Summer Card -->
-          <div class="card reveal-scale stagger-1" style="overflow:hidden;border:1px solid var(--border-color);position:relative;">
+          <div class="card reveal-scale stagger-1"
+            style="overflow:hidden;border:1px solid var(--border-color);position:relative;">
             <div style="height:250px;position:relative;overflow:hidden;">
-              <img src="assets/images/ui/spring-summer.png" alt="Spring/Summer Collection" style="width:100%;height:100%;object-fit:cover;">
+              <img src="assets/images/ui/spring-summer.png" alt="Spring/Summer Collection"
+                style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="card-body">
               <span class="badge badge-gold mb-sm">Spring / Summer 2026</span>
               <h3>Spring/Summer Collection</h3>
-              <p class="mb-md">Breathable mesh trainers, canvas slides, and comfort espadrilles crafted for optimal ventilation and hot pavement resistance.</p>
+              <p class="mb-md">Breathable mesh trainers, canvas slides, and comfort espadrilles crafted for optimal
+                ventilation and hot pavement resistance.</p>
               <p class="text-caption mb-lg"><strong>82 Items Curated</strong></p>
               <a href="collections.html" class="btn btn-secondary btn-full">Shop Season</a>
             </div>
           </div>
 
           <!-- Fall/Winter Card -->
-          <div class="card reveal-scale stagger-2" style="overflow:hidden;border:1px solid var(--border-color);position:relative;">
+          <div class="card reveal-scale stagger-2"
+            style="overflow:hidden;border:1px solid var(--border-color);position:relative;">
             <div style="height:250px;position:relative;overflow:hidden;">
-              <img src="assets/images/ui/fall-winter.png" alt="Fall/Winter Collection" style="width:100%;height:100%;object-fit:cover;">
+              <img src="assets/images/ui/fall-winter.png" alt="Fall/Winter Collection"
+                style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="card-body">
               <span class="badge badge-primary mb-sm">Fall / Winter 2026</span>
               <h3>Fall/Winter Collection</h3>
-              <p class="mb-md">Waterproof leather boots, thermal insulated hiking ranges, and protective running gear designed to trap heat and reject moisture.</p>
+              <p class="mb-md">Waterproof leather boots, thermal insulated hiking ranges, and protective running gear
+                designed to trap heat and reject moisture.</p>
               <p class="text-caption mb-lg"><strong>64 Items Curated</strong></p>
               <a href="collections.html" class="btn btn-secondary btn-full">Shop Season</a>
             </div>
@@ -580,34 +750,49 @@
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
             <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="soleBgGrad_categories_html_2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#dc2626"/>
-      <stop offset="40%" stop-color="#c41e3a"/>
-      <stop offset="100%" stop-color="#7f1d1d"/>
-    </linearGradient>
-    <linearGradient id="soleGoldGrad_categories_html_2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#fff066"/>
-      <stop offset="50%" stop-color="#ffd700"/>
-      <stop offset="100%" stop-color="#d97706"/>
-    </linearGradient>
-  </defs>
-  <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_categories_html_2)"/>
-  <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="1"/>
-  <path d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z" fill="white"/>
-  <path d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z" fill="white"/>
-  <path d="M12 12C15.5 10.2 20 10.8 24 12.5C24.7 12.8 24.3 13.8 23.5 13.5C20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z" fill="url(#soleGoldGrad_categories_html_2)"/>
-  <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z" fill="url(#soleGoldGrad_categories_html_2)"/>
-</svg>
+              <defs>
+                <linearGradient id="soleBgGrad_categories_html_2" x1="0" y1="0" x2="36" y2="36"
+                  gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#dc2626" />
+                  <stop offset="40%" stop-color="#c41e3a" />
+                  <stop offset="100%" stop-color="#7f1d1d" />
+                </linearGradient>
+                <linearGradient id="soleGoldGrad_categories_html_2" x1="0" y1="0" x2="36" y2="36"
+                  gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#fff066" />
+                  <stop offset="50%" stop-color="#ffd700" />
+                  <stop offset="100%" stop-color="#d97706" />
+                </linearGradient>
+              </defs>
+              <rect width="36" height="36" rx="9" fill="url(#soleBgGrad_categories_html_2)" />
+              <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="white" stroke-opacity="0.15"
+                stroke-width="1" />
+              <path
+                d="M8 22C8 17.5 11.5 14.2 15.5 14.2C18 14.2 20 15.3 22 16.2C24 17 26 15.8 27.5 14.5C27.9 14.2 28.4 14.5 28.2 15C27 18 23.8 20 20.2 19.6C17.8 19.3 15.8 18 13.8 18C11.2 18 9.5 19.8 9 22.2C8.9 22.6 8 22.5 8 22Z"
+                fill="white" />
+              <path
+                d="M6.8 24.8C10.2 24.8 13.6 26 17.6 24.5C21.6 23 25 21 29 19.8C29.7 19.6 30 20.7 29 21.3C24.3 24.3 19 27 13 27C9 27 6.8 26 6.8 24.8Z"
+                fill="white" />
+              <path
+                d="M12 12C15.5 10.2 20 10.8 24 12.5C24.7 12.8 24.3 13.8 23.5 13.5C20 12.3 16 12 12.5 13.2C11.9 13.4 11.4 12.3 12 12Z"
+                fill="url(#soleGoldGrad_categories_html_2)" />
+              <path d="M26 8.5L26.7 10.3L28.5 11L26.7 11.7L26 13.5L25.3 11.7L23.5 11L25.3 10.3Z"
+                fill="url(#soleGoldGrad_categories_html_2)" />
+            </svg>
             <span class="footer-logo-text">SOLE</span>
           </a>
           <p class="footer-tagline">Step Into Style — Premium footwear crafted for every step of your journey.</p>
           <div class="footer-social">
-            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter/X"><i
+                class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest"><i
+                class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i
+                class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
 
@@ -664,8 +849,10 @@
         <!-- Column 6: Newsletter -->
         <div class="footer-col">
           <h4>Newsletter</h4>
-          <p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals & drop alerts</p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); if (typeof showToast === 'function') { showToast('Thank you for subscribing to SOLE!'); } else { alert('Thank you for subscribing to SOLE!'); } this.reset();">
+          <p style="color:rgba(226,232,240,0.7);font-size:14px;margin-bottom:16px;">Subscribe for exclusive deals & drop
+            alerts</p>
+          <form class="footer-newsletter-form"
+            onsubmit="event.preventDefault(); if (typeof showToast === 'function') { showToast('Thank you for subscribing to SOLE!'); } else { alert('Thank you for subscribing to SOLE!'); } this.reset();">
             <input type="email" placeholder="Your email address" required>
             <button type="submit">Subscribe</button>
           </form>
@@ -703,20 +890,47 @@
       let currentAge = 'all';
 
       function applyCategoryFilters() {
-        shoeCards.forEach(card => {
-          const cardAudience = card.getAttribute('data-audience');
-          const cardAge = card.getAttribute('data-age');
+        let totalVisible = 0;
+        const sections = document.querySelectorAll('#casualSec, #formalSec, #sportsSec, #kidsSec');
 
-          const matchAudience = (currentAudience === 'all' || cardAudience === currentAudience);
-          const matchAge = (currentAge === 'all' || cardAge === currentAge);
+        sections.forEach(section => {
+          const cards = section.querySelectorAll('.cat-shoe-card');
+          let sectionVisibleCount = 0;
 
-          if (matchAudience && matchAge) {
-            card.style.display = 'block';
-            card.style.animation = 'fadeInUp 0.3s ease forwards';
+          cards.forEach(card => {
+            const cardAudience = card.getAttribute('data-audience');
+            const cardAge = card.getAttribute('data-age');
+
+            const matchAudience = (currentAudience === 'all' || cardAudience === currentAudience);
+            const matchAge = (currentAge === 'all' || cardAge === currentAge);
+
+            if (matchAudience && matchAge) {
+              card.style.display = 'block';
+              card.style.animation = 'fadeInUp 0.3s ease forwards';
+              sectionVisibleCount++;
+              totalVisible++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Show or hide the whole category section based on whether it contains matching cards
+          if (sectionVisibleCount > 0) {
+            section.style.display = 'block';
           } else {
-            card.style.display = 'none';
+            section.style.display = 'none';
           }
         });
+
+        // Show/hide the "No matching shoes found" container
+        const noResults = document.getElementById('noResults');
+        if (noResults) {
+          if (totalVisible === 0) {
+            noResults.style.display = 'block';
+          } else {
+            noResults.style.display = 'none';
+          }
+        }
       }
 
       audienceBtns.forEach(btn => {
@@ -739,4 +953,5 @@
     });
   </script>
 </body>
+
 </html>

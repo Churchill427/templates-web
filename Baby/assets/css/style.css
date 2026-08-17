@@ -763,11 +763,10 @@ section {
 }
 
 .nav-links .nav-dropdown {
-  display: none;
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(8px);
   background-color: var(--bg-color);
   min-width: 170px;
   box-shadow: var(--shadow-md);
@@ -779,10 +778,30 @@ section {
   padding: 0 !important;
   margin: 0 !important;
   margin-top: 5px !important;
+
+  /* Desktop smooth slide & fade interaction */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 0.2s;
+}
+
+/* Hover bridge to keep dropdown open during cursor transition */
+.nav-links .nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -15px; /* Bridges the 5px gap plus extends into trigger link to overlap */
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-color: transparent;
 }
 
 .nav-dropdown-item:hover .nav-dropdown {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 .nav-links .nav-dropdown li {

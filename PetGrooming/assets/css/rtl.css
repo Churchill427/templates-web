@@ -12,18 +12,6 @@
 [dir="rtl"] .text-right { text-align: left; }
 
 /* ── Navbar ── */
-[dir="rtl"] .navbar-container {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .navbar-nav {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .navbar-actions {
-  flex-direction: row-reverse;
-}
-
 [dir="rtl"] .nav-link::after {
   left: auto;
   right: 0;
@@ -61,12 +49,21 @@
 }
 
 [dir="rtl"] .footer-contact-item {
-  flex-direction: row-reverse;
   text-align: right;
 }
 
+[dir="rtl"] .footer-contact-item span,
+[dir="rtl"] .footer-contact-item a {
+  direction: ltr;
+  display: inline-block;
+}
+
 [dir="rtl"] .footer-bottom {
-  flex-direction: row-reverse;
+  flex-direction: row;
+}
+
+[dir="rtl"] .footer-bottom p {
+  direction: ltr;
 }
 
 /* ── Cards ── */
@@ -105,10 +102,7 @@
   padding-left: 40px;
 }
 
-[dir="rtl"] .form-check {
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
+
 
 /* ── Toggle Switch ── */
 [dir="rtl"] .toggle-slider::before {
@@ -121,18 +115,10 @@
 }
 
 /* ── Badges ── */
-[dir="rtl"] .badge {
-  flex-direction: row-reverse;
-}
 
 /* ── Stat Cards ── */
 [dir="rtl"] .stat-card {
-  flex-direction: row-reverse;
   text-align: right;
-}
-
-[dir="rtl"] .stat-trend {
-  flex-direction: row-reverse;
 }
 
 /* ── Two Column Layout ── */
@@ -145,24 +131,9 @@
   direction: rtl;
 }
 
-[dir="rtl"] .scroll-track {
-  flex-direction: row-reverse;
-}
-
 /* ── Accordion ── */
 [dir="rtl"] .accordion-header {
-  flex-direction: row-reverse;
   text-align: right;
-}
-
-/* ── Tabs ── */
-[dir="rtl"] .tabs {
-  flex-direction: row-reverse;
-}
-
-/* ── Modal ── */
-[dir="rtl"] .modal-header {
-  flex-direction: row-reverse;
 }
 
 /* ── Toast ── */
@@ -181,16 +152,7 @@
   border-right-color: var(--color-warning);
 }
 
-/* ── Pagination ── */
-[dir="rtl"] .pagination {
-  flex-direction: row-reverse;
-}
-
 /* ── Auth Pages ── */
-[dir="rtl"] .auth-split {
-  flex-direction: row-reverse;
-}
-
 [dir="rtl"] .auth-theme-toggles {
   right: auto;
   left: var(--space-sm);
@@ -199,10 +161,6 @@
 /* ── Pricing Feature List ── */
 [dir="rtl"] .pricing-card .feature-list {
   text-align: right;
-}
-
-[dir="rtl"] .pricing-card .feature-list li {
-  flex-direction: row-reverse;
 }
 
 /* ── Notification Dot ── */
@@ -253,17 +211,36 @@
 
 /* ── Error message ── */
 [dir="rtl"] .form-error {
-  flex-direction: row-reverse;
   text-align: right;
-}
-
-/* ── General Flex Reversals for RTL ── */
-[dir="rtl"] .flex-between {
-  flex-direction: row-reverse;
 }
 
 /* ── Skip Link ── */
 [dir="rtl"] .skip-link {
   left: auto;
   right: var(--space-sm);
+}
+
+/* ── Caret Icon Flipping ── */
+[dir="rtl"] .ph-caret-right,
+[dir="rtl"] .ph-arrow-right {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* ── Text Element Unicode Bidi ── */
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] a,
+[dir="rtl"] li,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] td,
+[dir="rtl"] th,
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  unicode-bidi: plaintext;
 }

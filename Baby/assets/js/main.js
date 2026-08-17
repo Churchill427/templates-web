@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRtl();
   initMobileNav();
   initHomeSwitcher();
+  initMobileDropdowns();
   highlightActiveLink();
 });
 
@@ -129,6 +130,12 @@ function initMobileNav() {
           spans[0].style.transform = 'none';
           spans[1].style.opacity = '1';
           spans[2].style.transform = 'none';
+          
+          // Also close any open dropdowns inside the nav drawer
+          const openDropdowns = document.querySelectorAll('.nav-dropdown-item.open');
+          openDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('open');
+          });
         }
       }
     });
@@ -166,4 +173,21 @@ function highlightActiveLink() {
       link.classList.remove('active');
     }
   });
+}
+
+/* 6. Mobile Navigation Dropdowns (Accordion Toggling) */
+function initMobileDropdowns() {
+  const dropdownTrigger = document.getElementById('home-dropdown-trigger');
+  if (dropdownTrigger) {
+    dropdownTrigger.addEventListener('click', (e) => {
+      // Toggle dropdown only on mobile/tablet viewports
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        const parent = dropdownTrigger.closest('.nav-dropdown-item');
+        if (parent) {
+          parent.classList.toggle('open');
+        }
+      }
+    });
+  }
 }

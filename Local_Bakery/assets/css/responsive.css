@@ -18,7 +18,13 @@
   .hamburger { display: flex; }
 
   .navbar-inner {
-    padding: 0;
+    padding-inline: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .navbar.scrolled {
+    height: var(--navbar-height);
   }
 
   /* --- Grids → Single Column --- */
@@ -48,6 +54,24 @@
     grid-column: span 1;
   }
 
+  /* --- Blog → Single Column --- */
+  .blog-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-card-featured .card-img-wrapper {
+    max-height: 250px;
+  }
+
+  /* ---- Cards ---- */
+  .card-body {
+    padding: var(--space-md);
+  }
+
   /* --- Asymmetric → Stack --- */
   .asymmetric-grid {
     grid-template-columns: 1fr;
@@ -58,20 +82,50 @@
   }
 
   /* --- Cards --- */
-  .card-img { height: 180px; }
-  .product-card .card-img { height: 220px; }
-  .team-card .card-img { height: 240px; }
-  .category-card { height: 100%; }
+  .card-img {
+    height: 180px;
+  }
+
+  .product-card .card-img {
+    height: 220px;
+  }
+
+  .team-card .card-img {
+    height: 240px;
+  }
+
+  .category-card {
+    height: 100%;
+  }
 
   /* --- Hero --- */
-  .hero { min-height: 100svh; }
-  .hero-mini { min-height: 40vh; }
-  .hero-content { padding: var(--space-lg); }
+  .hero {
+    min-height: 100svh;
+    padding-top: var(--navbar-height);
+  }
+
+  .hero-mini {
+    min-height: 40vh;
+    padding-top: var(--navbar-height);
+  }
+
+  .hero-content {
+    width: 100%;
+    margin-inline: auto;
+    padding: var(--space-lg) var(--page-padding);
+    text-align: center;
+  }
 
   /* --- Section Headers --- */
-  .section-header { margin-bottom: var(--space-lg); }
+  .section-header {
+    margin-bottom: var(--space-lg);
+  }
 
   /* --- Footer --- */
+  .footer {
+    text-align: center;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
@@ -79,6 +133,25 @@
 
   .footer-brand {
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+
+  .footer-contact-item {
+    justify-content: center;
+  }
+
+  .footer-newsletter .newsletter-form {
+    justify-content: center;
   }
 
   .footer-bottom {
@@ -97,8 +170,13 @@
   }
 
   /* --- Step Indicator --- */
-  .step-label { display: none; }
-  .step-line { width: 24px; }
+  .step-label {
+    display: none;
+  }
+
+  .step-line {
+    width: 24px;
+  }
 
   /* --- Accordion --- */
   .accordion-header {
@@ -139,23 +217,30 @@
     width: auto;
   }
 
-  .form-group { margin-bottom: var(--space-md); }
+  .form-group {
+    margin-bottom: var(--space-md);
+  }
+
   .step-indicator {
     margin-bottom: var(--space-lg);
     gap: var(--space-3xs);
   }
+
   .step-label {
     display: none !important;
   }
+
   .step-line {
     width: 20px !important;
     margin: 0 var(--space-3xs) !important;
   }
+
   .step-circle {
     width: 30px !important;
     height: 30px !important;
     font-size: var(--fs-xs) !important;
   }
+
   .booking-form-wrapper,
   .calendar-placeholder,
   .contact-info-card,
@@ -164,12 +249,15 @@
   .modal {
     padding: var(--space-md) !important;
   }
+
   .card-body {
     padding: var(--space-md) !important;
   }
+
   .calendar-grid {
     gap: 1px !important;
   }
+
   .cal-day {
     padding: var(--space-2xs) !important;
     min-height: 32px !important;
@@ -189,7 +277,7 @@
   }
 
   /* --- Scroll Container Items --- */
-  .scroll-container > .card {
+  .scroll-container>.card {
     width: 280px;
   }
 
@@ -203,9 +291,11 @@
     scrollbar-width: none;
   }
 
-  .mobile-carousel::-webkit-scrollbar { display: none; }
+  .mobile-carousel::-webkit-scrollbar {
+    display: none;
+  }
 
-  .mobile-carousel > * {
+  .mobile-carousel>* {
     scroll-snap-align: start;
     flex-shrink: 0;
     width: 80vw;
@@ -226,7 +316,38 @@
     scrollbar-width: none;
   }
 
-  .filter-pills::-webkit-scrollbar { display: none; }
+  .filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Extra responsive scaling for narrow screens (360px and below) */
+@media (max-width: 360px) {
+  :root {
+    --page-padding: 0.75rem;
+  }
+  .navbar-logo {
+    gap: var(--space-xs);
+  }
+  .navbar-logo .logo-text {
+    font-size: 1.25rem;
+    white-space: nowrap;
+  }
+  .navbar-logo .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .hamburger {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+  .hero-content {
+    padding: var(--space-md) var(--page-padding);
+  }
+  .hero-content h1 {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
 }
 
 /* ============================================
@@ -242,9 +363,28 @@
   .navbar-controls { display: none; }
   .hamburger { display: flex; }
 
+  .navbar-inner {
+    padding-inline: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* --- Hero --- */
+  .hero-content {
+    width: 100%;
+    margin-inline: auto;
+    padding: var(--space-xl) var(--page-padding);
+    text-align: center;
+  }
+
   /* --- Grids → 2 columns --- */
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   /* --- Masonry → 2 columns --- */
   .masonry-grid {
@@ -267,12 +407,24 @@
   }
 
   /* --- Cards --- */
-  .card-img { height: 200px; }
-  .product-card .card-img { height: 240px; }
+  .card-img {
+    height: 200px;
+  }
+
+  .product-card .card-img {
+    height: 240px;
+  }
 
   /* --- Hero --- */
-  .hero { min-height: 80vh; }
-  .hero-mini { min-height: 45vh; }
+  .hero {
+    min-height: 80vh;
+    padding-top: var(--navbar-height);
+  }
+
+  .hero-mini {
+    min-height: 45vh;
+    padding-top: var(--navbar-height);
+  }
 
   /* --- Footer --- */
   .footer-grid {
@@ -291,14 +443,21 @@
   }
 
   /* --- Step indicator --- */
-  .step-line { width: 30px; }
-  .step-label { font-size: 0.65rem; }
+  .step-line {
+    width: 30px;
+  }
+
+  .step-label {
+    font-size: 0.65rem;
+  }
 
   /* --- Buttons --- */
-  .btn { width: auto; }
+  .btn {
+    width: auto;
+  }
 
   /* --- Scroll containers --- */
-  .scroll-container > .card {
+  .scroll-container>.card {
     width: 300px;
   }
 
@@ -317,25 +476,38 @@
    DESKTOP: 1024px - 1279px
    ============================================ */
 @media (min-width: 1024px) {
+
   /* --- Navbar --- */
-  .hamburger { display: none; }
-  .navbar-links { display: flex; }
-  .navbar-controls { display: flex; }
+  .hamburger {
+    display: none;
+  }
+
+  .navbar-links {
+    display: flex;
+  }
+
+  .navbar-controls {
+    display: flex;
+  }
 
   @media (max-width: 1200px) {
     .nav-link {
       padding: var(--space-sm) var(--space-xs);
       font-size: var(--fs-small);
     }
+
     .navbar-links {
       gap: 2px;
     }
+
     .product-card .card-body {
       padding: var(--space-md);
     }
+
     .product-card .card-price {
       font-size: 1.1rem;
     }
+
     .product-card .btn-sm {
       padding: 0.5rem 1rem;
     }
@@ -347,15 +519,27 @@
   }
 
   /* --- Hero --- */
-  .hero { min-height: 100vh; }
-  .hero-mini { min-height: 50vh; }
+  .hero {
+    min-height: 100vh;
+  }
+
+  .hero-mini {
+    min-height: 50vh;
+  }
 
   /* --- Category Cards Desktop Height --- */
-  .category-card { height: 100%; }
+  .category-card {
+    height: 100%;
+  }
 
   /* --- Larger card images --- */
-  .product-card .card-img { height: 260px; }
-  .team-card .card-img { height: 280px; }
+  .product-card .card-img {
+    height: 260px;
+  }
+
+  .team-card .card-img {
+    height: 280px;
+  }
 }
 
 /* ============================================
@@ -396,8 +580,13 @@
   }
 
   /* --- Cards --- */
-  .product-card .card-img { height: 280px; }
-  .category-card { height: 100%; }
+  .product-card .card-img {
+    height: 280px;
+  }
+
+  .category-card {
+    height: 100%;
+  }
 }
 
 /* ============================================
@@ -445,6 +634,7 @@
    PRINT STYLES
    ============================================ */
 @media print {
+
   .navbar,
   .hamburger,
   .mobile-menu,
