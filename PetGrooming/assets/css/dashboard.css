@@ -111,7 +111,8 @@
   flex-shrink: 0;
 }
 
-.db-menu-item:hover, .db-menu-item.active {
+.db-menu-item:hover,
+.db-menu-item.active {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -141,7 +142,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.db-sidebar.collapsed + .db-main {
+.db-sidebar.collapsed+.db-main {
   margin-left: var(--sidebar-collapsed-width);
 }
 
@@ -187,6 +188,33 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
+}
+
+/* Ensure theme toggle icon is always visible in the dashboard topbar */
+.db-topbar .navbar-toggle-btn {
+  color: var(--color-text-primary);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.db-topbar .navbar-toggle-btn:hover {
+  background: rgba(45, 106, 79, 0.1);
+  color: var(--color-primary);
+}
+
+/* Match RTL and theme toggle to same size in dashboard topbar */
+.db-topbar .rtl-toggle-btn {
+  width: 40px;
+  height: 40px;
+  min-height: unset;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .db-user-profile {
@@ -310,12 +338,12 @@
   .db-sidebar {
     left: -260px;
   }
-  
+
   .db-sidebar.collapsed {
     left: 0;
     width: var(--sidebar-width);
   }
-  
+
   .db-main {
     margin-left: 0 !important;
   }
@@ -348,9 +376,11 @@
     grid-template-columns: 1fr;
     gap: var(--space-sm);
   }
+
   .db-card {
     padding: var(--space-sm) var(--space-md);
   }
+
   .db-card-header h2 {
     font-size: 15px;
   }
@@ -361,6 +391,7 @@
   padding: 0;
   justify-content: center;
 }
+
 .db-sidebar.collapsed .db-sidebar-brand svg {
   margin-right: 0;
 }
