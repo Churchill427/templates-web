@@ -476,27 +476,20 @@
     @media (max-width: 1023px) {
       .flavor-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+      }
+      .flavor-card {
+        width: 100%;
       }
     }
 
     @media (max-width: 639px) {
       .flavor-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
+        grid-template-columns: 1fr;
         gap: var(--space-md);
-        padding-bottom: var(--space-sm);
-        scrollbar-width: none;
       }
-
-      .flavor-grid::-webkit-scrollbar {
-        display: none;
-      }
-
       .flavor-card {
-        scroll-snap-align: start;
-        flex-shrink: 0;
-        width: 200px;
+        width: 100%;
       }
     }
 

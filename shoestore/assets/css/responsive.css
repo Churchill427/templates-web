@@ -236,7 +236,11 @@
   .hero-actions .btn { width: 100%; }
 
   /* Page Hero */
-  .page-hero { min-height: 40vh; }
+  .page-hero {
+    min-height: 40vh;
+    padding: 48px var(--container-padding);
+    box-sizing: border-box;
+  }
   .page-hero h1 { font-size: 30px; }
 
   /* Split sections */
@@ -251,6 +255,13 @@
   .product-card-action {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Dual-button row responsive — equal sizing on mobile */
+  .product-card-body > div[style*="display:flex"][style*="gap:8px"] > .btn {
+    font-size: 12px;
+    height: 38px;
+    padding: 0 8px;
   }
 
   /* Category card explore button always visible */
@@ -508,6 +519,38 @@
   .btn-lg { width: 100%; padding: 12px 20px; font-size: 14px; }
   .hero-actions { gap: 10px; width: 100%; }
   .card { padding: 20px !important; }
+
+  /* Navbar refinements for 360px and smaller viewports */
+  .nav-container {
+    padding: 0 10px;
+  }
+  .nav-logo-text {
+    font-size: 18px;
+  }
+  .theme-toggle,
+  .rtl-toggle,
+  .nav-cta {
+    font-size: 11px;
+    padding: 0 6px;
+    height: 30px;
+    min-height: 30px;
+  }
+  .nav-toggles {
+    gap: 4px;
+  }
+  .hamburger {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Stack dual-button row vertically on very small screens */
+  .product-card-body > div[style*="display:flex"][style*="gap:8px"] {
+    flex-direction: column !important;
+  }
+  .product-card-body > div[style*="display:flex"][style*="gap:8px"] > .btn {
+    width: 100%;
+    height: 38px;
+  }
 }
 
 /* Bulk Order Page Responsiveness (360px, 768px, 1024px) */
