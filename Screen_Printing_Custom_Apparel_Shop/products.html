@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — PRNT Custom T-Shirts, Hoodies & Caps</title>
+  <meta name="description" content="Browse PRNT's premium custom apparel catalog. Screen printed t-shirts, embroidered hoodies, custom caps — all customizable with your artwork." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <link rel="stylesheet" href="styles/variables.css" /><link rel="stylesheet" href="styles/base.css" /><link rel="stylesheet" href="styles/components.css" /><link rel="stylesheet" href="styles/animations.css" /><link rel="stylesheet" href="styles/responsive.css" />
+  <style>
+    .swatch-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:var(--space-4);}
+    .swatch{width:28px;height:28px;border-radius:50%;border:2px solid var(--border-color);cursor:pointer;transition:transform 0.15s ease;}
+    .swatch:hover{transform:scale(1.2);}
+    .customize-options .card__image{height:220px;}
+    .discount-table td,.discount-table th{padding:var(--space-3) var(--space-4);text-align:center;}
+    .discount-table tr:nth-child(even){background:var(--bg-muted);}
+    .fabric-table{font-size:var(--fs-small);}
+    .fabric-table td,.fabric-table th{padding:var(--space-3) var(--space-4);}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="preloader" aria-hidden="true"><div class="preloader__ink"><span></span><span></span><span></span></div></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar" role="banner"><div class="navbar__inner"><a href="index.html" class="navbar__logo" aria-label="PRNT Home"><div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span class="navbar__logo-text">PRNT</span></a><nav class="navbar__nav" role="navigation" aria-label="Main navigation"><div class="navbar__dropdown"><a href="#" class="navbar__link" aria-haspopup="true">Home <i data-lucide="chevron-down"></i></a><div class="navbar__dropdown-menu" role="menu"><a href="index.html" class="navbar__dropdown-item" role="menuitem"><i data-lucide="zap"></i> Home 1</a><a href="home-alt.html" class="navbar__dropdown-item" role="menuitem"><i data-lucide="palette"></i> Home 2</a></div></div><a href="about.html" class="navbar__link">About</a><a href="products.html" class="navbar__link is-active">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html" class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html" class="navbar__link">Contact</a></nav><div class="navbar__actions"><a href="cart.html" class="navbar__cart-btn" aria-label="Shopping Cart"><i data-lucide="shopping-cart"></i><span class="navbar__cart-badge badge--count">0</span></a><button class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle theme"><i data-lucide="moon" class="theme-toggle-icon"></i></button><button class="navbar__rtl-btn navbar__toggle-btn" data-toggle-dir><span class="rtl-toggle-text">RTL</span></button><button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button></div></div><div class="navbar__mobile-menu" role="navigation" aria-label="Mobile navigation"><div class="navbar__dropdown"><a href="#" class="navbar__link">Home <i data-lucide="chevron-down"></i></a><div class="navbar__dropdown-menu"><a href="index.html" class="navbar__dropdown-item"><i data-lucide="zap"></i> Home 1</a><a href="home-alt.html" class="navbar__dropdown-item"><i data-lucide="palette"></i> Home 2</a></div></div><a href="about.html" class="navbar__link">About</a><a href="products.html" class="navbar__link is-active">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html" class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html" class="navbar__link">Contact</a><div class="navbar__mobile-toggles"><button class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle theme"><i data-lucide="moon" class="theme-toggle-icon"></i></button><button class="navbar__rtl-btn navbar__toggle-btn" data-toggle-dir><span class="rtl-toggle-text">RTL</span></button></div></div></header>
+
+  <main id="main-content" class="page-content">
+    <!-- S1: HERO -->
+    <section class="hero" aria-label="Products hero">
+      <img src="assets/images/hero_products.png" alt="Stack of premium heavyweight folded blank garments" class="hero__bg" />
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1><span class="hero-word">Premium</span> <span class="hero-word">Custom</span> <span class="hero-word">Apparel</span></h1>
+        <p>Browse our catalog of blank garments ready for your custom design — screen printed, embroidered, or heat transferred.</p>
+      </div>
+    </section>
+
+    <!-- S2: CATEGORY FILTER BAR -->
+    <section class="section section--sm" id="category-filter" aria-label="Category filter">
+      <div class="container">
+        <div class="text-center reveal" style="max-width:800px; margin: 0 auto var(--space-6);">
+          <h2 style="margin-bottom:var(--space-3);">The Canvas for Your Brand</h2>
+          <p style="color:var(--text-muted);">We believe that a great print starts with a great garment. That's why we've carefully curated a selection of the highest quality blanks in the industry. From ultra-soft ringspun cotton tees to heavyweight premium fleece, our apparel is chosen for its durability, fit, and superior printability.</p>
+        </div>
+        <div class="filter-group text-center reveal" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;">
+          <button class="chip is-active" data-filter="all" data-target="#product-grid">All Products</button>
+          <button class="chip" data-filter="tshirts" data-target="#product-grid">T-Shirts</button>
+          <button class="chip" data-filter="hoodies" data-target="#product-grid">Hoodies</button>
+          <button class="chip" data-filter="caps" data-target="#product-grid">Caps</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3: PRODUCT GRID -->
+    <section class="section section--sm" id="products" aria-label="Product grid">
+      <div class="container">
+        <div class="grid grid--4 filter-grid" id="product-grid">
+          <!-- T-Shirts -->
+          <div class="card product-card" data-category="tshirts"><div class="card__image"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80" alt="Classic cotton crew neck tee"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Classic Crew Tee</h3><p class="card__spec">100% Ringspun Cotton, 5.3oz</p><p class="card__price">$5 – $8</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="tee-classic" data-product-name="Classic Crew Tee" data-product-price="6" data-product-image="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80" data-product-spec="100% Ringspun Cotton">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="tshirts"><div class="card__image"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80" alt="Premium tri-blend tee"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Tri-Blend V-Neck</h3><p class="card__spec">50/25/25 Poly-Cotton-Rayon, 4.3oz</p><p class="card__price">$7 – $10</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="tee-triblend" data-product-name="Tri-Blend V-Neck" data-product-price="8" data-product-image="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80" data-product-spec="Tri-Blend 4.3oz">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="tshirts"><div class="card__image"><img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80" alt="Heavyweight oversized tee"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Heavyweight Tee</h3><p class="card__spec">100% Cotton, 6.1oz Heavyweight</p><p class="card__price">$8 – $12</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="tee-heavy" data-product-name="Heavyweight Tee" data-product-price="10" data-product-image="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&q=80" data-product-spec="6.1oz Heavyweight Cotton">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="tshirts"><div class="card__image"><img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&q=80" alt="Performance sport tee"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Performance Sport</h3><p class="card__spec">100% Polyester, Moisture-Wicking</p><p class="card__price">$9 – $14</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="tee-sport" data-product-name="Performance Sport Tee" data-product-price="11" data-product-image="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&q=80" data-product-spec="100% Polyester">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <!-- Hoodies -->
+          <div class="card product-card" data-category="hoodies"><div class="card__image"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80" alt="Classic pullover hoodie"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Classic Pullover</h3><p class="card__spec">80/20 Cotton-Poly Fleece, 9oz</p><p class="card__price">$18 – $24</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="hoodie-classic" data-product-name="Classic Pullover Hoodie" data-product-price="20" data-product-image="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80" data-product-spec="9oz Cotton-Poly Fleece">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="hoodies"><div class="card__image"><img src="https://images.unsplash.com/photo-1513789181297-6f2ec112c0bc?w=600&auto=format&fit=crop&q=80" alt="Zip-up hoodie"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Full-Zip Hoodie</h3><p class="card__spec">60/40 Cotton-Poly, Lightweight</p><p class="card__price">$22 – $28</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="hoodie-zip" data-product-name="Full-Zip Hoodie" data-product-price="25" data-product-image="https://images.unsplash.com/photo-1513789181297-6f2ec112c0bc?w=600&auto=format&fit=crop&q=80" data-product-spec="Cotton-Poly Lightweight">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="hoodies"><div class="card__image"><img src="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?w=400&q=80" alt="Heavyweight champion hoodie"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Heavyweight Champion</h3><p class="card__spec">12oz Reverse Weave Fleece</p><p class="card__price">$30 – $38</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="hoodie-heavy" data-product-name="Heavyweight Champion" data-product-price="34" data-product-image="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?w=400&q=80" data-product-spec="12oz Reverse Weave">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <!-- Caps -->
+          <div class="card product-card" data-category="caps"><div class="card__image"><img src="https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&auto=format&fit=crop&q=80" alt="Classic snapback cap"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Snapback Cap</h3><p class="card__spec">Structured, 6-Panel, Embroidered</p><p class="card__price">$12 – $16</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="cap-snap" data-product-name="Snapback Cap" data-product-price="14" data-product-image="https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600&auto=format&fit=crop&q=80" data-product-spec="6-Panel Embroidered">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="caps"><div class="card__image"><img src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=400&q=80" alt="Trucker mesh cap"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Trucker Mesh</h3><p class="card__spec">Foam Front, Mesh Back, Snap</p><p class="card__price">$10 – $14</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="cap-trucker" data-product-name="Trucker Mesh Cap" data-product-price="12" data-product-image="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=400&q=80" data-product-spec="Foam Front Mesh">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="caps"><div class="card__image"><img src="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=400&q=80" alt="Dad hat unstructured"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Dad Hat</h3><p class="card__spec">Unstructured, Strapback, Washed</p><p class="card__price">$8 – $12</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="cap-dad" data-product-name="Dad Hat" data-product-price="10" data-product-image="https://images.unsplash.com/photo-1521369909029-2afed882baee?w=400&q=80" data-product-spec="Unstructured Strapback">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="tshirts"><div class="card__image"><img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&q=80" alt="Long sleeve tee"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Long Sleeve Tee</h3><p class="card__spec">100% Cotton, 5.5oz Jersey</p><p class="card__price">$9 – $14</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="tee-longsleeve" data-product-name="Long Sleeve Tee" data-product-price="11" data-product-image="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&q=80" data-product-spec="5.5oz Jersey Cotton">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+
+          <div class="card product-card" data-category="hoodies"><div class="card__image"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80" alt="Cropped hoodie"/></div><div class="card__body"><h3 class="card__title" style="font-size:var(--fs-h4);">Cropped Hoodie</h3><p class="card__spec">80/20 Cotton-Poly, Relaxed Fit</p><p class="card__price">$20 – $26</p><div class="card__actions"><button class="btn btn--primary btn--sm" data-add-to-cart data-product-id="hoodie-crop" data-product-name="Cropped Hoodie" data-product-price="23" data-product-image="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80" data-product-spec="Relaxed Fit Cotton-Poly">Add to Cart</button><a href="design-guide.html" class="btn btn--ghost btn--sm">Customize</a></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: FABRIC & QUALITY GUIDE -->
+    <section class="section" id="fabric-guide" aria-label="Fabric and quality guide" style="background:var(--bg-muted);">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Materials & Specs</span>
+          <h2>Fabric & Quality Guide</h2>
+          <p class="section__subtitle">Explore our premium blank garments, performance ratings, and print compatibilities</p>
+        </div>
+
+        <!-- Interactive Controls (Filter Tabs + View Mode Toggle) -->
+        <div class="fabric-controls reveal">
+          <div class="fabric-tabs" role="tablist" aria-label="Fabric categories">
+            <button class="fabric-tab is-active" data-fabric-cat="all" role="tab" aria-selected="true"><i data-lucide="layers"></i> All Fabrics <span class="tab-badge">5</span></button>
+            <button class="fabric-tab" data-fabric-cat="cotton" role="tab" aria-selected="false"><i data-lucide="feather"></i> Cotton & Blends <span class="tab-badge">3</span></button>
+            <button class="fabric-tab" data-fabric-cat="athletic" role="tab" aria-selected="false"><i data-lucide="activity"></i> Athletic Mesh <span class="tab-badge">1</span></button>
+            <button class="fabric-tab" data-fabric-cat="fleece" role="tab" aria-selected="false"><i data-lucide="flame"></i> Fleece & Warmth <span class="tab-badge">1</span></button>
+          </div>
+          <div class="fabric-view-toggle">
+            <span class="toggle-label">View:</span>
+            <button class="view-btn is-active" data-view="grid" aria-label="Cards view"><i data-lucide="layout-grid"></i> Cards</button>
+            <button class="view-btn" data-view="matrix" aria-label="Matrix view"><i data-lucide="table"></i> Matrix</button>
+          </div>
+        </div>
+
+        <!-- Cards View Grid -->
+        <div class="fabric-cards-grid reveal" id="fabricCardsGrid">
+          
+          <!-- Card 1: Ringspun Cotton -->
+          <article class="fabric-card" data-category="cotton">
+            <div class="fabric-card__header">
+              <div class="fabric-card__badges">
+                <span class="badge--tag">Best Seller</span>
+                <span class="badge--weight">5.3 oz • 180 GSM</span>
+              </div>
+              <div class="fabric-card__title-row">
+                <div class="fabric-card__icon"><i data-lucide="feather"></i></div>
+                <h3 class="fabric-card__title">Ringspun Cotton</h3>
+              </div>
+              <p class="fabric-card__desc">100% combed ringspun cotton with ultra-tight weave for smooth ink coverage and vivid color rendition.</p>
+            </div>
+            
+            <div class="fabric-card__meters">
+              <div class="meter-group">
+                <div class="meter-header"><span>Softness & Comfort</span><span class="meter-val">92%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 92%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Breathability</span><span class="meter-val">85%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 85%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Wash Durability</span><span class="meter-val">82%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 82%;"></div></div>
+              </div>
+            </div>
+
+            <div class="fabric-card__details">
+              <div class="detail-row">
+                <div class="detail-label">Best For</div>
+                <div class="detail-text">Everyday streetwear, band merch, events & retail brands</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Recommended Print Methods</div>
+                <div class="print-methods-tags">
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Screen Printing</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> DTG</span>
+                  <span class="print-tag print-tag--alt">Embroidery</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="fabric-card__colors">
+              <div class="swatch-picker-header">
+                <span class="detail-label">Colorways</span>
+                <span class="color-readout">Selected: <strong class="swatch-color-name">Onyx Black</strong></span>
+              </div>
+              <div class="card-swatches">
+                <button class="card-swatch-dot is-selected" style="background:#1A1A1A;" data-color="Onyx Black" title="Onyx Black" aria-label="Onyx Black"></button>
+                <button class="card-swatch-dot" style="background:#FFFFFF; border-color:#CCC;" data-color="Crisp White" title="Crisp White" aria-label="Crisp White"></button>
+                <button class="card-swatch-dot" style="background:#16233F;" data-color="Midnight Navy" title="Midnight Navy" aria-label="Midnight Navy"></button>
+                <button class="card-swatch-dot" style="background:#B22222;" data-color="Cardinal Red" title="Cardinal Red" aria-label="Cardinal Red"></button>
+                <button class="card-swatch-dot" style="background:#2E7D32;" data-color="Forest Green" title="Forest Green" aria-label="Forest Green"></button>
+                <button class="card-swatch-dot" style="background:#78909C;" data-color="Storm Grey" title="Storm Grey" aria-label="Storm Grey"></button>
+              </div>
+            </div>
+
+            <div class="fabric-card__footer">
+              <button class="btn btn--outline btn--sm fabric-sample-btn" data-fabric="Ringspun Cotton"><i data-lucide="package"></i> Request Swatch Pack</button>
+            </div>
+          </article>
+
+          <!-- Card 2: Tri-Blend Premium -->
+          <article class="fabric-card" data-category="cotton">
+            <div class="fabric-card__header">
+              <div class="fabric-card__badges">
+                <span class="badge--tag">Ultra Soft</span>
+                <span class="badge--weight">4.3 oz • 145 GSM</span>
+              </div>
+              <div class="fabric-card__title-row">
+                <div class="fabric-card__icon"><i data-lucide="sparkles"></i></div>
+                <h3 class="fabric-card__title">Tri-Blend Premium</h3>
+              </div>
+              <p class="fabric-card__desc">50% poly / 25% cotton / 25% rayon hybrid with featherlight vintage drape and silky skin feel.</p>
+            </div>
+
+            <div class="fabric-card__meters">
+              <div class="meter-group">
+                <div class="meter-header"><span>Softness & Comfort</span><span class="meter-val">98%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 98%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Breathability</span><span class="meter-val">90%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 90%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Wash Durability</span><span class="meter-val">76%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 76%;"></div></div>
+              </div>
+            </div>
+
+            <div class="fabric-card__details">
+              <div class="detail-row">
+                <div class="detail-label">Best For</div>
+                <div class="detail-text">Boutique retail lines, vintage graphic tees, fitness lifestyle</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Recommended Print Methods</div>
+                <div class="print-methods-tags">
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Screen Printing</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> DTG</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Discharge</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="fabric-card__colors">
+              <div class="swatch-picker-header">
+                <span class="detail-label">Colorways</span>
+                <span class="color-readout">Selected: <strong class="swatch-color-name">Vintage Charcoal</strong></span>
+              </div>
+              <div class="card-swatches">
+                <button class="card-swatch-dot is-selected" style="background:#262626;" data-color="Vintage Charcoal" title="Vintage Charcoal" aria-label="Vintage Charcoal"></button>
+                <button class="card-swatch-dot" style="background:#F0F0F0; border-color:#CCC;" data-color="Heather White" title="Heather White" aria-label="Heather White"></button>
+                <button class="card-swatch-dot" style="background:#5C6BC0;" data-color="Heather Indigo" title="Heather Indigo" aria-label="Heather Indigo"></button>
+                <button class="card-swatch-dot" style="background:#E91E63;" data-color="Hot Pink" title="Hot Pink" aria-label="Hot Pink"></button>
+                <button class="card-swatch-dot" style="background:#00BCD4;" data-color="Teal Heather" title="Teal Heather" aria-label="Teal Heather"></button>
+              </div>
+            </div>
+
+            <div class="fabric-card__footer">
+              <button class="btn btn--outline btn--sm fabric-sample-btn" data-fabric="Tri-Blend Premium"><i data-lucide="package"></i> Request Swatch Pack</button>
+            </div>
+          </article>
+
+          <!-- Card 3: Heavyweight Cotton -->
+          <article class="fabric-card" data-category="cotton">
+            <div class="fabric-card__header">
+              <div class="fabric-card__badges">
+                <span class="badge--tag">Streetwear</span>
+                <span class="badge--weight">6.1 oz • 205 GSM</span>
+              </div>
+              <div class="fabric-card__title-row">
+                <div class="fabric-card__icon"><i data-lucide="shield"></i></div>
+                <h3 class="fabric-card__title">Heavyweight Cotton</h3>
+              </div>
+              <p class="fabric-card__desc">Thick, structured 100% carded cotton built for boxy streetwear fits, high necklines, and maximum durability.</p>
+            </div>
+
+            <div class="fabric-card__meters">
+              <div class="meter-group">
+                <div class="meter-header"><span>Softness & Comfort</span><span class="meter-val">72%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 72%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Breathability</span><span class="meter-val">65%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 65%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Wash Durability</span><span class="meter-val">96%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 96%;"></div></div>
+              </div>
+            </div>
+
+            <div class="fabric-card__details">
+              <div class="detail-row">
+                <div class="detail-label">Best For</div>
+                <div class="detail-text">Underground streetwear brands, skate tees, workwear uniforms</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Recommended Print Methods</div>
+                <div class="print-methods-tags">
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Screen Printing</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Heat Transfer</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Puff Print</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="fabric-card__colors">
+              <div class="swatch-picker-header">
+                <span class="detail-label">Colorways</span>
+                <span class="color-readout">Selected: <strong class="swatch-color-name">Heavy Black</strong></span>
+              </div>
+              <div class="card-swatches">
+                <button class="card-swatch-dot is-selected" style="background:#121212;" data-color="Heavy Black" title="Heavy Black" aria-label="Heavy Black"></button>
+                <button class="card-swatch-dot" style="background:#F5F2E9; border-color:#CCC;" data-color="Natural Cream" title="Natural Cream" aria-label="Natural Cream"></button>
+                <button class="card-swatch-dot" style="background:#4B5320;" data-color="Washed Olive" title="Washed Olive" aria-label="Washed Olive"></button>
+                <button class="card-swatch-dot" style="background:#3E2723;" data-color="Chocolate Brown" title="Chocolate Brown" aria-label="Chocolate Brown"></button>
+                <button class="card-swatch-dot" style="background:#F4A100;" data-color="Goldenrod" title="Goldenrod" aria-label="Goldenrod"></button>
+              </div>
+            </div>
+
+            <div class="fabric-card__footer">
+              <button class="btn btn--outline btn--sm fabric-sample-btn" data-fabric="Heavyweight Cotton"><i data-lucide="package"></i> Request Swatch Pack</button>
+            </div>
+          </article>
+
+          <!-- Card 4: Polyester Performance Mesh -->
+          <article class="fabric-card" data-category="athletic">
+            <div class="fabric-card__header">
+              <div class="fabric-card__badges">
+                <span class="badge--tag">Active Performance</span>
+                <span class="badge--weight">3.8 oz • 130 GSM</span>
+              </div>
+              <div class="fabric-card__title-row">
+                <div class="fabric-card__icon"><i data-lucide="activity"></i></div>
+                <h3 class="fabric-card__title">Polyester Mesh</h3>
+              </div>
+              <p class="fabric-card__desc">100% moisture-wicking micro-polyester engineered for maximum ventilation, anti-microbial freshness, and quick drying.</p>
+            </div>
+
+            <div class="fabric-card__meters">
+              <div class="meter-group">
+                <div class="meter-header"><span>Softness & Comfort</span><span class="meter-val">78%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 78%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Breathability</span><span class="meter-val">98%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 98%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Wash Durability</span><span class="meter-val">90%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 90%;"></div></div>
+              </div>
+            </div>
+
+            <div class="fabric-card__details">
+              <div class="detail-row">
+                <div class="detail-label">Best For</div>
+                <div class="detail-text">Sports jerseys, athletic teams, marathons, training apparel</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Recommended Print Methods</div>
+                <div class="print-methods-tags">
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Sublimation</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Heat Transfer</span>
+                  <span class="print-tag print-tag--alt">Screen Printing</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="fabric-card__colors">
+              <div class="swatch-picker-header">
+                <span class="detail-label">Colorways</span>
+                <span class="color-readout">Selected: <strong class="swatch-color-name">Electric Black</strong></span>
+              </div>
+              <div class="card-swatches">
+                <button class="card-swatch-dot is-selected" style="background:#0D0D0D;" data-color="Electric Black" title="Electric Black" aria-label="Electric Black"></button>
+                <button class="card-swatch-dot" style="background:#FFFFFF; border-color:#CCC;" data-color="Bright White" title="Bright White" aria-label="Bright White"></button>
+                <button class="card-swatch-dot" style="background:#1565C0;" data-color="Athletic Royal" title="Athletic Royal" aria-label="Athletic Royal"></button>
+                <button class="card-swatch-dot" style="background:#76FF03;" data-color="Neon Lime" title="Neon Lime" aria-label="Neon Lime"></button>
+                <button class="card-swatch-dot" style="background:#FF6D00;" data-color="Safety Orange" title="Safety Orange" aria-label="Safety Orange"></button>
+              </div>
+            </div>
+
+            <div class="fabric-card__footer">
+              <button class="btn btn--outline btn--sm fabric-sample-btn" data-fabric="Polyester Mesh"><i data-lucide="package"></i> Request Swatch Pack</button>
+            </div>
+          </article>
+
+          <!-- Card 5: Heavyweight Fleece -->
+          <article class="fabric-card" data-category="fleece">
+            <div class="fabric-card__header">
+              <div class="fabric-card__badges">
+                <span class="badge--tag">Cozy Warmth</span>
+                <span class="badge--weight">9.0 oz • 300 GSM</span>
+              </div>
+              <div class="fabric-card__title-row">
+                <div class="fabric-card__icon"><i data-lucide="flame"></i></div>
+                <h3 class="fabric-card__title">Fleece (80/20)</h3>
+              </div>
+              <p class="fabric-card__desc">Heavyweight 80% cotton / 20% poly fleece with ultra-plush brushed interior and 100% cotton face for crisp printing.</p>
+            </div>
+
+            <div class="fabric-card__meters">
+              <div class="meter-group">
+                <div class="meter-header"><span>Softness & Comfort</span><span class="meter-val">90%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 90%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Breathability</span><span class="meter-val">70%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 70%;"></div></div>
+              </div>
+              <div class="meter-group">
+                <div class="meter-header"><span>Wash Durability</span><span class="meter-val">94%</span></div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 94%;"></div></div>
+              </div>
+            </div>
+
+            <div class="fabric-card__details">
+              <div class="detail-row">
+                <div class="detail-label">Best For</div>
+                <div class="detail-text">Heavyweight hoodies, crewneck sweatshirts, fall/winter merch</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Recommended Print Methods</div>
+                <div class="print-methods-tags">
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Screen Printing</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Embroidery</span>
+                  <span class="print-tag print-tag--rec"><i data-lucide="check"></i> Puff Embroidery</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="fabric-card__colors">
+              <div class="swatch-picker-header">
+                <span class="detail-label">Colorways</span>
+                <span class="color-readout">Selected: <strong class="swatch-color-name">Jet Black</strong></span>
+              </div>
+              <div class="card-swatches">
+                <button class="card-swatch-dot is-selected" style="background:#111111;" data-color="Jet Black" title="Jet Black" aria-label="Jet Black"></button>
+                <button class="card-swatch-dot" style="background:#9E9E9E;" data-color="Heather Grey" title="Heather Grey" aria-label="Heather Grey"></button>
+                <button class="card-swatch-dot" style="background:#1B4D3E;" data-color="Deep Forest" title="Deep Forest" aria-label="Deep Forest"></button>
+                <button class="card-swatch-dot" style="background:#800020;" data-color="Maroon" title="Maroon" aria-label="Maroon"></button>
+                <button class="card-swatch-dot" style="background:#C2B280;" data-color="Sand Tan" title="Sand Tan" aria-label="Sand Tan"></button>
+              </div>
+            </div>
+
+            <div class="fabric-card__footer">
+              <button class="btn btn--outline btn--sm fabric-sample-btn" data-fabric="Fleece (80/20)"><i data-lucide="package"></i> Request Swatch Pack</button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Matrix View Table (Toggleable) -->
+        <div class="fabric-matrix-wrapper" id="fabricMatrixWrapper">
+          <table class="fabric-matrix-table">
+            <thead>
+              <tr>
+                <th>Fabric Type</th>
+                <th>Weight & GSM</th>
+                <th>Feel & Texture</th>
+                <th>Softness</th>
+                <th>Breathability</th>
+                <th>Durability</th>
+                <th>Best Applications</th>
+                <th>Print Methods</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="fabric-name-cell"><i data-lucide="feather" style="width:16px;color:var(--color-secondary);"></i> Ringspun Cotton</div></td>
+                <td>5.3 oz / 180 GSM</td>
+                <td>Soft, ultra-smooth</td>
+                <td><strong style="color:var(--color-secondary);">92%</strong></td>
+                <td>85%</td>
+                <td>82%</td>
+                <td>Everyday wear, events, retail tees</td>
+                <td>Screen, DTG, Embroidery</td>
+              </tr>
+              <tr>
+                <td><div class="fabric-name-cell"><i data-lucide="sparkles" style="width:16px;color:var(--color-secondary);"></i> Tri-Blend Premium</div></td>
+                <td>4.3 oz / 145 GSM</td>
+                <td>Featherlight, vintage soft</td>
+                <td><strong style="color:var(--color-secondary);">98%</strong></td>
+                <td>90%</td>
+                <td>76%</td>
+                <td>Boutique merch, vintage graphics</td>
+                <td>Screen, DTG, Discharge</td>
+              </tr>
+              <tr>
+                <td><div class="fabric-name-cell"><i data-lucide="shield" style="width:16px;color:var(--color-secondary);"></i> Heavyweight Cotton</div></td>
+                <td>6.1 oz / 205 GSM</td>
+                <td>Thick, crisp, structured</td>
+                <td>72%</td>
+                <td>65%</td>
+                <td><strong style="color:var(--color-secondary);">96%</strong></td>
+                <td>Streetwear brands, skatewear</td>
+                <td>Screen, Heat Transfer, Puff</td>
+              </tr>
+              <tr>
+                <td><div class="fabric-name-cell"><i data-lucide="activity" style="width:16px;color:var(--color-secondary);"></i> Polyester Mesh</div></td>
+                <td>3.8 oz / 130 GSM</td>
+                <td>Lightweight, moisture-wicking</td>
+                <td>78%</td>
+                <td><strong style="color:var(--color-secondary);">98%</strong></td>
+                <td>90%</td>
+                <td>Sports teams, activewear, gym</td>
+                <td>Sublimation, Heat Transfer</td>
+              </tr>
+              <tr>
+                <td><div class="fabric-name-cell"><i data-lucide="flame" style="width:16px;color:var(--color-secondary);"></i> Fleece (80/20)</div></td>
+                <td>9.0 oz / 300 GSM</td>
+                <td>Warm, plush interior fleece</td>
+                <td>90%</td>
+                <td>70%</td>
+                <td><strong style="color:var(--color-secondary);">94%</strong></td>
+                <td>Hoodies, crewnecks, outerwear</td>
+                <td>Screen, Embroidery, Puff</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Global Master Color Palette Preview Bar -->
+        <div class="fabric-global-swatches reveal">
+          <h4>Explore Standard Colorways</h4>
+          <p>Over 30+ custom shades available for bulk production orders. Tap any swatch to preview:</p>
+          <div class="global-swatch-list">
+            <div class="global-swatch-item" data-swatch-name="Onyx Black"><span class="global-swatch-dot" style="background:#1A1A1A;"></span><span class="global-swatch-name">Onyx Black</span></div>
+            <div class="global-swatch-item" data-swatch-name="Crisp White"><span class="global-swatch-dot" style="background:#FFFFFF;border-color:#CCC;"></span><span class="global-swatch-name">Crisp White</span></div>
+            <div class="global-swatch-item" data-swatch-name="Midnight Navy"><span class="global-swatch-dot" style="background:#16233F;"></span><span class="global-swatch-name">Midnight Navy</span></div>
+            <div class="global-swatch-item" data-swatch-name="Cardinal Red"><span class="global-swatch-dot" style="background:#B22222;"></span><span class="global-swatch-name">Cardinal Red</span></div>
+            <div class="global-swatch-item" data-swatch-name="Forest Green"><span class="global-swatch-dot" style="background:#2E7D32;"></span><span class="global-swatch-name">Forest Green</span></div>
+            <div class="global-swatch-item" data-swatch-name="Goldenrod"><span class="global-swatch-dot" style="background:#F4A100;"></span><span class="global-swatch-name">Goldenrod</span></div>
+            <div class="global-swatch-item" data-swatch-name="Heather Indigo"><span class="global-swatch-dot" style="background:#5C6BC0;"></span><span class="global-swatch-name">Heather Indigo</span></div>
+            <div class="global-swatch-item" data-swatch-name="Storm Grey"><span class="global-swatch-dot" style="background:#78909C;"></span><span class="global-swatch-name">Storm Grey</span></div>
+            <div class="global-swatch-item" data-swatch-name="Hot Pink"><span class="global-swatch-dot" style="background:#E91E63;"></span><span class="global-swatch-name">Hot Pink</span></div>
+            <div class="global-swatch-item" data-swatch-name="Teal"><span class="global-swatch-dot" style="background:#00BCD4;"></span><span class="global-swatch-name">Teal</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- S4.5: WHY CHOOSE OUR BLANKS -->
+    <section class="section" id="why-blanks" aria-label="Why Choose Our Blanks">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Quality Assurance</span>
+          <h2>Why Choose Our Blanks?</h2>
+          <p class="section__subtitle">We don't print on cheap shirts. Here's why our apparel stands out.</p>
+        </div>
+        <div class="grid grid--3 reveal-stagger">
+          <div class="card" style="padding:var(--space-6); text-align:center;">
+            <div class="stat-card__icon stat-card__icon--primary" style="margin: 0 auto 16px;"><i data-lucide="shield-check"></i></div>
+            <h3 style="font-size:var(--fs-h4); margin-bottom:8px;">Retail-Ready Fit</h3>
+            <p style="font-size:var(--fs-small); color:var(--text-muted); line-height:1.6;">Say goodbye to boxy, ill-fitting promo tees. Our garments feature side-seam construction and tailored fits that people actually want to wear.</p>
+          </div>
+          <div class="card" style="padding:var(--space-6); text-align:center;">
+            <div class="stat-card__icon stat-card__icon--accent" style="margin: 0 auto 16px;"><i data-lucide="droplets"></i></div>
+            <h3 style="font-size:var(--fs-h4); margin-bottom:8px;">Wash Durability</h3>
+            <p style="font-size:var(--fs-small); color:var(--text-muted); line-height:1.6;">Pre-shrunk fabrics and tightly woven yarns ensure that both the garment and the print survive hundreds of trips through the laundry.</p>
+          </div>
+          <div class="card" style="padding:var(--space-6); text-align:center;">
+            <div class="stat-card__icon stat-card__icon--dark" style="margin: 0 auto 16px;"><i data-lucide="sun"></i></div>
+            <h3 style="font-size:var(--fs-h4); margin-bottom:8px;">Optimal Print Surface</h3>
+            <p style="font-size:var(--fs-small); color:var(--text-muted); line-height:1.6;">We select fabrics with a high stitch density and smooth surface, allowing our inks to lay flat for sharper details and brighter colors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5: CUSTOMIZATION OPTIONS -->
+    <section class="section" id="customization" aria-label="Customization options">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Customize</span>
+          <h2>Print & Embroidery Options</h2>
+        </div>
+        <div class="grid grid--3 reveal-stagger customize-options">
+          <div class="card"><div class="card__image"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80" alt="Screen printing squeegee on press"/></div><div class="card__body" style="text-align:center;"><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-2);">Screen Printing</h3><p class="card__text">Classic method for bold, vibrant prints. Best for large runs with 1–8 colors.</p></div></div>
+          <div class="card"><div class="card__image"><img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=500&q=80" alt="Embroidery machine close-up"/></div><div class="card__body" style="text-align:center;"><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-2);">Embroidery</h3><p class="card__text">Premium thread stitching for logos, names, and monograms. Durable and professional.</p></div></div>
+          <div class="card"><div class="card__image"><img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=500&q=80" alt="Heat transfer press applying vinyl"/></div><div class="card__body" style="text-align:center;"><h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-2);">Heat Transfer</h3><p class="card__text">Vinyl cut or printed transfers — ideal for names, numbers, and small batch orders.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: BULK DISCOUNT TABLE + CTA -->
+    <section class="section" id="bulk-discounts" aria-label="Bulk discounts" style="background:var(--bg-muted);">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Volume Savings</span>
+          <h2>Bulk Discount Pricing</h2>
+          <p class="section__subtitle">The more you order, the more you save</p>
+        </div>
+        <div class="table-wrapper reveal" style="max-width:700px;margin-inline:auto;">
+          <table class="table discount-table">
+            <thead><tr><th>Quantity</th><th>Discount</th><th>Example (Crew Tee)</th></tr></thead>
+            <tbody>
+              <tr><td>25–99</td><td>Base Price</td><td>$8.00/unit</td></tr>
+              <tr><td>100–249</td><td>15% Off</td><td>$6.80/unit</td></tr>
+              <tr><td>250–499</td><td>22% Off</td><td>$6.24/unit</td></tr>
+              <tr><td>500–999</td><td>30% Off</td><td>$5.60/unit</td></tr>
+              <tr><td>1,000+</td><td>35%+ Off</td><td>$5.20/unit</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center mt-8 reveal">
+          <a href="bulk.html" class="btn btn--primary btn--lg">Request Bulk Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- S7: ORDERING SAMPLES FAQ -->
+    <section class="section" id="samples-faq" aria-label="Ordering Samples FAQ">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__label">Try Before You Buy</span>
+          <h2>Ordering Samples</h2>
+        </div>
+        <div class="accordion faq-mini reveal" style="max-width:800px; margin: 0 auto;">
+          <div class="accordion__item">
+            <button class="accordion__trigger">Can I order a blank sample to check the fit? <i data-lucide="chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">Yes! We highly encourage ordering blank samples if you are unsure about sizing, color, or fabric weight. Blank samples are charged at the single-unit retail price.</div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Can I get a printed sample of my design? <i data-lucide="chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">Due to the extensive setup time required for screen printing, we do not offer one-off printed samples. However, we provide high-fidelity digital mockups for approval, and for orders over 500 units, we can schedule a press-check.</div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Will the cost of the sample be refunded? <i data-lucide="chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">If you proceed with a bulk order of 100+ units of that exact garment style, we will credit the cost of up to 3 blank samples towards your final invoice.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo"><div class="footer__grid"><div><div class="footer__brand"><a href="index.html" class="navbar__logo" aria-label="PRNT Home"><div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span class="navbar__logo-text">PRNT</span></a></div><p class="footer__desc">Premium screen printing and custom apparel for brands, events, and businesses. Portland-based, shipping nationwide.</p><div class="footer__socials"><a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn social-btn--facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn social-btn--instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn social-btn--twitter" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn social-btn--linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn social-btn--youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a><a href="https://tiktok.com" target="_blank" rel="noopener" class="social-btn social-btn--tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></div></div><div><h4 class="footer__heading">Quick Links</h4><div class="footer__links"><a href="about.html"><i data-lucide="chevron-right" style="width:14px;"></i> About Us</a><a href="products.html"><i data-lucide="chevron-right" style="width:14px;"></i> Products</a><a href="bulk.html"><i data-lucide="chevron-right" style="width:14px;"></i> Bulk Orders</a><a href="design-guide.html"><i data-lucide="chevron-right" style="width:14px;"></i> Design Guide</a><a href="blog.html"><i data-lucide="chevron-right" style="width:14px;"></i> Blog</a></div></div><div><h4 class="footer__heading">Contact</h4><div class="footer__contact-item"><i data-lucide="map-pin"></i> 742 Ink Press Ave, Portland, OR</div><div class="footer__contact-item"><i data-lucide="phone"></i> +1 (503) 555-PRNT</div><div class="footer__contact-item"><i data-lucide="mail"></i> hello@prnt.shop</div><div class="footer__contact-item"><i data-lucide="clock"></i> Mon–Fri 8am–6pm, Sat 9am–2pm</div></div><div><h4 class="footer__heading">Newsletter</h4><p class="footer__desc">Get printing tips, exclusive deals, and product drops straight to your inbox.</p><div class="footer__newsletter"><form class="footer__newsletter-form" onsubmit="event.preventDefault();this.querySelector('input').value='';alert('Subscribed!');"><input type="email" class="footer__newsletter-input" placeholder="Your email" required aria-label="Newsletter email" /><button type="submit" class="btn btn--primary btn--sm"><i data-lucide="send" style="width:16px;"></i></button></form></div></div></div><div class="footer__bottom"><p>&copy; 2026 PRNT. All rights reserved.</p></div></footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+  <script src="js/global.js"></script><script src="js/components.js"></script><script src="js/cart.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons();});</script>
+</body>
+</html>

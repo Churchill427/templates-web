@@ -1,0 +1,967 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PRNT — Responsive Styles + RTL/LTR Support
+   Mobile-first: 360px → 768px → 1024px → 1280px+
+   Full RTL responsiveness for entire page, navbar, footer
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Base Mobile (< 768px) ────────────────────────────────────────── */
+.container {
+  padding-inline: var(--page-padding-mobile);
+}
+
+/* Navbar Mobile */
+.navbar__inner {
+  padding-inline: var(--page-padding-mobile);
+}
+
+.navbar {
+  height: var(--navbar-height-mobile);
+}
+
+.navbar__nav,
+.navbar__actions .navbar__toggle-btn,
+.navbar__actions .navbar__rtl-btn {
+  display: none;
+}
+
+.navbar__hamburger {
+  display: flex;
+}
+
+.navbar__mobile-menu {
+  display: block;
+}
+
+/* Footer Mobile */
+.footer__grid {
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  padding-inline: var(--page-padding-mobile);
+}
+
+.footer__bottom {
+  padding-inline: var(--page-padding-mobile);
+}
+
+/* Grid Mobile */
+.grid--2, .grid--3, .grid--4, .grid--2x2 {
+  grid-template-columns: 1fr;
+}
+
+/* Section spacing mobile */
+.section {
+  padding-block: var(--section-gap-mobile);
+}
+
+/* Hero mobile */
+.hero {
+  min-height: 420px;
+  padding-block: var(--space-16);
+}
+
+.hero__content {
+  padding-inline: var(--page-padding-mobile);
+}
+
+.hero__content h1 {
+  font-size: clamp(2rem, 8vw, 2.75rem);
+}
+
+/* Tables Mobile */
+.table--responsive thead {
+  display: none;
+}
+
+.table--responsive tbody tr {
+  display: block;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.table--responsive tbody td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border-color-light);
+  text-align: right;
+}
+
+[dir="rtl"] .table--responsive tbody td {
+  text-align: left;
+}
+
+.table--responsive tbody td::before {
+  content: attr(data-label);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+[dir="rtl"] .table--responsive tbody td::before {
+  text-align: right;
+}
+
+.table--responsive tbody td:last-child {
+  border-bottom: none;
+}
+
+/* Pricing Cards Mobile */
+.pricing-card {
+  padding: var(--space-6);
+}
+
+/* Hero Actions Mobile */
+.hero__actions {
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__actions .btn {
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Progress Steps Mobile */
+.progress-steps {
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.progress-step__connector {
+  width: 2px;
+  height: 24px;
+}
+
+/* Gallery Grid Mobile */
+@media (max-width: 767px) {
+  #gallery-grid {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: 200px !important;
+  }
+
+  #gallery-grid .gallery__item {
+    grid-row: span 1 !important;
+  }
+
+  /* Process steps mobile */
+  .process-steps {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: var(--space-4) !important;
+  }
+
+  .process-connector {
+    width: 2px !important;
+    height: 30px !important;
+    flex: 0 0 30px !important;
+  }
+
+  .process-step {
+    padding: var(--space-3) var(--space-4) !important;
+  }
+
+  /* Footer text alignment mobile */
+  .footer__grid > div {
+    text-align: center;
+  }
+
+  [dir="rtl"] .footer__grid > div {
+    text-align: center;
+  }
+
+  .footer__links a {
+    justify-content: center;
+  }
+
+  .footer__contact-item {
+    justify-content: center;
+  }
+
+  .footer__socials {
+    justify-content: center;
+  }
+
+  .footer__newsletter-form {
+    flex-direction: column;
+  }
+
+  .footer__newsletter-form .btn {
+    width: 100%;
+  }
+
+  /* Section headers mobile */
+  .section__header {
+    text-align: center;
+  }
+
+  [dir="rtl"] .section__header {
+    text-align: center;
+  }
+
+  /* Testimonial cards mobile */
+  .grid--2 .card {
+    padding: var(--space-4) !important;
+  }
+
+  /* Filter chips mobile */
+  .filter-group {
+    justify-content: center !important;
+  }
+}
+
+/* ── Tablet (768px+) ──────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--page-padding-tablet);
+  }
+
+  .navbar__inner {
+    padding-inline: var(--page-padding-tablet);
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: var(--page-padding-tablet);
+  }
+
+  .footer__bottom {
+    padding-inline: var(--page-padding-tablet);
+  }
+
+  .grid--2, .grid--2x2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    min-height: 480px;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+  }
+
+  .hero__actions .btn {
+    width: auto;
+    max-width: none;
+  }
+
+  .progress-steps {
+    flex-direction: row;
+  }
+
+  .progress-step__connector {
+    width: 40px;
+    height: 2px;
+  }
+
+  .section {
+    padding-block: var(--space-20);
+  }
+
+  /* Gallery grid tablet */
+  #gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Footer tablet RTL alignment */
+  .footer__grid > div {
+    text-align: start;
+  }
+
+  .footer__links a {
+    justify-content: flex-start;
+  }
+
+  [dir="rtl"] .footer__links a {
+    justify-content: flex-start;
+  }
+
+  .footer__contact-item {
+    justify-content: flex-start;
+  }
+
+  [dir="rtl"] .footer__contact-item {
+    justify-content: flex-start;
+  }
+
+  .footer__socials {
+    justify-content: flex-start;
+  }
+
+  [dir="rtl"] .footer__socials {
+    justify-content: flex-start;
+  }
+
+  .footer__newsletter-form {
+    flex-direction: row;
+  }
+}
+
+/* ── Small Desktop (1024px+) ──────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--page-padding);
+  }
+
+  .navbar {
+    height: var(--navbar-height);
+  }
+
+  .navbar__inner {
+    padding-inline: var(--page-padding);
+  }
+
+  .navbar__nav {
+    display: flex;
+  }
+
+  .navbar__actions .navbar__toggle-btn,
+  .navbar__actions .navbar__rtl-btn {
+    display: flex;
+  }
+
+  .navbar__hamburger {
+    display: none;
+  }
+
+  .navbar__mobile-menu {
+    display: none !important;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    padding-inline: var(--page-padding);
+  }
+
+  .footer__bottom {
+    padding-inline: var(--page-padding);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero {
+    min-height: 520px;
+    padding-block: var(--space-24);
+  }
+
+  .section {
+    padding-block: var(--space-24);
+  }
+
+  /* Gallery grid desktop */
+  #gallery-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* ── Large Desktop (1280px+) ──────────────────────────────────────── */
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-max);
+    margin-inline: auto;
+  }
+
+  .hero {
+    min-height: 560px;
+  }
+}
+
+/* ── Extra Large (1440px+) ────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .container {
+    max-width: var(--container-wide);
+  }
+}
+
+/* ── Page Content Offset (for fixed navbar) ───────────────────────── */
+.page-content {
+  padding-top: var(--navbar-height-mobile);
+}
+
+@media (min-width: 1024px) {
+  .page-content {
+    padding-top: var(--navbar-height);
+  }
+}
+
+/* ── No-scroll body (when mobile menu / modal is open) ────────────── */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RTL — COMPREHENSIVE RESPONSIVE OVERRIDES
+   Covers: navbar, hero, sections, grid, footer, cards, gallery,
+   process steps, CTA, testimonials, and all content
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── RTL: Navbar ──────────────────────────────────────────────────── */
+[dir="rtl"] .navbar__link.is-active::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+[dir="rtl"] .navbar__link i {
+  /* Flip chevron position in RTL */
+  margin-inline-start: 0;
+}
+
+/* ── RTL: Mobile Menu ─────────────────────────────────────────────── */
+[dir="rtl"] .navbar__mobile-menu .navbar__link {
+  text-align: right;
+}
+
+[dir="rtl"] .navbar__mobile-menu .navbar__dropdown-item {
+  flex-direction: row;
+}
+
+/* ── RTL: Hero Section ────────────────────────────────────────────── */
+[dir="rtl"] .hero__content {
+  text-align: center;
+}
+
+[dir="rtl"] .hero__actions {
+  justify-content: center;
+}
+
+/* ── RTL: Section Headers ─────────────────────────────────────────── */
+[dir="rtl"] .section__header {
+  text-align: center;
+}
+
+[dir="rtl"] .section__label {
+  direction: rtl;
+}
+
+/* ── RTL: Stat Cards ──────────────────────────────────────────────── */
+[dir="rtl"] .stat-card {
+  text-align: center;
+}
+
+/* ── RTL: Process Steps ───────────────────────────────────────────── */
+[dir="rtl"] .process-steps {
+  direction: rtl;
+}
+
+[dir="rtl"] .process-step p,
+[dir="rtl"] .process-step h4 {
+  text-align: center;
+}
+
+/* ── RTL: Cards ───────────────────────────────────────────────────── */
+[dir="rtl"] .card__body {
+  text-align: center;
+}
+
+[dir="rtl"] .card__meta {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .card__actions {
+  justify-content: center;
+}
+
+/* ── RTL: Product Card ────────────────────────────────────────────── */
+[dir="rtl"] .product-card .card__body {
+  text-align: center;
+}
+
+/* ── RTL: Team Cards ──────────────────────────────────────────────── */
+[dir="rtl"] .team-card {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .team-card__info {
+  text-align: right;
+}
+
+[dir="rtl"] .team-card__socials {
+  flex-direction: row-reverse;
+}
+
+/* ── RTL: Testimonials ────────────────────────────────────────────── */
+[dir="rtl"] .card p[style*="font-style:italic"] {
+  direction: rtl;
+}
+
+[dir="rtl"] [style*="display:flex"][style*="align-items:center"][style*="gap"] img + div {
+  text-align: right;
+}
+
+/* ── RTL: Footer ──────────────────────────────────────────────────── */
+[dir="rtl"] .footer__heading {
+  text-align: right;
+}
+
+[dir="rtl"] .footer__desc {
+  text-align: right;
+}
+
+[dir="rtl"] .footer__links a {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .footer__links a:hover {
+  padding-inline-start: 0;
+  padding-inline-end: var(--space-2);
+}
+
+[dir="rtl"] .footer__links a i {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .footer__contact-item {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .footer__contact-item i {
+  text-align: center;
+}
+
+[dir="rtl"] .footer__socials {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__newsletter-form {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__newsletter-input {
+  text-align: right;
+}
+
+[dir="rtl"] .footer__bottom {
+  text-align: center;
+}
+
+/* ── RTL: Footer Brand ────────────────────────────────────────────── */
+[dir="rtl"] .footer__brand {
+  text-align: right;
+}
+
+[dir="rtl"] .footer__brand .navbar__logo {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* ── RTL: CTA Band ────────────────────────────────────────────────── */
+[dir="rtl"] .cta-band {
+  text-align: center;
+}
+
+[dir="rtl"] .cta-band__content {
+  direction: rtl;
+}
+
+/* ── RTL: Gallery / Filter ────────────────────────────────────────── */
+[dir="rtl"] .filter-group {
+  direction: rtl;
+}
+
+/* ── RTL: Accordion ───────────────────────────────────────────────── */
+[dir="rtl"] .accordion__trigger {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .accordion__body {
+  text-align: right;
+  direction: rtl;
+}
+
+/* ── RTL: Forms ───────────────────────────────────────────────────── */
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-input {
+  text-align: right;
+}
+
+[dir="rtl"] .form-error {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .form-check {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .form-success {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* ── RTL: Buttons ─────────────────────────────────────────────────── */
+[dir="rtl"] .btn i {
+  order: 2;
+}
+
+/* ── RTL: Chips / Tags ────────────────────────────────────────────── */
+[dir="rtl"] .chip {
+  flex-direction: row-reverse;
+}
+
+/* ── RTL: Tooltip ─────────────────────────────────────────────────── */
+[dir="rtl"] .tooltip__content {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── RTL: Qty Stepper ─────────────────────────────────────────────── */
+[dir="rtl"] .qty-stepper {
+  flex-direction: row-reverse;
+}
+
+/* ── RTL: Divider Text ────────────────────────────────────────────── */
+[dir="rtl"] .divider-text {
+  direction: rtl;
+}
+
+/* ── RTL: Social Login Buttons ────────────────────────────────────── */
+[dir="rtl"] .social-login-btn {
+  flex-direction: row-reverse;
+}
+
+/* ── RTL: Badge position ──────────────────────────────────────────── */
+[dir="rtl"] .badge--count {
+  direction: ltr;
+}
+
+/* ── RTL: Skeleton shimmer direction ──────────────────────────────── */
+[dir="rtl"] .skeleton::after {
+  animation-direction: reverse;
+}
+
+/* ── RTL: Fabric Card ─────────────────────────────────────────────── */
+[dir="rtl"] .fabric-card__title-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .fabric-card__badges {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .fabric-card__desc {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .detail-label {
+  text-align: right;
+}
+
+[dir="rtl"] .detail-text {
+  text-align: right;
+}
+
+[dir="rtl"] .meter-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .meter-fill {
+  float: right;
+  background: linear-gradient(270deg, var(--color-secondary), #00e5ff);
+}
+
+[dir="rtl"] .print-methods-tags {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* ── RTL: Fabric Controls ─────────────────────────────────────────── */
+[dir="rtl"] .fabric-controls {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .fabric-tabs {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .fabric-view-toggle {
+  flex-direction: row-reverse;
+}
+
+/* ── RTL: Fabric Matrix Table ─────────────────────────────────────── */
+[dir="rtl"] .fabric-matrix-table {
+  text-align: right;
+}
+
+[dir="rtl"] .fabric-matrix-table th {
+  text-align: right;
+}
+
+[dir="rtl"] .fabric-matrix-table .fabric-name-cell {
+  flex-direction: row-reverse;
+}
+
+/* ── RTL: Pricing Card Features ───────────────────────────────────── */
+[dir="rtl"] .pricing-card__features li {
+  flex-direction: row-reverse;
+}
+
+/* ── RTL: Blog Card Meta ──────────────────────────────────────────── */
+[dir="rtl"] .card__meta {
+  direction: rtl;
+}
+
+/* ── RTL: Card Shine Effect ───────────────────────────────────────── */
+[dir="rtl"] .card--shine::before {
+  animation-direction: reverse;
+}
+
+/* ── RTL: Skip Link ───────────────────────────────────────────────── */
+[dir="rtl"] .skip-link {
+  left: auto;
+  right: var(--space-4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RTL — RESPONSIVE OVERRIDES PER BREAKPOINT
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── RTL Mobile (< 768px) ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* RTL: Mobile footer center everything */
+  [dir="rtl"] .footer__grid > div {
+    text-align: center;
+  }
+
+  [dir="rtl"] .footer__heading {
+    text-align: center;
+  }
+
+  [dir="rtl"] .footer__desc {
+    text-align: center;
+  }
+
+  [dir="rtl"] .footer__brand {
+    text-align: center;
+  }
+
+  [dir="rtl"] .footer__brand .navbar__logo {
+    justify-content: center;
+  }
+
+  [dir="rtl"] .footer__links a {
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .footer__contact-item {
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .footer__socials {
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  [dir="rtl"] .footer__newsletter-form {
+    flex-direction: column;
+  }
+
+  [dir="rtl"] .footer__newsletter-input {
+    text-align: center;
+  }
+
+  /* RTL: Mobile hero */
+  [dir="rtl"] .hero__content h1 {
+    text-align: center;
+  }
+
+  [dir="rtl"] .hero__content p {
+    text-align: center;
+  }
+
+  /* RTL: Mobile tables */
+  [dir="rtl"] .table--responsive tbody td {
+    flex-direction: row-reverse;
+    text-align: left;
+  }
+
+  [dir="rtl"] .table--responsive tbody td::before {
+    text-align: right;
+  }
+
+  /* RTL: Fabric controls mobile */
+  [dir="rtl"] .fabric-controls {
+    flex-direction: column;
+  }
+
+  [dir="rtl"] .fabric-tabs {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  [dir="rtl"] .fabric-view-toggle {
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+
+  /* RTL: Fabric card badges mobile */
+  [dir="rtl"] .fabric-card__badges {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+/* ── RTL Tablet (768px+) ──────────────────────────────────────────── */
+@media (min-width: 768px) {
+  [dir="rtl"] .footer__grid > div {
+    text-align: right;
+  }
+
+  [dir="rtl"] .footer__heading {
+    text-align: right;
+  }
+
+  [dir="rtl"] .footer__desc {
+    text-align: right;
+  }
+
+  [dir="rtl"] .footer__brand {
+    text-align: right;
+  }
+
+  [dir="rtl"] .footer__brand .navbar__logo {
+    justify-content: flex-end;
+  }
+
+  [dir="rtl"] .footer__links a {
+    justify-content: flex-end;
+  }
+
+  [dir="rtl"] .footer__contact-item {
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .footer__socials {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+  }
+}
+
+/* ── RTL Desktop (1024px+) ────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  [dir="rtl"] .navbar__nav {
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .navbar__actions {
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .footer__grid > div {
+    text-align: right;
+  }
+
+  /* Footer first column (brand) align right in RTL */
+  [dir="rtl"] .footer__grid > div:first-child {
+    text-align: right;
+  }
+
+  [dir="rtl"] .footer__brand .navbar__logo {
+    justify-content: flex-end;
+  }
+}
+
+/* ── RTL Grid Adjustments ─────────────────────────────────────────── */
+[dir="rtl"] .table--responsive tbody td {
+  flex-direction: row-reverse;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FABRIC GUIDE — Responsive Tweaks (360px, 768px, 1024px)
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .fabric-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .fabric-tabs {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .fabric-view-toggle {
+    justify-content: space-between;
+    width: 100%;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border-color);
+  }
+  .fabric-card {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 400px) {
+  /* 360px Small Mobile Screens */
+  .fabric-card__badges {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  [dir="rtl"] .fabric-card__badges {
+    align-items: flex-end;
+  }
+
+  .card-swatches {
+    gap: 6px;
+  }
+  .card-swatch-dot {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════ */
+@media print {
+  .navbar, .footer, .back-to-top, .preloader {
+    display: none !important;
+  }
+
+  .page-content {
+    padding-top: 0;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-4);
+  }
+
+  .section {
+    padding-block: var(--space-4);
+    break-inside: avoid;
+  }
+
+  body {
+    color: #000;
+    background: #FFF;
+  }
+}

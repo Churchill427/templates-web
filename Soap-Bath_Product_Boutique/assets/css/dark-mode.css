@@ -1,0 +1,293 @@
+/* ============================================================================
+   SUDZ — Dark Mode Theme Overrides
+   ============================================================================
+   
+   DARK MODE PALETTE:
+   Background: #17201C | Surface: #1F2A25 | Text: #ECE7DC
+   Primary:    #8FBCA6 | Accent:  #E0956A
+   
+   All contrast ratios verified for WCAG AA compliance.
+   ============================================================================ */
+
+[data-theme="dark"] {
+  /* Core Colors */
+  --clr-bg: #17201C;
+  --clr-surface: #1F2A25;
+  --clr-surface-alt: #263330;
+  --clr-text: #ECE7DC;
+  --clr-text-secondary: #9BADA3;
+  --clr-ink: #ECE7DC;
+  --clr-ink-rgb: 236, 231, 220;
+  
+  /* Primary & Accent */
+  --clr-primary: #8FBCA6;
+  --clr-primary-rgb: 143, 188, 166;
+  --clr-primary-light: #A5CCBA;
+  --clr-primary-dark: #6B9A84;
+  --clr-accent: #E0956A;
+  --clr-accent-rgb: 224, 149, 106;
+  --clr-accent-light: #E8AB84;
+  --clr-accent-dark: #C77A4F;
+  
+  /* Borders & Overlays */
+  --clr-border: rgba(143, 188, 166, 0.15);
+  --clr-border-strong: rgba(143, 188, 166, 0.25);
+  --clr-overlay: rgba(23, 32, 28, 0.75);
+  
+  /* Muted */
+  --clr-muted: #9BADA3;
+  --clr-muted-rgb: 155, 173, 163;
+  
+  /* Semantic */
+  --clr-success: #5CB87A;
+  --clr-error: #E07272;
+  --clr-warning: #D4B85C;
+  
+  /* Shadows (darker for dark mode) */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Navbar Dark ───────────────────────────────────────────────────────────── */
+[data-theme="dark"] .navbar {
+  background: rgba(23, 32, 28, 0.92);
+  border-bottom-color: var(--clr-border);
+}
+
+[data-theme="dark"] .navbar__dropdown-menu {
+  background: var(--clr-surface);
+  border-color: var(--clr-border);
+}
+
+[data-theme="dark"] .navbar__dropdown-item:hover,
+[data-theme="dark"] .navbar__dropdown-item.active {
+  background: var(--clr-surface-alt);
+}
+
+[data-theme="dark"] .navbar__mobile-panel {
+  background: var(--clr-bg);
+}
+
+/* ── Buttons Dark ──────────────────────────────────────────────────────────── */
+[data-theme="dark"] .btn--secondary {
+  color: var(--clr-text);
+  border-color: var(--clr-border-strong);
+}
+
+[data-theme="dark"] .btn--secondary:hover {
+  background: var(--clr-surface);
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+}
+
+[data-theme="dark"] .btn--ghost:hover {
+  background: var(--clr-surface);
+}
+
+[data-theme="dark"] .btn--white {
+  background: var(--clr-surface);
+  color: var(--clr-primary);
+  border-color: var(--clr-surface);
+}
+
+[data-theme="dark"] .btn--white:hover {
+  background: var(--clr-surface-alt);
+}
+
+/* ── Cards Dark ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .card {
+  background: var(--clr-surface);
+  border-color: var(--clr-border);
+}
+
+[data-theme="dark"] .product-card {
+  background: var(--clr-surface);
+  border-color: var(--clr-border);
+}
+
+[data-theme="dark"] .testimonial-card {
+  background: var(--clr-surface);
+  border-color: var(--clr-border);
+}
+
+/* ── Forms Dark ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .form-textarea {
+  background: var(--clr-surface);
+  border-color: var(--clr-border-strong);
+  color: var(--clr-text);
+}
+
+[data-theme="dark"] .form-input:focus,
+[data-theme="dark"] .form-select:focus,
+[data-theme="dark"] .form-textarea:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(var(--clr-primary-rgb), 0.2);
+}
+
+[data-theme="dark"] .form-input::placeholder {
+  color: var(--clr-text-secondary);
+}
+
+/* ── Social Buttons Dark ───────────────────────────────────────────────────── */
+[data-theme="dark"] .social-btn {
+  background: var(--clr-surface);
+  border-color: var(--clr-border-strong);
+  color: var(--clr-text);
+}
+
+[data-theme="dark"] .social-btn--google:hover {
+  background: rgba(66, 133, 244, 0.1);
+}
+
+/* ── Auth Dark ─────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .auth-card {
+  background: var(--clr-surface);
+}
+
+[data-theme="dark"] .auth-page__overlay {
+  background: rgba(23, 32, 28, 0.7);
+}
+
+/* ── Footer Dark ───────────────────────────────────────────────────────────── */
+[data-theme="dark"] .footer {
+  background: #111916;
+}
+
+/* ── Filter Bar Dark ───────────────────────────────────────────────────────── */
+[data-theme="dark"] .filter-bar {
+  background: var(--clr-bg);
+  border-bottom-color: var(--clr-border);
+}
+
+[data-theme="dark"] .filter-bar__sort {
+  background: var(--clr-surface);
+  border-color: var(--clr-border-strong);
+}
+
+/* ── Tab Pills Dark ────────────────────────────────────────────────────────── */
+[data-theme="dark"] .tab-pill {
+  border-color: var(--clr-border-strong);
+  color: var(--clr-text);
+}
+
+[data-theme="dark"] .tab-pill:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+}
+
+/* ── Accordion Dark ────────────────────────────────────────────────────────── */
+[data-theme="dark"] .accordion-item {
+  border-bottom-color: var(--clr-border);
+}
+
+/* ── Qty Stepper Dark ──────────────────────────────────────────────────────── */
+[data-theme="dark"] .qty-stepper {
+  border-color: var(--clr-border-strong);
+}
+
+[data-theme="dark"] .qty-stepper__btn:hover {
+  background: var(--clr-surface-alt);
+}
+
+[data-theme="dark"] .qty-stepper__value {
+  border-color: var(--clr-border);
+}
+
+/* ── Scroll Row Dark ───────────────────────────────────────────────────────── */
+[data-theme="dark"] .scroll-row__btn {
+  border-color: var(--clr-border-strong);
+  background: var(--clr-surface);
+}
+
+/* ── Map Placeholder Dark ──────────────────────────────────────────────────── */
+[data-theme="dark"] .map-placeholder {
+  background: var(--clr-surface);
+  border-color: var(--clr-border);
+}
+
+[data-theme="dark"] .map-placeholder__grid {
+  background-image: 
+    linear-gradient(var(--clr-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--clr-border) 1px, transparent 1px);
+}
+
+/* ── Amount Pills Dark ─────────────────────────────────────────────────────── */
+[data-theme="dark"] .amount-pill {
+  border-color: var(--clr-border-strong);
+}
+
+/* ── Progress Bar Dark ─────────────────────────────────────────────────────── */
+[data-theme="dark"] .progress-bar {
+  background: var(--clr-surface-alt);
+}
+
+/* ── Badge Dark ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .badge--accent {
+  background: rgba(var(--clr-accent-rgb), 0.15);
+}
+
+[data-theme="dark"] .badge--primary {
+  background: rgba(var(--clr-primary-rgb), 0.15);
+}
+
+/* ── Timeline Dark ─────────────────────────────────────────────────────────── */
+[data-theme="dark"] .timeline::before {
+  background: var(--clr-border);
+}
+
+[data-theme="dark"] .timeline-item__dot {
+  border-color: var(--clr-bg);
+}
+
+/* ── Band Dark ─────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .band--tinted {
+  background: var(--clr-surface);
+}
+
+/* ── Process Steps Dark ────────────────────────────────────────────────────── */
+[data-theme="dark"] .process-step__icon {
+  background: var(--clr-surface);
+}
+
+[data-theme="dark"] .process-steps::before {
+  background: var(--clr-border);
+}
+
+/* ── Gift Card Dark ────────────────────────────────────────────────────────── */
+[data-theme="dark"] .gift-card-visual {
+  background: linear-gradient(135deg, var(--clr-primary-dark) 0%, #17201C 100%);
+}
+
+/* ── Toast Dark ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .toast {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Direction Toggle Dark ─────────────────────────────────────────────────── */
+[data-theme="dark"] .navbar__dir-toggle {
+  border-color: var(--clr-border);
+  color: var(--clr-text-secondary);
+}
+
+[data-theme="dark"] .navbar__dir-toggle:hover {
+  background: var(--clr-surface);
+  color: var(--clr-primary);
+  border-color: var(--clr-primary);
+}
+
+/* ── Divider Dark ──────────────────────────────────────────────────────────── */
+[data-theme="dark"] .divider::before,
+[data-theme="dark"] .divider::after {
+  background: var(--clr-border);
+}
+
+/* ── Bubbles Dark ──────────────────────────────────────────────────────────── */
+[data-theme="dark"] .bubble {
+  background: rgba(143, 188, 166, 0.1);
+}

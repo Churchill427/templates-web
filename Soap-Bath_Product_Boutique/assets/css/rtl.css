@@ -1,0 +1,271 @@
+/* ============================================================================
+   SUDZ — RTL (Right-to-Left) Layout Overrides
+   ============================================================================
+   
+   Applied via [dir="rtl"] on the <html> element.
+   Mirrors all directional layout: margins, paddings, flex-direction, positions.
+   Dashboard sidebar moves to right side in RTL mode.
+   ============================================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix punctuation placement for English text in RTL layout */
+[dir="rtl"] p, 
+[dir="rtl"] h1, 
+[dir="rtl"] h2, 
+[dir="rtl"] h3, 
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] span,
+[dir="rtl"] a,
+[dir="rtl"] li {
+  unicode-bidi: plaintext;
+}
+
+/* ── Typography RTL ────────────────────────────────────────────────────────── */
+[dir="rtl"] .section__header {
+  text-align: center; /* Keep centered headers centered */
+}
+
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+/* ── Navbar RTL ────────────────────────────────────────────────────────────── */
+
+/* Logo / Brand — SVG text inherits direction:rtl which breaks text rendering */
+[dir="rtl"] .navbar__brand {
+  direction: ltr;
+}
+
+[dir="rtl"] .navbar__logo {
+  direction: ltr;
+}
+
+/* Footer brand SVG logo */
+[dir="rtl"] footer svg,
+[dir="rtl"] .footer__grid svg {
+  direction: ltr;
+}
+
+/* Auth card logo (login/signup pages) */
+[dir="rtl"] .auth-card__logo {
+  direction: ltr;
+}
+
+[dir="rtl"] .auth-card__logo svg {
+  direction: ltr;
+}
+
+[dir="rtl"] .navbar__link::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .navbar__dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .navbar__cart-badge {
+  right: auto;
+  left: 2px;
+}
+
+[dir="rtl"] .navbar__hamburger {
+  order: -1;
+}
+
+/* ── Buttons RTL ───────────────────────────────────────────────────────────── */
+[dir="rtl"] .btn {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .btn svg {
+  transform: scaleX(-1);
+}
+
+/* ── Split Layout RTL ──────────────────────────────────────────────────────── */
+[dir="rtl"] .split {
+  direction: rtl;
+}
+
+[dir="rtl"] .split__content {
+  text-align: right;
+}
+
+/* ── Hero Split RTL ────────────────────────────────────────────────────────── */
+[dir="rtl"] .hero--split {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero--split .hero__content {
+  text-align: right;
+}
+
+[dir="rtl"] .hero--split .hero__ctas {
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .hero__collage-img:nth-child(2) {
+  right: auto;
+  left: -5%;
+}
+
+/* ── Timeline RTL ──────────────────────────────────────────────────────────── */
+[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: var(--sp-5);
+}
+
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 15px;
+}
+
+[dir="rtl"] .timeline-item__dot {
+  left: auto;
+  right: calc(-1 * var(--sp-5) + 8px);
+}
+
+/* ── Footer RTL ────────────────────────────────────────────────────────────── */
+[dir="rtl"] .footer__link::after {
+  left: auto;
+  right: 0;
+}
+
+/* ── Forms RTL ─────────────────────────────────────────────────────────────── */
+[dir="rtl"] .form-floating .form-label {
+  left: auto;
+  right: var(--sp-2);
+}
+
+[dir="rtl"] .password-toggle {
+  right: auto;
+  left: var(--sp-2);
+}
+
+[dir="rtl"] .form-floating .form-input {
+  text-align: right;
+}
+
+/* ── Auth Card RTL ─────────────────────────────────────────────────────────── */
+[dir="rtl"] .auth-card__controls {
+  right: auto;
+  left: var(--sp-2);
+}
+
+/* ── Accordion RTL ─────────────────────────────────────────────────────────── */
+[dir="rtl"] .accordion-header {
+  text-align: right;
+}
+
+/* ── Filter Bar RTL ────────────────────────────────────────────────────────── */
+[dir="rtl"] .filter-bar__inner {
+  direction: rtl;
+}
+
+/* ── Scroll Row RTL ────────────────────────────────────────────────────────── */
+[dir="rtl"] .scroll-row {
+  direction: rtl;
+}
+
+[dir="rtl"] .scroll-row__btn svg {
+  transform: scaleX(-1);
+}
+
+/* ── Toast RTL ─────────────────────────────────────────────────────────────── */
+[dir="rtl"] .toast {
+  right: auto;
+  left: var(--sp-4);
+}
+
+/* ── Product Card Badge RTL ────────────────────────────────────────────────── */
+[dir="rtl"] .product-card__badge {
+  left: auto;
+  right: var(--sp-2);
+}
+
+/* ── Map Placeholder RTL ───────────────────────────────────────────────────── */
+/* No changes needed — centered content */
+
+/* ── Dashboard Sidebar RTL ─────────────────────────────────────────────────── */
+[dir="rtl"] .dashboard-layout {
+  direction: rtl;
+}
+
+[dir="rtl"] .dashboard-sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--clr-border);
+}
+
+[dir="rtl"] .dashboard-main {
+  margin-left: 0;
+  margin-right: 260px;
+}
+
+[dir="rtl"] .dashboard-sidebar.collapsed ~ .dashboard-main {
+  margin-right: 72px;
+}
+
+[dir="rtl"] .dashboard-topbar__left {
+  flex-direction: row-reverse;
+}
+
+/* ── Card Price Strike RTL ─────────────────────────────────────────────────── */
+[dir="rtl"] .card__price--strike {
+  margin-right: 0;
+  margin-left: var(--sp-1);
+}
+
+/* ── Qty Stepper RTL ───────────────────────────────────────────────────────── */
+[dir="rtl"] .qty-stepper {
+  direction: rtl;
+}
+
+/* ── Scroll Indicator RTL ──────────────────────────────────────────────────── */
+[dir="rtl"] .hero__scroll {
+  /* Centered — no changes needed */
+}
+
+/* ── Icon Mirroring (directional icons) ────────────────────────────────────── */
+[dir="rtl"] .icon-arrow-right,
+[dir="rtl"] .icon-chevron-right,
+[dir="rtl"] .icon-arrow-left,
+[dir="rtl"] .icon-chevron-left {
+  transform: scaleX(-1);
+}
+
+/* ── General RTL Utilities ─────────────────────────────────────────────────── */
+[dir="rtl"] .flex-between {
+  direction: rtl;
+}
+
+/* ── Responsive RTL ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  [dir="rtl"] .hero--split .hero__content {
+    text-align: center;
+  }
+
+  [dir="rtl"] .hero--split .hero__ctas {
+    justify-content: center;
+  }
+
+  [dir="rtl"] .dashboard-main {
+    margin-right: 0;
+  }
+
+  [dir="rtl"] .dashboard-sidebar {
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .dashboard-sidebar.open {
+    transform: translateX(0);
+  }
+}

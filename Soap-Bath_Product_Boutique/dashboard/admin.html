@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUDZ — Admin Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z' fill='none' stroke='%233E5C50' stroke-width='2'/%3E%3Ccircle cx='22' cy='12' r='2.5' fill='%23C2764A'/%3E%3Ccircle cx='14' cy='20' r='1.5' fill='%23C2764A'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* Dashboard specific layout */
+    .dashboard-layout { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - var(--navbar-height)); }
+    
+    .dashboard-sidebar { border-right: 1px solid var(--clr-border); padding: var(--sp-4); background: var(--clr-surface); }
+    .dashboard-nav { display: flex; flex-direction: column; gap: var(--sp-1); }
+    .dashboard-nav__item { display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-sm); color: var(--clr-text-secondary); text-decoration: none; transition: all 0.2s; font-weight: 500; }
+    .dashboard-nav__item:hover { background: rgba(0,0,0,0.03); color: var(--clr-text); }
+    [data-theme="dark"] .dashboard-nav__item:hover { background: rgba(255,255,255,0.05); }
+    .dashboard-nav__item.active { background: rgba(62,92,80,0.1); color: var(--clr-primary); }
+    [data-theme="dark"] .dashboard-nav__item.active { background: rgba(143,188,166,0.15); color: #8FBCA6; }
+    .dashboard-nav__item svg { width: 18px; height: 18px; }
+    
+    .dashboard-main { padding: var(--sp-5); background: var(--clr-bg); }
+    
+    .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-5); }
+    
+    /* Stats Cards */
+    .stat-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--sp-4); }
+    .stat-card__header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--sp-2); }
+    .stat-card__title { font-size: var(--fs-small); color: var(--clr-text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-card__icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(62,92,80,0.1); color: var(--clr-primary); display: flex; align-items: center; justify-content: center; }
+    [data-theme="dark"] .stat-card__icon { background: rgba(143,188,166,0.15); color: #8FBCA6; }
+    .stat-card__value { font-size: 2rem; font-family: var(--ff-heading); font-weight: 700; line-height: 1; margin-bottom: var(--sp-1); }
+    .stat-card__trend { font-size: var(--fs-xs); display: flex; align-items: center; gap: 4px; }
+    .trend-up { color: #2E7D32; }
+    .trend-down { color: #C62828; }
+    [data-theme="dark"] .trend-up { color: #81C784; }
+    [data-theme="dark"] .trend-down { color: #E57373; }
+
+    /* Chart Container */
+    .chart-container { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--sp-4); margin-bottom: var(--sp-5); height: 320px; display: flex; flex-direction: column; }
+    .chart-canvas-wrapper { flex: 1; position: relative; width: 100%; height: 100%; }
+    canvas { display: block; width: 100%; height: 100%; }
+
+    /* Table */
+    .table-container { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--sp-5); }
+    .table { width: 100%; border-collapse: collapse; text-align: left; }
+    .table th { padding: var(--sp-3); background: rgba(0,0,0,0.02); font-weight: 600; font-size: var(--fs-small); color: var(--clr-text-secondary); border-bottom: 1px solid var(--clr-border); }
+    [data-theme="dark"] .table th { background: rgba(255,255,255,0.02); }
+    .table td { padding: var(--sp-3); border-bottom: 1px solid var(--clr-border); vertical-align: middle; }
+    .table tr:last-child td { border-bottom: none; }
+    
+    .status-badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 99px; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .status-badge--success { background: rgba(76, 175, 80, 0.1); color: #2E7D32; }
+    .status-badge--pending { background: rgba(255, 152, 0, 0.1); color: #F57C00; }
+    .status-badge--curing { background: rgba(194, 118, 74, 0.1); color: var(--clr-secondary); }
+    [data-theme="dark"] .status-badge--success { color: #81C784; }
+    [data-theme="dark"] .status-badge--pending { color: #FFB74D; }
+    [data-theme="dark"] .status-badge--curing { color: #D4915F; }
+
+    /* Mobile handling */
+    .mobile-menu-btn { display: none; }
+    @media (max-width: 900px) {
+      .dashboard-layout { grid-template-columns: 1fr; }
+      .dashboard-sidebar { display: none; }
+      .mobile-menu-btn { display: inline-flex; margin-right: var(--sp-2); }
+      .table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Admin Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <div style="display: flex; align-items: center;">
+        <button class="btn btn--icon mobile-menu-btn" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="../index.html" class="navbar__brand" aria-label="SUDZ Home">
+          <svg class="navbar__logo" viewBox="0 0 100 36"><path d="M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z" fill="none" stroke="var(--clr-primary)" stroke-width="2"/><circle cx="22" cy="12" r="2.5" fill="var(--clr-secondary)"/><circle cx="14" cy="20" r="1.5" fill="var(--clr-secondary)"/><text x="36" y="25" text-anchor="start" fill="var(--clr-primary)" font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="24">SUDZ</text></svg>
+        </a>
+        <span class="badge badge--primary" style="margin-left: 12px; transform: translateY(-2px);">Admin</span>
+      </div>
+      
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <button class="navbar__dir-toggle" data-dir-toggle>RTL</button>
+        <div style="margin-left: var(--sp-2); width: 36px; height: 36px; border-radius: 50%; background: var(--clr-secondary); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--ff-heading); cursor: pointer;">MC</div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-spacer"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <nav class="dashboard-nav">
+        <a href="#" class="dashboard-nav__item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Overview
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Orders
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          Products
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          Production (Curing)
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Customers
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Reports
+        </a>
+        <a href="../login.html" class="dashboard-nav__item" style="margin-top: auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign Out
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <div class="dashboard-header anim-fade-scale">
+        <h1 style="font-size: 1.75rem;">Store Overview</h1>
+        <div class="flex-between" style="gap: var(--sp-2);">
+          <select class="form-input" style="padding-block: 6px; width: auto; font-size: var(--fs-small);">
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+            <option>This Year</option>
+          </select>
+          <button class="btn btn--primary btn--sm">Generate Report</button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid--4 mb-5 reveal-stagger">
+        <div class="stat-card reveal">
+          <div class="stat-card__header">
+            <h3 class="stat-card__title">Total Revenue</h3>
+            <div class="stat-card__icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          </div>
+          <div class="stat-card__value">$12,450</div>
+          <div class="stat-card__trend trend-up">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            +14.5% from last week
+          </div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__header">
+            <h3 class="stat-card__title">Orders</h3>
+            <div class="stat-card__icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          </div>
+          <div class="stat-card__value">342</div>
+          <div class="stat-card__trend trend-up">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            +5.2% from last week
+          </div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__header">
+            <h3 class="stat-card__title">Avg Order Value</h3>
+            <div class="stat-card__icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          </div>
+          <div class="stat-card__value">$36.40</div>
+          <div class="stat-card__trend trend-down">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+            -1.2% from last week
+          </div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__header">
+            <h3 class="stat-card__title">Bars Curing</h3>
+            <div class="stat-card__icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          </div>
+          <div class="stat-card__value">1,240</div>
+          <div class="stat-card__trend text-muted">
+            Across 31 batches
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts (Custom Canvas rendering) -->
+      <div class="grid grid--2 mb-5 reveal-stagger">
+        <div class="chart-container reveal">
+          <div class="flex-between mb-3">
+            <h3 style="font-size: 1.0625rem;">Sales Overview</h3>
+          </div>
+          <div class="chart-canvas-wrapper">
+            <canvas data-chart="line" data-data='[{"label":"Mon","value":420},{"label":"Tue","value":680},{"label":"Wed","value":550},{"label":"Thu","value":890},{"label":"Fri","value":720},{"label":"Sat","value":1100},{"label":"Sun","value":950}]'></canvas>
+          </div>
+        </div>
+        
+        <div class="chart-container reveal">
+          <div class="flex-between mb-3">
+            <h3 style="font-size: 1.0625rem;">Sales by Category</h3>
+          </div>
+          <div class="chart-canvas-wrapper" style="display: flex; align-items: center; justify-content: center;">
+            <canvas data-chart="doughnut" data-data='[{"label":"Bar Soaps","value":65},{"label":"Bath Bombs","value":25},{"label":"Body Scrubs","value":10}]' style="max-height: 240px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tables -->
+      <div class="grid grid--2 reveal-stagger" style="align-items: start;">
+        <div class="reveal">
+          <h3 style="margin-bottom: var(--sp-3);">Recent Orders</h3>
+          <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Status</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#8492</td>
+                  <td>Sarah J.</td>
+                  <td><span class="status-badge status-badge--pending">Unfulfilled</span></td>
+                  <td>$42.00</td>
+                </tr>
+                <tr>
+                  <td>#8491</td>
+                  <td>Michael T.</td>
+                  <td><span class="status-badge status-badge--success">Fulfilled</span></td>
+                  <td>$128.50</td>
+                </tr>
+                <tr>
+                  <td>#8490</td>
+                  <td>Elena M.</td>
+                  <td><span class="status-badge status-badge--success">Fulfilled</span></td>
+                  <td>$24.00</td>
+                </tr>
+                <tr>
+                  <td>#8489</td>
+                  <td>David L.</td>
+                  <td><span class="status-badge status-badge--success">Fulfilled</span></td>
+                  <td>$56.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <h3 style="margin-bottom: var(--sp-3);">Production Schedule</h3>
+          <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Batch</th>
+                  <th>Product</th>
+                  <th>Status</th>
+                  <th>Ready Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>B-1042</td>
+                  <td>Lavender Dreams</td>
+                  <td><span class="status-badge status-badge--curing">Curing (Day 14)</span></td>
+                  <td>Oct 28</td>
+                </tr>
+                <tr>
+                  <td>B-1043</td>
+                  <td>Charcoal Detox</td>
+                  <td><span class="status-badge status-badge--curing">Curing (Day 8)</span></td>
+                  <td>Nov 03</td>
+                </tr>
+                <tr>
+                  <td>B-1044</td>
+                  <td>Citrus Sunrise</td>
+                  <td><span class="status-badge status-badge--pending">Pouring Today</span></td>
+                  <td>Nov 11</td>
+                </tr>
+                <tr>
+                  <td>B-1041</td>
+                  <td>Oat Milk Scrub</td>
+                  <td><span class="status-badge status-badge--success">Ready</span></td>
+                  <td>Today</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <!-- Load dashboard charts logic -->
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

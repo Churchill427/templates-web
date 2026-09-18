@@ -1,0 +1,304 @@
+/* ==========================================================================
+   FRET — Layout System
+   Container, grid utilities, section rhythm, responsive alignment
+   ========================================================================== */
+
+/* ── Container ───────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+.container--narrow {
+  max-width: 960px;
+}
+
+.container--wide {
+  max-width: 1400px;
+}
+
+/* ── Section ─────────────────────────────────────────────────────────────── */
+.section {
+  padding-block: var(--section-padding);
+}
+
+.section--surface {
+  background-color: var(--color-surface);
+  transition: background-color var(--transition-theme);
+}
+
+.section--dark {
+  background-color: var(--color-secondary);
+  color: var(--color-text-on-dark);
+  transition: background-color var(--transition-theme), color var(--transition-theme);
+}
+
+[data-theme="dark"] .section--dark {
+  background-color: #0F0D0C;
+}
+
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--color-text-on-dark);
+}
+
+.section--dark p {
+  color: var(--color-gray-400);
+}
+
+[data-theme="dark"] .section--dark p {
+  color: var(--color-gray-500);
+}
+
+/* ── Section Header (centered) ───────────────────────────────────────────── */
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+}
+
+.section-header .overline {
+  margin-bottom: var(--space-1);
+  display: block;
+}
+
+.section-header h2 {
+  margin-bottom: var(--space-2);
+}
+
+.section-header p {
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+}
+
+/* ── Grid System ─────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--2x3 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+/* Responsive grid collapses */
+@media (max-width: 1023px) {
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--2x3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .grid--4,
+  .grid--3,
+  .grid--2,
+  .grid--2x3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Split Layout (Two Columns, Equal Heights) ───────────────────────────── */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.split--60-40 {
+  grid-template-columns: 3fr 2fr;
+}
+
+.split--40-60 {
+  grid-template-columns: 2fr 3fr;
+}
+
+.split__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.split__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.split__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 767px) {
+  .split,
+  .split--60-40,
+  .split--40-60 {
+    grid-template-columns: 1fr;
+  }
+
+  .split__media {
+    order: -1;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ── Hero Section ────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 85vh;
+  padding-block: var(--space-12);
+  padding-top: calc(var(--navbar-height) + var(--space-12));
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 25, 23, 0.55) 0%,
+    rgba(28, 25, 23, 0.70) 50%,
+    rgba(28, 25, 23, 0.80) 100%
+  );
+  z-index: 1;
+}
+
+[data-theme="dark"] .hero__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(12, 10, 9, 0.60) 0%,
+    rgba(12, 10, 9, 0.75) 50%,
+    rgba(12, 10, 9, 0.85) 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding-inline: var(--container-gutter);
+}
+
+.hero__content .overline {
+  margin-bottom: var(--space-2);
+  color: var(--color-primary-light);
+}
+
+.hero__content h1 {
+  color: #FFFFFF;
+  margin-bottom: var(--space-3);
+}
+
+.hero__content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-bottom: var(--space-5);
+}
+
+/* Slim hero variant for inner pages */
+.hero--slim {
+  min-height: 50vh;
+  padding-block: var(--space-8);
+  padding-top: calc(var(--navbar-height) + var(--space-8));
+}
+
+/* ── Hero CTA Group ──────────────────────────────────────────────────────── */
+.hero__ctas {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Flex Utilities ──────────────────────────────────────────────────────── */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+
+/* ── Text Alignment ──────────────────────────────────────────────────────── */
+.text-center { text-align: center; }
+.text-start { text-align: start; }
+.text-end { text-align: end; }
+
+/* ── Margin Utilities ────────────────────────────────────────────────────── */
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }

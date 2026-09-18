@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUME — The Journal | Scent, Craft & Living</title>
+  <meta name="description" content="The LUME Journal. Stories about scent, candle-making craft, interior styling, and the people behind our Brooklyn studio.">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .featured-article{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2xl);align-items:center;}
+    .featured-article__img{border-radius:var(--radius-md);overflow:hidden;aspect-ratio:4/3;}
+    .featured-article__img img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);}
+    .featured-article:hover .featured-article__img img{transform:scale(1.05);}
+    .article-meta{font-size:var(--caption-size);color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:var(--space-sm);display:flex;gap:var(--space-sm);align-items:center;}
+    .article-meta span{display:flex;align-items:center;gap:4px;}
+    .article-meta__dot{width:4px;height:4px;border-radius:50%;background:var(--color-border);}
+    .article-card{display:flex;flex-direction:column;gap:var(--space-md);group;}
+    .article-card__img{border-radius:var(--radius-md);overflow:hidden;aspect-ratio:4/3;position:relative;}
+    .article-card__img img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition-slow);}
+    .article-card:hover .article-card__img img{transform:scale(1.05);}
+    .article-card__category{position:absolute;top:var(--space-sm);left:var(--space-sm);background:var(--color-surface);color:var(--color-text);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;padding:4px 10px;border-radius:var(--radius-full);font-weight:600;}
+    .article-card__title{font-family:var(--font-heading);font-size:1.25rem;line-height:1.3;margin-bottom:var(--space-2xs);transition:color var(--transition-fast);}
+    .article-card:hover .article-card__title{color:var(--color-primary);}
+    .tag-cloud{display:flex;flex-wrap:wrap;gap:var(--space-sm);justify-content:center;}
+    .tag{padding:8px 16px;border:1px solid var(--color-border);border-radius:var(--radius-full);color:var(--color-text-secondary);font-size:var(--small-size);transition:all var(--transition-fast);}
+    .tag:hover{border-color:var(--color-primary);color:var(--color-primary);}
+    @media(max-width:767px){
+      .featured-article{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body class="has-header">
+  <header class="header"><div class="header__inner"><a href="index.html" class="header__logo"><svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/><rect x="23" y="2" width="2" height="4" rx="1" fill="#2B2622"/></svg><span class="header__logo-text">LUME</span></a><nav class="nav"><div class="nav__dropdown"><a href="index.html" class="nav__link nav__dropdown-toggle">Home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a><div class="nav__dropdown-menu"><a href="index.html" class="nav__dropdown-item">Home 1</a><a href="home-atelier.html" class="nav__dropdown-item">Home 2</a></div></div><a href="products.html" class="nav__link">Shop</a><a href="workshops.html" class="nav__link">Workshops</a><a href="custom.html" class="nav__link">Custom Favors</a><a href="about.html" class="nav__link">Our Story</a><a href="journal.html" class="nav__link nav__link--active">Journal</a><a href="contact.html" class="nav__link">Contact</a></nav><div class="header__controls"><button class="header__toggle" data-toggle-theme><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><button class="header__rtl-toggle" data-toggle-dir>RTL</button><a href="cart.html" class="nav__cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Cart (0)</a>
+</div><button class="hamburger" id="hamburger"><span class="hamburger__line"></span><span class="hamburger__line"></span><span class="hamburger__line"></span></button></div></header>
+  <div class="mobile-menu" id="mobile-menu"><a href="index.html" class="mobile-menu__link">Home</a><a href="products.html" class="mobile-menu__link">Shop</a><a href="workshops.html" class="mobile-menu__link">Workshops</a><a href="custom.html" class="mobile-menu__link">Custom Favors</a><a href="about.html" class="mobile-menu__link">Our Story</a><a href="journal.html" class="mobile-menu__link mobile-menu__link--active">Journal</a><a href="contact.html" class="mobile-menu__link">Contact</a><a href="cart.html" class="mobile-menu__link">Cart (0)</a><div class="mobile-menu__controls"><button class="header__toggle" data-toggle-theme><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><button class="header__rtl-toggle" data-toggle-dir>RTL</button></div></div>
+
+  <main>
+    <!-- S1: HERO -->
+    <section class="hero hero--small" id="hero-journal">
+      <div class="hero__bg"><img src="assets/images/heroes/hero-journal.png" alt="Open journal on a table next to a lit candle and coffee" loading="eager"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content"><h1>The Journal</h1><p>Stories on scent, craft, and the art of slow living.</p></div>
+    </section>
+
+    <!-- S2: FEATURED ARTICLE -->
+    <section class="section" id="featured">
+      <div class="container">
+        <a href="#" class="featured-article animate-on-scroll">
+          <div class="featured-article__img"><img src="assets/images/journal/article-scent-memories.png" alt="Person smelling a fresh botanical arrangement" loading="lazy"></div>
+          <div>
+            <div class="article-meta"><span>Craft &amp; Science</span><div class="article-meta__dot"></div><span>Sept 12, 2026</span></div>
+            <h2>The Science of Scent and Memory</h2>
+            <p style="color:var(--color-text-secondary);margin-bottom:var(--space-lg);">Why does the smell of rain transport you back to childhood? We explore the fascinating connection between our olfactory system and the emotional center of the brain.</p>
+            <span class="btn btn--outline">Read Article</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- S3: ARTICLE GRID WITH FILTERS -->
+    <section class="section section--alt" id="articles">
+      <div class="container">
+        <div class="filter-pills" style="justify-content:center;margin-bottom:var(--space-2xl);">
+          <button class="filter-pill filter-pill--active">All Articles</button>
+          <button class="filter-pill">Studio Life</button>
+          <button class="filter-pill">Scent Profiles</button>
+          <button class="filter-pill">Styling</button>
+        </div>
+        <div class="grid grid-3 stagger-children">
+          <a href="#" class="article-card animate-on-scroll">
+            <div class="article-card__img"><img src="assets/images/journal/article-wax-types.png" alt="Different types of wax flakes" loading="lazy"><span class="article-card__category">Studio Life</span></div>
+            <div>
+              <div class="article-meta"><span>Aug 28, 2026</span><div class="article-meta__dot"></div><span>4 min read</span></div>
+              <h3 class="article-card__title">Soy vs. Paraffin: The Clean Burn Difference</h3>
+              <p style="color:var(--color-text-secondary);font-size:var(--small-size);">Everything you need to know about why we exclusively use 100% US-grown soy wax.</p>
+            </div>
+          </a>
+          <a href="#" class="article-card animate-on-scroll">
+            <div class="article-card__img"><img src="assets/images/journal/article-vessel-reuse.jpg" alt="Cleaned candle vessel used as a planter" loading="lazy"><span class="article-card__category">Styling</span></div>
+            <div>
+              <div class="article-meta"><span>Aug 15, 2026</span><div class="article-meta__dot"></div><span>3 min read</span></div>
+              <h3 class="article-card__title">5 Ways to Upcycle Your Empty Vessels</h3>
+              <p style="color:var(--color-text-secondary);font-size:var(--small-size);">How to safely clean out leftover wax and give your beautiful jars a second life.</p>
+            </div>
+          </a>
+          <a href="#" class="article-card animate-on-scroll">
+            <div class="article-card__img"><img src="assets/images/journal/article-fall-scents.jpg" alt="Autumn leaves and spices" loading="lazy"><span class="article-card__category">Scent Profiles</span></div>
+            <div>
+              <div class="article-meta"><span>Jul 30, 2026</span><div class="article-meta__dot"></div><span>5 min read</span></div>
+              <h3 class="article-card__title">Designing the Autumn Harvest Collection</h3>
+              <p style="color:var(--color-text-secondary);font-size:var(--small-size);">A behind-the-scenes look at how we developed our three new seasonal fragrances.</p>
+            </div>
+          </a>
+          <a href="#" class="article-card animate-on-scroll">
+            <div class="article-card__img"><img src="assets/images/journal/article-wicks.jpg" alt="Close up of wooden and cotton wicks" loading="lazy"><span class="article-card__category">Studio Life</span></div>
+            <div>
+              <div class="article-meta"><span>Jul 12, 2026</span><div class="article-meta__dot"></div><span>3 min read</span></div>
+              <h3 class="article-card__title">Wood vs. Cotton: Choosing Your Wick</h3>
+              <p style="color:var(--color-text-secondary);font-size:var(--small-size);">Does the crackle matter? Breaking down the differences between our wick options.</p>
+            </div>
+          </a>
+          <a href="#" class="article-card animate-on-scroll">
+            <div class="article-card__img"><img src="assets/images/journal/article-mantel.jpg" alt="Candles styled on a fireplace mantel" loading="lazy"><span class="article-card__category">Styling</span></div>
+            <div>
+              <div class="article-meta"><span>Jun 22, 2026</span><div class="article-meta__dot"></div><span>4 min read</span></div>
+              <h3 class="article-card__title">Styling Candles for Cozy Spaces</h3>
+              <p style="color:var(--color-text-secondary);font-size:var(--small-size);">Tips from an interior designer on how to use candles to elevate your home decor.</p>
+            </div>
+          </a>
+          <a href="#" class="article-card animate-on-scroll">
+            <div class="article-card__img"><img src="assets/images/journal/article-sandalwood.jpg" alt="Sandalwood logs" loading="lazy"><span class="article-card__category">Scent Profiles</span></div>
+            <div>
+              <div class="article-meta"><span>Jun 05, 2026</span><div class="article-meta__dot"></div><span>5 min read</span></div>
+              <h3 class="article-card__title">Ingredient Spotlight: Smoked Sandalwood</h3>
+              <p style="color:var(--color-text-secondary);font-size:var(--small-size);">Exploring the rich, grounding base note that anchors our bestselling Amber Noir.</p>
+            </div>
+          </a>
+        </div>
+        <div class="text-center" style="margin-top:var(--space-2xl);"><button class="btn btn--outline">Load More Articles</button></div>
+      </div>
+    </section>
+
+    <!-- S4: NEWSLETTER SIGNUP -->
+    <section class="section" id="journal-newsletter">
+      <div class="container">
+        <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-3xl) var(--space-xl);text-align:center;" class="animate-on-scroll">
+          <h2 style="margin-bottom:var(--space-xs);">Notes from the Studio</h2>
+          <p style="color:var(--color-text-secondary);margin-bottom:var(--space-lg);max-width:500px;margin-left:auto;margin-right:auto;">Get our latest journal entries, behind-the-scenes stories, and early access to new scent drops delivered to your inbox.</p>
+          <form style="display:flex;gap:var(--space-sm);max-width:400px;margin:0 auto;">
+            <input type="email" class="form-input" placeholder="Your email address" required style="flex:1;">
+            <button type="submit" class="btn btn--primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5: POPULAR TAGS -->
+    <section class="section section--alt" id="tags">
+      <div class="container">
+        <div class="section-header animate-on-scroll"><h2>Explore by Topic</h2></div>
+        <div class="tag-cloud animate-on-scroll">
+          <a href="#" class="tag">Essential Oils</a>
+          <a href="#" class="tag">Candle Care</a>
+          <a href="#" class="tag">Sustainability</a>
+          <a href="#" class="tag">Gift Guides</a>
+          <a href="#" class="tag">Brooklyn</a>
+          <a href="#" class="tag">Interiors</a>
+          <a href="#" class="tag">Fragrance Notes</a>
+          <a href="#" class="tag">Workshops</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: INSTAGRAM (reused from Atelier) -->
+    <section class="section" id="insta-strip">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2>From the Studio</h2>
+          <p>Follow our journey on Instagram @lumecandles.</p>
+        </div>
+        <div style="display:flex;gap:var(--space-md);overflow-x:auto;padding-bottom:var(--space-sm);-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;" class="animate-on-scroll">
+          <div style="flex:0 0 220px;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;scroll-snap-align:start;"><img src="assets/images/misc/insta-1.png" alt="Insta 1" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+          <div style="flex:0 0 220px;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;scroll-snap-align:start;"><img src="assets/images/misc/insta-2.png" alt="Insta 2" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+          <div style="flex:0 0 220px;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;scroll-snap-align:start;"><img src="assets/images/misc/insta-3.png" alt="Insta 3" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+          <div style="flex:0 0 220px;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;scroll-snap-align:start;"><img src="assets/images/misc/insta-4.png" alt="Insta 4" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+          <div style="flex:0 0 220px;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;scroll-snap-align:start;"><img src="assets/images/misc/insta-5.png" alt="Insta 5" style="width:100%;height:100%;object-fit:cover;" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="footer__brand-logo"><svg width="28" height="28" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/></svg><span class="footer__brand-name">LUME</span></a><p>Small-batch, hand-poured soy candles crafted with intention in our Brooklyn studio.</p><div class="footer__social"><a href="#" class="social-btn social-btn--google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></a><a href="#" class="social-btn social-btn--facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="#" class="social-btn social-btn--instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></div></div><div><h4 class="footer__heading">Explore</h4><div class="footer__links"><a href="index.html" class="footer__link">Home</a><a href="products.html" class="footer__link">Shop</a><a href="about.html" class="footer__link">Our Story</a><a href="journal.html" class="footer__link">Journal</a></div></div><div><h4 class="footer__heading">Studio</h4><div class="footer__links"><a href="workshops.html" class="footer__link">Workshops</a><a href="custom.html" class="footer__link">Custom Favors</a><a href="contact.html" class="footer__link">Contact</a><a href="login.html" class="footer__link">Account</a></div></div><div><h4 class="footer__heading">Stay in the Glow</h4><p style="color:#9A8D80;font-size:var(--small-size);margin-bottom:var(--space-sm);">New scent drops and studio stories.</p><form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email" required><button type="submit" class="footer__newsletter-btn">Join</button></form></div></div><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 LUME Artisan Candle Studio. All rights reserved.</p><div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Shipping</a></div></div></div></footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

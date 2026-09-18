@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUME — Page Not Found</title>
+  <meta name="description" content="The page you're looking for cannot be found.">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .error-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;}
+    .error-hero__bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+    .error-hero__overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(28,25,22,0.4);z-index:-1;}
+    .quick-links{display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;}
+    .quick-link-card{background:var(--color-surface);border:1px solid var(--color-border);padding:var(--space-lg);border-radius:var(--radius-md);text-align:center;width:200px;transition:all var(--transition-fast);}
+    .quick-link-card:hover{border-color:var(--color-primary);transform:translateY(-2px);}
+  </style>
+</head>
+<body class="has-header">
+  <header class="header"><div class="header__inner"><a href="index.html" class="header__logo"><svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/><rect x="23" y="2" width="2" height="4" rx="1" fill="#2B2622"/></svg><span class="header__logo-text">LUME</span></a><nav class="nav"><div class="nav__dropdown"><a href="index.html" class="nav__link nav__dropdown-toggle">Home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a><div class="nav__dropdown-menu"><a href="index.html" class="nav__dropdown-item">Home 1</a><a href="home-atelier.html" class="nav__dropdown-item">Home 2</a></div></div><a href="products.html" class="nav__link">Shop</a><a href="workshops.html" class="nav__link">Workshops</a><a href="custom.html" class="nav__link">Custom Favors</a><a href="about.html" class="nav__link">Our Story</a><a href="journal.html" class="nav__link">Journal</a><a href="contact.html" class="nav__link">Contact</a></nav><div class="header__controls"><button class="header__toggle" data-toggle-theme><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><button class="header__rtl-toggle" data-toggle-dir>RTL</button><a href="cart.html" class="nav__cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Cart (0)</a>
+</div><button class="hamburger" id="hamburger"><span class="hamburger__line"></span><span class="hamburger__line"></span><span class="hamburger__line"></span></button></div></header>
+
+  <main>
+    <!-- S1: HERO -->
+    <section class="error-hero">
+      <img src="assets/images/heroes/hero-404.png" alt="A candle blown out with a trail of smoke" class="error-hero__bg">
+      <div class="error-hero__overlay"></div>
+      <div class="container text-center" style="position:relative;z-index:1;color:#FAF4EB;">
+        <h1 style="font-size:4rem;margin-bottom:var(--space-sm);">404</h1>
+        <p style="font-size:1.25rem;max-width:500px;margin:0 auto var(--space-lg);opacity:0.9;">The flame went out on this link.</p>
+        <a href="index.html" class="btn btn--primary">Return Home</a>
+      </div>
+    </section>
+
+    <!-- S2: MESSAGE -->
+    <section class="section" style="padding-bottom:var(--space-sm);">
+      <div class="container text-center">
+        <h2 style="margin-bottom:var(--space-md);">Lost Your Way?</h2>
+        <p style="color:var(--color-text-secondary);max-width:600px;margin:0 auto;">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+      </div>
+    </section>
+
+    <!-- S3: QUICK LINKS -->
+    <section class="section">
+      <div class="container">
+        <div class="quick-links">
+          <a href="products.html" class="quick-link-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom:var(--space-sm);color:var(--color-primary);"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <h4>Shop Candles</h4>
+          </a>
+          <a href="workshops.html" class="quick-link-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom:var(--space-sm);color:var(--color-primary);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <h4>Book a Workshop</h4>
+          </a>
+          <a href="journal.html" class="quick-link-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom:var(--space-sm);color:var(--color-primary);"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <h4>Read the Journal</h4>
+          </a>
+          <a href="contact.html" class="quick-link-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom:var(--space-sm);color:var(--color-primary);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <h4>Contact Us</h4>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: SEARCH -->
+    <section class="section section--alt">
+      <div class="container text-center">
+        <h3 style="margin-bottom:var(--space-md);">Still can't find what you need?</h3>
+        <form style="display:flex;gap:var(--space-sm);max-width:500px;margin:0 auto;">
+          <input type="text" class="form-input" placeholder="Search for products, workshops..." style="flex:1;">
+          <button type="submit" class="btn btn--outline">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- S5: BEST SELLERS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header"><h2>Try Our Best Sellers</h2></div>
+        <div class="grid grid-4">
+          <div class="card"><div class="card__image"><img src="assets/images/products/amber-noir.png" alt="Amber Noir"></div><div class="card__body"><h3 class="card__title">Amber Noir</h3><div class="card__price">$38.00</div></div></div>
+          <div class="card"><div class="card__image"><img src="assets/images/products/matcha-yuzu.png" alt="Matcha & Yuzu"></div><div class="card__body"><h3 class="card__title">Matcha &amp; Yuzu</h3><div class="card__price">$36.00</div></div></div>
+          <div class="card"><div class="card__image"><img src="assets/images/products/sandalwood-rose.png" alt="Sandalwood Rose"></div><div class="card__body"><h3 class="card__title">Sandalwood Rose</h3><div class="card__price">$38.00</div></div></div>
+          <div class="card"><div class="card__image"><img src="assets/images/products/earl-grey.png" alt="Earl Grey"></div><div class="card__body"><h3 class="card__title">Earl Grey</h3><div class="card__price">$34.00</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: SUPPORT LINK -->
+    <section class="section section--alt">
+      <div class="container text-center">
+        <p style="color:var(--color-text-secondary);">If you believe this is an error, please <a href="contact.html" style="color:var(--color-primary);text-decoration:underline;">let us know</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a href="index.html" class="footer__brand-logo"><svg width="28" height="28" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/></svg><span class="footer__brand-name">LUME</span></a><p>Small-batch, hand-poured soy candles crafted with intention in our Brooklyn studio.</p></div><div><h4 class="footer__heading">Explore</h4><div class="footer__links"><a href="index.html" class="footer__link">Home</a><a href="products.html" class="footer__link">Shop</a></div></div></div></div></footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

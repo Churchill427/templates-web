@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — PRNT Custom Apparel Portal</title>
+  <meta name="description" content="Register for a PRNT corporate apparel account to receive instant wholesale volume discounts, digital proofing, and dedicated press scheduling." />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="styles/auth.css" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body>
+
+  <!-- Floating Toggles (Theme & RTL) -->
+  <div class="auth-toggles">
+    <button class="auth-toggle-btn" id="themeToggle" title="Toggle Theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <button class="auth-toggle-btn auth-toggle-btn--rtl" id="rtlToggle" title="Toggle RTL">
+      RTL
+    </button>
+  </div>
+
+  <div class="auth-page">
+    <!-- Left Hero Panel -->
+    <div class="auth-brand">
+      <img src="assets/images/hero_signup.png" alt="Pantone Screen Printing Ink Mixing Station" class="auth-brand__bg" />
+      <div class="auth-brand__overlay"></div>
+
+      <div class="auth-brand__content">
+        <a href="index.html" class="auth-brand__logo">PRNT</a>
+        <h2 class="auth-brand__tagline">
+          Join 4,500+ Corporate Apparel & Brand Partners
+        </h2>
+
+        <div class="auth-brand__features">
+          <div class="auth-brand__feature">
+            <i class="fa-solid fa-tag"></i>
+            <span>Tiered wholesale pricing starting at 24 units</span>
+          </div>
+          <div class="auth-brand__feature">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Guaranteed 5-day standard turnaround or 48-hour rush</span>
+          </div>
+          <div class="auth-brand__feature">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Free Pantone color matching & digital proof mockups</span>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-8); padding: var(--space-4); background: rgba(255,255,255,0.08); border-radius: var(--radius-lg); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.12);">
+          <div style="font-size: var(--fs-xs); color: var(--color-accent); text-transform: uppercase; font-family: var(--font-heading); font-weight: 700; margin-bottom: 4px;">Partner Guarantee</div>
+          <div style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #FFF;">100% Quality Assurance or Free Reprint</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Signup Form Card -->
+    <div class="auth-card">
+      <div class="auth-card__inner" style="max-width: 460px;">
+
+        <div class="auth-card__logo">
+          <a href="index.html" class="auth-card__logo-link">
+            <div class="auth-card__logo-icon"><i class="fa-solid fa-print"></i></div>
+            <span class="auth-card__logo-text">PRNT</span>
+          </a>
+        </div>
+
+        <h1 class="auth-card__title">Create Account</h1>
+        <p class="auth-card__subtitle">Set up your client portal to request bulk quotes & manage orders</p>
+
+        <!-- Form -->
+        <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+
+          <!-- Account Type Radio Cards -->
+          <div style="margin-bottom: var(--space-4);">
+            <label class="form-label">Select Account Type</label>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2);">
+              <label style="border: 2px solid var(--color-secondary); background: var(--bg-muted); border-radius: var(--radius-md); padding: 8px; text-align: center; cursor: pointer; display: block;" id="typeCorp">
+                <input type="radio" name="accountType" value="corporate" checked style="display: none;" onchange="updateAccountType('corporate')" />
+                <i class="fa-solid fa-building" style="color: var(--color-secondary); font-size: 16px;"></i>
+                <div style="font-size: 11px; font-weight: 700; margin-top: 2px;">Corporate</div>
+              </label>
+
+              <label style="border: 1px solid var(--border-color); background: var(--bg-muted); border-radius: var(--radius-md); padding: 8px; text-align: center; cursor: pointer; display: block;" id="typeBrand">
+                <input type="radio" name="accountType" value="brand" style="display: none;" onchange="updateAccountType('brand')" />
+                <i class="fa-solid fa-shirt" style="color: var(--text-muted); font-size: 16px;"></i>
+                <div style="font-size: 11px; font-weight: 700; margin-top: 2px;">Apparel Brand</div>
+              </label>
+
+              <label style="border: 1px solid var(--border-color); background: var(--bg-muted); border-radius: var(--radius-md); padding: 8px; text-align: center; cursor: pointer; display: block;" id="typeIndividual">
+                <input type="radio" name="accountType" value="individual" style="display: none;" onchange="updateAccountType('individual')" />
+                <i class="fa-solid fa-user" style="color: var(--text-muted); font-size: 16px;"></i>
+                <div style="font-size: 11px; font-weight: 700; margin-top: 2px;">Personal</div>
+              </label>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="signupName">Full Name *</label>
+              <input type="text" class="form-control" id="signupName" placeholder="John Doe" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="signupCompany">Company Name</label>
+              <input type="text" class="form-control" id="signupCompany" placeholder="Acme Apparel Co." />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+            <div class="form-group">
+              <label class="form-label" for="signupEmail">Work Email *</label>
+              <input type="email" class="form-control" id="signupEmail" placeholder="john@company.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="signupPhone">Phone Number *</label>
+              <input type="tel" class="form-control" id="signupPhone" placeholder="(555) 000-0000" required />
+            </div>
+          </div>
+
+          <!-- Password Field + Strength Meter -->
+          <div class="form-group">
+            <label class="form-label" for="signupPassword">Password *</label>
+            <div style="position: relative;">
+              <input type="password" class="form-control" id="signupPassword" placeholder="Minimum 8 characters" required oninput="checkPasswordStrength(this.value)" />
+              <button type="button" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer;" onclick="togglePasswordVisibility('signupPassword', this)">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+
+            <!-- Visual Strength Meter -->
+            <div style="margin-top: 8px;">
+              <div style="height: 4px; background: var(--border-color-light); border-radius: var(--radius-full); overflow: hidden; display: flex;">
+                <div id="strengthBar" style="width: 0%; height: 100%; transition: all var(--transition-base); background: var(--color-danger);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 11px; color: var(--text-muted);">
+                <span>Strength: <strong id="strengthLabel" style="color: var(--color-danger);">Weak</strong></span>
+                <span>Req: 8+ chars, 1 uppercase, 1 symbol</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" required />
+              <span class="form-checkbox__text">I agree to the <a href="#" style="color: var(--color-secondary);">Terms of Service</a> and <a href="#" style="color: var(--color-secondary);">Privacy Policy</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn--secondary btn--full auth-form__submit">
+            <i class="fa-solid fa-user-plus"></i> Complete Registration
+          </button>
+
+          <p class="auth-form__switch">
+            Already have an account? <a href="login.html">Sign In Here</a>
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/global.js"></script>
+  <script>
+    function updateAccountType(type) {
+      const cards = ['typeCorp', 'typeBrand', 'typeIndividual'];
+      cards.forEach(cardId => {
+        const card = document.getElementById(cardId);
+        const icon = card.querySelector('i');
+        if (cardId.toLowerCase().includes(type)) {
+          card.style.border = '2px solid var(--color-secondary)';
+          icon.style.color = 'var(--color-secondary)';
+        } else {
+          card.style.border = '1px solid var(--border-color)';
+          icon.style.color = 'var(--text-muted)';
+        }
+      });
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    function checkPasswordStrength(val) {
+      const bar = document.getElementById('strengthBar');
+      const label = document.getElementById('strengthLabel');
+      let score = 0;
+
+      if (val.length >= 8) score += 25;
+      if (/[A-Z]/.test(val)) score += 25;
+      if (/[0-9]/.test(val)) score += 25;
+      if (/[^A-Za-z0-9]/.test(val)) score += 25;
+
+      bar.style.width = score + '%';
+
+      if (score < 50) {
+        bar.style.background = 'var(--color-danger)';
+        label.textContent = 'Weak';
+        label.style.color = 'var(--color-danger)';
+      } else if (score < 100) {
+        bar.style.background = 'var(--color-warning)';
+        label.textContent = 'Medium';
+        label.style.color = '#B8860B';
+      } else {
+        bar.style.background = 'var(--color-success)';
+        label.textContent = 'Strong';
+        label.style.color = 'var(--color-success)';
+      }
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      PRNT.showNotification('Creating your PRNT account...', 'info');
+      setTimeout(() => {
+        window.location.href = 'dashboard-user.html';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

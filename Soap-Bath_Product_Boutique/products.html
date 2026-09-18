@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUDZ — Shop All Products</title>
+  <meta name="description" content="Shop SUDZ handmade bar soaps, bath bombs, and body scrubs. Filter by category, scent profile, or skin benefit.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z' fill='none' stroke='%233E5C50' stroke-width='2'/%3E%3Ccircle cx='22' cy='12' r='2.5' fill='%23C2764A'/%3E%3Ccircle cx='14' cy='20' r='1.5' fill='%23C2764A'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/interactive.css">
+  <style>
+    .page-header { background: url('assets/images/products_hero.png') center/cover no-repeat; padding: calc(var(--navbar-height) + var(--sp-6)) var(--container-gutter) var(--sp-5); text-align: center; }
+    [data-theme="dark"] .page-header { background: url('assets/images/products_hero.png') center/cover no-repeat; }
+    
+    .shop-layout { display: grid; grid-template-columns: 240px 1fr; gap: var(--sp-5); padding: var(--sp-5) 0; align-items: start; }
+    .shop-filters { position: sticky; top: calc(var(--navbar-height) + var(--sp-4)); }
+    .filter-group { border-bottom: 1px solid var(--clr-border); padding-bottom: var(--sp-3); margin-bottom: var(--sp-3); }
+    .filter-group:last-child { border-bottom: none; }
+    .filter-group__title { font-size: 1.0625rem; font-weight: 600; margin-bottom: var(--sp-2); display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .filter-group__content { display: flex; flex-direction: column; gap: var(--sp-1); }
+    .filter-checkbox { display: flex; align-items: center; gap: var(--sp-1); cursor: pointer; font-size: var(--fs-small); color: var(--clr-text-secondary); }
+    .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--sp-4); }
+    .shop-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-4); }
+    
+    @media (max-width: 900px) {
+      .shop-layout { grid-template-columns: 1fr; }
+      .shop-filters { display: none; } /* In a real app, this would be a slide-out drawer on mobile */
+      .mobile-filter-btn { display: inline-flex; }
+    }
+    @media (min-width: 901px) {
+      .mobile-filter-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__brand" aria-label="SUDZ Home"><svg class="navbar__logo" viewBox="0 0 100 36"><path d="M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z" fill="none" stroke="var(--clr-primary)" stroke-width="2"/><circle cx="22" cy="12" r="2.5" fill="var(--clr-secondary)"/><circle cx="14" cy="20" r="1.5" fill="var(--clr-secondary)"/><text x="36" y="25" text-anchor="start" fill="var(--clr-primary)" font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="24">SUDZ</text></svg></a>
+      <div class="navbar__nav">
+        <div class="navbar__dropdown"><a href="index.html" class="navbar__link navbar__dropdown-toggle">Home<svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a><div class="navbar__dropdown-menu" role="menu"><a href="index.html" class="navbar__dropdown-item" role="menuitem">Home 1</a><a href="home-b.html" class="navbar__dropdown-item" role="menuitem">Home 2</a></div></div>
+        <a href="about.html" class="navbar__link">About</a>
+        <a href="products.html" class="navbar__link active">Products</a>
+        <a href="ingredients.html" class="navbar__link">Ingredients</a>
+        <a href="gifting.html" class="navbar__link">Gifting</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+      </div>
+      <div class="navbar__actions">
+        <button class="navbar__icon-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <button class="navbar__dir-toggle" data-dir-toggle>RTL</button>
+        <a href="cart.html" class="navbar__icon-btn navbar__cart" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="navbar__cart-badge" id="cartBadge">0</span></a>
+        <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="navbar__mobile-panel">
+      <a href="index.html" class="navbar__mobile-link">Home</a><a href="about.html" class="navbar__mobile-link">About</a><a href="products.html" class="navbar__mobile-link active">Products</a><a href="ingredients.html" class="navbar__mobile-link">Ingredients</a><a href="gifting.html" class="navbar__mobile-link">Gifting</a><a href="contact.html" class="navbar__mobile-link">Contact</a><a href="cart.html" class="navbar__mobile-link">Cart</a>
+      <div class="navbar__mobile-controls"><button class="navbar__icon-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><button class="navbar__dir-toggle" data-dir-toggle>RTL</button></div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header anim-fade-in">
+    <div class="container reveal">
+      <div class="hero-glass">
+        <h1 class="anim-slide-up" style="margin-bottom: var(--sp-2);">The Collection</h1>
+        <p class="anim-slide-up text-muted" style="font-size: 1.125rem; max-width: 600px; margin: 0 auto; animation-delay: 0.1s;">Handmade bar soaps, bath bombs, and body scrubs crafted with botanical ingredients and cold-process patience.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Shop Section -->
+  <section class="section" style="padding-top: 0;" aria-label="Shop Products">
+    <div class="container">
+      <div class="section__header reveal">
+        <h2>Shop Our Products</h2>
+        <p>Browse our full range of handcrafted soaps, bath bombs, and body scrubs.</p>
+      </div>
+      <div class="shop-layout">
+        
+        <!-- Sidebar Filters -->
+        <aside class="shop-filters reveal">
+          <div class="filter-group">
+            <div class="filter-group__title">Category</div>
+            <div class="filter-group__content">
+              <label class="filter-checkbox"><input type="checkbox" checked> All Products (24)</label>
+              <label class="filter-checkbox"><input type="checkbox"> Bar Soaps (12)</label>
+              <label class="filter-checkbox"><input type="checkbox"> Bath Bombs (8)</label>
+              <label class="filter-checkbox"><input type="checkbox"> Body Scrubs (4)</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <div class="filter-group__title">Scent Profile</div>
+            <div class="filter-group__content">
+              <label class="filter-checkbox"><input type="checkbox"> Floral &amp; Sweet</label>
+              <label class="filter-checkbox"><input type="checkbox"> Fresh &amp; Citrus</label>
+              <label class="filter-checkbox"><input type="checkbox"> Earthy &amp; Woody</label>
+              <label class="filter-checkbox"><input type="checkbox"> Minty &amp; Herbal</label>
+              <label class="filter-checkbox"><input type="checkbox"> Unscented (Sensitive)</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <div class="filter-group__title">Skin Benefit</div>
+            <div class="filter-group__content">
+              <label class="filter-checkbox"><input type="checkbox"> Deep Moisture</label>
+              <label class="filter-checkbox"><input type="checkbox"> Gentle Exfoliation</label>
+              <label class="filter-checkbox"><input type="checkbox"> Detoxifying</label>
+              <label class="filter-checkbox"><input type="checkbox"> Soothing / Calm</label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+          <div class="shop-header reveal">
+            <button class="btn btn--secondary btn--sm mobile-filter-btn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+              Filter
+            </button>
+            <div style="font-size: var(--fs-small); color: var(--clr-text-secondary);">Showing 1-12 of 24 products</div>
+            <select class="form-input" style="width: auto; padding-block: 6px; font-size: var(--fs-small);" aria-label="Sort products">
+              <option>Sort by: Featured</option>
+              <option>Best Selling</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+            </select>
+          </div>
+
+          <div class="shop-grid reveal-stagger">
+            <!-- Product 1 -->
+            <div class="product-card reveal">
+              <div class="product-card__image"><img src="assets/images/prod_lavender.png" alt="Lavender Dreams" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <div class="product-card__body">
+                <span class="product-card__category">Bar Soap</span>
+                <h4 class="product-card__name">Lavender Dreams</h4>
+                <p class="product-card__scent">French lavender &amp; chamomile</p>
+                <div class="product-card__footer"><span class="product-card__price">$12.00</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'lavender-dreams',name:'Lavender Dreams',price:12})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card reveal">
+              <div class="product-card__image"><img src="assets/images/prod_citrus.png" alt="Citrus Sunrise" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <div class="product-card__body">
+                <span class="product-card__category">Bath Bomb</span>
+                <h4 class="product-card__name">Citrus Sunrise</h4>
+                <p class="product-card__scent">Orange peel &amp; bergamot</p>
+                <div class="product-card__footer"><span class="product-card__price">$8.50</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'citrus-sunrise',name:'Citrus Sunrise',price:8.5})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card reveal">
+              <div class="product-card__image"><img src="assets/images/prod_charcoal.png" alt="Charcoal Detox" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <div class="product-card__body">
+                <span class="product-card__category">Bar Soap</span>
+                <h4 class="product-card__name">Charcoal Detox</h4>
+                <p class="product-card__scent">Activated charcoal &amp; tea tree</p>
+                <div class="product-card__footer"><span class="product-card__price">$14.00</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'charcoal-detox',name:'Charcoal Detox',price:14})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card reveal">
+              <div class="product-card__image"><img src="assets/images/prod_honey.png" alt="Honey Oat Glow" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <div class="product-card__body">
+                <span class="product-card__category">Body Scrub</span>
+                <h4 class="product-card__name">Honey Oat Glow</h4>
+                <p class="product-card__scent">Raw honey &amp; colloidal oats</p>
+                <div class="product-card__footer"><span class="product-card__price">$16.00</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'honey-oat',name:'Honey Oat Glow',price:16})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-card reveal">
+              <div class="product-card__image"><img src="assets/images/prod_midnight.png" alt="Midnight Bloom" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <div class="product-card__body">
+                <span class="product-card__category">Bath Bomb</span>
+                <h4 class="product-card__name">Midnight Bloom</h4>
+                <p class="product-card__scent">Jasmine &amp; ylang-ylang</p>
+                <div class="product-card__footer"><span class="product-card__price">$9.00</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'midnight-bloom',name:'Midnight Bloom',price:9})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="product-card reveal">
+              <div class="product-card__image"><img src="assets/images/prod_chamomile.png" alt="Chamomile Calm" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <div class="product-card__body">
+                <span class="product-card__category">Bar Soap</span>
+                <h4 class="product-card__name">Chamomile Calm</h4>
+                <p class="product-card__scent">Chamomile &amp; vanilla bean</p>
+                <div class="product-card__footer"><span class="product-card__price">$12.00</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'chamomile-calm',name:'Chamomile Calm',price:12})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 7 -->
+            <div class="product-card reveal">
+              <div class="product-card__image">
+                <img src="assets/images/product_ginger.png" alt="Ginger Zest" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="product-card__body">
+                <span class="product-card__category">Bar Soap</span>
+                <h4 class="product-card__name">Ginger Zest</h4>
+                <p class="product-card__scent">Fresh ginger &amp; lemongrass</p>
+                <div class="product-card__footer"><span class="product-card__price">$13.00</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'ginger-zest',name:'Ginger Zest',price:13})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 8 -->
+            <div class="product-card reveal">
+              <div class="product-card__image">
+                <img src="assets/images/product_seakelp.png" alt="Sea Kelp Restore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="product-card__body">
+                <span class="product-card__category">Bar Soap</span>
+                <h4 class="product-card__name">Sea Kelp Restore</h4>
+                <p class="product-card__scent">Sea kelp &amp; dead sea salt</p>
+                <div class="product-card__footer"><span class="product-card__price">$13.50</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'sea-kelp',name:'Sea Kelp Restore',price:13.5})">Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product 9 -->
+            <div class="product-card reveal">
+              <div class="product-card__image">
+                <img src="assets/images/product_mint.png" alt="Mint Refresh" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="product-card__body">
+                <span class="product-card__category">Body Scrub</span>
+                <h4 class="product-card__name">Mint Refresh</h4>
+                <p class="product-card__scent">Peppermint &amp; eucalyptus</p>
+                <div class="product-card__footer"><span class="product-card__price">$16.00</span></div>
+              </div>
+              <div class="card__footer">
+                <button class="btn btn--primary btn--sm btn--full" onclick="CartManager.addItem({id:'mint-refresh',name:'Mint Refresh',price:16})">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination reveal" style="margin-top: var(--sp-6);">
+            <button class="pagination__btn" disabled aria-label="Previous page">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="pagination__btn active">1</button>
+            <button class="pagination__btn">2</button>
+            <button class="pagination__btn" aria-label="Next page">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Scent Profile Visualizer -->
+  <section class="section" aria-label="Scent Visualizer" style="padding-top: 0;">
+    <div class="container reveal">
+      <div class="section__header text-center">
+        <h2>Scent Architecture</h2>
+        <p class="text-muted">Explore how our fragrances unfold over time.</p>
+      </div>
+      <div class="scent-visualizer">
+        <div class="scent-tabs">
+          <button class="scent-tab active" data-scent="floral">Floral</button>
+          <button class="scent-tab" data-scent="woody">Woody</button>
+          <button class="scent-tab" data-scent="citrus">Citrus</button>
+          <button class="scent-tab" data-scent="earthy">Earthy</button>
+        </div>
+        <div class="scent-chart">
+          <div class="scent-bar-group">
+            <span class="scent-label">Top</span>
+            <div class="scent-track"><div class="scent-fill" id="scent-top"></div></div>
+          </div>
+          <div class="scent-bar-group">
+            <span class="scent-label">Middle</span>
+            <div class="scent-track"><div class="scent-fill" id="scent-mid"></div></div>
+          </div>
+          <div class="scent-bar-group">
+            <span class="scent-label">Base</span>
+            <div class="scent-track"><div class="scent-fill" id="scent-base"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Match Quiz -->
+  <section class="section" aria-label="Find Your Match">
+    <div class="container reveal">
+      <div class="quiz-section">
+        <!-- Step 1 -->
+        <div class="quiz-step active" id="quiz-step-1">
+          <h2>Find Your Perfect SUDZ</h2>
+          <p>What is your primary skin concern?</p>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-next="quiz-step-2">Dryness</button>
+            <button class="quiz-btn" data-next="quiz-step-2">Oily/Breakouts</button>
+            <button class="quiz-btn" data-next="quiz-step-2">Sensitivity</button>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="quiz-step" id="quiz-step-2">
+          <h2>Your Scent Preference?</h2>
+          <p>Choose the profile that speaks to you.</p>
+          <div class="quiz-options">
+            <button class="quiz-btn" data-next="result" data-result="dry">Warm & Comforting</button>
+            <button class="quiz-btn" data-next="result" data-result="oily">Fresh & Invigorating</button>
+            <button class="quiz-btn" data-next="result" data-result="normal">Floral & Calming</button>
+          </div>
+        </div>
+        <!-- Result -->
+        <div class="quiz-step" id="quiz-step-result">
+          <h2>Your Perfect Match</h2>
+          <div class="quiz-result-box">
+            <h3 id="quiz-result-text">We recommend: The Lavender Botanical Bar</h3>
+          </div>
+          <div style="margin-top: var(--sp-4);">
+            <button class="quiz-btn" onclick="document.getElementById('quiz-step-result').classList.remove('active'); document.getElementById('quiz-step-1').classList.add('active');">Retake Quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand Column -->
+        <div>
+          <a href="index.html" aria-label="SUDZ Home">
+            <svg viewBox="0 0 100 36" style="height: 36px;"><path d="M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z" fill="none" stroke="var(--clr-primary)" stroke-width="2"/><circle cx="22" cy="12" r="2.5" fill="var(--clr-secondary)"/><circle cx="14" cy="20" r="1.5" fill="var(--clr-secondary)"/><text x="36" y="25" text-anchor="start" fill="var(--clr-primary)" font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="24">SUDZ</text></svg>
+          </a>
+          <p class="footer__brand-desc">Handmade soap &amp; bath products crafted with botanical ingredients in small batches. Every bar cured for 28 days.</p>
+          <div class="footer__social">
+            <!-- Social icons -->
+            <a href="#" class="footer__social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer__social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="footer__social-btn" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            </a>
+            <a href="#" class="footer__social-btn" aria-label="Twitter / X">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M13.232 10.768L20 4"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Shop Links -->
+        <div>
+          <h4 class="footer__heading">Shop</h4>
+          <div class="footer__links">
+            <a href="products.html" class="footer__link">Bar Soaps</a>
+            <a href="products.html" class="footer__link">Bath Bombs</a>
+            <a href="products.html" class="footer__link">Body Scrubs</a>
+            <a href="gifting.html" class="footer__link">Gift Boxes</a>
+            <a href="gifting.html" class="footer__link">Gift Cards</a>
+          </div>
+        </div>
+        <!-- Company Links -->
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <div class="footer__links">
+            <a href="about.html" class="footer__link">About Us</a>
+            <a href="ingredients.html" class="footer__link">Ingredients</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+            <a href="#" class="footer__link">Careers</a>
+            <a href="#" class="footer__link">Press</a>
+          </div>
+        </div>
+        <!-- Newsletter / Contact -->
+        <div>
+          <h4 class="footer__heading">Stay in Touch</h4>
+          <p style="font-size: var(--fs-small); opacity: 0.8; margin-bottom: var(--sp-2); line-height: 1.6;">Get craft stories, new drops, and 10% off your first order.</p>
+          <!-- TODO: Connect to Mailchimp/ConvertKit -->
+          <form class="footer__newsletter" data-validate id="footerNewsletter">
+            <input type="email" dir="ltr" class="footer__newsletter-input" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit" class="footer__newsletter-btn">Join</button>
+          </form>
+          <div style="margin-top: var(--sp-3);">
+            <p style="font-size: var(--fs-xs); opacity: 0.6;">hello@sudz.com &bull; (555) 123-4567</p>
+          </div>
+          <!-- Branded Social Login Buttons -->
+          <div style="margin-top: var(--sp-2); display: flex; gap: var(--sp-1);">
+            <button class="social-btn social-btn--google" style="width: auto; padding: 8px 12px; font-size: var(--fs-xs); min-height: auto; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff;">
+              <svg viewBox="0 0 24 24" width="16" height="16"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </button>
+            <button class="social-btn social-btn--facebook" style="width: auto; padding: 8px 12px; font-size: var(--fs-xs); min-height: auto;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </button>
+            <button class="social-btn social-btn--apple" style="width: auto; padding: 8px 12px; font-size: var(--fs-xs); min-height: auto;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2024 SUDZ. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/interactive.js"></script>
+</body>
+</html>
+
+
+
+
+

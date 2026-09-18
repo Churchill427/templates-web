@@ -1,0 +1,260 @@
+/* ==========================================================================
+   FRET — Auth Pages (Login & Signup)
+   No navbar/footer, single viewport, split card, floating toggles
+   ========================================================================== */
+
+/* ── Auth Layout (Single Viewport) ───────────────────────────────────────── */
+.auth-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Absolutely no vertical scrollbar per requirements */
+  background-color: var(--color-bg);
+  padding: var(--space-4);
+  position: relative;
+}
+
+/* Floating toggles for auth pages */
+.auth-toggles {
+  position: absolute;
+  top: var(--space-4);
+  inset-inline-end: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background-color: var(--color-surface-elevated);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  z-index: var(--z-modal);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+.auth-toggles .theme-toggle,
+.auth-toggles .rtl-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+}
+
+.auth-toggles .rtl-toggle {
+  font-size: 0.625rem;
+  min-width: 36px;
+  padding: 0;
+}
+
+/* ── Split Card ──────────────────────────────────────────────────────────── */
+.auth-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 1000px;
+  background-color: var(--color-surface-elevated);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  /* Ensure panels start and end at exactly the same position (equal grid tracks) */
+  align-items: stretch; 
+  /* Height constraints to ensure it fits in 360x740 single viewport on mobile */
+  max-height: calc(100vh - var(--space-8));
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+/* Left panel: Brand highlight */
+.auth-brand {
+  position: relative;
+  background-color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-6);
+  overflow: hidden;
+}
+
+.auth-brand__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+[data-theme="dark"] .auth-brand__bg {
+  opacity: 0.2;
+}
+
+.auth-brand__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.auth-brand__quote {
+  font-family: var(--font-heading);
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: var(--space-3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Right panel: Form */
+.auth-form-panel {
+  padding: var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto; /* Internal scroll only if absolutely necessary on tiny screens */
+  /* Hide scrollbar for clean look */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.auth-form-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.auth-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  margin-bottom: var(--space-2);
+}
+
+.auth-logo svg {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+}
+
+.auth-logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-secondary);
+}
+
+.auth-header h1 {
+  font-size: var(--h4-size);
+  margin-bottom: 4px;
+}
+
+.auth-header p {
+  font-size: var(--small-size);
+  color: var(--color-text-muted);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Form specific overrides */
+.auth-form .form-group {
+  margin-bottom: 0;
+}
+
+.auth-form .btn {
+  margin-top: var(--space-1);
+}
+
+/* Password input with toggle */
+.password-input-wrap {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 1rem;
+  transform: translateY(-50%);
+  color: var(--color-gray-400);
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.password-toggle:hover {
+  color: var(--color-primary);
+}
+
+.password-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.password-toggle .icon-eye-off { display: none; }
+.password-toggle.show .icon-eye { display: none; }
+.password-toggle.show .icon-eye-off { display: block; }
+
+/* Auth footer */
+.auth-footer {
+  margin-top: var(--space-4);
+  text-align: center;
+  font-size: var(--small-size);
+  color: var(--color-text-secondary);
+}
+
+.auth-footer a {
+  font-weight: 500;
+}
+
+/* ── Responsive Auth ─────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+
+  .auth-brand {
+    display: none; /* Hide brand panel on smaller screens to fit single viewport */
+  }
+
+  .auth-form-panel {
+    padding: var(--space-5) var(--space-4);
+  }
+}
+
+@media (max-height: 700px) {
+  /* Tighten spacing for short viewports (like 360x740 with UI bars) */
+  .auth-layout {
+    padding: var(--space-2);
+  }
+  
+  .auth-form-panel {
+    padding: var(--space-4) var(--space-3);
+  }
+  
+  .auth-header {
+    margin-bottom: var(--space-3);
+  }
+  
+  .auth-form {
+    gap: var(--space-2);
+  }
+  
+  .divider-text {
+    margin: var(--space-2) 0;
+  }
+}

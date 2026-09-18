@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUME — Something New is Coming</title>
+  <meta name="description" content="A new collection from LUME Artisan Candle Studio is launching soon. Join the waitlist.">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .countdown-wrap{display:flex;gap:var(--space-xl);justify-content:center;margin:var(--space-2xl) 0;}
+    .countdown-box{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-lg);min-width:120px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.05);}
+    .countdown-val{font-family:var(--font-heading);font-size:3rem;color:var(--color-primary);line-height:1;margin-bottom:var(--space-xs);}
+    .countdown-label{font-size:var(--caption-size);text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-secondary);}
+    .teaser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);}
+    .teaser-img{aspect-ratio:1;border-radius:var(--radius-md);object-fit:cover;width:100%;filter:sepia(0.3) contrast(1.1) brightness(0.9);transition:all var(--transition-slow);}
+    .teaser-img:hover{filter:none;}
+    @media(max-width:767px){
+      .countdown-wrap{gap:var(--space-sm);flex-wrap:wrap;}
+      .countdown-box{min-width:80px;padding:var(--space-md);}
+      .countdown-val{font-size:2rem;}
+      .teaser-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body class="has-header">
+  <header class="header"><div class="header__inner"><a href="index.html" class="header__logo"><svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/><rect x="23" y="2" width="2" height="4" rx="1" fill="#2B2622"/></svg><span class="header__logo-text">LUME</span></a><div class="header__controls"><button class="header__toggle" data-toggle-theme><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button></div></div></header>
+
+  <main>
+    <!-- S1: HERO -->
+    <section class="hero" id="hero-coming-soon">
+      <div class="hero__bg"><img src="assets/images/heroes/hero-coming-soon.png" alt="A dark, moody workshop with faint golden light hinting at new creations" loading="eager"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <span style="display:inline-block;padding:8px 16px;border:1px solid #FAF4EB;border-radius:var(--radius-full);font-size:var(--small-size);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:var(--space-md);color:#FAF4EB;">The Winter Collection</span>
+        <h1>Coming Soon</h1>
+        <p>We're putting the final touches on our new seasonal drop. It's warm, woody, and worth the wait.</p>
+      </div>
+    </section>
+
+    <!-- S2: COUNTDOWN TIMER -->
+    <section class="section" id="countdown">
+      <div class="container text-center">
+        <h2 class="animate-on-scroll">The countdown is on.</h2>
+        <div class="countdown-wrap animate-on-scroll" id="launch-countdown">
+          <div class="countdown-box"><div class="countdown-val" id="cd-days">14</div><div class="countdown-label">Days</div></div>
+          <div class="countdown-box"><div class="countdown-val" id="cd-hours">08</div><div class="countdown-label">Hours</div></div>
+          <div class="countdown-box"><div class="countdown-val" id="cd-mins">45</div><div class="countdown-label">Mins</div></div>
+          <div class="countdown-box"><div class="countdown-val" id="cd-secs">30</div><div class="countdown-label">Secs</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3: EMAIL SIGNUP -->
+    <section class="section section--alt" id="notify-signup">
+      <div class="container text-center">
+        <div style="max-width:600px;margin:0 auto;" class="animate-on-scroll">
+          <h2 style="margin-bottom:var(--space-sm);">Get Early Access</h2>
+          <p style="color:var(--color-text-secondary);margin-bottom:var(--space-xl);">Our seasonal collections sell out fast. Join the waitlist to be notified 24 hours before the public launch.</p>
+          <form style="display:flex;gap:var(--space-sm);">
+            <input type="email" class="form-input" placeholder="Enter your email address" required style="flex:1;">
+            <button type="submit" class="btn btn--primary">Notify Me</button>
+          </form>
+          <p style="font-size:var(--caption-size);color:var(--color-text-tertiary);margin-top:var(--space-sm);">We respect your privacy. No spam, just candles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: TEASER IMAGES -->
+    <section class="section" id="teasers">
+      <div class="container">
+        <div class="section-header animate-on-scroll"><h2>A Sneak Peek</h2><p>Notes of pine, smoked cedar, and crushed winter berries.</p></div>
+        <div class="teaser-grid animate-on-scroll">
+          <img src="assets/images/misc/teaser-1.png" alt="Close up of pine needles" class="teaser-img" loading="lazy">
+          <img src="assets/images/misc/teaser-2.png" alt="Close up of dark red berries" class="teaser-img" loading="lazy">
+          <img src="assets/images/misc/teaser-3.png" alt="Close up of a wooden wick burning" class="teaser-img" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- S5: SOCIAL LINKS -->
+    <section class="section section--alt" id="social-tease">
+      <div class="container text-center animate-on-scroll">
+        <h3 style="margin-bottom:var(--space-md);">Follow the process</h3>
+        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-lg);">We're sharing behind-the-scenes glimpses of the pouring process on our social channels.</p>
+        <div style="display:flex;justify-content:center;gap:var(--space-xl);">
+          <a href="#" style="color:var(--color-text);font-weight:600;display:flex;align-items:center;gap:8px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: RETURN / CONTACT -->
+    <section class="section" id="return-link">
+      <div class="container text-center">
+        <a href="index.html" class="btn btn--outline">Return to Homepage</a>
+        <p style="margin-top:var(--space-md);font-size:var(--small-size);color:var(--color-text-secondary);">Looking for our classic collection? You can still shop our year-round scents.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script for countdown -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/countdown.js"></script>
+</body>
+</html>
+

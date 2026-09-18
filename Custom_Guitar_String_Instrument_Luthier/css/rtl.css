@@ -1,0 +1,66 @@
+/* ==========================================================================
+   FRET — RTL Overrides (Logical Properties Support)
+   Handles layout mirroring when dir="rtl" is applied to html
+   ========================================================================== */
+
+/* 
+  Note: Most of the layout uses CSS Logical Properties (margin-inline, padding-inline,
+  inset-inline-start, etc.) which handle RTL automatically.
+  This file is for specific overrides where logical properties aren't enough
+  or where explicit mirroring is required (like icons or specific positioning).
+*/
+
+[dir="rtl"] {
+  /* Body */
+  text-align: right;
+
+  /* Form Select Icon */
+  .form-select {
+    background-position: left 1rem center;
+    padding-inline-end: 1rem;
+    padding-inline-start: 2.5rem;
+  }
+
+  /* Specific Icon Mirroring (arrows, chevrons, etc.) */
+  .icon-mirror-rtl {
+    transform: scaleX(-1);
+  }
+
+  /* Progress Line / Timelines */
+  .progress-line {
+    transform-origin: right center;
+  }
+
+  /* Slider Handles */
+  .slider-handle {
+    transform: translateX(50%); /* reverse translation for handle centering */
+  }
+
+  /* Specific Positioning Overrides */
+  .hero__overlay {
+    /* If gradients have horizontal direction, reverse them */
+  }
+
+  /* Charts */
+  .chart-container {
+    /* Ensure tooltips and axes mirror correctly via JS config, 
+       but basic CSS positioning if any needs adjustment here */
+  }
+
+  /* Animations */
+  .reveal--slide-left {
+    transform: translateX(24px); /* Reverse direction */
+  }
+
+  .reveal--slide-left.revealed {
+    transform: translateX(0);
+  }
+
+  .reveal--slide-right {
+    transform: translateX(-24px); /* Reverse direction */
+  }
+
+  .reveal--slide-right.revealed {
+    transform: translateX(0);
+  }
+}

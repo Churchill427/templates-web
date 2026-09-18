@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUDZ — Coming Soon</title>
+  <meta name="description" content="Something new is brewing at SUDZ. Sign up to be the first to know when our latest handmade bath products launch.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z' fill='none' stroke='%233E5C50' stroke-width='2'/%3E%3Ccircle cx='22' cy='12' r='2.5' fill='%23C2764A'/%3E%3Ccircle cx='14' cy='20' r='1.5' fill='%23C2764A'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    .coming-soon { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(160deg, #2D4439 0%, #3E5C50 50%, #C2764A 100%); }
+    .coming-soon__overlay { position: absolute; inset: 0; background: rgba(35,43,39,0.3); z-index: 1; }
+    .coming-soon__steam { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+    .steam-wisp { position: absolute; bottom: 0; width: 2px; background: rgba(255,255,255,0.15); border-radius: 50%; filter: blur(3px); }
+    .coming-soon__content { position: relative; z-index: 3; text-align: center; max-width: 560px; padding: var(--sp-4); color: #fff; }
+    .coming-soon__controls { position: fixed; top: var(--sp-2); right: var(--sp-2); display: flex; gap: var(--sp-1); z-index: 10; }
+    .coming-soon__notify { display: flex; gap: var(--sp-1); margin: var(--sp-4) auto 0; max-width: 400px; }
+    .coming-soon__notify input { flex: 1; background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); color: #fff; }
+    .coming-soon__notify input::placeholder { color: rgba(255,255,255,0.5); }
+    .coming-soon__socials { display: flex; gap: var(--sp-1); justify-content: center; margin-top: var(--sp-4); }
+  </style>
+</head>
+<body>
+  <div class="coming-soon">
+    <div class="coming-soon__overlay"></div>
+    <div class="coming-soon__steam" id="steamContainer"></div>
+    <div class="coming-soon__controls">
+      <button class="navbar__icon-btn" data-theme-toggle aria-label="Toggle theme" style="color: #fff;">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="navbar__dir-toggle" data-dir-toggle style="color: #fff; border-color: rgba(255,255,255,0.3);">RTL</button>
+    </div>
+
+    <div class="coming-soon__content anim-fade-scale">
+      <a href="index.html" aria-label="SUDZ Home" style="display: inline-block; margin-bottom: var(--sp-4);">
+        <svg viewBox="0 0 100 36" style="height: 44px;"><path d="M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="22" cy="12" r="2.5" fill="var(--clr-secondary)"/><circle cx="14" cy="20" r="1.5" fill="var(--clr-secondary)"/><text x="36" y="25" text-anchor="start" fill="#fff" font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="24">SUDZ</text></svg>
+      </a>
+      
+      <h1 style="color: #fff; margin-bottom: var(--sp-2);">Something new is on the way</h1>
+      <p style="opacity: 0.85; font-size: 1.0625rem; margin-bottom: var(--sp-5);">We're crafting something special in the workshop. Be the first to know when it drops.</p>
+
+      <!-- Countdown -->
+      <div class="countdown" data-countdown="2027-03-01T10:00:00" style="margin-bottom: var(--sp-5);">
+        <div class="countdown__unit">
+          <span class="countdown__number" data-days style="color: #fff;">00</span>
+          <span class="countdown__label" style="color: rgba(255,255,255,0.6);">Days</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" data-hours style="color: #fff;">00</span>
+          <span class="countdown__label" style="color: rgba(255,255,255,0.6);">Hours</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" data-minutes style="color: #fff;">00</span>
+          <span class="countdown__label" style="color: rgba(255,255,255,0.6);">Mins</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__number" data-seconds style="color: #fff;">00</span>
+          <span class="countdown__label" style="color: rgba(255,255,255,0.6);">Secs</span>
+        </div>
+      </div>
+
+      <!-- Email Notify -->
+      <form class="coming-soon__notify" data-validate id="notifyForm">
+        <input type="email" class="form-input" placeholder="your@email.com" required aria-label="Email for notifications">
+        <button type="submit" class="btn btn--primary">Notify Me</button>
+      </form>
+
+      <!-- Social -->
+      <div class="coming-soon__socials">
+        <a href="#" class="footer__social-btn" aria-label="Instagram" style="background: rgba(255,255,255,0.12); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer__social-btn" aria-label="Facebook" style="background: rgba(255,255,255,0.12); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="footer__social-btn" aria-label="Twitter / X" style="background: rgba(255,255,255,0.12); color: #fff;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M13.232 10.768L20 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Steam animation
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const container = document.getElementById('steamContainer');
+      if (!container) return;
+      for (let i = 0; i < 15; i++) {
+        const wisp = document.createElement('div');
+        wisp.className = 'steam-wisp';
+        const height = Math.random() * 60 + 20;
+        wisp.style.cssText = `
+          left: ${Math.random() * 100}%;
+          height: ${height}px;
+          width: ${Math.random() * 3 + 1}px;
+          animation: steamRise ${Math.random() * 4 + 3}s ease-in-out ${Math.random() * 3}s infinite;
+          opacity: ${Math.random() * 0.3 + 0.1};
+        `;
+        container.appendChild(wisp);
+      }
+    })();
+  </script>
+</body>
+</html>

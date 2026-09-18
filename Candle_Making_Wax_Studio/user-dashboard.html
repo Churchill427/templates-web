@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUME — My Account</title>
+  <meta name="description" content="Manage your LUME orders, wishlist, and account settings.">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="dashboard-page">
+  <div class="dash-layout">
+    <!-- Sidebar -->
+    <aside class="dash-sidebar" id="dash-sidebar">
+      <div class="dash-sidebar__header">
+        <a href="index.html" class="dash-logo">
+          <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/></svg>
+          My Account
+        </a>
+        <button class="dash-sidebar__close" id="dash-sidebar-close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <nav class="dash-nav">
+        <a href="#overview" class="dash-nav__link dash-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Overview</a>
+        <a href="#orders" class="dash-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> Order History</a>
+        <a href="#wishlist" class="dash-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg> Saved Scents</a>
+        <a href="#settings" class="dash-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Settings</a>
+      </nav>
+      <div style="margin-top:auto;">
+        <a href="login.html" class="dash-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Log Out</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-main">
+      <!-- Topbar -->
+      <header class="dash-topbar">
+        <button class="dash-sidebar__toggle" id="dash-sidebar-toggle"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+        <div style="flex:1;"></div>
+        <div class="dash-topbar__actions">
+          <a href="products.html" style="font-size:var(--small-size);color:var(--color-text-secondary);font-weight:600;margin-right:var(--space-sm);">Back to Shop</a>
+          <button class="dash-icon-btn" data-toggle-theme><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+          <div class="dash-avatar">JD</div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="dash-content">
+        <div class="dash-header">
+          <h1 class="dash-title">Welcome back, Jane</h1>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="dash-metrics" style="grid-template-columns:repeat(2, 1fr);max-width:600px;margin-bottom:var(--space-2xl);">
+          <div class="dash-metric-card" style="background:linear-gradient(135deg, var(--color-surface), var(--color-bg));">
+            <div class="dash-metric-card__title">LUME Rewards</div>
+            <div class="dash-metric-card__value">450 <span style="font-size:1rem;color:var(--color-text-secondary);">pts</span></div>
+            <div style="font-size:var(--small-size);color:var(--color-primary);margin-top:var(--space-xs);">50 pts away from a $10 reward</div>
+          </div>
+          <div class="dash-metric-card">
+            <div class="dash-metric-card__title">Total Orders</div>
+            <div class="dash-metric-card__value">3</div>
+            <div style="font-size:var(--small-size);color:var(--color-text-secondary);margin-top:var(--space-xs);">Since Jan 2026</div>
+          </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="dash-card" style="margin-bottom:var(--space-2xl);">
+          <h3 class="dash-card__title">Recent Orders</h3>
+          <div class="dash-table-container">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#LUM-0842</td>
+                  <td>Aug 12, 2026</td>
+                  <td>Amber Noir (1), Wick Trimmer (1)</td>
+                  <td>$52.00</td>
+                  <td><span class="dash-badge dash-badge--success">Delivered</span></td>
+                  <td><a href="#" style="color:var(--color-primary);font-size:var(--small-size);">View</a></td>
+                </tr>
+                <tr>
+                  <td>#LUM-0621</td>
+                  <td>Jun 04, 2026</td>
+                  <td>Matcha &amp; Yuzu (2)</td>
+                  <td>$72.00</td>
+                  <td><span class="dash-badge dash-badge--success">Delivered</span></td>
+                  <td><a href="#" style="color:var(--color-primary);font-size:var(--small-size);">View</a></td>
+                </tr>
+                <tr>
+                  <td>#LUM-0210</td>
+                  <td>Feb 18, 2026</td>
+                  <td>The Starter Set (1)</td>
+                  <td>$42.00</td>
+                  <td><span class="dash-badge dash-badge--success">Delivered</span></td>
+                  <td><a href="#" style="color:var(--color-primary);font-size:var(--small-size);">View</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Saved Scents (Wishlist) -->
+        <div class="dash-card">
+          <h3 class="dash-card__title">Saved Scents</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));gap:var(--space-md);">
+            <!-- Item 1 -->
+            <div style="border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;">
+              <img src="assets/images/products/midnight-orchid.png" alt="Midnight Orchid" style="width:100%;aspect-ratio:1;object-fit:cover;">
+              <div style="padding:var(--space-sm);">
+                <div style="font-weight:600;margin-bottom:4px;">Midnight Orchid</div>
+                <div style="font-size:var(--small-size);color:var(--color-text-secondary);margin-bottom:var(--space-sm);">$42.00</div>
+                <button class="btn btn--outline btn--sm btn--full">Move to Cart</button>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div style="border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;">
+              <img src="assets/images/products/sandalwood-rose.png" alt="Sandalwood Rose" style="width:100%;aspect-ratio:1;object-fit:cover;">
+              <div style="padding:var(--space-sm);">
+                <div style="font-weight:600;margin-bottom:4px;">Sandalwood Rose</div>
+                <div style="font-size:var(--small-size);color:var(--color-text-secondary);margin-bottom:var(--space-sm);">$38.00</div>
+                <button class="btn btn--outline btn--sm btn--full">Move to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
+

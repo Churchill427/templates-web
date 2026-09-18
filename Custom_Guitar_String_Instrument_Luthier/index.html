@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRET | Handcrafted Guitars & String Instruments</title>
+  <meta name="description" content="FRET is a premium luthier atelier crafting bespoke acoustic, electric, and custom string instruments with generational techniques.">
+  
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  
+  <!-- CSS Foundation -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body>
+
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <!-- Logo -->
+      <a href="index.html" class="header__logo" aria-label="FRET Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M40 20 h20 l5 15 v40 l-5 15 h-20 l-5 -15 v-40 z"/>
+        </svg>
+        <span class="header__logo-text">FRET</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header__nav" aria-label="Primary Navigation">
+        <!-- Dropdown Home -->
+        <div class="nav-dropdown">
+          <a href="index.html" class="nav-link nav-link--active">
+            Home
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav-dropdown__menu">
+            <a href="index.html" class="nav-dropdown__link">Home 1 <span>— The Atelier</span></a>
+            <a href="home-2.html" class="nav-dropdown__link">Home 2 <span>— The Gallery</span></a>
+          </div>
+        </div>
+        <a href="instruments.html" class="nav-link">Instruments</a>
+        <a href="repair.html" class="nav-link">Repair & Restoration</a>
+        <a href="process.html" class="nav-link">Process</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="journal.html" class="nav-link">Journal</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Controls -->
+      <div class="header__controls">
+        <!-- Dashboard Dropdown -->
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- RTL Toggle -->
+        <button class="rtl-toggle" aria-label="Toggle direction">RTL</button>
+
+        <!-- Cart Button -->
+        <button class="header__icon-btn cart-btn" aria-label="Open cart">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="header__cart-badge"></span>
+        </button>
+
+        <a href="contact.html" class="btn btn--primary header__cta">Book a Consultation</a>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="header__hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+          <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <nav class="mobile-menu__nav">
+      <a href="#mobile-home-menu" class="mobile-menu__link mobile-menu__link--active" data-toggle="dropdown">
+        Home
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </a>
+      <div id="mobile-home-menu" class="mobile-menu__sub">
+        <a href="index.html" class="mobile-menu__link mobile-menu__link--active">The Atelier</a>
+        <a href="home-2.html" class="mobile-menu__link">The Gallery</a>
+      </div>
+      <a href="instruments.html" class="mobile-menu__link">Instruments</a>
+      <a href="repair.html" class="mobile-menu__link">Repair & Restoration</a>
+      <a href="process.html" class="mobile-menu__link">Process</a>
+      <a href="about.html" class="mobile-menu__link">About</a>
+      <a href="journal.html" class="mobile-menu__link">Journal</a>
+      <a href="contact.html" class="mobile-menu__link">Contact</a>
+      
+
+    </nav>
+    
+    <div class="mobile-menu__toggles">
+      <button class="theme-toggle mobile-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="rtl-toggle mobile-toggle" aria-label="Toggle direction">RTL</button>
+    </div>
+    
+    <a href="contact.html" class="btn btn--primary mobile-menu__cta">Book a Consultation</a>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer__overlay"></div>
+  <div class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Cart">
+    <div class="cart-drawer__header">
+      <h3>Your Selection</h3>
+      <button class="cart-drawer__close header__icon-btn" aria-label="Close cart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="cart-drawer__body">
+      <div class="cart-drawer__empty">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <p>Your cart is empty.</p>
+        <a href="instruments.html" class="btn btn--outline-dark mt-2" onclick="document.querySelector('.cart-drawer__close').click()">Browse Instruments</a>
+      </div>
+      <!-- Cart items will be injected here via JS -->
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Subtotal</span>
+        <span>$0.00</span>
+      </div>
+      <a href="cart.html" class="btn btn--primary btn--full">Proceed to Cart</a>
+    </div>
+  </div>
+
+  <main id="main-content">
+    
+    <!-- SECTION 1: HERO -->
+    <section class="hero">
+      <div class="hero__bg hover-zoom">
+        <img src="images/hero/hero-home1.png" alt="Sunlit workbench with hand planes, chisels, and an unfinished guitar body" class="ken-burns">
+      </div>
+      <div class="hero__overlay"></div>
+      
+      <!-- Sawdust particles canvas -->
+      <canvas id="sawdust-canvas" style="position: absolute; inset: 0; z-index: 1; pointer-events: none;"></canvas>
+
+      <div class="hero__content reveal">
+        <span class="overline">Handcrafted in the Atelier</span>
+        <h1>Built by Hand.<br>Heard for Generations.</h1>
+        <div class="hero__ctas">
+          <a href="instruments.html" class="btn btn--primary">Explore Instruments</a>
+          <a href="contact.html" class="btn btn--outline">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CRAFT PILLARS -->
+    <section class="section section--surface">
+      <div class="container">
+        <div class="section-header reveal reveal--fade">
+          <span class="overline">The Philosophy</span>
+          <h2>Crafted Without Compromise</h2>
+          <p>Every FRET instrument is a dialogue between the luthier and the tonewood, guided by decades of generational knowledge.</p>
+        </div>
+
+        <div class="grid grid--3 mb-8">
+          <div class="card card--icon reveal reveal--slide-left reveal-delay-1">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div class="card__body">
+              <h3>Bespoke Design</h3>
+              <p>Tailored ergonomics and acoustics that respond to your unique playing style.</p>
+            </div>
+            <div class="card__footer">
+              <a href="process.html" class="btn btn--ghost">Learn more</a>
+            </div>
+          </div>
+
+          <div class="card card--icon reveal reveal--scale reveal-delay-2">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15.222C5 17.86 7.18 20 9.87 20h4.26C16.82 20 19 17.86 19 15.222V8.778C19 6.14 16.82 4 14.13 4H9.87C7.18 4 5 6.14 5 8.778v6.444z"></path><path d="M9 12h6"></path><path d="M9 16h6"></path><path d="M9 8h6"></path></svg>
+            </div>
+            <div class="card__body">
+              <h3>Master Grade Tonewood</h3>
+              <p>Ethically sourced, individually tap-tuned spruce, rosewood, and mahogany.</p>
+            </div>
+            <div class="card__footer">
+              <a href="about.html" class="btn btn--ghost">Learn more</a>
+            </div>
+          </div>
+
+          <div class="card card--icon reveal reveal--slide-right reveal-delay-3">
+            <div class="card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+            <div class="card__body">
+              <h3>Precision Setup</h3>
+              <p>Every fret leveled, every saddle compensated to a fraction of a millimeter.</p>
+            </div>
+            <div class="card__footer">
+              <a href="repair.html" class="btn btn--ghost">Learn more</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Image Strip -->
+        <div class="hover-zoom" style="border-radius: var(--radius-xl); overflow: hidden; max-height: 240px;">
+          <img src="images/misc/grain-strip.png" alt="Close-up of maple and spruce tonewood grain" style="width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED INSTRUMENTS -->
+    <section class="section">
+      <div class="container">
+        <div class="flex-between mb-6 flex-wrap gap-3 reveal">
+          <div>
+            <span class="overline">The Collection</span>
+            <h2>Handbuilt Masterpieces</h2>
+          </div>
+          <a href="instruments.html" class="btn btn--outline-dark">View All Instruments</a>
+        </div>
+
+        <!-- 2x2 Grid per requirements -->
+        <div class="grid grid--2">
+          <!-- Acoustic -->
+          <div class="card reveal reveal-delay-1">
+            <div class="card__image">
+              <img src="images/instruments/grand-auditorium.png" alt="The Grand Auditorium Acoustic Guitar">
+            </div>
+            <div class="card__body text-center">
+              <h3>The Grand Auditorium</h3>
+              <p class="card__spec">Sitka Spruce Top · Indian Rosewood Back/Sides</p>
+              <div class="card__price">$4,250</div>
+            </div>
+            <div class="card__footer pb-4">
+              <a href="instruments.html" class="btn btn--primary">View Details</a>
+            </div>
+          </div>
+
+          <!-- Electric -->
+          <div class="card reveal reveal-delay-2">
+            <div class="card__image">
+              <img src="images/instruments/classic-59.png" alt="The Classic '59 Solidbody Electric">
+            </div>
+            <div class="card__body text-center">
+              <h3>The Classic '59</h3>
+              <p class="card__spec">Honduran Mahogany · Figured Maple Cap</p>
+              <div class="card__price">$3,800</div>
+            </div>
+            <div class="card__footer pb-4">
+              <a href="instruments.html" class="btn btn--primary">View Details</a>
+            </div>
+          </div>
+
+          <!-- Archtop -->
+          <div class="card reveal reveal-delay-3">
+            <div class="card__image">
+              <img src="images/instruments/jazz-standard.png" alt="The Jazz Standard Archtop">
+            </div>
+            <div class="card__body text-center">
+              <h3>The Jazz Standard</h3>
+              <p class="card__spec">Carved Spruce Top · Flame Maple Back/Sides</p>
+              <div class="card__price">$6,500</div>
+            </div>
+            <div class="card__footer pb-4">
+              <a href="instruments.html" class="btn btn--primary">View Details</a>
+            </div>
+          </div>
+
+          <!-- Custom -->
+          <div class="card reveal reveal-delay-4">
+            <div class="card__image">
+              <img src="images/instruments/bespoke-baritone.png" alt="The Bespoke Baritone">
+            </div>
+            <div class="card__body text-center">
+              <h3>The Bespoke Baritone</h3>
+              <p class="card__spec">Sinker Redwood Top · Ziricote Back/Sides</p>
+              <div class="card__price">From $5,200</div>
+            </div>
+            <div class="card__footer pb-4">
+              <a href="contact.html" class="btn btn--primary">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE LUTHIER'S BENCH -->
+    <section class="section section--surface">
+      <div class="container">
+        <!-- Split layout enforcing equal heights -->
+        <div class="split split--40-60">
+          <div class="split__content reveal reveal--slide-left">
+            <span class="overline">Our Story</span>
+            <h3 style="margin-bottom: var(--space-3);">The Luthier's Bench</h3>
+            <p style="color: var(--color-text-secondary); margin-bottom: var(--space-3); font-size: 1.125rem;">
+              Founded in 1988, FRET was born from a singular belief: that an instrument should be as inspiring to hold as it is to hear. 
+            </p>
+            <p style="margin-bottom: var(--space-4);">
+              We don't use CNC machines for our neck profiles. We carve them by hand, feeling the grain, reading the wood, and ensuring that the final shape rests perfectly in the player's palm. It is a slow, methodical process that cannot be rushed.
+            </p>
+            <div>
+              <a href="about.html" class="btn btn--primary">Read the Full Story</a>
+            </div>
+          </div>
+          
+          <div class="split__media hover-zoom reveal reveal--slide-right">
+            <img src="images/workshop/carving-neck.png" alt="Master luthier carving a guitar neck with a spoke shave">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PROCESS PREVIEW -->
+    <section class="section section--dark" style="position: relative; z-index: 1;">
+      <!-- Unique background texture -->
+      <div style="position: absolute; inset: 0; z-index: -1; opacity: 0.1;">
+        <img src="images/misc/spruce-texture.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      
+      <div class="container">
+        <div class="section-header reveal reveal--fade">
+          <span class="overline">How It's Made</span>
+          <h2>The Journey of a Build</h2>
+        </div>
+
+        <div style="position: relative; max-width: 900px; margin: 0 auto; padding-top: var(--space-4);">
+          <!-- Animated connecting line -->
+          <svg style="position: absolute; top: 76px; left: 10%; width: 80%; height: 4px; z-index: 0; pointer-events: none;" preserveAspectRatio="none">
+            <line x1="0" y1="2" x2="100%" y2="2" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2" />
+            <line class="draw-line" x1="0" y1="2" x2="100%" y2="2" stroke="var(--color-primary)" stroke-width="2" style="--line-length: 1000;" />
+          </svg>
+
+          <!-- 4-step horizontal strip -->
+          <div class="grid grid--4" style="position: relative; z-index: 1;">
+            
+            <div class="text-center reveal reveal-delay-1">
+              <div class="flex-center" style="width: 64px; height: 64px; border-radius: 50%; background-color: var(--color-primary); color: #fff; margin: 0 auto var(--space-3); font-family: var(--font-heading); font-size: var(--h4-size); font-weight: 700; box-shadow: 0 0 0 8px var(--color-secondary);">
+                1
+              </div>
+              <h4 style="margin-bottom: 8px;">Selection</h4>
+              <p style="font-size: var(--small-size);">Choosing the perfect tonewood sets.</p>
+            </div>
+
+            <div class="text-center reveal reveal-delay-2">
+              <div class="flex-center" style="width: 64px; height: 64px; border-radius: 50%; background-color: var(--color-primary); color: #fff; margin: 0 auto var(--space-3); font-family: var(--font-heading); font-size: var(--h4-size); font-weight: 700; box-shadow: 0 0 0 8px var(--color-secondary);">
+                2
+              </div>
+              <h4 style="margin-bottom: 8px;">Voicing</h4>
+              <p style="font-size: var(--small-size);">Tap-tuning and hand-carving braces.</p>
+            </div>
+
+            <div class="text-center reveal reveal-delay-3">
+              <div class="flex-center" style="width: 64px; height: 64px; border-radius: 50%; background-color: var(--color-primary); color: #fff; margin: 0 auto var(--space-3); font-family: var(--font-heading); font-size: var(--h4-size); font-weight: 700; box-shadow: 0 0 0 8px var(--color-secondary);">
+                3
+              </div>
+              <h4 style="margin-bottom: 8px;">Finishing</h4>
+              <p style="font-size: var(--small-size);">Ultra-thin nitrocellulose lacquer.</p>
+            </div>
+
+            <div class="text-center reveal reveal-delay-4">
+              <div class="flex-center" style="width: 64px; height: 64px; border-radius: 50%; background-color: var(--color-primary); color: #fff; margin: 0 auto var(--space-3); font-family: var(--font-heading); font-size: var(--h4-size); font-weight: 700; box-shadow: 0 0 0 8px var(--color-secondary);">
+                4
+              </div>
+              <h4 style="margin-bottom: 8px;">Setup</h4>
+              <p style="font-size: var(--small-size);">Precision fretwork and intonation.</p>
+            </div>
+
+          </div>
+          
+          <div class="text-center mt-8 reveal">
+            <a href="process.html" class="btn btn--primary">Discover the Process</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: TESTIMONIALS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal reveal--fade">
+          <span class="overline">The Players</span>
+          <h2>In the Hands of Artists</h2>
+        </div>
+
+        <!-- 2x2 Grid -->
+        <div class="grid grid--2 mb-6">
+          <div class="card card--testimonial hover-lift reveal reveal--slide-left reveal-delay-1">
+            <p class="card__quote">
+              "The responsiveness is unlike anything I've ever played. It breathes with you. The low end is thunderous, yet individual notes remain perfectly articulated up the neck."
+            </p>
+            <div class="card__author">
+              <img src="images/team/client-1.png" alt="Client playing acoustic" class="card__avatar">
+              <div class="card__author-info">
+                <strong>Sarah Jenkins</strong>
+                <span>Plays The Grand Auditorium</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--testimonial hover-lift reveal reveal--slide-right reveal-delay-2">
+            <p class="card__quote">
+              "I commissioned a custom archtop, and the experience was incredible. They listened to exactly the tone I had in my head, and somehow carved it out of spruce."
+            </p>
+            <div class="card__author">
+              <img src="images/team/client-2.png" alt="Client in studio" class="card__avatar">
+              <div class="card__author-info">
+                <strong>David Ross</strong>
+                <span>Plays Custom Archtop</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card card--testimonial hover-lift reveal reveal--slide-left reveal-delay-3">
+            <p class="card__quote">
+              "The neck profile on the Classic '59 fits my hand like a glove. It feels like an instrument that has been played for 40 years, right out of the case."
+            </p>
+            <div class="card__author">
+              <img src="images/team/client-3.png" alt="Client on stage" class="card__avatar">
+              <div class="card__author-info">
+                <strong>Marcus Chen</strong>
+                <span>Plays The Classic '59</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--testimonial hover-lift reveal reveal--slide-right reveal-delay-4">
+            <p class="card__quote">
+              "They completely restored my grandfather's 1942 dreadnought. The structural integrity is perfect, yet they preserved all the mojo and patina. Masterful work."
+            </p>
+            <div class="card__author">
+              <img src="images/team/client-4.png" alt="Client looking at restored guitar" class="card__avatar">
+              <div class="card__author-info">
+                <strong>Elena Vasquez</strong>
+                <span>Restoration Client</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Centered CTA -->
+        <div class="text-center reveal">
+          <a href="about.html#reviews" class="btn btn--primary">Read More Reviews</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <!-- Brand -->
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
+              <path d="M40 20 h20 l5 15 v40 l-5 15 h-20 l-5 -15 v-40 z"/>
+            </svg>
+            <span class="footer__logo-text">FRET</span>
+          </a>
+          <p>Handcrafting legacy instruments for the modern player. Built by hand, heard for generations.</p>
+          <form class="footer__newsletter" data-validate="true" aria-label="Newsletter Subscription">
+            <input type="email" id="newsletter-email" placeholder="Subscribe to the Journal" required>
+            <button type="submit">Join</button>
+          </form>
+          <div id="newsletter-email-error" class="form-error"></div>
+        </div>
+
+        <!-- Shop Links -->
+        <div class="footer__column">
+          <h4>The Shop</h4>
+          <nav class="footer__links" aria-label="Shop Links">
+            <a href="instruments.html">Acoustic Guitars</a>
+            <a href="instruments.html">Electric Guitars</a>
+            <a href="instruments.html">Custom Builds</a>
+            <a href="repair.html">Repair Services</a>
+          </nav>
+        </div>
+
+        <!-- Atelier Links -->
+        <div class="footer__column">
+          <h4>The Atelier</h4>
+          <nav class="footer__links" aria-label="Atelier Links">
+            <a href="process.html">Build Process</a>
+            <a href="about.html">About Us</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">FAQ</a>
+          </nav>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer__column">
+          <h4>Contact</h4>
+          <div class="footer__contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>123 Luthier Lane<br>Portland, OR 97204</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:5551234567">(555) 123-4567</a>
+          </div>
+          <div class="footer__contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:hello@fret.com">hello@fret.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Row -->
+      <div class="footer__social">
+        <a href="#" class="footer__social-btn footer__social-btn--google" aria-label="FRET on Google">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </a>
+        <a href="#" class="footer__social-btn footer__social-btn--apple" aria-label="FRET on Apple">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 13.57c-.02-2.12 1.73-3.15 1.8-3.19-1-1.45-2.54-1.66-3.1-1.68-1.31-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.78-.74-1.41.02-2.71.82-3.44 2.1-1.47 2.54-.38 6.31 1.06 8.39.7 1.01 1.51 2.13 2.62 2.09 1.06-.04 1.47-.69 2.76-.69 1.28 0 1.66.69 2.78.67 1.14-.02 1.86-1.04 2.56-2.05.81-1.18 1.14-2.33 1.16-2.39-.02-.01-2.14-.82-2.17-3.29zm-1.89-5.11c.58-.71.98-1.7.87-2.69-.85.03-1.88.57-2.48 1.28-.53.62-1 1.62-.88 2.59.95.07 1.91-.47 2.49-1.18z"/></svg>
+        </a>
+        <a href="#" class="footer__social-btn footer__social-btn--facebook" aria-label="FRET on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="footer__social-btn footer__social-btn--instagram" aria-label="FRET on Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; 2026 FRET.</span>
+        <a href="#">Privacy</a>
+        <span class="footer__bottom-sep">&middot;</span>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Foundation -->
+  <script src="js/main.js"></script>
+  <script src="js/scroll-reveal.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/particles.js"></script>
+
+</body>
+</html>
+

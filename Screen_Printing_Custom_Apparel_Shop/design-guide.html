@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Upload Guide — PRNT Artwork Preparation</title>
+  <meta name="description" content="Prepare your artwork for perfect screen printing. File formats, DPI requirements, color modes, and an interactive design checker tool." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <link rel="stylesheet" href="styles/variables.css" /><link rel="stylesheet" href="styles/base.css" /><link rel="stylesheet" href="styles/components.css" /><link rel="stylesheet" href="styles/animations.css" /><link rel="stylesheet" href="styles/responsive.css" />
+  <style>
+    .spec-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);}
+    .spec-card{padding:var(--space-5);background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border-color-light);text-align:center;box-shadow:var(--shadow-xs);}
+    .spec-card h4{margin-bottom:var(--space-2);}
+    .spec-card p{font-size:var(--fs-small);color:var(--text-muted);margin:0;}
+    .upload-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);}
+    .upload-step{text-align:center;}
+    .upload-step__num{font-family:var(--font-heading);font-size:var(--fs-h2);font-weight:var(--fw-extrabold);color:var(--color-secondary);opacity:0.2;margin-bottom:var(--space-2);}
+    .upload-step img{width:100%;height:160px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:var(--space-4);}
+    .design-checker{background:var(--bg-card);padding:var(--space-8);border-radius:var(--radius-xl);border:1px solid var(--border-color-light);box-shadow:var(--shadow-md);max-width:800px;margin-inline:auto;}
+    .checker-preview{display:flex;align-items:center;justify-content:center;height:200px;border-radius:var(--radius-lg);margin-top:var(--space-6);font-family:var(--font-heading);font-size:var(--fs-h3);font-weight:var(--fw-bold);text-transform:uppercase;transition:all 0.3s ease;border:2px dashed var(--border-color);}
+    .dos-donts{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);}
+    .dos-donts__col h3{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);}
+    .dos-donts__col li{display:flex;align-items:flex-start;gap:var(--space-3);margin-bottom:var(--space-3);font-size:var(--fs-small);color:var(--text-secondary);}
+    .dos-donts__col li i{flex-shrink:0;margin-top:2px;}
+    @media(max-width:767px){.spec-cards,.upload-steps{grid-template-columns:repeat(2,1fr);}.dos-donts{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="preloader" aria-hidden="true"><div class="preloader__ink"><span></span><span></span><span></span></div></div>
+  <header class="navbar" role="banner"><div class="navbar__inner"><a href="index.html" class="navbar__logo" aria-label="PRNT Home"><div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span class="navbar__logo-text">PRNT</span></a><nav class="navbar__nav" role="navigation" aria-label="Main navigation"><div class="navbar__dropdown"><a href="#" class="navbar__link" aria-haspopup="true">Home <i data-lucide="chevron-down"></i></a><div class="navbar__dropdown-menu" role="menu"><a href="index.html" class="navbar__dropdown-item" role="menuitem"><i data-lucide="zap"></i> Home 1</a><a href="home-alt.html" class="navbar__dropdown-item" role="menuitem"><i data-lucide="palette"></i> Home 2</a></div></div><a href="about.html" class="navbar__link">About</a><a href="products.html" class="navbar__link">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html" class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html" class="navbar__link">Contact</a></nav><div class="navbar__actions"><a href="cart.html" class="navbar__cart-btn" aria-label="Cart"><i data-lucide="shopping-cart"></i><span class="navbar__cart-badge badge--count">0</span></a><button class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle theme"><i data-lucide="moon" class="theme-toggle-icon"></i></button><button class="navbar__rtl-btn navbar__toggle-btn" data-toggle-dir><span class="rtl-toggle-text">RTL</span></button><button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button></div></div><div class="navbar__mobile-menu" role="navigation" aria-label="Mobile navigation"><div class="navbar__dropdown"><a href="#" class="navbar__link">Home <i data-lucide="chevron-down"></i></a><div class="navbar__dropdown-menu"><a href="index.html" class="navbar__dropdown-item"><i data-lucide="zap"></i> Home 1</a><a href="home-alt.html" class="navbar__dropdown-item"><i data-lucide="palette"></i> Home 2</a></div></div><a href="about.html" class="navbar__link">About</a><a href="products.html" class="navbar__link">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html" class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html" class="navbar__link">Contact</a><div class="navbar__mobile-toggles"><button class="navbar__toggle-btn" data-toggle-theme><i data-lucide="moon" class="theme-toggle-icon"></i></button><button class="navbar__rtl-btn navbar__toggle-btn" data-toggle-dir><span class="rtl-toggle-text">RTL</span></button></div></div></header>
+
+  <main id="main-content" class="page-content">
+    <!-- S1: HERO -->
+    <section class="hero" aria-label="Design guide hero">
+      <img src="assets/images/hero_design_guide.png" alt="Vector artwork screen separation film on light table" class="hero__bg" />
+      <div class="hero__overlay"></div>
+      <div class="hero__content"><h1><span class="hero-word">Design</span> <span class="hero-word">Upload</span> <span class="hero-word">Guide</span></h1><p>Everything you need to prepare your artwork for perfect screen printing results.</p></div>
+    </section>
+
+    <!-- S2: FILE REQUIREMENTS -->
+    <section class="section" id="file-requirements" aria-label="File requirements">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Specifications</span><h2>File Requirements</h2></div>
+        <div class="spec-cards reveal-stagger">
+          <div class="spec-card"><div class="stat-card__icon stat-card__icon--primary" style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="file-type"></i></div><h4 style="font-size:var(--fs-body);">Formats</h4><p>AI, EPS, SVG, PDF, PSD, PNG</p></div>
+          <div class="spec-card"><div class="stat-card__icon stat-card__icon--accent" style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="scan"></i></div><h4 style="font-size:var(--fs-body);">Resolution</h4><p>300 DPI minimum for raster files</p></div>
+          <div class="spec-card"><div class="stat-card__icon stat-card__icon--primary" style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="palette"></i></div><h4 style="font-size:var(--fs-body);">Color Mode</h4><p>CMYK or Pantone (PMS) preferred</p></div>
+          <div class="spec-card"><div class="stat-card__icon stat-card__icon--accent" style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="layers"></i></div><h4 style="font-size:var(--fs-body);">Transparency</h4><p>PNG with transparent background</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S2.5: DEEP DIVE: VECTOR VS RASTER & COLOR MATCHING -->
+    <section class="section" id="deep-dive" aria-label="Vector vs Raster and Color Matching">
+      <div class="container">
+        <div class="grid grid--2 reveal-stagger">
+          <div class="card" style="padding:var(--space-6);">
+            <h3 style="margin-bottom:var(--space-3);"><i data-lucide="scaling" style="color:var(--color-primary);margin-right:8px;vertical-align:middle;"></i>Vector vs. Raster</h3>
+            <p style="font-size:var(--fs-small);line-height:1.6;margin-bottom:var(--space-3);"><strong>Vector files (AI, EPS, SVG)</strong> are created using mathematical formulas, meaning they can be scaled infinitely without losing quality. They are the absolute best format for screen printing because they allow us to easily separate colors for the different screens.</p>
+            <p style="font-size:var(--fs-small);line-height:1.6;margin-bottom:0;"><strong>Raster files (PNG, PSD, JPEG)</strong> are made of pixels. If you must use a raster file, it must be created at actual print size with a minimum resolution of 300 DPI. A low-resolution image pulled from the web will result in a blurry, pixelated print.</p>
+          </div>
+          <div class="card" style="padding:var(--space-6);">
+            <h3 style="margin-bottom:var(--space-3);"><i data-lucide="palette" style="color:var(--color-accent);margin-right:8px;vertical-align:middle;"></i>Pantone Color Matching</h3>
+            <p style="font-size:var(--fs-small);line-height:1.6;margin-bottom:var(--space-3);">Monitors display colors in RGB (Light), but we print using physical ink. What looks neon green on your screen might look duller on a shirt unless properly color-matched.</p>
+            <p style="font-size:var(--fs-small);line-height:1.6;margin-bottom:0;">For exact color replication, we use the <strong>Solid Coated Pantone (PMS) Matching System</strong>. If you provide PMS color codes with your artwork, our ink technicians will custom mix the ink to match those exact hues with 98% accuracy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3: STEP-BY-STEP UPLOAD -->
+    <section class="section" id="upload-steps" aria-label="Upload process" style="background:var(--bg-muted);">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Process</span><h2>Upload Your Design</h2></div>
+        <div class="upload-steps reveal-stagger">
+          <div class="upload-step"><div class="upload-step__num">01</div><img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80" alt="Preparing design file on computer" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Prepare Your File</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">Export as vector or 300+ DPI PNG with transparent background</p></div>
+          <div class="upload-step"><div class="upload-step__num">02</div><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="Uploading artwork through form" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Upload Artwork</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">Use our quote form or email directly to artwork@prnt.shop</p></div>
+          <div class="upload-step"><div class="upload-step__num">03</div><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80" alt="Design team reviewing proof" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Proof Review</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">We send a digital mockup for your approval within 24 hours</p></div>
+          <div class="upload-step"><div class="upload-step__num">04</div><img src="https://images.unsplash.com/photo-1581291518633-83b4eef1d2f8?w=400&q=80" alt="Approved design going to press" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Production</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">Once approved, your order goes straight to our print floor</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: INTERACTIVE DESIGN CHECKER -->
+    <section class="section" id="design-checker" aria-label="Design checker tool">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Interactive Tool</span><h2>Design Contrast Checker</h2><p class="section__subtitle">Preview how your ink colors look on different garment colors</p></div>
+        <div class="design-checker reveal">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+            <div class="form-group"><label class="form-label">Garment Color</label><select class="form-input" id="checker-garment"><option value="#FFFFFF">White</option><option value="#1A1A1A">Black</option><option value="#16233F">Navy</option><option value="#B22222">Red</option><option value="#2E7D32">Forest Green</option><option value="#F4A100">Gold</option><option value="#78909C">Grey</option></select></div>
+            <div class="form-group"><label class="form-label">Number of Ink Colors</label><select class="form-input" id="checker-colors"><option value="1">1 Color</option><option value="2">2 Colors</option><option value="3">3 Colors</option><option value="4">4+ Colors</option></select></div>
+          </div>
+          <div class="form-group"><label class="form-label">Primary Ink Color</label><input type="color" id="checker-ink" value="#17A2B8" style="width:60px;height:40px;border:none;cursor:pointer;border-radius:var(--radius-md);" /></div>
+          <div class="checker-preview" id="checker-preview">
+            <span id="checker-text">YOUR DESIGN</span>
+          </div>
+          <div id="checker-feedback" style="margin-top:var(--space-4);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);font-size:var(--fs-small);font-weight:var(--fw-medium);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5: DO'S & DON'TS -->
+    <section class="section" id="dos-donts" aria-label="Design dos and donts" style="background:var(--bg-muted);">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Best Practices</span><h2>Do's & Don'ts</h2></div>
+        <div class="dos-donts reveal">
+          <div class="dos-donts__col">
+            <h3><i data-lucide="check-circle" style="color:var(--color-success);"></i> Do's</h3>
+            <ul>
+              <li><i data-lucide="check" style="color:var(--color-success);width:16px;"></i> Use vector files (AI, EPS, SVG) for sharpest results</li>
+              <li><i data-lucide="check" style="color:var(--color-success);width:16px;"></i> Convert text to outlines/paths before exporting</li>
+              <li><i data-lucide="check" style="color:var(--color-success);width:16px;"></i> Provide Pantone (PMS) color references</li>
+              <li><i data-lucide="check" style="color:var(--color-success);width:16px;"></i> Export PNG at 300+ DPI with transparent background</li>
+              <li><i data-lucide="check" style="color:var(--color-success);width:16px;"></i> Include bleed area for edge-to-edge prints</li>
+              <li><i data-lucide="check" style="color:var(--color-success);width:16px;"></i> Test contrast of ink vs. garment color</li>
+            </ul>
+          </div>
+          <div class="dos-donts__col">
+            <h3><i data-lucide="x-circle" style="color:var(--color-danger);"></i> Don'ts</h3>
+            <ul>
+              <li><i data-lucide="x" style="color:var(--color-danger);width:16px;"></i> Don't submit low-res JPEGs or screenshots</li>
+              <li><i data-lucide="x" style="color:var(--color-danger);width:16px;"></i> Don't use RGB colors (they shift in print)</li>
+              <li><i data-lucide="x" style="color:var(--color-danger);width:16px;"></i> Don't include white backgrounds on dark garments</li>
+              <li><i data-lucide="x" style="color:var(--color-danger);width:16px;"></i> Don't use fine hairline strokes (min 1pt)</li>
+              <li><i data-lucide="x" style="color:var(--color-danger);width:16px;"></i> Don't embed ICC profiles without noting them</li>
+              <li><i data-lucide="x" style="color:var(--color-danger);width:16px;"></i> Don't submit copyrighted artwork without rights</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5.5: COMMON DESIGN MISTAKES -->
+    <section class="section" id="mistakes" aria-label="Common design mistakes">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Troubleshooting</span><h2>Why Designs Get Rejected</h2><p class="section__subtitle">Avoid these common pitfalls to ensure your file goes straight to production.</p></div>
+        <div class="grid grid--3 reveal-stagger">
+          <div class="card" style="padding:var(--space-5);">
+            <h4 style="color:var(--color-danger);margin-bottom:var(--space-2);"><i data-lucide="alert-triangle" style="width:18px;vertical-align:middle;margin-right:4px;"></i> Fonts Not Outlined</h4>
+            <p style="font-size:var(--fs-small);color:var(--text-muted);line-height:1.5;margin:0;">If you use a custom font but don't outline it, our computers might replace it with a default font like Arial. Always right-click your text and select "Create Outlines" before saving your vector file.</p>
+          </div>
+          <div class="card" style="padding:var(--space-5);">
+            <h4 style="color:var(--color-danger);margin-bottom:var(--space-2);"><i data-lucide="alert-triangle" style="width:18px;vertical-align:middle;margin-right:4px;"></i> Tiny Details & Lines</h4>
+            <p style="font-size:var(--fs-small);color:var(--text-muted);line-height:1.5;margin:0;">Screen printing uses physical mesh screens. Lines thinner than 1pt or extremely small text may not burn properly into the screen or might get clogged with ink during the print run.</p>
+          </div>
+          <div class="card" style="padding:var(--space-5);">
+            <h4 style="color:var(--color-danger);margin-bottom:var(--space-2);"><i data-lucide="alert-triangle" style="width:18px;vertical-align:middle;margin-right:4px;"></i> Hidden Backgrounds</h4>
+            <p style="font-size:var(--fs-small);color:var(--text-muted);line-height:1.5;margin:0;">Submitting a design with a white background block when you want it printed on a black shirt means we will print that white box. Always export PNGs with a transparent background.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: UPLOAD CTA + SUPPORT -->
+    <section class="section" id="upload-cta" aria-label="Upload your design">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center;" class="reveal">
+          <div style="text-align:center;">
+            <h2 style="margin-bottom:var(--space-4);">Ready to Upload?</h2>
+            <p>Attach your artwork when requesting a quote, or email it directly to our design team.</p>
+            <div style="display:flex;gap:var(--space-4);justify-content:center;margin-top:var(--space-6);flex-wrap:wrap;">
+              <a href="contact.html" class="btn btn--primary btn--lg">Request Quote + Upload</a>
+              <a href="mailto:artwork@prnt.shop" class="btn btn--ghost btn--lg"><i data-lucide="mail" style="width:16px;"></i> Email Artwork</a>
+            </div>
+          </div>
+          <div class="card" style="padding:var(--space-6);">
+            <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4);"><div class="stat-card__icon stat-card__icon--primary" style="margin:0;"><i data-lucide="headphones"></i></div><div><h4 style="font-size:var(--fs-body);margin-bottom:2px;">Need Help?</h4><p style="font-size:var(--fs-small);color:var(--text-muted);margin:0;">Our design team can assist</p></div></div>
+            <p style="font-size:var(--fs-small);">Not sure if your file is print-ready? Send it our way and we'll review it for free. We can also help vectorize raster images or adjust colors for print.</p>
+            <div style="margin-top:var(--space-4);"><span style="font-size:var(--fs-small);color:var(--text-muted);"><i data-lucide="phone" style="width:14px;display:inline;vertical-align:middle;"></i> +1 (503) 555-PRNT</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo"><div class="footer__grid"><div><div class="footer__brand"><a href="index.html" class="navbar__logo" aria-label="PRNT Home"><div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span class="navbar__logo-text">PRNT</span></a></div><p class="footer__desc">Premium screen printing and custom apparel.</p><div class="footer__socials"><a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn social-btn--facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn social-btn--instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn social-btn--twitter" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn social-btn--linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn social-btn--youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a><a href="https://tiktok.com" target="_blank" rel="noopener" class="social-btn social-btn--tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a></div></div><div><h4 class="footer__heading">Quick Links</h4><div class="footer__links"><a href="about.html"><i data-lucide="chevron-right" style="width:14px;"></i> About</a><a href="products.html"><i data-lucide="chevron-right" style="width:14px;"></i> Products</a><a href="bulk.html"><i data-lucide="chevron-right" style="width:14px;"></i> Bulk Orders</a><a href="design-guide.html"><i data-lucide="chevron-right" style="width:14px;"></i> Design Guide</a><a href="blog.html"><i data-lucide="chevron-right" style="width:14px;"></i> Blog</a></div></div><div><h4 class="footer__heading">Contact</h4><div class="footer__contact-item"><i data-lucide="map-pin"></i> 742 Ink Press Ave, Portland, OR</div><div class="footer__contact-item"><i data-lucide="phone"></i> +1 (503) 555-PRNT</div><div class="footer__contact-item"><i data-lucide="mail"></i> hello@prnt.shop</div><div class="footer__contact-item"><i data-lucide="clock"></i> Mon–Fri 8am–6pm</div></div><div><h4 class="footer__heading">Newsletter</h4><p class="footer__desc">Tips, deals, and drops.</p><div class="footer__newsletter"><form class="footer__newsletter-form" onsubmit="event.preventDefault();this.querySelector('input').value='';alert('Subscribed!');"><input type="email" class="footer__newsletter-input" placeholder="Your email" required /><button type="submit" class="btn btn--primary btn--sm"><i data-lucide="send" style="width:16px;"></i></button></form></div></div></div><div class="footer__bottom"><p>&copy; 2026 PRNT. All rights reserved.</p></div></footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+  <script src="js/global.js"></script><script src="js/components.js"></script><script src="js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      // Design checker
+      const garmentSel = document.getElementById('checker-garment');
+      const inkInput = document.getElementById('checker-ink');
+      const preview = document.getElementById('checker-preview');
+      const text = document.getElementById('checker-text');
+      const feedback = document.getElementById('checker-feedback');
+
+      function updateChecker() {
+        const bg = garmentSel.value;
+        const ink = inkInput.value;
+        preview.style.background = bg;
+        preview.style.borderColor = bg === '#FFFFFF' ? 'var(--border-color)' : bg;
+        text.style.color = ink;
+
+        // Calculate contrast ratio
+        const lum = (hex) => {
+          const rgb = [parseInt(hex.slice(1,3),16),parseInt(hex.slice(3,5),16),parseInt(hex.slice(5,7),16)].map(c=>{c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);});
+          return 0.2126*rgb[0]+0.7152*rgb[1]+0.0722*rgb[2];
+        };
+        const l1 = lum(bg), l2 = lum(ink);
+        const ratio = (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
+
+        if (ratio >= 4.5) {
+          feedback.textContent = 'Contrast ratio: ' + ratio.toFixed(1) + ':1 — Excellent readability (WCAG AA Pass)';
+          feedback.style.background = 'rgba(40,167,69,0.1)';
+          feedback.style.color = 'var(--color-success)';
+        } else if (ratio >= 3) {
+          feedback.textContent = 'Contrast ratio: ' + ratio.toFixed(1) + ':1 — Acceptable for large text only';
+          feedback.style.background = 'rgba(255,193,7,0.1)';
+          feedback.style.color = '#B8860B';
+        } else {
+          feedback.textContent = 'Contrast ratio: ' + ratio.toFixed(1) + ':1 — Low contrast, consider a different ink or garment color';
+          feedback.style.background = 'rgba(220,53,69,0.1)';
+          feedback.style.color = 'var(--color-danger)';
+        }
+      }
+
+      garmentSel.addEventListener('change', updateChecker);
+      inkInput.addEventListener('input', updateChecker);
+      updateChecker();
+    });
+  </script>
+</body>
+</html>

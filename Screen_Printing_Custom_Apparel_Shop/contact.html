@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact PRNT — Get a Custom Printing Quote</title>
+  <meta name="description"
+    content="Request a quote for custom screen printing, ask questions, or visit our Portland workshop. PRNT responds within 4 business hours." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    .contact-info-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+
+    .contact-info-card {
+      padding: var(--space-5);
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color-light);
+      text-align: center;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .contact-info-card i {
+      margin-bottom: var(--space-3);
+    }
+
+    .contact-info-card h4 {
+      font-size: var(--fs-body);
+      margin-bottom: var(--space-1);
+    }
+
+    .contact-info-card p {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 350px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--border-color);
+    }
+
+    .social-branded-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      justify-content: center;
+    }
+
+    .social-branded-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-md);
+      font-weight: var(--fw-semibold);
+      font-size: var(--fs-small);
+      color: #FFF;
+      text-decoration: none;
+      transition: all var(--transition-base);
+      min-height: 44px;
+    }
+
+    .social-branded-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      color: #FFF;
+    }
+
+    .social-branded-btn--google {
+      background: #DB4437;
+    }
+
+    .social-branded-btn--facebook {
+      background: #1877F2;
+    }
+
+    .social-branded-btn--apple {
+      background: #000;
+    }
+
+    .social-branded-btn--instagram {
+      background: linear-gradient(45deg, #F09433, #E6683C, #DC2743, #CC2366, #BC1888);
+    }
+
+    .faq-mini {
+      max-width: 700px;
+      margin-inline: auto;
+    }
+
+    .response-strip {
+      background: var(--color-secondary);
+      color: #FFF;
+      padding: var(--space-4) var(--space-6);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+      font-weight: var(--fw-semibold);
+      font-size: var(--fs-small);
+    }
+
+    @media(max-width:767px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__ink"><span></span><span></span><span></span></div>
+  </div>
+  <header class="navbar" role="banner">
+    <div class="navbar__inner"><a href="index.html" class="navbar__logo" aria-label="PRNT Home">
+        <div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span class="navbar__logo-text">PRNT</span>
+      </a>
+      <nav class="navbar__nav" role="navigation" aria-label="Main navigation">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link" aria-haspopup="true">Home <i
+              data-lucide="chevron-down"></i></a>
+          <div class="navbar__dropdown-menu" role="menu"><a href="index.html" class="navbar__dropdown-item"
+              role="menuitem"><i data-lucide="zap"></i> Home 1</a><a href="home-alt.html" class="navbar__dropdown-item"
+              role="menuitem"><i data-lucide="palette"></i> Home 2</a></div>
+        </div><a href="about.html" class="navbar__link">About</a>
+        <a href="products.html" class="navbar__link">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html"
+          class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html"
+          class="navbar__link">Contact</a>
+      </nav>
+      <div class="navbar__actions"><a href="cart.html" class="navbar__cart-btn" aria-label="Cart"><i
+            data-lucide="shopping-cart"></i><span class="navbar__cart-badge badge--count">0</span></a><button
+          class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle theme"><i data-lucide="moon"
+            class="theme-toggle-icon"></i></button><button class="navbar__rtl-btn navbar__toggle-btn"
+          data-toggle-dir><span class="rtl-toggle-text">RTL</span></button><button class="navbar__hamburger"
+          aria-label="Open menu"><span></span><span></span><span></span></button></div>
+    </div>
+    <div class="navbar__mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <div class="navbar__dropdown"><a href="#" class="navbar__link">Home <i data-lucide="chevron-down"></i></a>
+        <div class="navbar__dropdown-menu"><a href="index.html" class="navbar__dropdown-item"><i data-lucide="zap"></i>
+            Home 1</a><a href="home-alt.html" class="navbar__dropdown-item"><i data-lucide="palette"></i> Home 2</a>
+        </div>
+      </div><a href="about.html" class="navbar__link">About</a>
+      <a href="products.html" class="navbar__link">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html"
+        class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html"
+        class="navbar__link">Contact</a>
+      <div class="navbar__mobile-toggles"><button class="navbar__toggle-btn" data-toggle-theme><i data-lucide="moon"
+            class="theme-toggle-icon"></i></button><button class="navbar__rtl-btn navbar__toggle-btn"
+          data-toggle-dir><span class="rtl-toggle-text">RTL</span></button></div>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-content">
+    <!-- S1: HERO -->
+    <section class="hero" aria-label="Contact hero">
+      <img src="assets/images/hero_contact.png" alt="PRNT storefront and consultation area" class="hero__bg" />
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1><span class="hero-word">Get</span> <span class="hero-word">In</span> <span class="hero-word">Touch</span>
+        </h1>
+        <p>Request a quote, ask a question, or schedule a visit to our Portland workshop.</p>
+      </div>
+    </section>
+
+    <!-- S2: QUOTE FORM -->
+    <section class="section" id="quote-form" aria-label="Quote request form">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Request a Quote</span>
+          <h2>Tell Us About Your Project</h2>
+        </div>
+        <div class="contact-grid reveal">
+          <form id="contact-form" action="https://formspree.io/f/your-id" method="POST"
+            style="background:var(--bg-card);padding:var(--space-8);border-radius:var(--radius-xl);border:1px solid var(--border-color-light);box-shadow:var(--shadow-md);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+              <div class="form-group"><label class="form-label">Full Name *</label><input type="text" name="name"
+                  class="form-input" data-validate="required" placeholder="Your name" />
+                <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+              </div>
+              <div class="form-group"><label class="form-label">Email *</label><input type="email" name="email"
+                  class="form-input" data-validate="required,email" placeholder="you@email.com" />
+                <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+              <div class="form-group"><label class="form-label">Phone</label><input type="tel" name="phone"
+                  class="form-input" data-validate="phone" placeholder="+1 (555) 000-0000" />
+                <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+              </div>
+              <div class="form-group"><label class="form-label">Garment Type</label><select name="garment"
+                  class="form-input">
+                  <option value="">Select type</option>
+                  <option>T-Shirt</option>
+                  <option>Hoodie</option>
+                  <option>Polo</option>
+                  <option>Cap</option>
+                  <option>Other</option>
+                </select></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+              <div class="form-group"><label class="form-label">Quantity</label><input type="number" name="quantity"
+                  class="form-input" placeholder="Estimated qty" min="1" /></div>
+              <div class="form-group"><label class="form-label">Print Colors</label><select name="colors"
+                  class="form-input">
+                  <option value="">Select</option>
+                  <option>1 Color</option>
+                  <option>2 Colors</option>
+                  <option>3 Colors</option>
+                  <option>4+ Colors</option>
+                </select></div>
+            </div>
+            <div class="form-group"><label class="form-label">Deadline</label><input type="date" name="deadline"
+                class="form-input" /></div>
+            <div class="form-group"><label class="form-label">Artwork Upload</label><input type="file" name="artwork"
+                class="form-input" accept=".ai,.eps,.pdf,.psd,.png,.svg,.jpg"
+                style="padding:var(--space-2) var(--space-3);" /></div>
+            <div class="form-group"><label class="form-label">Message</label><textarea name="message" class="form-input"
+                rows="4" placeholder="Tell us about your project — design ideas, special requirements, etc."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg btn--block" id="contact-submit">Send Quote
+              Request</button>
+          </form>
+          <div>
+            <div class="card" style="padding:var(--space-6);margin-bottom:var(--space-4);">
+              <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3);"><i
+                  data-lucide="clock" style="color:var(--color-secondary);"></i><strong
+                  style="color:var(--text-heading);">Quick Response</strong></div>
+              <p style="font-size:var(--fs-small);color:var(--text-secondary);margin:0;">We respond to all quote
+                requests within 4 business hours during operating hours.</p>
+            </div>
+            <div class="card" style="padding:var(--space-6);margin-bottom:var(--space-4);">
+              <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3);"><i
+                  data-lucide="shield-check" style="color:var(--color-accent);"></i><strong
+                  style="color:var(--text-heading);">No Obligation</strong></div>
+              <p style="font-size:var(--fs-small);color:var(--text-secondary);margin:0;">All quotes are free with no
+                commitment required. We'll provide detailed pricing for your project.</p>
+            </div>
+            <div class="card" style="padding:var(--space-6);">
+              <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-3);"><i
+                  data-lucide="palette" style="color:var(--color-secondary);"></i><strong
+                  style="color:var(--text-heading);">Free Proof</strong></div>
+              <p style="font-size:var(--fs-small);color:var(--text-secondary);margin:0;">Every quote includes a
+                complimentary digital mockup so you can see your design before committing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3: CONTACT INFO CARDS -->
+    <section class="section" id="contact-info" aria-label="Contact information" style="background:var(--bg-muted);">
+      <div class="container">
+        <div class="contact-info-cards reveal-stagger">
+          <div class="contact-info-card"><i data-lucide="map-pin"
+              style="color:var(--color-secondary);width:28px;height:28px;"></i>
+            <h4>Visit Us</h4>
+            <p>742 Ink Press Avenue<br />Portland, OR 97201</p>
+          </div>
+          <div class="contact-info-card"><i data-lucide="phone"
+              style="color:var(--color-accent);width:28px;height:28px;"></i>
+            <h4>Call Us</h4>
+            <p>+1 (503) 555-PRNT<br />Mon–Fri 8am–6pm</p>
+          </div>
+          <div class="contact-info-card"><i data-lucide="mail"
+              style="color:var(--color-secondary);width:28px;height:28px;"></i>
+            <h4>Email Us</h4>
+            <p>hello@prnt.shop<br />artwork@prnt.shop</p>
+          </div>
+          <div class="contact-info-card"><i data-lucide="clock"
+              style="color:var(--color-accent);width:28px;height:28px;"></i>
+            <h4>Hours</h4>
+            <p>Mon–Fri: 8am–6pm<br />Sat: 9am–2pm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S4: MAP -->
+    <section class="section" id="visit" aria-label="Location map">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Find Us</span>
+          <h2>Our Location</h2>
+        </div>
+
+        <!-- Interactive Map Grid Container -->
+        <div class="map-container reveal"
+          style="position:relative; width:100%; height:480px; border-radius:var(--radius-xl); overflow:hidden; border:1px solid var(--border-color-light); box-shadow:var(--shadow-md); background:var(--bg-muted);">
+          <div id="realTimeMap" style="width:100%; height:100%; z-index: 1;"></div>
+          
+          <style>
+            @keyframes pulseCyan {
+              0% { box-shadow: 0 0 20px rgba(23,162,184,0.4); transform: scale(1); }
+              50% { box-shadow: 0 0 40px rgba(23,162,184,0.8); transform: scale(1.05); }
+              100% { box-shadow: 0 0 20px rgba(23,162,184,0.4); transform: scale(1); }
+            }
+            @keyframes pulseOrange {
+              0% { box-shadow: 0 0 20px rgba(245,166,35,0.2); transform: scale(1) translateY(15px); opacity: 0.6; }
+              50% { box-shadow: 0 0 50px rgba(245,166,35,0.5); transform: scale(1.15) translateY(15px); opacity: 0.2; }
+              100% { box-shadow: 0 0 20px rgba(245,166,35,0.2); transform: scale(1) translateY(15px); opacity: 0.6; }
+            }
+            .map-marker-pin {
+              position:absolute; top:45%; left:45%; transform:translate(-50%,-50%); z-index:10; display:flex; justify-content:center; align-items:center; width: 100px; height: 100px;
+            }
+            .map-marker-ring-cyan {
+              position:absolute; inset: 0; border-radius: 50%; border: 3px solid var(--color-secondary); animation: pulseCyan 3s infinite;
+            }
+            .map-marker-ring-orange {
+              position:absolute; inset: -30px; border-radius: 50%; border: 2px solid var(--color-accent); animation: pulseOrange 4s infinite; z-index: 0; pointer-events: none;
+            }
+            .map-marker-center {
+              width:65px; height:65px; background: var(--bg-default); border: 2px solid var(--color-secondary); border-radius: 50%; display:flex; justify-content:center; align-items:center; z-index:2; position:relative; box-shadow: inset 0 0 20px rgba(23,162,184,0.5);
+            }
+            .map-marker-arrow {
+              position:absolute; bottom:-14px; left:50%; transform:translateX(-50%); width: 0; height: 0; border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 22px solid var(--color-secondary); filter: drop-shadow(0 4px 6px rgba(23,162,184,0.4)); z-index:1;
+            }
+            .map-address-tag {
+              position:absolute; left: calc(100% + 15px); top:50%; transform:translateY(-50%); background: rgba(13, 21, 39, 0.85); backdrop-filter: blur(8px); border: 1px solid var(--color-secondary); color: #fff; padding: 6px 14px; border-radius: var(--radius-sm); font-family: var(--font-heading); font-size: 18px; font-weight: 700; letter-spacing: 1px; white-space: nowrap; box-shadow: 0 0 20px rgba(23,162,184,0.3); text-transform: uppercase; z-index: 3;
+            }
+            .map-title-pill {
+              position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); background: var(--color-secondary); color: #FFF; padding: 6px 16px; border-radius: var(--radius-full); font-weight: var(--fw-bold); font-size: 13px; display: flex; align-items: center; gap: 8px; box-shadow: 0 5px 20px rgba(23,162,184,0.6); border: 2px solid #FFF; z-index:4; white-space:nowrap;
+            }
+            .map-dock-pill {
+              background:var(--color-accent); color:#16233F; padding:6px 14px; border-radius:var(--radius-full); font-weight:var(--fw-bold); font-size:12px; display:flex; align-items:center; gap:8px; box-shadow:0 5px 15px rgba(245,166,35,0.4); border: 2px solid var(--color-accent); transition: transform 0.3s ease; cursor:pointer;
+            }
+            .map-dock-pill:hover {
+              transform: scale(1.05);
+            }
+            .map-btn {
+              background: rgba(13,21,39,0.9); border: 1px solid rgba(255,255,255,0.25); color: #FFF; border-radius: var(--radius-sm); padding: 8px 14px; font-size: 11px; font-weight: 700; display:flex; align-items:center; gap:8px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(5px);
+            }
+            .map-btn:hover {
+              background: rgba(255,255,255,0.1); border-color: #FFF;
+            }
+            .map-btn-primary {
+              border-color: rgba(23,162,184,0.8); box-shadow: 0 0 15px rgba(23,162,184,0.3);
+            }
+            .map-btn-primary:hover {
+              background: rgba(23,162,184,0.2); border-color: var(--color-secondary); box-shadow: 0 0 25px rgba(23,162,184,0.5);
+            }
+            .map-logo-p {
+              font-family: var(--font-heading); font-size: 34px; font-weight: 900; color: var(--color-secondary); line-height: 1; position:relative; right: -2px;
+            }
+            .map-logo-decor {
+              position:absolute; width: 8px; height: 16px; background: var(--color-secondary); left: 14px; top: 24px; border-radius: 2px;
+            }
+          </style>
+
+          <!-- Interactive Controls Overlay Bar -->
+          <div style="position:absolute; bottom:20px; left:20px; right:20px; display:flex; justify-content:space-between; align-items:flex-end; z-index:1000; pointer-events:none;">
+            
+            <!-- Zoom / Reset Controls -->
+            <div style="display:flex; gap:10px; pointer-events:auto;">
+              <button class="map-btn" onclick="if(window.leafletMap) window.leafletMap.zoomIn();">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> Zoom In
+              </button>
+              <button class="map-btn" onclick="if(window.leafletMap) window.leafletMap.setView([45.520, -122.682], 14);">
+                <i class="fa-solid fa-rotate-left"></i> Reset
+              </button>
+            </div>
+            
+            <!-- Directions Button -->
+            <div style="pointer-events:auto;">
+              <a href="https://maps.google.com" target="_blank" class="map-btn map-btn-primary">
+                <i class="fa-solid fa-diamond-turn-right"></i> Directions to Shop
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- S5: BRANDED SOCIAL BUTTONS -->
+    <section class="section" id="social" aria-label="Social media" style="background:var(--bg-muted);">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Follow Us</span>
+          <h2>Connect on Social</h2>
+        </div>
+        <div class="social-branded-grid reveal">
+          <a href="https://google.com" target="_blank" rel="noopener" class="social-branded-btn social-branded-btn--google"><i class="fa-brands fa-google"></i> Google</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-branded-btn social-branded-btn--facebook"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+          <a href="https://apple.com" target="_blank" rel="noopener" class="social-branded-btn social-branded-btn--apple"><i class="fa-brands fa-apple"></i> Apple</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-branded-btn social-branded-btn--instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="social-branded-btn" style="background:#000;"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-branded-btn" style="background:#0A66C2;"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6: FAQ MINI + RESPONSE STRIP -->
+    <section class="section" id="contact-faq" aria-label="Frequently asked questions">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">FAQ</span>
+          <h2>Quick Answers</h2>
+        </div>
+        <div class="accordion faq-mini reveal">
+          <div class="accordion__item"><button class="accordion__trigger">How long does it take to get a quote? <i
+                data-lucide="chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">We respond to all quote requests within 4 business hours. Rush quotes for
+                time-sensitive projects are available — just mention your deadline.</div>
+            </div>
+          </div>
+          <div class="accordion__item"><button class="accordion__trigger">Can I visit your workshop? <i
+                data-lucide="chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">Absolutely! We welcome facility tours Monday through Friday. Contact us to
+                schedule a time and see our presses in action.</div>
+            </div>
+          </div>
+          <div class="accordion__item"><button class="accordion__trigger">Do you ship nationwide? <i
+                data-lucide="chevron-down"></i></button>
+            <div class="accordion__content">
+              <div class="accordion__body">Yes, we ship to all 50 states. Orders of 500+ pieces qualify for free
+                standard shipping. Express and overnight options are also available.</div>
+            </div>
+          </div>
+        </div>
+        <div class="response-strip reveal"><i data-lucide="zap" style="width:20px;"></i> Average response time: 2.5
+          hours during business hours</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand"><a href="index.html" class="navbar__logo" aria-label="PRNT Home">
+            <div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span
+              class="navbar__logo-text">PRNT</span>
+          </a></div>
+        <p class="footer__desc">Premium screen printing and custom apparel.</p>
+        <div class="footer__socials">
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn social-btn--facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn social-btn--instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn social-btn--twitter" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn social-btn--linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn social-btn--youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-btn social-btn--tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer__heading">Quick Links</h4>
+        <div class="footer__links"><a href="about.html"><i data-lucide="chevron-right" style="width:14px;"></i>
+            About</a><a href="products.html"><i data-lucide="chevron-right" style="width:14px;"></i> Products</a><a
+            href="bulk.html"><i data-lucide="chevron-right" style="width:14px;"></i> Bulk Orders</a><a
+            href="design-guide.html"><i data-lucide="chevron-right" style="width:14px;"></i> Design Guide</a><a
+            href="blog.html"><i data-lucide="chevron-right" style="width:14px;"></i> Blog</a></div>
+      </div>
+      <div>
+        <h4 class="footer__heading">Contact</h4>
+        <div class="footer__contact-item"><i data-lucide="map-pin"></i> 742 Ink Press Ave, Portland, OR</div>
+        <div class="footer__contact-item"><i data-lucide="phone"></i> +1 (503) 555-PRNT</div>
+        <div class="footer__contact-item"><i data-lucide="mail"></i> hello@prnt.shop</div>
+        <div class="footer__contact-item"><i data-lucide="clock"></i> Mon–Fri 8am–6pm</div>
+      </div>
+      <div>
+        <h4 class="footer__heading">Newsletter</h4>
+        <p class="footer__desc">Tips, deals, and drops.</p>
+        <div class="footer__newsletter">
+          <form class="footer__newsletter-form"
+            onsubmit="event.preventDefault();this.querySelector('input').value='';alert('Subscribed!');"><input
+              type="email" class="footer__newsletter-input" placeholder="Your email" required /><button type="submit"
+              class="btn btn--primary btn--sm"><i data-lucide="send" style="width:16px;"></i></button></form>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 PRNT. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+  <script src="js/global.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          if (!window.PRNT.validateForm(form)) return;
+          const btn = document.getElementById('contact-submit');
+          btn.classList.add('btn--loading'); btn.disabled = true;
+          setTimeout(() => {
+            btn.classList.remove('btn--loading'); btn.disabled = false;
+            form.innerHTML = '<div class="form-success"><i data-lucide="check-circle"></i><div><strong>Quote Request Sent!</strong><p style="margin:4px 0 0;">We\'ll get back to you within 4 business hours with a detailed quote.</p></div></div>';
+            if (window.lucide) lucide.createIcons();
+          }, 1500);
+        });
+      }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof L !== 'undefined') {
+        const map = L.map('realTimeMap', { zoomControl: false }).setView([45.520, -122.682], 14);
+        window.leafletMap = map;
+        
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: 'abcd',
+          maxZoom: 20
+        }).addTo(map);
+
+        const shopIcon = L.divIcon({
+          className: 'custom-shop-icon',
+          html: `
+            <div class="map-marker-pin" style="position:relative; top:0; left:0; transform:none;">
+              <div class="map-marker-ring-orange"></div>
+              <div class="map-marker-ring-cyan"></div>
+              <div class="map-marker-center">
+                <span class="map-logo-p">P</span>
+                <div class="map-logo-decor"></div>
+              </div>
+              <div class="map-marker-arrow"></div>
+              <div class="map-address-tag">742 INK PRESS AVE</div>
+              <div class="map-title-pill">
+                <i class="fa-solid fa-location-dot" style="font-size:14px;"></i> PRNT Headquarters & Workshop
+              </div>
+            </div>
+          `,
+          iconSize: [100, 100],
+          iconAnchor: [50, 136]
+        });
+
+        const dockIcon = L.divIcon({
+          className: 'custom-dock-icon',
+          html: `
+            <div class="map-dock-pill" style="position:relative; transform:none; white-space: nowrap;">
+              <i class="fa-solid fa-truck-ramp-box"></i> Freight Loading Dock #02
+            </div>
+          `,
+          iconSize: null,
+          iconAnchor: [0, 0]
+        });
+
+        L.marker([45.520, -122.682], { icon: shopIcon }).addTo(map);
+        L.marker([45.515, -122.673], { icon: dockIcon }).addTo(map);
+      }
+    });
+  </script>
+</body>
+
+</html>

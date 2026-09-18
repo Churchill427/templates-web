@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart — POPZ Gourmet Popcorn &amp; Candy</title>
+  <meta name="description" content="Review your POPZ cart, adjust quantities, and proceed to checkout. Free shipping on orders over $35.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="page-offset">
+
+  <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="POPZ Home">
+        <svg class="navbar__logo-icon" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" fill="#E8A33D"/><circle cx="18" cy="18" r="12" fill="#3B2420"/><circle cx="14" cy="14" r="3" fill="#E8A33D" opacity="0.8"/><circle cx="22" cy="16" r="2.5" fill="#D94F70" opacity="0.8"/><circle cx="17" cy="22" r="2" fill="#FBF4EA" opacity="0.7"/><circle cx="23" cy="22" r="1.5" fill="#E8A33D" opacity="0.6"/></svg>
+        <span class="navbar__logo-text">POPZ</span>
+      </a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle">Home
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 4.5L6 7.5L9 4.5"/></svg>
+          </a>
+          <div class="navbar__dropdown-menu">
+            <a href="index.html" class="navbar__dropdown-item">Home 1</a>
+            <a href="home-v2.html" class="navbar__dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="navbar__link">About</a>
+        <a href="products.html" class="navbar__link">Products</a>
+        <a href="gift-tins.html" class="navbar__link">Gift Tins</a>
+        <a href="bulk-party.html" class="navbar__link">Bulk &amp; Party</a>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+      </div>
+      <div class="navbar__actions">
+        <button class="navbar__rtl-btn js-rtl-toggle" aria-label="Toggle text direction">RTL</button>
+        <button class="navbar__toggle-btn js-theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="cart.html" class="navbar__cart" aria-label="Shopping cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="navbar__cart-badge" data-count="0">0</span>
+        </a>
+        <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar__drawer-overlay" id="drawerOverlay"></div>
+  <div class="navbar__drawer" id="navDrawer">
+    <a href="index.html" class="navbar__drawer-link">Home 1</a>
+    <a href="home-v2.html" class="navbar__drawer-link">Home 2</a>
+    <a href="about.html" class="navbar__drawer-link">About</a>
+    <a href="products.html" class="navbar__drawer-link">Products</a>
+    <a href="gift-tins.html" class="navbar__drawer-link">Gift Tins</a>
+    <a href="bulk-party.html" class="navbar__drawer-link">Bulk &amp; Party</a>
+    <a href="blog.html" class="navbar__drawer-link">Blog</a>
+    <a href="contact.html" class="navbar__drawer-link">Contact</a>
+    <a href="cart.html" class="navbar__drawer-link active">Cart</a>
+    <div class="navbar__drawer-toggles">
+      <button class="navbar__rtl-btn js-rtl-toggle">RTL</button>
+      <button class="navbar__toggle-btn js-theme-toggle">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CART PAGE ═══════════════════════ -->
+  <section class="section" id="cart-page" aria-label="Shopping cart">
+    <div class="container">
+
+      <!-- Cart Header -->
+      <div class="section-header">
+        <h1>Your Cart</h1>
+        <p id="cartPageCount" style="color:var(--text-muted)">0 items</p>
+      </div>
+
+      <!-- Cart Layout: Items + Summary -->
+      <div class="configurator" style="align-items:start">
+
+        <!-- Cart Items Column -->
+        <div style="width:100%">
+          <!-- Dynamic cart items rendered by cart.js -->
+          <div id="cartItems" style="display:none">
+            <!-- Items injected here by JavaScript -->
+          </div>
+
+          <!-- Empty Cart State -->
+          <div class="cart-empty" id="cartEmpty" style="display:block">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="60" cy="60" r="50" />
+              <circle cx="42" cy="90" r="5"/>
+              <circle cx="78" cy="90" r="5"/>
+              <path d="M20 25h10l12 50h40"/>
+              <path d="M42 75h42a4 4 0 0 0 4-3.5l5-27H35"/>
+              <path d="M50 50v-8M60 50v-8M70 50v-8"/>
+            </svg>
+            <h2>Your Cart is Empty</h2>
+            <p style="color:var(--text-muted); max-width:440px">Looks like you haven't added any delicious popcorn or candy yet. Browse our collection and find your perfect flavor!</p>
+            <div class="cart-empty__actions">
+              <a href="products.html" class="btn btn-primary">Shop Popcorn</a>
+              <a href="gift-tins.html" class="btn btn-ghost">Build a Gift Tin</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary Sidebar -->
+        <div id="cartSummary" style="display:none">
+          <div class="order-summary">
+            <h3 style="font-family:var(--font-display); margin-bottom:1.25rem">Order Summary</h3>
+
+            <div class="order-summary__row">
+              <span style="color:var(--text-muted)">Subtotal</span>
+              <span id="cartSubtotal">$0.00</span>
+            </div>
+            <div class="order-summary__row">
+              <span style="color:var(--text-muted)">Shipping</span>
+              <span id="cartShipping">$5.99</span>
+            </div>
+
+            <!-- Promo Code -->
+            <form class="order-summary__promo" id="promoForm">
+              <input type="text" placeholder="Promo code" aria-label="Promo code">
+              <button type="submit">Apply</button>
+            </form>
+            <p id="promoMsg" style="display:none; font-size:var(--tiny-size); font-weight:600; margin-bottom:0.5rem"></p>
+
+            <div class="order-summary__row order-summary__row--total">
+              <span>Total</span>
+              <span id="cartTotal" style="color:var(--caramel); font-size:1.25rem">$0.00</span>
+            </div>
+
+            <button class="btn btn-primary btn-full" style="margin-top:1.5rem" onclick="alert('Checkout is a demo feature. Thank you!')">
+              Proceed to Checkout
+            </button>
+
+            <p style="text-align:center; font-size:var(--tiny-size); color:var(--text-muted); margin-top:0.75rem">
+              <svg style="display:inline;width:14px;height:14px;vertical-align:middle;margin-right:0.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Secure checkout · SSL encrypted
+            </p>
+          </div>
+
+          <a href="products.html" style="display:block; text-align:center; margin-top:1rem; font-size:var(--small-size); color:var(--caramel); font-weight:600">
+            ← Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ INFO STRIP ═══════════════════════ -->
+  <section class="section section-alt" aria-label="Shipping guarantees">
+    <div class="container">
+      <div class="info-strip reveal">
+        <div class="info-strip__item">
+          <div class="info-strip__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polyline points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="info-strip__text">
+            <h4>Free Shipping Over $35</h4>
+            <p>Standard delivery 3–5 business days</p>
+          </div>
+        </div>
+        <div class="info-strip__item">
+          <div class="info-strip__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="info-strip__text">
+            <h4>Freshness Sealed</h4>
+            <p>Every tin sealed for maximum crunch</p>
+          </div>
+        </div>
+        <div class="info-strip__item">
+          <div class="info-strip__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+          </div>
+          <div class="info-strip__text">
+            <h4>Easy Returns</h4>
+            <p>Not happy? Full refund within 7 days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo"><svg class="footer__logo-icon" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" fill="#E8A33D"/><circle cx="18" cy="18" r="12" fill="#3B2420"/><circle cx="14" cy="14" r="3" fill="#E8A33D" opacity="0.8"/><circle cx="22" cy="16" r="2.5" fill="#D94F70" opacity="0.8"/><circle cx="17" cy="22" r="2" fill="#FBF4EA" opacity="0.7"/><circle cx="23" cy="22" r="1.5" fill="#E8A33D" opacity="0.6"/></svg><span class="footer__logo-text">POPZ</span></a>
+        <p class="footer__brand-desc">Handcrafted gourmet popcorn and artisan candies, made with love in Sweet Haven, California.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social-btn" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></a>
+          <a href="#" class="footer__social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="footer__social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <a href="#" class="footer__social-btn" aria-label="Apple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__column"><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html">Popcorn</a></li><li><a href="products.html">Candy</a></li><li><a href="gift-tins.html">Gift Tins</a></li><li><a href="bulk-party.html">Bulk Orders</a></li><li><a href="products.html">Seasonal</a></li></ul></div>
+      <div class="footer__column"><h4>Support</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="contact.html">FAQ</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">Track Order</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer__newsletter">
+        <h4>Join the POPZ Family</h4>
+        <p>Subscribe for new flavors, exclusive deals, and first access to seasonal drops.</p>
+        <form class="footer__newsletter-form js-newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email address" aria-label="Email address" required><button type="submit" class="footer__newsletter-submit">Join</button></form>
+        <p class="footer__newsletter-success">Thank you for subscribing!</p>
+      </div>
+    </div>
+    <div class="footer__payments">
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#1A1F71"/><text x="8" y="17" fill="#fff" font-size="8" font-weight="bold" font-family="sans-serif">VISA</text></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#252525"/><circle cx="16" cy="13" r="7" fill="#EB001B"/><circle cx="24" cy="13" r="7" fill="#F79E1B"/><path d="M20 8a7 7 0 0 1 0 10 7 7 0 0 1 0-10z" fill="#FF5F00"/></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#003087"/><text x="6" y="17" fill="#fff" font-size="7" font-weight="bold" font-family="sans-serif">PayPal</text></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#000"/><text x="5" y="17" fill="#fff" font-size="7" font-weight="bold" font-family="sans-serif">ApplePay</text></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#5433FF"/><text x="5" y="17" fill="#fff" font-size="7" font-weight="bold" font-family="sans-serif">Stripe</text></svg>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 POPZ Gourmet Popcorn &amp; Candy Shop. All rights reserved.</span>
+      <div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUME — Atelier Edition | Artisan Candle Studio</title>
+  <meta name="description" content="Discover LUME's bright, studio-craft atelier edition. Small-batch soy candles, unique vessels, and the artisan story behind every pour.">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .feature-list { counter-reset: feature; }
+    .feature-item { display: flex; align-items: flex-start; gap: var(--space-lg); padding: var(--space-lg) 0; border-bottom: 1px solid var(--color-border); counter-increment: feature; }
+    .feature-item:last-child { border-bottom: none; }
+    .feature-number { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--color-primary); min-width: 48px; line-height: 1; }
+    .feature-content h4 { margin-bottom: var(--space-2xs); }
+    .feature-content p { margin-bottom: 0; }
+    .masonry { columns: 3; column-gap: var(--space-md); }
+    .masonry__item { break-inside: avoid; margin-bottom: var(--space-md); border-radius: var(--radius-md); overflow: hidden; position: relative; }
+    .masonry__item img { width: 100%; display: block; transition: transform var(--transition-slow); }
+    .masonry__item:hover img { transform: scale(1.05); }
+    .masonry__caption { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-sm) var(--space-md); background: linear-gradient(transparent, rgba(43,38,34,0.75)); color: #FAF4EB; font-size: var(--caption-size); font-weight: 500; opacity: 0; transition: opacity var(--transition-base); }
+    .masonry__item:hover .masonry__caption { opacity: 1; }
+    .countdown-feature { text-align: center; padding: var(--space-3xl) var(--space-xl); background: linear-gradient(135deg, var(--color-secondary), #3D362F); border-radius: var(--radius-lg); color: #FAF4EB; }
+    .countdown-digits { display: flex; justify-content: center; gap: var(--space-xl); margin: var(--space-xl) 0; }
+    .countdown-unit { text-align: center; }
+    .countdown-value { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: var(--color-primary); display: block; }
+    .countdown-label { font-size: var(--caption-size); color: #9A8D80; text-transform: uppercase; letter-spacing: 0.08em; }
+    .insta-strip { display: flex; gap: var(--space-md); overflow-x: auto; padding-bottom: var(--space-sm); -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
+    .insta-strip__item { flex: 0 0 220px; aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; scroll-snap-align: start; }
+    .insta-strip__item img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+    .insta-strip__item:hover img { transform: scale(1.08); }
+    @media (max-width: 767px) {
+      .masonry { columns: 2; }
+      .countdown-value { font-size: 2rem; }
+      .countdown-digits { gap: var(--space-md); }
+      .insta-strip__item { flex: 0 0 160px; }
+    }
+  </style>
+</head>
+<body class="has-header">
+
+  <!-- HEADER (identical to index.html) -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo" aria-label="LUME Home">
+        <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/><rect x="23" y="2" width="2" height="4" rx="1" fill="#2B2622"/></svg>
+        <span class="header__logo-text">LUME</span>
+      </a>
+      <nav class="nav" id="main-nav" aria-label="Main navigation">
+        <div class="nav__dropdown">
+          <a href="index.html" class="nav__link nav__dropdown-toggle nav__link--active">Home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="nav__dropdown-menu">
+            <a href="index.html" class="nav__dropdown-item">Home 1</a>
+            <a href="home-atelier.html" class="nav__dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="products.html" class="nav__link">Shop</a>
+        <a href="workshops.html" class="nav__link">Workshops</a>
+        <a href="custom.html" class="nav__link">Custom Favors</a>
+        <a href="about.html" class="nav__link">Our Story</a>
+        <a href="journal.html" class="nav__link">Journal</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        </nav>
+      <div class="header__controls">
+        <button class="header__toggle" data-toggle-theme aria-label="Toggle theme"><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+        <button class="header__rtl-toggle" data-toggle-dir aria-label="Toggle direction">RTL</button>
+      <a href="cart.html" class="nav__cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Cart (0)</a>
+</div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu"><span class="hamburger__line"></span><span class="hamburger__line"></span><span class="hamburger__line"></span></button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="mobile-menu__link">Home 1</a>
+    <a href="home-atelier.html" class="mobile-menu__link mobile-menu__link--active">Home 2</a>
+    <a href="products.html" class="mobile-menu__link">Shop</a>
+    <a href="workshops.html" class="mobile-menu__link">Workshops</a>
+    <a href="custom.html" class="mobile-menu__link">Custom Favors</a>
+    <a href="about.html" class="mobile-menu__link">Our Story</a>
+    <a href="journal.html" class="mobile-menu__link">Journal</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="cart.html" class="mobile-menu__link">Cart (0)</a>
+    <div class="mobile-menu__controls">
+      <button class="header__toggle" data-toggle-theme aria-label="Toggle theme"><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+      <button class="header__rtl-toggle" data-toggle-dir aria-label="Toggle direction">RTL</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO — Atelier / Sunlit Workshop -->
+    <section class="hero" id="hero-atelier">
+      <div class="hero__bg">
+        <img src="assets/images/heroes/hero-atelier.png" alt="Sunlit workshop table with wax blocks, brass tools, and essential oils in morning light" loading="eager">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 style="font-size: clamp(3rem, 6vw, 5rem); letter-spacing: 0.05em;">The Atelier</h1>
+        <p>Where wax becomes art. Step inside our studio and discover the craft behind every hand-poured candle.</p>
+        <div class="hero__actions">
+          <a href="products.html" class="btn btn--primary btn--lg">Explore the Collection</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CRAFTED IN SMALL BATCHES (Numbered list) -->
+    <section class="section" id="small-batches">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2>Crafted in Small Batches</h2>
+          <p>Every detail is deliberate. Here's what sets a LUME candle apart.</p>
+        </div>
+        <div class="feature-list" style="max-width: 680px; margin: 0 auto;">
+          <div class="feature-item animate-on-scroll">
+            <div class="feature-number">01</div>
+            <div class="feature-content">
+              <h4>100% Natural Soy Wax</h4>
+              <p>Sourced from sustainable US farms, our soy wax burns cleaner and longer than paraffin — no toxins, no soot.</p>
+            </div>
+          </div>
+          <div class="feature-item animate-on-scroll">
+            <div class="feature-number">02</div>
+            <div class="feature-content">
+              <h4>Cotton &amp; Wood Wicks</h4>
+              <p>We use lead-free braided cotton and crackling wood wicks, each hand-trimmed and tabbed in-studio.</p>
+            </div>
+          </div>
+          <div class="feature-item animate-on-scroll">
+            <div class="feature-number">03</div>
+            <div class="feature-content">
+              <h4>Phthalate-Free Fragrance</h4>
+              <p>Our scent blends use only clean, phthalate-free fragrance oils and pure essential oils for authentic aroma.</p>
+            </div>
+          </div>
+          <div class="feature-item animate-on-scroll">
+            <div class="feature-number">04</div>
+            <div class="feature-content">
+              <h4>45+ Hour Burn Time</h4>
+              <p>Each standard 8oz candle is engineered for a minimum 45-hour burn, so every moment lasts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: VESSEL GALLERY (Masonry) -->
+    <section class="section section--alt" id="vessel-gallery">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2>The Vessel Collection</h2>
+          <p>Each vessel is chosen for its character — from hand-thrown ceramics to recycled amber glass.</p>
+        </div>
+        <div class="masonry animate-on-scroll">
+          <div class="masonry__item">
+            <img src="assets/images/vessels/vessel-ceramic-white.png" alt="White hand-thrown ceramic vessel with organic texture" loading="lazy">
+            <span class="masonry__caption">Hand-Thrown Ceramic</span>
+          </div>
+          <div class="masonry__item">
+            <img src="assets/images/vessels/vessel-amber-glass.png" alt="Recycled amber glass jar with brass lid" loading="lazy">
+            <span class="masonry__caption">Amber Glass</span>
+          </div>
+          <div class="masonry__item">
+            <img src="assets/images/vessels/vessel-concrete.png" alt="Minimalist concrete vessel with raw finish" loading="lazy">
+            <span class="masonry__caption">Raw Concrete</span>
+          </div>
+          <div class="masonry__item">
+            <img src="assets/images/vessels/vessel-tin.png" alt="Black matte tin vessel with LUME embossed lid" loading="lazy">
+            <span class="masonry__caption">Matte Black Tin</span>
+          </div>
+          <div class="masonry__item">
+            <img src="assets/images/vessels/vessel-terracotta.png" alt="Terracotta vessel with warm earth tones" loading="lazy">
+            <span class="masonry__caption">Terracotta</span>
+          </div>
+          <div class="masonry__item">
+            <img src="assets/images/vessels/vessel-clear-glass.png" alt="Clear glass apothecary jar showing wax layers" loading="lazy">
+            <span class="masonry__caption">Apothecary Glass</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: MEET THE MAKER (Split + Team Strip) -->
+    <section class="section" id="meet-maker">
+      <div class="container">
+        <div class="grid-split">
+          <div class="animate-on-scroll--left">
+            <h2>Meet the Maker</h2>
+            <p>LUME began in 2019 in a small Brooklyn kitchen, when founder <strong>Elena Torres</strong> started experimenting with soy wax, essential oils, and a dream of creating candles that felt like home.</p>
+            <p>What started as a weekend hobby quickly grew into a studio, then a storefront, and now a team of five passionate artisans who share Elena's commitment to craft, sustainability, and the transformative power of scent.</p>
+            <a href="about.html" class="btn btn--outline" style="margin-top: var(--space-md);">Read Our Full Story</a>
+          </div>
+          <div class="animate-on-scroll--right">
+            <img src="assets/images/misc/maker-studio.jpg" alt="LUME founder Elena Torres in her Brooklyn candle studio, surrounded by vessels and fragrance materials" style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius-md);" loading="lazy">
+          </div>
+        </div>
+        <!-- Compact Team Strip -->
+        <div class="grid grid-4" style="margin-top: var(--space-2xl);">
+          <div class="team-card animate-on-scroll">
+            <img src="assets/images/team/team-elena.jpg" alt="Elena Torres, Founder" class="team-card__avatar" loading="lazy">
+            <div class="team-card__name">Elena Torres</div>
+            <div class="team-card__role">Founder &amp; Head Chandler</div>
+          </div>
+          <div class="team-card animate-on-scroll">
+            <img src="assets/images/team/team-marcus.jpg" alt="Marcus Chen, Production Lead" class="team-card__avatar" loading="lazy">
+            <div class="team-card__name">Marcus Chen</div>
+            <div class="team-card__role">Production Lead</div>
+          </div>
+          <div class="team-card animate-on-scroll">
+            <img src="assets/images/team/team-priya.jpg" alt="Priya Sharma, Scent Designer" class="team-card__avatar" loading="lazy">
+            <div class="team-card__name">Priya Sharma</div>
+            <div class="team-card__role">Scent Designer</div>
+          </div>
+          <div class="team-card animate-on-scroll">
+            <img src="assets/images/team/team-jordan.jpg" alt="Jordan Wells, Workshop Host" class="team-card__avatar" loading="lazy">
+            <div class="team-card__name">Jordan Wells</div>
+            <div class="team-card__role">Workshop Host</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SEASONAL DROP (Countdown) -->
+    <section class="section section--alt" id="seasonal-drop">
+      <div class="container">
+        <div class="countdown-feature animate-on-scroll">
+          <h2 style="color: #FAF4EB;">Autumn Harvest Collection</h2>
+          <p style="color: #B0A598; max-width: 520px; margin: 0 auto;">Three limited-edition scents inspired by orchards, fireside evenings, and the first cool breeze of fall. Dropping soon.</p>
+          <div class="countdown-digits" id="seasonal-countdown">
+            <div class="countdown-unit">
+              <span class="countdown-value" id="countdown-days">14</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="countdown-value" id="countdown-hours">08</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="countdown-value" id="countdown-minutes">32</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-unit">
+              <span class="countdown-value" id="countdown-seconds">15</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+          <a href="products.html" class="btn btn--primary btn--lg">Get Notified</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INSTAGRAM-STYLE STRIP -->
+    <section class="section" id="insta-strip">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2>From the Studio</h2>
+          <p>Moments captured behind the scenes. Follow our journey on the Journal.</p>
+        </div>
+        <div class="insta-strip animate-on-scroll">
+          <div class="insta-strip__item">
+            <a href="journal.html"><img src="assets/images/misc/insta-1.png" alt="Wax being poured into a ceramic vessel in golden light" loading="lazy"></a>
+          </div>
+          <div class="insta-strip__item">
+            <a href="journal.html"><img src="assets/images/misc/insta-2.png" alt="Row of finished candles with handwritten labels" loading="lazy"></a>
+          </div>
+          <div class="insta-strip__item">
+            <a href="journal.html"><img src="assets/images/misc/insta-3.png" alt="Dried botanicals arranged next to essential oil bottles" loading="lazy"></a>
+          </div>
+          <div class="insta-strip__item">
+            <a href="journal.html"><img src="assets/images/misc/insta-4.png" alt="Workshop guests smiling while pouring their candles" loading="lazy"></a>
+          </div>
+          <div class="insta-strip__item">
+            <a href="journal.html"><img src="assets/images/misc/insta-5.png" alt="Close-up of a candle flame with warm bokeh background" loading="lazy"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (identical across all pages) -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__brand-logo"><svg width="28" height="28" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/></svg><span class="footer__brand-name">LUME</span></a>
+          <p>Small-batch, hand-poured soy candles crafted with intention in our Brooklyn studio. Every flame, a moment of warmth.</p>
+          <div class="footer__social">
+            <a href="#" class="social-btn social-btn--google" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></a>
+            <a href="#" class="social-btn social-btn--facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" class="social-btn social-btn--instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" class="social-btn social-btn--x" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+        <div><h4 class="footer__heading">Explore</h4><div class="footer__links"><a href="index.html" class="footer__link">Home</a><a href="products.html" class="footer__link">Shop</a><a href="about.html" class="footer__link">Our Story</a><a href="journal.html" class="footer__link">Journal</a></div></div>
+        <div><h4 class="footer__heading">Studio</h4><div class="footer__links"><a href="workshops.html" class="footer__link">Workshops</a><a href="custom.html" class="footer__link">Custom Favors</a><a href="contact.html" class="footer__link">Contact</a><a href="login.html" class="footer__link">Account</a></div></div>
+        <div><h4 class="footer__heading">Stay in the Glow</h4><p style="color:#9A8D80;font-size:var(--small-size);margin-bottom:var(--space-sm);">New scent drops, workshop dates, and studio stories — delivered monthly.</p><form class="footer__newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email" aria-label="Email for newsletter" required><button type="submit" class="footer__newsletter-btn">Join</button></form></div>
+      </div>
+      <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 LUME Artisan Candle Studio. All rights reserved.</p><div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Shipping</a></div></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Seasonal Drop Countdown
+    (function() {
+      var launchDate = new Date();
+      launchDate.setDate(launchDate.getDate() + 14);
+      function updateCountdown() {
+        var now = new Date();
+        var diff = launchDate - now;
+        if (diff <= 0) return;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        var d = document.getElementById('countdown-days');
+        var h = document.getElementById('countdown-hours');
+        var m = document.getElementById('countdown-minutes');
+        var s = document.getElementById('countdown-seconds');
+        if (d) d.textContent = String(days).padStart(2, '0');
+        if (h) h.textContent = String(hours).padStart(2, '0');
+        if (m) m.textContent = String(minutes).padStart(2, '0');
+        if (s) s.textContent = String(seconds).padStart(2, '0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+</body>
+</html>
+

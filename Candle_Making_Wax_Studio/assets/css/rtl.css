@@ -1,0 +1,198 @@
+/* ============================================================
+   LUME — RTL (Right-to-Left) Overrides
+   Applied via [dir="rtl"] on <html>
+   ============================================================ */
+
+/* ── Global Text ── */
+[dir="rtl"] body {
+  text-align: right;
+}
+
+/* ── Container ── */
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .text-right { text-align: left; }
+
+/* ── Header ── */
+[dir="rtl"] .header__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header__controls {
+  flex-direction: row-reverse;
+}
+
+/* Dropdown aligns to the right */
+[dir="rtl"] .nav__dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* ── Mobile Menu ── */
+[dir="rtl"] .mobile-menu__link {
+  text-align: right;
+}
+
+/* ── Hero ── */
+[dir="rtl"] .hero__content {
+  text-align: center; /* Heroes stay centered */
+}
+
+/* ── Grid Split (text/image sections) ── */
+[dir="rtl"] .grid-split {
+  direction: rtl;
+}
+
+/* ── Footer ── */
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+/* ── Cards ── */
+[dir="rtl"] .card__badge {
+  left: auto;
+  right: var(--space-sm);
+}
+
+[dir="rtl"] .card__body {
+  text-align: right;
+}
+
+/* ── Timeline ── */
+[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: var(--space-2xl);
+}
+
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 11px;
+}
+
+[dir="rtl"] .timeline__dot {
+  left: auto;
+  right: calc(-1 * var(--space-2xl) + 4px);
+}
+
+/* ── Process Steps ── */
+[dir="rtl"] .process {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .process__step::after {
+  left: auto;
+  right: calc(50% + 32px);
+  left: calc(-50% + 32px);
+  background: linear-gradient(270deg, var(--color-primary), var(--color-border));
+}
+
+/* ── Accordion ── */
+[dir="rtl"] .accordion__trigger {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+/* ── Forms ── */
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-input {
+  text-align: right;
+}
+
+[dir="rtl"] .form-select {
+  background-position: left 12px center;
+  padding-right: var(--space-md);
+  padding-left: 40px;
+}
+
+[dir="rtl"] .form-error {
+  text-align: right;
+}
+
+/* ── Filter Pills (no direction change needed, just text) ── */
+
+/* ── Quantity Stepper ── */
+[dir="rtl"] .qty-stepper {
+  flex-direction: row-reverse;
+}
+
+/* ── Testimonial Cards ── */
+[dir="rtl"] .testimonial-card {
+  text-align: right;
+}
+
+[dir="rtl"] .testimonial-card__author {
+  flex-direction: row-reverse;
+}
+
+/* ── Team Cards ── */
+[dir="rtl"] .team-card {
+  text-align: center; /* stays centered */
+}
+
+/* ── Social Login ── */
+[dir="rtl"] .social-login__btn {
+  flex-direction: row-reverse;
+}
+
+/* ── Auth divider ── */
+[dir="rtl"] .auth-divider {
+  direction: rtl;
+}
+
+/* ── Tooltip ── */
+[dir="rtl"] .tooltip::after {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%) translateY(4px);
+}
+
+[dir="rtl"] .tooltip:hover::after {
+  transform: translateX(50%) translateY(0);
+}
+
+/* ── Dashboard Sidebar ── */
+[dir="rtl"] .dashboard-layout {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dashboard-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--color-border);
+}
+
+[dir="rtl"] .dashboard-sidebar__nav-text {
+  text-align: right;
+}
+
+/* ── Dashboard Tables ── */
+[dir="rtl"] .data-table th,
+[dir="rtl"] .data-table td {
+  text-align: right;
+}
+
+/* ── Pricing Table ── */
+[dir="rtl"] .pricing-table th,
+[dir="rtl"] .pricing-table td {
+  text-align: right;
+}
+
+/* ── Badges ── */
+[dir="rtl"] .badge {
+  direction: ltr; /* keep badge text LTR for numbers/labels */
+}
+
+/* ── Star Rating ── */
+[dir="rtl"] .star-rating {
+  flex-direction: row-reverse;
+}
+
+/* ── Password Strength ── */
+[dir="rtl"] .password-strength {
+  flex-direction: row-reverse;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Screen Mesh Misaligned | PRNT Custom Apparel</title>
+  <meta name="description" content="404 Page Not Found — The screen printing mesh appears out of registration! Use our interactive squeegee cleaner to clear ink spots or return home." />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <style>
+    .error-hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8) var(--space-4);
+      background: radial-gradient(circle at center, rgba(23, 162, 184, 0.08) 0%, transparent 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .error-code {
+      font-family: var(--font-heading);
+      font-size: clamp(6rem, 15vw, 14rem);
+      font-weight: var(--fw-extrabold);
+      line-height: 0.8;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.05em;
+      position: relative;
+    }
+
+    .squeegee-canvas-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 220px;
+      margin-block: var(--space-6);
+      border-radius: var(--radius-lg);
+      border: 2px dashed var(--color-secondary);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .squeegee-canvas {
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-bar__inner">
+      <div class="announcement-bar__content">
+        <span class="announcement-bar__badge">SYSTEM STATUS</span>
+        <span>Screen Registration Error Detected • Error Code: 404_MISREGISTERED_MESH</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon"><i class="fa-solid fa-print"></i></div>
+        <span class="header__logo-text">PRNT</span>
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="products.html" class="nav__link">Apparel Catalog</a>
+        <a href="bulk.html" class="nav__link">Bulk Orders</a>
+        <a href="design-guide.html" class="nav__link">Design Guide</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="header__theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+        <button class="header__rtl-toggle" id="rtlToggle" aria-label="Toggle RTL Layout">RTL</button>
+        <a href="contact.html" class="btn btn--secondary btn--sm"><i class="fa-solid fa-calculator"></i> Quick Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 404 Hero Section -->
+  <section class="error-hero">
+    <div class="container" style="max-width: 780px;">
+      <div class="badge badge--accent" style="margin-bottom: var(--space-4);">
+        <i class="fa-solid fa-triangle-exclamation" style="margin-right: 4px;"></i> 404 ERROR — OUT OF REGISTRATION
+      </div>
+
+      <div class="error-code">404</div>
+
+      <h1 style="font-family: var(--font-heading); font-size: var(--fs-h2); font-weight: var(--fw-extrabold); text-transform: uppercase; margin-bottom: var(--space-3);">
+        Screen Mesh Misaligned!
+      </h1>
+
+      <p style="font-size: var(--fs-lead); color: var(--text-muted); margin-bottom: var(--space-6);">
+        The page you are looking for has slipped off the printing platen or never existed. Drag your mouse over the interactive squeegee canvas below to wipe away the wet ink!
+      </p>
+
+      <!-- Interactive Canvas Easter Egg Widget -->
+      <div class="squeegee-canvas-container">
+        <canvas id="squeegeeCanvas" class="squeegee-canvas"></canvas>
+        <div style="position: absolute; bottom: 8px; right: 12px; font-size: 11px; color: var(--text-muted); background: var(--bg-card); padding: 2px 8px; border-radius: var(--radius-sm); pointer-events: none;">
+          <i class="fa-solid fa-hand-pointer"></i> Drag squeegee to clean canvas
+        </div>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div style="max-width: 480px; margin-inline: auto; margin-bottom: var(--space-8);">
+        <form style="display: flex; gap: var(--space-2);" onsubmit="event.preventDefault(); window.location.href='products.html';">
+          <input type="text" class="form-control" placeholder="Search products, tees, hoodies, or bulk services..." style="border-radius: var(--radius-full);" />
+          <button type="submit" class="btn btn--secondary" style="border-radius: var(--radius-full); padding-inline: var(--space-6);">Search</button>
+        </form>
+      </div>
+
+      <!-- Quick Navigation Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-8);">
+        <a href="index.html" class="btn btn--outline"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="products.html" class="btn btn--outline"><i class="fa-solid fa-shirt"></i> Catalog</a>
+        <a href="bulk.html" class="btn btn--outline"><i class="fa-solid fa-boxes-stacked"></i> Bulk Orders</a>
+        <a href="design-guide.html" class="btn btn--outline"><i class="fa-solid fa-palette"></i> Design Guide</a>
+        <a href="contact.html" class="btn btn--outline"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner" style="border-top: none; text-align: center; padding-block: var(--space-6);">
+      <p style="color: var(--text-muted); font-size: var(--fs-small);">
+        &copy; 2026 PRNT Custom Apparel Shop. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/global.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    // Interactive Squeegee Canvas Easter Egg
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('squeegeeCanvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      let rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+
+      // Fill canvas with wet ink splatters
+      function fillInk() {
+        ctx.fillStyle = '#16233F';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Splatters
+        const colors = ['#17A2B8', '#F4A100', '#28A745', '#EC4899', '#7C3AED'];
+        for (let i = 0; i < 60; i++) {
+          const x = Math.random() * canvas.width;
+          const y = Math.random() * canvas.height;
+          const r = Math.random() * 25 + 10;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fillStyle = colors[i % colors.length];
+          ctx.globalAlpha = 0.7;
+          ctx.fill();
+        }
+
+        // Text behind ink
+        ctx.globalAlpha = 1.0;
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 24px "Barlow Condensed", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('WIPED CLEAN! READY FOR RE-PRINT', canvas.width / 2, canvas.height / 2);
+      }
+
+      fillInk();
+
+      // Wipe ink on mouse move / touch move
+      let isDragging = false;
+      function wipe(e) {
+        if (!isDragging && e.type !== 'mousemove') return;
+        const x = e.clientX ? e.clientX - rect.left : (e.touches && e.touches[0].clientX - rect.left);
+        const y = e.clientY ? e.clientY - rect.top : (e.touches && e.touches[0].clientY - rect.top);
+
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 32, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      canvas.addEventListener('mousedown', (e) => { isDragging = true; wipe(e); });
+      canvas.addEventListener('mousemove', (e) => { if (isDragging) wipe(e); });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+
+      canvas.addEventListener('touchstart', (e) => { isDragging = true; wipe(e); });
+      canvas.addEventListener('touchmove', (e) => { if (isDragging) wipe(e); });
+      window.addEventListener('touchend', () => { isDragging = false; });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUDZ — User Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z' fill='none' stroke='%233E5C50' stroke-width='2'/%3E%3Ccircle cx='22' cy='12' r='2.5' fill='%23C2764A'/%3E%3Ccircle cx='14' cy='20' r='1.5' fill='%23C2764A'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <style>
+    /* Dashboard specific layout */
+    .dashboard-layout { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - var(--navbar-height)); }
+    
+    .dashboard-sidebar { border-right: 1px solid var(--clr-border); padding: var(--sp-4); background: var(--clr-surface); }
+    .dashboard-nav { display: flex; flex-direction: column; gap: var(--sp-1); }
+    .dashboard-nav__item { display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-sm); color: var(--clr-text-secondary); text-decoration: none; transition: all 0.2s; font-weight: 500; }
+    .dashboard-nav__item:hover { background: rgba(0,0,0,0.03); color: var(--clr-text); }
+    [data-theme="dark"] .dashboard-nav__item:hover { background: rgba(255,255,255,0.05); }
+    .dashboard-nav__item.active { background: rgba(62,92,80,0.1); color: var(--clr-primary); }
+    [data-theme="dark"] .dashboard-nav__item.active { background: rgba(143,188,166,0.15); color: #8FBCA6; }
+    .dashboard-nav__item svg { width: 18px; height: 18px; }
+    
+    .dashboard-main { padding: var(--sp-5); background: var(--clr-bg); }
+    
+    .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-5); }
+    .user-profile { display: flex; align-items: center; gap: var(--sp-3); }
+    .user-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--clr-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--ff-heading); font-size: 1.5rem; }
+    
+    /* Order Table */
+    .table-container { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--sp-5); }
+    .table { width: 100%; border-collapse: collapse; text-align: left; }
+    .table th { padding: var(--sp-3); background: rgba(0,0,0,0.02); font-weight: 600; font-size: var(--fs-small); color: var(--clr-text-secondary); border-bottom: 1px solid var(--clr-border); }
+    [data-theme="dark"] .table th { background: rgba(255,255,255,0.02); }
+    .table td { padding: var(--sp-3); border-bottom: 1px solid var(--clr-border); vertical-align: middle; }
+    .table tr:last-child td { border-bottom: none; }
+    
+    .status-badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 99px; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .status-badge--success { background: rgba(76, 175, 80, 0.1); color: #2E7D32; }
+    .status-badge--pending { background: rgba(255, 152, 0, 0.1); color: #F57C00; }
+    [data-theme="dark"] .status-badge--success { color: #81C784; }
+    [data-theme="dark"] .status-badge--pending { color: #FFB74D; }
+
+    /* Club Status */
+    .club-card { background: linear-gradient(145deg, #3E5C50 0%, #2D4439 100%); color: #fff; border-radius: var(--radius-lg); padding: var(--sp-4); position: relative; overflow: hidden; }
+    .club-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 100% 100%, rgba(255,255,255,0.1) 0%, transparent 60%); pointer-events: none; }
+    .club-card__content { position: relative; z-index: 1; }
+
+    /* Mobile handling */
+    .mobile-menu-btn { display: none; }
+    @media (max-width: 900px) {
+      .dashboard-layout { grid-template-columns: 1fr; }
+      .dashboard-sidebar { display: none; } /* Would need a toggle in real app */
+      .mobile-menu-btn { display: inline-flex; margin-right: var(--sp-2); }
+      .table { display: block; overflow-x: auto; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Minimal Dashboard Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <div style="display: flex; align-items: center;">
+        <button class="btn btn--icon mobile-menu-btn" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="../index.html" class="navbar__brand" aria-label="SUDZ Home"><svg class="navbar__logo" viewBox="0 0 100 36"><path d="M 18 32 C 18 32, 8 22, 8 16 C 8 8, 18 4, 18 4 C 18 4, 28 8, 28 16 C 28 22, 18 32, 18 32 Z" fill="none" stroke="var(--clr-primary)" stroke-width="2"/><circle cx="22" cy="12" r="2.5" fill="var(--clr-secondary)"/><circle cx="14" cy="20" r="1.5" fill="var(--clr-secondary)"/><text x="36" y="25" text-anchor="start" fill="var(--clr-primary)" font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="24">SUDZ</text></svg></a>
+      </div>
+      
+      <div class="navbar__actions">
+        <a href="../products.html" class="navbar__link" style="margin-right: var(--sp-2);">Shop</a>
+        <button class="navbar__icon-btn" data-theme-toggle aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <button class="navbar__dir-toggle" data-dir-toggle>RTL</button>
+        <a href="../cart.html" class="navbar__icon-btn navbar__cart" aria-label="Cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="navbar__cart-badge" id="cartBadge">0</span></a>
+        <!-- User Dropdown (Simulated) -->
+        <div style="margin-left: var(--sp-2); width: 36px; height: 36px; border-radius: 50%; background: var(--clr-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--ff-heading); cursor: pointer;">EC</div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="navbar-spacer"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <nav class="dashboard-nav">
+        <a href="#" class="dashboard-nav__item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Overview
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Order History
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Wishlist
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Subscriptions
+        </a>
+        <a href="#" class="dashboard-nav__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Account Details
+        </a>
+        <a href="../login.html" class="dashboard-nav__item" style="margin-top: auto;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign Out
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <div class="dashboard-header anim-fade-scale">
+        <div class="user-profile">
+          <div class="user-avatar">EC</div>
+          <div>
+            <h1 style="font-size: 1.75rem; margin-bottom: 4px;">Welcome back, Emma</h1>
+            <p class="text-muted" style="font-size: var(--fs-small);">emma.chen@example.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid--3 mb-5 reveal-stagger">
+        <!-- SUDZ Club Status -->
+        <div class="club-card reveal" style="grid-column: span 2;">
+          <div class="club-card__content">
+            <div class="flex-between mb-3">
+              <div>
+                <span class="badge badge--accent mb-1" style="background: rgba(255,255,255,0.2); color: #fff;">SUDZ Club Member</span>
+                <h3 style="color: #fff;">Botanist Tier</h3>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 2rem; font-weight: 700; line-height: 1; font-family: var(--ff-heading);">450</div>
+                <div style="font-size: var(--fs-xs); opacity: 0.8;">Suds Points</div>
+              </div>
+            </div>
+            
+            <div class="mb-2">
+              <div class="flex-between mb-1" style="font-size: var(--fs-xs);">
+                <span>50 points to Artisan Tier</span>
+                <span>450 / 500</span>
+              </div>
+              <div class="progress-bar" style="background: rgba(255,255,255,0.2);">
+                <div class="progress-bar__fill" style="width: 90%; background: #fff;"></div>
+              </div>
+            </div>
+            
+            <p style="font-size: var(--fs-xs); opacity: 0.9;">You have a $10 reward available! Apply at checkout.</p>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="card reveal" style="display: flex; flex-direction: column; justify-content: center; padding: var(--sp-4);">
+          <div style="display: flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-3);">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(194,118,74,0.1); color: var(--clr-secondary); display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 1.5rem; font-weight: 700; font-family: var(--ff-heading);">12</div>
+              <div style="font-size: var(--fs-xs); color: var(--clr-text-secondary);">Total Orders</div>
+            </div>
+          </div>
+          <a href="../products.html" class="btn btn--secondary btn--sm btn--full">Shop Again</a>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="reveal">
+        <h3 style="margin-bottom: var(--sp-3);">Recent Orders</h3>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Date</th>
+                <th>Items</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#SZ-8492</strong></td>
+                <td>Oct 12, 2024</td>
+                <td>3 items</td>
+                <td><span class="status-badge status-badge--pending">In Transit</span></td>
+                <td>$36.50</td>
+                <td><button class="btn btn--ghost btn--sm">Track</button></td>
+              </tr>
+              <tr>
+                <td><strong>#SZ-7104</strong></td>
+                <td>Sep 05, 2024</td>
+                <td>1 item (Gift Box)</td>
+                <td><span class="status-badge status-badge--success">Delivered</span></td>
+                <td>$45.00</td>
+                <td><button class="btn btn--ghost btn--sm">Reorder</button></td>
+              </tr>
+              <tr>
+                <td><strong>#SZ-6221</strong></td>
+                <td>Jul 18, 2024</td>
+                <td>4 items</td>
+                <td><span class="status-badge status-badge--success">Delivered</span></td>
+                <td>$52.00</td>
+                <td><button class="btn btn--ghost btn--sm">Reorder</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

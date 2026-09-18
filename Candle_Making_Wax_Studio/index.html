@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUME — Artisan Candle Studio | Hand-Poured Soy Candles</title>
+  <meta name="description"
+    content="LUME crafts small-batch, hand-poured soy candles in unique vessels. Shop signature scents, book candle-making workshops, or create custom wedding favors.">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/dark.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "LUME Artisan Candle Studio",
+    "description": "Hand-poured soy candles, candle-making workshops, and custom wedding favors.",
+    "url": "https://lumecandlestudio.com",
+    "image": "assets/images/heroes/hero-home-glow.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "42 Wick Lane",
+      "addressLocality": "Brooklyn",
+      "addressRegion": "NY",
+      "postalCode": "11201"
+    },
+    "telephone": "+1-718-555-0194"
+  }
+  </script>
+</head>
+
+<body class="has-header">
+
+  <!-- ════════════════════════════════════════════════════════════
+       HEADER / NAVBAR
+       ════════════════════════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <!-- Logo -->
+      <a href="index.html" class="header__logo" aria-label="LUME Home">
+        <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z"
+            fill="#C97B3D" opacity="0.85" />
+          <path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z"
+            fill="#E8A84C" />
+          <path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z"
+            fill="#FAF4EB" />
+          <rect x="23" y="2" width="2" height="4" rx="1" fill="#2B2622" />
+        </svg>
+        <span class="header__logo-text">LUME</span>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="nav" id="main-nav" aria-label="Main navigation">
+        <!-- Home Dropdown -->
+        <div class="nav__dropdown">
+          <a href="index.html" class="nav__link nav__dropdown-toggle nav__link--active" id="nav-home">
+            Home
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </a>
+          <div class="nav__dropdown-menu">
+            <a href="index.html" class="nav__dropdown-item" id="nav-home-glow">Home 1</a>
+            <a href="home-atelier.html" class="nav__dropdown-item" id="nav-home-atelier">Home &mdash; Atelier
+              Edition</a>
+          </div>
+        </div>
+
+        <a href="products.html" class="nav__link" id="nav-shop">Shop</a>
+        <a href="workshops.html" class="nav__link" id="nav-workshops">Workshops</a>
+        <a href="custom.html" class="nav__link" id="nav-custom">Custom Favors</a>
+        <a href="about.html" class="nav__link" id="nav-about">Our Story</a>
+        <a href="journal.html" class="nav__link" id="nav-journal">Journal</a>
+        <a href="contact.html" class="nav__link" id="nav-contact">Contact</a>
+
+        <!-- Cart CTA -->
+        </nav>
+
+      <!-- Controls -->
+      <div class="header__controls">
+        <button class="header__toggle" data-toggle-theme aria-label="Toggle theme" id="theme-toggle">
+          <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
+        <button class="header__rtl-toggle" data-toggle-dir aria-label="Toggle text direction"
+          id="dir-toggle">RTL</button>
+      <a href="cart.html" class="nav__cart" id="nav-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          Cart (0)
+        </a>
+</div>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="mobile-menu__link mobile-menu__link--active">Home 1</a>
+    <a href="home-atelier.html" class="mobile-menu__link">Home 2</a>
+    <a href="products.html" class="mobile-menu__link">Shop</a>
+    <a href="workshops.html" class="mobile-menu__link">Workshops</a>
+    <a href="custom.html" class="mobile-menu__link">Custom Favors</a>
+    <a href="about.html" class="mobile-menu__link">Our Story</a>
+    <a href="journal.html" class="mobile-menu__link">Journal</a>
+    <a href="contact.html" class="mobile-menu__link">Contact</a>
+    <a href="cart.html" class="mobile-menu__link">Cart (0)</a>
+    <div class="mobile-menu__controls">
+      <button class="header__toggle" data-toggle-theme aria-label="Toggle theme">
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      </button>
+      <button class="header__rtl-toggle" data-toggle-dir aria-label="Toggle direction">RTL</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- ══════════════════════════════════════════════════════
+         SECTION 1: HERO — Warm Glow at Dusk
+         ══════════════════════════════════════════════════════ -->
+    <section class="hero" id="hero-home">
+      <div class="hero__bg">
+        <img src="assets/images/heroes/hero-home-glow.png"
+          alt="Artisan candles glowing on a wooden mantel at dusk, warm amber light filling the room" loading="eager">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="shimmer-text">LUME</h1>
+        <p>Hand-poured soy candles crafted in small batches. Each flame tells a story of warmth, nature, and artisan
+          care.</p>
+        <div class="hero__actions">
+          <a href="products.html" class="btn btn--primary btn--lg" id="hero-cta-shop">Shop the Collection</a>
+          <a href="workshops.html" class="btn btn--ghost btn--lg" id="hero-cta-workshop">Book a Workshop</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         SECTION 2: SIGNATURE COLLECTIONS (4-card grid)
+         ══════════════════════════════════════════════════════ -->
+    <section class="section" id="collections">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2>Signature Collections</h2>
+          <p>Four curated scent families, each inspired by a moment worth savoring.</p>
+        </div>
+        <div class="grid grid-4 stagger-children">
+          <!-- Amber Noir -->
+          <div class="card animate-on-scroll" id="card-amber-noir">
+            <div class="card__image">
+              <img src="assets/images/products/amber-noir.png"
+                alt="Amber Noir candle in dark glass vessel with smoky amber fragrance notes" loading="lazy">
+              <span class="card__badge">Bestseller</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Amber Noir</h3>
+              <p class="card__subtitle">Warm amber, vanilla, smoked sandalwood</p>
+              <div class="card__price">$38.00</div>
+              <div class="card__actions">
+                <a href="product.html" class="btn btn--primary btn--sm">View</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botanical Garden -->
+          <div class="card animate-on-scroll" id="card-botanical">
+            <div class="card__image">
+              <img src="assets/images/products/botanical-garden.png"
+                alt="Botanical Garden candle surrounded by fresh herbs and wildflowers" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Botanical Garden</h3>
+              <p class="card__subtitle">Jasmine, green tea, white musk</p>
+              <div class="card__price">$36.00</div>
+              <div class="card__actions">
+                <a href="product.html" class="btn btn--primary btn--sm">View</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coastal Drift -->
+          <div class="card animate-on-scroll" id="card-coastal">
+            <div class="card__image">
+              <img src="assets/images/products/coastal-drift.png"
+                alt="Coastal Drift candle in ceramic vessel with sea salt and driftwood notes" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Coastal Drift</h3>
+              <p class="card__subtitle">Sea salt, driftwood, coconut</p>
+              <div class="card__price">$34.00</div>
+              <div class="card__actions">
+                <a href="product.html" class="btn btn--primary btn--sm">View</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spiced Hearth -->
+          <div class="card animate-on-scroll" id="card-spiced">
+            <div class="card__image">
+              <img src="assets/images/products/spiced-hearth.png"
+                alt="Spiced Hearth candle with cinnamon sticks and dried orange slices" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Spiced Hearth</h3>
+              <p class="card__subtitle">Cinnamon, clove, dried orange, cedarwood</p>
+              <div class="card__price">$36.00</div>
+              <div class="card__actions">
+                <a href="product.html" class="btn btn--primary btn--sm">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         SECTION 3: THE POURING RITUAL (Process Timeline)
+         ══════════════════════════════════════════════════════ -->
+    <section class="section section--alt" id="process">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2>The Pouring Ritual</h2>
+          <p>From raw wax to radiant glow — every candle follows a four-step journey of patience and craft.</p>
+        </div>
+        <div class="process animate-on-scroll">
+          <!-- Step 1: Melt -->
+          <div class="process__step">
+            <div class="process__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                <circle cx="12" cy="12" r="4" />
+              </svg>
+            </div>
+            <h4 class="process__label">Melt</h4>
+            <p class="process__desc">Pure soy wax gently heated to the perfect pouring temperature</p>
+          </div>
+
+          <!-- Step 2: Blend -->
+          <div class="process__step">
+            <div class="process__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M8 2h8l4 10H4L8 2z" />
+                <path d="M12 12v6" />
+                <path d="M8 22h8" />
+                <path d="M12 18h.01" />
+              </svg>
+            </div>
+            <h4 class="process__label">Blend</h4>
+            <p class="process__desc">Essential oils and botanicals stirred by hand for depth and character</p>
+          </div>
+
+          <!-- Step 3: Pour -->
+          <div class="process__step">
+            <div class="process__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 2C12 2 4 12 4 17a8 8 0 0016 0c0-5-8-15-8-15z" />
+              </svg>
+            </div>
+            <h4 class="process__label">Pour</h4>
+            <p class="process__desc">Warm wax carefully poured into hand-selected vessels with cotton wicks</p>
+          </div>
+
+          <!-- Step 4: Cure -->
+          <div class="process__step">
+            <div class="process__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h4 class="process__label">Cure</h4>
+            <p class="process__desc">Each candle rests for 14 days to develop its full scent throw</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         SECTION 4: SCENT STORIES (Editorial Split)
+         ══════════════════════════════════════════════════════ -->
+    <section class="section" id="scent-stories">
+      <div class="container">
+        <div class="grid-split">
+          <div class="animate-on-scroll--left">
+            <h2>Scent of the Month</h2>
+            <h3 style="color: var(--color-primary); margin-bottom: var(--space-md);">Midnight Orchid</h3>
+            <p>A sultry, evening-ready fragrance that opens with dark plum and black currant, settles into a heart of
+              midnight orchid and velvety rose, and closes with a warm base of oud, patchouli, and vanilla bean.</p>
+            <p>Each Midnight Orchid candle is poured into a hand-thrown ceramic vessel glazed in deep aubergine, making
+              it as much a decorative object as a sensory experience.</p>
+            <div style="margin-top: var(--space-lg);">
+              <a href="product.html" class="btn btn--primary" id="cta-scent-month">Discover Midnight Orchid</a>
+            </div>
+          </div>
+          <div class="animate-on-scroll--right">
+            <img src="assets/images/products/midnight-orchid.png"
+              alt="Midnight Orchid candle in aubergine ceramic vessel with dark plum and orchid notes"
+              style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius-md);" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         SECTION 5: WORKSHOP TEASER
+         ══════════════════════════════════════════════════════ -->
+    <section class="section section--alt" id="workshop-teaser">
+      <div class="container">
+        <div class="grid-split" style="gap: var(--space-2xl);">
+          <div class="animate-on-scroll--left" style="order: 2;">
+            <h2>Pour Your Own</h2>
+            <p>Step into our Brooklyn studio and learn the art of candle making from our master chandlers. Choose your
+              scent, select your vessel, and pour a candle that's entirely yours.</p>
+            <p>Our intimate workshops accommodate up to 8 guests, making them perfect for date nights, team outings, or
+              simply a Saturday well spent.</p>
+            <ul style="margin: var(--space-md) 0; display: flex; flex-direction: column; gap: var(--space-xs);">
+              <li
+                style="display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary); font-size: var(--small-size);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                2-hour hands-on experience
+              </li>
+              <li
+                style="display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary); font-size: var(--small-size);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                All materials included
+              </li>
+              <li
+                style="display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary); font-size: var(--small-size);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Take home your custom candle
+              </li>
+            </ul>
+            <a href="workshops.html" class="btn btn--primary" id="cta-workshop-teaser">View Workshops</a>
+          </div>
+          <div class="animate-on-scroll--right" style="order: 1;">
+            <img src="assets/images/workshops/workshop-teaser.png"
+              alt="Guests pouring candles in an intimate workshop setting with warm lighting"
+              style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius-md);" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         SECTION 6: REVIEWS GRID + Single CTA
+         ══════════════════════════════════════════════════════ -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2>What Our Customers Say</h2>
+          <p>Real words from real candle lovers.</p>
+        </div>
+        <div class="grid grid-3 stagger-children" style="margin-bottom: var(--space-xl);">
+          <!-- Review 1 -->
+          <div class="testimonial-card animate-on-scroll" id="review-1">
+            <div class="testimonial-card__stars">
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <p class="testimonial-card__text">"The Amber Noir has become a ritual for me every evening. The scent throw
+              is incredible — it fills my entire living room within minutes. The burn is clean and even, and the vessel
+              is gorgeous."</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">Sarah M.</div>
+                <div class="testimonial-card__role">Verified Buyer</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="testimonial-card animate-on-scroll" id="review-2">
+            <div class="testimonial-card__stars">
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <p class="testimonial-card__text">"I booked a workshop as a birthday gift for my partner and we both loved
+              it. The experience was intimate, educational, and so relaxing. We came home with two beautiful candles!"
+            </p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">James K.</div>
+                <div class="testimonial-card__role">Workshop Attendee</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="testimonial-card animate-on-scroll" id="review-3">
+            <div class="testimonial-card__stars">
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <p class="testimonial-card__text">"We ordered 120 custom favor candles for our wedding and they were
+              absolutely perfect. The team was responsive, the packaging was beautiful, and our guests."</p>
+            <div class="testimonial-card__author">
+              <div>
+                <div class="testimonial-card__name">Emily &amp; David R.</div>
+                <div class="testimonial-card__role">Wedding Favor Clients</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single centered CTA -->
+        <div class="text-center animate-on-scroll">
+          <a href="about.html#reviews" class="btn btn--outline" id="cta-more-reviews">Read More Reviews</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand Column -->
+        <div class="footer__brand">
+          <a href="index.html" class="footer__brand-logo">
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z"
+                fill="#C97B3D" opacity="0.85" />
+              <path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z"
+                fill="#E8A84C" />
+              <path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z"
+                fill="#FAF4EB" />
+            </svg>
+            <span class="footer__brand-name">LUME</span>
+          </a>
+          <p>Small-batch, hand-poured soy candles crafted with intention in our Brooklyn studio. Every flame, a moment
+            of warmth.</p>
+          <div class="footer__social">
+            <a href="#" class="social-btn social-btn--google" aria-label="Google">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+            </a>
+            <a href="#" class="social-btn social-btn--facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a href="#" class="social-btn social-btn--instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              </svg>
+            </a>
+            <a href="#" class="social-btn social-btn--x" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Explore Column -->
+        <div>
+          <h4 class="footer__heading">Explore</h4>
+          <div class="footer__links">
+            <a href="index.html" class="footer__link">Home</a>
+            <a href="products.html" class="footer__link">Shop</a>
+            <a href="about.html" class="footer__link">Our Story</a>
+            <a href="journal.html" class="footer__link">Journal</a>
+          </div>
+        </div>
+
+        <!-- Studio Column -->
+        <div>
+          <h4 class="footer__heading">Studio</h4>
+          <div class="footer__links">
+            <a href="workshops.html" class="footer__link">Workshops</a>
+            <a href="custom.html" class="footer__link">Custom Favors</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+            <a href="login.html" class="footer__link">Account</a>
+          </div>
+        </div>
+
+        <!-- Newsletter Column -->
+        <div>
+          <h4 class="footer__heading">Stay in the Glow</h4>
+          <p style="color: #9A8D80; font-size: var(--small-size); margin-bottom: var(--space-sm);">New scent drops,
+            workshop dates, and studio stories — delivered monthly.</p>
+          <form class="footer__newsletter-form" id="footer-newsletter">
+            <input type="email" class="footer__newsletter-input" placeholder="Your email"
+              aria-label="Email for newsletter" required>
+            <button type="submit" class="footer__newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 LUME Artisan Candle Studio. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Shipping</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

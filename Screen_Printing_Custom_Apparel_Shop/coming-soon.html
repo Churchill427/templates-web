@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRNT v2.0 3D Studio — Launching Soon</title>
+  <meta name="description" content="PRNT v2.0 Interactive 3D Garment Studio & Automated Screen Separator is launching soon. Subscribe for VIP early beta access." />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <style>
+    .cs-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8) var(--space-4);
+      background: radial-gradient(circle at center, #16233F 0%, #0D1527 100%);
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(23, 162, 184, 0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(23, 162, 184, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .cs-countdown {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      margin-block: var(--space-8);
+    }
+
+    .cs-countdown__item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      min-width: 90px;
+      backdrop-filter: blur(10px);
+    }
+
+    .cs-countdown__num {
+      font-family: var(--font-heading);
+      font-size: var(--fs-h1);
+      font-weight: var(--fw-extrabold);
+      color: var(--color-secondary);
+      line-height: 1;
+    }
+
+    .cs-countdown__label {
+      font-size: var(--fs-xs);
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-caps);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Toggles -->
+  <div class="auth-toggles">
+    <button class="auth-toggle-btn" id="themeToggle" title="Toggle Theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <button class="auth-toggle-btn auth-toggle-btn--rtl" id="rtlToggle" title="Toggle RTL">
+      RTL
+    </button>
+  </div>
+
+  <section class="cs-hero">
+    <div class="cs-grid-bg"></div>
+
+    <div class="container" style="max-width: 800px; position: relative; z-index: 2;">
+      <a href="index.html" class="header__logo" style="margin-inline: auto; margin-bottom: var(--space-6);">
+        <div class="header__logo-icon"><i class="fa-solid fa-print"></i></div>
+        <span class="header__logo-text" style="color: #FFF;">PRNT</span>
+      </a>
+
+      <div class="badge badge--secondary" style="margin-bottom: var(--space-4);">
+        <i class="fa-solid fa-bolt" style="margin-right: 4px;"></i> PRNT OS v2.0 LAUNCH TEASER
+      </div>
+
+      <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: var(--fw-extrabold); text-transform: uppercase; line-height: 1.05; margin-bottom: var(--space-4);">
+        Interactive 3D Garment Studio <br />
+        <span style="color: var(--color-secondary);">& Automated Ink Separator</span>
+      </h1>
+
+      <p style="font-size: var(--fs-lead); color: rgba(255,255,255,0.8); max-width: 620px; margin-inline: auto; margin-bottom: var(--space-6);">
+        We are building the world's most advanced web-based 3D screen printing mockup studio with real-time vector mesh analysis and instant automated wholesale pricing.
+      </p>
+
+      <!-- Live Countdown Timer -->
+      <div class="cs-countdown" id="countdownTimer">
+        <div class="cs-countdown__item">
+          <div class="cs-countdown__num" id="cdDays">18</div>
+          <div class="cs-countdown__label">Days</div>
+        </div>
+        <div class="cs-countdown__item">
+          <div class="cs-countdown__num" id="cdHours">09</div>
+          <div class="cs-countdown__label">Hours</div>
+        </div>
+        <div class="cs-countdown__item">
+          <div class="cs-countdown__num" id="cdMins">42</div>
+          <div class="cs-countdown__label">Mins</div>
+        </div>
+        <div class="cs-countdown__item">
+          <div class="cs-countdown__num" id="cdSecs">15</div>
+          <div class="cs-countdown__label">Secs</div>
+        </div>
+      </div>
+
+      <!-- VIP Early Access Signup Form -->
+      <div style="max-width: 500px; margin-inline: auto; margin-bottom: var(--space-8);">
+        <form style="display: flex; gap: var(--space-2); flex-wrap: wrap;" onsubmit="event.preventDefault(); PRNT.showNotification('You are on the VIP Beta Access list!', 'success');">
+          <input type="email" class="form-control" placeholder="Enter work email for VIP Beta Invite..." required style="flex: 1; min-width: 260px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #FFF;" />
+          <button type="submit" class="btn btn--secondary" style="padding-inline: var(--space-6);"><i class="fa-solid fa-paper-plane"></i> Get Early Access</button>
+        </form>
+        <div style="font-size: var(--fs-xs); color: rgba(255,255,255,0.5); margin-top: var(--space-2);">
+          Join 1,200+ master printers & apparel brand directors on the early access list.
+        </div>
+      </div>
+
+      <!-- 3 Feature Preview Cards Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4); text-align: left;">
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: var(--space-4);">
+          <i class="fa-solid fa-cube" style="font-size: 24px; color: var(--color-secondary); margin-bottom: 8px;"></i>
+          <h4 style="font-family: var(--font-heading); font-size: var(--fs-h4); text-transform: uppercase; color: #FFF; margin-bottom: 4px;">3D Garment Rotation</h4>
+          <p style="font-size: var(--fs-xs); color: rgba(255,255,255,0.7);">Full 360° real-time rendering of fabric folds, seams, and ink textures.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: var(--space-4);">
+          <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 24px; color: var(--color-accent); margin-bottom: 8px;"></i>
+          <h4 style="font-family: var(--font-heading); font-size: var(--fs-h4); text-transform: uppercase; color: #FFF; margin-bottom: 4px;">Auto Ink Separator</h4>
+          <p style="font-size: var(--fs-xs); color: rgba(255,255,255,0.7);">Upload any PNG/SVG and automatically generate 4-color process separations.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: var(--space-4);">
+          <i class="fa-solid fa-calculator" style="font-size: 24px; color: var(--color-success); margin-bottom: 8px;"></i>
+          <h4 style="font-family: var(--font-heading); font-size: var(--fs-h4); text-transform: uppercase; color: #FFF; margin-bottom: 4px;">Instant Quote Engine</h4>
+          <p style="font-size: var(--fs-xs); color: rgba(255,255,255,0.7);">Live cost recalculation as you add print positions, ink colors, and volume.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-8);">
+        <a href="index.html" class="btn btn--outline" style="color: #FFF; border-color: rgba(255,255,255,0.3);"><i class="fa-solid fa-arrow-left"></i> Return to Current PRNT Website</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="js/global.js"></script>
+  <script>
+    // Live Countdown Timer Script
+    document.addEventListener('DOMContentLoaded', () => {
+      let days = 18, hours = 9, mins = 42, secs = 15;
+      const elDays = document.getElementById('cdDays');
+      const elHours = document.getElementById('cdHours');
+      const elMins = document.getElementById('cdMins');
+      const elSecs = document.getElementById('cdSecs');
+
+      setInterval(() => {
+        if (secs > 0) {
+          secs--;
+        } else {
+          secs = 59;
+          if (mins > 0) {
+            mins--;
+          } else {
+            mins = 59;
+            if (hours > 0) {
+              hours--;
+            } else {
+              hours = 23;
+              if (days > 0) days--;
+            }
+          }
+        }
+        if (elDays) elDays.textContent = String(days).padStart(2, '0');
+        if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+        if (elMins) elMins.textContent = String(mins).padStart(2, '0');
+        if (elSecs) elSecs.textContent = String(secs).padStart(2, '0');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

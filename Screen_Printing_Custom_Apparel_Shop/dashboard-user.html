@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal & Proof Studio — PRNT Custom Apparel</title>
+  <meta name="description" content="PRNT Customer Portal — Track active custom print orders, review 3D proof approvals, download print specification sheets, and reorder apparel with 1-click." />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body>
+
+  <div class="dashboard">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Client Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <a href="index.html" class="sidebar__logo">
+          <div class="sidebar__logo-icon"><i class="fa-solid fa-print"></i></div>
+          <span class="sidebar__logo-text">PRNT</span>
+        </a>
+        <button class="sidebar__toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+          <i class="fa-solid fa-angles-left"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-label">Client Portal</div>
+        <a href="dashboard-user.html" class="sidebar__nav-link is-active">
+          <i class="fa-solid fa-box"></i>
+          <span>My Orders & Proofs</span>
+          <span class="sidebar__tooltip">Orders & Proofs</span>
+        </a>
+        <a href="#proof-studio" class="sidebar__nav-link">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>Proof Approval Studio</span>
+          <span class="sidebar__tooltip">Proof Studio</span>
+        </a>
+        <a href="design-guide.html" class="sidebar__nav-link">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <span>Upload Artwork</span>
+          <span class="sidebar__tooltip">Upload Artwork</span>
+        </a>
+        <a href="#reorders" class="sidebar__nav-link">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <span>1-Click Reorders</span>
+          <span class="sidebar__tooltip">Reorders</span>
+        </a>
+
+        <div class="sidebar__nav-label">Account & Files</div>
+        <a href="#art-vault" class="sidebar__nav-link">
+          <i class="fa-solid fa-folder-closed"></i>
+          <span>Vector Art Vault</span>
+          <span class="sidebar__tooltip">Art Vault</span>
+        </a>
+        <a href="#invoices" class="sidebar__nav-link">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <span>Invoices & Receipts</span>
+          <span class="sidebar__tooltip">Invoices</span>
+        </a>
+        <a href="#addresses" class="sidebar__nav-link">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Shipping Addresses</span>
+          <span class="sidebar__tooltip">Addresses</span>
+        </a>
+        <a href="#support" class="sidebar__nav-link">
+          <i class="fa-solid fa-headset"></i>
+          <span>Support Tickets</span>
+          <span class="sidebar__tooltip">Support</span>
+        </a>
+
+        <div class="sidebar__nav-label">Session</div>
+        <a href="login.html" class="sidebar__nav-link">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Sign Out</span>
+          <span class="sidebar__tooltip">Sign Out</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div style="font-size: var(--fs-xs); color: rgba(255,255,255,0.4); text-align: center;">
+          Client ID: #CL-94821 • VIP Tier
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="dashboard__main">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div style="display: flex; align-items: center; gap: var(--space-3);">
+          <button class="topbar__btn" id="mobileMenuBtn" aria-label="Open Sidebar" style="display: none;">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar__search">
+            <i class="fa-solid fa-magnifying-glass topbar__search-icon"></i>
+            <input type="text" class="topbar__search-input" placeholder="Search my past orders or saved proofs..." />
+          </div>
+        </div>
+
+        <div class="topbar__actions">
+          <a href="products.html" class="btn btn--secondary btn--sm">
+            <i class="fa-solid fa-plus"></i>
+            <span>Start New Order</span>
+          </a>
+
+          <!-- Theme Toggle -->
+          <button class="topbar__btn" id="themeToggle" title="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <!-- RTL Toggle -->
+          <button class="topbar__btn" id="rtlToggle" title="Toggle RTL">
+            <span>RTL</span>
+          </button>
+
+          <!-- Notifications Dropdown -->
+          <button class="topbar__btn" title="Notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span style="position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; background: var(--color-secondary); border-radius: 50%;"></span>
+          </button>
+
+          <!-- User Profile -->
+          <div class="topbar__profile">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Client Profile" class="topbar__profile-avatar" />
+            <div>
+              <div class="topbar__profile-name">Marcus Sterling</div>
+              <div class="topbar__profile-role">Apex Athletics Inc.</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body Container -->
+      <main class="dashboard__content">
+
+        <!-- Welcome Banner -->
+        <div style="background: linear-gradient(135deg, var(--color-primary), #1C2E52); color: #FFF; border-radius: var(--radius-xl); padding: var(--space-6); margin-bottom: var(--space-6); position: relative; overflow: hidden;">
+          <div style="position: relative; z-index: 2; max-width: 600px;">
+            <span class="badge badge--secondary" style="margin-bottom: var(--space-2);">VIP Corporate Account</span>
+            <h1 style="font-family: var(--font-heading); font-size: var(--fs-h2); font-weight: var(--fw-extrabold); text-transform: uppercase; color: #FFF; margin-bottom: var(--space-2);">
+              Welcome Back, Marcus!
+            </h1>
+            <p style="color: rgba(255,255,255,0.8); font-size: var(--fs-small); margin-bottom: var(--space-4);">
+              You have <strong style="color: var(--color-secondary);">1 digital proof ready for approval</strong> and 1 batch currently printing on Press #01.
+            </p>
+            <a href="#proof-studio" class="btn btn--secondary btn--sm"><i class="fa-solid fa-wand-magic-sparkles"></i> Review Digital Proof Now</a>
+          </div>
+        </div>
+
+        <!-- 3 Quick KPI Stat Summary -->
+        <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: var(--space-6);">
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="background: rgba(23, 162, 184, 0.15); color: var(--color-secondary);">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <div class="kpi-card__info">
+              <div class="kpi-card__value">1,000 Pcs</div>
+              <div class="kpi-card__label">Active Printing Batch</div>
+              <div class="kpi-card__trend kpi-card__trend--up">Estimated Delivery: Tomorrow 5 PM</div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="background: rgba(244, 161, 0, 0.15); color: var(--color-accent);">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <div class="kpi-card__info">
+              <div class="kpi-card__value">1 Action</div>
+              <div class="kpi-card__label">Proof Approval Needed</div>
+              <div class="kpi-card__trend kpi-card__trend--down">Job #PRNT-8821 Action Req.</div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="background: rgba(40, 167, 69, 0.15); color: var(--color-success);">
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+            <div class="kpi-card__info">
+              <div class="kpi-card__value">14,250</div>
+              <div class="kpi-card__label">Lifetime Garments Printed</div>
+              <div class="kpi-card__trend kpi-card__trend--up">12 Orders Completed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Order Visual Progress Tracker -->
+        <div class="dash-table-card" style="padding: var(--space-6); margin-bottom: var(--space-8);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-2);">
+            <div>
+              <span class="badge badge--primary">Active Run</span>
+              <h3 style="font-family: var(--font-heading); font-size: var(--fs-h3); text-transform: uppercase; margin-top: 4px;">
+                Order #PRNT-8821 — Apex Performance Apparel
+              </h3>
+            </div>
+            <div style="font-size: var(--fs-small); color: var(--text-muted);">
+              Carrier: <strong style="color: var(--text-primary);">FedEx Express (Tracking #9400-1182-9912)</strong>
+            </div>
+          </div>
+
+          <!-- 6-Step Stepper -->
+          <div class="stepper" style="display: flex; justify-content: space-between; position: relative;">
+            <div class="stepper__step is-completed" style="flex: 1; text-align: center; position: relative;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-success); color: #FFF; display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 8px;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div style="font-weight: var(--fw-bold); font-size: var(--fs-xs); text-transform: uppercase;">1. Order Placed</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Sep 08, 10:30 AM</div>
+            </div>
+
+            <div class="stepper__step is-completed" style="flex: 1; text-align: center; position: relative;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-success); color: #FFF; display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 8px;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div style="font-weight: var(--fw-bold); font-size: var(--fs-xs); text-transform: uppercase;">2. Proof Approved</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Sep 09, 02:15 PM</div>
+            </div>
+
+            <div class="stepper__step is-completed" style="flex: 1; text-align: center; position: relative;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-success); color: #FFF; display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 8px;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div style="font-weight: var(--fw-bold); font-size: var(--fs-xs); text-transform: uppercase;">3. Screen Prepared</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Sep 10, 09:00 AM</div>
+            </div>
+
+            <div class="stepper__step is-active" style="flex: 1; text-align: center; position: relative;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-secondary); color: #FFF; display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 8px; box-shadow: 0 0 0 4px rgba(23,162,184,0.25);">
+                <i class="fa-solid fa-fire fa-spin"></i>
+              </div>
+              <div style="font-weight: var(--fw-bold); font-size: var(--fs-xs); text-transform: uppercase; color: var(--color-secondary);">4. On Press #01</div>
+              <div style="font-size: 11px; color: var(--text-muted);">78% Complete</div>
+            </div>
+
+            <div class="stepper__step" style="flex: 1; text-align: center; position: relative; opacity: 0.5;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-muted); color: var(--text-muted); display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 8px;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <div style="font-weight: var(--fw-bold); font-size: var(--fs-xs); text-transform: uppercase;">5. QC & Pack</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Pending</div>
+            </div>
+
+            <div class="stepper__step" style="flex: 1; text-align: center; position: relative; opacity: 0.5;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-muted); color: var(--text-muted); display: flex; align-items: center; justify-content: center; margin-inline: auto; margin-bottom: 8px;">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <div style="font-weight: var(--fw-bold); font-size: var(--fs-xs); text-transform: uppercase;">6. Shipped</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Sep 12</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Proof Approval Studio Section -->
+        <section id="proof-studio" style="margin-bottom: var(--space-8);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+            <h2 style="font-family: var(--font-heading); font-size: var(--fs-h3); text-transform: uppercase;">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--color-secondary); margin-right: 8px;"></i> Interactive Proof Approval Studio
+            </h2>
+            <span class="badge badge--accent"><i class="fa-solid fa-clock" style="margin-right: 4px;"></i> Awaiting Client Sign-off</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 340px; gap: var(--space-6); background: var(--bg-card); border: 1px solid var(--border-color-light); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm);">
+            <!-- Mockup Canvas Studio View -->
+            <div style="padding: var(--space-6); background: var(--bg-muted); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; min-height: 420px;">
+              <!-- Mockup Preview Box -->
+              <div style="position: relative; width: 300px; height: 340px; background: #FFF; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; overflow: hidden;" id="mockupCanvas">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Garment Canvas Mockup" style="width: 100%; height: 100%; object-fit: cover;" />
+                <div style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); padding: 12px; background: rgba(22,35,63,0.85); border: 2px dashed var(--color-secondary); border-radius: var(--radius-md); text-align: center; color: #FFF; width: 140px;" id="proofPrintArea">
+                  <i class="fa-solid fa-bolt" style="font-size: 28px; color: var(--color-accent); margin-bottom: 4px;"></i>
+                  <div style="font-family: var(--font-heading); font-weight: 800; font-size: 14px; text-transform: uppercase;">APEX POWER</div>
+                  <div style="font-size: 9px; color: var(--color-secondary);">VECTOR PRINT AREA</div>
+                </div>
+              </div>
+
+              <!-- Canvas Controls -->
+              <div style="position: absolute; bottom: 16px; display: flex; gap: var(--space-2); background: var(--bg-card); padding: 6px 12px; border-radius: var(--radius-full); border: 1px solid var(--border-color-light);">
+                <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 12px;" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 12px;" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 12px;" title="Rotate View"><i class="fa-solid fa-rotate"></i></button>
+                <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 12px;" title="Full Screen"><i class="fa-solid fa-expand"></i></button>
+              </div>
+            </div>
+
+            <!-- Proof Spec & Approval Controls Panel -->
+            <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
+                  <span class="badge badge--secondary">Proof Version 2.0</span>
+                  <span style="font-size: var(--fs-xs); color: var(--text-muted);">Uploaded 2h ago</span>
+                </div>
+
+                <h3 style="font-family: var(--font-heading); font-size: var(--fs-h4); text-transform: uppercase; margin-bottom: var(--space-4);">
+                  Front Chest 4-Color Plastisol Proof
+                </h3>
+
+                <div style="font-size: var(--fs-small); color: var(--text-primary); margin-bottom: var(--space-4); space-y: var(--space-2);">
+                  <div style="display: flex; justify-content: space-between; padding-block: 4px; border-bottom: 1px solid var(--border-color-light);">
+                    <span style="color: var(--text-muted);">Garment Style:</span>
+                    <strong>Next Level 6210 CVC</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; padding-block: 4px; border-bottom: 1px solid var(--border-color-light);">
+                    <span style="color: var(--text-muted);">Print Location:</span>
+                    <strong>Center Chest (11.5" x 14")</strong>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; padding-block: 4px; border-bottom: 1px solid var(--border-color-light);">
+                    <span style="color: var(--text-muted);">Pantone Swatches:</span>
+                    <div style="display: flex; gap: 4px;">
+                      <span style="width: 14px; height: 14px; border-radius: 50%; background: #16233F; display: inline-block;" title="PMS 289 C"></span>
+                      <span style="width: 14px; height: 14px; border-radius: 50%; background: #17A2B8; display: inline-block;" title="PMS 3115 C"></span>
+                      <span style="width: 14px; height: 14px; border-radius: 50%; background: #F4A100; display: inline-block;" title="PMS 1235 C"></span>
+                      <span style="width: 14px; height: 14px; border-radius: 50%; background: #FFFFFF; border: 1px solid #CCC; display: inline-block;" title="Pure White Base"></span>
+                    </div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; padding-block: 4px; border-bottom: 1px solid var(--border-color-light);">
+                    <span style="color: var(--text-muted);">Screen Mesh:</span>
+                    <strong>160 / 230 High Res</strong>
+                  </div>
+                </div>
+
+                <div class="alert-item alert-item--info" style="margin-bottom: var(--space-4);">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <span style="font-size: var(--fs-xs);">Approving this proof authorizes PRNT to burn screens and enter production queue immediately.</span>
+                </div>
+              </div>
+
+              <!-- Action Split Buttons -->
+              <div>
+                <button class="btn btn--secondary btn--full" style="margin-bottom: var(--space-2);" onclick="PRNT.showNotification('Digital Proof Approved! Order dispatched to Press Line.', 'success')">
+                  <i class="fa-solid fa-circle-check"></i> Approve Digital Proof
+                </button>
+                <button class="btn btn--outline btn--full" onclick="PRNT.showNotification('Revision request sent to Master Printer.', 'info')">
+                  <i class="fa-solid fa-pen-to-square"></i> Request Revision
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 1-Click Reorder Table -->
+        <section id="reorders" class="dash-table-card">
+          <div class="dash-table-card__header">
+            <div>
+              <h3 class="dash-table-card__title">1-Click Apparel Reorders</h3>
+              <p style="font-size: var(--fs-xs); color: var(--text-muted);">Re-run past screen printing orders instantly with stored film separations.</p>
+            </div>
+            <a href="products.html" class="btn btn--outline btn--sm"><i class="fa-solid fa-shirt"></i> Browse Blank Catalog</a>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--fs-small);">
+              <thead>
+                <tr style="background: var(--bg-muted); border-bottom: 1px solid var(--border-color-light); color: var(--text-muted); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: var(--ls-caps);">
+                  <th style="padding: var(--space-3) var(--space-4);">Previous Order</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Date Delivered</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Items Printed</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Saved Separations</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Unit Cost</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color-light);">
+                  <td style="padding: var(--space-4);">
+                    <div style="font-weight: var(--fw-bold); color: var(--text-heading);">Apex Summer Marathon Tees</div>
+                    <div style="font-size: var(--fs-xs); color: var(--text-muted);">#PRNT-7412 • Bella Canvas 3001</div>
+                  </td>
+                  <td style="padding: var(--space-4);">Jun 14, 2026</td>
+                  <td style="padding: var(--space-4); font-weight: var(--fw-semibold);">2,000 pcs</td>
+                  <td style="padding: var(--space-4);"><span class="badge badge--success"><i class="fa-solid fa-check"></i> Active in Film Vault</span></td>
+                  <td style="padding: var(--space-4);">$5.40 / ea</td>
+                  <td style="padding: var(--space-4);">
+                    <button class="btn btn--secondary btn--sm" style="padding: 4px 10px; font-size: 11px;" onclick="PRNT.showNotification('Reorder #PRNT-7412 added to Cart with saved screens!', 'success')">
+                      <i class="fa-solid fa-rotate-right"></i> Reorder 2,000 Pcs
+                    </button>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid var(--border-color-light);">
+                  <td style="padding: var(--space-4);">
+                    <div style="font-weight: var(--fw-bold); color: var(--text-heading);">Apex Staff Fleece Hoodies</div>
+                    <div style="font-size: var(--fs-xs); color: var(--text-muted);">#PRNT-6980 • Independent IND4000</div>
+                  </td>
+                  <td style="padding: var(--space-4);">Apr 02, 2026</td>
+                  <td style="padding: var(--space-4); font-weight: var(--fw-semibold);">450 pcs</td>
+                  <td style="padding: var(--space-4);"><span class="badge badge--success"><i class="fa-solid fa-check"></i> Active in Film Vault</span></td>
+                  <td style="padding: var(--space-4);">$24.10 / ea</td>
+                  <td style="padding: var(--space-4);">
+                    <button class="btn btn--secondary btn--sm" style="padding: 4px 10px; font-size: 11px;" onclick="PRNT.showNotification('Reorder #PRNT-6980 added to Cart!', 'success')">
+                      <i class="fa-solid fa-rotate-right"></i> Reorder 450 Pcs
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/global.js"></script>
+  <script src="js/components.js"></script>
+</body>
+</html>

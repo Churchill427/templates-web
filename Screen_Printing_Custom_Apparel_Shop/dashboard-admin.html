@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — PRNT Industrial Apparel Operations</title>
+  <meta name="description" content="PRNT Industrial Screen Printing Operations Dashboard — Real-time print queue, machinery telemetry, revenue analytics, and inventory monitoring." />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="styles/dashboard.css" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body>
+
+  <div class="dashboard">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__header">
+        <a href="index.html" class="sidebar__logo">
+          <div class="sidebar__logo-icon"><i class="fa-solid fa-print"></i></div>
+          <span class="sidebar__logo-text">PRNT</span>
+        </a>
+        <button class="sidebar__toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+          <i class="fa-solid fa-angles-left"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-label">Main Menu</div>
+        <a href="dashboard-admin.html" class="sidebar__nav-link is-active">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Overview</span>
+          <span class="sidebar__tooltip">Overview</span>
+        </a>
+        <a href="#orders" class="sidebar__nav-link">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Orders & Quotes</span>
+          <span class="sidebar__tooltip">Orders & Quotes</span>
+        </a>
+        <a href="#queue" class="sidebar__nav-link">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Print Queue</span>
+          <span class="sidebar__tooltip">Print Queue</span>
+        </a>
+        <a href="#inventory" class="sidebar__nav-link">
+          <i class="fa-solid fa-warehouse"></i>
+          <span>Inventory & Mesh</span>
+          <span class="sidebar__tooltip">Inventory</span>
+        </a>
+
+        <div class="sidebar__nav-label">Operations</div>
+        <a href="#machinery" class="sidebar__nav-link">
+          <i class="fa-solid fa-gears"></i>
+          <span>Machinery Status</span>
+          <span class="sidebar__tooltip">Machinery</span>
+        </a>
+        <a href="#customers" class="sidebar__nav-link">
+          <i class="fa-solid fa-users"></i>
+          <span>Corporate Clients</span>
+          <span class="sidebar__tooltip">Clients</span>
+        </a>
+        <a href="#revenue" class="sidebar__nav-link">
+          <i class="fa-solid fa-sack-dollar"></i>
+          <span>Revenue & Reports</span>
+          <span class="sidebar__tooltip">Revenue</span>
+        </a>
+
+        <div class="sidebar__nav-label">System</div>
+        <a href="#settings" class="sidebar__nav-link">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Shop Settings</span>
+          <span class="sidebar__tooltip">Settings</span>
+        </a>
+        <a href="login.html" class="sidebar__nav-link">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Sign Out</span>
+          <span class="sidebar__tooltip">Sign Out</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div style="font-size: var(--fs-xs); color: rgba(255,255,255,0.4); text-align: center;">
+          PRNT OS v4.2.0 • Online
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="dashboard__main">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div style="display: flex; align-items: center; gap: var(--space-3);">
+          <button class="topbar__btn" id="mobileMenuBtn" aria-label="Open Sidebar" style="display: none;">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="topbar__search">
+            <i class="fa-solid fa-magnifying-glass topbar__search-icon"></i>
+            <input type="text" class="topbar__search-input" placeholder="Search orders, artwork #, or client..." />
+          </div>
+        </div>
+
+        <div class="topbar__actions">
+          <button class="btn btn--secondary btn--sm" data-modal-target="newOrderModal">
+            <i class="fa-solid fa-plus"></i>
+            <span>New Order</span>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button class="topbar__btn" id="themeToggle" title="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <!-- RTL Toggle -->
+          <button class="topbar__btn" id="rtlToggle" title="Toggle RTL">
+            <span>RTL</span>
+          </button>
+
+          <!-- Notifications Dropdown -->
+          <div style="position: relative;">
+            <button class="topbar__btn" id="notifBtn" title="Notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span style="position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; background: var(--color-danger); border-radius: 50%;"></span>
+            </button>
+          </div>
+
+          <!-- User Profile -->
+          <div class="topbar__profile">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Admin Profile" class="topbar__profile-avatar" />
+            <div>
+              <div class="topbar__profile-name">Alex Vane</div>
+              <div class="topbar__profile-role">Master Printer</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body Container -->
+      <main class="dashboard__content">
+
+        <!-- Page Header -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-4);">
+          <div>
+            <h1 style="font-family: var(--font-heading); font-size: var(--fs-h2); font-weight: var(--fw-extrabold); text-transform: uppercase; margin-bottom: 2px;">
+              Operations Control Center
+            </h1>
+            <p style="color: var(--text-muted); font-size: var(--fs-small);">
+              Real-time monitoring for 6 automatic screen printing presses, flash cures, and ink mixing lab.
+            </p>
+          </div>
+          <div style="display: flex; gap: var(--space-2);">
+            <button class="btn btn--outline btn--sm"><i class="fa-solid fa-download"></i> Export Analytics</button>
+            <button class="btn btn--secondary btn--sm"><i class="fa-solid fa-arrows-rotate"></i> Live Refresh</button>
+          </div>
+        </div>
+
+        <!-- 4 KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="background: rgba(23, 162, 184, 0.15); color: var(--color-secondary);">
+              <i class="fa-solid fa-dollar-sign"></i>
+            </div>
+            <div class="kpi-card__info">
+              <div class="kpi-card__value">$184,920</div>
+              <div class="kpi-card__label">Monthly Production Rev</div>
+              <div class="kpi-card__trend kpi-card__trend--up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +18.4% vs last month
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="background: rgba(244, 161, 0, 0.15); color: var(--color-accent);">
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+            <div class="kpi-card__info">
+              <div class="kpi-card__value">48,250</div>
+              <div class="kpi-card__label">Garments Printed (MTD)</div>
+              <div class="kpi-card__trend kpi-card__trend--up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +12.1% throughput
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="background: rgba(40, 167, 69, 0.15); color: var(--color-success);">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <div class="kpi-card__info">
+              <div class="kpi-card__value">99.4%</div>
+              <div class="kpi-card__label">Machinery Uptime</div>
+              <div class="kpi-card__trend kpi-card__trend--up">
+                <i class="fa-solid fa-check"></i> 6 Press Lines Active
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="background: rgba(124, 58, 237, 0.15); color: #7C3AED;">
+              <i class="fa-solid fa-box-open"></i>
+            </div>
+            <div class="kpi-card__info">
+              <div class="kpi-card__value">142</div>
+              <div class="kpi-card__label">Active Orders in Queue</div>
+              <div class="kpi-card__trend kpi-card__trend--down">
+                <i class="fa-solid fa-clock"></i> 8 rush jobs pending
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 Canvas Charts Section -->
+        <h2 style="font-family: var(--font-heading); font-size: var(--fs-h3); text-transform: uppercase; margin-bottom: var(--space-4);">
+          <i class="fa-solid fa-chart-line" style="color: var(--color-secondary); margin-right: 8px;"></i> Performance & Production Telemetry (8 Hand-Rolled Charts)
+        </h2>
+
+        <!-- Charts Grid 1 (Charts 1 & 2) -->
+        <div class="chart-grid">
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">1. Revenue & Output Trends</span>
+              <span class="badge badge--primary">Weekly Live</span>
+            </div>
+            <div class="chart-card__body">
+              <canvas id="chart-revenue" data-height="240"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">2. Top Printed Apparel Items</span>
+              <span class="badge badge--secondary">Units Sold</span>
+            </div>
+            <div class="chart-card__body">
+              <canvas id="chart-top-items" data-height="240"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Grid 2 (Charts 3 & 4) -->
+        <div class="chart-grid">
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">3. Plastisol & Water-Based Ink Inventory</span>
+              <span class="badge badge--accent">Stock Level</span>
+            </div>
+            <div class="chart-card__body">
+              <canvas id="chart-ink-usage" data-height="240"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">4. Monthly Print Volume (Impressions)</span>
+              <span class="badge badge--success">2026 YTD</span>
+            </div>
+            <div class="chart-card__body">
+              <canvas id="chart-print-volume" data-height="240"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Grid 3 (Charts 5 & 6) -->
+        <div class="chart-grid">
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">5. Client Sector Breakdown</span>
+              <span class="badge badge--primary">Corporate / Merch</span>
+            </div>
+            <div class="chart-card__body">
+              <canvas id="chart-customer-acq" data-height="240"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">6. Print Method Distribution</span>
+              <span class="badge badge--secondary">Technique Share</span>
+            </div>
+            <div class="chart-card__body">
+              <canvas id="chart-print-methods" data-height="240"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Grid 4 (Charts 7 & 8) -->
+        <div class="chart-grid">
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">7. Order Status Radar</span>
+              <span class="badge badge--accent">Queue Balance</span>
+            </div>
+            <div class="chart-card__body">
+              <canvas id="chart-order-status" data-height="240"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card__header">
+              <span class="chart-card__title">8. Press Lines Efficiency Rings</span>
+              <span class="badge badge--success">Automated Lines</span>
+            </div>
+            <div class="chart-card__body" style="display: flex; align-items: center; justify-content: space-around; padding-top: var(--space-6);">
+              <div id="chart-equipment" style="display: flex; gap: var(--space-6); width: 100%; justify-content: space-evenly; flex-wrap: wrap;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Machinery Status Grid -->
+        <section id="machinery" style="margin-bottom: var(--space-8);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+            <h2 style="font-family: var(--font-heading); font-size: var(--fs-h3); text-transform: uppercase;">
+              <i class="fa-solid fa-gears" style="color: var(--color-secondary); margin-right: 8px;"></i> Automated Press Lines Telemetry
+            </h2>
+            <span class="badge badge--success"><i class="fa-solid fa-circle" style="font-size: 8px; margin-right: 4px;"></i> All 6 Presses Nominal</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4);">
+            <!-- Press 1 -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color-light); border-radius: var(--radius-lg); padding: var(--space-4); position: relative;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+                <h4 style="font-family: var(--font-heading); text-transform: uppercase;">Press #01 — M&R Sportsman EX</h4>
+                <span class="status-badge status-badge--completed"><i class="fa-solid fa-play"></i> Running</span>
+              </div>
+              <div style="font-size: var(--fs-xs); color: var(--text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-3);">
+                <div>Speed: <strong style="color: var(--text-primary);">850 pcs/hr</strong></div>
+                <div>Temp Curing: <strong style="color: var(--text-primary);">330°F</strong></div>
+                <div>Colors: <strong style="color: var(--text-primary);">6 / 8 Heads</strong></div>
+                <div>Job: <strong style="color: var(--color-secondary);">#PRNT-8821</strong></div>
+              </div>
+              <div class="progress-bar" style="margin-bottom: var(--space-3);">
+                <div class="progress-bar__fill" style="width: 78%;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: var(--fs-xs); color: var(--text-muted);">Batch Progress: 780/1,000</span>
+                <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 11px;">Pause Line</button>
+              </div>
+            </div>
+
+            <!-- Press 2 -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color-light); border-radius: var(--radius-lg); padding: var(--space-4);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+                <h4 style="font-family: var(--font-heading); text-transform: uppercase;">Press #02 — M&R Challenger III</h4>
+                <span class="status-badge status-badge--completed"><i class="fa-solid fa-play"></i> Running</span>
+              </div>
+              <div style="font-size: var(--fs-xs); color: var(--text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-3);">
+                <div>Speed: <strong style="color: var(--text-primary);">920 pcs/hr</strong></div>
+                <div>Temp Curing: <strong style="color: var(--text-primary);">340°F</strong></div>
+                <div>Colors: <strong style="color: var(--text-primary);">4 / 12 Heads</strong></div>
+                <div>Job: <strong style="color: var(--color-secondary);">#PRNT-8834</strong></div>
+              </div>
+              <div class="progress-bar" style="margin-bottom: var(--space-3);">
+                <div class="progress-bar__fill" style="width: 42%; background: var(--color-accent);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: var(--fs-xs); color: var(--text-muted);">Batch Progress: 2,100/5,000</span>
+                <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 11px;">Pause Line</button>
+              </div>
+            </div>
+
+            <!-- Press 3 -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color-light); border-radius: var(--radius-lg); padding: var(--space-4);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+                <h4 style="font-family: var(--font-heading); text-transform: uppercase;">Press #03 — Oval Automatic 16C</h4>
+                <span class="status-badge status-badge--processing"><i class="fa-solid fa-arrows-spin"></i> Screen Swap</span>
+              </div>
+              <div style="font-size: var(--fs-xs); color: var(--text-muted); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-3);">
+                <div>Speed: <strong style="color: var(--text-primary);">0 pcs/hr</strong></div>
+                <div>Temp Curing: <strong style="color: var(--text-primary);">Standby</strong></div>
+                <div>Colors: <strong style="color: var(--text-primary);">Setup Phase</strong></div>
+                <div>Job: <strong style="color: var(--color-secondary);">#PRNT-8840</strong></div>
+              </div>
+              <div class="progress-bar" style="margin-bottom: var(--space-3);">
+                <div class="progress-bar__fill" style="width: 15%; background: var(--color-warning);"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: var(--fs-xs); color: var(--text-muted);">Estimated Ready: 12 mins</span>
+                <button class="btn btn--secondary btn--sm" style="padding: 2px 8px; font-size: 11px;">Resume Line</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Live Print Queue Table -->
+        <section id="queue" class="dash-table-card">
+          <div class="dash-table-card__header">
+            <div>
+              <h3 class="dash-table-card__title">Real-Time Production Queue</h3>
+              <p style="font-size: var(--fs-xs); color: var(--text-muted);">Active print runs across screen separation, exposure, press, and shipping.</p>
+            </div>
+            <div style="display: flex; gap: var(--space-2);">
+              <input type="text" class="form-control" placeholder="Filter orders..." style="padding: var(--space-1) var(--space-3); font-size: var(--fs-xs); max-width: 180px;" />
+              <button class="btn btn--outline btn--sm"><i class="fa-solid fa-filter"></i> Filter</button>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--fs-small);">
+              <thead>
+                <tr style="background: var(--bg-muted); border-bottom: 1px solid var(--border-color-light); color: var(--text-muted); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: var(--ls-caps);">
+                  <th style="padding: var(--space-3) var(--space-4);">Order ID</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Client Name</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Garment Specs</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Print Method</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Qty</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Current Stage</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Due Date</th>
+                  <th style="padding: var(--space-3) var(--space-4);">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color-light);">
+                  <td style="padding: var(--space-4); font-weight: var(--fw-bold); font-family: var(--font-mono);">#PRNT-8821</td>
+                  <td style="padding: var(--space-4);">Apex Athletics Inc.</td>
+                  <td style="padding: var(--space-4);">Next Level 6210 (Black)</td>
+                  <td style="padding: var(--space-4);"><span class="badge badge--secondary">Plastisol 4-Col</span></td>
+                  <td style="padding: var(--space-4); font-weight: var(--fw-semibold);">1,000 pcs</td>
+                  <td style="padding: var(--space-4);"><span class="status-badge status-badge--completed"><i class="fa-solid fa-fire"></i> On Press #01</span></td>
+                  <td style="padding: var(--space-4); color: var(--color-success); font-weight: var(--fw-medium);">Today, 5:00 PM</td>
+                  <td style="padding: var(--space-4);">
+                    <button class="btn btn--outline btn--sm" style="padding: 4px 8px; font-size: 11px;"><i class="fa-solid fa-eye"></i> View</button>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid var(--border-color-light);">
+                  <td style="padding: var(--space-4); font-weight: var(--fw-bold); font-family: var(--font-mono);">#PRNT-8834</td>
+                  <td style="padding: var(--space-4);">Neon Pulse Records</td>
+                  <td style="padding: var(--space-4);">Bella+Canvas 3001 (Mustard)</td>
+                  <td style="padding: var(--space-4);"><span class="badge badge--accent">Discharge Soft</span></td>
+                  <td style="padding: var(--space-4); font-weight: var(--fw-semibold);">5,000 pcs</td>
+                  <td style="padding: var(--space-4);"><span class="status-badge status-badge--completed"><i class="fa-solid fa-fire"></i> On Press #02</span></td>
+                  <td style="padding: var(--space-4); color: var(--text-primary);">Tomorrow, 12:00 PM</td>
+                  <td style="padding: var(--space-4);">
+                    <button class="btn btn--outline btn--sm" style="padding: 4px 8px; font-size: 11px;"><i class="fa-solid fa-eye"></i> View</button>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid var(--border-color-light);">
+                  <td style="padding: var(--space-4); font-weight: var(--fw-bold); font-family: var(--font-mono);">#PRNT-8840</td>
+                  <td style="padding: var(--space-4);">Metro Esports League</td>
+                  <td style="padding: var(--space-4);">Independent Co. IND4000 Hoodie</td>
+                  <td style="padding: var(--space-4);"><span class="badge badge--primary">3D High Density</span></td>
+                  <td style="padding: var(--space-4); font-weight: var(--fw-semibold);">550 pcs</td>
+                  <td style="padding: var(--space-4);"><span class="status-badge status-badge--processing"><i class="fa-solid fa-film"></i> Screen Exposure</span></td>
+                  <td style="padding: var(--space-4); color: var(--text-primary);">Sep 14, 2026</td>
+                  <td style="padding: var(--space-4);">
+                    <button class="btn btn--outline btn--sm" style="padding: 4px 8px; font-size: 11px;"><i class="fa-solid fa-eye"></i> View</button>
+                  </td>
+                </tr>
+
+                <tr style="border-bottom: 1px solid var(--border-color-light);">
+                  <td style="padding: var(--space-4); font-weight: var(--fw-bold); font-family: var(--font-mono);">#PRNT-8849</td>
+                  <td style="padding: var(--space-4);">Summit Craft Brewery</td>
+                  <td style="padding: var(--space-4);">AS Colour Classic Tee (Navy)</td>
+                  <td style="padding: var(--space-4);"><span class="badge badge--secondary">Water-Based Sim Process</span></td>
+                  <td style="padding: var(--space-4); font-weight: var(--fw-semibold);">2,500 pcs</td>
+                  <td style="padding: var(--space-4);"><span class="status-badge status-badge--pending"><i class="fa-solid fa-palette"></i> Art Separation</span></td>
+                  <td style="padding: var(--space-4); color: var(--text-primary);">Sep 16, 2026</td>
+                  <td style="padding: var(--space-4);">
+                    <button class="btn btn--outline btn--sm" style="padding: 4px 8px; font-size: 11px;"><i class="fa-solid fa-eye"></i> View</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Inventory Alerts & Notifications Panel Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8);">
+          <!-- Low Inventory Alerts -->
+          <div class="notification-panel" id="inventory">
+            <h3 style="font-family: var(--font-heading); font-size: var(--fs-h4); text-transform: uppercase; margin-bottom: var(--space-4);">
+              <i class="fa-solid fa-triangle-exclamation" style="color: var(--color-warning); margin-right: 8px;"></i> Stock & Consumables Warning
+            </h3>
+
+            <div class="alert-item alert-item--danger">
+              <i class="fa-solid fa-droplet" style="font-size: 18px;"></i>
+              <div style="flex: 1;">
+                <strong>Rutland White Plastisol Ink (5 Gal)</strong> — Only 1 bucket left in stock!
+              </div>
+              <button class="btn btn--secondary btn--sm" style="padding: 2px 8px; font-size: 11px;">Reorder</button>
+            </div>
+
+            <div class="alert-item alert-item--warning">
+              <i class="fa-solid fa-border-all" style="font-size: 18px;"></i>
+              <div style="flex: 1;">
+                <strong>230 Mesh Aluminum Frames (23"x31")</strong> — 4 damaged screens need re-mesh.
+              </div>
+              <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 11px;">Schedule</button>
+            </div>
+
+            <div class="alert-item alert-item--info">
+              <i class="fa-solid fa-shirt" style="font-size: 18px;"></i>
+              <div style="flex: 1;">
+                <strong>Bella+Canvas 3001 Black (Medium)</strong> — Shipment arrived in Bay #03.
+              </div>
+              <button class="btn btn--outline btn--sm" style="padding: 2px 8px; font-size: 11px;">Verify</button>
+            </div>
+          </div>
+
+          <!-- Activity Stream -->
+          <div class="notification-panel">
+            <h3 style="font-family: var(--font-heading); font-size: var(--fs-h4); text-transform: uppercase; margin-bottom: var(--space-4);">
+              <i class="fa-solid fa-bolt" style="color: var(--color-secondary); margin-right: 8px;"></i> Real-Time Activity Log
+            </h3>
+
+            <div class="notification-item">
+              <div class="notification-item__icon" style="background: rgba(40,167,69,0.15); color: var(--color-success);">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div class="notification-item__content">
+                <div class="notification-item__text"><strong>QC Inspector #2</strong> approved 1,000 tees for Order #PRNT-8821.</div>
+                <div class="notification-item__time">5 minutes ago</div>
+              </div>
+            </div>
+
+            <div class="notification-item">
+              <div class="notification-item__icon" style="background: rgba(23,162,184,0.15); color: var(--color-secondary);">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <div class="notification-item__content">
+                <div class="notification-item__text"><strong>Client Summit Craft</strong> submitted new vector artwork proof.</div>
+                <div class="notification-item__time">18 minutes ago</div>
+              </div>
+            </div>
+
+            <div class="notification-item">
+              <div class="notification-item__icon" style="background: rgba(244,161,0,0.15); color: var(--color-accent);">
+                <i class="fa-solid fa-calculator"></i>
+              </div>
+              <div class="notification-item__content">
+                <div class="notification-item__text">Instant Quote generator converted corporate lead ($14,500 value).</div>
+                <div class="notification-item__time">42 minutes ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- New Order Quick Action Modal -->
+  <div class="modal" id="newOrderModal" aria-hidden="true">
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__card" style="max-width: 540px;">
+      <button class="modal__close" data-modal-close>&times;</button>
+      <div class="modal__header">
+        <h3 class="modal__title">Create Quick Job Ticket</h3>
+      </div>
+      <div class="modal__body">
+        <form class="form">
+          <div class="form-group">
+            <label class="form-label">Client Name / Organization</label>
+            <input type="text" class="form-control" placeholder="e.g. Apex Athletics" required />
+          </div>
+          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div class="form-group">
+              <label class="form-label">Garment Style</label>
+              <select class="form-select">
+                <option>Next Level 6210 Cotton/Poly</option>
+                <option>Bella+Canvas 3001 Unisex Tee</option>
+                <option>Gildan Heavy Blend Hoodie</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Quantity</label>
+              <input type="number" class="form-control" value="500" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Print Method</label>
+            <select class="form-select">
+              <option>Plastisol Screen Printing</option>
+              <option>Water-Based Discharge</option>
+              <option>High Density 3D Silicone</option>
+              <option>Simulated Process (4-Color)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Target Delivery Date</label>
+            <input type="date" class="form-control" />
+          </div>
+        </form>
+      </div>
+      <div class="modal__footer">
+        <button class="btn btn--outline btn--sm" data-modal-close>Cancel</button>
+        <button class="btn btn--secondary btn--sm" onclick="PRNT.showNotification('Job Ticket Created Successfully!', 'success'); PRNT.closeModal(document.getElementById('newOrderModal'))">Dispatch to Queue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/global.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/charts.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Revenue Trends Line Chart
+      if (window.PRNT && window.PRNT.lineChart) {
+        window.PRNT.lineChart('chart-revenue', {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          values: [24000, 31000, 28000, 42000, 39000, 48000, 52000]
+        }, { area: true });
+
+        // 2. Top Printed Items Horizontal Bar
+        window.PRNT.horizontalBarChart('chart-top-items', {
+          labels: ['Bella Canvas 3001', 'Next Level 6210', 'Ind. Hoodie 4000', 'Gildan 5000', 'AS Colour Classic'],
+          values: [14200, 11800, 8500, 6200, 4100]
+        });
+
+        // 3. Ink Usage Doughnut
+        window.PRNT.doughnutChart('chart-ink-usage', {
+          labels: ['Black Plastisol', 'White Base', 'Cyan Discharge', 'Met. Gold', 'Reflective'],
+          values: [40, 30, 15, 10, 5]
+        }, { centerText: '100% Stock' });
+
+        // 4. Monthly Print Volume Line/Area
+        window.PRNT.lineChart('chart-print-volume', {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+          values: [32000, 38000, 45000, 42000, 56000, 61000, 58000, 68000]
+        }, { area: true });
+
+        // 5. Customer Sector Bar
+        window.PRNT.barChart('chart-customer-acq', {
+          labels: ['Corp Merch', 'Music/Bands', 'Apparel Brands', 'Sports Teams', 'Events/Expos'],
+          values: [45, 32, 28, 19, 14]
+        });
+
+        // 6. Print Method Distribution Polar
+        window.PRNT.polarChart('chart-print-methods', {
+          labels: ['Plastisol', 'Waterbase', 'Discharge', '3D High-Density', 'Foil/Specialty'],
+          values: [55, 25, 12, 5, 3]
+        });
+
+        // 7. Order Status Radar
+        window.PRNT.radarChart('chart-order-status', {
+          labels: ['In Proofing', 'Screen Prep', 'On Press', 'QC & Pack', 'Shipped'],
+          values1: [80, 95, 70, 85, 90],
+          values2: [60, 75, 90, 65, 80]
+        });
+
+        // 8. Press Equipment Rings
+        window.PRNT.progressRing('chart-equipment', [
+          { value: 98, label: 'Press #01', color: 'var(--color-secondary)' },
+          { value: 94, label: 'Press #02', color: 'var(--color-accent)' },
+          { value: 88, label: 'Press #03', color: 'var(--color-success)' }
+        ]);
+      }
+    });
+  </script>
+</body>
+</html>

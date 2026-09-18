@@ -1,0 +1,115 @@
+/* ============================================================
+   POPZ RTL — Right-to-Left Layout Overrides
+   Applied via [dir="rtl"] on <html>
+   ============================================================ */
+
+[dir="rtl"] {
+  direction: rtl;
+}
+
+/* ── Text alignment ─────────────────────────────────────── */
+[dir="rtl"] .text-start { text-align: right; }
+[dir="rtl"] .text-end { text-align: left; }
+
+/* ── Navbar ─────────────────────────────────────────────── */
+[dir="rtl"] .navbar__link.active::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+[dir="rtl"] .navbar__dropdown-toggle svg {
+  margin-inline-start: 0.35rem;
+}
+
+[dir="rtl"] .navbar__dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* ── Cards ──────────────────────────────────────────────── */
+[dir="rtl"] .card__link svg {
+  transform: scaleX(-1);
+}
+
+/* ── Process Steps ──────────────────────────────────────── */
+[dir="rtl"] .process-connector {
+  left: auto;
+  right: 50%;
+  left: -50%;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+[dir="rtl"] .footer__column a:hover {
+  padding-inline-start: 4px;
+  padding-inline-end: 0;
+}
+
+/* ── Drawer ─────────────────────────────────────────────── */
+[dir="rtl"] .navbar__drawer-link {
+  transform: translateX(20px);
+}
+
+[dir="rtl"] .navbar__drawer.open .navbar__drawer-link {
+  transform: translateX(0);
+}
+
+/* ── Form password toggle ───────────────────────────────── */
+[dir="rtl"] .form-password-wrap .form-input {
+  padding-inline-end: 3rem;
+  padding-inline-start: 1rem;
+}
+
+/* ── Newsletter form ────────────────────────────────────── */
+[dir="rtl"] .footer__newsletter-input {
+  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  border-left: none;
+}
+
+[dir="rtl"] .footer__newsletter-submit {
+  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+}
+
+/* ── Accordion icon ─────────────────────────────────────── */
+[dir="rtl"] .accordion__header {
+  text-align: right;
+}
+
+/* ── Split section reverse ──────────────────────────────── */
+[dir="rtl"] .split-section--reverse {
+  direction: rtl;
+}
+
+/* ── Dashboard sidebar ──────────────────────────────────── */
+[dir="rtl"] .dashboard__sidebar {
+  left: auto;
+  right: 0;
+  border-inline-end: 1px solid var(--border-color);
+  border-inline-start: none;
+}
+
+[dir="rtl"] .dashboard__main {
+  margin-inline-start: 0;
+  margin-inline-end: 260px;
+}
+
+[dir="rtl"] .dashboard__sidebar.collapsed + .dashboard__main {
+  margin-inline-end: 72px;
+}
+
+/* ── Misc ───────────────────────────────────────────────── */
+[dir="rtl"] .badge svg {
+  order: 1;
+}
+
+[dir="rtl"] .btn svg {
+  order: -1;
+}
+
+/* ── SVG & Payment Badges LTR Preservation ─────────────── */
+[dir="rtl"] svg,
+[dir="rtl"] svg text,
+[dir="rtl"] .footer__payments {
+  direction: ltr;
+}
+

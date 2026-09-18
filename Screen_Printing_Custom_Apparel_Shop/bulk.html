@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bulk & Corporate Orders — PRNT Custom Apparel</title>
+  <meta name="description"
+    content="PRNT specializes in bulk screen printing and corporate apparel orders. Uniforms, event merch, promo products — fast turnaround, volume discounts." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <style>
+    .case-study {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: center;
+      margin-bottom: var(--space-10);
+    }
+
+    .case-study:nth-child(even) {
+      direction: rtl;
+    }
+
+    .case-study:nth-child(even)>* {
+      direction: ltr;
+    }
+
+    .case-study img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+
+    .logistics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      text-align: center;
+    }
+
+    .logistics-item {
+      padding: var(--space-6);
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color-light);
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 300px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px dashed var(--border-color);
+      margin-top: var(--space-8);
+    }
+
+    @media(max-width:767px) {
+      .case-study {
+        grid-template-columns: 1fr;
+      }
+
+      .case-study:nth-child(even) {
+        direction: ltr;
+      }
+
+      .logistics-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.is-active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__ink"><span></span><span></span><span></span></div>
+  </div>
+  <header class="navbar" role="banner">
+    <div class="navbar__inner"><a href="index.html" class="navbar__logo" aria-label="PRNT Home">
+        <div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span class="navbar__logo-text">PRNT</span>
+      </a>
+      <nav class="navbar__nav" role="navigation" aria-label="Main navigation">
+        <div class="navbar__dropdown"><a href="#" class="navbar__link" aria-haspopup="true">Home <i
+              data-lucide="chevron-down"></i></a>
+          <div class="navbar__dropdown-menu" role="menu"><a href="index.html" class="navbar__dropdown-item"
+              role="menuitem"><i data-lucide="zap"></i> Home 1</a><a href="home-alt.html" class="navbar__dropdown-item"
+              role="menuitem"><i data-lucide="palette"></i> Home 2</a></div>
+        </div><a href="about.html" class="navbar__link">About</a>
+        <a href="products.html" class="navbar__link">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html"
+          class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html"
+          class="navbar__link">Contact</a>
+      </nav>
+      <div class="navbar__actions"><a href="cart.html" class="navbar__cart-btn" aria-label="Shopping Cart"><i
+            data-lucide="shopping-cart"></i><span class="navbar__cart-badge badge--count">0</span></a><button
+          class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle theme"><i data-lucide="moon"
+            class="theme-toggle-icon"></i></button><button class="navbar__rtl-btn navbar__toggle-btn"
+          data-toggle-dir><span class="rtl-toggle-text">RTL</span></button><button class="navbar__hamburger"
+          aria-label="Open menu"><span></span><span></span><span></span></button></div>
+    </div>
+    <div class="navbar__mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <div class="navbar__dropdown"><a href="#" class="navbar__link">Home <i data-lucide="chevron-down"></i></a>
+        <div class="navbar__dropdown-menu"><a href="index.html" class="navbar__dropdown-item"><i data-lucide="zap"></i>
+            Home 1</a><a href="home-alt.html" class="navbar__dropdown-item"><i data-lucide="palette"></i> Home 2</a>
+        </div>
+      </div><a href="about.html" class="navbar__link">About</a>
+      <a href="products.html" class="navbar__link">Products</a><a href="bulk.html" class="navbar__link">Bulk & Corporate</a><a href="design-guide.html"
+        class="navbar__link">Design Guide</a><a href="blog.html" class="navbar__link">Blog</a><a href="contact.html"
+        class="navbar__link">Contact</a>
+      <div class="navbar__mobile-toggles"><button class="navbar__toggle-btn" data-toggle-theme
+          aria-label="Toggle theme"><i data-lucide="moon" class="theme-toggle-icon"></i></button><button
+          class="navbar__rtl-btn navbar__toggle-btn" data-toggle-dir><span class="rtl-toggle-text">RTL</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-content">
+    <!-- S1: HERO -->
+    <section class="hero" aria-label="Bulk orders hero">
+      <img src="assets/images/hero_bulk.png" alt="Corporate merchandise bulk fulfillment center" class="hero__bg" />
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1><span class="hero-word">Bulk</span> <span class="hero-word">&</span> <span
+            class="hero-word">Corporate</span> <span class="hero-word">Orders</span></h1>
+        <p>Uniforms, event merchandise, promotional products — all custom printed, on time, and at scale.</p>
+      </div>
+    </section>
+
+    <!-- S2: CORPORATE SERVICES -->
+    <section class="section" id="corporate-services" aria-label="Corporate services">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Services</span>
+          <h2>Corporate Solutions</h2>
+          <p class="section__subtitle">Everything your brand needs, printed and delivered</p>
+        </div>
+        <div class="grid grid--4 reveal-stagger">
+          <div class="card" style="padding:var(--space-6);text-align:center;">
+            <div class="stat-card__icon stat-card__icon--primary"
+              style="margin-inline:auto;margin-bottom:var(--space-4);"><i data-lucide="briefcase"></i></div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-2);">Corporate Uniforms</h3>
+            <p class="card__text">Consistent branding across your workforce — polos, button-downs, and durable workwear. We offer individual bagging and employee size sorting to make distribution effortless for your HR team.</p>
+          </div>
+          <div class="card" style="padding:var(--space-6);text-align:center;">
+            <div class="stat-card__icon stat-card__icon--accent"
+              style="margin-inline:auto;margin-bottom:var(--space-4);"><i data-lucide="party-popper"></i></div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-2);">Event Merchandise</h3>
+            <p class="card__text">Concerts, tech conferences, and marathons require strict deadlines. We produce high-volume custom tees, caps, and gear that attendees actually want to keep, delivered directly to your venue.</p>
+          </div>
+          <div class="card" style="padding:var(--space-6);text-align:center;">
+            <div class="stat-card__icon stat-card__icon--primary"
+              style="margin-inline:auto;margin-bottom:var(--space-4);"><i data-lucide="gift"></i></div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-2);">Promo Products</h3>
+            <p class="card__text">Beyond apparel, we offer branded merchandise for trade shows, client gifts, and marketing campaigns. Tote bags, embroidered accessories, and more—all matched perfectly to your brand guidelines.</p>
+          </div>
+          <div class="card" style="padding:var(--space-6);text-align:center;">
+            <div class="stat-card__icon stat-card__icon--dark"
+              style="margin-inline:auto;margin-bottom:var(--space-4);"><i data-lucide="archive"></i></div>
+            <h3 style="font-size:var(--fs-h4);margin-bottom:var(--space-2);">Warehousing & Fulfillment</h3>
+            <p class="card__text">Don't clog your office with boxes. We offer dedicated inventory storage, pick-and-pack services, and direct-to-consumer shipping for your e-commerce store or internal company portal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S3: MULTI-STEP ORDER FORM -->
+    <section class="section" id="bulk-form" aria-label="Bulk order form" style="background:var(--bg-muted);">
+      <div class="container" style="max-width:var(--container-narrow);">
+        <div class="section__header reveal"><span class="section__label">Place Your Order</span>
+          <h2>Bulk Order Form</h2>
+        </div>
+        <form id="bulk-order-form" class="reveal"
+          style="background:var(--bg-card);padding:var(--space-8);border-radius:var(--radius-xl);box-shadow:var(--shadow-md);border:1px solid var(--border-color-light);">
+          <div class="progress-steps" style="margin-bottom:var(--space-8);">
+            <div class="progress-step is-active">
+              <div class="progress-step__circle">1</div><span class="progress-step__label">Garments</span>
+            </div>
+            <div class="progress-step__connector"></div>
+            <div class="progress-step">
+              <div class="progress-step__circle">2</div><span class="progress-step__label">Print Details</span>
+            </div>
+            <div class="progress-step__connector"></div>
+            <div class="progress-step">
+              <div class="progress-step__circle">3</div><span class="progress-step__label">Delivery</span>
+            </div>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="form-step" style="display:block;">
+            <h3 style="margin-bottom:var(--space-6);font-size:var(--fs-h4);">Garment Selection</h3>
+            <div class="form-group"><label class="form-label">Garment Type *</label><select class="form-input"
+                data-validate="required">
+                <option value="">Choose garment type</option>
+                <option value="tshirt">T-Shirt</option>
+                <option value="hoodie">Hoodie</option>
+                <option value="polo">Polo Shirt</option>
+                <option value="cap">Cap / Hat</option>
+                <option value="jacket">Jacket</option>
+              </select>
+              <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+            </div>
+            <div class="form-group"><label class="form-label">Total Quantity *</label><input type="number"
+                class="form-input" placeholder="Minimum 50 pieces" min="50" data-validate="required" />
+              <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+            </div>
+            <div class="form-group"><label class="form-label">Sizes Breakdown</label><input type="text"
+                class="form-input" placeholder="e.g., S:20, M:50, L:40, XL:30, XXL:10" /></div>
+            <div style="display:flex;justify-content:flex-end;"><button type="button" class="btn btn--primary"
+                data-step-next>Next: Print Details <i data-lucide="arrow-right" style="width:16px;"></i></button></div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="form-step">
+            <h3 style="margin-bottom:var(--space-6);font-size:var(--fs-h4);">Print Specifications</h3>
+            <div class="form-group"><label class="form-label">Print Locations *</label><select class="form-input"
+                data-validate="required">
+                <option value="">Select print locations</option>
+                <option value="front">Front Only</option>
+                <option value="back">Back Only</option>
+                <option value="both">Front & Back</option>
+                <option value="sleeve">Sleeve Print</option>
+                <option value="all">All Locations</option>
+              </select>
+              <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+            </div>
+            <div class="form-group"><label class="form-label">Number of Ink Colors *</label><select class="form-input"
+                data-validate="required">
+                <option value="">Select color count</option>
+                <option value="1">1 Color</option>
+                <option value="2">2 Colors</option>
+                <option value="3">3 Colors</option>
+                <option value="4">4 Colors</option>
+                <option value="5+">5+ Colors (Full Color)</option>
+              </select>
+              <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+            </div>
+            <div class="form-group"><label class="form-label">Artwork Notes</label><textarea class="form-input" rows="3"
+                placeholder="Describe your design, color preferences, or paste a link to your artwork"></textarea></div>
+            <div style="display:flex;justify-content:space-between;gap:var(--space-4);"><button type="button"
+                class="btn btn--ghost" data-step-prev><i data-lucide="arrow-left" style="width:16px;"></i>
+                Back</button><button type="button" class="btn btn--primary" data-step-next>Next: Delivery <i
+                  data-lucide="arrow-right" style="width:16px;"></i></button></div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="form-step">
+            <h3 style="margin-bottom:var(--space-6);font-size:var(--fs-h4);">Delivery Details</h3>
+            <div class="form-group"><label class="form-label">Company / Organization Name *</label><input type="text"
+                class="form-input" data-validate="required" placeholder="Your company name" />
+              <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+            </div>
+            <div class="form-group"><label class="form-label">Contact Email *</label><input type="email"
+                class="form-input" data-validate="required,email" placeholder="you@company.com" />
+              <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+            </div>
+            <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input"
+                data-validate="phone" placeholder="+1 (555) 000-0000" />
+              <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
+            </div>
+            <div class="form-group"><label class="form-label">Delivery Deadline</label><input type="date"
+                class="form-input" /></div>
+            <div class="form-group"><label class="form-label">Delivery Method</label><select class="form-input">
+                <option value="shipping">Shipping</option>
+                <option value="pickup">Local Pickup (Portland)</option>
+              </select></div>
+            <div style="display:flex;justify-content:space-between;gap:var(--space-4);"><button type="button"
+                class="btn btn--ghost" data-step-prev><i data-lucide="arrow-left" style="width:16px;"></i>
+                Back</button><button type="submit" class="btn btn--accent btn--lg">Submit Bulk Order Request</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- S4: CASE STUDIES -->
+    <section class="section" id="case-studies" aria-label="Case studies">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Success Stories</span>
+          <h2>Case Studies</h2>
+        </div>
+        <div class="case-study reveal">
+          <div><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80"
+              alt="Tech conference attendees wearing custom PRNT t-shirts" /></div>
+          <div><span class="badge badge--secondary" style="margin-bottom:var(--space-3);display:inline-block;">Tech
+              Conference</span>
+            <h3 style="margin-bottom:var(--space-3);">CloudCon 2025</h3>
+            <p style="margin-bottom:var(--space-3);"><strong>The Challenge:</strong> A massive tech summit needed 5,000 custom tees in 4 distinct colors printed and shipped across 3 different venues nationwide, with only a 5-day lead time.</p>
+            <p style="margin-bottom:var(--space-3);"><strong>The Solution:</strong> We fired up three automatic M&R presses simultaneously, running shifts overnight to hit the tight deadline. We handled all the logistics, dropping the boxes directly at the loading docks of the convention centers the day before the event.</p>
+            <p style="font-weight:var(--fw-semibold);color:var(--color-secondary);font-style:italic;">"Seamless from proof to delivery. PRNT saved our event when our previous vendor backed out." —
+              CloudCon Events Team</p>
+          </div>
+        </div>
+        <div class="case-study reveal">
+          <div><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80"
+              alt="Corporate team wearing branded polo uniforms" /></div>
+          <div><span class="badge badge--accent" style="margin-bottom:var(--space-3);display:inline-block;">Corporate
+              Uniforms</span>
+            <h3 style="margin-bottom:var(--space-3);">NovaTech Annual Rebrand</h3>
+            <p style="margin-bottom:var(--space-3);"><strong>The Challenge:</strong> NovaTech underwent a complete brand refresh and needed their entire 800-person workforce outfitted in new uniforms within 3 weeks, requiring strict adherence to their new Pantone colors.</p>
+            <p style="margin-bottom:var(--space-3);"><strong>The Solution:</strong> We sourced premium performance polos and utilized our multi-head embroidery machines for 800 left-chest logos. Every single piece was poly-bagged and labeled by department and size, making distribution for NovaTech's HR team effortless.</p>
+            <p style="font-weight:var(--fw-semibold);color:var(--color-secondary);font-style:italic;">"PRNT understood our brand standards
+              better than we did. The embroidery is flawless." — NovaTech HR</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5: TURNAROUND & LOGISTICS -->
+    <section class="section" id="logistics" aria-label="Turnaround and logistics" style="background:var(--bg-muted);">
+      <div class="container">
+        <div class="section__header reveal"><span class="section__label">Logistics</span>
+          <h2>Turnaround & Delivery</h2>
+        </div>
+        <div class="logistics-row reveal-stagger">
+          <div class="logistics-item">
+            <div class="stat-card__icon stat-card__icon--primary"
+              style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="clock"></i></div>
+            <h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Standard</h4>
+            <p style="font-size:var(--fs-small);color:var(--text-muted);margin:0;">7 business days</p>
+          </div>
+          <div class="logistics-item">
+            <div class="stat-card__icon stat-card__icon--accent"
+              style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="zap"></i></div>
+            <h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Rush</h4>
+            <p style="font-size:var(--fs-small);color:var(--text-muted);margin:0;">3–5 business days</p>
+          </div>
+          <div class="logistics-item">
+            <div class="stat-card__icon stat-card__icon--primary"
+              style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="flame"></i></div>
+            <h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Express</h4>
+            <p style="font-size:var(--fs-small);color:var(--text-muted);margin:0;">48 hours</p>
+          </div>
+          <div class="logistics-item">
+            <div class="stat-card__icon stat-card__icon--accent"
+              style="margin-inline:auto;margin-bottom:var(--space-3);"><i data-lucide="truck"></i></div>
+            <h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Shipping</h4>
+            <p style="font-size:var(--fs-small);color:var(--text-muted);margin:0;">Free 500+ orders</p>
+          </div>
+        </div>
+        <div class="map-placeholder reveal"><i data-lucide="map"
+            style="width:48px;height:48px;color:var(--text-muted);"></i><span
+            style="margin-left:16px;color:var(--text-muted);">Google Maps — Delivery coverage area</span></div>
+      </div>
+    </section>
+
+    <!-- S6: CORPORATE CTA -->
+    <section class="cta-band" aria-label="Corporate call to action">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80"
+        alt="Corporate team in custom printed apparel" class="cta-band__bg" />
+      <div class="cta-band__content">
+        <h2>Ready to Scale Your Brand?</h2>
+        <p>Get a custom quote for your corporate apparel project — dedicated account manager included.</p><a
+          href="contact.html" class="btn btn--accent btn--lg">Request Corporate Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand"><a href="index.html" class="navbar__logo" aria-label="PRNT Home">
+            <div class="navbar__logo-icon"><i data-lucide="printer"></i></div><span
+              class="navbar__logo-text">PRNT</span>
+          </a></div>
+        <p class="footer__desc">Premium screen printing and custom apparel for brands, events, and businesses.</p>
+        <div class="footer__socials">
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn social-btn--facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn social-btn--instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn social-btn--twitter" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn social-btn--linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn social-btn--youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-btn social-btn--tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer__heading">Quick Links</h4>
+        <div class="footer__links"><a href="about.html"><i data-lucide="chevron-right" style="width:14px;"></i>
+            About</a><a href="products.html"><i data-lucide="chevron-right" style="width:14px;"></i> Products</a><a
+            href="bulk.html"><i data-lucide="chevron-right" style="width:14px;"></i> Bulk Orders</a><a
+            href="design-guide.html"><i data-lucide="chevron-right" style="width:14px;"></i> Design Guide</a><a
+            href="blog.html"><i data-lucide="chevron-right" style="width:14px;"></i> Blog</a></div>
+      </div>
+      <div>
+        <h4 class="footer__heading">Contact</h4>
+        <div class="footer__contact-item"><i data-lucide="map-pin"></i> 742 Ink Press Ave, Portland, OR</div>
+        <div class="footer__contact-item"><i data-lucide="phone"></i> +1 (503) 555-PRNT</div>
+        <div class="footer__contact-item"><i data-lucide="mail"></i> hello@prnt.shop</div>
+        <div class="footer__contact-item"><i data-lucide="clock"></i> Mon–Fri 8am–6pm</div>
+      </div>
+      <div>
+        <h4 class="footer__heading">Newsletter</h4>
+        <p class="footer__desc">Tips, deals, and drops.</p>
+        <div class="footer__newsletter">
+          <form class="footer__newsletter-form"
+            onsubmit="event.preventDefault();this.querySelector('input').value='';alert('Subscribed!');"><input
+              type="email" class="footer__newsletter-input" placeholder="Your email" required
+              aria-label="Newsletter email" /><button type="submit" class="btn btn--primary btn--sm"><i
+                data-lucide="send" style="width:16px;"></i></button></form>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2026 PRNT. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></button>
+  <script src="js/global.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      if (window.PRNT && window.PRNT.initMultiStepForm) {
+        window.PRNT.initMultiStepForm('bulk-order-form');
+      }
+      // Form submit
+      const form = document.getElementById('bulk-order-form');
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          const btn = form.querySelector('[type="submit"]');
+          btn.classList.add('btn--loading');
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.classList.remove('btn--loading');
+            btn.disabled = false;
+            form.innerHTML = '<div class="form-success"><i data-lucide="check-circle"></i><div><strong>Order Request Submitted!</strong><p style="margin:4px 0 0;">We\'ll review your bulk order and send a quote within 24 hours.</p></div></div>';
+            if (window.lucide) lucide.createIcons();
+          }, 1500);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+/* ============================================================
+   LUME — Auth Pages (Login / Signup) Styles
+   Standalone: no navbar, no footer, 100vh, centered
+   ============================================================ */
+
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  padding: var(--space-lg);
+  overflow: hidden;
+  transition: background-color var(--transition-theme);
+}
+
+/* Ensure no scrollbar */
+.auth-page body,
+html:has(.auth-page) {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.auth-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 900px;
+  min-height: 560px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  transition: background-color var(--transition-theme), border-color var(--transition-theme);
+}
+
+/* Left Column: Form */
+.auth-form-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-2xl);
+}
+
+/* Logo/Brand at top of form */
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+}
+
+.auth-brand a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+}
+
+.auth-brand svg {
+  width: 36px;
+  height: 36px;
+}
+
+.auth-brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.08em;
+  transition: color var(--transition-theme);
+}
+
+.auth-title {
+  font-family: var(--font-heading);
+  font-size: var(--h3-size);
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--space-2xs);
+}
+
+.auth-subtitle {
+  font-size: var(--small-size);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* Auth form specifics */
+.auth-form .form-group {
+  margin-bottom: var(--space-md);
+}
+
+.auth-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.auth-forgot {
+  display: block;
+  text-align: right;
+  font-size: var(--caption-size);
+  color: var(--color-primary);
+  margin-top: calc(-1 * var(--space-xs));
+  margin-bottom: var(--space-md);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: var(--space-lg);
+  font-size: var(--small-size);
+  color: var(--color-text-secondary);
+}
+
+.auth-footer a {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Right Column: Brand Highlight */
+.auth-highlight-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+}
+
+.auth-highlight-col img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+.auth-highlight-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--space-2xl);
+  max-width: 320px;
+}
+
+.auth-highlight-content h3 {
+  color: #FAF4EB;
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.auth-highlight-content p {
+  color: #B0A598;
+  font-size: var(--small-size);
+  line-height: 1.7;
+}
+
+/* Auth page toggles (floating) */
+.auth-toggles {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  display: flex;
+  gap: var(--space-xs);
+  z-index: 100;
+}
+
+[dir="rtl"] .auth-toggles {
+  right: auto;
+  left: var(--space-lg);
+}
+
+/* ── Mobile Auth ── */
+@media (max-width: 767px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    min-height: auto;
+  }
+
+  .auth-highlight-col {
+    display: none;
+  }
+
+  .auth-form-col {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .auth-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .auth-card {
+    max-width: 760px;
+  }
+}

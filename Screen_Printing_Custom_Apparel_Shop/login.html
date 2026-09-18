@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — PRNT Industrial Screen Printing Portal</title>
+  <meta name="description" content="Access your PRNT screen printing dashboard to track live production, approve proof mockups, manage corporate merch orders, and view invoice history." />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+  <link rel="stylesheet" href="styles/auth.css" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+</head>
+<body>
+
+  <!-- Floating Toggles (Theme & RTL) -->
+  <div class="auth-toggles">
+    <button class="auth-toggle-btn" id="themeToggle" title="Toggle Theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <button class="auth-toggle-btn auth-toggle-btn--rtl" id="rtlToggle" title="Toggle RTL">
+      RTL
+    </button>
+  </div>
+
+  <div class="auth-page">
+    <!-- Left Hero Panel (Industrial Industrial Creative) -->
+    <div class="auth-brand">
+      <img src="assets/images/hero_login.png" alt="Industrial Screen Printing Squeegee Action" class="auth-brand__bg" />
+      <div class="auth-brand__overlay"></div>
+
+      <div class="auth-brand__content">
+        <a href="index.html" class="auth-brand__logo">PRNT</a>
+        <h2 class="auth-brand__tagline">
+          Precision Custom Apparel Manufacturing
+        </h2>
+
+        <div class="auth-brand__features">
+          <div class="auth-brand__feature">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Real-time press queue telemetry & telemetry monitoring</span>
+          </div>
+          <div class="auth-brand__feature">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Interactive 3D proof approval studio with Pantone accuracy</span>
+          </div>
+          <div class="auth-brand__feature">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>1-Click bulk reordering from archived vector screen vaults</span>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-8); padding: var(--space-4); background: rgba(255,255,255,0.08); border-radius: var(--radius-lg); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.12);">
+          <div style="font-size: var(--fs-xs); color: var(--color-secondary); text-transform: uppercase; font-family: var(--font-heading); font-weight: 700; margin-bottom: 4px;">Live Operations Metric</div>
+          <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #FFF;">48,250 Garments Printed This Month</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Login Form Card -->
+    <div class="auth-card">
+      <div class="auth-card__inner">
+
+        <div class="auth-card__logo">
+          <a href="index.html" class="auth-card__logo-link">
+            <div class="auth-card__logo-icon"><i class="fa-solid fa-print"></i></div>
+            <span class="auth-card__logo-text">PRNT</span>
+          </a>
+        </div>
+
+        <h1 class="auth-card__title">Sign In to PRNT</h1>
+        <p class="auth-card__subtitle">Enter your credentials to access your production portal</p>
+
+        <!-- Login Role Tabs -->
+        <div style="display: flex; gap: var(--space-2); background: var(--bg-muted); padding: 4px; border-radius: var(--radius-md); margin-bottom: var(--space-6);">
+          <button type="button" class="btn btn--sm" id="tabClient" style="flex: 1; background: var(--bg-card); color: var(--text-heading); font-weight: var(--fw-bold);" onclick="switchRole('client')">
+            <i class="fa-solid fa-user"></i> Client Portal
+          </button>
+          <button type="button" class="btn btn--sm" id="tabAdmin" style="flex: 1; background: transparent; color: var(--text-muted);" onclick="switchRole('admin')">
+            <i class="fa-solid fa-gears"></i> Shop Admin
+          </button>
+        </div>
+
+        <!-- Social SSO Buttons -->
+        <div class="auth-socials">
+          <button type="button" class="btn btn--outline btn--full" style="justify-content: center; gap: 8px;">
+            <i class="fa-brands fa-google" style="color: #EA4335;"></i> Sign in with Google
+          </button>
+          <button type="button" class="btn btn--outline btn--full" style="justify-content: center; gap: 8px;">
+            <i class="fa-brands fa-microsoft" style="color: #00A4EF;"></i> Single Sign-On (SSO)
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5); color: var(--text-muted); font-size: var(--fs-xs);">
+          <div style="flex: 1; height: 1px; background: var(--border-color-light);"></div>
+          <span>OR WITH EMAIL</span>
+          <div style="flex: 1; height: 1px; background: var(--border-color-light);"></div>
+        </div>
+
+        <!-- Notification / Error Container -->
+        <div id="loginAlert" class="alert-item alert-item--danger" style="display: none; margin-bottom: var(--space-4);">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="loginAlertMsg">Invalid email or password. Please try again.</span>
+        </div>
+
+        <!-- Form -->
+        <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Work Email Address</label>
+            <div style="position: relative;">
+              <input type="email" class="form-control" id="loginEmail" placeholder="name@company.com" required value="marcus@apexathletics.com" style="padding-left: 40px;" />
+              <i class="fa-solid fa-envelope" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password</label>
+            <div style="position: relative;">
+              <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required value="Password123!" style="padding-left: 40px; padding-right: 40px;" />
+              <i class="fa-solid fa-lock" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+              <button type="button" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer;" onclick="togglePasswordVisibility('loginPassword', this)">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-form__remember">
+            <label class="form-checkbox">
+              <input type="checkbox" checked />
+              <span class="form-checkbox__text">Remember this device</span>
+            </label>
+            <a href="#" class="auth-form__forgot">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn--secondary btn--full auth-form__submit">
+            <i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal
+          </button>
+
+          <p class="auth-form__switch">
+            Don't have a corporate printing account? <a href="signup.html">Create an Account</a>
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/global.js"></script>
+  <script>
+    let currentRole = 'client';
+
+    function switchRole(role) {
+      currentRole = role;
+      const tabClient = document.getElementById('tabClient');
+      const tabAdmin = document.getElementById('tabAdmin');
+      const emailInput = document.getElementById('loginEmail');
+
+      if (role === 'admin') {
+        tabAdmin.style.background = 'var(--bg-card)';
+        tabAdmin.style.color = 'var(--text-heading)';
+        tabAdmin.style.fontWeight = 'var(--fw-bold)';
+        tabClient.style.background = 'transparent';
+        tabClient.style.color = 'var(--text-muted)';
+        tabClient.style.fontWeight = 'normal';
+        emailInput.value = 'alex.vane@prntapparel.com';
+      } else {
+        tabClient.style.background = 'var(--bg-card)';
+        tabClient.style.color = 'var(--text-heading)';
+        tabClient.style.fontWeight = 'var(--fw-bold)';
+        tabAdmin.style.background = 'transparent';
+        tabAdmin.style.color = 'var(--text-muted)';
+        tabAdmin.style.fontWeight = 'normal';
+        emailInput.value = 'marcus@apexathletics.com';
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      PRNT.showNotification('Signing in... Authenticating credentials.', 'info');
+      setTimeout(() => {
+        if (currentRole === 'admin') {
+          window.location.href = 'dashboard-admin.html';
+        } else {
+          window.location.href = 'dashboard-user.html';
+        }
+      }, 800);
+    }
+  </script>
+</body>
+</html>

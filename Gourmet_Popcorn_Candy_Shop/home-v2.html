@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POPZ — Playful Candy Shop Experience</title>
+  <meta name="description" content="Explore the vibrant world of POPZ gourmet popcorn and candy. Shop by category, discover best sellers, and order for your next party.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="page-offset">
+
+  <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="POPZ Home">
+        <svg class="navbar__logo-icon" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" fill="#E8A33D"/><circle cx="18" cy="18" r="12" fill="#3B2420"/><circle cx="14" cy="14" r="3" fill="#E8A33D" opacity="0.8"/><circle cx="22" cy="16" r="2.5" fill="#D94F70" opacity="0.8"/><circle cx="17" cy="22" r="2" fill="#FBF4EA" opacity="0.7"/><circle cx="23" cy="22" r="1.5" fill="#E8A33D" opacity="0.6"/></svg>
+        <span class="navbar__logo-text">POPZ</span>
+      </a>
+      <div class="navbar__links">
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link navbar__dropdown-toggle active">Home
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 4.5L6 7.5L9 4.5"/></svg>
+          </a>
+          <div class="navbar__dropdown-menu">
+            <a href="index.html" class="navbar__dropdown-item">Home 1</a>
+            <a href="home-v2.html" class="navbar__dropdown-item">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="navbar__link">About</a>
+        <a href="products.html" class="navbar__link">Products</a>
+        <a href="gift-tins.html" class="navbar__link">Gift Tins</a>
+        <a href="bulk-party.html" class="navbar__link">Bulk &amp; Party</a>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+      </div>
+      <div class="navbar__actions">
+        <button class="navbar__rtl-btn js-rtl-toggle" aria-label="Toggle text direction">RTL</button>
+        <button class="navbar__toggle-btn js-theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="cart.html" class="navbar__cart" aria-label="Shopping cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="navbar__cart-badge" data-count="0">0</span>
+        </a>
+        <button class="navbar__hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar__drawer-overlay" id="drawerOverlay"></div>
+  <div class="navbar__drawer" id="navDrawer">
+    <a href="index.html" class="navbar__drawer-link">Home 1</a>
+    <a href="home-v2.html" class="navbar__drawer-link active">Home 2</a>
+    <a href="about.html" class="navbar__drawer-link">About</a>
+    <a href="products.html" class="navbar__drawer-link">Products</a>
+    <a href="gift-tins.html" class="navbar__drawer-link">Gift Tins</a>
+    <a href="bulk-party.html" class="navbar__drawer-link">Bulk &amp; Party</a>
+    <a href="blog.html" class="navbar__drawer-link">Blog</a>
+    <a href="contact.html" class="navbar__drawer-link">Contact</a>
+    <a href="cart.html" class="navbar__drawer-link">Cart</a>
+    <div class="navbar__drawer-toggles">
+      <button class="navbar__rtl-btn js-rtl-toggle">RTL</button>
+      <button class="navbar__toggle-btn js-theme-toggle">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ SECTION 1 — HERO ═══════════════════════ -->
+  <section class="hero hero--v2" id="hero-v2" aria-label="Hero banner">
+    <div class="hero__bg">
+      <img src="assets/images/hero-home-v2.png" alt="Colorful candy shop interior with vibrant displays" loading="eager" width="1920" height="1080">
+    </div>
+    <div class="hero__overlay" style="background: linear-gradient(180deg, rgba(59,36,32,0.4) 0%, rgba(217,79,112,0.3) 60%, rgba(59,36,32,0.7) 100%);"></div>
+
+    <div class="hero__content">
+      <h1 class="js-word-stagger">Every Bite is a Celebration</h1>
+      <p>Bold flavors, vibrant colors, and handmade magic in every tin. Welcome to your new favorite candy shop.</p>
+      <div class="hero__ctas">
+        <a href="products.html" class="btn btn-primary">Explore Flavors</a>
+        <a href="#shop-categories" class="btn btn-ghost" style="color:#fff; border-color:rgba(255,255,255,0.4);">Browse Categories</a>
+      </div>
+    </div>
+
+    <!-- Wave Divider -->
+    <div class="hero__wave">
+      <svg viewBox="0 0 1440 100" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 40C360 90 720 0 1080 50C1260 75 1380 60 1440 40V100H0V40Z" fill="var(--bg-primary)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SECTION 2 — SHOP BY CATEGORY ═══════════════════════ -->
+  <section class="section" id="shop-categories" aria-label="Shop by category">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Shop by Category</h2>
+        <p>Find your perfect snack — from classic popcorn to artisan candy and curated gift tins.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Popcorn -->
+        <div class="category-tile reveal stagger-1">
+          <img src="assets/images/category-popcorn.png" alt="Assorted gourmet popcorn varieties" loading="lazy" width="400" height="533" class="category-tile__img">
+          <div class="category-tile__overlay">
+            <h3 class="category-tile__title">Popcorn</h3>
+            <a href="products.html" class="category-tile__link">
+              Shop Collection
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Candy -->
+        <div class="category-tile reveal stagger-2">
+          <img src="assets/images/category-candy.png" alt="Handmade artisan candies and truffles" loading="lazy" width="400" height="533" class="category-tile__img">
+          <div class="category-tile__overlay">
+            <h3 class="category-tile__title">Candy</h3>
+            <a href="products.html" class="category-tile__link">
+              Shop Collection
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gift Tins -->
+        <div class="category-tile reveal stagger-3">
+          <img src="assets/images/category-gifttins.png" alt="Premium branded gift tins with ribbons" loading="lazy" width="400" height="533" class="category-tile__img">
+          <div class="category-tile__overlay">
+            <h3 class="category-tile__title">Gift Tins</h3>
+            <a href="gift-tins.html" class="category-tile__link">
+              Build Your Tin
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 7h12M8 2l5 5-5 5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SECTION 3 — BEST SELLERS CAROUSEL ═══════════════════════ -->
+  <section class="section section-alt" id="best-sellers" aria-label="Best sellers">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Best Sellers</h2>
+        <p>Our most-loved flavors, chosen by thousands of happy customers.</p>
+      </div>
+
+      <div class="carousel reveal" id="bestSellersCarousel">
+        <div class="carousel__track" id="carouselTrack">
+          <!-- Slide 1 -->
+          <div class="carousel__slide">
+            <div class="card">
+              <div class="card__img-wrap"><img src="assets/images/bestseller-caramel.png" alt="Caramel Gold Popcorn" loading="lazy" width="300" height="300"></div>
+              <div class="card__body">
+                <h3 class="card__title">Caramel Gold</h3>
+                <div class="stars"><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg></div>
+                <span class="card__price">$12.99</span>
+                <button class="btn btn-primary btn-sm" style="margin-top:0.75rem;width:100%" onclick="addToCart('caramel-gold','Caramel Gold',12.99,'assets/images/bestseller-caramel.png')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel__slide">
+            <div class="card">
+              <div class="card__img-wrap"><img src="assets/images/bestseller-raspberry.png" alt="Raspberry Burst Popcorn" loading="lazy" width="300" height="300"></div>
+              <div class="card__body">
+                <h3 class="card__title">Raspberry Burst</h3>
+                <div class="stars"><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16" class="empty"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg></div>
+                <span class="card__price">$14.99</span>
+                <button class="btn btn-primary btn-sm" style="margin-top:0.75rem;width:100%" onclick="addToCart('raspberry-burst','Raspberry Burst',14.99,'assets/images/bestseller-raspberry.png')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel__slide">
+            <div class="card">
+              <div class="card__img-wrap"><img src="assets/images/bestseller-cocoa.png" alt="Cocoa Crunch Popcorn" loading="lazy" width="300" height="300"></div>
+              <div class="card__body">
+                <h3 class="card__title">Cocoa Crunch</h3>
+                <div class="stars"><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg></div>
+                <span class="card__price">$13.99</span>
+                <button class="btn btn-primary btn-sm" style="margin-top:0.75rem;width:100%" onclick="addToCart('cocoa-crunch','Cocoa Crunch',13.99,'assets/images/bestseller-cocoa.png')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 4 -->
+          <div class="carousel__slide">
+            <div class="card">
+              <div class="card__img-wrap"><img src="assets/images/bestseller-seasalt.png" alt="Sea-Salt Vanilla Popcorn" loading="lazy" width="300" height="300"></div>
+              <div class="card__body">
+                <h3 class="card__title">Sea-Salt Vanilla</h3>
+                <div class="stars"><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg></div>
+                <span class="card__price">$11.99</span>
+                <button class="btn btn-primary btn-sm" style="margin-top:0.75rem;width:100%" onclick="addToCart('seasalt-vanilla','Sea-Salt Vanilla',11.99,'assets/images/bestseller-seasalt.png')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 5 -->
+          <div class="carousel__slide">
+            <div class="card">
+              <div class="card__img-wrap"><img src="assets/images/bestseller-autumn.png" alt="Seasonal Autumn Collection" loading="lazy" width="300" height="300"></div>
+              <div class="card__body">
+                <span class="card__tag">Seasonal</span>
+                <h3 class="card__title">Autumn Box</h3>
+                <div class="stars"><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg><svg viewBox="0 0 16 16"><polygon points="8,1 10,6 16,6.5 11.5,10.5 13,16 8,13 3,16 4.5,10.5 0,6.5 6,6"/></svg></div>
+                <span class="card__price">$24.99</span>
+                <button class="btn btn-secondary btn-sm" style="margin-top:0.75rem;width:100%" onclick="addToCart('autumn-box','Autumn Box',24.99,'assets/images/bestseller-autumn.png')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel__btn carousel__btn--prev" id="carouselPrev" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel__btn carousel__btn--next" id="carouselNext" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="carousel__dots" id="carouselDots"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SECTION 4 — BEHIND THE COUNTER ═══════════════════════ -->
+  <section class="section" id="behind-counter" aria-label="Behind the counter">
+    <div class="container">
+      <div class="split-section">
+        <div class="split-section__content reveal-left">
+          <h2>Behind the Counter</h2>
+          <p>At POPZ, every flavor begins with a story. Our founder, Elena Rodriguez, started with a single copper kettle and a passion for transforming the humble popcorn kernel into something extraordinary.</p>
+          <p>Today, our team of artisan confectioners handcrafts every batch in our Sweet Haven workshop, using locally sourced ingredients and time-honored techniques passed down through three generations.</p>
+          <a href="about.html" class="btn btn-ghost" style="margin-top:0.5rem;">Our Full Story</a>
+        </div>
+        <div class="split-section__image reveal-right">
+          <img src="assets/images/hero-about.png" alt="POPZ artisan crafting popcorn in copper kettle" loading="lazy" width="640" height="480">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SECTION 5 — ANIMATED STATS ═══════════════════════ -->
+  <section class="section stats-section" id="fun-facts" aria-label="Fun facts and statistics">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 style="color: var(--vanilla-cream);">POPZ by the Numbers</h2>
+        <p style="color: #C4A88E;">A decade of delicious milestones and counting.</p>
+      </div>
+
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <span class="stat-item__number js-counter" data-target="42" data-suffix="+">0</span>
+          <span class="stat-item__label">Flavors Crafted</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__number js-counter" data-target="125000" data-suffix="+">0</span>
+          <span class="stat-item__label">Tins Shipped</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__number js-counter" data-target="12">0</span>
+          <span class="stat-item__label">Years in Business</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__number js-counter" data-target="98" data-suffix="%">0</span>
+          <span class="stat-item__label">Happy Customers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SECTION 6 — PARTY CTA BAND ═══════════════════════ -->
+  <section class="cta-band" id="party-cta" aria-label="Party orders call to action">
+    <div class="container">
+      <div class="reveal">
+        <h2>Planning a Party or Event?</h2>
+        <p>From weddings to corporate gatherings, we create custom popcorn bars and bulk orders that make every celebration unforgettable.</p>
+        <a href="bulk-party.html" class="btn btn-primary">Explore Bulk &amp; Party</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo"><svg class="footer__logo-icon" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="16" fill="#E8A33D"/><circle cx="18" cy="18" r="12" fill="#3B2420"/><circle cx="14" cy="14" r="3" fill="#E8A33D" opacity="0.8"/><circle cx="22" cy="16" r="2.5" fill="#D94F70" opacity="0.8"/><circle cx="17" cy="22" r="2" fill="#FBF4EA" opacity="0.7"/><circle cx="23" cy="22" r="1.5" fill="#E8A33D" opacity="0.6"/></svg><span class="footer__logo-text">POPZ</span></a>
+        <p class="footer__brand-desc">Handcrafted gourmet popcorn and artisan candies, made with love in Sweet Haven, California.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social-btn" aria-label="Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg></a>
+          <a href="#" class="footer__social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" class="footer__social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <a href="#" class="footer__social-btn" aria-label="Apple"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__column"><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html">Popcorn</a></li><li><a href="products.html">Candy</a></li><li><a href="gift-tins.html">Gift Tins</a></li><li><a href="bulk-party.html">Bulk Orders</a></li><li><a href="products.html">Seasonal</a></li></ul></div>
+      <div class="footer__column"><h4>Support</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="contact.html">FAQ</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">Track Order</a></li><li><a href="about.html">About Us</a></li></ul></div>
+      <div class="footer__newsletter">
+        <h4>Join the POPZ Family</h4>
+        <p>Subscribe for new flavors, exclusive deals, and first access to seasonal drops.</p>
+        <form class="footer__newsletter-form js-newsletter-form"><input type="email" class="footer__newsletter-input" placeholder="Your email address" aria-label="Email address" required><button type="submit" class="footer__newsletter-submit">Join</button></form>
+        <p class="footer__newsletter-success">Thank you for subscribing!</p>
+      </div>
+    </div>
+    <div class="footer__payments">
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#1A1F71"/><text x="8" y="17" fill="#fff" font-size="8" font-weight="bold" font-family="sans-serif">VISA</text></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#252525"/><circle cx="16" cy="13" r="7" fill="#EB001B"/><circle cx="24" cy="13" r="7" fill="#F79E1B"/><path d="M20 8a7 7 0 0 1 0 10 7 7 0 0 1 0-10z" fill="#FF5F00"/></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#003087"/><text x="6" y="17" fill="#fff" font-size="7" font-weight="bold" font-family="sans-serif">PayPal</text></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#000"/><text x="5" y="17" fill="#fff" font-size="7" font-weight="bold" font-family="sans-serif">ApplePay</text></svg>
+      <svg viewBox="0 0 40 26" fill="none"><rect width="40" height="26" rx="4" fill="#5433FF"/><text x="5" y="17" fill="#fff" font-size="7" font-weight="bold" font-family="sans-serif">Stripe</text></svg>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 POPZ Gourmet Popcorn &amp; Candy Shop. All rights reserved.</span>
+      <div class="footer__bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookies</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+
+  <!-- Carousel JS -->
+  <script>
+  (function() {
+    'use strict';
+    var track = document.getElementById('carouselTrack');
+    var prevBtn = document.getElementById('carouselPrev');
+    var nextBtn = document.getElementById('carouselNext');
+    var dotsContainer = document.getElementById('carouselDots');
+    if (!track) return;
+
+    var slides = track.querySelectorAll('.carousel__slide');
+    var currentIndex = 0;
+    var slidesPerView = 4;
+    var autoPlayInterval;
+
+    function getPerView() {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 4;
+    }
+
+    function getTotalPages() {
+      return Math.max(1, slides.length - slidesPerView + 1);
+    }
+
+    function updateCarousel() {
+      slidesPerView = getPerView();
+      var slideWidth = track.parentElement.offsetWidth / slidesPerView;
+      slides.forEach(function(s) {
+        s.style.flex = '0 0 ' + (slideWidth - 16) + 'px';
+        s.style.marginRight = '16px';
+      });
+      var offset = currentIndex * slideWidth;
+      track.style.transform = 'translateX(-' + offset + 'px)';
+      updateDots();
+    }
+
+    function updateDots() {
+      var totalPages = getTotalPages();
+      dotsContainer.innerHTML = '';
+      for (var i = 0; i < totalPages; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel__dot' + (i === currentIndex ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', (function(idx) {
+          return function() { goTo(idx); };
+        })(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function goTo(idx) {
+      var totalPages = getTotalPages();
+      currentIndex = Math.max(0, Math.min(idx, totalPages - 1));
+      updateCarousel();
+      resetAutoPlay();
+    }
+
+    function next() { goTo(currentIndex + 1 >= getTotalPages() ? 0 : currentIndex + 1); }
+    function prev() { goTo(currentIndex - 1 < 0 ? getTotalPages() - 1 : currentIndex - 1); }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(next, 5000);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', prev);
+    if (nextBtn) nextBtn.addEventListener('click', next);
+
+    window.addEventListener('resize', function() { updateCarousel(); });
+
+    updateCarousel();
+    resetAutoPlay();
+  })();
+  </script>
+</body>
+</html>
