@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUTT — User Dashboard</title>
+  <meta name="description" content="View your PUTT fun pass balance, upcoming tee-times, reward points, and party bookings in your member portal.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230B6E4F'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23FFC53D'/%3E%3Crect x='15' y='4' width='3' height='14' rx='1.5' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard">
+    <div class="sidebar-overlay"></div>
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar" aria-label="Member Navigation">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-logo" aria-label="PUTT Home">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="16" fill="#0B6E4F"/>
+            <circle cx="18" cy="18" r="5.5" fill="#FFC53D"/>
+            <rect x="16.5" y="4" width="3" height="15" rx="1.5" fill="white"/>
+          </svg>
+          <span class="sidebar-logo-text">PUTT</span>
+        </a>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar collapse">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-item active" data-view="view-overview" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span>Overview</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="view-bookings" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          <span>My Bookings</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="view-funpass" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+          <span>Fun Pass</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="view-parties" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.3-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.39.57 1.08 0 1.96-.88 1.96-1.96V12c0-1.66-1.34-3-3-3z"/></svg>
+          <span>Party Bookings</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="view-payments" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          <span>Payments</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="view-profile" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span>Profile</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="admin-dashboard.html" class="sidebar-nav-item" style="color:var(--clr-accent-dark);font-size:var(--fs-xs);">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          <span>Switch to Admin Demo</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN WRAPPER ==================== -->
+    <div class="dash-main">
+      <!-- TOPBAR -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-left">
+          <button class="dash-hamburger" aria-label="Open mobile navigation">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </button>
+          <h1>Overview</h1>
+        </div>
+
+        <div class="dash-topbar-right">
+          <div class="dash-search">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="text" placeholder="Search bookings, passes..." aria-label="Search dashboard">
+          </div>
+
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+          </button>
+
+          <button class="rtl-toggle" aria-label="Toggle text direction">RTL</button>
+
+          <div class="notification-btn" aria-label="Notifications" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+            <span class="notification-dot"></span>
+          </div>
+
+          <img class="dash-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Member profile avatar">
+
+          <a href="login.html" class="dash-logout">Logout</a>
+        </div>
+      </header>
+
+      <!-- DASHBOARD VIEWS -->
+      <main class="dash-content">
+
+        <!-- ==================== VIEW 1: OVERVIEW ==================== -->
+        <div class="dash-view active" id="view-overview">
+          <!-- 4 Stat Cards Row -->
+          <div class="stat-card-row">
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Pass Balance</span>
+                <span class="stat-card-icon" style="background:rgba(11,110,79,0.1);color:var(--clr-primary);">
+                  <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">$45.00</div>
+              <div class="stat-card-trend positive">Gold Pass Member</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Upcoming Bookings</span>
+                <span class="stat-card-icon" style="background:rgba(255,107,91,0.1);color:var(--clr-secondary);">
+                  <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">2</div>
+              <div class="stat-card-trend neutral">Next: Sat, 2:30 PM</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Tokens Left</span>
+                <span class="stat-card-icon" style="background:rgba(255,197,61,0.15);color:var(--clr-accent-dark);">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">140</div>
+              <div class="stat-card-trend positive">+40 added this week</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Reward Points</span>
+                <span class="stat-card-icon" style="background:rgba(11,110,79,0.1);color:var(--clr-primary);">
+                  <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">850</div>
+              <div class="stat-card-trend positive">150 pts to Free Round</div>
+            </div>
+          </div>
+
+          <!-- 4 Distinct Graph Types Row (Modest Sized) -->
+          <div class="chart-grid">
+            <!-- (1) Line/Area Graph -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Pass Activity (6 Mo)</h3>
+                <span class="badge badge-primary">Area</span>
+              </div>
+              <div class="chart-container" style="height:200px;">
+                <canvas id="userLineChart"></canvas>
+              </div>
+            </div>
+
+            <!-- (2) Doughnut Graph -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Attraction Split</h3>
+                <span class="badge badge-accent">Doughnut</span>
+              </div>
+              <div class="chart-container" style="height:200px;">
+                <canvas id="userDoughnutChart"></canvas>
+              </div>
+            </div>
+
+            <!-- (3) Horizontal Bars -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Monthly Spending</h3>
+                <span class="badge badge-secondary">Bars</span>
+              </div>
+              <div class="chart-container" style="height:200px;">
+                <canvas id="userHBarChart"></canvas>
+              </div>
+            </div>
+
+            <!-- (4) Progress Ring -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>VIP Next Milestone</h3>
+                <span class="badge badge-primary">Ring</span>
+              </div>
+              <div class="chart-container" id="userProgressRing" style="height:200px;display:flex;align-items:center;justify-content:center;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Upcoming Bookings Table -->
+          <div class="card" style="padding:1.5rem;margin-top:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+              <h3>Upcoming Reserved Sessions</h3>
+              <a href="pricing.html#book" class="btn btn-primary btn-sm">Book New Tee Time</a>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="data-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Ref #</th>
+                    <th>Attraction</th>
+                    <th>Date &amp; Time</th>
+                    <th>Party Size</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#PUTT-8492</td>
+                    <td>Underwater Reef (18 Holes)</td>
+                    <td>Sat, Oct 03 • 2:30 PM</td>
+                    <td>4 Players</td>
+                    <td><span class="badge badge-primary">Confirmed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Reschedule</button></td>
+                  </tr>
+                  <tr>
+                    <td>#PUTT-8501</td>
+                    <td>Electric Go-Kart Race Heat</td>
+                    <td>Sat, Oct 03 • 4:00 PM</td>
+                    <td>2 Drivers</td>
+                    <td><span class="badge badge-primary">Confirmed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Reschedule</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 2: MY BOOKINGS ==================== -->
+        <div class="dash-view" id="view-bookings">
+          <div class="card" style="padding:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <h2>All Booking Records</h2>
+              <div class="dash-tabs" data-target="userBookingsTable">
+                <button class="dash-tab active" data-filter="all">All</button>
+                <button class="dash-tab" data-filter="confirmed">Upcoming</button>
+                <button class="dash-tab" data-filter="completed">Past</button>
+              </div>
+            </div>
+
+            <div style="overflow-x:auto;">
+              <table class="data-table" id="userBookingsTable" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Booking ID</th>
+                    <th>Attraction</th>
+                    <th>Date &amp; Time</th>
+                    <th>Players</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-status="confirmed">
+                    <td>#PUTT-8492</td>
+                    <td>Underwater Reef (18 Holes)</td>
+                    <td>Oct 03, 2026 • 2:30 PM</td>
+                    <td>4</td>
+                    <td>$56.00</td>
+                    <td><span class="badge badge-primary">Confirmed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Cancel</button></td>
+                  </tr>
+                  <tr data-status="confirmed">
+                    <td>#PUTT-8501</td>
+                    <td>Electric Kart Grand Prix</td>
+                    <td>Oct 03, 2026 • 4:00 PM</td>
+                    <td>2</td>
+                    <td>$31.00</td>
+                    <td><span class="badge badge-primary">Confirmed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Cancel</button></td>
+                  </tr>
+                  <tr data-status="completed">
+                    <td>#PUTT-7910</td>
+                    <td>Space Odyssey (18 Holes)</td>
+                    <td>Sept 12, 2026 • 1:00 PM</td>
+                    <td>3</td>
+                    <td>$42.00</td>
+                    <td><span class="badge badge-accent">Completed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Receipt</button></td>
+                  </tr>
+                  <tr data-status="completed">
+                    <td>#PUTT-7431</td>
+                    <td>Jungle Safari Course</td>
+                    <td>Aug 22, 2026 • 3:30 PM</td>
+                    <td>5</td>
+                    <td>$70.00</td>
+                    <td><span class="badge badge-accent">Completed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Receipt</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pagination" style="display:flex;justify-content:flex-end;gap:0.5rem;margin-top:1.5rem;">
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 3: FUN PASS ==================== -->
+        <div class="dash-view" id="view-funpass">
+          <div class="two-col" style="margin-bottom:1.5rem;">
+            <!-- Digital Card Preview -->
+            <div class="card" style="background:linear-gradient(135deg,#0B6E4F,#064230);color:#FFFFFF;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:16/10;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                <div>
+                  <span style="font-family:var(--ff-display);font-size:1.5rem;font-weight:800;letter-spacing:1px;">PUTT PASS</span>
+                  <p style="font-size:var(--fs-xs);opacity:0.8;margin:0;">VIP Membership</p>
+                </div>
+                <span class="badge badge-accent" style="color:var(--clr-text);">Gold Tier</span>
+              </div>
+              <div style="font-family:monospace;font-size:1.25rem;letter-spacing:2px;margin:1.5rem 0;">
+                •••• •••• •••• 9284
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+                <div>
+                  <span style="font-size:var(--fs-xs);opacity:0.7;display:block;">Passholder</span>
+                  <span style="font-weight:600;">Alex Morgan</span>
+                </div>
+                <div style="text-align:end;">
+                  <span style="font-size:var(--fs-xs);opacity:0.7;display:block;">Valid Thru</span>
+                  <span style="font-weight:600;">08/2027</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Reload Form -->
+            <div class="card" style="padding:2rem;">
+              <h3>Top-Up Fun Pass Balance</h3>
+              <p style="font-size:var(--fs-small);color:var(--clr-text-secondary);margin-bottom:1.25rem;">Select credit reload package with instant bonus tokens.</p>
+              <form data-validate>
+                <div class="form-group">
+                  <label class="form-label" for="reloadAmount">Select Reload Tier</label>
+                  <select id="reloadAmount" class="form-input" required>
+                    <option value="25">$25 (+ 10 Bonus Game Tokens)</option>
+                    <option value="50" selected>$50 (+ 25 Bonus Game Tokens)</option>
+                    <option value="100">$100 (+ 60 Bonus Tokens &amp; 1 Free Golf Pass)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="paymentSelect">Saved Payment Method</label>
+                  <select id="paymentSelect" class="form-input">
+                    <option value="visa">Visa ending in 4022</option>
+                    <option value="apple">Apple Pay</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add $50 to Card</button>
+                <div class="form-success">Balance loaded successfully! New balance: $95.00</div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Usage History Table -->
+          <div class="card" style="padding:1.5rem;">
+            <h3>Card Activity History</h3>
+            <div style="overflow-x:auto;margin-top:1rem;">
+              <table class="data-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Activity</th>
+                    <th>Credits Used</th>
+                    <th>Remaining Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sept 18, 2026</td>
+                    <td>Arcade Zone (VR Pod &amp; Sims)</td>
+                    <td>-20 Tokens</td>
+                    <td>140 Tokens</td>
+                  </tr>
+                  <tr>
+                    <td>Sept 12, 2026</td>
+                    <td>Snack Bar (Pizza Combo)</td>
+                    <td>-$14.00</td>
+                    <td>$45.00</td>
+                  </tr>
+                  <tr>
+                    <td>Sept 01, 2026</td>
+                    <td>Monthly Membership Top-Up</td>
+                    <td>+$50.00</td>
+                    <td>$59.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 4: PARTY BOOKINGS ==================== -->
+        <div class="dash-view" id="view-parties">
+          <div class="card" style="padding:1.5rem;margin-bottom:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h2>My Birthday Packages</h2>
+                <p style="font-size:var(--fs-small);color:var(--clr-text-secondary);margin:0;">Track preparation progress and timeline for your family celebration.</p>
+              </div>
+              <a href="parties.html#book-party" class="btn btn-secondary btn-sm">Book Another Party</a>
+            </div>
+
+            <div class="card" style="border:1px solid var(--clr-border);padding:1.5rem;background:var(--clr-bg-alt);">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+                <div>
+                  <span class="badge badge-primary" style="margin-bottom:0.5rem;display:inline-block;">Birdie Bash Package</span>
+                  <h3>Leo's 8th Birthday Extravaganza</h3>
+                  <p style="font-size:var(--fs-small);color:var(--clr-text-secondary);">Date: Saturday, Oct 24, 2026 • 1:30 PM – 3:30 PM (Suite #2)</p>
+                </div>
+                <div style="text-align:end;">
+                  <span style="font-size:var(--fs-xs);color:var(--clr-text-muted);display:block;">Assigned Host</span>
+                  <span style="font-weight:700;color:var(--clr-primary);">Sarah Jenkins</span>
+                </div>
+              </div>
+
+              <!-- Stepper Timeline -->
+              <div class="grid-3" style="margin-top:2rem;text-align:center;">
+                <div style="padding:1rem;background:var(--clr-bg-card);border-radius:var(--radius-md);border-top:4px solid var(--clr-primary);">
+                  <span style="font-size:var(--fs-xs);font-weight:700;color:var(--clr-primary);">STEP 1: COMPLETED</span>
+                  <h4 style="margin:0.25rem 0;">Deposit Paid</h4>
+                  <p style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin:0;">$100 reservation secured</p>
+                </div>
+                <div style="padding:1rem;background:var(--clr-bg-card);border-radius:var(--radius-md);border-top:4px solid var(--clr-accent);">
+                  <span style="font-size:var(--fs-xs);font-weight:700;color:var(--clr-accent-dark);">STEP 2: IN PROGRESS</span>
+                  <h4 style="margin:0.25rem 0;">Superhero Theme</h4>
+                  <p style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin:0;">Custom decor confirmed</p>
+                </div>
+                <div style="padding:1rem;background:var(--clr-bg-card);border-radius:var(--radius-md);border-top:4px solid var(--clr-border);">
+                  <span style="font-size:var(--fs-xs);font-weight:700;color:var(--clr-text-muted);">STEP 3: UPCOMING</span>
+                  <h4 style="margin:0.25rem 0;">Party Day Check-in</h4>
+                  <p style="font-size:var(--fs-xs);color:var(--clr-text-muted);margin:0;">Arrival 1:15 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 5: PAYMENTS ==================== -->
+        <div class="dash-view" id="view-payments">
+          <div class="card" style="padding:1.5rem;">
+            <h2>Payment &amp; Receipt History</h2>
+            <div style="overflow-x:auto;margin-top:1rem;">
+              <table class="data-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Receipt #</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Method</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Receipt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#REC-2026-904</td>
+                    <td>Sept 20, 2026</td>
+                    <td>Tee Time 4-Pack (Underwater Reef)</td>
+                    <td>Visa •••• 4022</td>
+                    <td>$56.00</td>
+                    <td><span class="badge badge-primary">Paid</span></td>
+                    <td><button class="btn btn-outline btn-sm">PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td>#REC-2026-871</td>
+                    <td>Sept 01, 2026</td>
+                    <td>Gold Pass Reload (50 pts)</td>
+                    <td>Apple Pay</td>
+                    <td>$50.00</td>
+                    <td><span class="badge badge-primary">Paid</span></td>
+                    <td><button class="btn btn-outline btn-sm">PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td>#REC-2026-799</td>
+                    <td>Aug 15, 2026</td>
+                    <td>Birdie Bash Deposit</td>
+                    <td>Visa •••• 4022</td>
+                    <td>$100.00</td>
+                    <td><span class="badge badge-primary">Paid</span></td>
+                    <td><button class="btn btn-outline btn-sm">PDF</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 6: PROFILE ==================== -->
+        <div class="dash-view" id="view-profile">
+          <div class="card" style="padding:2rem;max-width:700px;">
+            <h2>Member Profile Settings</h2>
+            <form data-validate style="margin-top:1.5rem;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="profileName">Full Name</label>
+                  <input type="text" id="profileName" class="form-input" value="Alex Morgan" required>
+                  <span class="form-error"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profileEmail">Email</label>
+                  <input type="email" id="profileEmail" class="form-input" value="alex.morgan@example.com" required>
+                  <span class="form-error"></span>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="profilePhone">Phone Number</label>
+                  <input type="tel" id="profilePhone" class="form-input" value="(555) 349-8812">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profileCourse">Favorite Course</label>
+                  <select id="profileCourse" class="form-input">
+                    <option value="reef" selected>Underwater Reef</option>
+                    <option value="jungle">Jungle Safari</option>
+                    <option value="space">Space Odyssey</option>
+                    <option value="castle">Medieval Castle</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Profile Changes</button>
+              <div class="form-success">Profile changes saved successfully!</div>
+            </form>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/global.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+  <script>
+    // Initialize User Dashboard Charts with vanilla canvas/SVG
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.PuttCharts) {
+        // (1) Line/Area Chart — Pass usage over 6 months
+        window.PuttCharts.drawLineChart('userLineChart', {
+          labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+          values: [12, 18, 28, 35, 22, 30]
+        }, { area: true, color: '#0B6E4F' });
+
+        // (2) Doughnut Chart — Attraction visit split
+        window.PuttCharts.drawDoughnutChart('userDoughnutChart', {
+          labels: ['Golf', 'Arcade', 'Karts'],
+          values: [45, 35, 20]
+        }, { inner: true, centerText: '100%' });
+
+        // (3) Horizontal Bar Chart — Monthly spending
+        window.PuttCharts.drawHorizontalBarChart('userHBarChart', {
+          labels: ['Jun', 'Jul', 'Aug', 'Sep'],
+          values: [65, 110, 140, 85]
+        });
+
+        // (4) Progress Ring — Reward points
+        window.PuttCharts.drawProgressRing('userProgressRing', 850, 1000, { color: '#0B6E4F' });
+      }
+    });
+  </script>
+</body>
+</html>

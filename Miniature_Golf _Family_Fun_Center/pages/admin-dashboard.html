@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUTT — Admin Control Center</title>
+  <meta name="description" content="Operations dashboard for PUTT center management. Monitor real-time bookings, course footfall, pass sales, and birthday parties.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230B6E4F'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23FFC53D'/%3E%3Crect x='15' y='4' width='3' height='14' rx='1.5' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard">
+    <div class="sidebar-overlay"></div>
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar" aria-label="Admin Navigation">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-logo" aria-label="PUTT Home">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="16" fill="#0B6E4F"/>
+            <circle cx="18" cy="18" r="5.5" fill="#FFC53D"/>
+            <rect x="16.5" y="4" width="3" height="15" rx="1.5" fill="white"/>
+          </svg>
+          <span class="sidebar-logo-text">PUTT</span>
+        </a>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar collapse">
+          <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-item active" data-view="admin-overview" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span>Overview</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="admin-bookings" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          <span>Bookings</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="admin-customers" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <span>Customers</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="admin-parties" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.3-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.39.57 1.08 0 1.96-.88 1.96-1.96V12c0-1.66-1.34-3-3-3z"/></svg>
+          <span>Parties</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="admin-payments" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          <span>Payments</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="admin-reports" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          <span>Reports</span>
+        </div>
+        <div class="sidebar-nav-item" data-view="admin-settings" role="button" tabindex="0">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          <span>Settings</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="user-dashboard.html" class="sidebar-nav-item" style="color:var(--clr-primary);font-size:var(--fs-xs);">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span>Switch to Member View</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="dash-main">
+      <!-- TOPBAR -->
+      <header class="dash-topbar">
+        <div class="dash-topbar-left">
+          <button class="dash-hamburger" aria-label="Open mobile navigation">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </button>
+          <h1>Overview</h1>
+        </div>
+
+        <div class="dash-topbar-right">
+          <div class="dash-search">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="text" placeholder="Search operational records..." aria-label="Search admin">
+          </div>
+
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+          </button>
+
+          <button class="rtl-toggle" aria-label="Toggle text direction">RTL</button>
+
+          <div class="notification-btn" aria-label="Admin Alerts" role="button" tabindex="0">
+            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+            <span class="notification-dot"></span>
+          </div>
+
+          <img class="dash-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Admin manager avatar">
+
+          <a href="login.html" class="dash-logout">Logout</a>
+        </div>
+      </header>
+
+      <main class="dash-content">
+
+        <!-- ==================== VIEW 1: OVERVIEW ==================== -->
+        <div class="dash-view active" id="admin-overview">
+          <!-- 4 Stat Cards Row -->
+          <div class="stat-card-row">
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Today's Bookings</span>
+                <span class="stat-card-icon" style="background:rgba(11,110,79,0.1);color:var(--clr-primary);">
+                  <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">148</div>
+              <div class="stat-card-trend positive">+14% vs yesterday</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Revenue Today</span>
+                <span class="stat-card-icon" style="background:rgba(255,107,91,0.1);color:var(--clr-secondary);">
+                  <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">$4,280</div>
+              <div class="stat-card-trend positive">On track for weekend target</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Active Passes</span>
+                <span class="stat-card-icon" style="background:rgba(255,197,61,0.15);color:var(--clr-accent-dark);">
+                  <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">1,840</div>
+              <div class="stat-card-trend positive">+45 new passes this week</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-title">Parties This Week</span>
+                <span class="stat-card-icon" style="background:rgba(11,110,79,0.1);color:var(--clr-primary);">
+                  <svg viewBox="0 0 24 24"><path d="M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99l-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.3-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.39.57 1.08 0 1.96-.88 1.96-1.96V12c0-1.66-1.34-3-3-3z"/></svg>
+                </span>
+              </div>
+              <div class="stat-card-value">14</div>
+              <div class="stat-card-trend neutral">All party suites booked Sat/Sun</div>
+            </div>
+          </div>
+
+          <!-- 4 Distinct Graph Types Row (Modest Sized) -->
+          <div class="chart-grid">
+            <!-- (1) Bar Chart: Weekly Revenue -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Weekly Revenue ($K)</h3>
+                <span class="badge badge-primary">Bar Chart</span>
+              </div>
+              <div class="chart-container" style="height:200px;">
+                <canvas id="adminBarChart"></canvas>
+              </div>
+            </div>
+
+            <!-- (2) Line Graph: Visitor Footfall by Hour -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Today's Footfall by Hour</h3>
+                <span class="badge badge-secondary">Line Graph</span>
+              </div>
+              <div class="chart-container" style="height:200px;">
+                <canvas id="adminLineChart"></canvas>
+              </div>
+            </div>
+
+            <!-- (3) Radar Chart: Attraction Popularity -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Attraction Popularity</h3>
+                <span class="badge badge-accent">Radar Chart</span>
+              </div>
+              <div class="chart-container" style="height:200px;">
+                <canvas id="adminRadarChart"></canvas>
+              </div>
+            </div>
+
+            <!-- (4) Polar / Doughnut: Pass Tier Distribution -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3>Pass Tier Share</h3>
+                <span class="badge badge-primary">Distribution</span>
+              </div>
+              <div class="chart-container" style="height:200px;">
+                <canvas id="adminDoughnutChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Bookings Table with Status Pills -->
+          <div class="card" style="padding:1.5rem;margin-top:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+              <h3>Live Operations Stream</h3>
+              <span class="badge badge-primary">Auto-Updating</span>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="data-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Ref #</th>
+                    <th>Customer</th>
+                    <th>Attraction</th>
+                    <th>Time</th>
+                    <th>Party Size</th>
+                    <th>Status</th>
+                    <th>Revenue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#BK-1092</td>
+                    <td>Danielle Cooper</td>
+                    <td>Jungle Safari (18 Holes)</td>
+                    <td>Just Now</td>
+                    <td>4 Players</td>
+                    <td><span class="badge badge-primary">Checked In</span></td>
+                    <td>$56.00</td>
+                  </tr>
+                  <tr>
+                    <td>#BK-1091</td>
+                    <td>Robert Flores</td>
+                    <td>Electric Kart Heat</td>
+                    <td>10m ago</td>
+                    <td>2 Drivers</td>
+                    <td><span class="badge badge-primary">Checked In</span></td>
+                    <td>$31.00</td>
+                  </tr>
+                  <tr>
+                    <td>#BK-1090</td>
+                    <td>Maya Lin</td>
+                    <td>Birthday Suite #1 (Par Party)</td>
+                    <td>25m ago</td>
+                    <td>10 Guests</td>
+                    <td><span class="badge badge-accent">In Progress</span></td>
+                    <td>$299.00</td>
+                  </tr>
+                  <tr>
+                    <td>#BK-1089</td>
+                    <td>Samuel Wright</td>
+                    <td>Space Odyssey (18 Holes)</td>
+                    <td>40m ago</td>
+                    <td>3 Players</td>
+                    <td><span class="badge badge-accent">Completed</span></td>
+                    <td>$42.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 2: BOOKINGS MANAGEMENT ==================== -->
+        <div class="dash-view" id="admin-bookings">
+          <div class="card" style="padding:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <h2>Booking Management</h2>
+              <div class="dash-tabs" data-target="adminAllBookingsTable">
+                <button class="dash-tab active" data-filter="all">All</button>
+                <button class="dash-tab" data-filter="confirmed">Confirmed</button>
+                <button class="dash-tab" data-filter="completed">Completed</button>
+              </div>
+            </div>
+
+            <div style="overflow-x:auto;">
+              <table class="data-table" id="adminAllBookingsTable" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Guest Name</th>
+                    <th>Attraction</th>
+                    <th>Date / Time</th>
+                    <th>Group</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-status="confirmed">
+                    <td>#BK-1092</td>
+                    <td>Danielle Cooper</td>
+                    <td>Jungle Safari</td>
+                    <td>Oct 03, 10:00 AM</td>
+                    <td>4</td>
+                    <td>$56.00</td>
+                    <td><span class="badge badge-primary">Confirmed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Edit</button></td>
+                  </tr>
+                  <tr data-status="confirmed">
+                    <td>#BK-1091</td>
+                    <td>Robert Flores</td>
+                    <td>Go-Karts</td>
+                    <td>Oct 03, 11:30 AM</td>
+                    <td>2</td>
+                    <td>$31.00</td>
+                    <td><span class="badge badge-primary">Confirmed</span></td>
+                    <td><button class="btn btn-outline btn-sm">Edit</button></td>
+                  </tr>
+                  <tr data-status="completed">
+                    <td>#BK-1085</td>
+                    <td>Lucas Scott</td>
+                    <td>Underwater Reef</td>
+                    <td>Oct 02, 3:00 PM</td>
+                    <td>6</td>
+                    <td>$84.00</td>
+                    <td><span class="badge badge-accent">Completed</span></td>
+                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                  </tr>
+                  <tr data-status="completed">
+                    <td>#BK-1084</td>
+                    <td>Emma Watson</td>
+                    <td>Medieval Castle</td>
+                    <td>Oct 02, 4:15 PM</td>
+                    <td>2</td>
+                    <td>$28.00</td>
+                    <td><span class="badge badge-accent">Completed</span></td>
+                    <td><button class="btn btn-outline btn-sm">View</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pagination" style="display:flex;justify-content:flex-end;gap:0.5rem;margin-top:1.5rem;">
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 3: CUSTOMERS ==================== -->
+        <div class="dash-view" id="admin-customers">
+          <div class="card" style="padding:1.5rem;">
+            <h2>Customer Directory</h2>
+            <div style="overflow-x:auto;margin-top:1rem;">
+              <table class="data-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Customer Name</th>
+                    <th>Email Address</th>
+                    <th>Membership Tier</th>
+                    <th>Total Visits</th>
+                    <th>Lifetime Value</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Alex Morgan</td>
+                    <td>alex.morgan@example.com</td>
+                    <td><span class="badge badge-accent">Gold Pass</span></td>
+                    <td>14 visits</td>
+                    <td>$640.00</td>
+                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                  </tr>
+                  <tr>
+                    <td>Jessica Miller</td>
+                    <td>jessica.m@example.com</td>
+                    <td><span class="badge badge-primary">Platinum Pass</span></td>
+                    <td>26 visits</td>
+                    <td>$1,220.00</td>
+                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                  </tr>
+                  <tr>
+                    <td>David Patel</td>
+                    <td>david.p@example.com</td>
+                    <td><span class="badge badge-primary">Silver Pass</span></td>
+                    <td>8 visits</td>
+                    <td>$310.00</td>
+                    <td><button class="btn btn-outline btn-sm">Profile</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 4: PARTIES ==================== -->
+        <div class="dash-view" id="admin-parties">
+          <div class="card" style="padding:1.5rem;">
+            <h2>Birthday Party Schedule</h2>
+            <div style="overflow-x:auto;margin-top:1rem;">
+              <table class="data-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Suite</th>
+                    <th>Family Name</th>
+                    <th>Theme</th>
+                    <th>Package</th>
+                    <th>Date &amp; Time</th>
+                    <th>Host</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Suite 1</td>
+                    <td>The Cooper Family</td>
+                    <td>Superhero Squad</td>
+                    <td>Birdie Bash ($299)</td>
+                    <td>Sat, Oct 03 • 11:00 AM</td>
+                    <td>Marcus C.</td>
+                    <td><span class="badge badge-primary">Ready</span></td>
+                  </tr>
+                  <tr>
+                    <td>Suite 2</td>
+                    <td>The Vance Family</td>
+                    <td>Enchanted Royalty</td>
+                    <td>Eagle Extravaganza ($449)</td>
+                    <td>Sat, Oct 03 • 2:00 PM</td>
+                    <td>Sarah J.</td>
+                    <td><span class="badge badge-primary">Decor Setup</span></td>
+                  </tr>
+                  <tr>
+                    <td>Suite 3</td>
+                    <td>The Miller Family</td>
+                    <td>Neon Glow Party</td>
+                    <td>Par Party ($199)</td>
+                    <td>Sun, Oct 04 • 1:00 PM</td>
+                    <td>David M.</td>
+                    <td><span class="badge badge-accent">Confirmed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 5: PAYMENTS ==================== -->
+        <div class="dash-view" id="admin-payments">
+          <div class="card" style="padding:1.5rem;">
+            <h2>Daily Transactions &amp; Settlement</h2>
+            <div style="overflow-x:auto;margin-top:1rem;">
+              <table class="data-table" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>Txn ID</th>
+                    <th>Customer</th>
+                    <th>Payment Method</th>
+                    <th>Time</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>TXN-90234</td>
+                    <td>Danielle Cooper</td>
+                    <td>Credit Card (Visa)</td>
+                    <td>10:02 AM</td>
+                    <td>$56.00</td>
+                    <td><span class="badge badge-primary">Settled</span></td>
+                  </tr>
+                  <tr>
+                    <td>TXN-90235</td>
+                    <td>Robert Flores</td>
+                    <td>Apple Pay</td>
+                    <td>10:14 AM</td>
+                    <td>$31.00</td>
+                    <td><span class="badge badge-primary">Settled</span></td>
+                  </tr>
+                  <tr>
+                    <td>TXN-90236</td>
+                    <td>Alex Morgan</td>
+                    <td>Pass Top-Up (Online)</td>
+                    <td>10:28 AM</td>
+                    <td>$50.00</td>
+                    <td><span class="badge badge-primary">Settled</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 6: REPORTS ==================== -->
+        <div class="dash-view" id="admin-reports">
+          <div class="card" style="padding:2rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <h2>Operational Analytics &amp; Reports</h2>
+                <p style="font-size:var(--fs-small);color:var(--clr-text-secondary);margin:0;">Export financial and footfall logs for auditing.</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="alert('Exporting PUTT-Report-Q3-2026.csv')">Export CSV Report</button>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="reportRange">Select Date Range</label>
+                <select id="reportRange" class="form-input">
+                  <option>Last 7 Days</option>
+                  <option selected>Last 30 Days</option>
+                  <option>Year to Date (2026)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="reportAttraction">Filter by Attraction</label>
+                <select id="reportAttraction" class="form-input">
+                  <option>All Attractions Combined</option>
+                  <option>Mini Golf Only</option>
+                  <option>Arcade Zone Only</option>
+                  <option>Go-Karts Only</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid-3" style="margin-top:1.5rem;">
+              <div style="padding:1.25rem;border:1px solid var(--clr-border);border-radius:var(--radius-md);text-align:center;">
+                <span style="font-size:var(--fs-xs);color:var(--clr-text-muted);">Total Footfall (30D)</span>
+                <div style="font-family:var(--ff-display);font-size:2rem;font-weight:800;color:var(--clr-primary);">12,480</div>
+              </div>
+              <div style="padding:1.25rem;border:1px solid var(--clr-border);border-radius:var(--radius-md);text-align:center;">
+                <span style="font-size:var(--fs-xs);color:var(--clr-text-muted);">Avg. Guest Spend</span>
+                <div style="font-family:var(--ff-display);font-size:2rem;font-weight:800;color:var(--clr-secondary);">$34.20</div>
+              </div>
+              <div style="padding:1.25rem;border:1px solid var(--clr-border);border-radius:var(--radius-md);text-align:center;">
+                <span style="font-size:var(--fs-xs);color:var(--clr-text-muted);">Pass Retention Rate</span>
+                <div style="font-family:var(--ff-display);font-size:2rem;font-weight:800;color:var(--clr-accent-dark);">91.4%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== VIEW 7: SETTINGS ==================== -->
+        <div class="dash-view" id="admin-settings">
+          <div class="card" style="padding:2rem;max-width:750px;">
+            <h2>Park Operations Settings</h2>
+            <form data-validate style="margin-top:1.5rem;">
+              <div class="form-group">
+                <label class="form-label" for="centerName">Center Facility Name</label>
+                <input type="text" id="centerName" class="form-input" value="PUTT Family Fun Center" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="maxTeeCap">Max Players Per Tee Interval</label>
+                  <input type="number" id="maxTeeCap" class="form-input" value="6" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="teeInterval">Tee Slot Interval (Minutes)</label>
+                  <input type="number" id="teeInterval" class="form-input" value="10" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adminEmail">Emergency Operations Alert Email</label>
+                <input type="email" id="adminEmail" class="form-input" value="ops@puttpark.com" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Update System Parameters</button>
+              <div class="form-success">Parameters updated successfully!</div>
+            </form>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/global.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+  <script>
+    // Initialize Admin Dashboard Charts with distinct types
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.PuttCharts) {
+        // (1) Bar Chart — Weekly revenue in thousands
+        window.PuttCharts.drawBarChart('adminBarChart', {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          values: [2.8, 3.1, 3.9, 4.4, 6.8, 9.5, 8.2]
+        }, { singleColor: '#0B6E4F' });
+
+        // (2) Line Graph — Visitor footfall by hour
+        window.PuttCharts.drawLineChart('adminLineChart', {
+          labels: ['10a', '12p', '2p', '4p', '6p', '8p', '10p'],
+          values: [25, 60, 95, 140, 165, 120, 45]
+        }, { area: false, color: '#FF6B5B' });
+
+        // (3) Radar Chart — Attraction popularity
+        window.PuttCharts.drawRadarChart('adminRadarChart', {
+          labels: ['Golf', 'Arcade', 'Karts', 'VR', 'Food', 'Parties'],
+          values: [90, 85, 80, 65, 75, 88]
+        });
+
+        // (4) Polar/Doughnut — Pass tier distribution
+        window.PuttCharts.drawDoughnutChart('adminDoughnutChart', {
+          labels: ['Silver', 'Gold', 'Platinum'],
+          values: [55, 30, 15]
+        }, { inner: true, centerText: '1,840' });
+      }
+    });
+  </script>
+</body>
+</html>
