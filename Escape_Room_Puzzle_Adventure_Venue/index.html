@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYST — Immersive Escape Room Experience</title>
+  <meta name="description" content="Step into MYST, the premier escape room and puzzle adventure venue. Challenge your wits across cinematic themed rooms with friends, family, or colleagues.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230C1222'/%3E%3Cpath d='M6 24V8l5 10 5-10 5 10 5-10v16' stroke='%23F2A33C' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='20' r='3' fill='none' stroke='%23F2A33C' stroke-width='1.5'/%3E%3Cline x1='16' y1='23' x2='16' y2='26' stroke='%23F2A33C' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+  <link rel="stylesheet" href="css/rtl.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "MYST",
+    "description": "Premier escape room and puzzle adventure venue",
+    "url": "https://myst.example.com",
+    "telephone": "+1-555-MYST-000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "42 Enigma Lane",
+      "addressLocality": "Crestwood",
+      "addressRegion": "CA",
+      "postalCode": "90210"
+    },
+    "openingHours": ["Mo-Fr 14:00-22:00", "Sa-Su 10:00-23:00"]
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo"><img src="images/logo.svg" alt="" class="navbar__logo-img" width="32" height="32"><span>MYST</span></a>
+
+      <div class="navbar__links">
+        <div class="navbar__dropdown">
+          <button class="navbar__link navbar__dropdown-toggle active" id="homeDropdown" aria-expanded="false" aria-haspopup="true">
+            <span>Home</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="navbar__dropdown-menu" aria-labelledby="homeDropdown">
+            <a href="index.html" class="navbar__dropdown-item active">
+              <span class="dropdown-item-title">Home 1</span>
+            </a>
+            <a href="home-alt.html" class="navbar__dropdown-item">
+              <span class="dropdown-item-title">Home 2</span>
+            </a>
+          </div>
+        </div>
+        <a href="about.html" class="navbar__link">About</a>
+        <a href="rooms.html" class="navbar__link">Rooms</a>
+        <a href="pricing.html" class="navbar__link">Pricing</a>
+        <a href="leaderboard.html" class="navbar__link">Leaderboard</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+        <div class="navbar__dropdown navbar__dropdown--right">
+          <button class="navbar__link navbar__dropdown-toggle" id="dashboardDropdown" aria-expanded="false" aria-haspopup="true">
+            <span>Dashboard</span>
+            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="navbar__dropdown-menu" aria-labelledby="dashboardDropdown">
+            <a href="dashboard/user/index.html" class="navbar__dropdown-item">
+              <span class="dropdown-item-title">User Dashboard</span>
+            </a>
+            <a href="dashboard/admin/index.html" class="navbar__dropdown-item">
+              <span class="dropdown-item-title">Admin Dashboard</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar__actions">
+        <a href="rooms.html" class="btn btn-primary btn-sm">Book Now</a>
+        <button class="rtl-toggle" aria-label="Toggle text direction">LTR</button>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="login.html" class="navbar__login-link" aria-label="Login">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Login</span>
+        </a>
+        <button class="hamburger" aria-label="Menu">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <div class="mobile-drawer__dropdown open">
+      <button class="mobile-drawer__dropdown-toggle active" aria-expanded="true">
+        <span>Home</span>
+        <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-drawer__sublinks">
+        <a href="index.html" class="mobile-drawer__sublink active">
+          <span>Home 1</span>
+        </a>
+        <a href="home-alt.html" class="mobile-drawer__sublink">
+          <span>Home 2</span>
+        </a>
+      
+      </div>
+    </div>
+    <a href="about.html" class="mobile-drawer__link">About</a>
+    <a href="rooms.html" class="mobile-drawer__link">Rooms</a>
+    <a href="pricing.html" class="mobile-drawer__link">Pricing</a>
+    <a href="leaderboard.html" class="mobile-drawer__link">Leaderboard</a>
+    <a href="contact.html" class="mobile-drawer__link">Contact</a>
+    <div class="mobile-drawer__dropdown">
+      <button class="mobile-drawer__dropdown-toggle" aria-expanded="false">
+        <span>Dashboard</span>
+        <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+            <div class="mobile-drawer__sublinks">
+        <a href="dashboard/user/index.html" class="mobile-drawer__sublink">
+          <span>User Dashboard</span>
+        </a>
+        <a href="dashboard/admin/index.html" class="mobile-drawer__sublink">
+          <span>Admin Dashboard</span>
+        </a>
+      </div>
+    </div>
+    <a href="rooms.html" class="btn btn-primary btn-full">Book Now</a>
+    <div class="mobile-drawer__actions">
+      <button class="rtl-toggle">LTR</button>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+        <a href="login.html" class="navbar__login-link" aria-label="Login">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Login</span>
+        </a>
+    </div>
+  </div>
+
+  <!-- ========== SECTION 1: HERO — THE VAULT ========== -->
+  <section class="hero hero--full" id="hero-vault">
+    <div class="hero__bg">
+      <img src="images/hero-vault.jpg" alt="Dark vault corridor with circular blast door and dramatic amber rim lighting">
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__particles"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">MYST</h1>
+      <p class="hero__subtitle">Step beyond the ordinary. Solve the unsolvable. Escape before time runs out.</p>
+      <div class="hero__ctas">
+        <a href="rooms.html" class="btn btn-primary btn-lg">Explore Rooms</a>
+        <a href="pricing.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,0.3);color:var(--white);">Book Now</a>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2: LIVE ESCAPE ROOMS CAROUSEL ========== -->
+  <section class="section" id="rooms-carousel">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Live Escape Rooms</h2>
+        <p>Five uniquely themed chambers. One goal: escape before the clock hits zero.</p>
+      </div>
+      <div class="carousel" style="padding-left:var(--page-padding);padding-right:var(--page-padding);">
+
+        <!-- Room Card 1 -->
+        <div class="carousel__item">
+          <div class="card reveal reveal-delay-1" style="height:100%;">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="The Cipher Chamber — a room filled with coded puzzles and ancient symbols" loading="lazy">
+              <div style="position:absolute;inset:0;background:rgba(12,18,34,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
+                <a href="rooms.html" class="btn btn-primary">View Room</a>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title" style="font-size:1.125rem;">The Cipher Chamber</h3>
+              <div class="difficulty-meter" style="margin-bottom:var(--space-3);">
+                <div class="difficulty-meter__dots">
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot"></span>
+                  <span class="difficulty-meter__dot"></span>
+                </div>
+                <span class="difficulty-meter__label">Moderate</span>
+              </div>
+              <div class="card__meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 60 min</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 2-6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room Card 2 -->
+        <div class="carousel__item">
+          <div class="card reveal reveal-delay-2" style="height:100%;">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=600&q=80" alt="The Forgotten Lab — a mysterious abandoned laboratory with flickering lights" loading="lazy">
+              <div style="position:absolute;inset:0;background:rgba(12,18,34,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
+                <a href="rooms.html" class="btn btn-primary">View Room</a>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title" style="font-size:1.125rem;">The Forgotten Lab</h3>
+              <div class="difficulty-meter" style="margin-bottom:var(--space-3);">
+                <div class="difficulty-meter__dots">
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot"></span>
+                </div>
+                <span class="difficulty-meter__label">Hard</span>
+              </div>
+              <div class="card__meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 75 min</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 3-8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room Card 3 -->
+        <div class="carousel__item">
+          <div class="card reveal reveal-delay-3" style="height:100%;">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="The Vault Heist — a high-security bank vault with laser traps and safes" loading="lazy">
+              <div style="position:absolute;inset:0;background:rgba(12,18,34,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
+                <a href="rooms.html" class="btn btn-primary">View Room</a>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title" style="font-size:1.125rem;">The Vault Heist</h3>
+              <div class="difficulty-meter" style="margin-bottom:var(--space-3);">
+                <div class="difficulty-meter__dots">
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                </div>
+                <span class="difficulty-meter__label">Extreme</span>
+              </div>
+              <div class="card__meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 90 min</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 4-8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room Card 4 -->
+        <div class="carousel__item">
+          <div class="card reveal reveal-delay-4" style="height:100%;">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?w=600&q=80" alt="The Time Paradox — a steam-punk themed room with clocks and mechanical gears" loading="lazy">
+              <div style="position:absolute;inset:0;background:rgba(12,18,34,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
+                <a href="rooms.html" class="btn btn-primary">View Room</a>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title" style="font-size:1.125rem;">The Time Paradox</h3>
+              <div class="difficulty-meter" style="margin-bottom:var(--space-3);">
+                <div class="difficulty-meter__dots">
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot"></span>
+                  <span class="difficulty-meter__dot"></span>
+                  <span class="difficulty-meter__dot"></span>
+                </div>
+                <span class="difficulty-meter__label">Easy</span>
+              </div>
+              <div class="card__meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 45 min</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 2-4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room Card 5 -->
+        <div class="carousel__item">
+          <div class="card reveal reveal-delay-5" style="height:100%;">
+            <div class="card__image">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80" alt="The Sunken Archive — an underwater-themed room with antique maps and coral decor" loading="lazy">
+              <div style="position:absolute;inset:0;background:rgba(12,18,34,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
+                <a href="rooms.html" class="btn btn-primary">View Room</a>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title" style="font-size:1.125rem;">The Sunken Archive</h3>
+              <div class="difficulty-meter" style="margin-bottom:var(--space-3);">
+                <div class="difficulty-meter__dots">
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot filled"></span>
+                  <span class="difficulty-meter__dot"></span>
+                  <span class="difficulty-meter__dot"></span>
+                </div>
+                <span class="difficulty-meter__label">Moderate</span>
+              </div>
+              <div class="card__meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 60 min</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline;vertical-align:middle;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 2-6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3: THE EXPERIENCE TIMELINE ========== -->
+  <section class="section" id="experience-timeline" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>The Experience</h2>
+        <p>From the moment you enter to the final reveal, every second is designed to thrill.</p>
+      </div>
+      <div class="timeline">
+
+        <!-- Step 1 -->
+        <div class="timeline__item reveal">
+          <div class="timeline__image">
+            <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80" alt="Team receiving briefing instructions in a dimly lit antechamber" loading="lazy">
+          </div>
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <span class="timeline__step">Step 1</span>
+            <h3>The Briefing</h3>
+            <p>Your game master sets the scene, explains the rules, and hands you the first clue. The clock hasn't started yet — but your pulse already has.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline__item reveal">
+          <div class="timeline__image">
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="Heavy door closing behind players as the room seals shut" loading="lazy">
+          </div>
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <span class="timeline__step">Step 2</span>
+            <h3>The Lock-In</h3>
+            <p>The door seals. The lights shift. You're inside the narrative now — every object, sound, and shadow is a potential key to freedom.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline__item reveal">
+          <div class="timeline__image">
+            <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=600&q=80" alt="Digital countdown timer showing remaining minutes in red" loading="lazy">
+          </div>
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <span class="timeline__step">Step 3</span>
+            <h3>The Countdown</h3>
+            <p>Adrenaline peaks as time ticks away. Combine logic, teamwork, and instinct to crack the final sequence before the buzzer sounds.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline__item reveal">
+          <div class="timeline__image">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Celebrating team taking a group photo after escaping the room" loading="lazy">
+          </div>
+          <div class="timeline__dot"></div>
+          <div class="timeline__content">
+            <span class="timeline__step">Step 4</span>
+            <h3>The Debrief</h3>
+            <p>Win or learn, the debrief reveals the secrets you missed, celebrates your triumphs, and captures a victory photo for the leaderboard.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4: STATS BAND ========== -->
+  <section class="stats-band" id="stats-band">
+    <div class="stats-band__grid">
+      <div class="stats-band__item reveal">
+        <div class="stats-band__number" data-count-target="12500" data-count-duration="2000">0</div>
+        <div class="stats-band__label">Rooms Escaped</div>
+      </div>
+      <div class="stats-band__item reveal reveal-delay-1">
+        <div class="stats-band__number" data-count-target="48000" data-count-duration="2200">0</div>
+        <div class="stats-band__label">Players</div>
+      </div>
+      <div class="stats-band__item reveal reveal-delay-2">
+        <div class="stats-band__number" data-count-target="67" data-count-suffix="%" data-count-duration="1800">0</div>
+        <div class="stats-band__label">Success Rate</div>
+      </div>
+      <div class="stats-band__item reveal reveal-delay-3">
+        <div class="stats-band__number" data-count-target="42" data-count-suffix=" min" data-count-duration="1600">0</div>
+        <div class="stats-band__label">Avg Escape Time</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 5: TESTIMONIALS ========== -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>What Escapees Say</h2>
+        <p>Real stories from teams who dared to enter.</p>
+      </div>
+      <div class="grid grid-3 reveal" style="margin-bottom:var(--space-10);">
+
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+          </div>
+          <p class="testimonial-card__text">"The Vault Heist was the most intense hour of my life. The puzzles are genius — every detail matters. We escaped with 47 seconds left and our team has never felt closer."</p>
+          <div class="testimonial-card__author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah M. portrait" class="testimonial-card__avatar" loading="lazy">
+            <div>
+              <div class="testimonial-card__name">Sarah M.</div>
+              <div class="testimonial-card__role">Team Cipher Breakers</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+          </div>
+          <p class="testimonial-card__text">"We booked MYST for our company off-site and it was the best team-building activity we've ever done. The production value is cinema-grade — you forget you're solving puzzles."</p>
+          <div class="testimonial-card__author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="James T. portrait" class="testimonial-card__avatar" loading="lazy">
+            <div>
+              <div class="testimonial-card__name">James T.</div>
+              <div class="testimonial-card__role">Director, Apex Corp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-card__stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+          </div>
+          <p class="testimonial-card__text">"My family can't stop talking about The Time Paradox. Even our 12-year-old was hooked. MYST manages to be challenging for adults and accessible for kids — that's rare."</p>
+          <div class="testimonial-card__author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Priya K. portrait" class="testimonial-card__avatar" loading="lazy">
+            <div>
+              <div class="testimonial-card__name">Priya K.</div>
+              <div class="testimonial-card__role">Family Adventure Night</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="text-center reveal">
+        <a href="leaderboard.html" class="btn btn-secondary">Read More Reviews</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 6: FINAL CTA — SPLIT PANEL ========== -->
+  <section class="split-panel reveal" id="final-cta" style="background:var(--bg-secondary);">
+    <div class="split-panel__image" style="background-color:#3486a3;display:flex;align-items:center;justify-content:center;">
+      <img src="images/daily-room-escape.png" alt="Daily Room Escape" loading="lazy" style="object-fit:contain;">
+    </div>
+    <div class="split-panel__content" style="background:var(--midnight-ink);color:var(--white);">
+      <h2 style="color:var(--white);margin-bottom:var(--space-4);">Ready to Test Your Limits?</h2>
+      <p style="color:var(--text-on-dark-secondary);margin-bottom:var(--space-8);max-width:400px;">Book your session today and discover why thousands of players call MYST the most immersive escape experience in the city.</p>
+      <a href="pricing.html" class="btn btn-primary btn-lg" style="margin-bottom:var(--space-4);">Book Your Escape</a>
+      <p style="color:var(--text-on-dark-secondary);font-size:var(--small-size);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-right:4px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +1-555-MYST-000
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <!-- Column 1: Brand -->
+      <div>
+        <a href="index.html" class="footer__logo"><img src="images/logo.svg" alt="" class="footer__logo-img" width="32" height="32"><span>MYST</span></a>
+        <p class="footer__brand-text">The premier escape room and puzzle adventure venue. Step beyond reality and into worlds of mystery, intrigue, and discovery.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-btn footer__social-btn--google" aria-label="Google">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </a>
+          <a href="#" class="footer__social-btn footer__social-btn--facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="#" class="footer__social-btn footer__social-btn--apple" aria-label="Apple">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Apple
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Explore -->
+      <div>
+        <h4 class="footer__heading">Explore</h4>
+        <a href="rooms.html" class="footer__link">Escape Rooms</a>
+        <a href="pricing.html" class="footer__link">Pricing</a>
+        <a href="leaderboard.html" class="footer__link">Leaderboard</a>
+        <a href="about.html" class="footer__link">About Us</a>
+      </div>
+
+      <!-- Column 3: Support -->
+      <div>
+        <h4 class="footer__heading">Support</h4>
+        <a href="contact.html" class="footer__link">Contact</a>
+        <a href="dashboard/user/index.html" class="footer__link">User Dashboard</a>
+        <a href="dashboard/admin/index.html" class="footer__link">Admin Dashboard</a>
+        <a href="#" class="footer__link">FAQ</a>
+        <a href="#" class="footer__link">Accessibility</a>
+        <a href="#" class="footer__link">Privacy Policy</a>
+        <a href="#" class="footer__link">Terms of Service</a>
+      </div>
+
+      <!-- Column 4: Newsletter -->
+      <div>
+        <h4 class="footer__heading">Stay in the Loop</h4>
+        <p style="color:var(--text-on-dark-secondary);font-size:var(--small-size);margin-bottom:var(--space-4);">Get puzzle tips, new room announcements, and exclusive offers delivered to your inbox.</p>
+        <form class="footer__newsletter" data-validate>
+          <div class="form-group" style="flex:1;margin-bottom:0;">
+            <input type="email" class="form-input" placeholder="Enter your email" required aria-label="Email for newsletter">
+            <span class="form-error">Please enter a valid email</span>
+          </div>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; <span data-year></span> MYST. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

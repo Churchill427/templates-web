@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard — JUMP Trampoline Park</title>
+  <meta name="description" content="Manage your jump pass balance, upcoming session reservations, digital QR tickets, party bookings, payment history, and personalized recommendations.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='6' fill='%23FF4757'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial' font-weight='900' font-size='18' fill='white'%3EJ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Heatmap cell hover */
+    .heatmap-cell {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      transition: transform 0.15s ease-out;
+      cursor: pointer;
+    }
+    .heatmap-cell:hover {
+      transform: scale(1.3);
+      outline: 1px solid var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-user">
+          <div class="sidebar-avatar" style="background:var(--accent);color:#1E293B;">JT</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Jordan Taylor</div>
+            <div class="sidebar-user-email">jordan@jump.park</div>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebar-header-toggle" aria-label="Toggle sidebar navigation" title="Collapse Sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard-user.html" class="sidebar-link active" title="Overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Overview</span>
+        </a>
+        <a href="#my-bookings" class="sidebar-link" title="My Bookings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>My Bookings</span>
+        </a>
+        <a href="#my-pass" class="sidebar-link" title="My Pass">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/></svg>
+          <span>My Pass</span>
+        </a>
+        <a href="#parties" class="sidebar-link" title="Parties">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          <span>Parties</span>
+        </a>
+        <a href="#payments" class="sidebar-link" title="Payments">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span>Payments</span>
+        </a>
+        <a href="#profile" class="sidebar-link" title="Profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profile</span>
+        </a>
+        <a href="#settings" class="sidebar-link" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer" style="padding:var(--gap-md);border-top:1px solid rgba(255,255,255,0.1);">
+        <a href="index.html" class="sidebar-link" title="Exit to Website" style="color:var(--accent);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          <span>Back to Park</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar-left">
+          <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar navigation">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="dashboard-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Search my passes, bookings, receipts..." aria-label="Search">
+          </div>
+        </div>
+
+        <div class="dashboard-topbar-right">
+          <button class="rtl-toggle" onclick="window.JUMPToggleRTL()" aria-label="Toggle text direction">RTL</button>
+          <button class="toggle-btn theme-toggle" onclick="window.JUMPToggleTheme()" aria-label="Toggle theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+          <button class="notification-btn" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notification-badge"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="dashboard-content">
+        <!-- Welcome Card (Gradient Indigo -> Coral) -->
+        <div class="welcome-card" style="position:relative;overflow:hidden;">
+          <div>
+            <h1 style="color:#fff;margin:0;font-size:32px;">Welcome back, Jordan!</h1>
+            <p>Ready to defy gravity today? Your digital waiver is active and verified.</p>
+            <div class="welcome-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>Flyer Member · 15% Court Discount</span>
+            </div>
+          </div>
+          <div class="welcome-countdown" style="background:rgba(0,0,0,0.2);padding:14px 20px;border-radius:var(--radius-md);backdrop-filter:blur(4px);">
+            <div class="countdown-label">Next Session Starts In</div>
+            <div class="countdown-value" style="color:var(--accent);">02h : 18m</div>
+            <div style="font-size:var(--tiny-size);color:#E2E8F0;margin-top:4px;">Today · 4:00 PM (Court 2)</div>
+          </div>
+        </div>
+
+        <!-- Exactly 4 Different Charts (Radial Ring, Dashed Line, Horizontal Bars, Calendar Heatmap) -->
+        <div class="chart-grid">
+          <!-- Chart 1: Pass Balance — Radial Progress Ring -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Pass Balance</h3>
+              <span style="font-size:var(--tiny-size);color:var(--primary);font-weight:600;">10-Jump Pack</span>
+            </div>
+            <div class="chart-container" style="position:relative;height:220px;display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 160 160" width="160" height="160" style="transform:rotate(-90deg);">
+                <!-- Background track -->
+                <circle cx="80" cy="80" r="62" fill="none" stroke="var(--border-color)" stroke-width="14"/>
+                <!-- 70% progress = 272 of 390 circumference -->
+                <circle cx="80" cy="80" r="62" fill="none" stroke="#FF4757" stroke-width="14" stroke-dasharray="273 390" stroke-dashoffset="0" stroke-linecap="round"/>
+              </svg>
+              <div style="position:absolute;text-align:center;">
+                <div style="font-family:var(--font-heading);font-size:32px;font-weight:800;color:var(--text-heading);line-height:1;">7 <span style="font-size:16px;color:var(--text-sub);font-weight:500;">/ 10</span></div>
+                <div style="font-size:var(--tiny-size);color:var(--text-sub);font-weight:600;margin-top:4px;">Jumps Remaining</div>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:var(--tiny-size);color:var(--text-sub);">
+              Valid through Dec 31, 2026 · <a href="pricing.html" style="color:var(--primary);font-weight:600;">Top Up</a>
+            </div>
+          </div>
+
+          <!-- Chart 2: Monthly Jump Activity — Dashed Line Chart with Circular Dots -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Monthly Jumps</h3>
+              <span style="font-size:var(--tiny-size);color:var(--accent);font-weight:600;">Past 6 Months</span>
+            </div>
+            <div class="chart-container" style="position:relative;height:220px;padding:10px;">
+              <svg viewBox="0 0 320 180" style="width:100%;height:100%;overflow:visible;">
+                <line x1="25" y1="30" x2="310" y2="30" stroke="var(--border-color)" stroke-dasharray="2,2"/>
+                <line x1="25" y1="80" x2="310" y2="80" stroke="var(--border-color)" stroke-dasharray="2,2"/>
+                <line x1="25" y1="130" x2="310" y2="130" stroke="var(--border-color)"/>
+
+                <text x="18" y="34" font-size="10" fill="var(--text-sub)" text-anchor="end">12</text>
+                <text x="18" y="84" font-size="10" fill="var(--text-sub)" text-anchor="end">6</text>
+                <text x="18" y="134" font-size="10" fill="var(--text-sub)" text-anchor="end">0</text>
+
+                <!-- Dashed Amber Line -->
+                <polyline points="35,110 85,85 135,100 185,55 235,45 285,38" fill="none" stroke="#FFB020" stroke-width="2.5" stroke-dasharray="5,4" stroke-linecap="round"/>
+
+                <!-- Circular Dots with values -->
+                <circle cx="35" cy="110" r="5" fill="#fff" stroke="#FFB020" stroke-width="2.5"><title>Apr: 2 jumps</title></circle>
+                <circle cx="85" cy="85" r="5" fill="#fff" stroke="#FFB020" stroke-width="2.5"><title>May: 5 jumps</title></circle>
+                <circle cx="135" cy="100" r="5" fill="#fff" stroke="#FFB020" stroke-width="2.5"><title>Jun: 4 jumps</title></circle>
+                <circle cx="185" cy="55" r="5" fill="#fff" stroke="#FFB020" stroke-width="2.5"><title>Jul: 9 jumps</title></circle>
+                <circle cx="235" cy="45" r="5" fill="#fff" stroke="#FFB020" stroke-width="2.5"><title>Aug: 10 jumps</title></circle>
+                <circle cx="285" cy="38" r="6" fill="#FF4757" stroke="#fff" stroke-width="2"><title>Sep: 11 jumps</title></circle>
+
+                <!-- X labels -->
+                <text x="35" y="152" font-size="10" fill="var(--text-sub)" text-anchor="middle">Apr</text>
+                <text x="85" y="152" font-size="10" fill="var(--text-sub)" text-anchor="middle">May</text>
+                <text x="135" y="152" font-size="10" fill="var(--text-sub)" text-anchor="middle">Jun</text>
+                <text x="185" y="152" font-size="10" fill="var(--text-sub)" text-anchor="middle">Jul</text>
+                <text x="235" y="152" font-size="10" fill="var(--text-sub)" text-anchor="middle">Aug</text>
+                <text x="285" y="152" font-size="10" fill="var(--primary)" font-weight="700" text-anchor="middle">Sep</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Chart 3: Spending by Category — Horizontal Bar Chart -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Spending by Category</h3>
+              <span style="font-size:var(--tiny-size);color:var(--text-sub);font-weight:600;">All Time ($520)</span>
+            </div>
+            <div class="chart-container" style="position:relative;height:220px;display:flex;flex-direction:column;justify-content:space-around;padding:10px 0;">
+              <!-- Item 1: Sessions -->
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:var(--tiny-size);font-weight:600;margin-bottom:4px;">
+                  <span>Court Sessions</span>
+                  <span>$280 (54%)</span>
+                </div>
+                <div style="height:12px;background:var(--border-color);border-radius:6px;overflow:hidden;">
+                  <div style="width:54%;height:100%;background:#FF4757;border-radius:6px;"></div>
+                </div>
+              </div>
+
+              <!-- Item 2: Parties -->
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:var(--tiny-size);font-weight:600;margin-bottom:4px;">
+                  <span>Birthday Party Deposit</span>
+                  <span>$150 (29%)</span>
+                </div>
+                <div style="height:12px;background:var(--border-color);border-radius:6px;overflow:hidden;">
+                  <div style="width:29%;height:100%;background:#1E3A8A;border-radius:6px;"></div>
+                </div>
+              </div>
+
+              <!-- Item 3: Café & Snacks -->
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:var(--tiny-size);font-weight:600;margin-bottom:4px;">
+                  <span>JUMP Café & Smoothies</span>
+                  <span>$62 (12%)</span>
+                </div>
+                <div style="height:12px;background:var(--border-color);border-radius:6px;overflow:hidden;">
+                  <div style="width:12%;height:100%;background:#FFB020;border-radius:6px;"></div>
+                </div>
+              </div>
+
+              <!-- Item 4: Merch & Grip Socks -->
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:var(--tiny-size);font-weight:600;margin-bottom:4px;">
+                  <span>Grip Socks & Wristbands</span>
+                  <span>$28 (5%)</span>
+                </div>
+                <div style="height:12px;background:var(--border-color);border-radius:6px;overflow:hidden;">
+                  <div style="width:5%;height:100%;background:#64748B;border-radius:6px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 4: Visit Streak — Calendar Heatmap Grid (Last 8 Weeks) -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Visit Frequency</h3>
+              <span style="font-size:var(--tiny-size);color:var(--secondary);font-weight:600;">Last 8 Weeks</span>
+            </div>
+            <div class="chart-container" style="position:relative;height:220px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+              <div style="display:flex;gap:6px;">
+                <!-- 8 Columns of 7 Days -->
+                <!-- Week 1 -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:#1E3A8A;" title="Jul 28: 2 hrs session"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);" title="Jul 29: No visit"></div>
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.3);" title="Jul 30: 1 hr session"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);" title="Jul 31: No visit"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;" title="Aug 01: Glow night"></div>
+                  <div class="heatmap-cell" style="background:#FF4757;" title="Aug 02: Party booking"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);" title="Aug 03: Rest day"></div>
+                </div>
+                <!-- Week 2 -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.4);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                </div>
+                <!-- Week 3 -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.3);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.3);"></div>
+                </div>
+                <!-- Week 4 -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.4);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:#FF4757;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                </div>
+                <!-- Week 5 -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.3);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                </div>
+                <!-- Week 6 -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.3);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:#FF4757;"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                </div>
+                <!-- Week 7 -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:rgba(30,58,138,0.3);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                </div>
+                <!-- Week 8 (Current) -->
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:#1E3A8A;"></div>
+                  <div class="heatmap-cell" style="background:#FF4757;" title="Today: Session at 4pm"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                  <div class="heatmap-cell" style="background:var(--border-color);"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:14px;font-size:var(--tiny-size);color:var(--text-sub);">
+                <span>Less</span>
+                <span style="width:10px;height:10px;background:var(--border-color);border-radius:2px;"></span>
+                <span style="width:10px;height:10px;background:rgba(30,58,138,0.3);border-radius:2px;"></span>
+                <span style="width:10px;height:10px;background:#1E3A8A;border-radius:2px;"></span>
+                <span style="width:10px;height:10px;background:#FF4757;border-radius:2px;"></span>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- My Bookings with QR Code Ticket & Actions -->
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--gap-lg);margin-bottom:var(--gap-xl);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--gap-md);">
+            <h3 style="margin:0;">My Active Bookings</h3>
+            <a href="pricing.html" class="btn btn-outline" style="padding:6px 14px;font-size:var(--tiny-size);">+ Book Slot</a>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-md);">
+            <!-- Ticket Card 1 -->
+            <div style="display:flex;align-items:center;gap:var(--gap-md);padding:var(--gap-md);border:1px solid var(--border-color);border-radius:var(--radius-sm);background:var(--bg-tertiary);">
+              <!-- Placeholder QR Code SVG -->
+              <div style="width:72px;height:72px;background:#fff;padding:6px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                <svg viewBox="0 0 24 24" fill="#000" width="100%" height="100%"><path d="M2 2h8v8H2zm2 2v4h4V4zm10-2h8v8h-8zm2 2v4h4V4zM2 14h8v8H2zm2 2v4h4v-4zm13-2h3v3h-3zm-3 3h3v3h-3zm3 3h3v3h-3zm3-3h3v3h-3zm-6-3h3v3h-3zm6-3h3v3h-3z"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span class="badge badge--coral">Today</span>
+                  <span style="font-family:monospace;font-size:var(--tiny-size);color:var(--text-sub);">#JM-9921</span>
+                </div>
+                <div style="font-weight:700;font-size:var(--small-size);margin-top:2px;">90-Minute Open Jump</div>
+                <div style="font-size:var(--tiny-size);color:var(--text-sub);">Today @ 4:00 PM · 2 Jumpers</div>
+                <div style="display:flex;gap:var(--gap-sm);margin-top:8px;">
+                  <button class="btn btn-ghost" style="padding:0;font-size:var(--tiny-size);color:var(--primary);" onclick="alert('Reschedule window opened')">Reschedule</button>
+                  <span style="color:var(--border-color);">·</span>
+                  <button class="btn btn-ghost" style="padding:0;font-size:var(--tiny-size);color:var(--text-sub);" onclick="confirm('Cancel reservation #JM-9921?')">Cancel</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ticket Card 2 -->
+            <div style="display:flex;align-items:center;gap:var(--gap-md);padding:var(--gap-md);border:1px solid var(--border-color);border-radius:var(--radius-sm);background:var(--bg-tertiary);">
+              <!-- Placeholder QR Code SVG -->
+              <div style="width:72px;height:72px;background:#fff;padding:6px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                <svg viewBox="0 0 24 24" fill="#000" width="100%" height="100%"><path d="M2 2h8v8H2zm2 2v4h4V4zm10-2h8v8h-8zm2 2v4h4V4zM2 14h8v8H2zm2 2v4h4v-4zm13-2h3v3h-3zm-3 3h3v3h-3zm3 3h3v3h-3zm3-3h3v3h-3zm-6-3h3v3h-3zm6-3h3v3h-3z"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <span class="badge badge--indigo">Next Week</span>
+                  <span style="font-family:monospace;font-size:var(--tiny-size);color:var(--text-sub);">#JM-9944</span>
+                </div>
+                <div style="font-weight:700;font-size:var(--small-size);margin-top:2px;">Friday Night Lights (UV Glow)</div>
+                <div style="font-size:var(--tiny-size);color:var(--text-sub);">Oct 02 @ 7:00 PM · 3 Jumpers</div>
+                <div style="display:flex;gap:var(--gap-sm);margin-top:8px;">
+                  <button class="btn btn-ghost" style="padding:0;font-size:var(--tiny-size);color:var(--primary);" onclick="alert('Reschedule window opened')">Reschedule</button>
+                  <span style="color:var(--border-color);">·</span>
+                  <button class="btn btn-ghost" style="padding:0;font-size:var(--tiny-size);color:var(--text-sub);" onclick="confirm('Cancel reservation #JM-9944?')">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Party Reservation Compact Card -->
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--gap-lg);margin-bottom:var(--gap-xl);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--gap-md);">
+          <div style="display:flex;align-items:center;gap:var(--gap-md);">
+            <div style="width:48px;height:48px;border-radius:var(--radius-sm);background:var(--accent-light);color:var(--accent);display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <h4 style="margin:0;">Birthday Party: Leo's 8th Birthday</h4>
+                <span class="badge badge--amber">Confirmed</span>
+              </div>
+              <p style="font-size:var(--small-size);color:var(--text-sub);margin:2px 0 0;">
+                Mega Party Package · Saturday, Oct 17, 2026 · 15 Jumpers · Dedicated Room 2
+              </p>
+            </div>
+          </div>
+          <div style="display:flex;gap:var(--gap-sm);">
+            <a href="parties.html" class="btn btn-outline" style="padding:8px 16px;font-size:var(--small-size);">Manage Party Room</a>
+          </div>
+        </div>
+
+        <!-- Payment History Table -->
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--gap-lg);margin-bottom:var(--gap-xl);">
+          <h3 style="margin-bottom:var(--gap-md);">Payment History</h3>
+          <div class="table-container" style="overflow-x:auto;">
+            <table class="table" style="margin:0;font-size:var(--small-size);">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Method</th>
+                  <th>Amount</th>
+                  <th>Receipt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sep 24, 2026</td>
+                  <td>10-Jump Multi-Visit Pass</td>
+                  <td><span style="font-size:var(--tiny-size);font-weight:600;">Visa ···· 4242</span></td>
+                  <td style="font-weight:700;">$149.00</td>
+                  <td><button class="btn btn-ghost" style="padding:0;color:var(--primary);font-size:var(--tiny-size);" onclick="alert('Downloading invoice PDF...')">Download</button></td>
+                </tr>
+                <tr>
+                  <td>Sep 12, 2026</td>
+                  <td>Mega Party 50% Deposit</td>
+                  <td><span style="font-size:var(--tiny-size);font-weight:600;">Apple Pay</span></td>
+                  <td style="font-weight:700;">$214.50</td>
+                  <td><button class="btn btn-ghost" style="padding:0;color:var(--primary);font-size:var(--tiny-size);" onclick="alert('Downloading invoice PDF...')">Download</button></td>
+                </tr>
+                <tr>
+                  <td>Aug 29, 2026</td>
+                  <td>2x 90-min Open Jump + Socks</td>
+                  <td><span style="font-size:var(--tiny-size);font-weight:600;">Mastercard ···· 8891</span></td>
+                  <td style="font-weight:700;">$54.00</td>
+                  <td><button class="btn btn-ghost" style="padding:0;color:var(--primary);font-size:var(--tiny-size);" onclick="alert('Downloading invoice PDF...')">Download</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recommended For You (2 Equal Cards) -->
+        <div style="margin-bottom:var(--gap-xl);">
+          <h3 style="margin-bottom:var(--gap-md);">Recommended For You</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-lg);">
+            <!-- Class Card -->
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;">
+              <div style="height:140px;position:relative;background:linear-gradient(135deg,var(--secondary),var(--primary));display:flex;align-items:center;justify-content:center;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="48" height="48"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span class="card-badge" style="position:absolute;top:12px;inset-inline-start:12px;">Members 20% Off</span>
+              </div>
+              <div style="padding:var(--gap-lg);flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <h4 style="margin-bottom:4px;">High-Energy Bounce Fitness</h4>
+                  <p style="font-size:var(--small-size);color:var(--text-sub);">Burn up to 800 calories in 45 minutes with low-impact trampoline cardio routines led by certified trainers.</p>
+                </div>
+                <div style="margin-top:var(--gap-md);">
+                  <a href="pricing.html" class="btn btn-primary" style="padding:8px 18px;font-size:var(--small-size);">Join Next Class ($16)</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event Card -->
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;">
+              <div style="height:140px;position:relative;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="48" height="48"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span class="card-badge" style="position:absolute;top:12px;inset-inline-start:12px;">This Friday</span>
+              </div>
+              <div style="padding:var(--gap-lg);flex:1;display:flex;flex-direction:column;justify-content:space-between;">
+                <div>
+                  <h4 style="margin-bottom:4px;">Friday Night Lights (UV Glow)</h4>
+                  <p style="font-size:var(--small-size);color:var(--text-sub);">Blacklights on, EDM beats pumping, and neon glow face paint. Ages 13+ only from 8:00 PM to 10:00 PM.</p>
+                </div>
+                <div style="margin-top:var(--gap-md);">
+                  <a href="pricing.html" class="btn btn-secondary" style="padding:8px 18px;font-size:var(--small-size);">Reserve Glow Pass ($24)</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>

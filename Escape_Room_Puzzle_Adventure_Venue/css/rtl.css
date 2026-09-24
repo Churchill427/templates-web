@@ -1,0 +1,442 @@
+/* ============================================================
+   MYST — RTL (Right-to-Left) Direction Overrides
+   Applied when dir="rtl" is set on <html>
+   ============================================================ */
+
+/* — Global Direction — */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* — Navbar — */
+[dir="rtl"] .navbar__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__brand {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__link::after {
+  left: auto;
+  right: 0;
+}
+
+/* — Home Switcher & Navbar Dropdown — */
+[dir="rtl"] .navbar__dropdown-menu,
+[dir="rtl"] .home-switcher__menu {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .navbar__dropdown:last-child .navbar__dropdown-menu,
+[dir="rtl"] .navbar__dropdown--right .navbar__dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
+[dir="rtl"] .navbar__dropdown-item,
+[dir="rtl"] .home-switcher__item {
+  text-align: right;
+}
+
+[dir="rtl"] .mobile-drawer__dropdown-toggle {
+  text-align: right;
+}
+
+[dir="rtl"] .mobile-drawer__sublinks {
+  padding: var(--space-2) var(--space-4) var(--space-3) 0;
+}
+
+/* — Mobile Drawer — */
+[dir="rtl"] .mobile-drawer {
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .mobile-drawer.open {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-drawer__link {
+  text-align: right;
+}
+
+/* — Dropdowns — */
+[dir="rtl"] .notification-dropdown {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .avatar-menu__dropdown {
+  right: auto;
+  left: 0;
+}
+
+/* — Buttons — */
+[dir="rtl"] .btn {
+  flex-direction: row-reverse;
+}
+
+/* — Text Alignment — */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+/* — Section Header — */
+[dir="rtl"] .section-header {
+  text-align: center;
+}
+
+/* — Cards — */
+[dir="rtl"] .card__meta {
+  flex-direction: row-reverse;
+}
+
+/* — Forms — */
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+[dir="rtl"] .password-wrapper .form-input {
+  padding-right: var(--space-4);
+  padding-left: 44px;
+}
+
+[dir="rtl"] .password-toggle {
+  right: auto;
+  left: var(--space-3);
+}
+
+[dir="rtl"] .form-check {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* — Footer — */
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer__social {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__newsletter {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__link {
+  text-align: right;
+}
+
+/* — Timeline — */
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+[dir="rtl"] .timeline__item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .timeline__item:nth-child(even) {
+  flex-direction: row;
+}
+
+[dir="rtl"] .timeline__dot {
+  left: auto;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+[dir="rtl"] .timeline__content {
+  text-align: right;
+}
+
+/* — Stats Band — */
+[dir="rtl"] .stats-band__grid {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .stats-band__item:not(:last-child)::after {
+  right: auto;
+  left: calc(var(--space-16) / -2);
+}
+
+/* — Split Panel — */
+[dir="rtl"] .split-panel {
+  direction: rtl;
+}
+
+[dir="rtl"] .split-panel__content {
+  text-align: right;
+}
+
+/* — Pricing Card — */
+[dir="rtl"] .pricing-card__features {
+  text-align: right;
+}
+
+[dir="rtl"] .pricing-card__feature {
+  flex-direction: row-reverse;
+}
+
+/* — Filter Bar — */
+[dir="rtl"] .filter-bar {
+  flex-direction: row-reverse;
+}
+
+/* — Testimonials — */
+[dir="rtl"] .testimonial-card__author {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .testimonial-card__text {
+  text-align: right;
+}
+
+[dir="rtl"] .testimonial-card__stars {
+  flex-direction: row-reverse;
+}
+
+/* — Accordion — */
+[dir="rtl"] .accordion__header {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .accordion__content {
+  text-align: right;
+}
+
+/* — Auth Pages — */
+[dir="rtl"] .auth-page {
+  direction: rtl;
+}
+
+[dir="rtl"] .auth-card__toggles {
+  right: auto;
+  left: var(--space-4);
+}
+
+[dir="rtl"] .auth-page--reverse .auth-card__toggles {
+  left: auto;
+  right: var(--space-4);
+}
+
+@media (max-width: 1023px) {
+  [dir="rtl"] .auth-card__toggles,
+  [dir="rtl"] .auth-page--reverse .auth-card__toggles {
+    right: auto;
+    left: var(--space-4);
+  }
+}
+
+[dir="rtl"] .auth-divider {
+  direction: rtl;
+}
+
+/* — Social Buttons — */
+[dir="rtl"] .social-btn {
+  flex-direction: row-reverse;
+}
+
+/* — Error / Coming Soon Pages — */
+[dir="rtl"] .error-page__bar {
+  flex-direction: row-reverse;
+}
+
+/* — Badge — */
+[dir="rtl"] .badge {
+  flex-direction: row-reverse;
+}
+
+/* — Status Pill — */
+[dir="rtl"] .status-pill {
+  flex-direction: row-reverse;
+}
+
+/* — KPI Cards — */
+[dir="rtl"] .kpi-card {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* — Dashboard Sidebar — */
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--border-light);
+}
+
+[dir="rtl"] .dashboard__main {
+  margin-left: 0;
+  margin-right: 260px;
+}
+
+[dir="rtl"] .sidebar.collapsed ~ .dashboard__main {
+  margin-left: 0;
+  margin-right: 68px;
+}
+
+[dir="rtl"] .sidebar__header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .sidebar__link {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .sidebar__link svg {
+  margin-left: 0;
+}
+
+/* — Top Bar — */
+[dir="rtl"] .topbar {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .topbar__left {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .topbar__actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .topbar__search svg {
+  left: auto;
+  right: var(--space-3);
+}
+
+[dir="rtl"] .topbar__search input {
+  padding-left: var(--space-4);
+  padding-right: var(--space-10);
+}
+
+/* — Chart Panel — */
+[dir="rtl"] .chart-panel__header {
+  flex-direction: row-reverse;
+}
+
+/* — Avatar Menu Items — */
+[dir="rtl"] .avatar-menu__item {
+  text-align: right;
+}
+
+/* — Notification Dropdown — */
+[dir="rtl"] .notification-dropdown {
+  text-align: right;
+}
+
+/* — Tables — */
+[dir="rtl"] thead th {
+  text-align: right;
+}
+
+/* — Difficulty Meter — */
+[dir="rtl"] .difficulty-meter {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .difficulty-meter__dots {
+  flex-direction: row-reverse;
+}
+
+/* — Podium — */
+[dir="rtl"] .podium {
+  flex-direction: row-reverse;
+}
+
+/* — Masonry Caption — */
+[dir="rtl"] .masonry__caption {
+  text-align: right;
+}
+
+/* — Carousel — */
+[dir="rtl"] .carousel {
+  flex-direction: row-reverse;
+}
+
+/* — CTA Band — */
+[dir="rtl"] .cta-band {
+  text-align: center;
+}
+
+/* — Hero — */
+[dir="rtl"] .hero__content {
+  text-align: center;
+}
+
+/* — Scroll Indicator — */
+[dir="rtl"] .hero__scroll-indicator {
+  left: 50%;
+  transform: translateX(50%);
+}
+
+@keyframes bounceDownRtl {
+  0%, 100% { transform: translateX(50%) translateY(0); }
+  50% { transform: translateX(50%) translateY(8px); }
+}
+
+[dir="rtl"] .hero__scroll-indicator {
+  animation-name: bounceDownRtl;
+}
+
+/* — Tablet RTL overrides — */
+@media (max-width: 1023px) {
+  [dir="rtl"] .sidebar {
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .sidebar.open {
+    transform: translateX(0);
+  }
+
+  [dir="rtl"] .dashboard__main {
+    margin-right: 0 !important;
+  }
+
+  [dir="rtl"] .timeline__dot {
+    right: 20px;
+    left: auto;
+  }
+
+  [dir="rtl"] .timeline::before {
+    right: 20px;
+    left: auto;
+  }
+}
+
+/* — Mobile RTL overrides — */
+@media (max-width: 767px) {
+  [dir="rtl"] .hero__ctas {
+    align-items: stretch;
+  }
+
+  [dir="rtl"] .footer__newsletter {
+    flex-direction: column;
+  }
+}
+
+/* — Admin sidebar RTL — */
+[dir="rtl"] .dashboard--admin .sidebar {
+  border-left-color: rgba(255, 255, 255, 0.08);
+  border-right: none;
+}

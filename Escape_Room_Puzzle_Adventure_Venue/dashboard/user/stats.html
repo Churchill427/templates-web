@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYST — My Stats</title>
+  <meta name="description" content="View your personal escape room performance metrics, skill radar, and completion records at MYST.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230C1222'/%3E%3Cpath d='M6 24V8l5 10 5-10 5 10 5-10v16' stroke='%23F2A33C' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='20' r='3' fill='none' stroke='%23F2A33C' stroke-width='1.5'/%3E%3Cline x1='16' y1='23' x2='16' y2='26' stroke='%23F2A33C' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/dark-mode.css">
+  <link rel="stylesheet" href="../../css/rtl.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar__header">
+        <a href="../../index.html" class="sidebar__logo"><img src="../../images/logo.svg" alt="" class="sidebar__logo-img" width="26" height="26"><span>MYST</span></a>
+        <button class="sidebar__toggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+      <nav class="sidebar__nav">
+        <a href="index.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Overview</span></a>
+        <a href="bookings.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>My Bookings</span></a>
+        <a href="stats.html" class="sidebar__link active"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>My Stats</span></a>
+        <a href="leaderboard.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-2.34"/><path d="M18 14.66V17c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M6 4h12v7a6 6 0 0 1-12 0V4Z"/></svg><span>Leaderboard</span></a>
+        <a href="achievements.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Achievements</span></a>
+        <a href="payments.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Payments</span></a>
+        <a href="settings.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></a>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="../../rooms.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Book a Room</span></a>
+        <a href="../../login.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard__main">
+      <header class="topbar">
+        <div class="topbar__left">
+          <button class="sidebar__toggle topbar__menu-btn" aria-label="Toggle sidebar">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar__title">Performance &amp; Stats</h1>
+        </div>
+        <div class="topbar__right">
+          <div class="topbar__search">
+            <input type="text" placeholder="Search stats..." aria-label="Search stats">
+          </div>
+          <button class="rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <div class="avatar-menu">
+            <button class="avatar-menu__btn" aria-label="User menu">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt="Sarah Mitchell" class="avatar-menu__img">
+            </button>
+            <div class="avatar-menu__dropdown">
+              <div class="avatar-menu__header">
+                <strong>Sarah Mitchell</strong><br>
+                <span style="font-size:var(--xs-size);color:var(--text-tertiary);">Player &bull; Level 4</span>
+              </div>
+              <a href="settings.html" class="avatar-menu__link">Settings</a>
+              <a href="../../index.html" class="avatar-menu__link">View Website</a>
+              <a href="../../login.html" class="avatar-menu__link">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard__content">
+        <!-- Section 1: Stats Highlight Row -->
+        <div class="grid grid-4" style="margin-bottom:var(--space-8);">
+          <div class="kpi-card">
+            <div class="kpi-card__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="kpi-card__content">
+              <div class="kpi-card__label">Average Escape Time</div>
+              <div class="kpi-card__value">37:42</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="color:#34A853;background:rgba(52,168,83,0.1);"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="kpi-card__content">
+              <div class="kpi-card__label">Win Ratio</div>
+              <div class="kpi-card__value">85.7%</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="color:#4285F4;background:rgba(66,133,244,0.1);"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div class="kpi-card__content">
+              <div class="kpi-card__label">Hints Used Total</div>
+              <div class="kpi-card__value">3</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__icon" style="color:#EA4335;background:rgba(234,67,53,0.1);"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="kpi-card__content">
+              <div class="kpi-card__label">Puzzles Solved</div>
+              <div class="kpi-card__value">54</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2 & 3: Radar Chart (Skills) & Area Chart (Score Progression) -->
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-8);">
+          <!-- Panel 2: Radar Chart -->
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 style="font-size:1.125rem;margin:0;">Skill Breakdown</h2>
+              <span class="badge badge--amber">Level 4</span>
+            </div>
+            <p style="font-size:var(--small-size);color:var(--text-secondary);margin-bottom:var(--space-4);">Evaluated based on hints, time to unlock, and puzzle types.</p>
+            <div data-chart="radar" style="height:260px;" data-chart-data='{"labels":["Logic","Speed","Teamwork","Observation","Code-breaking"],"values":[88,75,92,84,95]}' data-chart-options='{"color":"var(--ember-amber)"}'></div>
+          </div>
+
+          <!-- Panel 3: Area Chart -->
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 style="font-size:1.125rem;margin:0;">Score Progression</h2>
+              <span style="font-size:var(--xs-size);color:var(--text-tertiary);">Last 6 Sessions</span>
+            </div>
+            <p style="font-size:var(--small-size);color:var(--text-secondary);margin-bottom:var(--space-4);">Composite skill points earned per escape mission.</p>
+            <div data-chart="area" style="height:260px;" data-chart-data='{"labels":["Apr","May","Jun","Jul","Aug","Sep"],"values":[620,710,750,830,890,940]}' data-chart-options='{"color":"var(--ember-amber)"}'></div>
+          </div>
+        </div>
+
+        <!-- Section 4: Per-Room Performance Table -->
+        <div class="dashboard-card" style="margin-bottom:var(--space-8);">
+          <div class="dashboard-card__header">
+            <h2 style="font-size:1.125rem;margin:0;">Per-Room Breakdown</h2>
+            <span style="font-size:var(--xs-size);color:var(--text-tertiary);">Sorted by best completion</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Room Name</th>
+                  <th>Difficulty</th>
+                  <th>Attempts</th>
+                  <th>Best Time</th>
+                  <th>Success Rate</th>
+                  <th>Hints Used</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>The Time Paradox</strong></td>
+                  <td><span class="badge badge--amber">Expert (4/5)</span></td>
+                  <td>2</td>
+                  <td style="color:var(--ember-amber);font-weight:700;">28:47</td>
+                  <td>100%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>The Enigma Library</strong></td>
+                  <td><span class="badge badge--amber">Challenging (3/5)</span></td>
+                  <td>3</td>
+                  <td style="font-weight:700;">38:15</td>
+                  <td>100%</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><strong>The Sunken Archive</strong></td>
+                  <td><span class="badge badge--amber">Moderate (2/5)</span></td>
+                  <td>1</td>
+                  <td style="font-weight:700;">42:30</td>
+                  <td>100%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>The Forgotten Lab</strong></td>
+                  <td><span class="badge badge--amber">Master (5/5)</span></td>
+                  <td>2</td>
+                  <td style="font-weight:700;">52:33</td>
+                  <td>50%</td>
+                  <td>2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 5: Personal Records List & Section 6: Share Results CTA -->
+        <div class="grid" style="grid-template-columns:1.5fr 1fr;gap:var(--space-6);">
+          <!-- Section 5: Records List -->
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 style="font-size:1.125rem;margin:0;">Personal Records</h2>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-3);background:var(--bg-tertiary);border-radius:var(--border-radius-sm);">
+                <div>
+                  <div style="font-weight:600;">Fastest Cipher Decryption</div>
+                  <div style="font-size:var(--xs-size);color:var(--text-tertiary);">The Enigma Library &bull; August 5</div>
+                </div>
+                <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--ember-amber);">1m 42s</div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-3);background:var(--bg-tertiary);border-radius:var(--border-radius-sm);">
+                <div>
+                  <div style="font-weight:600;">Zero-Hint Clear</div>
+                  <div style="font-size:var(--xs-size);color:var(--text-tertiary);">The Time Paradox &bull; August 15</div>
+                </div>
+                <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--ember-amber);">Flawless</div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-3);background:var(--bg-tertiary);border-radius:var(--border-radius-sm);">
+                <div>
+                  <div style="font-weight:600;">Highest Room Score</div>
+                  <div style="font-size:var(--xs-size);color:var(--text-tertiary);">The Sunken Archive &bull; September 8</div>
+                </div>
+                <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--ember-amber);">940 pts</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 6: Share Results CTA -->
+          <div class="dashboard-card" style="display:flex;flex-direction:column;justify-content:center;text-align:center;background:linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--bg-badge);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-4);color:var(--ember-amber);">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <h3 style="font-size:1.125rem;margin-bottom:var(--space-2);">Share Your Escape Card</h3>
+            <p style="font-size:var(--small-size);color:var(--text-secondary);margin-bottom:var(--space-5);">Show off your Level 4 status and fastest records to friends and teammates.</p>
+            <button class="btn btn-primary" onclick="alert('Escape card link copied to clipboard!')">Copy Player Badge Link</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/dashboard.js"></script>
+</body>
+</html>

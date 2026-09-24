@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — JUMP Trampoline Park</title>
+  <meta name="description" content="Create your JUMP account to book bounce sessions, unlock pass discounts, sign family waivers online, and plan parties.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='6' fill='%23FF4757'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial' font-weight='900' font-size='18' fill='white'%3EJ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .auth-page {
+      min-height: 100vh;
+    }
+    @media (max-width: 768px) {
+      .auth-page {
+        grid-template-columns: 1fr;
+      }
+      .auth-art { display: none; }
+      .auth-panel { padding: var(--gap-md); }
+    }
+  </style>
+</head>
+<body style="background:var(--bg-primary);">
+  <main class="auth-page">
+    <!-- Left Art Panel (Equal bounds, full height) -->
+    <div class="auth-art">
+      <img src="images/hero-home-classic.jpg" alt="Thrilling aerial view of jumpers bouncing at JUMP arena" loading="eager">
+      <div class="auth-art-overlay"></div>
+      <div class="auth-art-content">
+        <blockquote>"Join 150,000+ jumpers who make flight a lifestyle."</blockquote>
+        <cite>— START BOUNCING TODAY</cite>
+      </div>
+    </div>
+
+    <!-- Right Signup Form Panel -->
+    <div class="auth-panel" style="padding-top:var(--gap-lg);padding-bottom:var(--gap-lg);">
+      <div class="auth-card">
+        <!-- Floating Toggles Top-Right -->
+        <div class="auth-toggles">
+          <button class="rtl-toggle" onclick="window.JUMPToggleRTL()" aria-label="Toggle text direction">RTL</button>
+          <button class="toggle-btn theme-toggle" onclick="window.JUMPToggleTheme()" aria-label="Toggle theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+
+        <!-- Centered Logo & Header -->
+        <div class="auth-card-header" style="margin-bottom:var(--gap-md);">
+          <a href="index.html" class="navbar-logo" aria-label="JUMP Home" style="display:inline-flex;justify-content:center;">
+            <svg viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:36px;width:auto;">
+              <path d="M8 4C8 4 4 4 4 8v12c0 6 4 12 12 12s12-6 12-12" stroke="#FF4757" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <circle cx="16" cy="6" r="3" fill="#FFB020"/>
+              <text x="34" y="27" font-family="Outfit,sans-serif" font-weight="800" font-size="28" fill="currentColor">JUMP</text>
+            </svg>
+          </a>
+          <h2>Create Your Account</h2>
+          <p>Instant booking, digital waivers, and exclusive pass perks.</p>
+        </div>
+
+        <!-- Social Buttons Row -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap-sm);margin-bottom:var(--gap-md);">
+          <button type="button" class="social-btn social-btn--google" style="display:flex;align-items:center;justify-content:center;padding:8px 0;height:42px;border:1px solid var(--border-color);border-radius:var(--radius-sm);cursor:pointer;background:#fff;" title="Sign up with Google">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </button>
+          <button type="button" class="social-btn social-btn--facebook" style="display:flex;align-items:center;justify-content:center;padding:8px 0;height:42px;border:1px solid #1877F2;border-radius:var(--radius-sm);cursor:pointer;background:#1877F2;color:#fff;" title="Sign up with Facebook">
+            <svg viewBox="0 0 24 24" fill="#fff" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </button>
+          <button type="button" class="social-btn social-btn--apple" style="display:flex;align-items:center;justify-content:center;padding:8px 0;height:42px;border:1px solid #000;border-radius:var(--radius-sm);cursor:pointer;background:#000;color:#fff;" title="Sign up with Apple">
+            <svg viewBox="0 0 24 24" fill="#fff" width="18" height="18"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          </button>
+        </div>
+
+        <div class="social-divider" style="margin:var(--gap-sm) 0;">or register with email</div>
+
+        <!-- Signup Form -->
+        <form class="auth-form" id="signup-form" novalidate onsubmit="event.preventDefault(); window.location.href='dashboard-user.html';">
+          <div class="form-group" style="margin-bottom:var(--gap-sm);">
+            <label for="signup-name" class="form-label" style="font-size:var(--tiny-size);margin-bottom:2px;">Full Name</label>
+            <input type="text" id="signup-name" name="name" class="form-input" placeholder="Jordan Taylor" required style="padding:8px 12px;height:40px;">
+            <span class="form-error">Please enter your name.</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-sm);margin-bottom:var(--gap-sm);">
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="signup-email" class="form-label" style="font-size:var(--tiny-size);margin-bottom:2px;">Email Address</label>
+              <input type="email" id="signup-email" name="email" class="form-input" placeholder="jordan@example.com" required style="padding:8px 12px;height:40px;">
+              <span class="form-error">Valid email required.</span>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="signup-phone" class="form-label" style="font-size:var(--tiny-size);margin-bottom:2px;">Phone</label>
+              <input type="tel" id="signup-phone" name="phone" class="form-input" placeholder="(555) 000-0000" style="padding:8px 12px;height:40px;">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:var(--gap-sm);">
+            <label for="signup-password" class="form-label" style="font-size:var(--tiny-size);margin-bottom:2px;">Create Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="signup-password" name="password" class="form-input" placeholder="At least 8 characters" required style="padding:8px 12px;height:40px;">
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="password-strength-bar" style="height:4px;background:var(--border-color);border-radius:2px;margin-top:4px;overflow:hidden;">
+              <div class="password-strength-fill" style="width:0;height:100%;transition:all var(--t-base);"></div>
+            </div>
+            <span class="form-error">Password must be 8+ characters with numbers/symbols.</span>
+          </div>
+
+          <div class="form-group" style="margin-bottom:var(--gap-sm);">
+            <label for="signup-confirm" class="form-label" style="font-size:var(--tiny-size);margin-bottom:2px;">Confirm Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="signup-confirm" name="confirm" class="form-input" placeholder="Repeat your password" required style="padding:8px 12px;height:40px;">
+              <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <span class="form-error">Passwords do not match.</span>
+          </div>
+
+          <div class="form-group" style="margin-bottom:var(--gap-md);">
+            <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:var(--tiny-size);color:var(--text-sub);">
+              <input type="checkbox" id="signup-terms" required style="accent-color:var(--primary);width:16px;height:16px;margin-top:2px;flex-shrink:0;">
+              <span>I accept the <a href="#" style="color:var(--primary);font-weight:600;">Terms & Conditions</a> and sign the digital <a href="#" style="color:var(--primary);font-weight:600;">Safety Waiver</a> for myself & minors.</span>
+            </label>
+            <span class="form-error">You must accept terms & waiver to proceed.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="height:46px;">
+            <span>Create Account</span>
+          </button>
+        </form>
+
+        <div class="auth-footer-text" style="margin-top:var(--gap-md);">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

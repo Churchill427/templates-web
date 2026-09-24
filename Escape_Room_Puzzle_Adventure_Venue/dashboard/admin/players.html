@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYST — Admin | Players &amp; Leaderboard</title>
+  <meta name="description" content="Manage registered players, team rankings, achievement badges, and monthly escape room tournament setup.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230C1222'/%3E%3Cpath d='M6 24V8l5 10 5-10 5 10 5-10v16' stroke='%23F2A33C' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='20' r='3' fill='none' stroke='%23F2A33C' stroke-width='1.5'/%3E%3Cline x1='16' y1='23' x2='16' y2='26' stroke='%23F2A33C' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/dark-mode.css">
+  <link rel="stylesheet" href="../../css/rtl.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-layout dashboard--admin">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="admin-sidebar">
+      <div class="sidebar__header">
+        <a href="../../index.html" class="sidebar__logo"><img src="../../images/logo.svg" alt="" class="sidebar__logo-img" width="26" height="26"><span>MYST</span></a>
+        <button class="sidebar__toggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+      <nav class="sidebar__nav">
+        <a href="index.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Overview</span></a>
+        <a href="bookings.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Bookings</span></a>
+        <a href="rooms.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Rooms</span></a>
+        <a href="players.html" class="sidebar__link active"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Players</span></a>
+        <a href="staff.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg><span>Staff</span></a>
+        <a href="analytics.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Analytics</span></a>
+        <a href="payments.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Payments</span></a>
+        <a href="reports.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Reports</span></a>
+        <a href="settings.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></a>
+      </nav>
+      <div class="sidebar__footer">
+        <a href="../../login.html" class="sidebar__link"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard__main">
+      <header class="topbar">
+        <div class="topbar__left">
+          <button class="sidebar__toggle topbar__menu-btn" aria-label="Toggle sidebar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+          <h1 class="topbar__title">Players &amp; Leaderboard Management</h1>
+        </div>
+        <div class="topbar__right">
+          <div class="topbar__search"><input type="text" placeholder="Search players or teams..." aria-label="Search players"></div>
+          <button class="rtl-toggle" aria-label="Toggle text direction">LTR</button>
+          <button class="theme-toggle" aria-label="Toggle theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+          <div class="avatar-menu"><button class="avatar-menu__btn" aria-label="Admin avatar"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80" alt="Marcus Hale" class="avatar-menu__img"></button><div class="avatar-menu__dropdown"><div class="avatar-menu__header"><strong>Marcus Hale</strong><br><span style="font-size:var(--xs-size);color:var(--text-tertiary);">Admin</span></div><a href="settings.html" class="avatar-menu__link">Settings</a><a href="../user/index.html" class="avatar-menu__link">Player View</a><a href="../../login.html" class="avatar-menu__link">Logout</a></div></div>
+        </div>
+      </header>
+
+      <div class="dashboard__content">
+        <!-- Section 1: Players Table with Live Filter -->
+        <div class="dashboard-card" style="margin-bottom:var(--space-8);">
+          <div class="dashboard-card__header">
+            <h2 style="font-size:1.125rem;margin:0;">Registered Players Directory</h2>
+            <span class="badge badge--amber">1,248 Total Registered</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Team</th>
+                  <th>Rooms Cleared</th>
+                  <th>Best Record</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="display:flex;align-items:center;gap:var(--space-3);"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&q=80" alt="Alex Rivera" style="width:36px;height:36px;border-radius:50%;object-fit:cover;"><div><strong>Alex Rivera</strong><div style="font-size:var(--xs-size);color:var(--text-tertiary);">alex.r@email.com</div></div></td>
+                  <td>Shadow Walkers</td>
+                  <td>14</td>
+                  <td style="color:var(--ember-amber);font-weight:700;">21:40</td>
+                  <td><span class="badge" style="background:rgba(52,168,83,0.1);color:#34A853;">Active</span></td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing Alex Rivera Profile')">View</button></td>
+                </tr>
+                <tr>
+                  <td style="display:flex;align-items:center;gap:var(--space-3);"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&q=80" alt="Sarah Mitchell" style="width:36px;height:36px;border-radius:50%;object-fit:cover;"><div><strong>Sarah Mitchell</strong><div style="font-size:var(--xs-size);color:var(--text-tertiary);">sarah.m@email.com</div></div></td>
+                  <td>Team Chronos</td>
+                  <td>8</td>
+                  <td style="font-weight:700;">28:47</td>
+                  <td><span class="badge" style="background:rgba(52,168,83,0.1);color:#34A853;">Active</span></td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing Sarah Mitchell Profile')">View</button></td>
+                </tr>
+                <tr>
+                  <td style="display:flex;align-items:center;gap:var(--space-3);"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&q=80" alt="David Zhang" style="width:36px;height:36px;border-radius:50%;object-fit:cover;"><div><strong>David Zhang</strong><div style="font-size:var(--xs-size);color:var(--text-tertiary);">d.zhang@email.com</div></div></td>
+                  <td>Lock Masters</td>
+                  <td>11</td>
+                  <td style="font-weight:700;">26:05</td>
+                  <td><span class="badge" style="background:rgba(52,168,83,0.1);color:#34A853;">Active</span></td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing David Zhang Profile')">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 2: Bar Chart (Top Player Scores) -->
+        <div class="dashboard-card" style="margin-bottom:var(--space-8);">
+          <div class="dashboard-card__header">
+            <h2 style="font-size:1.125rem;margin:0;">Top Player Scores (Points)</h2>
+            <span style="font-size:var(--xs-size);color:var(--text-tertiary);">Current Month</span>
+          </div>
+          <div data-chart="bar" style="height:200px;" data-chart-data='{"labels":["A. Rivera","E. Vance","S. Mitchell","D. Zhang","K. Brooks","L. Hayes"],"values":[3420,3150,2890,2740,2490,2310]}' data-chart-options='{"color":"var(--ember-amber)"}'></div>
+        </div>
+
+        <!-- Section 3 & 4: Player Detail Panel & Moderation Actions -->
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-8);">
+          <!-- Section 3: Player Detail -->
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 style="font-size:1.125rem;margin:0;">Selected Player Details</h2>
+              <span class="badge badge--amber">Verified #P-8812</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-4);">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80" alt="Alex Rivera" style="width:56px;height:56px;border-radius:50%;object-fit:cover;">
+              <div>
+                <h3 style="margin:0;font-size:1.125rem;">Alex Rivera</h3>
+                <div style="font-size:var(--xs-size);color:var(--text-tertiary);">Joined March 2025 &bull; Captain, Shadow Walkers</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);font-size:var(--small-size);">
+              <div><span style="color:var(--text-tertiary);">Total Escapes:</span> <strong>14/15</strong></div>
+              <div><span style="color:var(--text-tertiary);">Win Rate:</span> <strong>93.3%</strong></div>
+              <div><span style="color:var(--text-tertiary);">Tournament Rank:</span> <strong>#1</strong></div>
+              <div><span style="color:var(--text-tertiary);">Total Hints:</span> <strong>2</strong></div>
+            </div>
+          </div>
+
+          <!-- Section 4: Moderation Actions -->
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 style="font-size:1.125rem;margin:0;">Leaderboard Moderation</h2>
+              <span style="font-size:var(--xs-size);color:var(--text-tertiary);">Review Suspicious Times</span>
+            </div>
+            <p style="font-size:var(--small-size);color:var(--text-secondary);margin-bottom:var(--space-4);">Audit flagged escape runs before approving official leaderboard entries.</p>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) var(--space-3);background:var(--bg-tertiary);border-radius:var(--border-radius-sm);">
+                <div><strong>Team Cyber</strong> <span style="font-size:var(--xs-size);color:var(--text-tertiary);">19:02 in Forgotten Lab</span></div>
+                <div style="display:flex;gap:var(--space-2);"><button class="btn btn-sm btn-primary" style="padding:4px 10px;font-size:11px;" onclick="alert('Run Approved')">Approve</button><button class="btn btn-sm btn-secondary" style="padding:4px 10px;font-size:11px;" onclick="alert('Run Disqualified')">Flag</button></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) var(--space-3);background:var(--bg-tertiary);border-radius:var(--border-radius-sm);">
+                <div><strong>Ghost Squad</strong> <span style="font-size:var(--xs-size);color:var(--text-tertiary);">21:15 in Vault Heist</span></div>
+                <div style="display:flex;gap:var(--space-2);"><button class="btn btn-sm btn-primary" style="padding:4px 10px;font-size:11px;" onclick="alert('Run Approved')">Approve</button><button class="btn btn-sm btn-secondary" style="padding:4px 10px;font-size:11px;" onclick="alert('Run Disqualified')">Flag</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Badge / Achievement Manager & Section 6: Tournament Setup -->
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:var(--space-6);">
+          <!-- Section 5: Badge Manager -->
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 style="font-size:1.125rem;margin:0;">Badge Manager</h2>
+              <button class="btn btn-secondary btn-sm" onclick="alert('Badge Creator Modal Opened')">+ New Badge</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) 0;border-bottom:1px solid var(--border-light);">
+                <div><strong>First Escape</strong><div style="font-size:var(--xs-size);color:var(--text-tertiary);">Unlocked by 820 players</div></div>
+                <span class="badge badge--amber">Active</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) 0;border-bottom:1px solid var(--border-light);">
+                <div><strong>Speed Demon</strong><div style="font-size:var(--xs-size);color:var(--text-tertiary);">Escape in &lt; 30 mins (142 players)</div></div>
+                <span class="badge badge--amber">Active</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) 0;">
+                <div><strong>Master of Mystery</strong><div style="font-size:var(--xs-size);color:var(--text-tertiary);">Clear all 6 rooms (38 players)</div></div>
+                <span class="badge badge--amber">Active</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 6: Tournament Setup Card -->
+          <div class="dashboard-card">
+            <div class="dashboard-card__header">
+              <h2 style="font-size:1.125rem;margin:0;">Tournament Setup</h2>
+              <span class="badge badge--amber">October 2026 Cup</span>
+            </div>
+            <form data-validate onsubmit="event.preventDefault();alert('Tournament rules updated successfully!');">
+              <div class="form-group"><label class="form-label">Tournament Title</label><input type="text" class="form-input" value="The Autumn Gauntlet 2026" required></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4);">
+                <div><label class="form-label">Start Date</label><input type="date" class="form-input" value="2026-10-01" required></div>
+                <div><label class="form-label">Grand Prize</label><input type="text" class="form-input" value="$1,000 + Trophy" required></div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Publish Tournament</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/dashboard.js"></script>
+</body>
+</html>

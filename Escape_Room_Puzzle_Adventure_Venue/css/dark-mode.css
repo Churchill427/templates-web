@@ -1,0 +1,301 @@
+/* ============================================================
+   MYST — Dark Mode Overrides
+   Applied when [data-theme="dark"] is set on <html>
+   ============================================================ */
+
+[data-theme="dark"] {
+  /* — Semantic Colors — */
+  --bg-primary: #0A0F1C;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1A2236;
+  --bg-navbar: rgba(17, 24, 39, 0.85);
+  --bg-navbar-solid: #111827;
+  --bg-card: #151D2E;
+  --bg-card-hover: #1A2440;
+  --bg-input: #1A2236;
+  --bg-code: #1A2236;
+  --bg-badge: rgba(242, 163, 60, 0.15);
+
+  --text-primary: #E8ECF2;
+  --text-secondary: #C7D0DE;
+  --text-tertiary: #8896AB;
+  --text-heading: #F0F3F8;
+  --text-on-dark: #E8ECF2;
+  --text-on-dark-secondary: #C7D0DE;
+
+  --border-color: #2A3450;
+  --border-light: #1F2A3E;
+  --border-input: #2A3450;
+
+  /* — Shadows (darker, less visible) — */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* — Navbar — */
+[data-theme="dark"] .navbar.scrolled {
+  background: var(--bg-navbar-solid);
+  border-bottom-color: var(--border-light);
+}
+
+/* — Social Buttons — */
+[data-theme="dark"] .social-btn--google {
+  background: #1A2236;
+  color: #E8ECF2;
+  border-color: #2A3450;
+}
+
+[data-theme="dark"] .social-btn--google:hover {
+  background: #243048;
+}
+
+[data-theme="dark"] .social-btn--apple {
+  background: #E8ECF2;
+  color: #111827;
+  border-color: #E8ECF2;
+}
+
+[data-theme="dark"] .social-btn--apple:hover {
+  background: #FFFFFF;
+}
+
+/* — Auth Pages — */
+[data-theme="dark"] .auth-panel {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .auth-card__logo,
+[data-theme="dark"] .auth-card__logo:hover {
+  color: var(--text-heading);
+}
+
+[data-theme="dark"] .auth-page--centered .auth-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* — Tables — */
+[data-theme="dark"] thead th {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] tbody td {
+  border-top-color: var(--border-light);
+}
+
+[data-theme="dark"] tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+
+/* — Footer (stays dark regardless — minor opacity adjustments) — */
+[data-theme="dark"] .footer {
+  background: #060A14;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* — Error / Coming Soon pages — */
+[data-theme="dark"] .error-page__overlay {
+  background: rgba(10, 15, 28, 0.8);
+}
+
+/* — Dashboard Sidebar (user) — */
+[data-theme="dark"] .sidebar {
+  background: var(--bg-secondary);
+  border-right-color: var(--border-light);
+}
+
+[data-theme="dark"] .sidebar__header {
+  border-bottom-color: var(--border-light);
+}
+
+[data-theme="dark"] .sidebar__footer {
+  border-top-color: var(--border-light);
+}
+
+/* — Dashboard Top Bar — */
+[data-theme="dark"] .topbar {
+  background: var(--bg-secondary);
+  border-bottom-color: var(--border-light);
+}
+
+[data-theme="dark"] .topbar__search input {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* — Notification & Avatar Dropdowns & Login Button — */
+[data-theme="dark"] .notification-dropdown,
+[data-theme="dark"] .avatar-menu__dropdown,
+[data-theme="dark"] .navbar__dropdown-menu,
+[data-theme="dark"] .home-switcher__menu {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .navbar__login-link {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+}
+
+[data-theme="dark"] .navbar__login-link:hover {
+  background: rgba(242, 163, 60, 0.15);
+  border-color: var(--ember-amber);
+  color: var(--ember-amber);
+}
+
+/* — Notification Badge border — */
+[data-theme="dark"] .notification-bell__badge {
+  border-color: var(--bg-secondary);
+}
+
+/* — Avatar Border — */
+[data-theme="dark"] .avatar-menu__btn {
+  border-color: var(--border-color);
+}
+
+/* — Mobile Drawer — */
+[data-theme="dark"] .mobile-drawer {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .mobile-drawer__link {
+  color: var(--text-primary);
+  border-bottom-color: var(--border-light);
+}
+
+/* — Timeline — */
+[data-theme="dark"] .timeline::before {
+  background: var(--border-color);
+}
+
+[data-theme="dark"] .timeline__dot {
+  border-color: var(--bg-primary);
+}
+
+/* — Stats Band — */
+[data-theme="dark"] .stats-band {
+  background: #060A14;
+}
+
+/* — CTA Band — */
+[data-theme="dark"] .cta-band {
+  background: #060A14;
+}
+
+/* — Accordion — */
+[data-theme="dark"] .accordion__item {
+  background: var(--bg-card);
+  border-color: var(--border-light);
+}
+
+/* — Pricing Card Featured — */
+[data-theme="dark"] .pricing-card--featured {
+  border-color: var(--ember-amber);
+}
+
+/* — Podium — */
+[data-theme="dark"] .podium__bar {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .podium__avatar {
+  border-color: var(--border-color);
+}
+
+/* — Admin sidebar stays dark in both themes — */
+[data-theme="dark"] .dashboard--admin .sidebar {
+  background: #060A14;
+  border-right-color: rgba(255, 255, 255, 0.05);
+}
+
+/* — Filter chips — */
+[data-theme="dark"] .filter-chip {
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .filter-chip:hover {
+  border-color: var(--ember-amber);
+  color: var(--ember-amber);
+}
+
+/* — Masonry Caption — */
+[data-theme="dark"] .masonry__caption {
+  background: linear-gradient(transparent, rgba(10, 15, 28, 0.9));
+}
+
+/* — Scrollbar styling — */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--mist-slate);
+}
+
+/* — RTL Toggle in dark mode — */
+[data-theme="dark"] .rtl-toggle {
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .rtl-toggle:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* — Form Inputs — */
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .form-textarea {
+  background: var(--bg-input);
+  border-color: var(--border-input);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-input::placeholder,
+[data-theme="dark"] .form-textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* — Footer Newsletter Input — */
+[data-theme="dark"] .footer__newsletter .form-input {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* — Password Strength bars — */
+[data-theme="dark"] .password-strength__bar {
+  background: var(--border-color);
+}
+
+/* — Difficulty Meter — */
+[data-theme="dark"] .difficulty-meter__dot {
+  background: var(--border-color);
+}
+
+/* — Hero Overlay — */
+[data-theme="dark"] .hero__overlay {
+  background: rgba(10, 15, 28, 0.7);
+}
+
+/* — Selection — */
+[data-theme="dark"] ::selection {
+  background: rgba(242, 163, 60, 0.3);
+  color: var(--white);
+}
