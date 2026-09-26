@@ -1170,15 +1170,33 @@
 
 @media (max-width: 767px) {
   .cart-item {
-    grid-template-columns: 60px 1fr;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    grid-template-areas:
+      "img info info"
+      "img qty remove";
+    gap: 0.5rem 0.75rem;
+    align-items: center;
   }
 
-  .cart-item__actions {
-    grid-column: span 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .cart-item__img {
+    grid-area: img;
+    width: 60px;
+    height: 60px;
+  }
+
+  .cart-item__info {
+    grid-area: info;
+  }
+
+  .cart-item .qty-stepper {
+    grid-area: qty;
+    justify-self: start;
+  }
+
+  .cart-item .cart-item__remove {
+    grid-area: remove;
+    justify-self: end;
   }
 }
 

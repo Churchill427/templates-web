@@ -1,0 +1,1081 @@
+/* ==========================================================================
+   FRET — Responsive Overrides
+   Breakpoints: 360px (mobile) · 768px (tablet) · 1024px (small desktop)
+   ========================================================================== */
+
+/* ==========================================================================
+   1024px — SMALL DESKTOP / LANDSCAPE TABLET
+   ========================================================================== */
+@media (max-width: 1024px) {
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  .container--wide {
+    max-width: 100%;
+  }
+
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  .hero {
+    min-height: 70vh;
+  }
+
+  .hero__content p {
+    font-size: 1rem;
+    line-height: 1.625rem;
+  }
+
+  .hero--slim {
+    min-height: 40vh;
+  }
+
+  /* ── Buttons ──────────────────────────────────────────────────────────── */
+  .btn--lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  /* ── Section header ──────────────────────────────────────────────────── */
+  .section-header {
+    margin-bottom: var(--space-6);
+  }
+
+  /* ── Cart drawer ─────────────────────────────────────────────────────── */
+  .cart-drawer {
+    max-width: 380px;
+  }
+
+  /* ── Page-specific: Instruments category cards ───────────────────────── */
+  .category-card {
+    min-height: 320px;
+  }
+
+  /* ── Page-specific: Journal featured article ─────────────────────────── */
+  .article-featured__image {
+    min-height: 280px;
+  }
+
+  /* ── Page-specific: About philosophy quote ───────────────────────────── */
+  .philosophy-quote {
+    font-size: var(--h3-size);
+  }
+
+  /* ── Header & Navigation (1024px desktop) ────────────────────────────── */
+  .header__inner {
+    padding-inline: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .header__nav {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.8125rem;
+    padding: 6px 0;
+  }
+
+  .header__controls {
+    gap: 6px;
+  }
+
+  .header__icon-btn,
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .rtl-toggle {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 8px;
+    font-size: 0.6875rem;
+  }
+}
+
+
+/* ==========================================================================
+   768px — TABLET
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* ── Typography tightening ───────────────────────────────────────────── */
+  .section-header p {
+    font-size: var(--small-size);
+    line-height: var(--small-line);
+  }
+
+  /* ── Hero ─────────────────────────────────────────────────────────────── */
+  .hero {
+    min-height: 60vh;
+    padding-block: var(--space-8);
+    padding-top: calc(var(--navbar-height-mobile) + var(--space-8));
+  }
+
+  .hero--slim {
+    min-height: 35vh;
+    padding-block: var(--space-6);
+    padding-top: calc(var(--navbar-height-mobile) + var(--space-6));
+  }
+
+  .hero__content p {
+    font-size: var(--small-size);
+    line-height: var(--small-line);
+  }
+
+  .hero__ctas {
+    gap: var(--space-1);
+  }
+
+  /* ── Split layout ────────────────────────────────────────────────────── */
+  .split,
+  .split--60-40,
+  .split--40-60 {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .split__media {
+    order: -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Exclude summary card from aspect-ratio and order: -1 */
+  .split__media:has(.summary-card),
+  .split:has(.summary-card) .split__media,
+  .split__media .summary-card,
+  .checkout-header ~ main .split__media {
+    order: 2 !important;
+    aspect-ratio: auto !important;
+    overflow: visible !important;
+  }
+
+  /* ── Grid system ─────────────────────────────────────────────────────── */
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--2x3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ── Footer ──────────────────────────────────────────────────────────── */
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__newsletter {
+    flex-direction: column;
+  }
+
+  .footer__newsletter button {
+    width: 100%;
+  }
+
+  /* ── Cart drawer ─────────────────────────────────────────────────────── */
+  .cart-drawer {
+    max-width: 340px;
+  }
+
+  /* ── Dashboard ───────────────────────────────────────────────────────── */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-topbar__search {
+    min-width: 160px;
+  }
+
+  /* ── Card body ───────────────────────────────────────────────────────── */
+  .card__body {
+    padding: var(--space-2);
+  }
+
+  .card--icon {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .card--testimonial {
+    padding: var(--space-3);
+  }
+
+  /* ── Page-specific: Instruments ───────────────────────────────────────── */
+  .category-card {
+    min-height: 280px;
+    padding: var(--space-3);
+  }
+
+  /* ── Page-specific: About ────────────────────────────────────────────── */
+  .reviews-masonry {
+    column-count: 2;
+  }
+
+  .philosophy-quote {
+    font-size: var(--h3-size);
+    padding-inline: var(--space-2);
+  }
+
+  .philosophy-quote::before {
+    font-size: 5rem;
+    top: -24px;
+  }
+
+  /* ── Page-specific: Contact split form ───────────────────────────────── */
+  .contact-info-list {
+    margin-bottom: var(--space-4);
+  }
+
+  .map-placeholder {
+    height: 250px;
+  }
+
+  /* ── Scrollable table wrapper ────────────────────────────────────────── */
+  .comparison-table--responsive thead {
+    display: none;
+  }
+
+  .comparison-table--responsive tr {
+    display: block;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comparison-table--responsive td {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px var(--space-2);
+    border-bottom: none;
+  }
+
+  /* ── Counters & Metrics ──────────────────────────────────────────────── */
+  .counter-number {
+    font-size: 2.75rem;
+  }
+
+  /* ── RTL Timeline for Repair ──────────────────────────────────────────── */
+  [dir="rtl"] .timeline::before,
+  [dir="rtl"] .timeline-progress,
+  [dir="rtl"] .timeline-node {
+    left: auto;
+    right: 20px;
+  }
+
+  [dir="rtl"] .timeline-item,
+  [dir="rtl"] .timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: 0;
+    padding-right: 40px;
+  }
+
+  [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content,
+  [dir="rtl"] .timeline-item:nth-child(even) .timeline-content {
+    margin: 0 20px 0 0;
+  }
+}
+
+
+/* ==========================================================================
+   360px — MOBILE
+   ========================================================================== */
+@media (max-width: 480px) {
+
+  /* ── Global typography scaling ───────────────────────────────────────── */
+  :root {
+    --h1-size: 1.875rem;    /* 30px — fits 360px width */
+    --h1-line: 2.375rem;    /* 38px */
+    --h2-size: 1.5rem;      /* 24px */
+    --h2-line: 2rem;        /* 32px */
+    --h3-size: 1.25rem;     /* 20px */
+    --h3-line: 1.75rem;     /* 28px */
+    --h4-size: 1rem;        /* 16px */
+    --h4-line: 1.5rem;      /* 24px */
+    --container-gutter: 1rem; /* 16px — crucial for 360px */
+    --section-padding: var(--space-5); /* 40px */
+  }
+
+  /* ── Prevent any horizontal overflow ─────────────────────────────────── */
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  .container--narrow,
+  .container--wide {
+    padding-inline: 1rem;
+  }
+
+  /* ── Header / Navbar ─────────────────────────────────────────────────── */
+  .header__inner {
+    padding-inline: 1rem;
+    gap: var(--space-1);
+  }
+
+  .header__logo-text {
+    font-size: 1.25rem;
+  }
+
+  .header__controls {
+    gap: var(--space-1);
+  }
+
+  .header__icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rtl-toggle {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 8px;
+    font-size: 0.625rem;
+  }
+
+  /* Mobile menu padding */
+  .mobile-menu {
+    padding-inline: 1rem;
+  }
+
+  /* ── Hero Section ────────────────────────────────────────────────────── */
+  .hero {
+    min-height: 55vh;
+    padding-top: calc(var(--navbar-height-mobile) + var(--space-6));
+    padding-block: var(--space-6);
+  }
+
+  .hero__content {
+    padding-inline: 1rem;
+  }
+
+  .hero__content h1 {
+    font-size: 1.875rem;
+    line-height: 2.375rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero__content p {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    gap: var(--space-1);
+    width: 100%;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+  }
+
+  .hero--slim {
+    min-height: 30vh;
+    padding-top: calc(var(--navbar-height-mobile) + var(--space-4));
+    padding-block: var(--space-4);
+  }
+
+  /* ── Buttons ──────────────────────────────────────────────────────────── */
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: var(--small-size);
+  }
+
+  .btn--lg {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--body-size);
+    min-height: 48px;
+  }
+
+  .btn--sm {
+    padding: 0.375rem 1rem;
+  }
+
+  /* ── Grid system — all single column ─────────────────────────────────── */
+  .grid--4,
+  .grid--3,
+  .grid--2,
+  .grid--2x3 {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  /* ── Split layout ────────────────────────────────────────────────────── */
+  .split,
+  .split--60-40,
+  .split--40-60 {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .split__media {
+    order: -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Exclude summary card from aspect-ratio and order: -1 */
+  .split__media:has(.summary-card),
+  .split:has(.summary-card) .split__media,
+  .split__media .summary-card,
+  .checkout-header ~ main .split__media {
+    order: 2 !important;
+    aspect-ratio: auto !important;
+    overflow: visible !important;
+  }
+
+  /* ── Section header ──────────────────────────────────────────────────── */
+  .section-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-header p {
+    font-size: var(--small-size);
+  }
+
+  /* ── Cards ────────────────────────────────────────────────────────────── */
+  .card__body {
+    padding: var(--space-2);
+  }
+
+  .card__body h3 {
+    font-size: 1.125rem;
+  }
+
+  .card__body p {
+    font-size: var(--overline-size);
+    line-height: var(--overline-line);
+  }
+
+  .card--icon {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .card--icon .card__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-1);
+  }
+
+  .card--icon .card__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .card__price {
+    font-size: 1rem;
+  }
+
+  .card--testimonial {
+    padding: var(--space-3);
+  }
+
+  .card--testimonial .card__quote {
+    font-size: var(--small-size);
+    line-height: var(--small-line);
+  }
+
+  .card--testimonial .card__quote::before {
+    font-size: 1.75rem;
+    vertical-align: -0.3rem;
+  }
+
+  .card--testimonial .card__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card--team {
+    padding: var(--space-2);
+  }
+
+  .card--team .card__avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* ── Footer ──────────────────────────────────────────────────────────── */
+  .footer {
+    padding-top: var(--space-6);
+  }
+
+  .footer__inner {
+    padding-inline: 1rem;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .footer__brand p {
+    max-width: 100%;
+  }
+
+  .footer__newsletter {
+    flex-direction: column;
+  }
+
+  .footer__newsletter button {
+    width: 100%;
+  }
+
+  .footer__social {
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+
+  .footer__bottom {
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    gap: var(--space-1);
+    padding: var(--space-2) 0;
+  }
+
+  /* ── Cart Drawer ─────────────────────────────────────────────────────── */
+  .cart-drawer {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .cart-drawer__header {
+    padding: var(--space-2);
+  }
+
+  .cart-drawer__body {
+    padding: var(--space-2);
+  }
+
+  .cart-drawer__footer {
+    padding: var(--space-2);
+  }
+
+  /* ── Accordion ───────────────────────────────────────────────────────── */
+  .accordion__trigger {
+    padding: var(--space-2);
+    font-size: var(--small-size);
+  }
+
+  .accordion__content-inner {
+    padding: 0 var(--space-2) var(--space-2);
+  }
+
+  /* ── Forms ────────────────────────────────────────────────────────────── */
+  .form-input {
+    padding: 0.625rem 0.75rem;
+    font-size: var(--small-size);
+  }
+
+  textarea.form-input {
+    min-height: 100px;
+  }
+
+  /* ── Modal ────────────────────────────────────────────────────────────── */
+  .modal-overlay {
+    padding: var(--space-2);
+  }
+
+  .modal {
+    padding: var(--space-3);
+    border-radius: var(--radius-lg);
+  }
+
+  /* ── Flex utilities ──────────────────────────────────────────────────── */
+  .flex-between {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* ── Dashboard ───────────────────────────────────────────────────────── */
+  .dashboard-content {
+    padding: var(--space-2);
+  }
+
+  .dashboard-content__header h1 {
+    font-size: var(--h3-size);
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .kpi-card {
+    padding: var(--space-2);
+  }
+
+  .kpi-card__value {
+    font-size: var(--h4-size);
+  }
+
+  .chart-card {
+    padding: var(--space-2);
+  }
+
+  .chart-card__body {
+    min-height: 180px;
+  }
+
+  .dashboard-topbar {
+    padding-inline: var(--space-2);
+  }
+
+  .dashboard-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .dashboard-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard-tabs__tab {
+    white-space: nowrap;
+    font-size: var(--overline-size);
+    padding: 8px var(--space-1);
+  }
+
+  /* ── Auth Pages ──────────────────────────────────────────────────────── */
+  .auth-layout {
+    padding: var(--space-2);
+  }
+
+  .auth-card {
+    border-radius: var(--radius-xl);
+  }
+
+  .auth-form-panel {
+    padding: var(--space-3) var(--space-3);
+  }
+
+  .auth-header {
+    margin-bottom: var(--space-3);
+  }
+
+  .auth-header h1 {
+    font-size: 1rem;
+  }
+
+  .auth-logo svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .auth-logo-text {
+    font-size: 1.25rem;
+  }
+
+  .auth-form {
+    gap: var(--space-2);
+  }
+
+  .auth-toggles {
+    top: var(--space-2);
+    inset-inline-end: var(--space-2);
+  }
+
+  .auth-toggles .theme-toggle,
+  .auth-toggles .rtl-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .social-branded {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .social-branded__btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .divider-text {
+    margin: var(--space-2) 0;
+  }
+
+  /* ── Page-specific: Instruments ───────────────────────────────────────── */
+  .category-card {
+    min-height: 220px;
+    padding: var(--space-3);
+  }
+
+  .category-card h3 {
+    font-size: var(--h4-size);
+  }
+
+  .category-card p {
+    max-width: 100%;
+  }
+
+  .spec-chips {
+    gap: 4px;
+  }
+
+  .spec-chips .chip {
+    font-size: 0.625rem;
+    padding: 2px 8px;
+  }
+
+  /* ── Page-specific: Journal ──────────────────────────────────────────── */
+  .article-featured {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .article-featured__image {
+    min-height: 200px;
+  }
+
+  .article-featured__content,
+  [dir="rtl"] .article-featured__content {
+    padding: var(--space-3);
+  }
+
+  .inline-newsletter {
+    padding: var(--space-4);
+  }
+
+  .inline-newsletter form {
+    flex-direction: column;
+  }
+
+  /* ── Page-specific: About ────────────────────────────────────────────── */
+  .story-text {
+    column-count: 1;
+    font-size: 1rem;
+    line-height: 1.625;
+  }
+
+  .reviews-masonry {
+    column-count: 1;
+  }
+
+  .philosophy-quote {
+    font-size: var(--h4-size);
+    padding-inline: var(--space-2);
+  }
+
+  .philosophy-quote::before {
+    font-size: 4rem;
+    top: -16px;
+  }
+
+  .philosophy-block {
+    padding-block: var(--space-6);
+  }
+
+  .drop-cap::first-letter {
+    font-size: 3rem;
+    padding-right: 8px;
+  }
+
+  /* ── Page-specific: Contact ──────────────────────────────────────────── */
+  .map-placeholder {
+    height: 200px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .map-placeholder iframe {
+    border-radius: var(--radius-md);
+  }
+
+  .contact-info-item svg {
+    width: 14px;
+    height: 14px;
+    margin-top: 2px;
+  }
+
+  /* ── Page-specific: Repair timeline ──────────────────────────────────── */
+  .timeline-content {
+    padding: var(--space-2);
+  }
+
+  .timeline-image {
+    height: 120px;
+  }
+
+  .ba-slider {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-lg);
+  }
+
+  .ba-handle-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .file-upload {
+    padding: var(--space-3);
+  }
+
+  .file-upload svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  [dir="rtl"] .timeline::before,
+  [dir="rtl"] .timeline-progress,
+  [dir="rtl"] .timeline-node {
+    left: auto;
+    right: 20px;
+  }
+
+  [dir="rtl"] .timeline-item,
+  [dir="rtl"] .timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: 0;
+    padding-right: 40px;
+  }
+
+  [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content,
+  [dir="rtl"] .timeline-item:nth-child(even) .timeline-content {
+    margin: 0 20px 0 0;
+  }
+
+  /* ── Page-specific: Process ──────────────────────────────────────────── */
+  .woods-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .wood-card__image {
+    aspect-ratio: 16/9;
+  }
+
+  .video-teaser {
+    aspect-ratio: 16/9;
+  }
+
+  .video-teaser__play {
+    width: 56px;
+    height: 56px;
+  }
+
+  .video-teaser__play svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ── Page-specific: Cart/Checkout ────────────────────────────────────── */
+  .qty-stepper__btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .qty-stepper__value {
+    width: 36px;
+    font-size: var(--overline-size);
+  }
+
+  .cart-item {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .cart-item__image {
+    width: 100%;
+    height: 180px;
+  }
+
+  .cart-item__controls {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .summary-card {
+    padding: var(--space-3);
+  }
+
+  /* ── Page-specific: Home 2 ───────────────────────────────────────────── */
+  .counter-number {
+    font-size: 2.25rem !important;
+  }
+
+  .spec-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+
+/* ==========================================================================
+   EXTRA SMALL — 360px and below (precise targeting)
+   Handles edge cases where 360px still has overflow issues
+   ========================================================================== */
+@media (max-width: 360px) {
+
+  :root {
+    --h1-size: 1.625rem;    /* 26px */
+    --h1-line: 2.125rem;    /* 34px */
+    --h2-size: 1.375rem;    /* 22px */
+    --h2-line: 1.875rem;    /* 30px */
+    --h3-size: 1.125rem;    /* 18px */
+    --h3-line: 1.625rem;    /* 26px */
+    --container-gutter: 0.875rem; /* 14px */
+  }
+
+  .container,
+  .container--narrow,
+  .container--wide {
+    padding-inline: 0.875rem;
+  }
+
+  .header__inner {
+    padding-inline: 0.75rem;
+  }
+
+  .header__logo-text {
+    font-size: 1.125rem;
+  }
+
+  .header__controls {
+    gap: 4px;
+  }
+
+  .header__icon-btn,
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .rtl-toggle {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 6px;
+  }
+
+  .hero__content h1 {
+    font-size: 1.625rem;
+    line-height: 2.125rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: var(--overline-size);
+  }
+
+  .btn--lg {
+    padding: 0.625rem 1.25rem;
+    font-size: var(--small-size);
+    min-height: 44px;
+  }
+
+  .card__body h3 {
+    font-size: 1rem;
+  }
+
+  .card__price {
+    font-size: var(--small-size);
+  }
+
+  .footer__bottom {
+    font-size: 0.5625rem;
+  }
+
+  .footer__social-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .footer__social-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .category-card {
+    min-height: 180px;
+  }
+
+  .auth-form-panel {
+    padding: var(--space-2);
+  }
+
+  /* ── 360px Timeline fine-tuning ───────────────────────────────────────── */
+  .timeline::before,
+  .timeline-progress,
+  .timeline-node {
+    left: 14px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(even) {
+    padding-left: 32px;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 8px;
+    margin-right: 0;
+  }
+
+  [dir="rtl"] .timeline::before,
+  [dir="rtl"] .timeline-progress,
+  [dir="rtl"] .timeline-node {
+    left: auto;
+    right: 14px;
+  }
+
+  [dir="rtl"] .timeline-item,
+  [dir="rtl"] .timeline-item:nth-child(even) {
+    padding-left: 0;
+    padding-right: 32px;
+  }
+
+  [dir="rtl"] .timeline-item:nth-child(odd) .timeline-content,
+  [dir="rtl"] .timeline-item:nth-child(even) .timeline-content {
+    margin-right: 8px;
+    margin-left: 0;
+  }
+
+  .cart-item__image {
+    height: 140px;
+  }
+}
+
+
+/* ==========================================================================
+   GLOBAL OVERFLOW PREVENTION
+   Applied at all sizes to prevent horizontal scroll
+   ========================================================================== */
+html {
+  overflow-x: hidden;
+}
+
+/* Ensure images, iframes, and embeds don't break layout */
+img,
+video,
+iframe,
+embed,
+object {
+  max-width: 100%;
+}
+
+/* Prevent long words/URLs from breaking layout */
+h1, h2, h3, h4, h5, h6,
+p, li, td, th, a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* SVG line in process section — hide on narrow screens */
+@media (max-width: 768px) {
+  svg[preserveAspectRatio="none"] {
+    display: none;
+  }
+}

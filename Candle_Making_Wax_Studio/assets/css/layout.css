@@ -145,6 +145,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
   height: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
@@ -306,6 +307,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
+  flex-shrink: 0;
 }
 
 .header__toggle {
@@ -353,6 +355,7 @@
   height: 44px;
   padding: 10px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .hamburger__line {
@@ -412,11 +415,7 @@
 }
 
 .mobile-menu__controls {
-  display: flex;
-  gap: var(--space-md);
-  padding-top: var(--space-lg);
-  margin-top: var(--space-lg);
-  border-top: 1px solid var(--color-border);
+  display: none !important;
 }
 
 /* Body offset for fixed header */

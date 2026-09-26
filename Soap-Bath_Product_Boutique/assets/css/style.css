@@ -609,11 +609,19 @@ p:last-child {
   z-index: var(--z-navbar);
   padding: var(--sp-4) var(--container-gutter);
   overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform var(--duration-slow) var(--ease-out);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
 }
 
 .navbar__mobile-panel.open {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
@@ -2552,14 +2560,20 @@ p:last-child {
   }
 
   .navbar__nav,
-  .navbar__actions .navbar__icon-btn:not(.navbar__cart),
-  .navbar__actions .navbar__dir-toggle,
-  .navbar__actions .navbar__theme-toggle {
+  .navbar__actions .btn,
+  .navbar__actions .btn--sm {
+    display: none;
+  }
+
+  .navbar__mobile-controls {
     display: none;
   }
 
   .navbar__mobile-panel {
-    display: block;
+    display: none;
+  }
+  .navbar__mobile-panel.open {
+    display: flex;
   }
 
   /* Grids */

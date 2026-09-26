@@ -30,7 +30,11 @@
   }
 
   .header__controls {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .hamburger {
@@ -167,9 +171,232 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   TABLET (768px – 1023px)
+   SMALL MOBILE / 360px (≤480px)
    ════════════════════════════════════════════════════════════ */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (max-width: 480px) {
+  :root {
+    --container-gutter: 1rem;
+    --h1-size: 1.75rem;
+    --h2-size: 1.375rem;
+    --h3-size: 1.125rem;
+    --h4-size: 1rem;
+    --section-padding: var(--space-2xl) 0;
+  }
+
+  .header__inner {
+    padding-inline: 12px;
+    gap: 6px;
+  }
+
+  .header__logo {
+    gap: 6px;
+  }
+
+  .header__logo svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header__logo-text {
+    font-size: 1.25rem;
+  }
+
+  .header__controls {
+    gap: 4px;
+  }
+
+  .header__toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .header__rtl-toggle {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+
+  .nav__cart {
+    padding: 4px 8px;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .nav__cart svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hamburger {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    gap: 4px;
+  }
+
+  /* ── 360px Mobile Forms & Actions ── */
+  .hero__actions {
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer__newsletter-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .footer__newsletter-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .footer__newsletter-btn {
+    width: 100%;
+  }
+
+  /* ── 360px Card & Product Actions ── */
+  .card__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-2xs);
+  }
+
+  .card__actions .btn {
+    width: 100%;
+  }
+
+  /* ── 360px PDP & Scent Notes ── */
+  .pdp-actions {
+    flex-direction: row;
+    gap: var(--space-xs);
+  }
+
+  .pdp-actions .btn {
+    min-width: 0;
+  }
+
+  .pdp-gallery__thumbs {
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pdp-gallery__thumb {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+  }
+
+  .scent-layer {
+    max-width: 100% !important;
+    padding: var(--space-sm) var(--space-md) !important;
+  }
+
+  .spec-row {
+    gap: var(--space-md) !important;
+  }
+
+  /* ── 360px Countdowns (Clean single-row fit) ── */
+  .countdown-wrap {
+    gap: var(--space-xs) !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+  }
+
+  .countdown-box {
+    min-width: 65px !important;
+    padding: var(--space-sm) 2px !important;
+    flex: 1 1 0;
+  }
+
+  .countdown-val,
+  .countdown-value {
+    font-size: 1.35rem !important;
+  }
+
+  .countdown-label {
+    font-size: 9px !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  /* ── 360px Cart & Checkout ── */
+  .cart-summary,
+  .checkout-step,
+  .order-summary {
+    padding: var(--space-md) !important;
+  }
+
+  .checkout-step__header {
+    font-size: 1.25rem !important;
+  }
+
+  .payment-methods {
+    flex-direction: column;
+  }
+
+  /* ── 360px Modals & Overlays ── */
+  .quick-view-overlay {
+    padding: 12px !important;
+  }
+
+  .quick-view {
+    padding: var(--space-md) !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  /* ── 360px Calendar & Workshops ── */
+  .cal-cell {
+    font-size: 12px !important;
+  }
+
+  .cal-panel {
+    padding: var(--space-md) !important;
+  }
+
+  .instructor-card {
+    padding: var(--space-md) !important;
+    gap: var(--space-sm) !important;
+  }
+
+  .instructor-card__img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  /* ── 360px Dashboards ── */
+  .stats-grid,
+  .dash-metrics {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stat-card,
+  .dash-metric-card {
+    padding: var(--space-md) !important;
+  }
+
+  .dash-content {
+    padding: var(--space-md) var(--space-xs) !important;
+  }
+
+  .dashboard-topbar__search,
+  .dash-search {
+    max-width: 130px;
+    font-size: 12px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   TABLET (768px – 1024px)
+   ════════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1024px) {
   :root {
     --h1-size: 2.5rem;     /* 40px */
     --h2-size: 1.875rem;   /* 30px */
@@ -190,7 +417,11 @@
   }
 
   .header__controls {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .hamburger {
@@ -244,10 +475,24 @@
   }
 }
 
+/* Tablet (768px) calendar wrap to single column */
+@media (min-width: 768px) and (max-width: 860px) {
+  .cal-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet landscape (1024px) 3-column balance */
+@media (min-width: 900px) and (max-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* ════════════════════════════════════════════════════════════
-   DESKTOP (1024px – 1279px)
+   DESKTOP (≥1025px)
    ════════════════════════════════════════════════════════════ */
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .hamburger {
     display: none;
   }
@@ -258,10 +503,22 @@
 
   .header__controls {
     display: flex;
+    margin-left: 0;
   }
 
   .mobile-menu {
     display: none !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .nav {
+    gap: var(--space-xs);
+  }
+
+  .nav__link {
+    padding: var(--space-xs) 6px;
+    font-size: 0.8125rem;
   }
 }
 
@@ -281,6 +538,17 @@
 /* ════════════════════════════════════════════════════════════
    RTL + MOBILE combined
    ════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  [dir="rtl"] .header__controls {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  [dir="rtl"] .header__inner {
+    flex-direction: row-reverse;
+  }
+}
+
 @media (max-width: 767px) {
   [dir="rtl"] .footer__grid {
     text-align: right;
@@ -292,9 +560,5 @@
 
   [dir="rtl"] .hero__actions {
     align-items: center;
-  }
-
-  [dir="rtl"] .header__inner {
-    flex-direction: row-reverse;
   }
 }

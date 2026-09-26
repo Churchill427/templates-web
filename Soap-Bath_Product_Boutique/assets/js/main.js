@@ -139,21 +139,42 @@ const NavbarController = {
   initHamburger() {
     const hamburger = document.querySelector('.navbar__hamburger');
     const panel = document.querySelector('.navbar__mobile-panel');
+    const navbar = document.querySelector('.navbar');
     if (!hamburger || !panel) return;
     
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      panel.classList.toggle('open');
-      document.body.style.overflow = panel.classList.contains('open') ? 'hidden' : '';
+    const setMenuOpen = (isOpen) => {
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      panel.classList.toggle('open', isOpen);
+      if (navbar) navbar.classList.toggle('menu-open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !panel.classList.contains('open');
+      setMenuOpen(isOpen);
     });
     
     // Close on link click
     panel.querySelectorAll('.navbar__mobile-link').forEach(link => {
       link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        panel.classList.remove('open');
-        document.body.style.overflow = '';
+        setMenuOpen(false);
       });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) {
+        setMenuOpen(false);
+      }
+    });
+
+    // Auto-close on window resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && panel.classList.contains('open')) {
+        setMenuOpen(false);
+      }
     });
   },
   
@@ -883,6 +904,81 @@ const BuildABox = {
   }
 };
 
+/* ── Mobile Drawers (Filters & Dashboard Sidebar) ─────────────────────────── */
+const MobileDrawers = {
+  init() {
+    // 1. Product Filter Drawer
+    const filterBtn = document.querySelector('.mobile-filter-btn');
+    const filterDrawer = document.querySelector('.shop-filters');
+    if (filterBtn && filterDrawer) {
+      let backdrop = document.querySelector('.drawer-backdrop');
+      if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'drawer-backdrop';
+        document.body.appendChild(backdrop);
+      }
+      
+      const toggleFilters = (open) => {
+        const isOpen = open !== undefined ? open : !filterDrawer.classList.contains('open');
+        filterDrawer.classList.toggle('open', isOpen);
+        backdrop.classList.toggle('open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      };
+
+      filterBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFilters();
+      });
+
+      backdrop.addEventListener('click', () => toggleFilters(false));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && filterDrawer.classList.contains('open')) {
+          toggleFilters(false);
+        }
+      });
+    }
+
+    // 2. Dashboard Sidebar Drawer
+    const sidebarBtn = document.querySelector('.mobile-menu-btn');
+    const sidebar = document.querySelector('.dashboard-sidebar');
+    if (sidebarBtn && sidebar) {
+      let backdrop = document.querySelector('.drawer-backdrop');
+      if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'drawer-backdrop';
+        document.body.appendChild(backdrop);
+      }
+
+      const toggleSidebar = (open) => {
+        const isOpen = open !== undefined ? open : !sidebar.classList.contains('open');
+        sidebar.classList.toggle('open', isOpen);
+        backdrop.classList.toggle('open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      };
+
+      sidebarBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleSidebar();
+      });
+
+      backdrop.addEventListener('click', () => toggleSidebar(false));
+
+      sidebar.querySelectorAll('.dashboard-nav__item').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 900) toggleSidebar(false);
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+          toggleSidebar(false);
+        }
+      });
+    }
+  }
+};
+
 /* ── Global Init ───────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   ThemeManager.init();
@@ -902,4 +998,5 @@ document.addEventListener('DOMContentLoaded', () => {
   BubbleGenerator.init();
   BuildABox.init();
   SmoothScroll.init();
+  MobileDrawers.init();
 });

@@ -16,10 +16,10 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   font-size: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -32,6 +32,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100vw;
   transition: background-color var(--transition-theme), color var(--transition-theme);
 }
 
@@ -39,6 +40,8 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   color: var(--color-text);
+  overflow-wrap: break-word;
+  word-break: break-word;
   transition: color var(--transition-theme);
 }
 
@@ -107,8 +110,9 @@ img {
   height: auto;
 }
 
-picture, video, canvas, svg {
+picture, video, canvas, svg, iframe {
   display: block;
+  max-width: 100%;
 }
 
 /* ── Tables ── */

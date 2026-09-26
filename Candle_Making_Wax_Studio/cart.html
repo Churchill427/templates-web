@@ -31,17 +31,27 @@
     .promo-input-group{display:flex;gap:var(--space-xs);margin-bottom:var(--space-sm);}
     .trust-badge{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md);background:var(--color-surface);border-radius:var(--radius-md);}
     .trust-badge svg{color:var(--color-primary);width:24px;height:24px;flex-shrink:0;}
-    @media(max-width:1023px){.cart-layout{grid-template-columns:1fr;}}
+    @media(max-width:1024px){.cart-layout{grid-template-columns:1fr;}}
     @media(max-width:767px){
       .cart-item{flex-wrap:wrap;gap:var(--space-md);}
       .cart-item__img{width:80px;height:80px;}
       .qty-stepper{margin-left:auto;}
+    }
+    @media(max-width:480px){
+      .cart-item{gap:var(--space-sm);padding:var(--space-md) 0;}
+      .cart-item__img{width:64px;height:64px;}
+      .cart-item__name{font-size:1rem;}
+      .cart-item__price{width:auto;margin-left:auto;}
+      .cart-summary{padding:var(--space-md);}
+      .promo-input-group{flex-direction:column;}
+      .promo-input-group .btn{width:100%;}
     }
   </style>
 </head>
 <body class="has-header">
   <header class="header"><div class="header__inner"><a href="index.html" class="header__logo"><svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M24 4C24 4 12 18 12 28C12 34.627 17.373 40 24 40C30.627 40 36 34.627 36 28C36 18 24 4 24 4Z" fill="#C97B3D" opacity="0.85"/><path d="M24 16C24 16 18 24 18 30C18 33.314 20.686 36 24 36C27.314 36 30 33.314 30 30C30 24 24 16 24 16Z" fill="#E8A84C"/><path d="M24 24C24 24 21 28 21 31C21 32.657 22.343 34 24 34C25.657 34 27 32.657 27 31C27 28 24 24 24 24Z" fill="#FAF4EB"/><rect x="23" y="2" width="2" height="4" rx="1" fill="#2B2622"/></svg><span class="header__logo-text">LUME</span></a><nav class="nav"><div class="nav__dropdown"><a href="index.html" class="nav__link nav__dropdown-toggle">Home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a><div class="nav__dropdown-menu"><a href="index.html" class="nav__dropdown-item">Home 1</a></div></div><a href="products.html" class="nav__link">Shop</a><a href="workshops.html" class="nav__link">Workshops</a><a href="custom.html" class="nav__link">Custom Favors</a></nav><div class="header__controls"><button class="header__toggle" data-toggle-theme><svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><button class="header__rtl-toggle" data-toggle-dir>RTL</button><a href="cart.html" class="nav__cart nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Cart (<span class="cart-count">0</span>)</a>
 </div><button class="hamburger" id="hamburger"><span class="hamburger__line"></span><span class="hamburger__line"></span><span class="hamburger__line"></span></button></div></header>
+  <div class="mobile-menu" id="mobile-menu"><a href="index.html" class="mobile-menu__link">Home</a><a href="products.html" class="mobile-menu__link">Shop</a><a href="workshops.html" class="mobile-menu__link">Workshops</a><a href="custom.html" class="mobile-menu__link">Custom Favors</a><a href="about.html" class="mobile-menu__link">Our Story</a><a href="journal.html" class="mobile-menu__link">Journal</a><a href="contact.html" class="mobile-menu__link">Contact</a><a href="cart.html" class="mobile-menu__link mobile-menu__link--active">Cart (<span class="cart-count">0</span>)</a></div>
 
   <main>
     <!-- S1: HERO -->
