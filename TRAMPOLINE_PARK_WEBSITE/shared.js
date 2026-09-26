@@ -182,25 +182,15 @@
           <a href="index.html" class="navbar-logo" aria-label="JUMP Home">${ICONS.logo}</a>
           <div class="navbar-menu" id="navbar-menu">
             <div class="navbar-links">${linksHTML}</div>
-            <div class="navbar-actions">
-              <button class="rtl-toggle" onclick="window.JUMPToggleRTL()" aria-label="Toggle text direction">RTL</button>
-              <button class="toggle-btn theme-toggle" onclick="window.JUMPToggleTheme()" aria-label="Toggle theme">${ICONS.moon}</button>
-              <div class="nav-account">
-                <button class="nav-account-btn" aria-label="Account menu">${ICONS.user}</button>
-                <div class="nav-account-panel">
-                  <a href="login.html">Login</a>
-                  <a href="signup.html">Sign Up</a>
-                  <a href="dashboard-user.html">User Dashboard</a>
-                  <a href="dashboard-admin.html">Admin Dashboard</a>
-                </div>
-              </div>
-              <a href="login.html" class="nav-login-btn ${page === 'login.html' ? 'active' : ''}">Login</a>
-              <a href="pricing.html" class="btn btn-primary nav-cta">Book Now</a>
-            </div>
           </div>
-          <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-          </button>
+          <div class="navbar-actions">
+            <button class="rtl-toggle" onclick="window.JUMPToggleRTL()" aria-label="Toggle text direction">RTL</button>
+            <button class="toggle-btn theme-toggle" onclick="window.JUMPToggleTheme()" aria-label="Toggle theme">${ICONS.moon}</button>
+            <a href="login.html" class="nav-login-btn ${page === 'login.html' ? 'active' : ''}">Login</a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
         </div>
       </nav>`;
 

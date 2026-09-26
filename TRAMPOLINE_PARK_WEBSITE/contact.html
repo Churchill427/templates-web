@@ -62,105 +62,116 @@
     <div class="container">
       <div class="split split--55-45 reveal">
         <!-- Form Left -->
-        <div class="split-content" style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--gap-xl);">
-          <div style="margin-bottom:var(--gap-lg);">
-            <h2>Send Us a Message</h2>
-            <p>Fill out the form below and our guest experience crew will get back to you within 24 hours.</p>
+        <div class="split-content contact-card">
+          <div>
+            <div style="margin-bottom:var(--gap-lg);">
+              <h2>Send Us a Message</h2>
+              <p>Fill out the form below and our guest experience crew will get back to you within 24 hours.</p>
+            </div>
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">Full Name <span style="color:var(--primary);">*</span></label>
+                  <input type="text" id="contact-name" name="name" class="form-input" placeholder="Alex Morgan" required>
+                  <span class="form-error">Please enter your full name.</span>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Email Address <span style="color:var(--primary);">*</span></label>
+                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@example.com" required>
+                  <span class="form-error">Please provide a valid email address.</span>
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="contact-phone" class="form-label">Phone Number</label>
+                  <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="(555) 987-6543">
+                </div>
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">Subject <span style="color:var(--primary);">*</span></label>
+                  <select id="contact-subject" name="subject" class="form-input" required>
+                    <option value="">Select an option</option>
+                    <option value="general">General Inquiries</option>
+                    <option value="parties">Birthday Parties & Events</option>
+                    <option value="group">School & Group Booking</option>
+                    <option value="safety">Safety & Waivers</option>
+                    <option value="feedback">Feedback & Suggestions</option>
+                  </select>
+                  <span class="form-error">Please select an inquiry topic.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message <span style="color:var(--primary);">*</span></label>
+                <textarea id="contact-message" name="message" class="form-input" rows="4" placeholder="How can we help make your visit great?" required></textarea>
+                <span class="form-error">Please write a brief message.</span>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--gap-sm);">
+                <span>Send Message</span>
+              </button>
+              <div id="form-success-msg" style="display:none;margin-top:var(--gap-md);padding:12px 16px;background:rgba(34,197,94,0.15);border:1px solid #16a34a;border-radius:var(--radius-sm);color:#16a34a;font-weight:600;font-size:var(--small-size);text-align:center;">
+                Thank you! Your message has been sent successfully. We'll be in touch shortly!
+              </div>
+            </form>
           </div>
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="form-group">
-              <label for="contact-name" class="form-label">Full Name <span style="color:var(--primary);">*</span></label>
-              <input type="text" id="contact-name" name="name" class="form-input" placeholder="Alex Morgan" required>
-              <span class="form-error">Please enter your full name.</span>
-            </div>
-            <div class="form-group">
-              <label for="contact-email" class="form-label">Email Address <span style="color:var(--primary);">*</span></label>
-              <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@example.com" required>
-              <span class="form-error">Please provide a valid email address.</span>
-            </div>
-            <div class="form-group">
-              <label for="contact-phone" class="form-label">Phone Number</label>
-              <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="(555) 987-6543">
-            </div>
-            <div class="form-group">
-              <label for="contact-subject" class="form-label">Subject <span style="color:var(--primary);">*</span></label>
-              <select id="contact-subject" name="subject" class="form-input" required>
-                <option value="">Select an option</option>
-                <option value="general">General Inquiries</option>
-                <option value="parties">Birthday Parties & Events</option>
-                <option value="group">School & Group Booking</option>
-                <option value="safety">Safety & Waivers</option>
-                <option value="feedback">Feedback & Suggestions</option>
-              </select>
-              <span class="form-error">Please select an inquiry topic.</span>
-            </div>
-            <div class="form-group">
-              <label for="contact-message" class="form-label">Message <span style="color:var(--primary);">*</span></label>
-              <textarea id="contact-message" name="message" class="form-input" rows="4" placeholder="How can we help make your visit great?" required></textarea>
-              <span class="form-error">Please write a brief message.</span>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block" style="margin-top:var(--gap-sm);">
-              <span>Send Message</span>
-            </button>
-            <div id="form-success-msg" style="display:none;margin-top:var(--gap-md);padding:12px 16px;background:rgba(34,197,94,0.15);border:1px solid #16a34a;border-radius:var(--radius-sm);color:#16a34a;font-weight:600;font-size:var(--small-size);text-align:center;">
-              Thank you! Your message has been sent successfully. We'll be in touch shortly!
-            </div>
-          </form>
         </div>
 
         <!-- Info Right -->
-        <div class="split-content" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--gap-xl);">
+        <div class="split-content contact-card">
           <div>
-            <h2>Park Information</h2>
-            <p style="margin-bottom:var(--gap-xl);">We are conveniently located in Jumpville with dedicated free parking and direct transit access.</p>
+            <div style="margin-bottom:var(--gap-lg);">
+              <h2>Park Information</h2>
+              <p>We are conveniently located in Jumpville with dedicated free parking and direct transit access.</p>
+            </div>
             
-            <div style="display:flex;flex-direction:column;gap:var(--gap-lg);">
-              <div style="display:flex;align-items:flex-start;gap:var(--gap-md);">
-                <div style="width:44px;height:44px;border-radius:var(--radius-sm);background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <div class="contact-info-list">
+              <div class="contact-info-item">
+                <div class="contact-info-icon" style="background:rgba(255,71,87,0.12);color:var(--primary);">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
-                <div>
-                  <h4 style="margin-bottom:4px;">Arena Address</h4>
-                  <p style="font-size:var(--small-size);">123 Bounce Avenue<br>Jumpville, CA 90210</p>
+                <div class="contact-info-text">
+                  <h4>Arena Address</h4>
+                  <p>123 Bounce Avenue<br>Jumpville, CA 90210</p>
                 </div>
               </div>
 
-              <div style="display:flex;align-items:flex-start;gap:var(--gap-md);">
-                <div style="width:44px;height:44px;border-radius:var(--radius-sm);background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <div class="contact-info-item">
+                <div class="contact-info-icon" style="background:rgba(30,58,138,0.12);color:var(--secondary);">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
-                <div>
-                  <h4 style="margin-bottom:4px;">Phone Support</h4>
-                  <p style="font-size:var(--small-size);"><a href="tel:5551235867" style="color:var(--primary);font-weight:600;">(555) 123-JUMP</a><br>Customer care 9am–8pm daily</p>
+                <div class="contact-info-text">
+                  <h4>Phone Support</h4>
+                  <p><a href="tel:5551235867">(555) 123-JUMP</a><br>Guest services 9am–8pm daily</p>
                 </div>
               </div>
 
-              <div style="display:flex;align-items:flex-start;gap:var(--gap-md);">
-                <div style="width:44px;height:44px;border-radius:var(--radius-sm);background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <div class="contact-info-item">
+                <div class="contact-info-icon" style="background:rgba(255,176,32,0.15);color:#d97706;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </div>
-                <div>
-                  <h4 style="margin-bottom:4px;">Email Inquiries</h4>
-                  <p style="font-size:var(--small-size);"><a href="mailto:hello@jumppark.com" style="color:var(--primary);font-weight:600;">hello@jumppark.com</a><br>parties@jumppark.com</p>
+                <div class="contact-info-text">
+                  <h4>Email Inquiries</h4>
+                  <p><a href="mailto:hello@jumppark.com">hello@jumppark.com</a><br><a href="mailto:parties@jumppark.com">parties@jumppark.com</a></p>
                 </div>
               </div>
 
-              <div style="display:flex;align-items:flex-start;gap:var(--gap-md);">
-                <div style="width:44px;height:44px;border-radius:var(--radius-sm);background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <div class="contact-info-item">
+                <div class="contact-info-icon" style="background:rgba(34,197,94,0.12);color:#16a34a;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-                <div>
-                  <h4 style="margin-bottom:4px;">Park Schedule</h4>
-                  <p style="font-size:var(--small-size);">Mon–Fri: 10:00 AM – 9:00 PM<br>Sat–Sun: 9:00 AM – 10:00 PM</p>
+                <div class="contact-info-text">
+                  <h4>Park Schedule</h4>
+                  <p>Mon–Fri: 10:00 AM – 9:00 PM<br>Sat–Sun: 9:00 AM – 10:00 PM</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div style="margin-top:var(--gap-xl);padding-top:var(--gap-md);border-top:1px solid var(--border-color);">
-            <div style="display:flex;align-items:center;gap:var(--gap-sm);color:var(--text-sub);font-size:var(--tiny-size);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="color:var(--accent);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>All jumpers must have a signed waiver on file before entry.</span>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--gap-sm);flex-wrap:wrap;">
+              <div style="display:flex;align-items:center;gap:var(--gap-sm);color:var(--text-sub);font-size:var(--tiny-size);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="color:var(--accent);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Signed waiver required before entry</span>
+              </div>
+              <a href="signup.html" class="btn btn-ghost btn-sm" style="padding:4px 8px;font-size:var(--tiny-size);color:var(--primary);font-weight:700;">Sign Waiver &rarr;</a>
             </div>
           </div>
         </div>
@@ -168,48 +179,116 @@
     </div>
   </section>
 
-  <!-- Section 2: Social Connect Row -->
+  <!-- Section 2: Social Proof Grid -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-header reveal">
         <h2>Find Us on Social</h2>
-        <p>Follow @JUMPPark for daily highlights, trick clips, flash promotions, and giveaways.</p>
+        <p>Follow @JUMPPark for daily highlights, trick clips, flash promotions, and community giveaways.</p>
       </div>
-      <div class="social-btn-row reveal" style="display:flex;justify-content:center;gap:var(--gap-md);flex-wrap:wrap;">
-        <a href="#" class="social-btn social-btn--google" style="padding:12px 24px;border-radius:var(--radius-md);display:inline-flex;align-items:center;gap:var(--gap-sm);font-weight:600;min-height:48px;">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-          <span>Google Reviews</span>
+      <div class="grid grid-4 stagger">
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="social-card reveal">
+          <div class="social-card-icon" style="background:#fff;border:1px solid var(--border-color);">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          </div>
+          <div class="social-card-info">
+            <h4>Google Reviews</h4>
+            <div class="social-card-stat">★ 4.9 · 1,200+ Reviews</div>
+          </div>
+          <span class="social-card-arrow">&rarr;</span>
         </a>
-        <a href="#" class="social-btn social-btn--facebook" style="padding:12px 24px;border-radius:var(--radius-md);display:inline-flex;align-items:center;gap:var(--gap-sm);font-weight:600;min-height:48px;">
-          <svg viewBox="0 0 24 24" fill="#1877F2" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          <span>Facebook</span>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-card reveal">
+          <div class="social-card-icon" style="background:rgba(24,119,242,0.12);color:#1877F2;">
+            <svg viewBox="0 0 24 24" fill="#1877F2" width="22" height="22"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          <div class="social-card-info">
+            <h4>Facebook</h4>
+            <div class="social-card-stat">@JUMPPark · 24K Fans</div>
+          </div>
+          <span class="social-card-arrow">&rarr;</span>
         </a>
-        <a href="#" class="social-btn social-btn--instagram" style="padding:12px 24px;border-radius:var(--radius-md);display:inline-flex;align-items:center;gap:var(--gap-sm);font-weight:600;min-height:48px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E4405F" stroke-width="2" stroke-linecap="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          <span>Instagram</span>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-card reveal">
+          <div class="social-card-icon" style="background:rgba(228,64,95,0.12);color:#E4405F;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E4405F" stroke-width="2" stroke-linecap="round" width="22" height="22"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div class="social-card-info">
+            <h4>Instagram</h4>
+            <div class="social-card-stat">@jump_park · 48K Followers</div>
+          </div>
+          <span class="social-card-arrow">&rarr;</span>
         </a>
-        <a href="#" class="social-btn social-btn--youtube" style="padding:12px 24px;border-radius:var(--radius-md);display:inline-flex;align-items:center;gap:var(--gap-sm);font-weight:600;min-height:48px;">
-          <svg viewBox="0 0 24 24" fill="#FF0000" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          <span>YouTube</span>
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-card reveal">
+          <div class="social-card-icon" style="background:rgba(255,0,0,0.12);color:#FF0000;">
+            <svg viewBox="0 0 24 24" fill="#FF0000" width="22" height="22"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div class="social-card-info">
+            <h4>YouTube</h4>
+            <div class="social-card-stat">JUMP Arena TV · 15K Subs</div>
+          </div>
+          <span class="social-card-arrow">&rarr;</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Interactive Location Map Placeholder -->
+  <!-- Section 3: Interactive Location & Directions -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
         <h2>Location & Directions</h2>
         <p>Find us just off Highway 101, Exit 24. Look for the illuminated coral JUMP signs.</p>
       </div>
-      <div class="map-placeholder reveal" style="position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(30,58,138,0.08),rgba(255,71,87,0.05));border:1px solid var(--border-color);border-radius:var(--radius-md);height:380px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="56" height="56" style="color:var(--primary);margin-bottom:var(--gap-sm);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <h3 style="margin-bottom:4px;">JUMP Trampoline Arena Map</h3>
-        <p style="color:var(--text-sub);font-size:var(--small-size);">123 Bounce Avenue, Jumpville, CA 90210</p>
-        <div style="display:flex;gap:var(--gap-sm);margin-top:var(--gap-md);">
-          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding:8px 18px;font-size:var(--small-size);">Get Directions</a>
-          <button class="btn btn-outline" style="padding:8px 18px;font-size:var(--small-size);" onclick="alert('Transit options: Bus Line 14 stops directly outside JUMP. Central Metro Station is a 7-minute walk.')">Transit Info</button>
+
+      <div class="location-card reveal">
+        <div class="location-map-visual">
+          <div class="map-grid-overlay"></div>
+          <div class="map-pin-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>JUMP Trampoline Arena</span>
+          </div>
+          <div class="location-map-details">
+            <span class="location-coord">GPS: 34.0522° N, 118.2437° W</span>
+            <h3>123 Bounce Avenue, Jumpville, CA 90210</h3>
+            <p>Direct Highway 101 access · Exit 24 East · Adjacent to Jumpville Retail Commons</p>
+            <div class="location-map-actions">
+              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                <span>Google Maps</span>
+              </a>
+              <a href="https://maps.apple.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="background:var(--bg-card);">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                <span>Apple Maps</span>
+              </a>
+              <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText('123 Bounce Avenue, Jumpville, CA 90210');alert('Address copied to clipboard!')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-features-grid">
+          <div class="location-feature-card">
+            <div class="location-feature-icon" style="background:rgba(30,58,138,0.12);color:var(--secondary);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h4>By Car & Highway</h4>
+            <p>Exit 24 off Highway 101. Over 200 free, well-lit parking spaces directly in front of the arena doors.</p>
+          </div>
+          <div class="location-feature-card">
+            <div class="location-feature-icon" style="background:rgba(255,71,87,0.12);color:var(--primary);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M7 21h10"/><path d="M12 17v4"/></svg>
+            </div>
+            <h4>Public Transit</h4>
+            <p>Metro Bus Line 14 stops directly outside JUMP. Central Metro Station is an easy 7-minute walk.</p>
+          </div>
+          <div class="location-feature-card">
+            <div class="location-feature-icon" style="background:rgba(34,197,94,0.12);color:#16a34a;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+            </div>
+            <h4>EV Charging & Rideshare</h4>
+            <p>8 fast Level 2 EV charging stalls and a dedicated pickup and drop-off loop at the main entrance.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -217,37 +296,54 @@
 
   <!-- Section 4: Contact FAQ Mini -->
   <section class="section section--alt">
-    <div class="container" style="max-width:800px;">
+    <div class="container" style="max-width:960px;">
       <div class="section-header reveal">
         <h2>Visitor Inquiries</h2>
         <p>Quick answers to frequently asked questions about visiting JUMP.</p>
       </div>
-      <div class="accordion-group reveal">
-        <div class="accordion-item">
-          <button class="accordion-header">
+      <div class="accordion reveal">
+        <div class="accordion-item open">
+          <button class="accordion-trigger" aria-expanded="true">
             <span>Is parking available on site?</span>
-            <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="accordion-body">
-            <p>Yes! We provide over 200 free, well-lit parking spaces directly in front of the arena, including designated accessible parking and EV charging bays.</p>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <p>Yes! We provide over 200 free, well-lit parking spaces directly in front of the arena, including designated accessible parking and EV charging bays.</p>
+            </div>
           </div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-header">
+          <button class="accordion-trigger">
             <span>Do I need to sign the safety waiver in advance?</span>
-            <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="accordion-body">
-            <p>We strongly recommend completing waivers online before arrival for express check-in. Anyone under 18 must have their waiver signed by a parent or legal guardian. Waivers remain valid for 12 months.</p>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <p>We strongly recommend completing waivers online before arrival for express check-in. Anyone under 18 must have their waiver signed by a parent or legal guardian. Waivers remain valid for 12 months.</p>
+            </div>
           </div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-header">
+          <button class="accordion-trigger">
             <span>Do you offer discounts for groups and schools?</span>
-            <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="accordion-body">
-            <p>Yes, groups of 15 or more qualify for our group discount rates (up to 25% off). We also offer private facility rentals for school field trips, sports teams, and corporate team building.</p>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <p>Yes, groups of 15 or more qualify for our group discount rates (up to 25% off). We also offer private facility rentals for school field trips, sports teams, and corporate team building.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            <span>What should I wear for jumping?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <p>Wear comfortable athletic clothing (t-shirts, shorts, leggings) without sharp zips or buckles. Certified JUMP grip socks are required on all trampoline courts and can be purchased at reception for $3.50 (reusable).</p>
+            </div>
           </div>
         </div>
       </div>
@@ -256,12 +352,22 @@
 
   <!-- Section 5: Hours & Peak Times Table -->
   <section class="section">
-    <div class="container" style="max-width:900px;">
+    <div class="container" style="max-width:960px;">
       <div class="section-header reveal">
         <h2>Hours & Peak Times</h2>
         <p>Plan your visit around court activity levels for your ideal jump experience.</p>
       </div>
-      <div class="table-container reveal" style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);overflow:hidden;">
+
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--gap-sm);margin-bottom:var(--gap-md);padding:0 4px;">
+        <span style="font-size:var(--small-size);color:var(--text-sub);font-weight:500;">Live Court Occupancy Guidelines</span>
+        <div style="display:flex;align-items:center;gap:var(--gap-md);font-size:var(--tiny-size);font-weight:600;">
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16a34a;"></span> Quiet / Low (45%)</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></span> Moderate (75%)</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--primary);"></span> Peak Busy (85%+)</span>
+        </div>
+      </div>
+
+      <div class="table-wrap table-mobile-cards" style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);box-shadow:0 4px 20px var(--shadow-color);">
         <table class="table" style="margin:0;">
           <thead>
             <tr>
@@ -274,11 +380,11 @@
           </thead>
           <tbody>
             <tr>
-              <td style="font-weight:600;">Monday – Thursday</td>
-              <td>10:00 AM – 9:00 PM</td>
-              <td>10:00 AM – 2:00 PM</td>
-              <td>4:00 PM – 7:00 PM</td>
-              <td>
+              <td data-label="Day" style="font-weight:600;">Monday – Thursday</td>
+              <td data-label="Opening Hours">10:00 AM – 9:00 PM</td>
+              <td data-label="Quiet Hours">10:00 AM – 2:00 PM</td>
+              <td data-label="Peak Busy Period">4:00 PM – 7:00 PM</td>
+              <td data-label="Court Capacity">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <div style="flex:1;height:6px;background:var(--border-color);border-radius:3px;overflow:hidden;max-width:100px;">
                     <div style="width:45%;height:100%;background:#16a34a;border-radius:3px;"></div>
@@ -288,11 +394,11 @@
               </td>
             </tr>
             <tr>
-              <td style="font-weight:600;">Friday (Glow Night)</td>
-              <td>10:00 AM – 10:00 PM</td>
-              <td>10:00 AM – 1:00 PM</td>
-              <td>5:00 PM – 9:00 PM</td>
-              <td>
+              <td data-label="Day" style="font-weight:600;">Friday (Glow Night)</td>
+              <td data-label="Opening Hours">10:00 AM – 10:00 PM</td>
+              <td data-label="Quiet Hours">10:00 AM – 1:00 PM</td>
+              <td data-label="Peak Busy Period">5:00 PM – 9:00 PM</td>
+              <td data-label="Court Capacity">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <div style="flex:1;height:6px;background:var(--border-color);border-radius:3px;overflow:hidden;max-width:100px;">
                     <div style="width:85%;height:100%;background:var(--primary);border-radius:3px;"></div>
@@ -302,11 +408,11 @@
               </td>
             </tr>
             <tr>
-              <td style="font-weight:600;">Saturday</td>
-              <td>9:00 AM – 10:00 PM</td>
-              <td>9:00 AM – 10:30 AM</td>
-              <td>1:00 PM – 6:00 PM</td>
-              <td>
+              <td data-label="Day" style="font-weight:600;">Saturday</td>
+              <td data-label="Opening Hours">9:00 AM – 10:00 PM</td>
+              <td data-label="Quiet Hours">9:00 AM – 10:30 AM</td>
+              <td data-label="Peak Busy Period">1:00 PM – 6:00 PM</td>
+              <td data-label="Court Capacity">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <div style="flex:1;height:6px;background:var(--border-color);border-radius:3px;overflow:hidden;max-width:100px;">
                     <div style="width:95%;height:100%;background:var(--primary);border-radius:3px;"></div>
@@ -316,11 +422,11 @@
               </td>
             </tr>
             <tr>
-              <td style="font-weight:600;">Sunday</td>
-              <td>9:00 AM – 9:00 PM</td>
-              <td>9:00 AM – 11:00 AM</td>
-              <td>1:00 PM – 5:00 PM</td>
-              <td>
+              <td data-label="Day" style="font-weight:600;">Sunday</td>
+              <td data-label="Opening Hours">9:00 AM – 9:00 PM</td>
+              <td data-label="Quiet Hours">9:00 AM – 11:00 AM</td>
+              <td data-label="Peak Busy Period">1:00 PM – 5:00 PM</td>
+              <td data-label="Court Capacity">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <div style="flex:1;height:6px;background:var(--border-color);border-radius:3px;overflow:hidden;max-width:100px;">
                     <div style="width:75%;height:100%;background:var(--accent);border-radius:3px;"></div>
@@ -336,15 +442,13 @@
   </section>
 
   <!-- Section 6: CTA Banner -->
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="banner banner--coral reveal">
-        <h2>Ready to Jump?</h2>
-        <p>Book your court session online in seconds to guarantee your time slot and avoid walk-in queues.</p>
-        <div class="banner-ctas">
-          <a href="pricing.html" class="btn btn-secondary">Book a Jump Slot</a>
-          <a href="attractions.html" class="btn btn-outline" style="border-color:#fff;color:#fff;">Explore Zones</a>
-        </div>
+  <section class="section section--coral">
+    <div class="container text-center">
+      <h2 class="reveal" style="color:#fff;">Ready to Jump?</h2>
+      <p class="reveal" style="color:rgba(255,255,255,0.9);max-width:540px;margin:var(--gap-md) auto var(--gap-xl);">Book your court session online in seconds to guarantee your time slot and avoid walk-in queues.</p>
+      <div class="btn-group reveal" style="justify-content:center;">
+        <a href="pricing.html" class="btn btn-white btn-lg">Book a Jump Slot</a>
+        <a href="attractions.html" class="btn btn-outline btn-lg" style="border-color:#fff;color:#fff;">Explore Zones</a>
       </div>
     </div>
   </section>
