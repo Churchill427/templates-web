@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/components.css" />
   <link rel="stylesheet" href="styles/animations.css" />
-  <link rel="stylesheet" href="styles/responsive.css" />
   <link rel="stylesheet" href="styles/auth.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
@@ -90,7 +90,7 @@
           <!-- Account Type Radio Cards -->
           <div style="margin-bottom: var(--space-4);">
             <label class="form-label">Select Account Type</label>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2);">
+            <div class="account-type-grid">
               <label style="border: 2px solid var(--color-secondary); background: var(--bg-muted); border-radius: var(--radius-md); padding: 8px; text-align: center; cursor: pointer; display: block;" id="typeCorp">
                 <input type="radio" name="accountType" value="corporate" checked style="display: none;" onchange="updateAccountType('corporate')" />
                 <i class="fa-solid fa-building" style="color: var(--color-secondary); font-size: 16px;"></i>
@@ -111,7 +111,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+          <div class="auth-grid-2">
             <div class="form-group">
               <label class="form-label" for="signupName">Full Name *</label>
               <input type="text" class="form-control" id="signupName" placeholder="John Doe" required />
@@ -123,7 +123,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+          <div class="auth-grid-2">
             <div class="form-group">
               <label class="form-label" for="signupEmail">Work Email *</label>
               <input type="email" class="form-control" id="signupEmail" placeholder="john@company.com" required />

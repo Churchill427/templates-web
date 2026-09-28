@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/components.css" />
   <link rel="stylesheet" href="styles/animations.css" />
-  <link rel="stylesheet" href="styles/responsive.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <style>
     .contact-grid {
@@ -130,13 +130,27 @@
       font-size: var(--fs-small);
     }
 
-    @media(max-width:767px) {
+    @media(max-width:1023px) {
       .contact-grid {
         grid-template-columns: 1fr;
       }
+    }
 
+    @media(min-width:481px) and (max-width:1023px) {
+      .contact-info-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:480px) {
       .contact-info-cards {
         grid-template-columns: 1fr;
+      }
+      .contact-form-row {
+        grid-template-columns: 1fr !important;
+      }
+      .map-embed {
+        height: 240px;
       }
     }
   </style>
@@ -205,7 +219,7 @@
         <div class="contact-grid reveal">
           <form id="contact-form" action="https://formspree.io/f/your-id" method="POST"
             style="background:var(--bg-card);padding:var(--space-8);border-radius:var(--radius-xl);border:1px solid var(--border-color-light);box-shadow:var(--shadow-md);">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+            <div class="contact-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
               <div class="form-group"><label class="form-label">Full Name *</label><input type="text" name="name"
                   class="form-input" data-validate="required" placeholder="Your name" />
                 <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
@@ -215,7 +229,7 @@
                 <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
               </div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+            <div class="contact-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
               <div class="form-group"><label class="form-label">Phone</label><input type="tel" name="phone"
                   class="form-input" data-validate="phone" placeholder="+1 (555) 000-0000" />
                 <div class="form-error"><i data-lucide="alert-circle"></i><span></span></div>
@@ -230,7 +244,7 @@
                   <option>Other</option>
                 </select></div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+            <div class="contact-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
               <div class="form-group"><label class="form-label">Quantity</label><input type="number" name="quantity"
                   class="form-input" placeholder="Estimated qty" min="1" /></div>
               <div class="form-group"><label class="form-label">Print Colors</label><select name="colors"

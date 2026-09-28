@@ -28,13 +28,27 @@
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(THEME_KEY, theme);
     // Update toggle icons
-    document.querySelectorAll('.theme-toggle-icon').forEach(icon => {
-      if (theme === 'dark') {
-        icon.classList.remove('lucide-moon');
-        icon.classList.add('lucide-sun');
-      } else {
-        icon.classList.remove('lucide-sun');
-        icon.classList.add('lucide-moon');
+    document.querySelectorAll('[data-toggle-theme]').forEach(btn => {
+      const isLucide = btn.querySelector('.theme-toggle-icon, svg, i');
+      if (isLucide) {
+        btn.innerHTML = theme === 'dark'
+          ? '<i data-lucide="sun" class="theme-toggle-icon"></i>'
+          : '<i data-lucide="moon" class="theme-toggle-icon"></i>';
+      }
+    });
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+    // Update FontAwesome theme icons if present
+    document.querySelectorAll('.auth-toggle-btn i, .topbar__btn i').forEach(icon => {
+      if (icon.classList.contains('fa-moon') || icon.classList.contains('fa-sun')) {
+        if (theme === 'dark') {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+        }
       }
     });
   }
@@ -212,11 +226,65 @@
   }
   updateCartBadge();
 
+  /* ── Dashboard Sidebar Mobile & Desktop Toggles ────────────────── */
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const sidebar = document.querySelector('.sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const dashboard = document.querySelector('.dashboard');
+
+  function openSidebar() {
+    if (sidebar) sidebar.classList.add('is-mobile-open');
+    if (sidebarOverlay) sidebarOverlay.classList.add('is-open');
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeSidebar() {
+    if (sidebar) sidebar.classList.remove('is-mobile-open');
+    if (sidebarOverlay) sidebarOverlay.classList.remove('is-open');
+    document.body.classList.remove('no-scroll');
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openSidebar();
+    });
+  }
+
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeSidebar);
+  }
+
+  if (sidebarToggle && sidebar && dashboard) {
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('is-collapsed');
+      dashboard.classList.toggle('sidebar-collapsed');
+    });
+  }
+
+  // Close mobile sidebar on navigation link click
+  document.querySelectorAll('.sidebar__nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 1024) closeSidebar();
+    });
+  });
+
+  // Close mobile sidebar on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && sidebar && sidebar.classList.contains('is-mobile-open')) {
+      closeSidebar();
+    }
+  });
+
   // Expose globally for other scripts
   window.PRNT = window.PRNT || {};
   window.PRNT.updateCartBadge = updateCartBadge;
   window.PRNT.applyTheme = applyTheme;
   window.PRNT.applyDir = applyDir;
   window.PRNT.initScrollReveal = initScrollReveal;
+  window.PRNT.openSidebar = openSidebar;
+  window.PRNT.closeSidebar = closeSidebar;
 
 })();
+

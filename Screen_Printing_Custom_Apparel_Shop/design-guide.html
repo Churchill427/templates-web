@@ -20,12 +20,16 @@
     .upload-step__num{font-family:var(--font-heading);font-size:var(--fs-h2);font-weight:var(--fw-extrabold);color:var(--color-secondary);opacity:0.2;margin-bottom:var(--space-2);}
     .upload-step img{width:100%;height:160px;object-fit:cover;border-radius:var(--radius-lg);margin-bottom:var(--space-4);}
     .design-checker{background:var(--bg-card);padding:var(--space-8);border-radius:var(--radius-xl);border:1px solid var(--border-color-light);box-shadow:var(--shadow-md);max-width:800px;margin-inline:auto;}
+    .checker-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);}
     .checker-preview{display:flex;align-items:center;justify-content:center;height:200px;border-radius:var(--radius-lg);margin-top:var(--space-6);font-family:var(--font-heading);font-size:var(--fs-h3);font-weight:var(--fw-bold);text-transform:uppercase;transition:all 0.3s ease;border:2px dashed var(--border-color);}
     .dos-donts{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);}
     .dos-donts__col h3{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);}
     .dos-donts__col li{display:flex;align-items:flex-start;gap:var(--space-3);margin-bottom:var(--space-3);font-size:var(--fs-small);color:var(--text-secondary);}
     .dos-donts__col li i{flex-shrink:0;margin-top:2px;}
-    @media(max-width:767px){.spec-cards,.upload-steps{grid-template-columns:repeat(2,1fr);}.dos-donts{grid-template-columns:1fr;}}
+    .upload-cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center;}
+    .upload-cta__actions{display:flex;gap:var(--space-4);justify-content:center;margin-top:var(--space-6);flex-wrap:wrap;}
+    @media(max-width:1023px){.spec-cards,.upload-steps{grid-template-columns:repeat(2,1fr);}.dos-donts,.upload-cta-grid{grid-template-columns:1fr;gap:var(--space-6);}}
+    @media(max-width:480px){.spec-cards,.upload-steps,.upload-cta-grid,.checker-grid{grid-template-columns:1fr !important;gap:var(--space-4) !important;}.upload-step img{height:180px;}.design-checker{padding:var(--space-4);}.upload-cta__actions{flex-direction:column;width:100%;gap:var(--space-3);}.upload-cta__actions .btn{width:100%;max-width:100%;justify-content:center;padding:var(--space-3) var(--space-4);font-size:var(--fs-small);}}
   </style>
 </head>
 <body>
@@ -80,7 +84,7 @@
           <div class="upload-step"><div class="upload-step__num">01</div><img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80" alt="Preparing design file on computer" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Prepare Your File</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">Export as vector or 300+ DPI PNG with transparent background</p></div>
           <div class="upload-step"><div class="upload-step__num">02</div><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="Uploading artwork through form" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Upload Artwork</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">Use our quote form or email directly to artwork@prnt.shop</p></div>
           <div class="upload-step"><div class="upload-step__num">03</div><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80" alt="Design team reviewing proof" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Proof Review</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">We send a digital mockup for your approval within 24 hours</p></div>
-          <div class="upload-step"><div class="upload-step__num">04</div><img src="https://images.unsplash.com/photo-1581291518633-83b4eef1d2f8?w=400&q=80" alt="Approved design going to press" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Production</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">Once approved, your order goes straight to our print floor</p></div>
+          <div class="upload-step"><div class="upload-step__num">04</div><img src="assets/images/upload_step_production.jpg" alt="Approved design going to press" /><h4 style="font-size:var(--fs-body);margin-bottom:var(--space-2);">Production</h4><p style="font-size:var(--fs-small);color:var(--text-muted);">Once approved, your order goes straight to our print floor</p></div>
         </div>
       </div>
     </section>
@@ -90,7 +94,7 @@
       <div class="container">
         <div class="section__header reveal"><span class="section__label">Interactive Tool</span><h2>Design Contrast Checker</h2><p class="section__subtitle">Preview how your ink colors look on different garment colors</p></div>
         <div class="design-checker reveal">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+          <div class="checker-grid">
             <div class="form-group"><label class="form-label">Garment Color</label><select class="form-input" id="checker-garment"><option value="#FFFFFF">White</option><option value="#1A1A1A">Black</option><option value="#16233F">Navy</option><option value="#B22222">Red</option><option value="#2E7D32">Forest Green</option><option value="#F4A100">Gold</option><option value="#78909C">Grey</option></select></div>
             <div class="form-group"><label class="form-label">Number of Ink Colors</label><select class="form-input" id="checker-colors"><option value="1">1 Color</option><option value="2">2 Colors</option><option value="3">3 Colors</option><option value="4">4+ Colors</option></select></div>
           </div>
@@ -158,11 +162,11 @@
     <!-- S6: UPLOAD CTA + SUPPORT -->
     <section class="section" id="upload-cta" aria-label="Upload your design">
       <div class="container">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:center;" class="reveal">
+        <div class="upload-cta-grid reveal">
           <div style="text-align:center;">
             <h2 style="margin-bottom:var(--space-4);">Ready to Upload?</h2>
             <p>Attach your artwork when requesting a quote, or email it directly to our design team.</p>
-            <div style="display:flex;gap:var(--space-4);justify-content:center;margin-top:var(--space-6);flex-wrap:wrap;">
+            <div class="upload-cta__actions">
               <a href="contact.html" class="btn btn--primary btn--lg">Request Quote + Upload</a>
               <a href="mailto:artwork@prnt.shop" class="btn btn--ghost btn--lg"><i data-lucide="mail" style="width:16px;"></i> Email Artwork</a>
             </div>

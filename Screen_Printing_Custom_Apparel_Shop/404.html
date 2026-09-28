@@ -80,31 +80,74 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="index.html" class="header__logo">
-        <div class="header__logo-icon"><i class="fa-solid fa-print"></i></div>
-        <span class="header__logo-text">PRNT</span>
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="PRNT Home">
+        <div class="navbar__logo-icon"><i class="fa-solid fa-print"></i></div>
+        <span class="navbar__logo-text">PRNT</span>
       </a>
 
-      <nav class="nav" id="mainNav">
-        <a href="index.html" class="nav__link">Home</a>
-        <a href="products.html" class="nav__link">Apparel Catalog</a>
-        <a href="bulk.html" class="nav__link">Bulk Orders</a>
-        <a href="design-guide.html" class="nav__link">Design Guide</a>
-        <a href="contact.html" class="nav__link">Contact</a>
+      <nav class="navbar__nav" role="navigation" aria-label="Main navigation">
+        <div class="navbar__dropdown">
+          <a href="#" class="navbar__link" aria-haspopup="true">Home <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i></a>
+          <div class="navbar__dropdown-menu" role="menu">
+            <a href="index.html" class="navbar__dropdown-item" role="menuitem"><i class="fa-solid fa-bolt"></i> Home 1</a>
+            <a href="home-alt.html" class="navbar__dropdown-item" role="menuitem"><i class="fa-solid fa-palette"></i> Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="navbar__link">About</a>
+        <a href="products.html" class="navbar__link">Products</a>
+        <a href="bulk.html" class="navbar__link">Bulk & Corporate</a>
+        <a href="design-guide.html" class="navbar__link">Design Guide</a>
+        <a href="blog.html" class="navbar__link">Blog</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
       </nav>
 
-      <div class="header__actions">
-        <button class="header__theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
-        <button class="header__rtl-toggle" id="rtlToggle" aria-label="Toggle RTL Layout">RTL</button>
-        <a href="contact.html" class="btn btn--secondary btn--sm"><i class="fa-solid fa-calculator"></i> Quick Quote</a>
+      <div class="navbar__actions">
+        <a href="cart.html" class="navbar__cart-btn" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="navbar__cart-badge badge--count">0</span>
+        </a>
+        <button class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle theme">
+          <i class="fa-solid fa-moon theme-toggle-icon"></i>
+        </button>
+        <button class="navbar__rtl-btn navbar__toggle-btn" data-toggle-dir>
+          <span class="rtl-toggle-text">RTL</span>
+        </button>
+        <button class="navbar__hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="navbar__mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <div class="navbar__dropdown">
+        <a href="#" class="navbar__link">Home <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i></a>
+        <div class="navbar__dropdown-menu">
+          <a href="index.html" class="navbar__dropdown-item"><i class="fa-solid fa-bolt"></i> Home 1</a>
+          <a href="home-alt.html" class="navbar__dropdown-item"><i class="fa-solid fa-palette"></i> Home 2</a>
+        </div>
+      </div>
+      <a href="about.html" class="navbar__link">About</a>
+      <a href="products.html" class="navbar__link">Products</a>
+      <a href="bulk.html" class="navbar__link">Bulk & Corporate</a>
+      <a href="design-guide.html" class="navbar__link">Design Guide</a>
+      <a href="blog.html" class="navbar__link">Blog</a>
+      <a href="contact.html" class="navbar__link">Contact</a>
+      <div class="navbar__mobile-toggles">
+        <button class="navbar__toggle-btn" data-toggle-theme aria-label="Toggle theme">
+          <i class="fa-solid fa-moon theme-toggle-icon"></i>
+        </button>
+        <button class="navbar__rtl-btn navbar__toggle-btn" data-toggle-dir>
+          <span class="rtl-toggle-text">RTL</span>
+        </button>
       </div>
     </div>
   </header>
 
   <!-- 404 Hero Section -->
+  <main class="page-content">
   <section class="error-hero">
     <div class="container" style="max-width: 780px;">
       <div class="badge badge--accent" style="margin-bottom: var(--space-4);">
@@ -147,6 +190,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">

@@ -413,14 +413,10 @@
   position: absolute;
   top: 0;
   bottom: 0;
+  inset-inline-start: 0.5rem;
   left: 0.5rem;
   width: 2px;
   background: linear-gradient(180deg, var(--caramel), var(--berry));
-}
-
-[dir="rtl"] .timeline {
-  padding-inline-start: 0;
-  padding-inline-end: 2rem;
 }
 
 [dir="rtl"] .timeline::before {
@@ -435,7 +431,8 @@
 
 .timeline__dot {
   position: absolute;
-  left: -1.65rem;
+  inset-inline-start: -1.875rem;
+  left: -1.875rem;
   top: 0.25rem;
   width: 14px;
   height: 14px;
@@ -447,7 +444,7 @@
 
 [dir="rtl"] .timeline__dot {
   left: auto;
-  right: -1.65rem;
+  right: -1.875rem;
 }
 
 .timeline__year {

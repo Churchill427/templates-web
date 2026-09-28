@@ -24,13 +24,22 @@
     .timeline__text{font-size:var(--fs-small);color:var(--text-secondary);line-height:var(--lh-body);}
     .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-10);align-items:center;}
     .story-grid img{width:100%;height:400px;object-fit:cover;border-radius:var(--radius-lg);}
-    @media(max-width:767px){.story-grid{grid-template-columns:1fr;}.story-grid img{height:280px;}}
-    .equipment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);}
-    .equipment-grid figure{margin:0;overflow:hidden;border-radius:var(--radius-lg);}
-    .equipment-grid img{width:100%;height:200px;object-fit:cover;transition:transform 0.3s ease;}
-    .equipment-grid figure:hover img{transform:scale(1.05);}
-    .equipment-grid figcaption{padding:var(--space-3);font-size:var(--fs-xs);color:var(--text-muted);text-align:center;background:var(--bg-card);font-weight:var(--fw-medium);}
-    @media(max-width:767px){.equipment-grid{grid-template-columns:repeat(2,1fr);}}
+    .equipment-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);width:100%;align-items:stretch;}
+    .equipment-card{background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border-color-light);box-shadow:var(--shadow-card);transition:transform var(--transition-base),box-shadow var(--transition-base);}
+    .equipment-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card-hover);}
+    @media(max-width:1023px){
+      .story-grid{grid-template-columns:1fr;}.story-grid img{height:320px;}
+      .equipment-grid{grid-template-columns:repeat(2,1fr) !important;gap:var(--space-5) !important;}
+    }
+    @media(max-width:480px){
+      .story-grid img{height:220px;}
+      .equipment-grid{grid-template-columns:1fr !important;gap:var(--space-4) !important;}
+      .equipment-card__image{height:190px !important;}
+      .timeline{padding-left:28px;}
+      [dir="rtl"] .timeline{padding-left:0;padding-right:28px;}
+      .timeline__item{padding-left:16px;}
+      [dir="rtl"] .timeline__item{padding-left:0;padding-right:16px;}
+    }
     .partner-strip{display:flex;align-items:center;justify-content:center;gap:var(--space-12);flex-wrap:wrap;opacity:0.5;filter:grayscale(1);transition:all 0.3s ease;}
     .partner-strip:hover{opacity:0.8;filter:grayscale(0.3);}
     .partner-strip img{height:40px;width:auto;}
@@ -195,23 +204,43 @@
           <h2>Facility & Equipment</h2>
           <p class="section__subtitle">12,000 sq ft of ink, precision, and passion</p>
         </div>
-        <div class="equipment-grid reveal-stagger">
-          <figure>
-            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80" alt="Automatic screen printing carousel" />
-            <figcaption>12-Station Auto Press</figcaption>
-          </figure>
-          <figure>
-            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&q=80" alt="Embroidery machine stitching logo" />
-            <figcaption>Multi-Head Embroidery</figcaption>
-          </figure>
-          <figure>
-            <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=400&q=80" alt="Screen printing stencil preparation" />
-            <figcaption>Industrial Heat Press</figcaption>
-          </figure>
-          <figure>
-            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&q=80" alt="Squeegee pulling ink across screen printing frame" />
-            <figcaption>QC Inspection Station</figcaption>
-          </figure>
+        <div class="grid grid--4 equipment-grid reveal-stagger">
+          <div class="card equipment-card" style="text-align:center; overflow:hidden; display:flex; flex-direction:column;">
+            <div class="equipment-card__image" style="height:220px; overflow:hidden; position:relative;">
+              <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="Automatic screen printing carousel" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+            </div>
+            <div style="padding:var(--space-5) var(--space-4); flex:1; display:flex; flex-direction:column; justify-content:center;">
+              <h3 style="font-size:var(--fs-body); font-weight:var(--fw-bold); margin-bottom:var(--space-1); color:var(--text-heading);">12-Station Auto Press</h3>
+              <p style="color:var(--color-secondary); font-size:var(--fs-xs); font-weight:var(--fw-bold); text-transform:uppercase; letter-spacing:var(--ls-wide); margin:0;">M&R Precision Line</p>
+            </div>
+          </div>
+          <div class="card equipment-card" style="text-align:center; overflow:hidden; display:flex; flex-direction:column;">
+            <div class="equipment-card__image" style="height:220px; overflow:hidden; position:relative;">
+              <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Embroidery machine stitching logo" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+            </div>
+            <div style="padding:var(--space-5) var(--space-4); flex:1; display:flex; flex-direction:column; justify-content:center;">
+              <h3 style="font-size:var(--fs-body); font-weight:var(--fw-bold); margin-bottom:var(--space-1); color:var(--text-heading);">Multi-Head Embroidery</h3>
+              <p style="color:var(--color-secondary); font-size:var(--fs-xs); font-weight:var(--fw-bold); text-transform:uppercase; letter-spacing:var(--ls-wide); margin:0;">Tajima High-Speed</p>
+            </div>
+          </div>
+          <div class="card equipment-card" style="text-align:center; overflow:hidden; display:flex; flex-direction:column;">
+            <div class="equipment-card__image" style="height:220px; overflow:hidden; position:relative;">
+              <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=600&q=80" alt="Screen printing stencil preparation" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+            </div>
+            <div style="padding:var(--space-5) var(--space-4); flex:1; display:flex; flex-direction:column; justify-content:center;">
+              <h3 style="font-size:var(--fs-body); font-weight:var(--fw-bold); margin-bottom:var(--space-1); color:var(--text-heading);">Industrial Heat Press</h3>
+              <p style="color:var(--color-secondary); font-size:var(--fs-xs); font-weight:var(--fw-bold); text-transform:uppercase; letter-spacing:var(--ls-wide); margin:0;">Dual-Platen Transfer</p>
+            </div>
+          </div>
+          <div class="card equipment-card" style="text-align:center; overflow:hidden; display:flex; flex-direction:column;">
+            <div class="equipment-card__image" style="height:220px; overflow:hidden; position:relative;">
+              <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80" alt="Squeegee pulling ink across screen printing frame" style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" />
+            </div>
+            <div style="padding:var(--space-5) var(--space-4); flex:1; display:flex; flex-direction:column; justify-content:center;">
+              <h3 style="font-size:var(--fs-body); font-weight:var(--fw-bold); margin-bottom:var(--space-1); color:var(--text-heading);">QC Inspection Station</h3>
+              <p style="color:var(--color-secondary); font-size:var(--fs-xs); font-weight:var(--fw-bold); text-transform:uppercase; letter-spacing:var(--ls-wide); margin:0;">Precision Color Check</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

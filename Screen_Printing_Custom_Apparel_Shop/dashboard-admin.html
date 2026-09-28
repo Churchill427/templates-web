@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/components.css" />
   <link rel="stylesheet" href="styles/animations.css" />
-  <link rel="stylesheet" href="styles/responsive.css" />
   <link rel="stylesheet" href="styles/dashboard.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 </head>
@@ -107,7 +107,7 @@
       <!-- Topbar -->
       <header class="topbar">
         <div style="display: flex; align-items: center; gap: var(--space-3);">
-          <button class="topbar__btn" id="mobileMenuBtn" aria-label="Open Sidebar" style="display: none;">
+          <button class="topbar__btn" id="mobileMenuBtn" aria-label="Open Sidebar">
             <i class="fa-solid fa-bars"></i>
           </button>
           <div class="topbar__search">
@@ -410,7 +410,7 @@
             </div>
           </div>
 
-          <div style="overflow-x: auto;">
+          <div class="table-responsive" style="overflow-x: auto;">
             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: var(--fs-small);">
               <thead>
                 <tr style="background: var(--bg-muted); border-bottom: 1px solid var(--border-color-light); color: var(--text-muted); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: var(--ls-caps);">
@@ -482,7 +482,7 @@
         </section>
 
         <!-- Inventory Alerts & Notifications Panel Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8);">
+        <div class="dash-dual-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8);">
           <!-- Low Inventory Alerts -->
           <div class="notification-panel" id="inventory">
             <h3 style="font-family: var(--font-heading); font-size: var(--fs-h4); text-transform: uppercase; margin-bottom: var(--space-4);">

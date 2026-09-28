@@ -15,15 +15,18 @@
 
     init() {
       this.sidebar = document.querySelector('.sidebar');
-      this.toggleBtn = document.querySelector('.sidebar__toggle');
-      if (!this.sidebar || !this.toggleBtn) return;
+      this.toggleBtns = document.querySelectorAll('.sidebar__toggle');
+      if (!this.sidebar || !this.toggleBtns.length) return;
 
       var saved = localStorage.getItem(this.STORAGE_KEY);
       if (saved === 'true' && window.innerWidth >= 1024) {
         this.sidebar.classList.add('collapsed');
       }
 
-      this.toggleBtn.addEventListener('click', this.toggle.bind(this));
+      var self = this;
+      this.toggleBtns.forEach(function (btn) {
+        btn.addEventListener('click', self.toggle.bind(self));
+      });
       this.handleResponsive();
       window.addEventListener('resize', this.handleResponsive.bind(this));
     },
